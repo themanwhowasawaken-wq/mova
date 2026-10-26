@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Deutsch A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Deutsch A1</h1>
+  <p>Курс німецька для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="de-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Німецька має репутацію складної, але вона дуже логічна: вимова за написанням, чіткі правила. Цей курс веде до рівня A1: знайомство, родина, їжа, місто, покупки, час.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Читання за написанням.</b> Кілька правил для ei, ie, eu, ch, sch, умлаутів.</li>
+<li><b>Знайомі слова:</b> <span class="fr">Hotel, Familie, Bank, Telefon, Musik, Student, Apfel</span>.</li>
+<li><b>Іменники пишуться з великої літери.</b></li>
+<li><b>Три роди:</b> der (чол.), die (жін.), das (серед.). Рід треба вчити разом зі словом.</li>
+<li><b>Порядок слів:</b> дієслово завжди на другому місці в простому реченні.</li>
+</ul>
+<div class="warn"><b>Хибні друзі.</b> <span class="fr">Gift</span> = отрута, <span class="fr">bald</span> = скоро, <span class="fr">Rock</span> = спідниця, <span class="fr">also</span> = отже, <span class="fr">Art</span> = вид, <span class="fr">Chef</span> = начальник, <span class="fr">Kind</span> = дитина, <span class="fr">Fabrik</span> = завод, <span class="fr">Brief</span> = лист, <span class="fr">Rat</span> = порада.</div>
+<div class="tip"><b class="t">Die Höflichkeit.</b> <span class="fr">du</span> — друзі, родина, діти. <span class="fr">Sie</span> (з великої) — незнайомі, офіційно. Якщо не впевнений — кажи <span class="fr">Sie</span>.</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення, натискай на слова, щоб почути.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">26 літер плюс ä, ö, ü і ß. Читається за правилами, майже без винятків.</p>
+<div class="tw"><table>
+<tr><th>Літери</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td><span class="fr">ei</span></td><td>«ай»</td><td><span class="fr">nein</span> [найн], <span class="fr">Eis</span> [айс]</td></tr>
+<tr><td><span class="fr">ie</span></td><td>довге «і»</td><td><span class="fr">Liebe</span> [лібе], <span class="fr">Bier</span> [бір]</td></tr>
+<tr><td><span class="fr">eu, äu</span></td><td>«ой»</td><td><span class="fr">neu</span> [ной], <span class="fr">Häuser</span> [хойзер]</td></tr>
+<tr><td><span class="fr">au</span></td><td>«ау»</td><td><span class="fr">Haus</span> [гаус]</td></tr>
+<tr><td><span class="fr">ä</span></td><td>«е»</td><td><span class="fr">Mädchen</span> [медхен]</td></tr>
+<tr><td><span class="fr">ö</span></td><td>«е» із округленими губами</td><td><span class="fr">schön</span> [шьон]</td></tr>
+<tr><td><span class="fr">ü</span></td><td>«і» із округленими губами</td><td><span class="fr">Tür</span> [тюр]</td></tr>
+<tr><td><span class="fr">sch</span></td><td>«ш»</td><td><span class="fr">Schule</span> [шуле]</td></tr>
+<tr><td><span class="fr">sp, st на початку слова</span></td><td>«шп», «шт»</td><td><span class="fr">sprechen</span> [шпрехен], <span class="fr">Straße</span> [штрасе]</td></tr>
+<tr><td><span class="fr">ch</span></td><td>м'яке «х»</td><td><span class="fr">ich</span> [іх], <span class="fr">nach</span> [нах]</td></tr>
+<tr><td><span class="fr">z, tz</span></td><td>«ц»</td><td><span class="fr">zehn</span> [цен], <span class="fr">Katze</span> [кадзе]</td></tr>
+<tr><td><span class="fr">s перед голосною</span></td><td>«з»</td><td><span class="fr">sehr</span> [зер], <span class="fr">Sonne</span> [зонне]</td></tr>
+<tr><td><span class="fr">ß</span></td><td>«с»</td><td><span class="fr">Straße</span>, <span class="fr">heißen</span></td></tr>
+<tr><td><span class="fr">v</span></td><td>«ф»</td><td><span class="fr">Vater</span> [фатер]</td></tr>
+<tr><td><span class="fr">w</span></td><td>«в»</td><td><span class="fr">Wasser</span> [вассер]</td></tr>
+<tr><td><span class="fr">j</span></td><td>«й»</td><td><span class="fr">ja</span> [я], <span class="fr">Jahr</span> [яр]</td></tr>
+</table></div>
+<div class="rule"><b class="t">Наголос</b><p>Зазвичай на першому складі кореня: <span class="fr">ARbeit, FAmilie</span>. У дієсловах з префіксом <span class="fr">be-, ver-, er-</span> — після нього: <span class="fr">verSTEhen</span>.</p></div>
+<div class="exs">
+Hallo, wie geht's? | гало ві гетс | Привіт, як справи?
+Guten Tag. | ґутен таґ | Добрий день.
+Vielen Dank. | філен данк | Дуже дякую.
+Ich verstehe nicht. | іх ферштее ніхт | Я не розумію.
+Ich spreche ein bisschen Deutsch. | іх шпрехе айн біссхен дойч | Говорю трохи німецькою.
+Brot und Milch, bitte. | брот унт мільх біте | Хліб і молоко, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[ґутен таґ] — привітання | Guten Tag
+[данке] — дякую | Danke
+[гаус] — дім | Haus
+[мільх] — молоко | Milch
+[шуле] — де вчаться | Schule
+[брот] — хліб | Brot
+[вассер] — вода | Wasser
+[бір] — напій | Bier
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+Hallo | гало | привіт
+Guten Morgen | ґутен морґен | доброго ранку
+Guten Tag | ґутен таґ | добрий день
+Guten Abend | ґутен абент | добрий вечір
+Gute Nacht | ґуте нахт | на добраніч
+Auf Wiedersehen | ауф візеен | до побачення
+Tschüss | чюс | бувай
+Bis bald | біс бальт | до скорого
+# Ввічливість
+Danke | данке | дякую
+Bitte | біте | будь ласка, прошу
+Entschuldigung | ентшульдіґунґ | вибачте
+Ja | я | так
+Nein | найн | ні
+Vielleicht | філайхт | можливо
+</div>
+<h3>2.1. Як представитися</h3>
+<div class="exs">
+Ich heiße Michael. | іх хайсе міхаель | Мене звати Михайло.
+Wie heißt du? | ві хайст ду | Як тебе звати?
+Freut mich. | фройт міх | Приємно.
+Woher kommst du? | вохер комст ду | Звідки ти?
+Ich komme aus der Ukraine. | іх комме аус дер украйне | Я з України.
+Ich bin dreißig Jahre alt. | іх бін драйсіх яре альт | Мені тридцять років.
+Ich wohne in Uschhorod. | іх воне ін ужгород | Живу в Ужгороді.
+Ich bin Lehrer. | іх бін лерер | Я вчитель.
+Sprechen Sie Englisch? | шпрехен зі енґліш | Ви говорите англійською?
+Ich verstehe nicht. | іх ферштее ніхт | Я не розумію.
+Können Sie das wiederholen? | кьоннен зі дас відерхолен | Можете повторити?
+</div>
+<h3>2.2. Займенники</h3>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Німецькою</th><th>Українською</th></tr>
+<tr><td>1 одн.</td><td><span class="fr">ich</span></td><td>я</td></tr>
+<tr><td>2 одн.</td><td><span class="fr">du</span></td><td>ти</td></tr>
+<tr><td>3 одн.</td><td><span class="fr">er / sie / es</span></td><td>він / вона / воно</td></tr>
+<tr><td>1 множ.</td><td><span class="fr">wir</span></td><td>ми</td></tr>
+<tr><td>2 множ.</td><td><span class="fr">ihr</span></td><td>ви (кілька друзів)</td></tr>
+<tr><td>3 множ.</td><td><span class="fr">sie</span></td><td>вони</td></tr>
+<tr><td>ввічл.</td><td><span class="fr">Sie</span></td><td>Ви (одна чи кілька осіб)</td></tr>
+</table></div>
+<div class="tip"><b class="t">Займенник обов'язковий.</b> Не можна сказати «Bin Student». Тільки <span class="fr">Ich bin Student.</span></div>
+<div class="qz" data-title="Вправа 2. Привітання">
+Добрий день! | Guten Tag
+Доброго ранку! | Guten Morgen
+Дякую! | Danke
+Будь ласка | Bitte
+Вибачте! | Entschuldigung
+До побачення! | Auf Wiedersehen
+Мене звати Анна. | Ich heiße Anna
+Приємно. | Freut mich
+Я не розумію. | Ich verstehe nicht
+Привіт! | Hallo
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники й артиклі">
+<h2><span class="no">Розділ 3</span>Іменники, рід, множина й артиклі</h2>
+<p class="lead">Три роди: чоловічий <span class="fr m">der</span> (синій), жіночий <span class="fr f">die</span> (червоний), середній <span class="fr n">das</span> (зелений). Рід часто не збігається з українським: <span class="fr n">das Mädchen</span> — дівчинка, середній рід!</p>
+<h3>3.1. Артиклі</h3>
+<div class="tw"><table>
+<tr><th></th><th>Означений</th><th>Неозначений</th></tr>
+<tr><td><span class="fr m">m</span></td><td><span class="fr">der Mann</span></td><td><span class="fr">ein Mann</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td><span class="fr">die Frau</span></td><td><span class="fr">eine Frau</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td><span class="fr">das Kind</span></td><td><span class="fr">ein Kind</span></td></tr>
+<tr><td>мн.</td><td><span class="fr">die Kinder</span></td><td>— (без артикля)</td></tr>
+</table></div>
+<div class="rule"><b class="t">Заперечення kein</b><p><span class="fr">kein</span> заперечує іменник: <span class="fr">Ich habe keinen Bruder.</span> <span class="fr">nicht</span> заперечує дієслово чи прикметник: <span class="fr">Ich komme nicht.</span> Для A1 запам'ятай: <span class="fr">kein Auto, keine Zeit, kein Geld</span>.</p></div>
+<div class="rule"><b class="t">Akkusativ (знахідний)</b><p>Змінюється тільки чоловічий рід: <span class="fr">der → den</span>, <span class="fr">ein → einen</span>. Жіночий, середній і множина — без змін. <span class="fr">Ich habe einen Bruder. Ich sehe den Mann.</span></p></div>
+<h3>3.2. Множина</h3>
+<div class="tw"><table>
+<tr><th>Тип</th><th>Приклад</th></tr>
+<tr><td>-e (інколи з умлаутом)</td><td><span class="fr">der Tag → die Tage, die Stadt → die Städte</span></td></tr>
+<tr><td>-en / -n</td><td><span class="fr">die Frau → die Frauen, die Schule → die Schulen</span></td></tr>
+<tr><td>-er (з умлаутом)</td><td><span class="fr">das Kind → die Kinder, das Haus → die Häuser</span></td></tr>
+<tr><td>без закінчення (± умлаут)</td><td><span class="fr">der Bruder → die Brüder, der Lehrer → die Lehrer</span></td></tr>
+<tr><td>-s (запозичення)</td><td><span class="fr">das Auto → die Autos, das Hotel → die Hotels</span></td></tr>
+</table></div>
+<p>Множина не передбачувана, вчи її разом зі словом: <span class="fr">das Buch, die Bücher</span>.</p>
+<div class="vocab">
+# Родина
+die Familie | ді фаміліе | родина | f
+die Mutter | ді муттер | мати | f
+der Vater | дер фатер | батько | m
+der Bruder | дер брудер | брат | m
+die Schwester | ді швестер | сестра | f
+der Sohn | дер зон | син | m
+die Tochter | ді тохтер | дочка | f
+die Oma | ді ома | бабуся | f
+der Opa | дер опа | дідусь | m
+der Mann | дер ман | чоловік | m
+die Frau | ді фрау | дружина, жінка | f
+das Kind | дас кінт | дитина | n
+# Речі
+das Haus | дас гаус | дім | n
+die Wohnung | ді воунґ | квартира | f
+das Zimmer | дас цімер | кімната | n
+die Küche | ді кюхе | кухня | f
+der Tisch | дер тіш | стіл | m
+der Stuhl | дер штуль | стілець | m
+das Fenster | дас фенстер | вікно | n
+die Tür | ді тюр | двері | f
+das Bett | дас бет | ліжко | n
+das Auto | дас ауто | автомобіль | n
+das Telefon | дас телефон | телефон | n
+das Buch | дас бух | книга | n
+</div>
+<div class="qz" data-title="Вправа 3. Артикль і множина">
+___ Mann (der/die/das) | der
+___ Frau (der/die/das) | die
+___ Kind (der/die/das) | das
+___ Haus (der/die/das) | das
+___ Tisch (der/die/das) | der
+___ Küche (der/die/das) | die
+Haus → ___ (мн.) | Häuser
+Kind → ___ (мн.) | Kinder
+Frau → ___ (мн.) | Frauen
+Auto → ___ (мн.) | Autos
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Sein, haben">
+<h2><span class="no">Розділ 4</span>Дієслова <span class="fr">sein</span> (бути) і <span class="fr">haben</span> (мати)</h2>
+<div class="cj" data-verb="sein" data-note="бути" data-ipa="зайн">
+ich | bin | бін
+du | bist | бість
+er / sie / es | ist | іст
+wir | sind | зінт
+ihr | seid | зайт
+sie / Sie | sind | зінт
+</div>
+<div class="cj" data-verb="haben" data-note="мати" data-ipa="габен">
+ich | habe | габе
+du | hast | гаст
+er / sie / es | hat | гат
+wir | haben | габен
+ihr | habt | габт
+sie / Sie | haben | габен
+</div>
+<div class="exs">
+Ich bin Student. | іх бін штудент | Я студент.
+Bist du müde? | бість ду мюде | Ти втомлений?
+Wir sind zu Hause. | вір зінт цу гаузе | Ми вдома.
+Ich habe einen Bruder. | іх габе айнен брудер | У мене є брат.
+Hast du Zeit? | гаст ду цайт | Маєш час?
+Ich habe keine Zeit. | іх габе кайне цайт | Не маю часу.
+</div>
+<h3>4.1. Правильні дієслова</h3>
+<div class="rule"><b class="t">Правило</b><p>Інфінітив закінчується на <span class="fr">-en</span>. Відкинь <span class="fr">-en</span> і додай закінчення: <span class="fr">-e, -st, -t, -en, -t, -en</span>. Дієслово завжди на <b>другому місці</b>: <span class="fr">Heute lerne ich Deutsch.</span></p></div>
+<div class="tw"><table>
+<tr><th>Особа</th><th>machen (робити)</th><th>wohnen (жити)</th></tr>
+<tr><td>ich</td><td>mache</td><td>wohne</td></tr>
+<tr><td>du</td><td>machst</td><td>wohnst</td></tr>
+<tr><td>er/sie/es</td><td>macht</td><td>wohnt</td></tr>
+<tr><td>wir</td><td>machen</td><td>wohnen</td></tr>
+<tr><td>ihr</td><td>macht</td><td>wohnt</td></tr>
+<tr><td>sie/Sie</td><td>machen</td><td>wohnen</td></tr>
+</table></div>
+<div class="vocab">
+machen | махен | робити | mache
+wohnen | вонен | жити | wohne
+arbeiten | арбайтен | працювати | arbeite
+lernen | лернен | вчити | lerne
+kommen | коммен | приходити | komme
+spielen | шпілен | грати | spiele
+trinken | трінкен | пити | trinke
+kaufen | кауфен | купувати | kaufe
+sprechen | шпрехен | говорити | spreche
+essen | ессен | їсти | esse
+lesen | лезен | читати | lese
+sehen | зеен | бачити | sehe
+fahren | фарен | їхати | fahre
+möchten | мьохтен | хотіти б | möchte
+gehen | геен | йти | gehe
+</div>
+<div class="rule"><b class="t">Зміна кореневої голосної</b><p>Деякі дієслова міняють голосну в du і er/sie/es: <span class="fr">sprechen → du sprichst, er spricht</span>; <span class="fr">essen → du isst, er isst</span>; <span class="fr">lesen → du liest, er liest</span>; <span class="fr">sehen → du siehst</span>; <span class="fr">fahren → du fährst, er fährt</span>.</p></div>
+<div class="cj" data-verb="möchten" data-note="хотів би (ввічливо)" data-ipa="мьохтен">
+ich | möchte | мьохте
+du | möchtest | мьохтест
+er / sie / es | möchte | мьохте
+wir | möchten | мьохтен
+ihr | möchtet | мьохтет
+sie / Sie | möchten | мьохтен
+</div>
+<div class="cj" data-verb="gehen" data-note="йти" data-ipa="геен">
+ich | gehe | ґеє
+du | gehst | ґест
+er / sie / es | geht | ґет
+wir | gehen | ґеєн
+ihr | geht | ґет
+sie / Sie | gehen | ґеєн
+</div>
+<div class="qz" data-title="Вправа 4. Відмінювання">
+Ich ___ Student. (sein) | bin
+Du ___ aus der Ukraine. (sein) | bist
+Wir ___ Freunde. (sein) | sind
+Ich ___ einen Bruder. (haben) | habe
+Du ___ Zeit. (haben) | hast
+Ich ___ in Berlin. (wohnen) | wohne
+Du ___ Deutsch. (lernen) | lernst
+Er ___ in einer Bank. (arbeiten) | arbeitet
+Wir ___ nach Hause. (gehen) | gehen
+Ich ___ einen Kaffee. (möchten) | möchte
+Du ___ Deutsch. (sprechen) | sprichst
+Er ___ ein Buch. (lesen) | liest
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, прикметники">
+<h2><span class="no">Розділ 5</span>Питання, прикметники, прийменники</h2>
+<div class="vocab">
+wer | вер | хто
+was | вас | що
+wo | во | де
+woher | вохер | звідки
+wohin | вохін | куди
+wann | ван | коли
+wie | ві | як
+warum | варум | чому
+wie viel | ві філь | скільки
+welcher | вельхер | який
+</div>
+<div class="exs">
+Wer ist das? | вер іст дас | Хто це?
+Was machst du? | вас махст ду | Що ти робиш?
+Wo wohnst du? | во вонст ду | Де ти живеш?
+Wohin gehst du? | вохін геєст ду | Куди ти йдеш?
+Wie viel kostet das? | ві філь костет дас | Скільки це коштує?
+Wie heißt du? | ві хайст ду | Як тебе звати?
+</div>
+<div class="rule"><b class="t">Порядок слів</b><p>Дієслово на 2-му місці: <span class="fr">Ich wohne in Berlin. / In Berlin wohne ich.</span> У питаннях без питального слова дієслово перше: <span class="fr">Wohnst du in Berlin?</span> З питальним словом — після нього: <span class="fr">Wo wohnst du?</span></p></div>
+<h3>5.1. Прикметники</h3>
+<p>Після <span class="fr">sein</span> прикметник не змінюється: <span class="fr">Das Haus ist neu. Die Frau ist nett.</span> Перед іменником він отримує закінчення (це далі, на A2).</p>
+<div class="vocab">
+neu | ной | новий
+alt | альт | старий
+groß | ґрос | великий
+klein | клайн | малий
+gut | ґут | добрий
+schlecht | шлехт | поганий
+schön | шьон | гарний
+teuer | тойер | дорогий
+billig | біліх | дешевий
+nett | нет | милий
+müde | мюде | втомлений
+</div>
+<h3>5.2. Присвійні</h3>
+<div class="tw"><table>
+<tr><th>Чий</th><th>m / n</th><th>f / мн.</th></tr>
+<tr><td>мій</td><td><span class="fr">mein</span></td><td><span class="fr">meine</span></td></tr>
+<tr><td>твій</td><td><span class="fr">dein</span></td><td><span class="fr">deine</span></td></tr>
+<tr><td>його</td><td><span class="fr">sein</span></td><td><span class="fr">seine</span></td></tr>
+<tr><td>її</td><td><span class="fr">ihr</span></td><td><span class="fr">ihre</span></td></tr>
+<tr><td>наш</td><td><span class="fr">unser</span></td><td><span class="fr">unsere</span></td></tr>
+</table></div>
+<p>Приклад: <span class="fr">mein Bruder, meine Schwester, mein Kind, meine Eltern</span>.</p>
+<h3>5.3. Прийменники</h3>
+<div class="tw"><table>
+<tr><th>Прийменник</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td><span class="fr">in</span></td><td>в (місто, країна, будівля)</td><td><span class="fr">in Berlin, in der Schule</span></td></tr>
+<tr><td><span class="fr">aus</span></td><td>з (походження)</td><td><span class="fr">aus der Ukraine</span></td></tr>
+<tr><td><span class="fr">nach</span></td><td>до (місто, країна)</td><td><span class="fr">nach Hause, nach Berlin</span></td></tr>
+<tr><td><span class="fr">mit</span></td><td>з</td><td><span class="fr">mit meinem Bruder</span></td></tr>
+<tr><td><span class="fr">ohne</span></td><td>без</td><td><span class="fr">Kaffee ohne Zucker</span></td></tr>
+<tr><td><span class="fr">für</span></td><td>для</td><td><span class="fr">für meine Mutter</span></td></tr>
+<tr><td><span class="fr">auf</span></td><td>на</td><td><span class="fr">auf dem Tisch</span></td></tr>
+</table></div>
+<div class="exs">
+Ich gehe in die Schule. | іх геє ін ді шуле | Іду до школи.
+Ich bin in der Schule. | іх бін ін дер шуле | Я в школі.
+Ich wohne in Berlin. | іх воне ін берлін | Живу в Берліні.
+Das Buch liegt auf dem Tisch. | дас бух лікт ауф дем тіш | Книжка лежить на столі.
+Kaffee ohne Zucker. | каффе оне цуккер | Кава без цукру.
+Das ist mein Bruder. | дас іст майн брудер | Це мій брат.
+</div>
+<div class="qz" data-title="Вправа 5. Мова в дії">
+___ ist das? (хто) | Wer
+___ machst du? (що) | Was
+___ wohnst du? (де) | Wo
+___ kostet das? (Wie viel) | Wie viel
+Ich habe ___ Zeit. (немає: keine) | keine
+Das Haus ist ___ . (нове: neu) | neu
+___ Bruder (мій: mein) | mein
+___ Schwester (моя: meine) | meine
+Ich wohne ___ Berlin. (в) | in
+Ich komme ___ der Ukraine. (з) | aus
+Kaffee ___ Zucker. (без) | ohne
+Ein Geschenk ___ meine Mutter. (для) | für
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, час і дати</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">null</span></td><td>1 <span class="fr">eins</span></td><td>2 <span class="fr">zwei</span></td><td>3 <span class="fr">drei</span></td></tr>
+<tr><td>4 <span class="fr">vier</span></td><td>5 <span class="fr">fünf</span></td><td>6 <span class="fr">sechs</span></td><td>7 <span class="fr">sieben</span></td></tr>
+<tr><td>8 <span class="fr">acht</span></td><td>9 <span class="fr">neun</span></td><td>10 <span class="fr">zehn</span></td><td>11 <span class="fr">elf</span></td></tr>
+<tr><td>12 <span class="fr">zwölf</span></td><td>20 <span class="fr">zwanzig</span></td><td>30 <span class="fr">dreißig</span></td><td>40 <span class="fr">vierzig</span></td></tr>
+<tr><td>50 <span class="fr">fünfzig</span></td><td>100 <span class="fr">hundert</span></td><td>200 <span class="fr">zweihundert</span></td><td>1000 <span class="fr">tausend</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Складні числа читаються навпаки.</b><p>21 = <span class="fr">einundzwanzig</span> (один-і-двадцять), 45 = <span class="fr">fünfundvierzig</span>.</p></div>
+<div class="vocab">
+# Дні тижня
+Montag | монтаґ | понеділок
+Dienstag | дінстаґ | вівторок
+Mittwoch | міттвох | середа
+Donnerstag | доннерстаґ | четвер
+Freitag | фрайтаґ | п'ятниця
+Samstag | замстаґ | субота
+Sonntag | зоннтаґ | неділя
+# Місяці
+Januar | януар | січень
+Februar | фебруар | лютий
+März | мерц | березень
+April | април | квітень
+Mai | май | травень
+Juni | юні | червень
+Juli | юлі | липень
+August | аугуст | серпень
+September | зептембер | вересень
+Oktober | октобер | жовтень
+November | новембер | листопад
+Dezember | децембер | грудень
+# Час
+heute | хойте | сьогодні
+morgen | морґен | завтра
+gestern | ґестерн | вчора
+am Morgen | ам морґен | вранці
+am Abend | ам абент | увечері
+jetzt | єцт | зараз
+</div>
+<div class="exs">
+Wie spät ist es? | ві шпет іст ес | Котра година?
+Es ist fünf Uhr. | ес іст фюнф ур | П'ята година.
+Es ist ein Uhr. | ес іст айн ур | Перша година.
+Um wie viel Uhr? | ум ві філь ур | О котрій?
+Um acht Uhr. | ум ахт ур | О восьмій.
+Heute ist Montag. | хойте іст монтаґ | Сьогодні понеділок.
+</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+2 | zwei
+3 | drei
+5 | fünf
+10 | zehn
+20 | zwanzig
+100 | hundert
+понеділок | Montag
+п'ятниця | Freitag
+неділя | Sonntag
+жовтень | Oktober
+завтра | morgen
+вчора | gestern
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа
+das Brot | дас брот | хліб | n
+die Butter | ді буттер | масло | f
+der Käse | дер кезе | сир | m
+das Fleisch | дас флайш | м'ясо | n
+der Fisch | дер фіш | риба | m
+das Ei | дас ай | яйце | n
+die Suppe | ді зуппе | суп | f
+der Reis | дер райс | рис | m
+die Kartoffel | ді картоффель | картопля | f
+der Apfel | дер апфель | яблуко | m
+der Zucker | дер цуккер | цукор | m
+das Salz | дас зальц | сіль | n
+# Напої
+das Wasser | дас вассер | вода | n
+die Milch | ді мільх | молоко | f
+der Kaffee | дер каффе | кава | m
+der Tee | дер те | чай | m
+der Saft | дер зафт | сік | m
+das Bier | дас бір | пиво | n
+der Wein | дер вайн | вино | m
+# Місто
+der Bahnhof | дер банхоф | вокзал | m
+die Post | ді пост | пошта | f
+die Bank | ді банк | банк | f
+das Krankenhaus | дас кранкенгаус | лікарня | n
+die Apotheke | ді апотеке | аптека | f
+das Geschäft | дас ґешефт | магазин | n
+die Straße | ді штрасе | вулиця | f
+die Brücke | ді брюке | міст | f
+der Park | дер парк | парк | m
+</div>
+<div class="exs">
+Einen Kaffee, bitte. | айнен каффе біте | Каву, будь ласка.
+Die Rechnung, bitte. | ді рехнунґ біте | Рахунок, будь ласка.
+Guten Appetit! | ґутен аппетіт | Смачного!
+Wie viel kostet das? | ві філь костет дас | Скільки це коштує?
+Das ist teuer. | дас іст тойер | Це дорого.
+Kann ich mit Karte bezahlen? | кан іх міт карте бецален | Можна карткою?
+Wo ist der Bahnhof? | во іст дер банхоф | Де вокзал?
+Gehen Sie geradeaus, dann links. | геен зі ґерадеаус дан лінкс | Ідіть прямо, потім ліворуч.
+Ich habe Hunger. | іх габе хунґер | Я голодний.
+</div>
+<div class="qz" data-title="Вправа 7. Кафе й місто">
+Каву, будь ласка. | Einen Kaffee, bitte
+Рахунок, будь ласка. | Die Rechnung, bitte
+Смачного! | Guten Appetit
+Скільки це коштує? | Wie viel kostet das ?
+Де вокзал? | Wo ist der Bahnhof ?
+Це дорого. | Das ist teuer
+Я голодний. | Ich habe Hunger
+хліб | das Brot
+молоко | die Milch
+вокзал | der Bahnhof
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. Im Café (у кафе)
+Kellner: Guten Tag. Was möchten Sie? | Добрий день. Що бажаєте?
+Gast: Einen Kaffee und ein Stück Kuchen, bitte. | Каву й шматок пирога, будь ласка.
+Kellner: Mit Milch? | З молоком?
+Gast: Nein, danke. Ohne Milch. | Ні, дякую. Без молока.
+Kellner: Bitte schön. Guten Appetit. | Прошу. Смачного.
+Gast: Danke. Kann ich mit Karte bezahlen? | Дякую. Можна карткою?
+# 2. Am Bahnhof (на вокзалі)
+Reisender: Guten Tag, eine Fahrkarte nach Berlin, bitte. | Добрий день, квиток до Берліна.
+Verkäuferin: Einfach oder hin und zurück? | В один бік чи туди й назад?
+Reisender: Einfach. Wann fährt der Zug? | В один бік. Коли відправляється потяг?
+Verkäuferin: Um zehn Uhr fünfzehn. | О десятій п'ятнадцять.
+Reisender: Wie viel kostet die Fahrkarte? | Скільки коштує квиток?
+Verkäuferin: Vierzig Euro. | Сорок євро.
+# 3. Nach dem Weg fragen (дорога)
+Tourist: Entschuldigung, wo ist das Museum? | Вибачте, де музей?
+Frau: Gehen Sie geradeaus und dann rechts. | Ідіть прямо й потім праворуч.
+Tourist: Ist es weit? | Це далеко?
+Frau: Nein, fünf Minuten zu Fuß. | Ні, п'ять хвилин пішки.
+Tourist: Vielen Dank. | Дуже дякую.
+Frau: Bitte schön. | Прошу.
+# 4. Sich kennenlernen (знайомство)
+Peter: Hallo, ich heiße Peter. Und du? | Привіт, я Петер. А ти?
+Anna: Ich heiße Anna. Freut mich. | Мене звати Анна. Приємно.
+Peter: Woher kommst du? | Звідки ти?
+Anna: Ich komme aus der Ukraine, aus Uschhorod. | Я з України, з Ужгорода.
+Peter: Du sprichst sehr gut Deutsch! | Ти дуже добре говориш німецькою!
+Anna: Danke, ich lerne noch. | Дякую, я ще вчуся.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Що бажаєте? | Was möchten Sie ?
+Каву, будь ласка. | Einen Kaffee, bitte
+Квиток до Берліна. | Eine Fahrkarte nach Berlin
+Де музей? | Wo ist das Museum ?
+П'ять хвилин пішки. | Fünf Minuten zu Fuß
+Прошу. | Bitte schön
+Мене звати Анна. | Ich heiße Anna
+Я ще вчуся. | Ich lerne noch
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 9</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Sein</td><td>bin, bist, ist, sind, seid, sind</td></tr>
+<tr><td>Haben</td><td>habe, hast, hat, haben, habt, haben</td></tr>
+<tr><td>Закінчення</td><td>-e, -st, -t, -en, -t, -en</td></tr>
+<tr><td>Порядок слів</td><td>дієслово на 2-му місці</td></tr>
+<tr><td>Артиклі</td><td>der / die / das; ein / eine</td></tr>
+<tr><td>Знахідний</td><td>der → den, ein → einen</td></tr>
+<tr><td>Заперечення</td><td>kein + іменник; nicht + решта</td></tr>
+<tr><td>Іменники</td><td>завжди з великої літери</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Читаєш усе: ei ie eu sch ch</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомишся, вчиш слова з артиклем</td></tr>
+<tr><td>3</td><td>4</td><td>Sein, haben, 10 дієслів</td></tr>
+<tr><td>4</td><td>5</td><td>Питання, прикметники, прийменники</td></tr>
+<tr><td>5</td><td>6</td><td>Числа, час, дні</td></tr>
+<tr><td>6</td><td>7</td><td>Їжа, місто</td></tr>
+<tr><td>7</td><td>8</td><td>Діалоги вголос</td></tr>
+<tr><td>8</td><td>Повторення</td><td>Говориш 3–5 хвилин про себе</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1">
+Ich ___ Student. (sein) | bin
+Du ___ Zeit. (haben) | hast
+Ich habe ___ Zeit. (немає: keine) | keine
+___ Haus (der/die/das) | das
+___ Frau (der/die/das) | die
+Kind → ___ (мн.) | Kinder
+Wo ___ du? (wohnen) | wohnst
+___ kostet das? (Wie viel) | Wie viel
+5 | fünf
+Freitag | Freitag
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати будь-яке німецьке слово</label></li>
+<li><label><input type="checkbox"> Привітатися й представитися</label></li>
+<li><label><input type="checkbox"> Відмінювати sein, haben і правильні дієслова</label></li>
+<li><label><input type="checkbox"> Вчити іменник з артиклем</label></li>
+<li><label><input type="checkbox"> Назвати числа, дні, місяці, час</label></li>
+<li><label><input type="checkbox"> Замовити каву й спитати дорогу</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Deutsch</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^de[-_]DE/i.test(x.lang))||v.find(x=>/^de/i.test(x.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='de-DE';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('de1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('de1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('de1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('de1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='de1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

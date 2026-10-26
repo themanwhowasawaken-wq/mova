@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Italiano A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Italiano A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Italiano A1</h1>
+  <p>Курс італійська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="it-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Італійська — найпростіша з романських мов для початку: вимова за написанням, співуча, логічна. Цей курс веде до рівня A1: знайомство, родина, їжа, дорога, покупки, час.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Читання за написанням.</b> Лише кілька правил для c, g, sc, gn, gl.</li>
+<li><b>Знайомі слова:</b> <span class="fr">musica, pizza, banca, ospedale, cinema, famiglia, ristorante</span>.</li>
+<li><b>Наголос</b> майже завжди на передостанньому складі.</li>
+<li><b>Дієслова за закінченням:</b> три групи (-are, -ere, -ire).</li>
+</ul>
+<div class="warn"><b>Хибні друзі.</b> <span class="fr">camera</span> = кімната, <span class="fr">parenti</span> = родичі, <span class="fr">morbido</span> = м'який, <span class="fr">bravo</span> = здібний, <span class="fr">magazzino</span> = склад, <span class="fr">firma</span> = підпис, <span class="fr">gita</span> = екскурсія, <span class="fr">pronto</span> = готовий (і «алло»), <span class="fr">caldo</span> = гарячий, <span class="fr">cucina</span> = кухня.</div>
+<div class="tip"><b class="t">Подвійні приголосні</b> вимовляються довше: <span class="fr">pala</span> і <span class="fr">palla</span> — різні слова. Не пропускай їх на письмі.</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення, натискай на слова, щоб почути їх.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">Абетка з 21 літери (ще j, k, w, x, y в запозичених словах). Читається майже як пишеться.</p>
+<div class="tw"><table>
+<tr><th>Літери</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td><span class="fr">c перед e, i</span></td><td>«ч»</td><td><span class="fr">cena</span> [чена], <span class="fr">cinema</span> [чінема]</td></tr>
+<tr><td><span class="fr">c перед a, o, u; ch</span></td><td>«к»</td><td><span class="fr">casa</span> [каза], <span class="fr">che</span> [ке], <span class="fr">chiave</span> [к'яве]</td></tr>
+<tr><td><span class="fr">g перед e, i</span></td><td>«дж»</td><td><span class="fr">gelato</span> [джелато], <span class="fr">giorno</span> [джорно]</td></tr>
+<tr><td><span class="fr">g перед a, o, u; gh</span></td><td>«ґ»</td><td><span class="fr">gatto</span> [ґатто], <span class="fr">spaghetti</span> [спаґетті]</td></tr>
+<tr><td><span class="fr">sc перед e, i</span></td><td>«ш»</td><td><span class="fr">scena</span> [шена], <span class="fr">pesce</span> [пеше]</td></tr>
+<tr><td><span class="fr">gn</span></td><td>«нь»</td><td><span class="fr">gnocchi</span> [ньокі], <span class="fr">lasagna</span></td></tr>
+<tr><td><span class="fr">gli</span></td><td>«ль»</td><td><span class="fr">figlio</span> [фільо], <span class="fr">famiglia</span> [фамілья]</td></tr>
+<tr><td><span class="fr">h</span></td><td>німа</td><td><span class="fr">ho</span> [о], <span class="fr">hotel</span></td></tr>
+<tr><td><span class="fr">z</span></td><td>«ц» або «дз»</td><td><span class="fr">pizza</span> [піцца], <span class="fr">zero</span> [дзеро]</td></tr>
+<tr><td><span class="fr">qu</span></td><td>«кв»</td><td><span class="fr">quattro</span> [кваттро]</td></tr>
+<tr><td><span class="fr">s</span></td><td>«с», між голосними «з»</td><td><span class="fr">sole</span>, <span class="fr">casa</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Наголос</b><p>Зазвичай на передостанньому складі: <span class="fr">ma-ma, ciao</span>. Знак <span class="fr">`</span> вказує наголос на останньому: <span class="fr">città, caffè, perché, lunedì</span>.</p></div>
+<div class="exs">
+Ciao, come stai? | чао коме стай | Привіт, як справи?
+Buongiorno. | буонджорно | Добрий день.
+Grazie mille. | ґрацьє міле | Дуже дякую.
+Non capisco. | нон капіско | Я не розумію.
+Parlo un po' di italiano. | парло ун по ді італьяно | Говорю трохи італійською.
+Latte e pane, per favore. | латте е пане пер фаворе | Молоко й хліб, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[чао] — привіт | ciao
+[ґрацьє] — дякую | grazie
+[каза] — де живуть | casa
+[латте] — біла рідина | latte
+[джелато] — морозиво | gelato
+[піцца] — страва | pizza
+[ньокі] — страва з картоплі | gnocchi
+[чінема] — де фільми | cinema
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+Ciao | чао | привіт, бувай
+Buongiorno | буонджорно | добрий день
+Buonasera | буонасера | добрий вечір
+Buonanotte | буонанотте | на добраніч
+Arrivederci | аррівеверчі | до побачення
+A presto | а прести | до скорого
+# Ввічливість
+Grazie | ґрацьє | дякую
+Prego | прего | будь ласка, нема за що
+Per favore | пер фаворе | будь ласка
+Scusa | скуза | вибач
+Scusi | скузі | вибачте
+Sì | сі | так
+No | но | ні
+Forse | форсе | можливо
+</div>
+<h3>2.1. Як представитися</h3>
+<div class="exs">
+Mi chiamo Michele. | мі к'ямо мікеле | Мене звати Михайло.
+Come ti chiami? | коме ті к'ямі | Як тебе звати?
+Piacere. | п'ячере | Приємно.
+Di dove sei? | ді доведи сей | Звідки ти?
+Sono dell'Ucraina. | соно дель украйна | Я з України.
+Ho trent'anni. | о трентанні | Мені тридцять років.
+Abito a Užhorod. | абіто а ужгород | Живу в Ужгороді.
+Sono insegnante. | соно інсеньянте | Я вчитель.
+Parli inglese? | парлі інґлезе | Ти говориш англійською?
+Non capisco. | нон капіско | Я не розумію.
+Puoi ripetere? | пуой ріпетере | Можеш повторити?
+</div>
+<div class="rule"><b class="t">Tu чи Lei?</b><p><span class="fr">tu</span> — друг, ровесник. <span class="fr">Lei</span> (з великої) — ввічливо до однієї людини, дієслово в 3 особі: <span class="fr">Parla inglese?</span> Множина: <span class="fr">voi</span>.</p></div>
+<h3>2.2. Займенники</h3>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Італійською</th><th>Українською</th></tr>
+<tr><td>1 одн.</td><td><span class="fr">io</span></td><td>я</td></tr>
+<tr><td>2 одн.</td><td><span class="fr">tu</span></td><td>ти</td></tr>
+<tr><td>3 одн.</td><td><span class="fr">lui / lei / Lei</span></td><td>він / вона / Ви</td></tr>
+<tr><td>1 множ.</td><td><span class="fr">noi</span></td><td>ми</td></tr>
+<tr><td>2 множ.</td><td><span class="fr">voi</span></td><td>ви</td></tr>
+<tr><td>3 множ.</td><td><span class="fr">loro</span></td><td>вони</td></tr>
+</table></div>
+<div class="tip"><b class="t">Займенник зазвичай пропускають.</b> <span class="fr">Sono Michele.</span> Закінчення вже вказує на особу.</div>
+<div class="qz" data-title="Вправа 2. Привітання">
+Добрий день! | Buongiorno
+Дякую! | Grazie
+Будь ласка | Per favore
+Вибачте! | Scusi
+До побачення! | Arrivederci
+Мене звати Анна. | Mi chiamo Anna
+Приємно. | Piacere
+Я не розумію. | Non capisco
+Звідки ти? | Di dove sei ?
+Привіт! | Ciao
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники й артиклі">
+<h2><span class="no">Розділ 3</span>Іменники, рід, множина й артиклі</h2>
+<p class="lead">Два роди: чоловічий (синій) і жіночий (червоний).</p>
+<div class="tw"><table>
+<tr><th>Рід</th><th>Закінчення</th><th>Приклади</th></tr>
+<tr><td><span class="fr m">чол.</span></td><td>-o; іноді -e</td><td><span class="fr m">libro, ragazzo, fratello, nome, ponte</span></td></tr>
+<tr><td><span class="fr f">жін.</span></td><td>-a; іноді -e, -ione, -à</td><td><span class="fr f">casa, ragazza, sorella, stazione, città</span></td></tr>
+</table></div>
+<h3>3.1. Артиклі</h3>
+<div class="tw"><table>
+<tr><th></th><th>Означений</th><th>Неозначений</th></tr>
+<tr><td><span class="fr m">m одн.</span></td><td><span class="fr">il libro, l'amico, lo studente</span></td><td><span class="fr">un libro, uno studente</span></td></tr>
+<tr><td><span class="fr f">f одн.</span></td><td><span class="fr">la casa, l'amica</span></td><td><span class="fr">una casa, un'amica</span></td></tr>
+<tr><td><span class="fr m">m мн.</span></td><td><span class="fr">i libri, gli amici, gli studenti</span></td><td></td></tr>
+<tr><td><span class="fr f">f мн.</span></td><td><span class="fr">le case, le amiche</span></td><td></td></tr>
+</table></div>
+<div class="rule"><b class="t">lo, l', gli</b><p><span class="fr">lo / gli</span> — перед <span class="fr">s + приголосний, z, ps, gn</span>: <span class="fr">lo studente</span>. <span class="fr">l'</span> — перед голосним: <span class="fr">l'amico, l'acqua</span>.</p></div>
+<h3>3.2. Множина</h3>
+<div class="tw"><table>
+<tr><th>Одн.</th><th>Мн.</th><th>Приклад</th></tr>
+<tr><td>-o</td><td><b>-i</b></td><td><span class="fr">libro → libri</span></td></tr>
+<tr><td>-a</td><td><b>-e</b></td><td><span class="fr">casa → case</span></td></tr>
+<tr><td>-e</td><td><b>-i</b></td><td><span class="fr">nome → nomi, stazione → stazioni</span></td></tr>
+<tr><td>-à, -ù, -ì</td><td>не змінюється</td><td><span class="fr">città → città</span></td></tr>
+</table></div>
+<div class="vocab">
+# Родина
+la famiglia | ла фамілья | родина | f
+la madre / mamma | ла мадре / мамма | мати / мама | f
+il padre / papà | іль падре / папа | батько / тато | m
+il fratello | іль фрателло | брат | m
+la sorella | ла сорелла | сестра | f
+il figlio | іль фільо | син | m
+la figlia | ла філья | дочка | f
+la nonna | ла нонна | бабуся | f
+il nonno | іль нонно | дідусь | m
+il marito | іль маріто | чоловік | m
+la moglie | ла мольє | дружина | f
+il bambino | іль бамбіно | дитина | m
+# Речі
+la casa | ла каза | дім | f
+l'appartamento | ляппартаменто | квартира | m
+la camera | ла камера | кімната | f
+la cucina | ла кучіна | кухня | f
+il tavolo | іль таволо | стіл | m
+la sedia | ла седья | стілець | f
+la finestra | ла фінестра | вікно | f
+la porta | ла порта | двері | f
+il letto | іль летто | ліжко | m
+la macchina | ла маккіна | автомобіль | f
+il telefono | іль телефоно | телефон | m
+il libro | іль лібро | книга | m
+</div>
+<div class="qz" data-title="Вправа 3. Артикль і множина">
+___ libro (il/la) | il
+___ casa (il/la) | la
+___ amico (l'/lo) | l'
+___ studente (il/lo) | lo
+libro → ___ (мн.) | libri
+casa → ___ (мн.) | case
+nome → ___ (мн.) | nomi
+stazione → ___ (мн.) | stazioni
+___ libri (i/le) | i
+___ case (i/le) | le
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Essere і avere">
+<h2><span class="no">Розділ 4</span>Дієслова <span class="fr">essere</span> (бути) і <span class="fr">avere</span> (мати)</h2>
+<div class="cj" data-verb="essere" data-note="бути" data-ipa="ессере">
+io | sono | соно
+tu | sei | сей
+lui / lei | è | е
+noi | siamo | с'ямо
+voi | siete | с'єте
+loro | sono | соно
+</div>
+<div class="cj" data-verb="avere" data-note="мати" data-ipa="авере">
+io | ho | о
+tu | hai | ай
+lui / lei | ha | а
+noi | abbiamo | аббьямо
+voi | avete | авете
+loro | hanno | анно
+</div>
+<div class="exs">
+Sono studente. | соно студенте | Я студент.
+Sei stanco? | сей станко | Ти втомлений?
+Siamo a casa. | с'ямо а каза | Ми вдома.
+Ho un fratello. | о ун фрателло | У мене є брат.
+Hai tempo? | ай темпо | Маєш час?
+Non ho tempo. | нон о темпо | Не маю часу.
+</div>
+<div class="rule"><b class="t">Заперечення.</b> <span class="fr">non</span> перед дієсловом: <span class="fr">non ho, non capisco</span>. Подвійне заперечення: <span class="fr">Non ho niente.</span> <span class="fr">Non vado mai.</span></div>
+<h3>4.1. Три групи правильних дієслів</h3>
+<div class="tw"><table>
+<tr><th>Група</th><th>Приклад</th><th>io · tu · lui · noi · voi · loro</th></tr>
+<tr><td>-are</td><td><span class="fr">parlare</span> говорити</td><td>parlo, parli, parla, parliamo, parlate, parlano</td></tr>
+<tr><td>-ere</td><td><span class="fr">leggere</span> читати</td><td>leggo, leggi, legge, leggiamo, leggete, leggono</td></tr>
+<tr><td>-ire</td><td><span class="fr">dormire</span> спати</td><td>dormo, dormi, dorme, dormiamo, dormite, dormono</td></tr>
+<tr><td>-ire (-isc-)</td><td><span class="fr">capire</span> розуміти</td><td>capisco, capisci, capisce, capiamo, capite, capiscono</td></tr>
+</table></div>
+<div class="vocab">
+parlare | парларе | говорити | parlo
+leggere | леджере | читати | leggo
+scrivere | скрівере | писати | scrivo
+lavorare | лавораре | працювати | lavoro
+abitare | абітаре | жити | abito
+studiare | студьяре | вчити | studio
+mangiare | манджаре | їсти | mangio
+bere | бере | пити | bevo
+dormire | дорміре | спати | dormo
+comprare | компраре | купувати | compro
+capire | капіре | розуміти | capisco
+sapere | сапере | знати | so
+volere | воллере | хотіти | voglio
+andare | андаре | йти | vado
+fare | фаре | робити | faccio
+</div>
+<div class="cj" data-verb="volere" data-note="хотіти" data-ipa="воллере">
+io | voglio | вольйо
+tu | vuoi | вуой
+lui / lei | vuole | вуоле
+noi | vogliamo | вольямо
+voi | volete | волете
+loro | vogliono | вольйоно
+</div>
+<div class="cj" data-verb="andare" data-note="йти" data-ipa="андаре">
+io | vado | вадо
+tu | vai | вай
+lui / lei | va | ва
+noi | andiamo | андьямо
+voi | andate | андате
+loro | vanno | ванно
+</div>
+<div class="qz" data-title="Вправа 4. Відмінювання">
+Io ___ studente. (essere) | sono
+Tu ___ a casa. (essere) | sei
+Noi ___ dell'Ucraina. (essere) | siamo
+Loro ___ al lavoro. (essere) | sono
+Io ___ un fratello. (avere) | ho
+Tu ___ tempo. (avere) | hai
+Io ___ italiano. (parlare) | parlo
+Tu ___ il caffè. (bere) | bevi
+Noi ___ a Roma. (abitare) | abitiamo
+Io ___ un caffè. (volere) | voglio
+Noi ___ a scuola. (andare) | andiamo
+Loro ___ in banca. (lavorare) | lavorano
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, прикметники">
+<h2><span class="no">Розділ 5</span>Питання, прикметники, прийменники</h2>
+<div class="vocab">
+chi | кі | хто
+che cosa / cosa | ке коза / коза | що
+dove | доведі | де, куди
+di dove | ді доведі | звідки
+quando | куандо | коли
+come | коме | як
+perché | перке | чому, тому що
+quanto / quanta | куанто / куанта | скільки
+quale | куале | який, котрий
+</div>
+<div class="exs">
+Chi è? | кі е | Хто це?
+Che cosa fai? | ке коза фай | Що ти робиш?
+Dove abiti? | доведі абіті | Де ти живеш?
+Dove vai? | доведі вай | Куди ти йдеш?
+Quanto costa? | куанто коста | Скільки коштує?
+Come ti chiami? | коме ті к'ямі | Як тебе звати?
+</div>
+<h3>5.1. Прикметники</h3>
+<div class="rule"><b class="t">Правило</b><p>Зазвичай <b>після</b> іменника, узгоджується в роді й числі: <span class="fr">casa nuova</span>, <span class="fr">libri nuovi</span>. Деякі короткі стоять перед: <span class="fr">una bella casa</span>.</p></div>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th><th>мн. m</th><th>мн. f</th></tr>
+<tr><td>новий</td><td><span class="fr m">nuovo</span></td><td><span class="fr f">nuova</span></td><td>nuovi</td><td>nuove</td></tr>
+<tr><td>малий</td><td><span class="fr m">piccolo</span></td><td><span class="fr f">piccola</span></td><td>piccoli</td><td>piccole</td></tr>
+<tr><td>великий</td><td><span class="fr m">grande</span></td><td><span class="fr f">grande</span></td><td>grandi</td><td>grandi</td></tr>
+</table></div>
+<h3>5.2. Присвійні</h3>
+<div class="tw"><table>
+<tr><th>Чий</th><th>m</th><th>f</th><th>мн. m</th><th>мн. f</th></tr>
+<tr><td>мій</td><td><span class="fr">il mio</span></td><td><span class="fr">la mia</span></td><td>i miei</td><td>le mie</td></tr>
+<tr><td>твій</td><td><span class="fr">il tuo</span></td><td><span class="fr">la tua</span></td><td>i tuoi</td><td>le tue</td></tr>
+<tr><td>його, її</td><td><span class="fr">il suo</span></td><td><span class="fr">la sua</span></td><td>i suoi</td><td>le sue</td></tr>
+<tr><td>наш</td><td><span class="fr">il nostro</span></td><td><span class="fr">la nostra</span></td><td>i nostri</td><td>le nostre</td></tr>
+</table></div>
+<p>З родичами в однині артикль не ставимо: <span class="fr">mio fratello, mia sorella</span> (але <span class="fr">i miei fratelli</span>).</p>
+<h3>5.3. Прийменники</h3>
+<div class="tw"><table>
+<tr><th>Прийменник</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td><span class="fr">a</span></td><td>в (місто), до</td><td><span class="fr">a Roma, vado a scuola</span></td></tr>
+<tr><td><span class="fr">in</span></td><td>в (країна, будівля)</td><td><span class="fr">in Italia, in casa</span></td></tr>
+<tr><td><span class="fr">di</span></td><td>з (походження), про</td><td><span class="fr">sono di Kyiv</span></td></tr>
+<tr><td><span class="fr">con</span></td><td>з</td><td><span class="fr">con mio fratello</span></td></tr>
+<tr><td><span class="fr">senza</span></td><td>без</td><td><span class="fr">caffè senza zucchero</span></td></tr>
+<tr><td><span class="fr">per</span></td><td>для</td><td><span class="fr">per mia madre</span></td></tr>
+<tr><td><span class="fr">su</span></td><td>на</td><td><span class="fr">sul tavolo</span></td></tr>
+</table></div>
+<div class="exs">
+Vado a scuola. | вадо а скуола | Іду до школи.
+Sono a scuola. | соно а скуола | Я в школі.
+Abito a Roma. | абіто а рома | Живу в Римі.
+Il libro è sul tavolo. | іль лібро е суль таволо | Книжка на столі.
+Caffè senza zucchero. | каффе сенца цуккеро | Кава без цукру.
+Questo è mio fratello. | куесто е міо фрателло | Це мій брат.
+</div>
+<div class="qz" data-title="Вправа 5. Мова в дії">
+___ è? (хто) | Chi
+___ fai? (що: Che cosa) | Che cosa
+___ abiti? (де) | Dove
+___ costa? (скільки: Quanto) | Quanto
+Io ___ ho tempo. (не) | non
+casa ___ (нова: nuova) | nuova
+libro ___ (новий) | nuovo
+___ fratello (мій: mio) | mio
+Vado ___ scuola. (до) | a
+Sono ___ Italia. (в) | in
+Caffè ___ zucchero. (без) | senza
+Un regalo ___ mia madre. (для) | per
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, час і дати</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">zero</span></td><td>1 <span class="fr">uno</span></td><td>2 <span class="fr">due</span></td><td>3 <span class="fr">tre</span></td></tr>
+<tr><td>4 <span class="fr">quattro</span></td><td>5 <span class="fr">cinque</span></td><td>6 <span class="fr">sei</span></td><td>7 <span class="fr">sette</span></td></tr>
+<tr><td>8 <span class="fr">otto</span></td><td>9 <span class="fr">nove</span></td><td>10 <span class="fr">dieci</span></td><td>11 <span class="fr">undici</span></td></tr>
+<tr><td>12 <span class="fr">dodici</span></td><td>20 <span class="fr">venti</span></td><td>30 <span class="fr">trenta</span></td><td>40 <span class="fr">quaranta</span></td></tr>
+<tr><td>50 <span class="fr">cinquanta</span></td><td>100 <span class="fr">cento</span></td><td>200 <span class="fr">duecento</span></td><td>1000 <span class="fr">mille</span></td></tr>
+</table></div>
+<div class="vocab">
+# Дні тижня
+lunedì | лунеді | понеділок
+martedì | мартеді | вівторок
+mercoledì | меркореді | середа
+giovedì | джоведі | четвер
+venerdì | венерді | п'ятниця
+sabato | сабато | субота
+domenica | доменіка | неділя
+# Місяці
+gennaio | дженнайо | січень
+febbraio | феббрайо | лютий
+marzo | марцо | березень
+aprile | апріле | квітень
+maggio | маджо | травень
+giugno | джуньо | червень
+luglio | луольо | липень
+agosto | аґосто | серпень
+settembre | сеттембре | вересень
+ottobre | оттобре | жовтень
+novembre | новембре | листопад
+dicembre | дічембре | грудень
+# Час
+oggi | оджі | сьогодні
+domani | домані | завтра
+ieri | єрі | вчора
+la mattina | ла маттіна | вранці
+la sera | ла сера | увечері
+adesso | адессо | зараз
+</div>
+<div class="exs">
+Che ore sono? | ке оре соно | Котра година?
+Sono le cinque. | соно ле чінкве | П'ята година.
+È l'una. | е луна | Перша година.
+A che ora? | а ке ора | О котрій?
+Alle otto. | алле отто | О восьмій.
+Oggi è lunedì. | оджі е лунеді | Сьогодні понеділок.
+Venerdì sono libero. | венерді соно ліберо | У п'ятницю я вільний.
+</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+2 | due
+3 | tre
+5 | cinque
+10 | dieci
+20 | venti
+100 | cento
+понеділок | lunedì
+п'ятниця | venerdì
+неділя | domenica
+жовтень | ottobre
+завтра | domani
+вчора | ieri
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа
+il pane | іль пане | хліб | m
+il burro | іль бурро | масло | m
+il formaggio | іль форміджо | сир | m
+la carne | ла карне | м'ясо | f
+il pesce | іль пеше | риба | m
+l'uovo | луово | яйце | m
+la zuppa | ла цуппа | суп | f
+il riso | іль різо | рис | m
+le patate | ле патате | картопля | f
+la mela | ла мела | яблуко | f
+lo zucchero | ло цуккеро | цукор | m
+il sale | іль сале | сіль | m
+# Напої
+l'acqua | лаккуа | вода | f
+il latte | іль латте | молоко | m
+il caffè | іль каффе | кава | m
+il tè | іль те | чай | m
+il succo | іль сукко | сік | m
+la birra | ла бірра | пиво | f
+il vino | іль віно | вино | m
+# Місто
+la stazione | ла стац'оне | вокзал | f
+la posta | ла поста | пошта | f
+la banca | ла банка | банк | f
+l'ospedale | лоспедале | лікарня | m
+la farmacia | ла фармачія | аптека | f
+il negozio | іль неґоціо | магазин | m
+la strada | ла страда | вулиця | f
+il ponte | іль понте | міст | m
+il parco | іль парко | парк | m
+</div>
+<div class="exs">
+Un caffè, per favore. | ун каффе пер фаворе | Каву, будь ласка.
+Il conto, per favore. | іль конто пер фаворе | Рахунок, будь ласка.
+Buon appetito! | буон аппетіто | Смачного!
+Quanto costa? | куанто коста | Скільки коштує?
+È caro. | е каро | Дорого.
+Posso pagare con la carta? | поссо паґаре кон ла карта | Можна карткою?
+Dov'è la stazione? | доведе ла стацьоне | Де вокзал?
+Vada dritto, poi a sinistra. | вада дрітто пой а сіністра | Ідіть прямо, потім ліворуч.
+Ho fame. | о фаме | Я голодний.
+</div>
+<div class="qz" data-title="Вправа 7. Кафе й місто">
+Каву, будь ласка. | Un caffè, per favore
+Рахунок, будь ласка. | Il conto, per favore
+Смачного! | Buon appetito
+Скільки коштує? | Quanto costa ?
+Де вокзал? | Dov'è la stazione ?
+Дорого. | È caro
+Я голодний. | Ho fame
+хліб | il pane
+молоко | il latte
+вокзал | la stazione
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. Al bar (у кав'ярні)
+Barista: Buongiorno. Cosa prende? | Добрий день. Що візьмете?
+Cliente: Un caffè e un cornetto, per favore. | Каву й круасан, будь ласка.
+Barista: Con latte? | З молоком?
+Cliente: No, grazie. Senza latte. | Ні, дякую. Без молока.
+Barista: Ecco a Lei. Buon appetito. | Прошу. Смачного.
+Cliente: Grazie. Posso pagare con la carta? | Дякую. Можна карткою?
+# 2. In stazione (на вокзалі)
+Viaggiatore: Buongiorno, un biglietto per Firenze, per favore. | Добрий день, квиток до Флоренції.
+Bigliettaia: Solo andata? | Лише в один бік?
+Viaggiatore: Sì. Quando parte il treno? | Так. Коли відправляється потяг?
+Bigliettaia: Alle dieci e un quarto. | О десятій п'ятнадцять.
+Viaggiatore: Quanto costa il biglietto? | Скільки коштує квиток?
+Bigliettaia: Quaranta euro. | Сорок євро.
+# 3. Chiedere la strada (дорога)
+Turista: Scusi, dov'è il museo? | Вибачте, де музей?
+Donna: Vada dritto, poi giri a destra. | Ідіть прямо, потім поверніть праворуч.
+Turista: È lontano? | Це далеко?
+Donna: No, cinque minuti a piedi. | Ні, п'ять хвилин пішки.
+Turista: Mille grazie. | Тисяча разів дякую.
+Donna: Prego. | Прошу.
+# 4. Conoscersi (знайомство)
+Pietro: Ciao, mi chiamo Pietro. E tu? | Привіт, я П'єтро. А ти?
+Anna: Mi chiamo Anna. Piacere. | Мене звати Анна. Приємно.
+Pietro: Di dove sei? | Звідки ти?
+Anna: Sono dell'Ucraina, di Užhorod. | Я з України, з Ужгорода.
+Pietro: Parli molto bene l'italiano! | Ти дуже добре говориш італійською!
+Anna: Grazie, sto ancora imparando. | Дякую, я ще вчуся.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Що візьмете? | Cosa prende ?
+Каву, будь ласка. | Un caffè, per favore
+Квиток до Флоренції. | Un biglietto per Firenze
+Де музей? | Dov'è il museo ?
+П'ять хвилин пішки. | Cinque minuti a piedi
+Прошу. | Prego
+Мене звати Анна. | Mi chiamo Anna
+Я ще вчуся. | Sto ancora imparando
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 9</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Essere</td><td>sono, sei, è, siamo, siete, sono</td></tr>
+<tr><td>Avere</td><td>ho, hai, ha, abbiamo, avete, hanno</td></tr>
+<tr><td>Заперечення</td><td><span class="fr">non</span> + дієслово</td></tr>
+<tr><td>Артиклі</td><td>il/lo/l'/la; i/gli/le; un/uno/una</td></tr>
+<tr><td>Множина</td><td>-o → -i; -a → -e; -e → -i</td></tr>
+<tr><td>Дієслова</td><td>-are, -ere, -ire</td></tr>
+<tr><td>Прикметник</td><td>після іменника, узгоджується</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Читаєш усе: c g sc gn gli</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомишся, артиклі</td></tr>
+<tr><td>3</td><td>4</td><td>Essere, avere, 10 дієслів</td></tr>
+<tr><td>4</td><td>5</td><td>Питання, прикметники, прийменники</td></tr>
+<tr><td>5</td><td>6</td><td>Числа, час, дні</td></tr>
+<tr><td>6</td><td>7</td><td>Їжа, місто</td></tr>
+<tr><td>7</td><td>8</td><td>Діалоги вголос</td></tr>
+<tr><td>8</td><td>Повторення</td><td>Говориш 3–5 хвилин про себе</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1">
+Io ___ studente. (essere) | sono
+Tu ___ tempo. (avere) | hai
+Io ___ tempo. (не маю: non ho) | non ho
+___ casa (la/il) | la
+libro → ___ (мн.) | libri
+casa → ___ (мн.) | case
+___ costa? (Quanto) | Quanto
+___ la stazione? (Де є: Dov'è) | Dov'è
+5 | cinque
+п'ятниця | venerdì
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати будь-яке італійське слово</label></li>
+<li><label><input type="checkbox"> Привітатися й представитися</label></li>
+<li><label><input type="checkbox"> Відмінювати essere, avere і дієслова трьох груп</label></li>
+<li><label><input type="checkbox"> Поставити артикль і утворити множину</label></li>
+<li><label><input type="checkbox"> Назвати числа, дні, місяці, час</label></li>
+<li><label><input type="checkbox"> Замовити каву й спитати дорогу</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Italiano</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^it[-_]IT/i.test(x.lang))||v.find(x=>/^it/i.test(x.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='it-IT';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('it1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('it1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('it1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('it1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='it1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>
