@@ -1,0 +1,2904 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Français A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}.topbar a.back:hover{border-color:var(--accent)}@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}.topbar .brand{overflow:hidden;text-overflow:ellipsis;min-width:0}}</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Français A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Français A1</h1>
+  <p>Повний курс французької для початківців: вимова, граматика, словотвір, словник за темами, діалоги та вправи з перевіркою. Натисни на будь-яке французьке слово чи фразу, щоб почути їх.</p>
+</div>
+<section class="unit" id="u0" data-grp="Старт" data-short="Як користуватись">
+<h2><span class="no">Розділ 0</span>Як користуватись курсом</h2>
+<p class="lead">Рівень A1 це перша сходинка за європейською шкалою. Після нього ти можеш вести просту розмову про себе, їжу, дорогу та покупки, якщо співрозмовник говорить повільно.</p>
+
+<h3>Що ти вмітимеш наприкінці</h3>
+<ul>
+<li>привітатися, представитися, розпитати про людину (ім'я, вік, звідки, чим займається);</li>
+<li>назвати предмети, кольори, числа, дні, час, ціни;</li>
+<li>замовити їжу й напої, купити річ, спитати дорогу, поселитися в готелі;</li>
+<li>розповісти про сім'ю, дім, звичайний день і плани на завтра;</li>
+<li>розповісти про те, що сталося вчора (простий минулий час <span class="fr">passé composé</span>);</li>
+<li>прочитати й зрозуміти короткі прості тексти й оголошення.</li>
+</ul>
+
+<h3>Як влаштована сторінка</h3>
+<div class="rule"><b class="t">Підказки на сторінці</b>
+<ul>
+<li><b>Натисни на французьке слово чи фразу</b>, щоб почути їх. Озвучення робить сам браузер, тож потрібен французький голос на пристрої. Якщо голосу нема, додай його в налаштуваннях мови операційної системи.</li>
+<li>Слова чоловічого роду виділені <span class="fr m">синім</span>, жіночого <span class="fr f">червоним</span>. Так рід запам'ятовується сам.</li>
+<li>Кнопка «Переклад» угорі ховає переклад прикладів і діалогів, щоб ти міг перевіряти себе.</li>
+<li>У полі «Знайти слово» можна шукати за французьким чи українським словом.</li>
+<li>Після кожної теми є вправа. Пиши відповідь у поле й натискай «Перевірити». Діакритика (é, è, ç, à) важлива.</li>
+</ul></div>
+
+<h3>Що таке «мінімум на день»</h3>
+<p>Двадцять хвилин щодня працюють краще за дві години раз на тиждень. Розбий день на три маленькі кроки: прочитати правило, вимовити приклади вголос, зробити вправу. Розділ 23 містить готовий план на 12 тижнів.</p>
+</section>
+
+<section class="unit" id="u1" data-grp="Основи" data-short="Вимова і читання">
+<h2><span class="no">Розділ 1</span>Вимова і читання</h2>
+<p class="lead">Французька пише історію, а не звук. Колись слова читали так, як вони написані. Потім вимова спростилася, а правопис «заморозили». Тому є німі букви. Але правила читання майже без винятків: знаючи їх, прочитаєш будь-яке слово.</p>
+
+<h3>1.1. Ритм: наголос завжди в кінці</h3>
+<p>В українській наголос стоїть на різних складах (мО́ва, шкОла, украї́нський). У французькій наголошується <b>останній склад слова чи групи слів</b>, а решта складів рівні за довжиною й силою. Звучить рівно, «на одному диханні». Слова в реченні зливаються: <span class="fr">il est</span> звучить як [i‿lɛ].</p>
+<div class="exs">
+maison | mɛzɔ̃ | будинок (не «мЕзон»)
+Il habite à Paris. | i‿labit‿a paʁi | Він живе в Парижі.
+Elle est ukrainienne. | ɛ‿lɛ‿tykʁɛnjɛn | Вона українка.
+</div>
+
+<h3>1.2. Алфавіт</h3>
+<div class="tw"><table>
+<tr><td><span class="fr">A</span> [a]</td><td><span class="fr">B</span> [be]</td><td><span class="fr">C</span> [se]</td><td><span class="fr">D</span> [de]</td><td><span class="fr">E</span> [ə]</td><td><span class="fr">F</span> [ɛf]</td><td><span class="fr">G</span> [ʒe]</td></tr>
+<tr><td><span class="fr">H</span> [aʃ]</td><td><span class="fr">I</span> [i]</td><td><span class="fr">J</span> [ʒi]</td><td><span class="fr">K</span> [ka]</td><td><span class="fr">L</span> [ɛl]</td><td><span class="fr">M</span> [ɛm]</td><td><span class="fr">N</span> [ɛn]</td></tr>
+<tr><td><span class="fr">O</span> [o]</td><td><span class="fr">P</span> [pe]</td><td><span class="fr">Q</span> [ky]</td><td><span class="fr">R</span> [ɛʁ]</td><td><span class="fr">S</span> [ɛs]</td><td><span class="fr">T</span> [te]</td><td><span class="fr">U</span> [y]</td></tr>
+<tr><td><span class="fr">V</span> [ve]</td><td><span class="fr">W</span> [dubləve]</td><td><span class="fr">X</span> [iks]</td><td><span class="fr">Y</span> [iɡʁɛk]</td><td><span class="fr">Z</span> [zɛd]</td><td></td><td></td></tr>
+</table></div>
+<p>Літер 26, як в англійській, але називаються інакше. Коли щось по літерах диктуєш (ім'я, e-mail), використовуй саме ці назви.</p>
+
+<h3>1.3. Значки над літерами</h3>
+<div class="tw"><table>
+<tr><th>Значок</th><th>Що робить</th><th>Приклад</th></tr>
+<tr><td><b>é</b></td><td>закрите «е» [e]</td><td><span class="fr">été</span> [ete] (літо)</td></tr>
+<tr><td><b>è, ê</b></td><td>відкрите «е» [ɛ]</td><td><span class="fr">mère</span> [mɛʁ], <span class="fr">fenêtre</span> [fənɛtʁ]</td></tr>
+<tr><td><b>à, ù</b></td><td>звук не змінюють, розрізняють слова</td><td><span class="fr">a</span> (має) і <span class="fr">à</span> (до); <span class="fr">ou</span> (або) і <span class="fr">où</span> (де)</td></tr>
+<tr><td><b>â, î, ô, û</b></td><td>слід колишньої літери s</td><td><span class="fr">forêt</span> [fɔʁɛ] (ліс), колись <i>forest</i></td></tr>
+<tr><td><b>ç</b></td><td>читається [s] перед a, o, u</td><td><span class="fr">garçon</span> [ɡaʁsɔ̃]</td></tr>
+<tr><td><b>ë, ï</b></td><td>літери читаються окремо</td><td><span class="fr">Noël</span> [nɔɛl]</td></tr>
+</table></div>
+
+<h3>1.4. Голосні</h3>
+<div class="tw"><table>
+<tr><th>Букви</th><th>Звук</th><th>Приклад</th><th>Як вимовити</th></tr>
+<tr><td>a, à, â</td><td>[a]</td><td><span class="fr">table</span> [tabl]</td><td>як «а»</td></tr>
+<tr><td>i, î, y</td><td>[i]</td><td><span class="fr">midi</span> [midi]</td><td>як «і»</td></tr>
+<tr><td>ou, où, oû</td><td>[u]</td><td><span class="fr">rouge</span> [ʁuʒ]</td><td>як «у»</td></tr>
+<tr><td><b>u, û</b></td><td>[y]</td><td><span class="fr">tu</span> [ty], <span class="fr">une</span> [yn]</td><td>губи складені, як для «у», а вимовляєш «і». Виходить звук між «ю» і «і», як німецьке ü</td></tr>
+<tr><td>é, er, ez (в кінці)</td><td>[e]</td><td><span class="fr">été</span>, <span class="fr">parler</span> [paʁle], <span class="fr">vous avez</span> [vuz‿ave]</td><td>закрите «е»</td></tr>
+<tr><td>è, ê, ai, ei, e + приг.</td><td>[ɛ]</td><td><span class="fr">mère</span>, <span class="fr">lait</span> [lɛ], <span class="fr">elle</span> [ɛl]</td><td>відкрите «е», як у «лев»</td></tr>
+<tr><td>o (закр. склад), ô, au, eau</td><td>[o]</td><td><span class="fr">stylo</span> [stilo], <span class="fr">eau</span> [o]</td><td>як «о»</td></tr>
+<tr><td>o (перед приг.)</td><td>[ɔ]</td><td><span class="fr">porte</span> [pɔʁt]</td><td>відкрите «о»</td></tr>
+<tr><td>eu, œu</td><td>[ø] / [œ]</td><td><span class="fr">bleu</span> [blø], <span class="fr">fleur</span> [flœʁ]</td><td>губи як для «о», звук «е»</td></tr>
+<tr><td>oi, oy</td><td>[wa]</td><td><span class="fr">trois</span> [tʁwa]</td><td>«уа»</td></tr>
+<tr><td>ui</td><td>[ɥi]</td><td><span class="fr">huit</span> [ɥit]</td><td>швидке «ю-і»</td></tr>
+<tr><td>е без наголосу</td><td>[ə]</td><td><span class="fr">le</span> [lə], <span class="fr">petit</span> [pəti]</td><td>коротке, з округленими губами. Часто випадає зовсім</td></tr>
+</table></div>
+
+<h3>1.5. Носові голосні</h3>
+<p>Це візитівка французької. Повітря йде через ніс, а самого «н» не чути. Уяви «ан», «он» без «н».</p>
+<div class="tw"><table>
+<tr><th>Букви</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td>an, am, en, em</td><td>[ɑ̃]</td><td><span class="fr">dans</span> [dɑ̃], <span class="fr">blanc</span> [blɑ̃], <span class="fr">temps</span> [tɑ̃]</td></tr>
+<tr><td>on, om</td><td>[ɔ̃]</td><td><span class="fr">maison</span> [mɛzɔ̃], <span class="fr">bon</span> [bɔ̃]</td></tr>
+<tr><td>in, im, ain, ein, yn, (i)en</td><td>[ɛ̃]</td><td><span class="fr">jardin</span> [ʒaʁdɛ̃], <span class="fr">pain</span> [pɛ̃], <span class="fr">chien</span> [ʃjɛ̃]</td></tr>
+<tr><td>un, um</td><td>[œ̃]</td><td><span class="fr">un</span> [œ̃], <span class="fr">lundi</span> [lœ̃di]</td></tr>
+</table></div>
+<div class="rule"><b class="t">Правило носових</b>
+<p>Голосна + n/m = носовий звук, якщо далі немає голосної літери й n/m не подвоєна. Порівняй: <span class="fr">bon</span> [bɔ̃], але <span class="fr">bonne</span> [bɔn]; <span class="fr">un</span> [œ̃], але <span class="fr">une</span> [yn]; <span class="fr">cousin</span> [kuzɛ̃], але <span class="fr">cousine</span> [kuzin]. Німе -e в кінці «повертає» приголосний, тому «н» знову звучить.</p></div>
+
+<h3>1.6. Приголосні</h3>
+<div class="tw"><table>
+<tr><th>Букви</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td>ch</td><td>[ʃ] як «ш»</td><td><span class="fr">chat</span> [ʃa], <span class="fr">chaise</span> [ʃɛz]</td></tr>
+<tr><td>j; g перед e, i, y</td><td>[ʒ] як «ж»</td><td><span class="fr">jaune</span> [ʒon], <span class="fr">jardin</span>, <span class="fr">manger</span> [mɑ̃ʒe]</td></tr>
+<tr><td>g перед a, o, u; gu перед e, i</td><td>[ɡ]</td><td><span class="fr">garçon</span>, <span class="fr">grand</span>, <span class="fr">guitare</span> [ɡitaʁ]</td></tr>
+<tr><td>gn</td><td>[ɲ] як «нь»</td><td><span class="fr">montagne</span> [mɔ̃taɲ]</td></tr>
+<tr><td>c перед e, i, y; ç; ss; sc перед e, i</td><td>[s]</td><td><span class="fr">cinq</span> [sɛ̃k], <span class="fr">garçon</span>, <span class="fr">assiette</span> [asjɛt]</td></tr>
+<tr><td>c перед a, o, u; k; qu</td><td>[k]</td><td><span class="fr">café</span> [kafe], <span class="fr">qui</span> [ki], <span class="fr">que</span> [kə]</td></tr>
+<tr><td>s між голосними</td><td>[z]</td><td><span class="fr">rose</span> [ʁoz], <span class="fr">maison</span></td></tr>
+<tr><td>h</td><td>не вимовляється</td><td><span class="fr">homme</span> [ɔm], <span class="fr">l'hôtel</span> [lotɛl]</td></tr>
+<tr><td>r</td><td>[ʁ] горловий</td><td><span class="fr">rouge</span> [ʁuʒ], <span class="fr">mère</span></td></tr>
+<tr><td>ill (після приг.); il, ail (в кінці)</td><td>[j] як «й»</td><td><span class="fr">fille</span> [fij], <span class="fr">travail</span> [tʁavaj]</td></tr>
+<tr><td>th, ph</td><td>[t], [f]</td><td><span class="fr">thé</span> [te], <span class="fr">photo</span> [fɔto]</td></tr>
+<tr><td>x</td><td>[ks] або [gz]; в кінці німий</td><td><span class="fr">taxi</span> [taksi], <span class="fr">exemple</span> [ɛɡzɑ̃pl], <span class="fr">deux</span> [dø]</td></tr>
+</table></div>
+<p>Французьке <b>[ʁ]</b> утворюється в горлі, як тихе «х» з вібрацією, трохи схоже на полоскання горла. Українським «р» язиком не катай.</p>
+
+<h3>1.7. Що не читається</h3>
+<ul>
+<li><b>Кінцевий приголосний майже завжди німий:</b> <span class="fr">petit</span> [pəti], <span class="fr">grand</span> [ɡʁɑ̃], <span class="fr">vert</span> [vɛʁ], <span class="fr">trois</span> [tʁwa], <span class="fr">chat</span> [ʃa], <span class="fr">dans</span> [dɑ̃].</li>
+<li><b>Виняток: C, R, F, L.</b> Запам'ятай слово <b>CaReFuL</b>: <span class="fr">sac</span> [sak], <span class="fr">bonjour</span> [bɔ̃ʒuʁ], <span class="fr">neuf</span> [nœf], <span class="fr">bel</span> [bɛl]. Але закінчення <b>-er</b> дієслів читається [e] (<span class="fr">parler</span> [paʁle]), а в слові <span class="fr">blanc</span> «c» німе.</li>
+<li><b>Кінцеве -e німе</b>, але робить попередній приголосний чутним: <span class="fr">petit</span> [pəti] і <span class="fr">petite</span> [pətit]; <span class="fr">grand</span> [ɡʁɑ̃] і <span class="fr">grande</span> [ɡʁɑ̃d]. Жіночий рід часто чути на слух саме так.</li>
+<li><b>Множина -s</b> і закінчення <b>-ent</b> у дієслів (вони) німі: <span class="fr">livre</span> і <span class="fr">livres</span> звучать однаково. Різницю чути з артикля: <span class="fr">le livre</span> [lə livʁ], <span class="fr">les livres</span> [le livʁ].</li>
+</ul>
+
+<h3>1.8. Зв'язування (liaison) і елізія</h3>
+<p><b>Liaison.</b> Німий кінцевий приголосний <i>оживає</i>, якщо наступне слово починається з голосної, а слова тісно пов'язані: <span class="fr">les amis</span> [le‿zami], <span class="fr">vous avez</span> [vu‿zave], <span class="fr">ils ont</span> [il‿zɔ̃], <span class="fr">un arbre</span> [œ̃‿naʁbʁ]. Правила зв'язування: s і x дають [z], d дає [t], n залишається [n].</p>
+<p><b>Елізія.</b> Перед голосною (і німою h) коротке слово <b>скорочується апострофом</b>: <span class="fr">le arbre → l'arbre</span>, <span class="fr">je ai → j'ai</span>, <span class="fr">ce est → c'est</span>, <span class="fr">que il → qu'il</span>.</p>
+<p><b>Enchaînement.</b> Кінцевий вимовлений приголосний «перебігає» до наступного слова: <span class="fr">il habite</span> [i‿labit], <span class="fr">elle a</span> [ɛ‿la].</p>
+
+<h3>1.9. Практика читання</h3>
+<p>Прочитай слово, потім перевір транскрипцію й послухай.</p>
+<div class="vocab">
+# Прості слова
+chat | ʃa | кіт | m
+pain | pɛ̃ | хліб | m
+beau | bo | гарний
+bleu | blø | синій
+fleur | flœʁ | квітка | f
+rue | ʁy | вулиця | f
+tour | tuʁ | вежа | f
+cinq | sɛ̃k | п'ять
+oiseau | wazo | птах | m
+jaune | ʒon | жовтий
+fille | fij | дівчина, дочка | f
+garçon | ɡaʁsɔ̃ | хлопець | m
+montagne | mɔ̃taɲ | гора | f
+enfant | ɑ̃fɑ̃ | дитина | mf
+fenêtre | fənɛtʁ | вікно | f
+croissant | kʁwasɑ̃ | круасан | m
+bonjour | bɔ̃ʒuʁ | добрий день
+merci | mɛʁsi | дякую
+beaucoup | boku | багато
+heure | œʁ | година | f
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши слово за транскрипцією">
+[ʃa] | chat
+[pɛ̃] | pain
+[ʃɛz] | chaise
+[bɔ̃ʒuʁ] | bonjour
+[mɛzɔ̃] | maison
+</div>
+</section>
+
+<section class="unit" id="u2" data-grp="Основи" data-short="Привітання і знайомство">
+<h2><span class="no">Розділ 2</span>Привітання і знайомство</h2>
+<p class="lead">Перші слова, які знадобляться в будь-якій розмові. Вивчи їх як готові фрази, не розбираючи граматику.</p>
+
+<h3>2.1. Привітання і ввічливість</h3>
+<div class="vocab">
+bonjour | bɔ̃ʒuʁ | добрий день (до вечора)
+bonsoir | bɔ̃swaʁ | добрий вечір
+bonne nuit | bɔn nɥi | на добраніч
+salut | saly | привіт, бувай (з друзями)
+au revoir | o ʁəvwaʁ | до побачення
+à bientôt | a bjɛ̃to | до швидкої зустрічі
+à demain | a dəmɛ̃ | до завтра
+merci | mɛʁsi | дякую
+merci beaucoup | mɛʁsi boku | дуже дякую
+s'il vous plaît | sil vu plɛ | будь ласка (на «ви»)
+s'il te plaît | sil tə plɛ | будь ласка (на «ти»)
+de rien | də ʁjɛ̃ | нема за що
+pardon | paʁdɔ̃ | вибачте, перепрошую
+excusez-moi | ɛkskyze mwa | вибачте (щоб звернутися)
+je suis désolé | ʒə sɥi dezɔle | мені шкода (чол.)
+oui | wi | так
+non | nɔ̃ | ні
+ça va ? | sa va | як справи?
+ça va bien | sa va bjɛ̃ | добре
+comme ci, comme ça | kɔm si kɔm sa | так собі
+</div>
+<div class="tip"><b class="t">Bonjour і bonsoir.</b> <span class="fr">Bonjour</span> кажуть до вечора, потім <span class="fr">bonsoir</span>. <span class="fr">Bonne nuit</span> лише на добраніч, перед сном. Із незнайомими й старшими вживай <b>vous</b>, із друзями й дітьми <b>tu</b>.</div>
+
+<h3>2.2. Представитися</h3>
+<div class="exs">
+Je m'appelle Michel. | ʒə mapɛl miʃɛl | Мене звати Михайло.
+Comment tu t'appelles ? | kɔmɑ̃ ty tapɛl | Як тебе звати?
+Comment vous appelez-vous ? | kɔmɑ̃ vuz‿aple vu | Як вас звати?
+Enchanté. | ɑ̃ʃɑ̃te | Приємно познайомитися (чол.).
+Enchantée. | ɑ̃ʃɑ̃te | Приємно познайомитися (жін.).
+Je suis ukrainien. | ʒə sɥi ykʁɛnjɛ̃ | Я українець.
+Je suis ukrainienne. | ʒə sɥi ykʁɛnjɛn | Я українка.
+Je viens d'Ukraine. | ʒə vjɛ̃ dykʁɛn | Я з України.
+J'habite à Svaliava. | ʒabit a svaljava | Я живу в Сваляві.
+Je suis professeur. | ʒə sɥi pʁɔfɛsœʁ | Я вчитель.
+J'ai trente ans. | ʒe tʁɑ̃t ɑ̃ | Мені тридцять років.
+Je parle un peu français. | ʒə paʁl œ̃ pø fʁɑ̃sɛ | Я трохи говорю французькою.
+Je ne comprends pas. | ʒə nə kɔ̃pʁɑ̃ pa | Я не розумію.
+Répétez, s'il vous plaît. | ʁepete sil vu plɛ | Повторіть, будь ласка.
+Parlez plus lentement. | paʁle ply lɑ̃tmɑ̃ | Говоріть повільніше.
+</div>
+<div class="warn"><b>Рід у професії й національності.</b> Українець/українка: <span class="fr">ukrainien</span> / <span class="fr">ukrainienne</span>. Прикметник національності узгоджується з підметом (розділ 7). Назви країн і мов пишуться з малої: <span class="fr">français</span> (мова), але <span class="fr">la France</span> (країна).</div>
+
+<h3>2.3. Діалоги</h3>
+<div class="dg">
+# Знайомство (на «ти»)
+Léa: Salut ! Je m'appelle Léa. Et toi ? | Привіт! Мене звати Леа. А тебе?
+Michel: Moi, c'est Michel. Enchanté ! | Я Михайло. Приємно!
+Léa: Tu viens d'où ? | Звідки ти?
+Michel: Je viens d'Ukraine, de Svaliava. | Я з України, зі Сваляви.
+Léa: Tu parles français ? | Ти говориш французькою?
+Michel: Un peu. J'apprends. | Трохи. Я вчу.
+Léa: C'est très bien ! | Це дуже добре!
+# Знайомство (на «ви»)
+M. Dupont: Bonjour, madame. Comment vous appelez-vous ? | Добрий день, пані. Як вас звати?
+Mme Roy: Je m'appelle Anne Roy. Et vous ? | Мене звати Анна Руа. А вас?
+M. Dupont: Pierre Dupont. Enchanté. | П'єр Дюпон. Приємно познайомитися.
+Mme Roy: Enchantée, monsieur. | Мені теж приємно, пане.
+</div>
+
+<div class="qz" data-title="Вправа 2. Заповни пропуски">
+___ ! Je m'appelle Anne. | Bonjour / Salut
+Comment tu ___ ? | t'appelles
+Je ___ d'Ukraine. | viens
+Пробач (друг) → ___ . | Pardon
+Дякую → ___ . | Merci
+Я не розумію → Je ne comprends ___ . | pas
+Будь ласка (на «ви») → S'il ___ plaît. | vous
+</div>
+</section>
+<section class="unit" id="u3" data-grp="Іменник і його слова" data-short="Рід і артиклі">
+<h2><span class="no">Розділ 3</span>Рід і артиклі</h2>
+<p class="lead">Кожен французький іменник чоловічого або жіночого роду. Середнього роду немає. Артикль стоїть перед іменником майже завжди й показує рід, число та те, відомий це предмет чи ні.</p>
+
+<h3>3.1. Артиклі</h3>
+<div class="tw"><table>
+<tr><th>Тип</th><th>Чол. р.</th><th>Жін. р.</th><th>Перед голосною</th><th>Множина</th></tr>
+<tr><td><b>Неозначений</b> (якийсь, один)</td><td class="m"><span class="fr m">un</span> livre</td><td><span class="fr f">une</span> table</td><td><span class="fr">un</span> ami, <span class="fr">une</span> amie</td><td><span class="fr">des</span> livres, <span class="fr">des</span> tables</td></tr>
+<tr><td><b>Означений</b> (цей відомий, загальне поняття)</td><td><span class="fr m">le</span> livre</td><td><span class="fr f">la</span> table</td><td><span class="fr">l'</span>ami, <span class="fr">l'</span>école</td><td><span class="fr">les</span> livres, <span class="fr">les</span> tables</td></tr>
+<tr><td><b>Частковий</b> (трохи чогось нелічильного)</td><td><span class="fr m">du</span> pain</td><td><span class="fr f">de la</span> soupe</td><td><span class="fr">de l'</span>eau</td><td><span class="fr">des</span> légumes</td></tr>
+</table></div>
+<div class="exs">
+Voilà un livre. Le livre est sur la table. | vwala œ̃ livʁ. lə livʁ ɛ syʁ la tabl | Ось книга. Книга лежить на столі.
+J'ai une sœur. La sœur de Marie habite à Lyon. | ʒe yn sœʁ. la sœʁ də maʁi abit a ljɔ̃ | У мене є сестра. Сестра Марі живе в Ліоні.
+Je mange du pain et de la soupe. | ʒə mɑ̃ʒ dy pɛ̃ e də la sup | Я їм хліб і суп.
+Je bois de l'eau. | ʒə bwa də lo | Я п'ю воду.
+J'aime le café. | ʒɛm lə kafe | Я люблю каву (взагалі).
+Je voudrais un café. | ʒə vudʁɛ œ̃ kafe | Я хотів би (одну) каву.
+</div>
+<div class="rule"><b class="t">Коли який артикль</b>
+<ul>
+<li><b>un / une / des</b>: щось нове, одне з багатьох, перша згадка («У мене є <i>якась</i> книга»).</li>
+<li><b>le / la / les</b>: вже відоме, єдине, або загальне поняття після дієслів уподобання (<span class="fr">j'aime, je préfère, je déteste</span>).</li>
+<li><b>du / de la / de l'</b>: порція чогось, що не рахується (хліб, вода, суп, час, терпіння).</li>
+<li>Множина «часткового» і неозначеного однакова: <span class="fr">des</span>.</li>
+</ul></div>
+
+<h3>3.2. Злиття артиклів з à та de</h3>
+<div class="tw"><table>
+<tr><th>Прийменник</th><th>+ le</th><th>+ la</th><th>+ l'</th><th>+ les</th></tr>
+<tr><td><span class="fr">à</span> (до, в, на)</td><td><span class="fr">au</span> [o]</td><td><span class="fr">à la</span></td><td><span class="fr">à l'</span></td><td><span class="fr">aux</span> [o]</td></tr>
+<tr><td><span class="fr">de</span> (з, від, про)</td><td><span class="fr">du</span> [dy]</td><td><span class="fr">de la</span></td><td><span class="fr">de l'</span></td><td><span class="fr">des</span> [de]</td></tr>
+</table></div>
+<div class="exs">
+Je vais au cinéma. | ʒə vɛ o sinema | Я йду в кіно.
+Il est à la gare. | i lɛ a la ɡaʁ | Він на вокзалі.
+Elle parle aux enfants. | ɛl paʁl oz‿ɑ̃fɑ̃ | Вона говорить із дітьми.
+Je viens du marché. | ʒə vjɛ̃ dy maʁʃe | Я йду з ринку.
+Le livre de la fille. | lə livʁ də la fij | Книга дівчини.
+</div>
+
+<h3>3.3. Як вгадати рід</h3>
+<p>Вчи слово завжди з артиклем. Але закінчення часто підказують рід:</p>
+<div class="tw"><table>
+<tr><th>Здебільшого чоловічий</th><th>Здебільшого жіночий</th></tr>
+<tr><td><span class="fr m">-age</span> : le voyage, le fromage<br><span class="fr m">-ment</span> : le moment, le logement<br><span class="fr m">-eau</span> : le bateau, le gâteau<br><span class="fr m">-ier</span> : le cahier, le panier<br><span class="fr m">-isme</span> : le tourisme<br>мови, дні, місяці, пори року: le français, le lundi, le mai, l'été<br>дерева, метали, кольори як іменники: le chêne, le fer, le rouge</td>
+<td><span class="fr f">-tion, -sion</span> : la nation, la télévision<br><span class="fr f">-té</span> : la liberté, la santé<br><span class="fr f">-ée</span> : la journée, l'idée<br><span class="fr f">-ie</span> : la boulangerie, la bougie<br><span class="fr f">-ure</span> : la voiture, la nature<br><span class="fr f">-ette</span> : la cigarette, la baguette<br><span class="fr f">-ance, -ence</span> : la chance, la science<br><span class="fr f">-ine, -ise</span> : la cuisine, la valise</td></tr>
+</table></div>
+<div class="warn"><b>Виняток, який варто знати.</b> <span class="fr m">le musée</span> (чол., хоч -ée), <span class="fr f">la page, la plage, l'image, la cage</span> (жін., хоч -age), <span class="fr m">le silence</span>, <span class="fr f">la fin</span>. Рід дуже мало має зв'язку з тим, чому слово чоловічого чи жіночого роду в українській: <span class="fr f">la voiture</span> (авто) жіночого, <span class="fr m">le soleil</span> (сонце) чоловічого.</div>
+
+<h3>3.4. Люди й тварини: пари за родом</h3>
+<div class="vocab">
+un ami / une amie | ami / ami | друг / подруга | mf
+un étudiant / une étudiante | etydjɑ̃ / etydjɑ̃t | студент / студентка | mf
+un professeur / une professeure | pʁɔfɛsœʁ | вчитель / вчителька | mf
+un chat / une chatte | ʃa / ʃat | кіт / кішка | mf
+un voisin / une voisine | vwazɛ̃ / vwazin | сусід / сусідка | mf
+un acteur / une actrice | aktœʁ / aktʁis | актор / акторка | mf
+</div>
+
+<h3>3.5. Артиклів немає, коли…</h3>
+<ul>
+<li>після <span class="fr">être</span> називаєш професію чи національність: <span class="fr">Je suis professeur.</span> (<i>не</i> «un professeur»), <span class="fr">Elle est ukrainienne.</span></li>
+<li>після кількості: <span class="fr">beaucoup de livres</span>, <span class="fr">un peu de sucre</span>, <span class="fr">une bouteille d'eau</span>, <span class="fr">un kilo de pommes</span>;</li>
+<li>після заперечення з <span class="fr">pas</span>: <span class="fr">Je n'ai pas de frère.</span> (замість <i>un frère</i>), <span class="fr">Il ne mange pas de viande.</span> Але після <span class="fr">être</span> так не діє: <span class="fr">Ce n'est pas un livre.</span></li>
+</ul>
+
+<div class="qz" data-title="Вправа 3. Вибери артикль">
+J'ai ___ chat. (якийсь) | un
+Je vois ___ chat. (той, відомий) | le
+Elle mange ___ pomme. (одну) | une
+Nous buvons ___ eau. (частково) | de l'
+Tu veux ___ café ? | du
+Il va à ___ école. (la чи l') | l'
+Il parle ___ enfants. (à + les) | aux
+Je n'ai pas ___ frère. | de
+Il y a beaucoup ___ livres. | de
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Множина іменників">
+<h2><span class="no">Розділ 4</span>Множина іменників</h2>
+<p class="lead">Множина часто лише на письмі: закінчення -s не вимовляється. Почути її можна з артикля (<span class="fr">le</span> → <span class="fr">les</span>) або з дієслова.</p>
+<div class="tw"><table>
+<tr><th>Правило</th><th>Однина</th><th>Множина</th></tr>
+<tr><td>Додай <b>-s</b></td><td><span class="fr">un livre</span> [livʁ]</td><td><span class="fr">des livres</span> [livʁ]</td></tr>
+<tr><td>Закінчення -s, -x, -z не змінюються</td><td><span class="fr">un fils</span>, <span class="fr">la voix</span>, <span class="fr">un nez</span></td><td><span class="fr">des fils</span>, <span class="fr">les voix</span>, <span class="fr">des nez</span></td></tr>
+<tr><td>-eau, -eu, -au → <b>-x</b></td><td><span class="fr">un bateau</span>, <span class="fr">un jeu</span></td><td><span class="fr">des bateaux</span>, <span class="fr">des jeux</span></td></tr>
+<tr><td>-al → <b>-aux</b></td><td><span class="fr">un journal</span>, <span class="fr">un cheval</span></td><td><span class="fr">des journaux</span> [ʒuʁno], <span class="fr">des chevaux</span> [ʃəvo]</td></tr>
+<tr><td>-ail → -aux (кілька слів)</td><td><span class="fr">un travail</span></td><td><span class="fr">des travaux</span></td></tr>
+<tr><td>Неправильні</td><td><span class="fr">un œil</span><br><span class="fr">un œuf</span> [œf]<br><span class="fr">monsieur</span></td><td><span class="fr">des yeux</span> [jø]<br><span class="fr">des œufs</span> [ø]<br><span class="fr">messieurs</span></td></tr>
+</table></div>
+<div class="tip">У слів <span class="fr">un œuf</span> [œf] і <span class="fr">un bœuf</span> [bœf] у множині кінцеве «f» зникає: <span class="fr">des œufs</span> [dezø], <span class="fr">des bœufs</span> [debø].</div>
+<p>Артикль множини однаковий для обох родів: <span class="fr">les</span>, <span class="fr">des</span>. Тому в множині чути лише артикль і зв'язування: <span class="fr">les amis</span> [le‿zami], <span class="fr">des enfants</span> [de‿zɑ̃fɑ̃].</p>
+<div class="exs">
+Les enfants jouent dans le jardin. | lez‿ɑ̃fɑ̃ ʒu dɑ̃ lə ʒaʁdɛ̃ | Діти граються в саду.
+J'ai deux frères et trois sœurs. | ʒe dø fʁɛʁ e tʁwa sœʁ | У мене два брати і три сестри.
+Les journaux sont sur la table. | le ʒuʁno sɔ̃ syʁ la tabl | Газети лежать на столі.
+</div>
+<div class="qz" data-title="Вправа 4. Постав у множину">
+un livre → des ___ | livres
+un chat → des ___ | chats
+un bateau → des ___ | bateaux
+un journal → des ___ | journaux
+un cheval → des ___ | chevaux
+un œil → des ___ | yeux
+le fils → les ___ | fils
+la voix → les ___ | voix
+</div>
+</section>
+
+<section class="unit" id="u5" data-short="Займенники, être, avoir">
+<h2><span class="no">Розділ 5</span>Займенники-підмети, être і avoir</h2>
+<p class="lead">У французькій підмет у реченні обов'язковий: <span class="fr">Je parle</span>, а не просто <i>parle</i>. Два дієслова, без яких нічого не збудуєш: <span class="fr">être</span> (бути) і <span class="fr">avoir</span> (мати).</p>
+
+<h3>5.1. Підмети</h3>
+<div class="tw"><table>
+<tr><th></th><th>Однина</th><th>Множина</th></tr>
+<tr><td>1 особа</td><td><span class="fr">je</span> (<span class="fr">j'</span> перед голосною) я</td><td><span class="fr">nous</span> ми</td></tr>
+<tr><td>2 особа</td><td><span class="fr">tu</span> ти</td><td><span class="fr">vous</span> ви</td></tr>
+<tr><td>3 особа</td><td><span class="fr m">il</span> він, <span class="fr f">elle</span> вона, <span class="fr">on</span> ми, люди</td><td><span class="fr m">ils</span> вони (чол. або змішана група), <span class="fr f">elles</span> вони (лише жін.)</td></tr>
+</table></div>
+<ul>
+<li><span class="fr">tu</span> для друзів, рідних, дітей, ровесників; <span class="fr">vous</span> для незнайомих, старших, шанобливо, а також як «ви» множини.</li>
+<li><span class="fr">on</span> у розмовній мові замінює <span class="fr">nous</span>: <span class="fr">On va au cinéma ?</span> = «Підемо в кіно?». Дієслово при <span class="fr">on</span> ставиться в 3-й особі однини.</li>
+<li>Для неживих предметів <span class="fr">il</span> і <span class="fr">elle</span> означають «воно», залежно від роду слова: <span class="fr">La table est grande. Elle est belle.</span></li>
+</ul>
+
+<h3>5.2. Être і avoir у теперішньому часі</h3>
+<div class="cj" data-verb="être" data-note="бути" data-ipa="ɛtʁ">
+je | suis | ʒə sɥi
+tu | es | ty ɛ
+il / elle / on | est | il ɛ
+nous | sommes | nu sɔm
+vous | êtes | vuz‿ɛt
+ils / elles | sont | il sɔ̃
+</div>
+<div class="cj" data-verb="avoir" data-note="мати" data-ipa="avwaʁ">
+j' | ai | ʒe
+tu | as | ty a
+il / elle / on | a | il a
+nous | avons | nuz‿avɔ̃
+vous | avez | vuz‿ave
+ils / elles | ont | ilz‿ɔ̃
+</div>
+
+<h3>5.3. Вживання être</h3>
+<div class="exs">
+Je suis ukrainien. | ʒə sɥi ykʁɛnjɛ̃ | Я українець. (хто я)
+Elle est professeure. | ɛl ɛ pʁɔfɛsœʁ | Вона вчителька. (професія)
+Nous sommes fatigués. | nu sɔm fatige | Ми втомлені. (стан)
+Le livre est sur la table. | lə livʁ ɛ syʁ la tabl | Книга на столі. (де)
+Il est huit heures. | il ɛ ɥit œʁ | Восьма година. (час)
+</div>
+
+<h3>5.4. Вживання avoir</h3>
+<p>Avoir означає не лише «мати». У французькій багато станів виражається саме ним, там, де українська каже «бути» або «хотіти»:</p>
+<div class="vocab">
+J'ai vingt ans. | ʒe vɛ̃t ɑ̃ | Мені двадцять років.
+Tu as faim. | ty a fɛ̃ | Ти голодний.
+Il a soif. | il a swaf | Він хоче пити.
+Nous avons chaud. | nuz‿avɔ̃ ʃo | Нам жарко.
+Vous avez froid. | vuz‿ave fʁwa | Вам холодно.
+Elle a peur. | ɛl a pœʁ | Вона боїться.
+J'ai sommeil. | ʒe sɔmɛj | Хочу спати.
+Tu as raison. | ty a ʁɛzɔ̃ | Ти маєш рацію.
+J'ai besoin de repos. | ʒe bəzwɛ̃ də ʁəpo | Мені потрібен відпочинок.
+J'ai envie de café. | ʒe ɑ̃vi də kafe | Мені хочеться кави.
+J'ai mal à la tête. | ʒe mal a la tɛt | У мене болить голова.
+</div>
+
+<h3>5.5. Il y a і c'est</h3>
+<div class="exs">
+Il y a un chat dans le jardin. | il i a œ̃ ʃa dɑ̃ lə ʒaʁdɛ̃ | У саду є кіт.
+Il y a trois livres sur la table. | il i a tʁwa livʁ syʁ la tabl | На столі три книжки.
+Qu'est-ce qu'il y a ? | kɛs kil i a | Що там? Що сталося?
+Il n'y a pas de pain. | il ni a pa də pɛ̃ | Хліба нема.
+C'est un livre. | sɛ œ̃ livʁ | Це книга.
+C'est Marie. | sɛ maʁi | Це Марі.
+Ce sont des amis. | sə sɔ̃ dez‿ami | Це друзі.
+</div>
+<div class="rule"><b class="t">C'est чи il est</b>
+<p><span class="fr">C'est</span> + іменник з артиклем, ім'я, або <span class="fr">c'est</span> + прикметник як загальна оцінка: <span class="fr">C'est un professeur. C'est Marie. C'est bien !</span></p>
+<p><span class="fr">Il est / elle est</span> + прикметник про конкретну людину чи річ, або професія без артикля: <span class="fr">Il est professeur. Elle est grande. Il est gentil.</span></p></div>
+
+<div class="qz" data-title="Вправа 5. Être чи avoir?">
+Je ___ étudiant. | suis
+Tu ___ vingt ans. | as
+Elle ___ très gentille. | est
+Nous ___ à la maison. | sommes
+Vous ___ faim ? | avez
+Ils ___ deux enfants. | ont
+Il y ___ un livre sur la table. | a
+Mon frère ___ professeur. | est
+___ est un chat. (це) | C'
+___ sont des amis. (це) | Ce
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Прикметник">
+<h2><span class="no">Розділ 6</span>Прикметник</h2>
+<p class="lead">Прикметник узгоджується з іменником у роді й числі: <span class="fr">un livre vert</span>, <span class="fr">une table verte</span>, <span class="fr">des livres verts</span>, <span class="fr">des tables vertes</span>.</p>
+
+<h3>6.1. Жіночий рід</h3>
+<div class="tw"><table>
+<tr><th>Правило</th><th>Чол.</th><th>Жін.</th><th>Вимова</th></tr>
+<tr><td>Додай <b>-e</b></td><td><span class="fr m">grand</span>, <span class="fr m">petit</span>, <span class="fr m">vert</span></td><td><span class="fr f">grande</span>, <span class="fr f">petite</span>, <span class="fr f">verte</span></td><td>[ɡʁɑ̃ → ɡʁɑ̃d], [pəti → pətit]</td></tr>
+<tr><td>Уже на -e: не змінюється</td><td colspan="2"><span class="fr">rouge, jaune, jeune, facile, difficile, triste, riche, rapide, simple</span></td><td>однакова</td></tr>
+<tr><td>-eux → <b>-euse</b></td><td><span class="fr m">heureux</span>, <span class="fr m">sérieux</span></td><td><span class="fr f">heureuse</span>, <span class="fr f">sérieuse</span></td><td>[ørø → ørøz]</td></tr>
+<tr><td>-if → <b>-ive</b></td><td><span class="fr m">sportif</span>, <span class="fr m">actif</span></td><td><span class="fr f">sportive</span>, <span class="fr f">active</span></td><td>[spɔʁtif → spɔʁtiv]</td></tr>
+<tr><td>-er → <b>-ère</b></td><td><span class="fr m">premier</span>, <span class="fr m">cher</span></td><td><span class="fr f">première</span>, <span class="fr f">chère</span></td><td>[pʁəmje → pʁəmjɛʁ]</td></tr>
+<tr><td>-on → <b>-onne</b></td><td><span class="fr m">bon</span>, <span class="fr m">mignon</span></td><td><span class="fr f">bonne</span>, <span class="fr f">mignonne</span></td><td>[bɔ̃ → bɔn]</td></tr>
+<tr><td>-en → <b>-enne</b></td><td><span class="fr m">ukrainien</span>, <span class="fr m">italien</span></td><td><span class="fr f">ukrainienne</span>, <span class="fr f">italienne</span></td><td>[ykʁɛnjɛ̃ → ykʁɛnjɛn]</td></tr>
+<tr><td>-el → <b>-elle</b></td><td><span class="fr m">naturel</span>, <span class="fr m">cruel</span></td><td><span class="fr f">naturelle</span>, <span class="fr f">cruelle</span></td><td>[natyʁɛl] однаково</td></tr>
+<tr><td>Подвоєння приголосної</td><td><span class="fr m">gros</span>, <span class="fr m">gentil</span>, <span class="fr m">bas</span></td><td><span class="fr f">grosse</span>, <span class="fr f">gentille</span>, <span class="fr f">basse</span></td><td>[ɡʁo → ɡʁos]</td></tr>
+<tr><td>Неправильні</td><td><span class="fr m">blanc</span>, <span class="fr m">long</span>, <span class="fr m">frais</span>, <span class="fr m">doux</span>, <span class="fr m">sec</span></td><td><span class="fr f">blanche</span>, <span class="fr f">longue</span>, <span class="fr f">fraîche</span>, <span class="fr f">douce</span>, <span class="fr f">sèche</span></td><td></td></tr>
+</table></div>
+<div class="tip"><b class="t">Для вимови:</b> у чоловічому роді кінцевий приголосний німий, у жіночому <i>звучить</i>. Тому в мові жіночі прикметники «довші»: <span class="fr">petit</span> [pəti], <span class="fr">petite</span> [pətit].</div>
+
+<h3>6.2. Множина</h3>
+<p>Додаєш <b>-s</b> (німе): <span class="fr">petits, petites</span>. Закінчення на -s, -x не змінюються: <span class="fr">gros, heureux</span>. <span class="fr">-eau → -eaux</span> (<span class="fr">beau → beaux</span>, <span class="fr">nouveau → nouveaux</span>), <span class="fr">-al → -aux</span> (<span class="fr">national → nationaux</span>).</p>
+
+<h3>6.3. Місце прикметника</h3>
+<p>Зазвичай <b>після</b> іменника: <span class="fr">une voiture rouge</span>, <span class="fr">un livre intéressant</span>, <span class="fr">une fille ukrainienne</span>. Але короткі й дуже часті прикметники стоять <b>перед</b> іменником. Для запам'ятовування є правило <b>BAGS</b>:</p>
+<div class="tw"><table>
+<tr><th>Група</th><th>Прикметники</th><th>Приклад</th></tr>
+<tr><td><b>B</b>eauty (краса)</td><td><span class="fr">beau (belle), joli(e)</span></td><td><span class="fr">une belle maison</span></td></tr>
+<tr><td><b>A</b>ge (вік)</td><td><span class="fr">jeune, vieux (vieille), nouveau (nouvelle)</span></td><td><span class="fr">un vieux livre</span></td></tr>
+<tr><td><b>G</b>oodness (якість)</td><td><span class="fr">bon(ne), mauvais(e)</span></td><td><span class="fr">un bon café</span></td></tr>
+<tr><td><b>S</b>ize (розмір)</td><td><span class="fr">grand(e), petit(e), gros(se), long(ue), court(e), haut(e)</span></td><td><span class="fr">un petit chat</span></td></tr>
+</table></div>
+<div class="warn"><b>Особливі форми перед голосною.</b> <span class="fr">beau → bel</span> (<span class="fr">un bel homme</span>), <span class="fr">nouveau → nouvel</span> (<span class="fr">un nouvel ami</span>), <span class="fr">vieux → vieil</span> (<span class="fr">un vieil arbre</span>). Вимовляються як жіночі: <span class="fr">bel</span> [bɛl] = <span class="fr">belle</span>.</div>
+
+<h3>6.4. Кольори</h3>
+<div class="vocab">
+rouge | ʁuʒ | червоний
+bleu / bleue | blø | синій
+vert / verte | vɛʁ / vɛʁt | зелений
+jaune | ʒon | жовтий
+noir / noire | nwaʁ | чорний
+blanc / blanche | blɑ̃ / blɑ̃ʃ | білий
+gris / grise | ɡʁi / ɡʁiz | сірий
+rose | ʁoz | рожевий
+violet / violette | vjɔlɛ / vjɔlɛt | фіолетовий
+orange | ɔʁɑ̃ʒ | помаранчевий (не змінюється)
+marron | maʁɔ̃ | каштановий, коричневий (не змінюється)
+brun / brune | bʁœ̃ / bʁyn | темно-коричневий
+</div>
+<p><span class="fr">orange</span> і <span class="fr">marron</span> не мають жіночої форми й множини: <span class="fr">des chaussures marron</span>.</p>
+
+<h3>6.5. Корисні прикметники</h3>
+<div class="vocab">
+grand / grande | ɡʁɑ̃ / ɡʁɑ̃d | великий, високий
+petit / petite | pəti / pətit | малий, невисокий
+bon / bonne | bɔ̃ / bɔn | добрий, смачний
+mauvais / mauvaise | movɛ / movɛz | поганий
+nouveau / nouvelle | nuvo / nuvɛl | новий
+vieux / vieille | vjø / vjɛj | старий
+jeune | ʒœn | молодий
+beau / belle | bo / bɛl | гарний
+joli / jolie | ʒɔli | милий
+gentil / gentille | ʒɑ̃ti / ʒɑ̃tij | люб'язний
+content / contente | kɔ̃tɑ̃ / kɔ̃tɑ̃t | задоволений
+heureux / heureuse | ørø / ørøz | щасливий
+triste | tʁist | сумний
+fatigué / fatiguée | fatige | втомлений
+facile | fasil | легкий
+difficile | difisil | важкий
+cher / chère | ʃɛʁ | дорогий
+froid / froide | fʁwa / fʁwad | холодний
+chaud / chaude | ʃo / ʃod | гарячий, теплий
+cassé / cassée | kase | зламаний
+prêt / prête | pʁɛ / pʁɛt | готовий
+libre | libʁ | вільний
+occupé / occupée | ɔkype | зайнятий
+</div>
+
+<h3>6.6. Дуже, занадто, так само: посилення й порівняння</h3>
+<div class="exs">
+Le café est très chaud. | lə kafe ɛ tʁɛ ʃo | Кава дуже гаряча.
+C'est trop cher ! | sɛ tʁo ʃɛʁ | Це занадто дорого!
+Elle est assez grande. | ɛl ɛ ase ɡʁɑ̃d | Вона досить висока.
+Paul est plus grand que Marc. | pɔl ɛ ply ɡʁɑ̃ kə maʁk | Поль вищий за Марка.
+Léa est moins grande que Paul. | lea ɛ mwɛ̃ ɡʁɑ̃d kə pɔl | Леа нижча за Поля.
+Je suis aussi fatigué que toi. | ʒə sɥi osi fatige kə twa | Я так само втомлений, як ти.
+C'est le meilleur gâteau. | sɛ lə mɛjœʁ ɡato | Це найкращий торт.
+</div>
+<p><span class="fr">bon</span> має особливі форми порівняння: <span class="fr">meilleur</span> (кращий), а <span class="fr">bien</span> (добре) має <span class="fr">mieux</span> (краще).</p>
+
+<div class="qz" data-title="Вправа 6. Узгодь прикметник">
+une maison ___ (grand) | grande
+un livre ___ (vert) | vert
+une fille ___ (heureux) | heureuse
+une fleur ___ (blanc) | blanche
+un homme ___ (italien) | italien
+une amie ___ (ukrainien) | ukrainienne
+une ___ maison (beau) | belle
+un ___ ami (nouveau) | nouvel
+des chats ___ (noir) | noirs
+des chaussures ___ (marron) | marron
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Вказівні, присвійні, питальні">
+<h2><span class="no">Розділ 7</span>Вказівні, присвійні та питальні слова</h2>
+<p class="lead">Ці слова стоять замість артикля й теж узгоджуються з іменником.</p>
+
+<h3>7.1. Вказівні: цей, ця, ці</h3>
+<div class="tw"><table>
+<tr><th>Чол.</th><th>Чол. перед голосною</th><th>Жін.</th><th>Множина</th></tr>
+<tr><td><span class="fr m">ce</span> livre</td><td><span class="fr m">cet</span> ami, <span class="fr m">cet</span> hôtel</td><td><span class="fr f">cette</span> table</td><td><span class="fr">ces</span> livres, <span class="fr">ces</span> tables</td></tr>
+</table></div>
+<p>Для «цей» і «той» додають <span class="fr">-ci</span> і <span class="fr">-là</span>: <span class="fr">ce livre-ci</span> (цей тут), <span class="fr">ce livre-là</span> (той там). Окремі слова: <span class="fr">ceci</span>, <span class="fr">cela / ça</span> (це, те).</p>
+
+<h3>7.2. Присвійні: мій, твій, його, її, наш…</h3>
+<div class="tw"><table>
+<tr><th>Чий власник</th><th>Чол.</th><th>Жін.</th><th>Множина</th></tr>
+<tr><td>мій</td><td><span class="fr m">mon</span> père</td><td><span class="fr f">ma</span> mère</td><td><span class="fr">mes</span> parents</td></tr>
+<tr><td>твій</td><td><span class="fr m">ton</span> père</td><td><span class="fr f">ta</span> mère</td><td><span class="fr">tes</span> parents</td></tr>
+<tr><td>його, її</td><td><span class="fr m">son</span> père</td><td><span class="fr f">sa</span> mère</td><td><span class="fr">ses</span> parents</td></tr>
+<tr><td>наш</td><td colspan="2"><span class="fr">notre</span> père, <span class="fr">notre</span> mère</td><td><span class="fr">nos</span> parents</td></tr>
+<tr><td>ваш</td><td colspan="2"><span class="fr">votre</span> père, <span class="fr">votre</span> mère</td><td><span class="fr">vos</span> parents</td></tr>
+<tr><td>їхній</td><td colspan="2"><span class="fr">leur</span> père, <span class="fr">leur</span> mère</td><td><span class="fr">leurs</span> parents</td></tr>
+</table></div>
+<div class="rule"><b class="t">Головна пастка</b>
+<p><span class="fr">son / sa / ses</span> узгоджуються з тим, <b>що належить</b>, а не з власником. <span class="fr">son livre</span> може означати «його книга» або «її книга»: зрозуміло з контексту. Жіночі слова на голосну беруть чоловічу форму: <span class="fr">mon amie</span>, <span class="fr">ton école</span>, <span class="fr">son adresse</span>.</p></div>
+<div class="exs">
+Voici mon frère et ma sœur. | vwasi mɔ̃ fʁɛʁ e ma sœʁ | Ось мій брат і моя сестра.
+Ton père est médecin ? | tɔ̃ pɛʁ ɛ medsɛ̃ | Твій батько лікар?
+Elle aime sa mère. | ɛl ɛm sa mɛʁ | Вона любить свою матір.
+Il aime sa mère. | il ɛm sa mɛʁ | Він любить свою матір.
+Nos enfants sont à l'école. | noz‿ɑ̃fɑ̃ sɔ̃t‿a lekɔl | Наші діти в школі.
+Leur maison est grande. | lœʁ mɛzɔ̃ ɛ ɡʁɑ̃d | Їхній будинок великий.
+</div>
+
+<h3>7.3. Питальне слово quel</h3>
+<div class="tw"><table>
+<tr><th></th><th>Чол.</th><th>Жін.</th></tr>
+<tr><td>Однина</td><td><span class="fr m">quel</span> livre ?</td><td><span class="fr f">quelle</span> table ?</td></tr>
+<tr><td>Множина</td><td><span class="fr m">quels</span> livres ?</td><td><span class="fr f">quelles</span> tables ?</td></tr>
+</table></div>
+<p>Усі чотири форми звучать однаково [kɛl]. <span class="fr">Quel âge as-tu ?</span> «Скільки тобі років?» <span class="fr">Quelle heure est-il ?</span> «Котра година?» <span class="fr">Quelle est ta couleur préférée ?</span> «Який твій улюблений колір?»</p>
+
+<div class="qz" data-title="Вправа 7. Вкажи слово: ce, cet, cette, ces, mon, ma, mes, quel…">
+___ livre est intéressant. (цей) | Ce
+___ amie est gentille. (ця, жін.) | Cette
+___ hôtel est grand. (цей) | Cet
+___ enfants sont petits. (ці) | Ces
+___ mère s'appelle Anne. (моя) | Ma
+___ amie s'appelle Léa. (моя подруга) | Mon
+___ parents habitent à Lviv. (мої) | Mes
+___ heure est-il ? (котра) | Quelle
+Voici ___ maison. (наша) | notre
+Ce sont ___ amis. (їхні) | leurs
+</div>
+</section>
+<section class="unit" id="u8" data-grp="Дієслова і речення" data-short="Дієслова на -er">
+<h2><span class="no">Розділ 8</span>Дієслова на -er: головна група</h2>
+<p class="lead">Понад 90 відсотків французьких дієслів закінчуються на <b>-er</b> і відмінюються за одним зразком. Вивчи його раз, і ти вмієш сотні дієслів.</p>
+
+<h3>8.1. Як будується дієслово</h3>
+<p>Прибери <b>-er</b>, отримаєш корінь (<i>основу</i>). До кореня додай закінчення за особою:</p>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Закінчення</th><th>Приклад: parler (говорити)</th></tr>
+<tr><td>je</td><td><b>-e</b></td><td><span class="fr">parl<b>e</b></span></td></tr>
+<tr><td>tu</td><td><b>-es</b></td><td><span class="fr">parl<b>es</b></span></td></tr>
+<tr><td>il / elle / on</td><td><b>-e</b></td><td><span class="fr">parl<b>e</b></span></td></tr>
+<tr><td>nous</td><td><b>-ons</b></td><td><span class="fr">parl<b>ons</b></span></td></tr>
+<tr><td>vous</td><td><b>-ez</b></td><td><span class="fr">parl<b>ez</b></span></td></tr>
+<tr><td>ils / elles</td><td><b>-ent</b></td><td><span class="fr">parl<b>ent</b></span></td></tr>
+</table></div>
+<div class="cj" data-verb="parler" data-note="говорити" data-ipa="paʁle">
+je | parle | ʒə paʁl
+tu | parles | ty paʁl
+il / elle / on | parle | il paʁl
+nous | parlons | nu paʁlɔ̃
+vous | parlez | vu paʁle
+ils / elles | parlent | il paʁl
+</div>
+<div class="cj" data-verb="habiter" data-note="жити" data-ipa="abite">
+j' | habite | ʒabit
+tu | habites | ty abit
+il / elle / on | habite | il abit
+nous | habitons | nuz‿abitɔ̃
+vous | habitez | vuz‿abite
+ils / elles | habitent | ilz‿abit
+</div>
+<div class="cj" data-verb="aimer" data-note="любити" data-ipa="eme">
+j' | aime | ʒɛm
+tu | aimes | ty ɛm
+il / elle / on | aime | il ɛm
+nous | aimons | nuz‿ɛmɔ̃
+vous | aimez | vuz‿ɛme
+ils / elles | aiment | ilz‿ɛm
+</div>
+<div class="tip"><b class="t">Що чути.</b> У <span class="fr">je parle, tu parles, il parle, ils parlent</span> звук однаковий [paʁl]. Закінчення -es, -e, -ent німі. Чути лише <span class="fr">nous parlons</span> [paʁlɔ̃] і <span class="fr">vous parlez</span> [paʁle]. Тому письмо треба знати окремо.</div>
+<p>У теперішньому часі французька має одну форму на два українські значення: <span class="fr">Je parle</span> = «я говорю» і «я зараз говорю». Для наголосу на «саме зараз» вживають <span class="fr">être en train de</span>: <span class="fr">Je suis en train de manger.</span></p>
+
+<h3>8.2. Мала пастка: зміни в написанні</h3>
+<div class="tw"><table>
+<tr><th>Дієслово</th><th>Що змінюється</th><th>Приклад</th></tr>
+<tr><td>-ger: <span class="fr">manger, voyager, nager, changer</span></td><td>перед <b>-ons</b> додається <b>e</b>, щоб «g» лишилося м'яким [ʒ]</td><td><span class="fr">nous mangeons</span> [mɑ̃ʒɔ̃]</td></tr>
+<tr><td>-cer: <span class="fr">commencer</span></td><td>перед -ons <b>c → ç</b>, щоб «c» лишилося [s]</td><td><span class="fr">nous commençons</span> [kɔmɑ̃sɔ̃]</td></tr>
+<tr><td><span class="fr">acheter, lever</span></td><td>в «ботинку» (je, tu, il, ils) <b>e → è</b></td><td><span class="fr">j'achète, nous achetons</span></td></tr>
+<tr><td><span class="fr">appeler, jeter</span></td><td>в «ботинку» подвоюється приголосна</td><td><span class="fr">j'appelle, nous appelons</span></td></tr>
+<tr><td><span class="fr">préférer, espérer</span></td><td>в «ботинку» <b>é → è</b></td><td><span class="fr">je préfère, nous préférons</span></td></tr>
+<tr><td><span class="fr">payer, essayer</span></td><td>y → i в «ботинку» (також дозволено лишати y)</td><td><span class="fr">je paie / je paye, nous payons</span></td></tr>
+</table></div>
+<p><i>«Ботинок»</i> це умовна назва форм je, tu, il/elle/on, ils/elles: у таблиці відмінювання їх можна обвести лінією, яка нагадує форму ботинка. Форми nous і vous стоять «поза ботинком» і змінюються рідше.</p>
+<div class="cj" data-verb="manger" data-note="їсти" data-ipa="mɑ̃ʒe">
+je | mange | ʒə mɑ̃ʒ
+tu | manges | ty mɑ̃ʒ
+il / elle / on | mange | il mɑ̃ʒ
+nous | mangeons | nu mɑ̃ʒɔ̃
+vous | mangez | vu mɑ̃ʒe
+ils / elles | mangent | il mɑ̃ʒ
+</div>
+<div class="cj" data-verb="acheter" data-note="купувати" data-ipa="aʃte">
+j' | achète | ʒaʃɛt
+tu | achètes | ty aʃɛt
+il / elle / on | achète | il aʃɛt
+nous | achetons | nuz‿aʃtɔ̃
+vous | achetez | vuz‿aʃte
+ils / elles | achètent | ilz‿aʃɛt
+</div>
+<div class="cj" data-verb="s'appeler" data-note="називатися" data-ipa="saple">
+je | m'appelle | ʒə mapɛl
+tu | t'appelles | ty tapɛl
+il / elle / on | s'appelle | il sapɛl
+nous | nous appelons | nuz‿apəlɔ̃
+vous | vous appelez | vuz‿apəle
+ils / elles | s'appellent | il sapɛl
+</div>
+
+<h3>8.3. Найчастіші дієслова на -er</h3>
+<div class="vocab">
+parler | paʁle | говорити
+habiter | abite | жити, мешкати
+aimer | eme | любити, подобатися
+adorer | adɔʁe | обожнювати
+détester | detɛste | ненавидіти
+manger | mɑ̃ʒe | їсти
+cuisiner | kɥizine | готувати їжу
+préparer | pʁepaʁe | готувати, готуватися
+chanter | ʃɑ̃te | співати
+danser | dɑ̃se | танцювати
+jouer | ʒwe | грати
+nager | naʒe | плавати
+voyager | vwajaʒe | подорожувати
+travailler | tʁavaje | працювати
+étudier | etydje | вивчати
+regarder | ʁəɡaʁde | дивитися
+écouter | ekute | слухати
+chercher | ʃɛʁʃe | шукати
+trouver | tʁuve | знаходити
+donner | dɔne | давати
+penser | pɑ̃se | думати
+demander | dəmɑ̃de | питати, просити
+arriver | aʁive | приїхати, прибути
+entrer | ɑ̃tʁe | входити
+rentrer | ʁɑ̃tʁe | повертатися додому
+rester | ʁɛste | залишатися
+marcher | maʁʃe | ходити пішки
+visiter | vizite | відвідувати (місце)
+téléphoner | telefɔne | телефонувати
+acheter | aʃte | купувати
+payer | peje | платити
+porter | pɔʁte | носити, нести
+fermer | fɛʁme | закривати
+inviter | ɛ̃vite | запрошувати
+laver | lave | мити
+aider | ede | допомагати
+commencer | kɔmɑ̃se | починати
+continuer | kɔ̃tinɥe | продовжувати
+oublier | ublije | забувати
+rencontrer | ʁɑ̃kɔ̃tʁe | зустрічати
+utiliser | ytilize | використовувати
+changer | ʃɑ̃ʒe | змінювати
+rêver | ʁɛve | мріяти
+</div>
+
+<h3>8.4. Дієслова з інфінітивом</h3>
+<p>Коли два дієслова йдуть поспіль, змінюється лише перше, друге залишається в інфінітиві: <span class="fr">J'aime danser. Je veux manger. Elle va partir.</span></p>
+<div class="exs">
+J'aime chanter. | ʒɛm ʃɑ̃te | Я люблю співати.
+Nous détestons attendre. | nu detɛstɔ̃z‿atɑ̃dʁ | Ми ненавидимо чекати.
+Tu adores voyager ? | ty adɔʁ vwajaʒe | Ти обожнюєш подорожувати?
+Ils travaillent à Paris. | il tʁavaj a paʁi | Вони працюють у Парижі.
+Vous parlez très bien français. | vu paʁle tʁɛ bjɛ̃ fʁɑ̃sɛ | Ви дуже добре говорите французькою.
+</div>
+
+<div class="qz" data-title="Вправа 8. Відміняй дієслово">
+Je ___ français. (parler) | parle
+Tu ___ à Paris. (habiter) | habites
+Elle ___ le café. (aimer) | aime
+Nous ___ au restaurant. (manger) | mangeons
+Vous ___ la télévision. (regarder) | regardez
+Ils ___ à l'école. (travailler) | travaillent
+J'___ un livre. (acheter) | achète
+Nous ___ à 8 heures. (commencer) | commençons
+Elle s'___ Marie. (appeler) | appelle
+J'___ danser. (aimer) | aime
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Інші дієслова">
+<h2><span class="no">Розділ 9</span>Інші дієслова: -ir, -re і неправильні</h2>
+<p class="lead">Ці дієслова треба знати напам'ять, бо вони найчастіші в мові. Не панікуй: їх лише кілька десятків, і вони зустрічаються в кожній розмові.</p>
+
+<h3>9.1. Дієслова на -ir (finir)</h3>
+<p>Регулярні -ir вставляють <b>-iss-</b> у множині: <span class="fr">finir, choisir, réussir, grandir, réfléchir</span>.</p>
+<div class="cj" data-verb="finir" data-note="закінчувати" data-ipa="finiʁ">
+je | finis | ʒə fini
+tu | finis | ty fini
+il / elle / on | finit | il fini
+nous | finissons | nu finisɔ̃
+vous | finissez | vu finise
+ils / elles | finissent | il finis
+</div>
+
+<h3>9.2. Дієслова на -re (attendre)</h3>
+<div class="cj" data-verb="attendre" data-note="чекати" data-ipa="atɑ̃dʁ">
+j' | attends | ʒatɑ̃
+tu | attends | ty atɑ̃
+il / elle / on | attend | il atɑ̃
+nous | attendons | nuz‿atɑ̃dɔ̃
+vous | attendez | vuz‿atɑ̃de
+ils / elles | attendent | ilz‿atɑ̃d
+</div>
+<p>Так само: <span class="fr">vendre</span> (продавати), <span class="fr">répondre</span> (відповідати), <span class="fr">entendre</span> (чути), <span class="fr">perdre</span> (губити), <span class="fr">descendre</span> (спускатися).</p>
+
+<h3>9.3. Неправильні, що потрібні на кожному кроці</h3>
+<div class="conjs">
+<div class="cj" data-verb="aller" data-note="йти, їхати" data-ipa="ale">
+je | vais | ʒə vɛ
+tu | vas | ty va
+il / elle / on | va | il va
+nous | allons | nuz‿alɔ̃
+vous | allez | vuz‿ale
+ils / elles | vont | il vɔ̃
+</div>
+<div class="cj" data-verb="faire" data-note="робити" data-ipa="fɛʁ">
+je | fais | ʒə fɛ
+tu | fais | ty fɛ
+il / elle / on | fait | il fɛ
+nous | faisons | nu fəzɔ̃
+vous | faites | vu fɛt
+ils / elles | font | il fɔ̃
+</div>
+<div class="cj" data-verb="venir" data-note="приходити, їхати сюди" data-ipa="vəniʁ">
+je | viens | ʒə vjɛ̃
+tu | viens | ty vjɛ̃
+il / elle / on | vient | il vjɛ̃
+nous | venons | nu vənɔ̃
+vous | venez | vu vəne
+ils / elles | viennent | il vjɛn
+</div>
+<div class="cj" data-verb="prendre" data-note="брати" data-ipa="pʁɑ̃dʁ">
+je | prends | ʒə pʁɑ̃
+tu | prends | ty pʁɑ̃
+il / elle / on | prend | il pʁɑ̃
+nous | prenons | nu pʁənɔ̃
+vous | prenez | vu pʁəne
+ils / elles | prennent | il pʁɛn
+</div>
+<div class="cj" data-verb="pouvoir" data-note="могти" data-ipa="puvwaʁ">
+je | peux | ʒə pø
+tu | peux | ty pø
+il / elle / on | peut | il pø
+nous | pouvons | nu puvɔ̃
+vous | pouvez | vu puve
+ils / elles | peuvent | il pœv
+</div>
+<div class="cj" data-verb="vouloir" data-note="хотіти" data-ipa="vulwaʁ">
+je | veux | ʒə vø
+tu | veux | ty vø
+il / elle / on | veut | il vø
+nous | voulons | nu vulɔ̃
+vous | voulez | vu vule
+ils / elles | veulent | il vœl
+</div>
+<div class="cj" data-verb="savoir" data-note="знати, вміти" data-ipa="savwaʁ">
+je | sais | ʒə sɛ
+tu | sais | ty sɛ
+il / elle / on | sait | il sɛ
+nous | savons | nu savɔ̃
+vous | savez | vu save
+ils / elles | savent | il sav
+</div>
+<div class="cj" data-verb="devoir" data-note="бути винним, мусити" data-ipa="dəvwaʁ">
+je | dois | ʒə dwa
+tu | dois | ty dwa
+il / elle / on | doit | il dwa
+nous | devons | nu dəvɔ̃
+vous | devez | vu dəve
+ils / elles | doivent | il dwav
+</div>
+<div class="cj" data-verb="voir" data-note="бачити" data-ipa="vwaʁ">
+je | vois | ʒə vwa
+tu | vois | ty vwa
+il / elle / on | voit | il vwa
+nous | voyons | nu vwajɔ̃
+vous | voyez | vu vwaje
+ils / elles | voient | il vwa
+</div>
+<div class="cj" data-verb="dire" data-note="казати" data-ipa="diʁ">
+je | dis | ʒə di
+tu | dis | ty di
+il / elle / on | dit | il di
+nous | disons | nu dizɔ̃
+vous | dites | vu dit
+ils / elles | disent | il diz
+</div>
+<div class="cj" data-verb="boire" data-note="пити" data-ipa="bwaʁ">
+je | bois | ʒə bwa
+tu | bois | ty bwa
+il / elle / on | boit | il bwa
+nous | buvons | nu byvɔ̃
+vous | buvez | vu byve
+ils / elles | boivent | il bwav
+</div>
+<div class="cj" data-verb="lire" data-note="читати" data-ipa="liʁ">
+je | lis | ʒə li
+tu | lis | ty li
+il / elle / on | lit | il li
+nous | lisons | nu lizɔ̃
+vous | lisez | vu lize
+ils / elles | lisent | il liz
+</div>
+<div class="cj" data-verb="écrire" data-note="писати" data-ipa="ekʁiʁ">
+j' | écris | ʒekʁi
+tu | écris | ty ekʁi
+il / elle / on | écrit | il ekʁi
+nous | écrivons | nuz‿ekʁivɔ̃
+vous | écrivez | vuz‿ekʁive
+ils / elles | écrivent | ilz‿ekʁiv
+</div>
+<div class="cj" data-verb="partir" data-note="їхати, йти геть" data-ipa="paʁtiʁ">
+je | pars | ʒə paʁ
+tu | pars | ty paʁ
+il / elle / on | part | il paʁ
+nous | partons | nu paʁtɔ̃
+vous | partez | vu paʁte
+ils / elles | partent | il paʁt
+</div>
+<div class="cj" data-verb="connaître" data-note="знати (людину, місце)" data-ipa="kɔnɛtʁ">
+je | connais | ʒə kɔnɛ
+tu | connais | ty kɔnɛ
+il / elle / on | connaît | il kɔnɛ
+nous | connaissons | nu kɔnɛsɔ̃
+vous | connaissez | vu kɔnɛse
+ils / elles | connaissent | il kɔnɛs
+</div>
+</div>
+<div class="tip"><b class="t">Помітний візерунок.</b> Багато неправильних дієслів мають форми <b>je, tu, il, ils</b> «ботинком» від короткого кореня (<span class="fr">peux, veux, dois</span>), а <b>nous, vous</b> від довгого (<span class="fr">pouvons, voulons, devons</span>). Помічай цю різницю й вчи коротку форму окремо від довгої.</div>
+
+<h3>9.4. Модальні дієслова з інфінітивом</h3>
+<div class="exs">
+Je veux apprendre le français. | ʒə vø apʁɑ̃dʁ lə fʁɑ̃sɛ | Я хочу вивчити французьку.
+Tu peux m'aider ? | ty pø mede | Ти можеш мені допомогти?
+Je dois partir. | ʒə dwa paʁtiʁ | Я мушу йти.
+Il sait nager. | il sɛ naʒe | Він уміє плавати.
+Je voudrais un café, s'il vous plaît. | ʒə vudʁɛ œ̃ kafe sil vu plɛ | Я хотів би каву, будь ласка.
+Pouvez-vous répéter ? | puve vu ʁepete | Чи можете ви повторити?
+</div>
+<div class="warn"><b>Savoir чи connaître.</b> <span class="fr">Savoir</span> це знати факт або вміти: <span class="fr">Je sais nager. Je sais où il habite.</span> <span class="fr">Connaître</span> це бути знайомим з людиною чи місцем: <span class="fr">Je connais Marie. Je connais Paris.</span></div>
+
+<div class="qz" data-title="Вправа 9. Вживи правильну форму">
+Je ___ à Paris. (aller) | vais
+Nous ___ du sport. (faire) | faisons
+Il ___ de Lyon. (venir) | vient
+Tu ___ un café ? (prendre) | prends
+Je ___ partir. (vouloir) | veux
+Vous ___ venir ? (pouvoir) | pouvez
+Elle ___ nager. (savoir) | sait
+Ils ___ du thé. (boire) | boivent
+Tu ___ un livre. (lire) | lis
+Nous ___ un e-mail. (écrire) | écrivons
+Je ___ Marie. (connaître) | connais
+Tu ___ ton travail ? (finir) | finis
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Заперечення">
+<h2><span class="no">Розділ 10</span>Заперечення</h2>
+<p class="lead">Французьке заперечення «обгортає» дієслово двома словами: <span class="fr">ne</span> перед ним, <span class="fr">pas</span> після нього.</p>
+<div class="exs">
+Je parle français. → Je ne parle pas français. | ʒə nə paʁl pa fʁɑ̃sɛ | Я не говорю французькою.
+Il est ici. → Il n'est pas ici. | il nɛ pa isi | Його тут нема.
+J'aime le thé. → Je n'aime pas le thé. | ʒə nɛm pa lə te | Я не люблю чай.
+Tu as un frère ? Non, je n'ai pas de frère. | ty a œ̃ fʁɛʁ. nɔ̃, ʒə nɛ pa də fʁɛʁ | У тебе є брат? Ні, у мене нема брата.
+</div>
+<div class="rule"><b class="t">Правила</b>
+<ul>
+<li><span class="fr">ne</span> → <span class="fr">n'</span> перед голосною чи німою h.</li>
+<li>З двома дієсловами заперечення обгортає перше: <span class="fr">Je ne veux pas partir.</span></li>
+<li>Після <span class="fr">pas</span> неозначений і частковий артикль стають <span class="fr">de / d'</span>: <span class="fr">pas de pain</span>, <span class="fr">pas d'eau</span>. З <span class="fr">être</span> і <span class="fr">le/la/les</span> так не діє.</li>
+<li>У розмовній мові <span class="fr">ne</span> часто опускають: <span class="fr">Je sais pas.</span> Але на письмі й у формальній мові <span class="fr">ne</span> обов'язкове.</li>
+</ul></div>
+
+<h3>Інші заперечувальні пари</h3>
+<div class="tw"><table>
+<tr><th>Пара</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td><span class="fr">ne … plus</span></td><td>більше не</td><td><span class="fr">Je ne fume plus.</span> Я більше не курю.</td></tr>
+<tr><td><span class="fr">ne … jamais</span></td><td>ніколи</td><td><span class="fr">Il ne boit jamais de café.</span> Він ніколи не п'є каву.</td></tr>
+<tr><td><span class="fr">ne … rien</span></td><td>нічого</td><td><span class="fr">Je ne comprends rien.</span> Я нічого не розумію.</td></tr>
+<tr><td><span class="fr">ne … personne</span></td><td>нікого</td><td><span class="fr">Je ne vois personne.</span> Я нікого не бачу.</td></tr>
+<tr><td><span class="fr">ne … pas encore</span></td><td>ще не</td><td><span class="fr">Il n'est pas encore là.</span> Його ще нема.</td></tr>
+<tr><td><span class="fr">ne … que</span></td><td>лише (не заперечення за змістом)</td><td><span class="fr">Je n'ai qu'un frère.</span> Я маю лише одного брата.</td></tr>
+</table></div>
+<h3>Відповіді</h3>
+<div class="exs">
+Tu aimes le café ? Oui, j'aime ça. | ty ɛm lə kafe? wi ʒɛm sa | Ти любиш каву? Так, люблю.
+Tu n'aimes pas le café ? Si, j'aime ça. | ty nɛm pa lə kafe? si ʒɛm sa | Ти не любиш каву? Ні, люблю! (si = так на заперечне питання)
+Moi non plus. | mwa nɔ̃ ply | Я теж ні. Та й я ні.
+Moi aussi. | mwa osi | Я теж.
+</div>
+<div class="qz" data-title="Вправа 10. Зроби речення заперечним">
+Je mange du pain. → Je ne mange ___ de pain. | pas
+Il aime le thé. → Il n'___ pas le thé. | aime
+Nous avons un chat. → Nous n'avons pas ___ chat. (de/d') | de
+Tu parles français. → Tu ne parles ___ français. | pas
+Je veux partir. → Je ne veux ___ partir. | pas
+Elle travaille. → Elle ne travaille ___ . (більше не) | plus
+Je comprends. → Je ne comprends ___ . (нічого) | rien
+Il boit du café. → Il ne boit ___ de café. (ніколи) | jamais
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Питання">
+<h2><span class="no">Розділ 11</span>Питання</h2>
+<p class="lead">Є три способи поставити питання: інтонацією, через <span class="fr">est-ce que</span> та інверсією. У розмові найчастіше перший і другий.</p>
+<div class="tw"><table>
+<tr><th>Спосіб</th><th>Приклад</th><th>Коли</th></tr>
+<tr><td><b>1. Інтонація</b>: підмет + дієслово, голос догори</td><td><span class="fr">Tu parles français ?</span></td><td>розмова, неформально</td></tr>
+<tr><td><b>2. Est-ce que</b> + підмет + дієслово</td><td><span class="fr">Est-ce que tu parles français ?</span></td><td>нейтрально, усно й письмово</td></tr>
+<tr><td><b>3. Інверсія</b>: дієслово-підмет</td><td><span class="fr">Parles-tu français ?</span></td><td>формально, письмово</td></tr>
+</table></div>
+<div class="tip">Інверсія: дієслово + дефіс + займенник. Якщо дієслово закінчується на голосну, а далі йде <span class="fr">il / elle / on</span>, додають <b>-t-</b>: <span class="fr">Parle-t-il ? A-t-elle un chat ?</span> Тут «t» лише для зв'язку.</div>
+
+<h3>Питальні слова</h3>
+<div class="vocab">
+qui | ki | хто
+que / qu'est-ce que | kə / kɛs kə | що
+quoi | kwa | що (після прийменника чи наприкінці)
+où | u | де, куди
+quand | kɑ̃ | коли
+comment | kɔmɑ̃ | як
+pourquoi | puʁkwa | чому
+parce que | paʁs kə | тому що
+combien (de) | kɔ̃bjɛ̃ | скільки
+quel / quelle | kɛl | який, яка
+lequel / laquelle | ləkɛl / lakɛl | котрий
+</div>
+<div class="exs">
+Qui est-ce ? | ki ɛs | Хто це?
+Qu'est-ce que c'est ? | kɛs kə sɛ | Що це?
+Où habites-tu ? | u abit ty | Де ти живеш?
+Où est la gare ? | u ɛ la ɡaʁ | Де вокзал?
+Quand est-ce que tu viens ? | kɑ̃ ɛs kə ty vjɛ̃ | Коли ти приходиш?
+Comment tu t'appelles ? | kɔmɑ̃ ty tapɛl | Як тебе звати?
+Comment ça va ? | kɔmɑ̃ sa va | Як справи?
+Pourquoi tu pleures ? | puʁkwa ty plœʁ | Чому ти плачеш?
+Parce que je suis triste. | paʁs kə ʒə sɥi tʁist | Бо мені сумно.
+Combien ça coûte ? | kɔ̃bjɛ̃ sa kut | Скільки це коштує?
+Combien de frères as-tu ? | kɔ̃bjɛ̃ də fʁɛʁ a ty | Скільки в тебе братів?
+Quel âge as-tu ? | kɛl‿aʒ a ty | Скільки тобі років?
+Quelle heure est-il ? | kɛl œʁ ɛ til | Котра година?
+</div>
+<div class="qz" data-title="Вправа 11. Поставити питання">
+___-ce que tu parles français ? | Est
+___ habites-tu ? (де) | Où
+___ ça va ? (як) | Comment
+___ coûte ce livre ? (скільки) | Combien
+___ est-ce ? (хто) | Qui
+___ âge as-tu ? | Quel
+___ est-ce que tu pleures ? (чому) | Pourquoi
+Qu'est-ce ___ c'est ? | que
+Elle parle français. → Parle-___-elle français ? | t
+</div>
+</section>
+<section class="unit" id="u12" data-grp="Час, місце, дії" data-short="Числа, час, дата">
+<h2><span class="no">Розділ 12</span>Числа, час і дата</h2>
+<p class="lead">Числа до 69 будуються просто. З 70 починається своя логіка: французи рахують двадцятками, як ніби кажуть «шістдесят-десять» замість «сімдесят».</p>
+
+<h3>12.1. Числа 0–20</h3>
+<div class="vocab">
+0 zéro | zeʁo | нуль
+1 un / une | œ̃ / yn | один, одна
+2 deux | dø | два
+3 trois | tʁwa | три
+4 quatre | katʁ | чотири
+5 cinq | sɛ̃k | п'ять
+6 six | sis | шість
+7 sept | sɛt | сім
+8 huit | ɥit | вісім
+9 neuf | nœf | дев'ять
+10 dix | dis | десять
+11 onze | ɔ̃z | одинадцять
+12 douze | duz | дванадцять
+13 treize | tʁɛz | тринадцять
+14 quatorze | katɔʁz | чотирнадцять
+15 quinze | kɛ̃z | п'ятнадцять
+16 seize | sɛz | шістнадцять
+17 dix-sept | disɛt | сімнадцять
+18 dix-huit | dizɥit | вісімнадцять
+19 dix-neuf | diznœf | дев'ятнадцять
+20 vingt | vɛ̃ | двадцять
+</div>
+<div class="tip"><b class="t">Вимова.</b> Перед голосною й німою h кінцеве «x» і «s» читаються як [z], а «f» в «neuf» як [v]: <span class="fr">deux ans</span> [dø‿zɑ̃], <span class="fr">six heures</span> [si‿zœʁ], <span class="fr">neuf heures</span> [nœ‿vœʁ]. Перед приголосною кінцева літера «cinq, six, huit, dix» читається лише наприкінці слова або перед голосною: <span class="fr">six livres</span> [si livʁ], але <span class="fr">il en a six</span> [il ɑ̃ a sis].</div>
+
+<h3>12.2. Десятки й складені числа</h3>
+<div class="vocab">
+30 trente | tʁɑ̃t | тридцять
+40 quarante | kaʁɑ̃t | сорок
+50 cinquante | sɛ̃kɑ̃t | п'ятдесят
+60 soixante | swasɑ̃t | шістдесят
+70 soixante-dix | swasɑ̃tdis | сімдесят (60 + 10)
+80 quatre-vingts | katʁəvɛ̃ | вісімдесят (4 × 20)
+90 quatre-vingt-dix | katʁəvɛ̃dis | дев'яносто (4 × 20 + 10)
+100 cent | sɑ̃ | сто
+1000 mille | mil | тисяча
+1 000 000 un million | œ̃ miljɔ̃ | мільйон
+</div>
+<div class="tw"><table>
+<tr><th>Число</th><th>Як будується</th><th>Французькою</th></tr>
+<tr><td>21</td><td>20 <b>et</b> 1</td><td><span class="fr">vingt et un</span> [vɛ̃t e œ̃]</td></tr>
+<tr><td>22</td><td>20-2</td><td><span class="fr">vingt-deux</span> [vɛ̃tdø]</td></tr>
+<tr><td>31, 41, 51, 61</td><td>10-ки + <b>et</b> un</td><td><span class="fr">trente et un, quarante et un…</span></td></tr>
+<tr><td>71</td><td>60 <b>et</b> 11</td><td><span class="fr">soixante et onze</span></td></tr>
+<tr><td>72</td><td>60-12</td><td><span class="fr">soixante-douze</span></td></tr>
+<tr><td>81</td><td>4×20-1 (без et)</td><td><span class="fr">quatre-vingt-un</span></td></tr>
+<tr><td>91</td><td>4×20-11</td><td><span class="fr">quatre-vingt-onze</span></td></tr>
+<tr><td>200</td><td>2 × 100</td><td><span class="fr">deux cents</span> (s лише без наступного числа)</td></tr>
+<tr><td>201</td><td></td><td><span class="fr">deux cent un</span></td></tr>
+</table></div>
+<p>У Бельгії й Швейцарії 70 і 90 звучать простіше: <span class="fr">septante</span>, <span class="fr">nonante</span>; у Швейцарії також <span class="fr">huitante</span> (80).</p>
+<div class="exs">
+J'ai vingt-cinq ans. | ʒe vɛ̃tsɛ̃k ɑ̃ | Мені двадцять п'ять років.
+Ça coûte quatre-vingt-dix euros. | sa kut katʁəvɛ̃dis øʁo | Це коштує дев'яносто євро.
+Mon numéro est le 06 12 34 56 78. | mɔ̃ nymeʁo ɛ lə zeʁo sis duz tʁɑ̃tkatʁ sɛ̃kɑ̃tsis swasɑ̃tdizɥit | Мій номер 06 12 34 56 78. (номер читають парами)
+</div>
+
+<h3>12.3. Порядкові</h3>
+<p><span class="fr">le premier / la première</span> (1-й), потім число + <b>-ième</b>: <span class="fr">deuxième</span> [døzjɛm], <span class="fr">troisième</span> [tʁwazjɛm], <span class="fr">quatrième</span>, <span class="fr">cinquième</span>, <span class="fr">neuvième</span>, <span class="fr">dixième</span>. Дату першого числа кажуть порядковим: <span class="fr">le premier mai</span>, решта днів кількісними: <span class="fr">le deux mai</span>.</p>
+
+<h3>12.4. Котра година</h3>
+<div class="exs">
+Quelle heure est-il ? | kɛl œʁ ɛ til | Котра година?
+Il est une heure. | il ɛ yn œʁ | Перша година.
+Il est huit heures. | il ɛ ɥit œʁ | Восьма година.
+Il est midi. / Il est minuit. | il ɛ midi / il ɛ minɥi | Полудень. / Північ.
+Il est trois heures et quart. | il ɛ tʁwaz‿œʁ e kaʁ | П'ятнадцять по третій.
+Il est trois heures et demie. | il ɛ tʁwaz‿œʁ e dəmi | Пів на четверту (3:30).
+Il est quatre heures moins le quart. | il ɛ katʁ‿œʁ mwɛ̃ lə kaʁ | Без чверті чотири.
+Il est cinq heures dix. | il ɛ sɛ̃k‿œʁ dis | Десять по п'ятій.
+Il est six heures moins cinq. | il ɛ siz‿œʁ mwɛ̃ sɛ̃k | Без п'яти шоста.
+À quelle heure tu pars ? | a kɛl œʁ ty paʁ | О котрій ти їдеш?
+Je pars à neuf heures. | ʒə paʁ a nœv‿œʁ | Я їду о дев'ятій.
+Le train part à 14 h 30 (quatorze heures trente). | lə tʁɛ̃ paʁ a katɔʁz‿œʁ tʁɑ̃t | Потяг відправляється о 14:30.
+</div>
+<p>Офіційно (розклад, вокзал, афіша) рахують до 24 годин: <span class="fr">quinze heures quarante-cinq</span> = 15:45. У повсякденній мові використовують 12-годинний формат з <span class="fr">du matin, de l'après-midi, du soir</span>.</p>
+
+<h3>12.5. Дні, місяці, пори року</h3>
+<div class="vocab">
+# Дні тижня (всі чоловічого роду, з малої літери)
+lundi | lœ̃di | понеділок | m
+mardi | maʁdi | вівторок | m
+mercredi | mɛʁkʁədi | середа | m
+jeudi | ʒødi | четвер | m
+vendredi | vɑ̃dʁədi | п'ятниця | m
+samedi | samdi | субота | m
+dimanche | dimɑ̃ʃ | неділя | m
+# Місяці
+janvier | ʒɑ̃vje | січень | m
+février | fevʁije | лютий | m
+mars | maʁs | березень | m
+avril | avʁil | квітень | m
+mai | mɛ | травень | m
+juin | ʒɥɛ̃ | червень | m
+juillet | ʒɥijɛ | липень | m
+août | ut | серпень | m
+septembre | sɛptɑ̃bʁ | вересень | m
+octobre | ɔktɔbʁ | жовтень | m
+novembre | nɔvɑ̃bʁ | листопад | m
+décembre | desɑ̃bʁ | грудень | m
+# Пори року
+le printemps | pʁɛ̃tɑ̃ | весна | m
+l'été | ete | літо | m
+l'automne | otɔn | осінь | m
+l'hiver | ivɛʁ | зима | m
+</div>
+<div class="exs">
+Aujourd'hui, c'est lundi. | oʒuʁdɥi sɛ lœ̃di | Сьогодні понеділок.
+Nous sommes le 25 octobre. | nu sɔm lə vɛ̃tsɛ̃k ɔktɔbʁ | Сьогодні 25 жовтня.
+Je travaille le lundi. | ʒə tʁavaj lə lœ̃di | Я працюю по понеділках (кожного).
+Je travaille lundi. | ʒə tʁavaj lœ̃di | Я працюю в цей понеділок.
+Je suis né en mai. | ʒə sɥi ne ɑ̃ mɛ | Я народився в травні.
+En été, il fait chaud. | ɑ̃n‿ete il fɛ ʃo | Влітку жарко.
+Au printemps, il pleut. | o pʁɛ̃tɑ̃ il plø | Навесні йдуть дощі.
+Hier, aujourd'hui, demain. | jɛʁ oʒuʁdɥi dəmɛ̃ | Вчора, сьогодні, завтра.
+</div>
+<div class="tip"><b class="t">Час і пори року.</b> Перед місяцем: <span class="fr">en mai</span> або <span class="fr">au mois de mai</span>. Пори року: <span class="fr">au printemps</span>, але <span class="fr">en été, en automne, en hiver</span>.</div>
+
+<h3>12.6. Гроші</h3>
+<div class="exs">
+Ça coûte combien ? | sa kut kɔ̃bjɛ̃ | Скільки це коштує?
+C'est douze euros cinquante. | sɛt duz‿øʁo sɛ̃kɑ̃t | Це 12,50 євро.
+C'est trop cher. | sɛ tʁo ʃɛʁ | Це дуже дорого.
+Je prends ça. | ʒə pʁɑ̃ sa | Беру це.
+Je peux payer par carte ? | ʒə pø peje paʁ kaʁt | Можна оплатити карткою?
+</div>
+
+<div class="qz" data-title="Вправа 12. Числа і час">
+12 → ___ | douze
+17 → ___ | dix-sept
+21 → ___ | vingt et un
+45 → ___ | quarante-cinq
+70 → ___ | soixante-dix
+80 → ___ | quatre-vingts
+99 → ___ | quatre-vingt-dix-neuf
+Il est 3:15 → Il est trois heures et ___ . | quart
+Il est 3:30 → Il est trois heures et ___ . | demie
+Понеділок → ___ | lundi
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Прийменники">
+<h2><span class="no">Розділ 13</span>Прийменники місця, часу, способу</h2>
+<p class="lead">Французька не має відмінків, тому прийменники виконують дуже важливу роботу. Їх небагато, тож їх варто вивчити.</p>
+
+<h3>13.1. Де знаходиться: місце</h3>
+<div class="vocab">
+à | a | в, на, до (місто, місце)
+de | də | з, від, про
+en | ɑ̃ | в (країна, транспорт, місяць)
+dans | dɑ̃ | всередині, в
+sur | syʁ | на, зверху
+sous | su | під
+devant | dəvɑ̃ | перед
+derrière | dɛʁjɛʁ | за, позаду
+entre | ɑ̃tʁ | між
+à côté de | a kote də | поруч з
+près de | pʁɛ də | біля
+loin de | lwɛ̃ də | далеко від
+en face de | ɑ̃ fas də | навпроти
+au milieu de | o miljø də | посередині
+chez | ʃe | у (людини, дома)
+vers | vɛʁ | до, у напрямку
+</div>
+<div class="exs">
+Le livre est sur la table. | lə livʁ ɛ syʁ la tabl | Книга на столі.
+Le chat est sous le lit. | lə ʃa ɛ su lə li | Кіт під ліжком.
+Je suis devant la gare. | ʒə sɥi dəvɑ̃ la ɡaʁ | Я перед вокзалом.
+La pharmacie est à côté de la banque. | la faʁmasi ɛt‿a kote də la bɑ̃k | Аптека поруч із банком.
+Je vais chez le médecin. | ʒə vɛ ʃe lə medsɛ̃ | Я йду до лікаря.
+Elle est chez elle. | ɛl ɛ ʃe ɛl | Вона вдома (у себе).
+</div>
+
+<h3>13.2. Міста й країни: à, en, au, aux</h3>
+<div class="tw"><table>
+<tr><th>Куди / де</th><th>Звідки</th><th>Приклад</th></tr>
+<tr><td><span class="fr">à</span> + місто</td><td><span class="fr">de / d'</span> + місто</td><td><span class="fr">Je vais à Paris. Je viens de Lviv.</span></td></tr>
+<tr><td><span class="fr">en</span> + країна жін. (на -e) або з голосної</td><td><span class="fr">de / d'</span></td><td><span class="fr">en France, en Ukraine, en Italie. Je viens d'Ukraine.</span></td></tr>
+<tr><td><span class="fr">au</span> + країна чол.</td><td><span class="fr">du</span></td><td><span class="fr">au Canada, au Portugal. Je viens du Canada.</span></td></tr>
+<tr><td><span class="fr">aux</span> + країна мн.</td><td><span class="fr">des</span></td><td><span class="fr">aux États-Unis. Je viens des États-Unis.</span></td></tr>
+</table></div>
+<p>Країни на <b>-e</b> здебільшого жіночі (<span class="fr">la France, l'Ukraine, l'Italie</span>), крім <span class="fr">le Mexique</span>. Решта чоловічі: <span class="fr">le Canada, le Portugal, le Japon</span>.</p>
+
+<h3>13.3. Транспорт</h3>
+<div class="exs">
+Je vais au travail à pied. | ʒə vɛ o tʁavaj a pje | Я йду на роботу пішки.
+Il va à l'école à vélo. | il va a lekɔl a velo | Він їде до школи на велосипеді.
+Nous voyageons en train. | nu vwajaʒɔ̃ ɑ̃ tʁɛ̃ | Ми подорожуємо потягом.
+Elle va à Paris en avion. | ɛl va a paʁi ɑ̃n‿avjɔ̃ | Вона летить у Париж літаком.
+Je viens en voiture. | ʒə vjɛ̃ ɑ̃ vwatyʁ | Я приїжджаю на машині.
+</div>
+<p><span class="fr">à</span> для транспорту, де ти сидиш «верхи» або йдеш: <span class="fr">à pied, à vélo, à moto, à cheval</span>. <span class="fr">en</span> для закритих засобів: <span class="fr">en voiture, en train, en bus, en avion, en métro, en taxi</span>.</p>
+
+<h3>13.4. Час</h3>
+<div class="vocab">
+à | a | о (годині)
+le matin / le soir | lə matɛ̃ / lə swaʁ | вранці / ввечері
+avant | avɑ̃ | до, перед
+après | apʁɛ | після
+pendant | pɑ̃dɑ̃ | протягом
+depuis | dəpɥi | з тих пір, від
+jusqu'à | ʒyska | до (кінцевий момент)
+dans | dɑ̃ | через (скільки часу)
+il y a | il i a | тому (скільки часу)
+</div>
+<div class="exs">
+Je me lève à sept heures. | ʒə mə lɛv a sɛt œʁ | Я встаю о сьомій.
+Je travaille de neuf heures à cinq heures. | ʒə tʁavaj də nœv‿œʁ a sɛ̃k œʁ | Я працюю з дев'ятої до п'ятої.
+Je mange avant la classe. | ʒə mɑ̃ʒ avɑ̃ la klas | Я їм перед уроком.
+Après le travail, je rentre. | apʁɛ lə tʁavaj ʒə ʁɑ̃tʁ | Після роботи я йду додому.
+J'habite ici depuis deux ans. | ʒabit isi dəpɥi dø‿zɑ̃ | Я живу тут два роки.
+Je reviens dans cinq minutes. | ʒə ʁəvjɛ̃ dɑ̃ sɛ̃k minyt | Я повернуся за п'ять хвилин.
+Il est parti il y a une heure. | il ɛ paʁti il i a yn œʁ | Він пішов годину тому.
+</div>
+
+<h3>13.5. З ким, без чого, для чого</h3>
+<div class="exs">
+Je vais au cinéma avec Marie. | ʒə vɛ o sinema avɛk maʁi | Я йду в кіно з Марі.
+Un café sans sucre, s'il vous plaît. | œ̃ kafe sɑ̃ sykʁ sil vu plɛ | Каву без цукру, будь ласка.
+C'est pour toi. | sɛ puʁ twa | Це для тебе.
+Une lettre pour Paul. | yn lɛtʁ puʁ pɔl | Лист для Поля.
+</div>
+
+<div class="qz" data-title="Вправа 13. Прийменники">
+Le livre est ___ la table. (на) | sur
+Le chat est ___ le lit. (під) | sous
+Je vais ___ Paris. | à
+Elle habite ___ France. | en
+Il vient ___ Canada. (du/de) | du
+Nous allons ___ cinéma. (à + le) | au
+Je travaille ___ lundi à vendredi. (з) | de
+Je prends un café ___ sucre. (без) | sans
+Je vais ___ le médecin. (до лікаря) | chez
+Je viens ___ voiture. | en
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Майбутнє, минуле, наказ">
+<h2><span class="no">Розділ 14</span>Майбутнє, минуле й наказовий спосіб</h2>
+<p class="lead">На рівні A1 цього достатньо, щоб розповісти про плани й минулі події. Простий майбутній час та імперфект залишаємо на A2.</p>
+
+<h3>14.1. Найближче майбутнє: aller + інфінітив</h3>
+<div class="rule"><b class="t">Формула</b><p><span class="fr">aller</span> (у теперішньому) + інфінітив: <span class="fr">Je vais manger. Tu vas partir. Nous allons voyager.</span> Це майбутнє, яке збудується відразу, або заплановане.</p></div>
+<div class="exs">
+Demain, je vais travailler. | dəmɛ̃ ʒə vɛ tʁavaje | Завтра я буду працювати.
+Ce soir, nous allons manger au restaurant. | sə swaʁ nuz‿alɔ̃ mɑ̃ʒe o ʁɛstoʁɑ̃ | Увечері ми поїмо в ресторані.
+Qu'est-ce que tu vas faire ? | kɛs kə ty va fɛʁ | Що ти будеш робити?
+Il ne va pas venir. | il nə va pa vəniʁ | Він не прийде.
+</div>
+
+<h3>14.2. Щойно минуле: venir de + інфінітив</h3>
+<div class="exs">
+Je viens d'arriver. | ʒə vjɛ̃ daʁive | Я щойно приїхав.
+Elle vient de partir. | ɛl vjɛ̃ də paʁtiʁ | Вона щойно пішла.
+</div>
+
+<h3>14.3. Минулий час passé composé</h3>
+<div class="rule"><b class="t">Формула</b><p><b>avoir</b> (або <b>être</b>) у теперішньому часі + <b>дієприкметник минулого часу</b>: <span class="fr">J'ai mangé. Il a fini. Elle est allée.</span></p></div>
+
+<h4>Утворення дієприкметника</h4>
+<div class="tw"><table>
+<tr><th>Дієслово</th><th>Дієприкметник</th><th>Приклад</th></tr>
+<tr><td>-er → <b>-é</b></td><td><span class="fr">parlé, mangé, aimé, travaillé</span> [e]</td><td><span class="fr">J'ai parlé.</span> [ʒe paʁle]</td></tr>
+<tr><td>-ir → <b>-i</b></td><td><span class="fr">fini, choisi, dormi</span></td><td><span class="fr">Il a fini.</span> [il a fini]</td></tr>
+<tr><td>-re → <b>-u</b></td><td><span class="fr">attendu, vendu, répondu</span></td><td><span class="fr">Nous avons attendu.</span></td></tr>
+</table></div>
+<h4>Неправильні дієприкметники</h4>
+<div class="vocab">
+avoir → eu | y | мати → мав
+être → été | ete | бути → був
+faire → fait | fɛ | робити → зробив
+prendre → pris | pʁi | брати → взяв
+comprendre → compris | kɔ̃pʁi | розуміти → зрозумів
+voir → vu | vy | бачити → бачив
+vouloir → voulu | vuly | хотіти → хотів
+pouvoir → pu | py | могти → міг
+savoir → su | sy | знати → знав
+devoir → dû | dy | мусити → мусив
+dire → dit | di | казати → сказав
+écrire → écrit | ekʁi | писати → написав
+lire → lu | ly | читати → прочитав
+boire → bu | by | пити → випив
+mettre → mis | mi | класти → поклав
+ouvrir → ouvert | uvɛʁ | відкривати → відкрив
+</div>
+
+<h4>Avoir чи être?</h4>
+<p><b>Більшість дієслів</b> беруть <span class="fr">avoir</span>. Дієслова руху й зміни стану та <b>всі зворотні дієслова</b> беруть <span class="fr">être</span>. Їх дев'ятнадцять-двадцять, і їх зручно вчити парами:</p>
+<div class="vocab">
+aller / venir | ale / vəniʁ | йти / приходити
+arriver / partir | aʁive / paʁtiʁ | прибувати / від'їжджати
+entrer / sortir | ɑ̃tʁe / sɔʁtiʁ | входити / виходити
+monter / descendre | mɔ̃te / desɑ̃dʁ | підніматися / спускатися
+rester / tomber | ʁɛste / tɔ̃be | залишатися / падати
+naître / mourir | nɛtʁ / muʁiʁ | народитися / померти
+retourner / rentrer | ʁətuʁne / ʁɑ̃tʁe | повертатися (куди-небудь / додому)
+</div>
+<div class="rule"><b class="t">Узгодження</b>
+<p>З <b>avoir</b> дієприкметник не змінюється: <span class="fr">Elle a mangé. Ils ont mangé.</span></p>
+<p>З <b>être</b> він узгоджується з підметом: <span class="fr">Il est allé. Elle est allée. Ils sont allés. Elles sont allées.</span></p></div>
+
+<div class="exs">
+Hier, j'ai mangé une pizza. | jɛʁ ʒe mɑ̃ʒe yn pidza | Вчора я з'їв піцу.
+Nous avons regardé un film. | nuz‿avɔ̃ ʁəɡaʁde œ̃ film | Ми дивилися фільм.
+Elle est allée au cinéma. | ɛl ɛt‿ale o sinema | Вона ходила в кіно.
+Ils sont partis à huit heures. | il sɔ̃ paʁti a ɥit œʁ | Вони пішли о восьмій.
+Je n'ai pas fini. | ʒə nɛ pa fini | Я не закінчив.
+Tu as compris ? | ty a kɔ̃pʁi | Ти зрозумів?
+Qu'est-ce que tu as fait ? | kɛs kə ty a fɛ | Що ти робив?
+Je me suis levé à sept heures. | ʒə mə sɥi ləve a sɛt œʁ | Я встав о сьомій.
+</div>
+<p>Слова-маркери минулого: <span class="fr">hier</span> (вчора), <span class="fr">hier soir</span>, <span class="fr">la semaine dernière</span> (минулого тижня), <span class="fr">il y a deux jours</span> (два дні тому), <span class="fr">ce matin</span> (сьогодні вранці), <span class="fr">déjà</span> (вже), <span class="fr">pas encore</span> (ще ні). Заперечення й питання: <span class="fr">Je n'ai pas mangé. As-tu mangé ?</span></p>
+
+<h3>14.4. Наказовий спосіб</h3>
+<p>Беремо форми tu, nous, vous без підмета. У дієслів на -er форма «ти» втрачає <b>-s</b>.</p>
+<div class="tw"><table>
+<tr><th>Дієслово</th><th>tu</th><th>nous</th><th>vous</th></tr>
+<tr><td><span class="fr">parler</span></td><td><span class="fr">Parle !</span></td><td><span class="fr">Parlons !</span></td><td><span class="fr">Parlez !</span></td></tr>
+<tr><td><span class="fr">finir</span></td><td><span class="fr">Finis !</span></td><td><span class="fr">Finissons !</span></td><td><span class="fr">Finissez !</span></td></tr>
+<tr><td><span class="fr">attendre</span></td><td><span class="fr">Attends !</span></td><td><span class="fr">Attendons !</span></td><td><span class="fr">Attendez !</span></td></tr>
+<tr><td><span class="fr">être</span></td><td><span class="fr">Sois !</span></td><td><span class="fr">Soyons !</span></td><td><span class="fr">Soyez !</span></td></tr>
+<tr><td><span class="fr">avoir</span></td><td><span class="fr">Aie !</span></td><td><span class="fr">Ayons !</span></td><td><span class="fr">Ayez !</span></td></tr>
+<tr><td><span class="fr">aller</span></td><td><span class="fr">Va !</span></td><td><span class="fr">Allons !</span></td><td><span class="fr">Allez !</span></td></tr>
+</table></div>
+<div class="exs">
+Regardez ! | ʁəɡaʁde | Дивіться!
+Écoute-moi ! | ekut mwa | Послухай мене!
+Ne parle pas ! | nə paʁl pa | Не говори!
+Ne partez pas ! | nə paʁte pa | Не йдіть!
+Attends-moi, s'il te plaît. | atɑ̃ mwa sil tə plɛ | Зачекай на мене, будь ласка.
+Allons-y ! | alɔ̃zi | Ходімо!
+Prenez la deuxième rue à gauche. | pʁəne la døzjɛm ʁy a ɡoʃ | Поверніть на другу вулицю ліворуч.
+</div>
+
+<div class="qz" data-title="Вправа 14. Минуле й майбутнє">
+Demain, je ___ travailler. (aller) | vais
+Ce soir, nous ___ manger. (aller) | allons
+Hier, j'___ mangé. (avoir) | ai
+Nous ___ regardé un film. (avoir) | avons
+Elle est ___ à Paris. (aller, participe) | allée
+Ils sont ___ à huit heures. (partir, participe) | partis
+J'ai ___ un livre. (lire, participe) | lu
+Tu as ___ ? (comprendre, participe) | compris
+Je n'ai ___ fini. | pas
+___ ! (parler, tu, наказ) | Parle
+___ ! (écouter, vous, наказ) | Écoutez
+Ne ___ pas ! (parler, tu) | parle
+</div>
+</section>
+
+<section class="unit" id="u15" data-short="Зворотні дієслова, звичайний день">
+<h2><span class="no">Розділ 15</span>Зворотні дієслова і звичайний день</h2>
+<p class="lead">Зворотні дієслова мають додаткове слово (<span class="fr">me, te, se, nous, vous</span>) перед дієсловом. В українській аналог це «-ся»: «мити<b>ся</b>», «вставати».</p>
+<div class="cj" data-verb="se lever" data-note="вставати" data-ipa="sələve">
+je | me lève | ʒə mə lɛv
+tu | te lèves | ty tə lɛv
+il / elle / on | se lève | il sə lɛv
+nous | nous levons | nu nu ləvɔ̃
+vous | vous levez | vu vu ləve
+ils / elles | se lèvent | il sə lɛv
+</div>
+<div class="rule"><b class="t">Правила</b>
+<ul>
+<li>Займенник змінюється разом з особою: <span class="fr">je me, tu te, il se, nous nous, vous vous, ils se</span>. Перед голосною <span class="fr">me, te, se</span> → <span class="fr">m', t', s'</span>.</li>
+<li>Заперечення обгортає обидва слова: <span class="fr">Je ne me lève pas.</span></li>
+<li>З інфінітивом займенник стоїть перед інфінітивом: <span class="fr">Je vais me coucher.</span></li>
+<li>Минулий час тільки з <span class="fr">être</span>: <span class="fr">Je me suis levé(e).</span></li>
+</ul></div>
+
+<h3>Мій день</h3>
+<div class="vocab">
+se réveiller | ʁevɛje | прокидатися
+se lever | ləve | вставати
+se laver | lave | митися
+se brosser les dents | bʁɔse le dɑ̃ | чистити зуби
+s'habiller | abije | одягатися
+prendre le petit-déjeuner | pʁɑ̃dʁ lə pəti deʒøne | снідати
+aller au travail | ale o tʁavaj | йти на роботу
+déjeuner | deʒøne | обідати
+rentrer à la maison | ʁɑ̃tʁe a la mɛzɔ̃ | повертатися додому
+dîner | dine | вечеряти
+se détendre | detɑ̃dʁ | розслаблятися
+se coucher | kuʃe | лягати спати
+s'endormir | ɑ̃dɔʁmiʁ | засинати
+se promener | pʁɔmne | гуляти
+se dépêcher | depɛʃe | поспішати
+</div>
+<div class="exs">
+Je me réveille à six heures. | ʒə mə ʁevɛj a siz‿œʁ | Я прокидаюся о шостій.
+Je me lève, je me lave et je m'habille. | ʒə mə lɛv ʒə mə lav e ʒə mabij | Я встаю, вмиваюся й одягаюся.
+Je prends le petit-déjeuner à sept heures. | ʒə pʁɑ̃ lə pəti deʒøne a sɛt œʁ | Я снідаю о сьомій.
+Je travaille de huit heures à seize heures. | ʒə tʁavaj də ɥit œʁ a sɛz œʁ | Я працюю з восьмої до шістнадцятої.
+Le soir, je me détends et je regarde un film. | lə swaʁ ʒə mə detɑ̃ e ʒə ʁəɡaʁd œ̃ film | Увечері я розслабляюся й дивлюся фільм.
+Je me couche à onze heures. | ʒə mə kuʃ a ɔ̃z‿œʁ | Я лягаю спати об одинадцятій.
+</div>
+<div class="qz" data-title="Вправа 15. Зворотні дієслова">
+Je ___ lève à sept heures. | me
+Tu ___ laves les mains. | te
+Il ___ réveille tôt. | se
+Nous ___ couchons tard. | nous
+Vous ___ dépêchez ? | vous
+Je ne ___ lève pas. | me
+Elle ___ habille. (s'/se) | s'
+</div>
+</section>
+
+<section class="unit" id="u16" data-short="Займенники-додатки">
+<h2><span class="no">Розділ 16</span>Займенники-додатки (початковий рівень)</h2>
+<p class="lead">Щоб не повторювати слова, їх замінюють коротким займенником. Він стоїть <b>перед</b> дієсловом, а не після, як в українській.</p>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Кого? Що? (прямий)</th><th>Кому? (непрямий)</th></tr>
+<tr><td>я</td><td colspan="2"><span class="fr">me / m'</span></td></tr>
+<tr><td>ти</td><td colspan="2"><span class="fr">te / t'</span></td></tr>
+<tr><td>він, вона, воно</td><td><span class="fr m">le</span>, <span class="fr f">la</span>, <span class="fr">l'</span></td><td><span class="fr">lui</span></td></tr>
+<tr><td>ми</td><td colspan="2"><span class="fr">nous</span></td></tr>
+<tr><td>ви</td><td colspan="2"><span class="fr">vous</span></td></tr>
+<tr><td>вони</td><td><span class="fr">les</span></td><td><span class="fr">leur</span></td></tr>
+</table></div>
+<div class="exs">
+Je vois Marie. → Je la vois. | ʒə la vwa | Я бачу Марі. → Я бачу її.
+Je regarde le film. → Je le regarde. | ʒə lə ʁəɡaʁd | Я дивлюся фільм. → Я дивлюся його.
+Je parle à Paul. → Je lui parle. | ʒə lɥi paʁl | Я говорю з Полем. → Я говорю з ним.
+Je donne le livre aux enfants. → Je leur donne le livre. | ʒə lœʁ dɔn lə livʁ | Я даю книжку дітям.
+Tu m'aimes ? | ty mɛm | Ти мене любиш?
+Je t'appelle demain. | ʒə tapɛl dəmɛ̃ | Я зателефоную тобі завтра.
+Il nous invite. | il nuz‿ɛ̃vit | Він нас запрошує.
+Je ne le vois pas. | ʒə nə lə vwa pa | Я його не бачу.
+</div>
+<div class="tip"><b class="t">Місце.</b> Займенник стоїть між підметом і дієсловом. У запереченні ж він усередині «обгортки»: <span class="fr">Je ne le vois pas.</span> З двома дієсловами займенник стоїть перед тим, до якого належить: <span class="fr">Je veux le voir.</span></div>
+
+<h3>y і en</h3>
+<div class="exs">
+Tu vas à Paris ? Oui, j'y vais. | ty va a paʁi? wi ʒi vɛ | Ти їдеш у Париж? Так, їду туди.
+Tu veux du café ? Oui, j'en veux. | ty vø dy kafe? wi ʒɑ̃ vø | Хочеш кави? Так, хочу (цього).
+Tu as des frères ? Oui, j'en ai deux. | ty a de fʁɛʁ? wi ʒɑ̃n‿e dø | У тебе є брати? Так, у мене їх двоє.
+</div>
+<p><span class="fr">y</span> замінює місце з <span class="fr">à, dans, chez, en</span> («туди, там»). <span class="fr">en</span> замінює частину чогось із <span class="fr">du, de la, des</span> або кількість («про це, звідти, його»). На A1 вчи їх лише як готові фрази.</p>
+
+<h3>Наголошені займенники</h3>
+<div class="tw"><table>
+<tr><th>moi</th><th>toi</th><th>lui</th><th>elle</th><th>nous</th><th>vous</th><th>eux</th><th>elles</th></tr>
+<tr><td>[mwa]</td><td>[twa]</td><td>[lɥi]</td><td>[ɛl]</td><td>[nu]</td><td>[vu]</td><td>[ø]</td><td>[ɛl]</td></tr>
+</table></div>
+<p>Вживаються після прийменників (<span class="fr">avec moi, chez toi, pour lui</span>), для підкреслення (<span class="fr">Moi, je m'appelle Paul.</span>), у коротких відповідях (<span class="fr">Qui ? Moi.</span>) і після <span class="fr">c'est</span> (<span class="fr">C'est moi.</span>).</p>
+
+<div class="qz" data-title="Вправа 16. Замінити займенником">
+Je vois Marie. → Je ___ vois. | la
+Je regarde le film. → Je ___ regarde. | le
+Je vois les enfants. → Je ___ vois. | les
+Je parle à Paul. → Je ___ parle. | lui
+Je parle à mes parents. → Je ___ parle. | leur
+Tu vas à Lyon ? Oui, j'___ vais. | y
+Tu veux du pain ? Oui, j'___ veux. | en
+Tu viens avec ___ ? (я) | moi
+</div>
+</section>
+<section class="unit" id="u17" data-grp="Як будується мова" data-short="Словотвір: як будуються слова">
+<h2><span class="no">Розділ 17</span>Словотвір: як будуються слова</h2>
+<p class="lead">Французьке слово складається з частин, як конструктор. Знаючи кілька префіксів і суфіксів, ти розпізнаєш сотні слів, яких ніколи не вчив. Це найкращий спосіб швидко збільшити словник.</p>
+
+<h3>17.1. Слово як конструктор</h3>
+<p><b>[префікс] + корінь + [суфікс] + закінчення.</b> Візьмемо корінь <span class="fr">travail</span> (робота) і побудуємо родину слів:</p>
+<div class="tw"><table>
+<tr><th>Слово</th><th>Як утворилося</th><th>Значення</th></tr>
+<tr><td><span class="fr">un travail</span> [tʁavaj]</td><td>корінь</td><td>робота</td></tr>
+<tr><td><span class="fr">travailler</span> [tʁavaje]</td><td>корінь + <b>-er</b></td><td>працювати</td></tr>
+<tr><td><span class="fr m">un travailleur</span></td><td>travaill + <b>-eur</b> (той, хто)</td><td>працівник</td></tr>
+<tr><td><span class="fr f">une travailleuse</span></td><td>жіночий рід від -eur</td><td>працівниця</td></tr>
+<tr><td><span class="fr">travailleur / travailleuse</span> (adj)</td><td>те саме, як прикметник</td><td>працьовитий</td></tr>
+</table></div>
+<p>Те саме працює для <span class="fr">chant</span> (спів) → <span class="fr">chanter</span> → <span class="fr">un chanteur / une chanteuse</span>; <span class="fr">danse</span> → <span class="fr">danser</span> → <span class="fr">un danseur / une danseuse</span>; <span class="fr">voyage</span> → <span class="fr">voyager</span> → <span class="fr">un voyageur / une voyageuse</span>.</p>
+
+<h3>17.2. Суфікси: хто, де, що</h3>
+<div class="tw"><table>
+<tr><th>Суфікс</th><th>Що означає</th><th>Приклади</th></tr>
+<tr><td><b>-eur / -euse</b></td><td>виконавець дії (з дієслова)</td><td><span class="fr">chanter → chanteur / chanteuse</span><br><span class="fr">vendre → vendeur / vendeuse</span><br><span class="fr">servir → serveur / serveuse</span></td></tr>
+<tr><td><b>-teur / -trice</b></td><td>професія, діяч</td><td><span class="fr">acteur / actrice</span>, <span class="fr">directeur / directrice</span>, <span class="fr">créateur / créatrice</span></td></tr>
+<tr><td><b>-ier / -ière</b></td><td>професія, пов'язана з предметом</td><td><span class="fr">cuisine → cuisinier / cuisinière</span>, <span class="fr">infirmier / infirmière</span>, <span class="fr">pâtissier / pâtissière</span></td></tr>
+<tr><td><b>-ien / -ienne</b></td><td>професія чи належність</td><td><span class="fr">musicien / musicienne</span>, <span class="fr">pharmacien</span>, <span class="fr">électricien</span>, <span class="fr">ukrainien / ukrainienne</span></td></tr>
+<tr><td><b>-iste</b></td><td>професія, заняття (рід не змінюється)</td><td><span class="fr">pianiste, journaliste, dentiste, touriste, artiste</span></td></tr>
+<tr><td><b>-erie</b></td><td>магазин або місце</td><td><span class="fr">boulanger → boulangerie</span> (пекарня), <span class="fr">pâtisserie, boucherie</span> (м'ясна), <span class="fr">librairie</span> (книгарня), <span class="fr">épicerie</span> (бакалія), <span class="fr">papeterie</span> (канцелярська)</td></tr>
+<tr><td><b>-age</b></td><td>дія, результат (чол.)</td><td><span class="fr">voyager → le voyage</span>, <span class="fr">nettoyer → le nettoyage</span>, <span class="fr">stage</span>, <span class="fr">garage</span></td></tr>
+<tr><td><b>-ment</b></td><td>дія, результат (чол.)</td><td><span class="fr">loger → le logement</span>, <span class="fr">changer → le changement</span>, <span class="fr">mouvement</span></td></tr>
+<tr><td><b>-tion / -sion</b></td><td>дія, процес (жін.)</td><td><span class="fr">inviter → l'invitation</span>, <span class="fr">préparer → la préparation</span>, <span class="fr">réserver → la réservation</span>, <span class="fr">discuter → la discussion</span></td></tr>
+<tr><td><b>-té / -ité</b></td><td>якість, стан (жін.)</td><td><span class="fr">beau → la beauté</span>, <span class="fr">libre → la liberté</span>, <span class="fr">la qualité</span>, <span class="fr">l'université</span></td></tr>
+<tr><td><b>-eur</b> (з прикметника)</td><td>вимір, якість</td><td><span class="fr">grand → la grandeur</span>, <span class="fr">long → la longueur</span>, <span class="fr">large → la largeur</span>, <span class="fr">haut → la hauteur</span>, <span class="fr">chaud → la chaleur</span></td></tr>
+<tr><td><b>-ette, -et, -on</b></td><td>зменшувальні</td><td><span class="fr">maison → maisonnette</span>, <span class="fr">fille → fillette</span>, <span class="fr">chat → chaton</span>, <span class="fr">ours → ourson</span></td></tr>
+<tr><td><b>-ie, -isme</b></td><td>наука, явище</td><td><span class="fr">la géographie, la biologie</span>, <span class="fr">le tourisme</span></td></tr>
+</table></div>
+
+<h3>17.3. Прикметники з суфіксами</h3>
+<div class="tw"><table>
+<tr><th>Суфікс</th><th>Значення</th><th>Приклади</th></tr>
+<tr><td><b>-able / -ible</b></td><td>можливий, здатний (-ний)</td><td><span class="fr">possible, agréable, aimable, visible, lisible</span></td></tr>
+<tr><td><b>-eux / -euse</b></td><td>повний чогось (-овий, -истий)</td><td><span class="fr">danger → dangereux</span>, <span class="fr">bonheur → heureux</span>, <span class="fr">nombre → nombreux</span>, <span class="fr">courage → courageux</span></td></tr>
+<tr><td><b>-if / -ive</b></td><td>схильний до дії</td><td><span class="fr">actif / active, sportif / sportive, créatif</span></td></tr>
+<tr><td><b>-al / -ale</b></td><td>що стосується (-альний)</td><td><span class="fr">national, régional, central, normal</span></td></tr>
+<tr><td><b>-el / -elle</b></td><td>(-ний)</td><td><span class="fr">naturel, culturel, traditionnel, personnel</span></td></tr>
+<tr><td><b>-ique</b></td><td>(-ичний)</td><td><span class="fr">typique, magique, musical</span></td></tr>
+<tr><td><b>-ant, -ante</b></td><td>від дієслова: той, що робить</td><td><span class="fr">intéresser → intéressant</span>, <span class="fr">fatiguer → fatigant</span>, <span class="fr">charmer → charmant</span></td></tr>
+<tr><td><b>-é, -ée</b></td><td>від дієслова: той, над ким зроблено</td><td><span class="fr">fatiguer → fatigué</span>, <span class="fr">fermer → fermé</span>, <span class="fr">casser → cassé</span></td></tr>
+</table></div>
+
+<h3>17.4. Прислівники: прикметник + -ment</h3>
+<div class="rule"><b class="t">Формула</b>
+<p>Візьми <b>жіночу</b> форму прикметника й додай <b>-ment</b>: <span class="fr">lent → lente → lentement</span> [lɑ̃tmɑ̃]; <span class="fr">heureux → heureuse → heureusement</span>; <span class="fr">doux → douce → doucement</span>; <span class="fr">sérieux → sérieusement</span>.</p></div>
+<div class="tw"><table>
+<tr><th>Виняток</th><th>Утворення</th><th>Приклад</th></tr>
+<tr><td>Прикметник на голосну</td><td>беруть чоловічу форму + -ment</td><td><span class="fr">vrai → vraiment</span>, <span class="fr">poli → poliment</span>, <span class="fr">simple → simplement</span></td></tr>
+<tr><td>-ent → <b>-emment</b>, -ant → <b>-amment</b></td><td>вимова однакова: [amɑ̃]</td><td><span class="fr">évident → évidemment</span>, <span class="fr">constant → constamment</span></td></tr>
+<tr><td>Особливі</td><td></td><td><span class="fr">bon → bien</span>, <span class="fr">mauvais → mal</span>, <span class="fr">meilleur → mieux</span>, <span class="fr">gentil → gentiment</span></td></tr>
+</table></div>
+
+<h3>17.5. Префікси</h3>
+<div class="tw"><table>
+<tr><th>Префікс</th><th>Значення</th><th>Приклади</th></tr>
+<tr><td><b>re- / ré-</b></td><td>знову</td><td><span class="fr">faire → refaire</span>, <span class="fr">lire → relire</span>, <span class="fr">venir → revenir</span>, <span class="fr">commencer → recommencer</span>, <span class="fr">trouver → retrouver</span></td></tr>
+<tr><td><b>dé- / dés-</b></td><td>протилежне, скасування</td><td><span class="fr">faire → défaire</span>, <span class="fr">couvrir → découvrir</span>, <span class="fr">agréable → désagréable</span>, <span class="fr">ordre → désordre</span></td></tr>
+<tr><td><b>in- / im- / il- / ir-</b></td><td>не- (заперечення)</td><td><span class="fr">possible → impossible</span>, <span class="fr">utile → inutile</span>, <span class="fr">correct → incorrect</span>, <span class="fr">lisible → illisible</span>, <span class="fr">réel → irréel</span></td></tr>
+<tr><td><b>mal-</b></td><td>погано</td><td><span class="fr">heureux → malheureux</span>, <span class="fr">honnête → malhonnête</span></td></tr>
+<tr><td><b>pré-</b></td><td>перед</td><td><span class="fr">voir → prévoir</span>, <span class="fr">histoire → préhistoire</span></td></tr>
+<tr><td><b>sous-</b></td><td>під</td><td><span class="fr">sous-marin</span> (підводний), <span class="fr">sous-titre</span> (субтитр)</td></tr>
+<tr><td><b>mi-</b></td><td>половина, середина</td><td><span class="fr">mi + nuit → minuit</span>, <span class="fr">mi + jour → midi</span>, <span class="fr">mi-temps</span></td></tr>
+<tr><td><b>anti-, co-, inter-</b></td><td>проти, разом, між</td><td><span class="fr">antibiotique</span>, <span class="fr">copilote</span>, <span class="fr">international</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">im-, а не in-.</b> Перед <b>b, m, p</b> префікс <span class="fr">in-</span> стає <span class="fr">im-</span>: <span class="fr">impossible, immobile, imbuvable</span>. Перед <b>l</b> і <b>r</b> подвоюється: <span class="fr">illisible, irréel, irrégulier</span>.</div>
+
+<h3>17.6. Складні слова</h3>
+<p>У французькій багато складних іменників. Найпоширеніші моделі:</p>
+<div class="tw"><table>
+<tr><th>Модель</th><th>Приклад</th><th>Значення</th></tr>
+<tr><td>дієслово (форма «він») + іменник = «той, що робить»</td><td><span class="fr m">un ouvre-boîte</span> [uvʁəbwat]<br><span class="fr m">un sèche-cheveux</span><br><span class="fr m">un lave-vaisselle</span><br><span class="fr m">un gratte-ciel</span><br><span class="fr m">un tire-bouchon</span></td><td>відкривачка для банок («відкриває банку»)<br>фен («сушить волосся»)<br>посудомийка («миє посуд»)<br>хмарочос («дряпає небо»)<br>штопор</td></tr>
+<tr><td>іменник + іменник</td><td><span class="fr m">un timbre-poste</span>, <span class="fr m">un chef-lieu</span>, <span class="fr m">un wagon-lit</span></td><td>поштова марка, центр регіону, спальний вагон</td></tr>
+<tr><td>прикметник + іменник, злиті</td><td><span class="fr m">un grand-père</span>, <span class="fr f">une grand-mère</span>, <span class="fr m">un petit-déjeuner</span></td><td>дід, баба, сніданок</td></tr>
+<tr><td>прийменник + іменник</td><td><span class="fr m">un après-midi</span>, <span class="fr m">un rendez-vous</span></td><td>післяобідній час, зустріч</td></tr>
+</table></div>
+
+<h3>17.7. Дієслова з іменників і прикметників</h3>
+<div class="tw"><table>
+<tr><th>Модель</th><th>Приклади</th></tr>
+<tr><td>іменник → дієслово на <b>-er</b></td><td><span class="fr">le travail → travailler</span>, <span class="fr">le jardin → jardiner</span>, <span class="fr">la cuisine → cuisiner</span>, <span class="fr">la danse → danser</span>, <span class="fr">le chant → chanter</span>, <span class="fr">le dîner → dîner</span></td></tr>
+<tr><td>прикметник кольору чи розміру → дієслово на <b>-ir</b> «стати …»</td><td><span class="fr">grand → grandir</span> (рости), <span class="fr">gros → grossir</span> (товстішати), <span class="fr">maigre → maigrir</span> (худнути), <span class="fr">rouge → rougir</span> (червоніти), <span class="fr">vieux → vieillir</span> (старіти), <span class="fr">jaune → jaunir</span> (жовтіти)</td></tr>
+</table></div>
+
+<h3>17.8. Мости: українська, англійська, французька</h3>
+<p>Багато слів у трьох мовах відрізняються лише закінченням. Ця таблиця дає тобі сотні безкоштовних слів.</p>
+<div class="tw"><table>
+<tr><th>Французька</th><th>Англійська</th><th>Українська</th><th>Приклади</th></tr>
+<tr><td><b>-tion</b></td><td>-tion</td><td>-ція</td><td><span class="fr">nation, information, éducation, situation</span></td></tr>
+<tr><td><b>-ique</b></td><td>-ic, -ics</td><td>-ичний, -ика</td><td><span class="fr">musique, politique, classique, physique</span></td></tr>
+<tr><td><b>-ie</b></td><td>-y</td><td>-ія</td><td><span class="fr">géographie, biologie, énergie, histoire</span></td></tr>
+<tr><td><b>-eur</b></td><td>-or</td><td>-ор</td><td><span class="fr">acteur, directeur, professeur, docteur</span></td></tr>
+<tr><td><b>-iste</b></td><td>-ist</td><td>-іст</td><td><span class="fr">artiste, dentiste, touriste, pianiste</span></td></tr>
+<tr><td><b>-isme</b></td><td>-ism</td><td>-ізм</td><td><span class="fr">tourisme, optimisme</span></td></tr>
+<tr><td><b>-té</b></td><td>-ty</td><td>-ість, -тет</td><td><span class="fr">liberté, qualité, université, identité</span></td></tr>
+<tr><td><b>-eux</b></td><td>-ous</td><td>-озний, -овий</td><td><span class="fr">dangereux, nerveux, délicieux, fameux</span></td></tr>
+<tr><td><b>-aire</b></td><td>-ary</td><td>-арний</td><td><span class="fr">nécessaire, ordinaire, vocabulaire, anniversaire</span></td></tr>
+<tr><td><b>-ant, -ent</b></td><td>-ant, -ent</td><td>-ант, -ент</td><td><span class="fr">étudiant, président, restaurant, excellent</span></td></tr>
+<tr><td><b>é-, es-</b> на початку</td><td>s-</td><td>с-</td><td><span class="fr">école</span> (school), <span class="fr">étudiant</span> (student), <span class="fr">état</span> (state), <span class="fr">espace</span> (space)</td></tr>
+<tr><td>Німа <b>s</b> → <b>^</b></td><td>-st-</td><td></td><td><span class="fr">forêt</span> (forest), <span class="fr">hôpital</span> (hospital), <span class="fr">île</span> (isle), <span class="fr">fête</span> (feast)</td></tr>
+</table></div>
+<div class="warn"><b>Фальшиві друзі.</b> Схожі слова, що означають інше: <span class="fr">un magasin</span> це магазин (а не журнал, той <span class="fr">un magazine</span>), <span class="fr">une librairie</span> це книгарня (бібліотека це <span class="fr">une bibliothèque</span>), <span class="fr">une location</span> це оренда (а не локація), <span class="fr">attendre</span> це чекати, <span class="fr">un lecteur</span> це читач (а не лектор), <span class="fr">sensible</span> це чутливий (розумний це <span class="fr">raisonnable</span>), <span class="fr">actuel</span> це нинішній, сучасний (а не «актуальний» у значенні «доречний»), <span class="fr">une journée</span> це день як проміжок часу.</div>
+
+<div class="qz" data-title="Вправа 17. Конструктор слів">
+lent → прислівник: ___ | lentement
+heureux → прислівник: ___ | heureusement
+vrai → прислівник: ___ | vraiment
+doux → прислівник: ___ | doucement
+acteur → жіночий рід: ___ | actrice
+chanteur → жіночий рід: ___ | chanteuse
+musicien → жіночий рід: ___ | musicienne
+cuisinier → жіночий рід: ___ | cuisinière
+possible → не-: ___ | impossible
+agréable → не-: ___ | désagréable
+heureux → нещасливий: ___ | malheureux
+faire → зробити знову: ___ | refaire
+lire → прочитати знову: ___ | relire
+grand → дієслово «рости»: ___ | grandir
+le voyage → дієслово: ___ | voyager
+le jardin → дієслово: ___ | jardiner
+</div>
+</section>
+
+<section class="unit" id="u18" data-short="Будова речення">
+<h2><span class="no">Розділ 18</span>Будова речення: що де стоїть</h2>
+<p class="lead">Французьке речення має суворий порядок слів. Якщо ти його знаєш, ти зможеш збудувати будь-яке просте речення, підставляючи слова в схему.</p>
+
+<h3>18.1. Схема простого речення</h3>
+<div class="tw"><table>
+<tr><th>1. Підмет</th><th>2. ne</th><th>3. Займенник-додаток</th><th>4. Дієслово</th><th>5. pas</th><th>6. Решта</th></tr>
+<tr><td><span class="fr">Je</span></td><td></td><td></td><td><span class="fr">parle</span></td><td></td><td><span class="fr">français.</span></td></tr>
+<tr><td><span class="fr">Je</span></td><td><span class="fr">ne</span></td><td></td><td><span class="fr">parle</span></td><td><span class="fr">pas</span></td><td><span class="fr">français.</span></td></tr>
+<tr><td><span class="fr">Je</span></td><td><span class="fr">ne</span></td><td><span class="fr">le</span></td><td><span class="fr">vois</span></td><td><span class="fr">pas.</span></td><td></td></tr>
+<tr><td><span class="fr">Elle</span></td><td></td><td><span class="fr">lui</span></td><td><span class="fr">parle</span></td><td></td><td><span class="fr">souvent.</span></td></tr>
+<tr><td><span class="fr">Nous</span></td><td><span class="fr">n'</span></td><td><span class="fr">y</span></td><td><span class="fr">allons</span></td><td><span class="fr">pas</span></td><td><span class="fr">demain.</span></td></tr>
+</table></div>
+
+<h3>18.2. Де стоять додаткові слова</h3>
+<ul>
+<li><b>Прислівник</b> зазвичай після дієслова: <span class="fr">Il parle bien. Elle mange beaucoup. Je travaille toujours.</span> Короткі часті прислівники (<span class="fr">déjà, toujours, souvent, bien, mal, trop, beaucoup</span>) між допоміжним дієсловом і дієприкметником у минулому: <span class="fr">J'ai déjà mangé. Il a beaucoup travaillé.</span></li>
+<li><b>Час і місце</b> на початку або наприкінці: <span class="fr">Demain, je vais travailler.</span> <span class="fr">Je vais travailler demain.</span> <span class="fr">J'habite à Paris depuis deux ans.</span></li>
+<li><b>Прикметник</b> після іменника, окрім групи BAGS: <span class="fr">une voiture rouge</span>, <span class="fr">un petit chat</span>.</li>
+<li><b>Займенник-додаток</b> перед дієсловом: <span class="fr">Je t'aime.</span></li>
+</ul>
+
+<h3>18.3. З'єднувальні слова</h3>
+<div class="vocab">
+et | e | і, та
+ou | u | або
+mais | mɛ | але
+donc | dɔ̃k | отже
+car | kaʁ | бо (літературне)
+parce que | paʁs kə | тому що
+alors | alɔʁ | тоді, отже
+puis | pɥi | потім
+ensuite | ɑ̃sɥit | потім, далі
+d'abord | dabɔʁ | спочатку
+enfin | ɑ̃fɛ̃ | нарешті
+quand | kɑ̃ | коли
+si | si | якщо
+que | kə | що, ніж
+pour | puʁ | для, щоб
+avec | avɛk | з
+sans | sɑ̃ | без
+aussi | osi | теж, також
+même | mɛm | навіть, той самий
+peut-être | pøtɛtʁ | можливо
+</div>
+<div class="exs">
+D'abord, je me lève. Ensuite, je prends le café. Enfin, je pars. | dabɔʁ ʒə mə lɛv. ɑ̃sɥit ʒə pʁɑ̃ lə kafe. ɑ̃fɛ̃ ʒə paʁ | Спочатку я встаю. Потім п'ю каву. Нарешті йду.
+Je veux venir, mais je suis fatigué. | ʒə vø vəniʁ mɛ ʒə sɥi fatige | Я хочу прийти, але я втомлений.
+Si tu veux, nous allons au cinéma. | si ty vø nu zalɔ̃ o sinema | Якщо хочеш, підемо в кіно.
+Je pense que c'est bien. | ʒə pɑ̃s kə sɛ bjɛ̃ | Я думаю, що це добре.
+</div>
+
+<h3>18.4. Типові помилки й чому вони виникають</h3>
+<div class="tw"><table>
+<tr><th>Помилка</th><th>Правильно</th><th>Чому</th></tr>
+<tr><td><span class="fr">Suis ukrainien.</span></td><td><span class="fr">Je suis ukrainien.</span></td><td>підмет у французькій обов'язковий</td></tr>
+<tr><td><span class="fr">Je suis vingt ans.</span></td><td><span class="fr">J'ai vingt ans.</span></td><td>вік у французькій «мають», а не «є»</td></tr>
+<tr><td><span class="fr">J'aime café.</span></td><td><span class="fr">J'aime le café.</span></td><td>артикль обов'язковий (загальне поняття → le)</td></tr>
+<tr><td><span class="fr">Je vais à le cinéma.</span></td><td><span class="fr">Je vais au cinéma.</span></td><td>à + le зливаються в au</td></tr>
+<tr><td><span class="fr">Je ne parle français.</span></td><td><span class="fr">Je ne parle pas français.</span></td><td>заперечення складається з двох частин</td></tr>
+<tr><td><span class="fr">Je n'ai pas un frère.</span></td><td><span class="fr">Je n'ai pas de frère.</span></td><td>після pas неозначений артикль → de</td></tr>
+<tr><td><span class="fr">Une voiture rouge grande.</span></td><td><span class="fr">Une grande voiture rouge.</span></td><td>grand стоїть перед іменником (BAGS)</td></tr>
+<tr><td><span class="fr">Je suis allé à Paris hier.</span> (про жінку)</td><td><span class="fr">Je suis allée…</span></td><td>з être дієприкметник узгоджується з підметом</td></tr>
+<tr><td><span class="fr">Je veux un café.</span> (у кафе)</td><td><span class="fr">Je voudrais un café.</span></td><td><span class="fr">voudrais</span> ввічливіше за <span class="fr">veux</span></td></tr>
+<tr><td><span class="fr">Il est en train de mange.</span></td><td><span class="fr">Il est en train de manger.</span></td><td>після <span class="fr">de</span> інфінітив</td></tr>
+</table></div>
+
+<div class="qz" data-title="Вправа 18. Склади речення за схемою">
+Склади: je / ne / parler / pas / français → Je ___ français. | ne parle pas
+Склади: je / le / voir → Je ___ . | le vois
+Склади: nous / ne / y / aller / pas → Nous n'___ pas. | y allons
+Склади: il / avoir / déjà / manger → Il a ___ . | déjà mangé
+Виправ: J'aime café. → J'aime ___ café. | le
+Виправ: Je suis vingt ans. → J'___ vingt ans. | ai
+Виправ: Je n'ai pas un frère. → Je n'ai pas ___ frère. | de
+Виправ: Une rouge voiture. → Une voiture ___ . | rouge
+</div>
+</section>
+<section class="unit" id="u19" data-grp="Словник і практика" data-short="Тематичний словник">
+<h2><span class="no">Розділ 19</span>Тематичний словник A1</h2>
+<p class="lead">Близько 700 слів за темами з артиклем, транскрипцією та перекладом. Слова з артиклем чоловічого роду виділені синім, жіночого червоним. Натискай на слово, щоб почути.</p>
+<div class="tip"><b class="t">Як вчити.</b> Бери одну тему на 2–3 дні. Спочатку прочитай уголос усі слова, потім закрий переклад (кнопка «Переклад» не ховає таблиці, тому прикрий колонку долонею), потім склади по три речення з новими словами.</div>
+
+<h3>19.1. Родина (<span class="fr">la famille</span>)</h3>
+<div class="vocab">
+le père | lə pɛʁ | батько | m
+la mère | la mɛʁ | мати | f
+les parents | le paʁɑ̃ | батьки
+le frère | lə fʁɛʁ | брат | m
+la sœur | la sœʁ | сестра | f
+le fils | lə fis | син | m
+la fille | la fij | дочка, дівчина | f
+l'enfant | lɑ̃fɑ̃ | дитина | mf
+le bébé | lə bebe | немовля | m
+le grand-père | lə ɡʁɑ̃pɛʁ | дід | m
+la grand-mère | la ɡʁɑ̃mɛʁ | баба | f
+les grands-parents | le ɡʁɑ̃paʁɑ̃ | дідусь і бабуся
+l'oncle | lɔ̃kl | дядько | m
+la tante | la tɑ̃t | тітка | f
+le cousin | lə kuzɛ̃ | двоюрідний брат | m
+la cousine | la kuzin | двоюрідна сестра | f
+le neveu | lə nəvø | племінник | m
+la nièce | la njɛs | племінниця | f
+le mari | lə maʁi | чоловік (у шлюбі) | m
+la femme | la fam | жінка, дружина | f
+l'ami / l'amie | lami | друг / подруга | mf
+le voisin / la voisine | lə vwazɛ̃ / la vwazin | сусід / сусідка | mf
+marié / mariée | maʁje | одружений / заміжня
+célibataire | selibatɛʁ | неодружений, самотній
+divorcé / divorcée | divɔʁse | розлучений / розлучена
+</div>
+
+<h3>19.2. Дім (<span class="fr">la maison</span>)</h3>
+<div class="vocab">
+la maison | la mɛzɔ̃ | будинок | f
+l'appartement | lapaʁtəmɑ̃ | квартира | m
+la chambre | la ʃɑ̃bʁ | спальня, кімната | f
+le salon | lə salɔ̃ | вітальня | m
+la cuisine | la kɥizin | кухня | f
+la salle de bains | la sal də bɛ̃ | ванна кімната | f
+les toilettes | le twalɛt | туалет
+le couloir | lə kulwaʁ | коридор | m
+le balcon | lə balkɔ̃ | балкон | m
+le jardin | lə ʒaʁdɛ̃ | сад | m
+le garage | lə ɡaʁaʒ | гараж | m
+la porte | la pɔʁt | двері | f
+la fenêtre | la fənɛtʁ | вікно | f
+le mur | lə myʁ | стіна | m
+le toit | lə twa | дах | m
+l'escalier | lɛskalje | сходи | m
+l'étage | letaʒ | поверх | m
+l'ascenseur | lasɑ̃sœʁ | ліфт | m
+la clé | la kle | ключ | f
+# Меблі та речі
+la table | la tabl | стіл | f
+la chaise | la ʃɛz | стілець | f
+le lit | lə li | ліжко | m
+le canapé | lə kanape | диван | m
+le fauteuil | lə fotœj | крісло | m
+l'armoire | laʁmwaʁ | шафа | f
+l'étagère | letaʒɛʁ | полиця | f
+la lampe | la lɑ̃p | лампа | f
+le tapis | lə tapi | килим | m
+le miroir | lə miʁwaʁ | дзеркало | m
+le frigo | lə fʁiɡo | холодильник | m
+la cuisinière | la kɥizinjɛʁ | плита | f
+le four | lə fuʁ | духовка | m
+la machine à laver | la maʃin a lave | пральна машина | f
+la douche | la duʃ | душ | f
+la baignoire | la bɛɲwaʁ | ванна | f
+le lavabo | lə lavabo | умивальник | m
+le loyer | lə lwaje | оренда, квартплата | m
+</div>
+
+<h3>19.3. Їжа й напої (<span class="fr">la nourriture</span>)</h3>
+<div class="vocab">
+# Основне
+le pain | lə pɛ̃ | хліб | m
+la baguette | la baɡɛt | багет | f
+le croissant | lə kʁwasɑ̃ | круасан | m
+le beurre | lə bœʁ | масло | m
+le fromage | lə fʁɔmaʒ | сир | m
+le lait | lə lɛ | молоко | m
+l'œuf | lœf | яйце | m
+le jambon | lə ʒɑ̃bɔ̃ | шинка | m
+la saucisse | la sosis | сосиска | f
+la viande | la vjɑ̃d | м'ясо | f
+le poulet | lə pulɛ | курка | m
+le poisson | lə pwasɔ̃ | риба | m
+le riz | lə ʁi | рис | m
+les pâtes | le pɑt | макарони
+les frites | le fʁit | картопля фрі
+la soupe | la sup | суп | f
+la salade | la salad | салат | f
+le gâteau | lə ɡato | торт, пиріг | m
+le chocolat | lə ʃɔkɔla | шоколад | m
+la glace | la ɡlas | морозиво | f
+la confiture | la kɔ̃fityʁ | варення, джем | f
+le sucre | lə sykʁ | цукор | m
+le sel | lə sɛl | сіль | m
+le poivre | lə pwavʁ | перець | m
+l'huile | lɥil | олія | f
+le miel | lə mjɛl | мед | m
+# Овочі й фрукти
+les légumes | le leɡym | овочі
+la pomme de terre | la pɔm də tɛʁ | картопля | f
+la tomate | la tɔmat | помідор | f
+la carotte | la kaʁɔt | морква | f
+l'oignon | lɔɲɔ̃ | цибуля | m
+les fruits | le fʁɥi | фрукти
+la pomme | la pɔm | яблуко | f
+la banane | la banan | банан | f
+l'orange | lɔʁɑ̃ʒ | апельсин | f
+le citron | lə sitʁɔ̃ | лимон | m
+la fraise | la fʁɛz | полуниця | f
+le raisin | lə ʁɛzɛ̃ | виноград | m
+# Напої
+l'eau | lo | вода | f
+le café | lə kafe | кава | m
+le thé | lə te | чай | m
+le jus | lə ʒy | сік | m
+le vin | lə vɛ̃ | вино | m
+la bière | la bjɛʁ | пиво | f
+# Посуд
+un verre | œ̃ vɛʁ | склянка | m
+une tasse | yn tas | чашка | f
+une bouteille | yn butɛj | пляшка | f
+une assiette | yn asjɛt | тарілка | f
+un couteau | œ̃ kuto | ніж | m
+une fourchette | yn fuʁʃɛt | виделка | f
+une cuillère | yn kɥijɛʁ | ложка | f
+</div>
+
+<h4>Прийоми їжі та кількості</h4>
+<div class="vocab">
+le petit-déjeuner | lə pəti deʒøne | сніданок | m
+le déjeuner | lə deʒøne | обід | m
+le goûter | lə ɡute | полуденок | m
+le dîner | lə dine | вечеря | m
+bon appétit ! | bɔn apeti | смачного!
+santé ! | sɑ̃te | будьмо!
+l'addition | ladisjɔ̃ | рахунок (у ресторані) | f
+un peu de | œ̃ pø də | трохи
+beaucoup de | boku də | багато
+assez de | ase də | досить
+trop de | tʁo də | занадто багато
+un kilo de | œ̃ kilo də | кілограм
+un litre de | œ̃ litʁ də | літр
+une tranche de | yn tʁɑ̃ʃ də | скибка
+un morceau de | œ̃ mɔʁso də | шматок
+</div>
+
+<h3>19.4. Одяг (<span class="fr">les vêtements</span>)</h3>
+<div class="vocab">
+le pantalon | lə pɑ̃talɔ̃ | штани | m
+le jean | lə dʒin | джинси | m
+la chemise | la ʃəmiz | сорочка | f
+le t-shirt | lə tiʃœʁt | футболка | m
+le pull | lə pyl | светр | m
+la veste | la vɛst | піджак, куртка | f
+le manteau | lə mɑ̃to | пальто | m
+la robe | la ʁɔb | сукня | f
+la jupe | la ʒyp | спідниця | f
+le short | lə ʃɔʁt | шорти | m
+le costume | lə kɔstym | костюм | m
+la cravate | la kʁavat | краватка | f
+les chaussures | le ʃosyʁ | взуття
+les chaussettes | le ʃosɛt | шкарпетки
+les baskets | le baskɛt | кросівки
+les bottes | le bɔt | чоботи
+le chapeau | lə ʃapo | капелюх | m
+la casquette | la kaskɛt | кепка | f
+l'écharpe | leʃaʁp | шарф | f
+les gants | le ɡɑ̃ | рукавички
+la ceinture | la sɛ̃tyʁ | ремінь | f
+les lunettes | le lynɛt | окуляри
+le sac | lə sak | сумка | m
+le maillot de bain | lə majo də bɛ̃ | купальник | m
+porter | pɔʁte | носити
+essayer | eseje | приміряти
+la taille | la taj | розмір | f
+la pointure | la pwɛ̃tyʁ | розмір взуття | f
+</div>
+
+<h3>19.5. Тіло й здоров'я (<span class="fr">le corps, la santé</span>)</h3>
+<div class="vocab">
+# Тіло
+la tête | la tɛt | голова | f
+le visage | lə vizaʒ | обличчя | m
+l'œil / les yeux | lœj / lez‿jø | око / очі | m
+le nez | lə ne | ніс | m
+la bouche | la buʃ | рот | f
+l'oreille | lɔʁɛj | вухо | f
+les cheveux | le ʃəvø | волосся
+les dents | le dɑ̃ | зуби
+le cou | lə ku | шия | m
+l'épaule | lepol | плече | f
+le bras | lə bʁa | рука (від плеча) | m
+la main | la mɛ̃ | рука (кисть) | f
+le doigt | lə dwa | палець | m
+le dos | lə do | спина | m
+le ventre | lə vɑ̃tʁ | живіт | m
+le cœur | lə kœʁ | серце | m
+la jambe | la ʒɑ̃b | нога | f
+le genou | lə ʒənu | коліно | m
+le pied | lə pje | ступня | m
+# Здоров'я
+malade | malad | хворий
+la fièvre | la fjɛvʁ | температура | f
+le rhume | lə ʁym | застуда | m
+la toux | la tu | кашель | f
+la douleur | la dulœʁ | біль | f
+le médecin | lə medsɛ̃ | лікар | m
+le médicament | lə medikamɑ̃ | ліки | m
+la pharmacie | la faʁmasi | аптека | f
+l'hôpital | lopital | лікарня | m
+j'ai mal à la tête | ʒe mal a la tɛt | у мене болить голова
+j'ai mal au ventre | ʒe mal o vɑ̃tʁ | у мене болить живіт
+je ne me sens pas bien | ʒə nə mə sɑ̃ pa bjɛ̃ | я погано себе почуваю
+appelez une ambulance | aple yn ɑ̃bylɑ̃s | викличте швидку
+au secours ! | o səkuʁ | допоможіть!
+</div>
+
+<h3>19.6. Місто (<span class="fr">la ville</span>)</h3>
+<div class="vocab">
+la ville | la vil | місто | f
+la rue | la ʁy | вулиця | f
+la place | la plas | площа | f
+le centre-ville | lə sɑ̃tʁə vil | центр міста | m
+le quartier | lə kaʁtje | квартал, район | m
+le pont | lə pɔ̃ | міст | m
+la gare | la ɡaʁ | вокзал | f
+l'arrêt de bus | laʁɛ də bys | автобусна зупинка | m
+la station de métro | la stasjɔ̃ də metʁo | станція метро | f
+l'aéroport | laeʁɔpɔʁ | аеропорт | m
+la banque | la bɑ̃k | банк | f
+la poste | la pɔst | пошта | f
+la mairie | la mɛʁi | мерія | f
+le commissariat | lə kɔmisaʁja | відділок поліції | m
+l'école | lekɔl | школа | f
+l'université | lynivɛʁsite | університет | f
+la bibliothèque | la biblijɔtɛk | бібліотека | f
+le musée | lə myze | музей | m
+le cinéma | lə sinema | кінотеатр | m
+le théâtre | lə teɑtʁ | театр | m
+le restaurant | lə ʁɛstoʁɑ̃ | ресторан | m
+le supermarché | lə sypɛʁmaʁʃe | супермаркет | m
+le marché | lə maʁʃe | ринок | m
+la boulangerie | la bulɑ̃ʒʁi | пекарня | f
+le magasin | lə maɡazɛ̃ | магазин | m
+le parc | lə paʁk | парк | m
+l'église | leɡliz | церква | f
+l'hôtel | lotɛl | готель | m
+la piscine | la pisin | басейн | f
+le stade | lə stad | стадіон | m
+</div>
+<h4>Дорога</h4>
+<div class="vocab">
+à gauche | a ɡoʃ | ліворуч
+à droite | a dʁwat | праворуч
+tout droit | tu dʁwa | прямо
+au coin | o kwɛ̃ | на розі
+au feu | o fø | на світлофорі
+tournez | tuʁne | поверніть
+continuez | kɔ̃tinɥe | продовжуйте
+traversez | tʁavɛʁse | перейдіть
+c'est près | sɛ pʁɛ | це близько
+c'est loin | sɛ lwɛ̃ | це далеко
+pour aller à … ? | puʁ ale a | як дістатися до …?
+</div>
+
+<h3>19.7. Транспорт (<span class="fr">les transports</span>)</h3>
+<div class="vocab">
+la voiture | la vwatyʁ | автомобіль | f
+le bus | lə bys | автобус | m
+le train | lə tʁɛ̃ | потяг | m
+le métro | lə metʁo | метро | m
+le tramway | lə tʁamwɛ | трамвай | m
+le taxi | lə taksi | таксі | m
+l'avion | lavjɔ̃ | літак | m
+le vélo | lə velo | велосипед | m
+la moto | la moto | мотоцикл | f
+le bateau | lə bato | корабель | m
+le billet | lə bijɛ | квиток | m
+l'horaire | lɔʁɛʁ | розклад | m
+le quai | lə ke | платформа | m
+le retard | lə ʁətaʁ | запізнення | m
+l'aller simple | lale sɛ̃pl | в один бік | m
+l'aller-retour | laleʁətuʁ | туди й назад | m
+la valise | la valiz | валіза | f
+le passeport | lə paspɔʁ | паспорт | m
+la réservation | la ʁezɛʁvasjɔ̃ | бронювання | f
+</div>
+
+<h3>19.8. Професії (<span class="fr">les métiers</span>)</h3>
+<div class="vocab">
+le professeur | lə pʁɔfɛsœʁ | вчитель, викладач | m
+l'enseignant / l'enseignante | lɑ̃sɛɲɑ̃ / lɑ̃sɛɲɑ̃t | вчитель | mf
+le médecin | lə medsɛ̃ | лікар | m
+l'infirmier / l'infirmière | lɛ̃fiʁmje / lɛ̃fiʁmjɛʁ | медбрат / медсестра | mf
+l'étudiant / l'étudiante | letydjɑ̃ / letydjɑ̃t | студент / студентка | mf
+l'ingénieur | lɛ̃ʒenjœʁ | інженер | m
+l'avocat / l'avocate | lavɔka / lavɔkat | адвокат | mf
+le comptable | lə kɔ̃tabl | бухгалтер | m
+le vendeur / la vendeuse | lə vɑ̃dœʁ / la vɑ̃døz | продавець | mf
+le serveur / la serveuse | lə sɛʁvœʁ / la sɛʁvøz | офіціант / офіціантка | mf
+le cuisinier / la cuisinière | lə kɥizinje / la kɥizinjɛʁ | кухар | mf
+le boulanger | lə bulɑ̃ʒe | пекар | m
+le policier | lə pɔlisje | поліцейський | m
+le pompier | lə pɔ̃pje | пожежний | m
+le chauffeur | lə ʃofœʁ | водій | m
+l'ouvrier | luvʁije | робітник | m
+l'agriculteur | laɡʁikyltœʁ | фермер | m
+le secrétaire | lə səkʁetɛʁ | секретар | m
+le journaliste | lə ʒuʁnalist | журналіст | mf
+le programmeur | lə pʁɔɡʁamœʁ | програміст | m
+le directeur | lə diʁɛktœʁ | директор | m
+le travail | lə tʁavaj | робота | m
+le métier | lə metje | ремесло, професія | m
+qu'est-ce que vous faites dans la vie ? | kɛs kə vu fɛt dɑ̃ la vi | ким ви працюєте?
+je travaille comme … | ʒə tʁavaj kɔm | я працюю ким-небудь
+</div>
+
+<h3>19.9. Школа й навчання (<span class="fr">l'école</span>)</h3>
+<div class="vocab">
+l'école | lekɔl | школа | f
+le collège | lə kɔlɛʒ | середня школа (5–9 класи) | m
+le lycée | lə lise | ліцей (10–12 класи) | m
+la classe | la klas | клас | f
+le cours | lə kuʁ | урок, курс | m
+l'élève | lelɛv | учень | mf
+le cahier | lə kaje | зошит | m
+le livre | lə livʁ | книга | m
+le stylo | lə stilo | ручка | m
+le crayon | lə kʁɛjɔ̃ | олівець | m
+la trousse | la tʁus | пенал | f
+le sac à dos | lə sak a do | рюкзак | m
+le tableau | lə tablo | дошка | m
+l'examen | leɡzamɛ̃ | іспит | m
+la note | la nɔt | оцінка | f
+la question | la kɛstjɔ̃ | питання | f
+la réponse | la ʁepɔ̃s | відповідь | f
+l'exercice | leɡzɛʁsis | вправа | m
+la leçon | la ləsɔ̃ | урок, лекція | f
+les devoirs | le dəvwaʁ | домашнє завдання
+la récréation | la ʁekʁeasjɔ̃ | перерва | f
+la cantine | la kɑ̃tin | їдальня | f
+les vacances | le vakɑ̃s | канікули, відпустка
+l'ordinateur | lɔʁdinatœʁ | комп'ютер | m
+le téléphone | lə telefɔn | телефон | m
+</div>
+
+<h3>19.10. Погода й природа (<span class="fr">le temps, la nature</span>)</h3>
+<div class="vocab">
+quel temps fait-il ? | kɛl tɑ̃ fɛ til | яка погода?
+il fait beau | il fɛ bo | гарна погода
+il fait mauvais | il fɛ movɛ | погана погода
+il fait chaud | il fɛ ʃo | жарко
+il fait froid | il fɛ fʁwa | холодно
+il pleut | il plø | йде дощ
+il neige | il nɛʒ | йде сніг
+il y a du vent | il i a dy vɑ̃ | вітряно
+il y a du soleil | il i a dy sɔlɛj | сонячно
+il y a des nuages | il i a de nɥaʒ | хмарно
+la pluie | la plɥi | дощ | f
+la neige | la nɛʒ | сніг | f
+le soleil | lə sɔlɛj | сонце | m
+le vent | lə vɑ̃ | вітер | m
+le nuage | lə nɥaʒ | хмара | m
+l'orage | lɔʁaʒ | гроза | m
+la température | la tɑ̃peʁatyʁ | температура | f
+le degré | lə dəɡʁe | градус | m
+la mer | la mɛʁ | море | f
+la montagne | la mɔ̃taɲ | гора | f
+la forêt | la fɔʁɛ | ліс | f
+le lac | lə lak | озеро | m
+la rivière | la ʁivjɛʁ | річка | f
+le fleuve | lə flœv | велика річка | m
+l'arbre | laʁbʁ | дерево | m
+la fleur | la flœʁ | квітка | f
+l'herbe | lɛʁb | трава | f
+la plage | la plaʒ | пляж | f
+la campagne | la kɑ̃paɲ | село, сільська місцевість | f
+le ciel | lə sjɛl | небо | m
+la lune | la lyn | місяць | f
+l'étoile | letwal | зірка | f
+</div>
+
+<h3>19.11. Тварини (<span class="fr">les animaux</span>)</h3>
+<div class="vocab">
+le chat | lə ʃa | кіт | m
+le chien | lə ʃjɛ̃ | собака | m
+le cheval | lə ʃəval | кінь | m
+la vache | la vaʃ | корова | f
+le cochon | lə kɔʃɔ̃ | свиня | m
+le mouton | lə mutɔ̃ | вівця | m
+la chèvre | la ʃɛvʁ | коза | f
+la poule | la pul | курка | f
+le canard | lə kanaʁ | качка | m
+le lapin | lə lapɛ̃ | кролик | m
+l'oiseau | lwazo | птах | m
+le poisson | lə pwasɔ̃ | риба | m
+la souris | la suʁi | миша | f
+l'ours | luʁs | ведмідь | m
+le loup | lə lu | вовк | m
+le renard | lə ʁənaʁ | лисиця | m
+le lion | lə ljɔ̃ | лев | m
+le tigre | lə tiɡʁ | тигр | m
+l'éléphant | lelefɑ̃ | слон | m
+l'âne | lɑn | осел | m
+l'abeille | labɛj | бджола | f
+le papillon | lə papijɔ̃ | метелик | m
+</div>
+
+<h3>19.12. Дозвілля (<span class="fr">les loisirs</span>)</h3>
+<div class="vocab">
+le sport | lə spɔʁ | спорт | m
+le football | lə futbol | футбол | m
+le tennis | lə tenis | теніс | m
+la natation | la natasjɔ̃ | плавання | f
+la course | la kuʁs | біг | f
+le vélo | lə velo | велосипед | m
+la musique | la myzik | музика | f
+la danse | la dɑ̃s | танець | f
+le film | lə film | фільм | m
+la lecture | la lɛktyʁ | читання | f
+le jeu | lə ʒø | гра | m
+le jeu vidéo | lə ʒø video | відеогра | m
+la promenade | la pʁɔmnad | прогулянка | f
+la randonnée | la ʁɑ̃dɔne | похід у гори | f
+la pêche | la pɛʃ | риболовля | f
+la photo | la fɔto | фото | f
+la guitare | la ɡitaʁ | гітара | f
+le piano | lə pjano | піаніно | m
+la télévision | la televizjɔ̃ | телебачення | f
+les réseaux sociaux | le ʁezo sosjo | соцмережі
+le week-end | lə wikɛnd | вихідні | m
+faire du sport | fɛʁ dy spɔʁ | займатися спортом
+jouer au football | ʒwe o futbol | грати у футбол
+jouer de la guitare | ʒwe də la ɡitaʁ | грати на гітарі
+aller au cinéma | ale o sinema | ходити в кіно
+faire une randonnée | fɛʁ yn ʁɑ̃dɔne | піти в похід
+</div>
+<div class="tip"><b class="t">Jouer à чи jouer de.</b> <span class="fr">jouer à</span> для ігор і спорту (<span class="fr">jouer au tennis, jouer aux cartes</span>), <span class="fr">jouer de</span> для інструментів (<span class="fr">jouer du piano</span>).</div>
+
+<h3>19.13. Подорож, готель (<span class="fr">le voyage</span>)</h3>
+<div class="vocab">
+l'hôtel | lotɛl | готель | m
+la chambre | la ʃɑ̃bʁ | номер, кімната | f
+la réservation | la ʁezɛʁvasjɔ̃ | бронювання | f
+la nuit | la nɥi | ніч | f
+le bagage | lə baɡaʒ | багаж | m
+la valise | la valiz | валіза | f
+la carte | la kaʁt | мапа, меню, картка | f
+le plan | lə plɑ̃ | план міста | m
+le touriste | lə tuʁist | турист | mf
+l'office de tourisme | lɔfis də tuʁism | туристичне бюро | m
+j'ai réservé une chambre | ʒe ʁezɛʁve yn ʃɑ̃bʁ | я забронював номер
+une chambre pour deux personnes | yn ʃɑ̃bʁ puʁ dø pɛʁsɔn | номер на двох
+le petit-déjeuner est compris | lə pəti deʒøne ɛ kɔ̃pʁi | сніданок включений
+à quelle heure est le départ ? | a kɛl œʁ ɛ lə depaʁ | о котрій відправлення?
+</div>
+
+<h3>19.14. Покупки й гроші (<span class="fr">les achats</span>)</h3>
+<div class="vocab">
+l'argent | laʁʒɑ̃ | гроші, срібло | m
+l'euro | løʁo | євро | m
+le prix | lə pʁi | ціна | m
+la carte bancaire | la kaʁt bɑ̃kɛʁ | банківська картка | f
+les espèces | lez‿ɛspɛs | готівка
+le magasin | lə maɡazɛ̃ | магазин | m
+les courses | le kuʁs | покупки (продукти)
+le panier | lə panje | кошик | m
+la caisse | la kɛs | каса | f
+le ticket | lə tikɛ | чек, квиток | m
+la promotion | la pʁɔmosjɔ̃ | акція | f
+bon marché | bɔ̃ maʁʃe | дешево
+cher | ʃɛʁ | дорого
+je cherche … | ʒə ʃɛʁʃ | я шукаю …
+combien ça coûte ? | kɔ̃bjɛ̃ sa kut | скільки це коштує?
+je voudrais … | ʒə vudʁɛ | я хотів би …
+c'est tout | sɛ tu | це все
+</div>
+
+<h3>19.15. Час і частота</h3>
+<div class="vocab">
+aujourd'hui | oʒuʁdɥi | сьогодні
+demain | dəmɛ̃ | завтра
+hier | jɛʁ | вчора
+maintenant | mɛ̃tnɑ̃ | зараз
+tout de suite | tu də sɥit | негайно
+bientôt | bjɛ̃to | незабаром
+tôt | to | рано
+tard | taʁ | пізно
+toujours | tuʒuʁ | завжди
+souvent | suvɑ̃ | часто
+parfois | paʁfwa | іноді
+rarement | ʁaʁmɑ̃ | рідко
+jamais | ʒamɛ | ніколи
+déjà | deʒa | вже
+encore | ɑ̃kɔʁ | ще
+la semaine | la smɛn | тиждень | f
+le mois | lə mwa | місяць | m
+l'année | lane | рік | f
+le jour | lə ʒuʁ | день | m
+la minute | la minyt | хвилина | f
+l'heure | lœʁ | година | f
+le matin | lə matɛ̃ | ранок | m
+l'après-midi | lapʁɛmidi | після обіду | m
+le soir | lə swaʁ | вечір | m
+la nuit | la nɥi | ніч | f
+</div>
+
+<h3>19.16. Країни й національності</h3>
+<div class="vocab">
+l'Ukraine / ukrainien(ne) | lykʁɛn / ykʁɛnjɛ̃, ykʁɛnjɛn | Україна / українець, українка
+la France / français(e) | la fʁɑ̃s / fʁɑ̃sɛ, fʁɑ̃sɛz | Франція / француз, француженка
+l'Allemagne / allemand(e) | lalmaɲ / almɑ̃, almɑ̃d | Німеччина / німець, німкеня
+l'Angleterre / anglais(e) | lɑ̃ɡləteʁ / ɑ̃ɡlɛ, ɑ̃ɡlɛz | Англія / англієць, англійка
+l'Espagne / espagnol(e) | lɛspaɲ / ɛspaɲɔl | Іспанія / іспанець, іспанка
+l'Italie / italien(ne) | litali / italjɛ̃, italjɛn | Італія / італієць, італійка
+la Pologne / polonais(e) | la pɔlɔɲ / pɔlɔnɛ, pɔlɔnɛz | Польща / поляк, полька
+la Slovaquie / slovaque | la slɔvaki / slɔvak | Словаччина / словак, словачка
+la Hongrie / hongrois(e) | la ɔ̃ɡʁi / ɔ̃ɡʁwa, ɔ̃ɡʁwaz | Угорщина / угорець, угорка
+la Roumanie / roumain(e) | la ʁumani / ʁumɛ̃, ʁumɛn | Румунія / румун, румунка
+la Belgique / belge | la bɛlʒik / bɛlʒ | Бельгія / бельгієць, бельгійка
+la Suisse / suisse | la sɥis / sɥis | Швейцарія / швейцарець, швейцарка
+le Canada / canadien(ne) | lə kanada / kanadjɛ̃, kanadjɛn | Канада / канадець, канадка
+les États-Unis / américain(e) | lez‿etazyni / ameʁikɛ̃, ameʁikɛn | США / американець, американка
+la Chine / chinois(e) | la ʃin / ʃinwa, ʃinwaz | Китай / китаєць, китаянка
+le Japon / japonais(e) | lə ʒapɔ̃ / ʒapɔnɛ, ʒapɔnɛz | Японія / японець, японка
+la Turquie / turc, turque | la tyʁki / tyʁk | Туреччина / турок, туркеня
+</div>
+
+<h3>19.17. Ще 40 найчастіших дієслів</h3>
+<div class="vocab">
+être | ɛtʁ | бути
+avoir | avwaʁ | мати
+faire | fɛʁ | робити
+aller | ale | йти, їхати
+venir | vəniʁ | приходити
+voir | vwaʁ | бачити
+dire | diʁ | казати
+prendre | pʁɑ̃dʁ | брати
+mettre | mɛtʁ | класти, одягати
+savoir | savwaʁ | знати, вміти
+pouvoir | puvwaʁ | могти
+vouloir | vulwaʁ | хотіти
+devoir | dəvwaʁ | мусити
+falloir | falwaʁ | бути потрібно (il faut)
+croire | kʁwaʁ | вірити, вважати
+comprendre | kɔ̃pʁɑ̃dʁ | розуміти
+apprendre | apʁɑ̃dʁ | вчити, вивчати
+connaître | kɔnɛtʁ | знати (людину, місце)
+attendre | atɑ̃dʁ | чекати
+entendre | ɑ̃tɑ̃dʁ | чути
+répondre | ʁepɔ̃dʁ | відповідати
+vivre | vivʁ | жити
+ouvrir | uvʁiʁ | відкривати
+sortir | sɔʁtiʁ | виходити
+dormir | dɔʁmiʁ | спати
+partir | paʁtiʁ | їхати, йти
+sentir | sɑ̃tiʁ | відчувати
+offrir | ɔfʁiʁ | дарувати
+recevoir | ʁəsəvwaʁ | отримувати
+lire | liʁ | читати
+écrire | ekʁiʁ | писати
+boire | bwaʁ | пити
+courir | kuʁiʁ | бігти
+choisir | ʃwazi | вибирати
+finir | finiʁ | закінчувати
+réussir | ʁeysiʁ | досягати успіху
+rire | ʁiʁ | сміятися
+suivre | sɥivʁ | йти слідом
+perdre | pɛʁdʁ | губити
+vendre | vɑ̃dʁ | продавати
+</div>
+<div class="tip"><b class="t">Il faut.</b> <span class="fr">Il faut</span> + інфінітив означає «треба, потрібно»: <span class="fr">Il faut partir.</span> Ми мусимо йти. Також <span class="fr">il faut</span> + іменник: <span class="fr">Il faut du temps.</span> Потрібен час.</div>
+
+<h3>19.18. Дрібні слова</h3>
+<div class="vocab">
+très | tʁɛ | дуже
+trop | tʁo | занадто
+assez | ase | досить
+beaucoup | boku | багато
+peu | pø | мало
+un peu | œ̃ pø | трохи
+plus | ply | більше
+moins | mwɛ̃ | менше
+bien | bjɛ̃ | добре
+mal | mal | погано
+vite | vit | швидко
+lentement | lɑ̃tmɑ̃ | повільно
+ici | isi | тут
+là | la | там
+là-bas | laba | там, далеко
+partout | paʁtu | скрізь
+ensemble | ɑ̃sɑ̃bl | разом
+seulement | sœlmɑ̃ | лише
+vraiment | vʁɛmɑ̃ | справді
+d'accord | dakɔʁ | згоден
+volontiers | vɔlɔ̃tje | залюбки
+bien sûr | bjɛ̃ syʁ | звісно
+peut-être | pøtɛtʁ | можливо
+rien | ʁjɛ̃ | нічого
+quelque chose | kɛlkə ʃoz | щось
+quelqu'un | kɛlkœ̃ | хтось
+tout le monde | tu lə mɔ̃d | усі
+</div>
+</section>
+<section class="unit" id="u20" data-short="Діалоги на щодень">
+<h2><span class="no">Розділ 20</span>Діалоги на щодень</h2>
+<p class="lead">Прочитай діалог, закрий переклад (кнопка «Переклад» угорі), послухай кожну репліку й повтори вголос. Потім зіграй обидві ролі.</p>
+
+<div class="dg">
+# 1. Au café (у кафе)
+Serveur: Bonjour, vous désirez ? | Добрий день, що бажаєте?
+Cliente: Un café et un croissant, s'il vous plaît. | Каву й круасан, будь ласка.
+Serveur: Avec du lait ? | З молоком?
+Cliente: Non, merci. Sans lait, sans sucre. | Ні, дякую. Без молока, без цукру.
+Serveur: Très bien. Voilà. Ça fait trois euros cinquante. | Добре. Прошу. З вас три євро п'ятдесят.
+Cliente: Voilà. Merci beaucoup. | Ось. Дуже дякую.
+Serveur: De rien. Bonne journée ! | Нема за що. Гарного дня!
+# 2. Au restaurant (у ресторані)
+Serveur: Bonsoir. Vous avez réservé ? | Добрий вечір. Ви бронювали?
+Michel: Oui, une table pour deux personnes, au nom de Michel. | Так, столик на двох, на ім'я Михайло.
+Serveur: Par ici, s'il vous plaît. Voici la carte. | Сюди, будь ласка. Ось меню.
+Michel: Je voudrais la soupe du jour, et ensuite le poulet avec du riz. | Я хотів би суп дня, а потім курку з рисом.
+Léa: Pour moi, une salade et du poisson. | Мені салат і рибу.
+Serveur: Et comme boisson ? | А з напоїв?
+Michel: De l'eau, s'il vous plaît. | Води, будь ласка.
+Léa: L'addition, s'il vous plaît. | Рахунок, будь ласка.
+# 3. Dans un magasin de vêtements (в магазині одягу)
+Vendeuse: Bonjour, je peux vous aider ? | Добрий день, можу вам допомогти?
+Client: Oui, je cherche une chemise bleue. | Так, я шукаю синю сорочку.
+Vendeuse: Quelle taille faites-vous ? | Який у вас розмір?
+Client: Je fais du M. | У мене M.
+Vendeuse: Voilà. Vous pouvez l'essayer là-bas. | Прошу. Можете приміряти там.
+Client: Elle est un peu grande. Vous avez la taille S ? | Вона трохи велика. Є розмір S?
+Vendeuse: Oui, un moment. | Так, хвилинку.
+Client: Parfait. Combien ça coûte ? | Ідеально. Скільки коштує?
+Vendeuse: Trente-neuf euros. | Тридцять дев'ять євро.
+Client: Je la prends. | Беру її.
+# 4. Demander son chemin (як пройти)
+Touriste: Excusez-moi, madame. Où est la gare, s'il vous plaît ? | Вибачте, пані. Де вокзал, будь ласка?
+Passante: Allez tout droit. Prenez la deuxième rue à gauche. | Ідіть прямо. Поверніть на другу вулицю ліворуч.
+Touriste: C'est loin ? | Це далеко?
+Passante: Non, c'est à dix minutes à pied. | Ні, це десять хвилин пішки.
+Touriste: Merci beaucoup ! | Дуже дякую!
+Passante: Je vous en prie. | Прошу.
+# 5. À l'hôtel (у готелі)
+Réception: Bonjour monsieur. Vous avez une réservation ? | Добрий день, пане. У вас є бронювання?
+Michel: Oui, au nom de Michel, pour trois nuits. | Так, на ім'я Михайло, на три ночі.
+Réception: Votre passeport, s'il vous plaît. | Ваш паспорт, будь ласка.
+Michel: Voilà. Le petit-déjeuner est compris ? | Прошу. Сніданок включений?
+Réception: Oui, de sept heures à dix heures. Votre chambre est au deuxième étage. | Так, з сьомої до десятої. Ваш номер на третьому поверсі (у Франції перший поверх — rez-de-chaussée, тож deuxième étage = наш 3-й).
+Michel: Il y a un ascenseur ? | Є ліфт?
+Réception: Oui, à droite. Voici votre clé. | Так, праворуч. Ось ваш ключ.
+# 6. Au téléphone : une invitation (по телефону, запрошення)
+Léa: Allô, Michel ? C'est Léa. | Алло, Михайле? Це Леа.
+Michel: Salut Léa ! Ça va ? | Привіт, Леа! Як ти?
+Léa: Ça va bien, merci. Tu es libre samedi soir ? | Добре, дякую. Ти вільний у суботу ввечері?
+Michel: Oui, pourquoi ? | Так, а чому?
+Léa: Je vais au cinéma avec des amis. Tu viens ? | Я йду в кіно з друзями. Ти йдеш?
+Michel: Avec plaisir ! À quelle heure ? | З радістю! О котрій?
+Léa: À huit heures, devant le cinéma. | О восьмій, перед кінотеатром.
+Michel: D'accord. À samedi ! | Домовились. До суботи!
+# 7. Chez le médecin (в лікаря)
+Médecin: Bonjour. Qu'est-ce qui ne va pas ? | Добрий день. Що вас турбує?
+Patient: J'ai mal à la tête et j'ai de la fièvre. | У мене болить голова й температура.
+Médecin: Depuis quand ? | Відколи?
+Patient: Depuis hier. | З учора.
+Médecin: Vous avez de la toux ? | Є кашель?
+Patient: Un peu. | Трохи.
+Médecin: Prenez ce médicament deux fois par jour et reposez-vous. | Приймайте ці ліки двічі на день і відпочивайте.
+# 8. À la gare (на вокзалі)
+Voyageur: Un billet pour Lyon, s'il vous plaît. | Один квиток до Ліона, будь ласка.
+Employé: Aller simple ou aller-retour ? | В один бік чи туди й назад?
+Voyageur: Aller-retour, pour demain. | Туди й назад, на завтра.
+Employé: Le train part à 9 h 15, quai numéro 4. | Потяг відправляється о 9:15, платформа 4.
+Voyageur: Ça coûte combien ? | Скільки коштує?
+Employé: Quarante-deux euros. | Сорок два євро.
+Voyageur: Voilà. Merci, bonne journée ! | Прошу. Дякую, гарного дня!
+</div>
+
+<div class="qz" data-title="Вправа 20. Впиши потрібну фразу з діалогів">
+Каву, будь ласка → Un café, s'il vous ___ . | plaît
+Скільки це коштує? → Combien ça ___ ? | coûte
+Я хотів би каву → Je ___ un café. | voudrais
+Рахунок, будь ласка → ___, s'il vous plaît. | L'addition
+Де вокзал? → ___ est la gare ? | Où
+Це далеко? → C'est ___ ? | loin
+Ліворуч → à ___ | gauche
+Праворуч → à ___ | droite
+Я беру це → Je le ___ . | prends
+До суботи → À ___ ! | samedi
+</div>
+</section>
+
+<section class="unit" id="u21" data-short="Читання: три короткі тексти">
+<h2><span class="no">Розділ 21</span>Читання: три короткі тексти</h2>
+<p class="lead">Читай кожен текст двічі. Спочатку без перекладу, потім із ним. Натискай на речення, щоб почути його.</p>
+
+<h3>Текст 1. Ma journée (мій день)</h3>
+<div class="exs">
+Je m'appelle Michel. Je suis professeur d'anglais. | ʒə mapɛl miʃɛl. ʒə sɥi pʁɔfɛsœʁ dɑ̃ɡlɛ | Мене звати Михайло. Я вчитель англійської.
+Le matin, je me lève à sept heures. | lə matɛ̃ ʒə mə lɛv a sɛt œʁ | Вранці я встаю о сьомій.
+Je prends un café et du pain avec du fromage. | ʒə pʁɑ̃ œ̃ kafe e dy pɛ̃ avɛk dy fʁɔmaʒ | Я п'ю каву й їм хліб із сиром.
+Ensuite, je vais à l'école à pied. | ɑ̃sɥit ʒə vɛ a lekɔl a pje | Потім я йду до школи пішки.
+Je travaille de huit heures à quatre heures. | ʒə tʁavaj də ɥit œʁ a katʁ œʁ | Я працюю з восьмої до четвертої.
+L'après-midi, j'ai des élèves en ligne. | lapʁɛmidi ʒe dez‿elɛv ɑ̃ liɲ | По обіді в мене учні онлайн.
+Le soir, je mange avec ma famille et je regarde un film. | lə swaʁ ʒə mɑ̃ʒ avɛk ma famij e ʒə ʁəɡaʁd œ̃ film | Увечері я вечеряю з родиною й дивлюся фільм.
+Je me couche à onze heures. | ʒə mə kuʃ a ɔ̃z‿œʁ | Я лягаю спати об одинадцятій.
+</div>
+<div class="qz" data-title="Запитання до тексту 1. Відповідай коротко">
+Comment s'appelle-t-il ? | Il s'appelle Michel / Michel
+Quelle est sa profession ? | Il est professeur / Professeur
+À quelle heure se lève-t-il ? | À sept heures
+Comment va-t-il à l'école ? | À pied
+À quelle heure se couche-t-il ? | À onze heures
+</div>
+
+<h3>Текст 2. Ma famille (моя родина)</h3>
+<div class="exs">
+Voici ma famille. Nous sommes cinq. | vwasi ma famij. nu sɔm sɛ̃k | Ось моя родина. Нас п'ятеро.
+Mon père s'appelle Ivan. Il a cinquante ans. Il est ingénieur. | mɔ̃ pɛʁ sapɛl ivɑ̃. il a sɛ̃kɑ̃t ɑ̃. il ɛt‿ɛ̃ʒenjœʁ | Мого батька звати Іван. Йому п'ятдесят років. Він інженер.
+Ma mère s'appelle Olga. Elle est médecin. | ma mɛʁ sapɛl ɔlɡa. ɛl ɛ medsɛ̃ | Мою маму звати Ольга. Вона лікар.
+J'ai un frère et une sœur. | ʒe œ̃ fʁɛʁ e yn sœʁ | У мене є брат і сестра.
+Mon frère est étudiant. Ma sœur est petite : elle a huit ans. | mɔ̃ fʁɛʁ ɛt‿etydjɑ̃. ma sœʁ ɛ pətit. ɛl a ɥit ɑ̃ | Мій брат студент. Моя сестра маленька: їй вісім років.
+Nous avons un chat. Il s'appelle Minou. Il est gris et blanc. | nuz‿avɔ̃ œ̃ ʃa. il sapɛl minu. il ɛ ɡʁi e blɑ̃ | У нас є кіт. Його звати Мину. Він сіро-білий.
+</div>
+<div class="qz" data-title="Запитання до тексту 2">
+Combien de personnes y a-t-il dans la famille ? | Cinq
+Quel âge a le père ? | Cinquante ans
+Quelle est la profession de la mère ? | Elle est médecin
+Combien d'enfants y a-t-il ? | Trois
+Comment s'appelle le chat ? | Minou
+</div>
+
+<h3>Текст 3. Une invitation (запрошення)</h3>
+<div class="exs">
+Salut Paul, | saly pɔl | Привіт, Поле,
+Je fais une petite fête samedi, le 25 octobre, à 19 heures. | ʒə fɛ yn pətit fɛt samdi lə vɛ̃tsɛ̃k ɔktɔbʁ a diznœv œʁ | У суботу, 25 жовтня, о 19:00 я роблю невелике свято.
+Ça se passe chez moi, 12 rue des Fleurs. | sa sə pas ʃe mwa duz ʁy de flœʁ | Це в мене вдома, вулиця Квітів, 12.
+Tu peux venir ? Apporte un gâteau ou des fruits, s'il te plaît ! | ty pø vəniʁ. apɔʁt œ̃ ɡato u de fʁɥi sil tə plɛ | Можеш прийти? Принеси торт або фрукти, будь ласка!
+Réponds-moi vite. | ʁepɔ̃ mwa vit | Відповідай мені швидко.
+À bientôt, | a bjɛ̃to | До скорого,
+Léa | lea | Леа
+</div>
+<div class="qz" data-title="Запитання до тексту 3">
+Quand est la fête ? | Samedi
+À quelle heure ? | À dix-neuf heures
+Où est la fête ? | Chez Léa
+Qu'est-ce que Paul doit apporter ? | Un gâteau ou des fruits
+</div>
+</section>
+
+<section class="unit" id="u22" data-short="Шпаргалка">
+<h2><span class="no">Розділ 22</span>Шпаргалка на одну сторінку</h2>
+<p class="lead">Усе найважливіше для A1 у стислому вигляді. Роздрукуй або тримай поруч.</p>
+
+<h3>Артиклі</h3>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th><th>перед гол.</th><th>pl</th></tr>
+<tr><td>неозн.</td><td>un</td><td>une</td><td>un / une</td><td>des</td></tr>
+<tr><td>озн.</td><td>le</td><td>la</td><td>l'</td><td>les</td></tr>
+<tr><td>част.</td><td>du</td><td>de la</td><td>de l'</td><td>des</td></tr>
+<tr><td>à +</td><td>au</td><td>à la</td><td>à l'</td><td>aux</td></tr>
+<tr><td>de +</td><td>du</td><td>de la</td><td>de l'</td><td>des</td></tr>
+</table></div>
+
+<h3>Дієслова: теперішній час</h3>
+<div class="tw"><table>
+<tr><th></th><th>être</th><th>avoir</th><th>aller</th><th>faire</th><th>-er (parler)</th></tr>
+<tr><td>je</td><td>suis</td><td>ai</td><td>vais</td><td>fais</td><td>parle</td></tr>
+<tr><td>tu</td><td>es</td><td>as</td><td>vas</td><td>fais</td><td>parles</td></tr>
+<tr><td>il / elle / on</td><td>est</td><td>a</td><td>va</td><td>fait</td><td>parle</td></tr>
+<tr><td>nous</td><td>sommes</td><td>avons</td><td>allons</td><td>faisons</td><td>parlons</td></tr>
+<tr><td>vous</td><td>êtes</td><td>avez</td><td>allez</td><td>faites</td><td>parlez</td></tr>
+<tr><td>ils / elles</td><td>sont</td><td>ont</td><td>vont</td><td>font</td><td>parlent</td></tr>
+</table></div>
+
+<h3>Заперечення й питання</h3>
+<div class="tw"><table>
+<tr><td><b>Заперечення</b></td><td><span class="fr">ne</span> + дієслово + <span class="fr">pas</span> / <span class="fr">plus</span> / <span class="fr">jamais</span> / <span class="fr">rien</span> / <span class="fr">personne</span></td></tr>
+<tr><td><b>Питання</b></td><td>інтонація · <span class="fr">Est-ce que …?</span> · інверсія (<span class="fr">Parlez-vous …?</span>)</td></tr>
+<tr><td><b>Питальні слова</b></td><td><span class="fr">qui, que, où, quand, comment, pourquoi, combien, quel</span></td></tr>
+</table></div>
+
+<h3>Минулий і майбутній</h3>
+<div class="tw"><table>
+<tr><td><b>Passé composé</b></td><td><span class="fr">avoir / être</span> + дієприкметник. <span class="fr">J'ai mangé. Elle est allée.</span> -er → é, -ir → i, -re → u.</td></tr>
+<tr><td><b>Futur proche</b></td><td><span class="fr">aller</span> + інфінітив. <span class="fr">Je vais partir.</span></td></tr>
+<tr><td><b>Passé récent</b></td><td><span class="fr">venir de</span> + інфінітив. <span class="fr">Je viens d'arriver.</span></td></tr>
+<tr><td><b>Наказ</b></td><td><span class="fr">Parle ! Parlons ! Parlez !</span></td></tr>
+</table></div>
+
+<h3>Прикметники й присвійні</h3>
+<div class="tw"><table>
+<tr><td><b>Жін. рід</b></td><td>+ e; -eux → -euse; -if → -ive; -er → -ère; -on → -onne; -en → -enne</td></tr>
+<tr><td><b>BAGS</b></td><td>beau, joli · jeune, vieux, nouveau · bon, mauvais · grand, petit, gros, long: <u>перед</u> іменником</td></tr>
+<tr><td><b>Присвійні</b></td><td>mon / ma / mes · ton / ta / tes · son / sa / ses · notre / nos · votre / vos · leur / leurs</td></tr>
+<tr><td><b>Вказівні</b></td><td>ce / cet / cette / ces</td></tr>
+</table></div>
+
+<h3>Правила, які виручають</h3>
+<ul>
+<li>Кінцевий приголосний німий, крім <b>C, R, F, L</b>.</li>
+<li>Наголос на останньому складі групи слів.</li>
+<li>Підмет обов'язковий. Артикль обов'язковий.</li>
+<li>Вік: <span class="fr">avoir … ans</span>. Холодно, жарко, голодний: <span class="fr">avoir froid, chaud, faim</span>.</li>
+<li>Професія без артикля: <span class="fr">Je suis professeur.</span></li>
+<li>Після <span class="fr">pas</span>: <span class="fr">de</span> замість <span class="fr">un, une, des, du, de la</span>.</li>
+</ul>
+</section>
+
+<section class="unit" id="u23" data-short="План на 12 тижнів і чек-лист">
+<h2><span class="no">Розділ 23</span>План на 12 тижнів і чек-лист A1</h2>
+<p class="lead">Ритм: 20–30 хвилин щодня, 5–6 днів на тиждень. П'ять хвилин слова, десять хвилин правило, п'ять хвилин вимова вголос, п'ять хвилин вправа.</p>
+
+<h3>План</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета тижня</th></tr>
+<tr><td>1</td><td>1, 2</td><td>Читаєш будь-яке слово. Можеш представитися.</td></tr>
+<tr><td>2</td><td>3, 4, 5</td><td>Артиклі, рід, множина. Вмієш сказати <span class="fr">J'ai…</span> / <span class="fr">Je suis…</span></td></tr>
+<tr><td>3</td><td>6, 7, 19.1</td><td>Описуєш людей і речі. Розповідаєш про родину.</td></tr>
+<tr><td>4</td><td>8, 10, 11, 19.2, 19.3</td><td>Дієслова на -er, заперечення, питання. Дім і їжа.</td></tr>
+<tr><td>5</td><td>12, 19.4, 19.6</td><td>Числа, час, дата. Одяг і місто.</td></tr>
+<tr><td>6</td><td>13, 19.7, діалог 4</td><td>Прийменники, транспорт. Питаєш дорогу.</td></tr>
+<tr><td>7</td><td>9, діалоги 1, 2</td><td>Неправильні дієслова. Замовляєш у кафе.</td></tr>
+<tr><td>8</td><td>14 (майбутнє, наказ), 15</td><td>Плани й звичайний день.</td></tr>
+<tr><td>9</td><td>14 (passé composé), 19.8, текст 1</td><td>Розповідаєш про вчорашній день.</td></tr>
+<tr><td>10</td><td>16, 17</td><td>y, en, займенники. Словотвір.</td></tr>
+<tr><td>11</td><td>18, діалоги 3, 5–8, тексти 2–3</td><td>Збираєш усе докупи. Пишеш власний текст «Ma journée».</td></tr>
+<tr><td>12</td><td>Повторення, підсумковий тест</td><td>Говориш уголос 3–5 хвилин без підготовки.</td></tr>
+</table></div>
+
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1: 21 пропуск">
+Je ___ ukrainien. (être) | suis
+Tu ___ vingt ans. (avoir) | as
+Elle ___ à Paris. (habiter) | habite
+Nous ___ au cinéma. (aller) | allons
+Ils ___ du thé. (boire) | boivent
+Voilà ___ chat. (якийсь) | un
+Je mange ___ pain. (трохи) | du
+Je vais ___ cinéma. (à + le) | au
+Une maison ___ . (grand) | grande
+Un ___ ami. (nouveau) | nouvel
+Je ne parle ___ allemand. | pas
+Tu as ___ frère ? Non, je n'ai pas ___ frère. | un ;; de
+___ habites-tu ? (де) | Où
+___ coûte ce livre ? (скільки) | Combien
+Hier, j'___ mangé une pizza. | ai
+Elle est ___ au cinéma. (aller) | allée
+Demain, je ___ travailler. (aller) | vais
+Je ___ lève à sept heures. | me
+Il est trois heures et ___ . (чверть) | quart
+Напиши цифрами: quatre-vingts | 80
+</div>
+
+<h3>Чек-лист: я вмію…</h3>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати будь-яке французьке слово за правилами</label></li>
+<li><label><input type="checkbox"> Привітатися, представитися, спитати про людину</label></li>
+<li><label><input type="checkbox"> Назвати рід іменника й поставити правильний артикль</label></li>
+<li><label><input type="checkbox"> Відмінювати être, avoir, aller, faire та дієслова на -er</label></li>
+<li><label><input type="checkbox"> Утворити заперечення й поставити питання трьома способами</label></li>
+<li><label><input type="checkbox"> Узгодити прикметник з іменником</label></li>
+<li><label><input type="checkbox"> Назвати числа до 100, час, день, дату</label></li>
+<li><label><input type="checkbox"> Замовити в кафе, купити річ, спитати дорогу</label></li>
+<li><label><input type="checkbox"> Розповісти про звичайний день і плани на завтра</label></li>
+<li><label><input type="checkbox"> Розповісти про вчора (passé composé)</label></li>
+<li><label><input type="checkbox"> Розрізнити c'est і il est, savoir і connaître</label></li>
+<li><label><input type="checkbox"> Утворити прислівник, жіночу форму професії, дізнатися слово за префіксом чи суфіксом</label></li>
+</ul>
+
+<h3>Що далі: A2</h3>
+<p>На A2 тебе чекають: простий майбутній час (<span class="fr">futur simple</span>), імперфект (<span class="fr">imparfait</span>), умовний спосіб (<span class="fr">conditionnel</span>), займенники-додатки у парі, порівняння, відносні займенники <span class="fr">qui, que, où</span>, та перша зустріч із <span class="fr">subjonctif</span>.</p>
+</section>
+<footer>
+  Курс написаний як опора для самостійного навчання на рівні A1. Для вимови й слухання завжди додавай живе мовлення: подкасти для початківців, відео з субтитрами, розмови з носієм.
+</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Français</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^fr[-_]FR/i.test(x.lang))||v.find(x=>/^fr/i.test(x.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('fr_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('fr_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('fr_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('fr_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='fr_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

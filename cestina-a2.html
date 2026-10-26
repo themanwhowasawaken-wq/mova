@@ -1,0 +1,1558 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Čeština A2: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Čeština A2</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Čeština A2</h1>
+  <p>Продовження курсу A1: минулий і майбутній час, умовний спосіб, вид дієслова, усі відмінки, порівняння, складні речення, словотвір, словник, діалоги, тексти й листи.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="cviceni.html">Вправи</a><a href="cestina-a1.html">Рівень A1</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Рівень A2 за європейською шкалою: ти вже вмієш знайомитися й говорити про себе, тепер вчишся <b>розповідати про минуле, будувати плани, ввічливо просити, порівнювати й пояснювати причини</b>. Курс продовжує A1, тому там розібрані вимова, <span class="fr">být</span>, <span class="fr">mít</span>, знахідний і місцевий, числа й час. Тут ми їх тільки повторюємо.</p>
+<h3>Що вмітимеш наприкінці</h3>
+<ul>
+<li>розповісти про вчорашній день і про відпустку (<span class="fr">minulý čas</span>);</li>
+<li>говорити про плани (<span class="fr">budoucí čas</span>);</li>
+<li>ввічливо просити, радити, мріяти (<span class="fr">podmiňovací způsob</span>);</li>
+<li>користуватися всіма сімома відмінками в типових ситуаціях;</li>
+<li>розрізняти вид дієслова (<span class="fr">dělat / udělat</span>);</li>
+<li>порівнювати, будувати складні речення, написати лист.</li>
+</ul>
+<div class="tip"><b class="t">Перевага українця.</b> Відмінки й вид дієслова ти вже «знаєш зсередини». Тут треба лише дізнатися чеські закінчення й слова, що збігаються з українськими за коренем, але різняться за значенням.</div>
+<h3>Швидка перевірка A1</h3>
+<div class="qz" data-title="Вправа 0. Повторення A1">
+Já ___ student. (být) | jsem
+Ty ___ bratra. (mít) | máš
+Já ___ česky. (mluvit) | mluvím
+Já ___ kávu. (nechtít) | nechci
+Bydlím v ___ . (Praha) | Praze
+Mám ___ . (sestra) | sestru
+Jdu do ___ . (škola) | školy
+Dnes je ___ . (понеділок) | pondělí
+Kolik to ___ ? (коштує) | stojí
+Dal ___ si kávu. (б) | bych
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Часи й способи" data-short="Минулий час">
+<h2><span class="no">Розділ 1</span>Минулий час (<span class="fr">minulý čas</span>)</h2>
+<p class="lead">Чеський минулий час схожий на український: він змінюється за <b>родом і числом</b>, а особа показується допоміжним <span class="fr">jsem, jsi, …</span>. Усього один минулий час (без «було, був би» ускладнень).</p>
+<h3>1.1. Як утворити</h3>
+<p>Корінь інфінітива + <b>-l</b> (дієприкметник) + допоміжне дієслово <span class="fr">být</span> (<span class="fr">jsem, jsi, —, jsme, jste, —</span>).</p>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>m</th><th>f</th><th>n</th><th>мн. (істоти m)</th><th>мн. інші</th></tr>
+<tr><td><span class="fr">dělat</span></td><td>dělal</td><td>dělala</td><td>dělalo</td><td>dělali</td><td>dělaly</td></tr>
+<tr><td><span class="fr">mluvit</span></td><td>mluvil</td><td>mluvila</td><td>mluvilo</td><td>mluvili</td><td>mluvily</td></tr>
+<tr><td><span class="fr">psát</span></td><td>psal</td><td>psala</td><td>psalo</td><td>psali</td><td>psaly</td></tr>
+</table></div>
+<div class="cj" data-verb="dělat" data-note="Минулий час (чоловік)" data-ipa="дьєлат">
+já | dělal jsem | дьєлал сем
+ty | dělal jsi | дьєлал сі
+on | dělal | дьєлал
+my | dělali jsme | дьєлалі смє
+vy | dělali jste | дьєлалі сте
+oni | dělali | дьєлалі
+</div>
+<div class="cj" data-verb="dělat" data-note="Минулий час (жінка)" data-ipa="дьєлат">
+já | dělala jsem | дьєлала сем
+ty | dělala jsi | дьєлала сі
+ona | dělala | дьєлала
+my | dělaly jsme | дьєлалі смє
+vy | dělaly jste | дьєлалі сте
+ony | dělaly | дьєлалі
+</div>
+<div class="warn"><b>Ввічливе «Ви» до однієї людини</b> у минулому: <span class="fr">Byl jste doma?</span> (до чоловіка), <span class="fr">Byla jste doma?</span> (до жінки). Причетне — однина, але <span class="fr">jste</span> множини.</div>
+<div class="exs">
+Včera jsem pracoval celý den. | вчера сем працовал целі: ден | Вчора я цілий день працював.
+Včera jsem pracovala celý den. | вчера сем працовала | (жінка) Вчора я працювала.
+Co jsi dělal o víkendu? | цо сі дьєлал о ві:кендьу | Що ти робив на вихідних?
+Byli jsme v kině. | біли смє в кіне | Ми були в кіно.
+Pavel nebyl v práci. | павел небіл в праці | Павло не був на роботі.
+Eva se dívala na film. | єва се дьівала на фільм | Єва дивилася фільм.
+Děti hrály venku. | дьєті грали венку | Діти гралися надворі.
+</div>
+<div class="rule"><b class="t">Правила</b>
+<ul>
+<li>У <b>3-й особі</b> допоміжне <span class="fr">je / jsou</span> відсутнє: <span class="fr">Dělal. Dělala. Dělali.</span></li>
+<li><span class="fr">jsem, jsi</span> стоять на <b>другому місці</b> у реченні: <span class="fr">Včera <b>jsem</b> byl doma. Byl <b>jsem</b> doma.</span></li>
+<li>Заперечення додає <b>ne-</b> до дієприкметника: <span class="fr">nedělal jsem</span>, <span class="fr">nebyla jsem</span>.</li>
+<li>Зворотні дієслова: <span class="fr">jsem se, jsi se</span>: <span class="fr">Učil jsem se česky. Dívala jsem se na film.</span></li>
+</ul></div>
+<h3>1.2. Неправильні дієприкметники</h3>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>Дієприкметник</th><th>Приклад</th></tr>
+<tr><td><span class="fr">být</span> бути</td><td>byl, byla, bylo</td><td><span class="fr">Byl jsem doma.</span></td></tr>
+<tr><td><span class="fr">mít</span> мати</td><td>měl, měla, mělo</td><td><span class="fr">Měla jsem čas.</span></td></tr>
+<tr><td><span class="fr">jít</span> йти</td><td>šel, šla, šlo</td><td><span class="fr">Šel jsem domů.</span></td></tr>
+<tr><td><span class="fr">jet</span> їхати</td><td>jel, jela, jelo</td><td><span class="fr">Jela do Prahy.</span></td></tr>
+<tr><td><span class="fr">moci</span> могти</td><td>mohl, mohla</td><td><span class="fr">Nemohl jsem přijít.</span></td></tr>
+<tr><td><span class="fr">chtít</span> хотіти</td><td>chtěl, chtěla</td><td><span class="fr">Chtěla jsem jít.</span></td></tr>
+<tr><td><span class="fr">jíst</span> їсти</td><td>jedl, jedla</td><td><span class="fr">Co jsi jedl?</span></td></tr>
+<tr><td><span class="fr">pít</span> пити</td><td>pil, pila</td><td><span class="fr">Pili jsme čaj.</span></td></tr>
+<tr><td><span class="fr">číst</span> читати</td><td>četl, četla</td><td><span class="fr">Četl jsem knihu.</span></td></tr>
+<tr><td><span class="fr">psát</span> писати</td><td>psal, psala</td><td><span class="fr">Psala jsem e-mail.</span></td></tr>
+<tr><td><span class="fr">říct</span> сказати</td><td>řekl, řekla</td><td><span class="fr">Řekl mi to.</span></td></tr>
+<tr><td><span class="fr">vzít</span> взяти</td><td>vzal, vzala</td><td><span class="fr">Vzala jsem si bundu.</span></td></tr>
+<tr><td><span class="fr">spát</span> спати</td><td>spal, spala</td><td><span class="fr">Dobře jsem spal.</span></td></tr>
+<tr><td><span class="fr">vidět</span> бачити</td><td>viděl, viděla</td><td><span class="fr">Viděl jsem ho.</span></td></tr>
+<tr><td><span class="fr">slyšet</span> чути</td><td>slyšel, slyšela</td><td><span class="fr">Slyšela jsem hudbu.</span></td></tr>
+<tr><td><span class="fr">dát</span> дати</td><td>dal, dala</td><td><span class="fr">Dal mi knihu.</span></td></tr>
+<tr><td><span class="fr">stát se</span> статися</td><td>stal se, stala se</td><td><span class="fr">Co se stalo?</span></td></tr>
+</table></div>
+<div class="vocab">
+# Маркери минулого
+včera | вчера | вчора
+předevčírem | пршедевчі:рем | позавчора
+včera večer | вчера вечер | вчора ввечері
+minulý týden | мінулі: ті:ден | минулого тижня
+minulý měsíc | мінулі: мнєсі:ц | минулого місяця
+minulý rok | мінулі: рок | минулого року
+před týdnem | пршет ті:днем | тиждень тому
+před dvěma lety | пршет двєма летьі | два роки тому
+tehdy | техди | тоді
+už | уж | вже
+</div>
+<div class="qz" data-title="Вправа 1. Минулий час">
+Včera jsem ___ doma. (být; чол.) | byl
+Včera jsem ___ doma. (být; жін.) | byla
+Co jsi ___ ? (dělat; чол.) | dělal
+My jsme ___ v kině. (být) | byli
+Já jsem ___ knihu. (číst; чол.) | četl
+On ___ do Prahy. (jet, 3 ос.) | jel
+Ona ___ domů. (jít, 3 ос.) | šla
+Já jsem ___ čas. (mít; жін.) | měla
+Včera jsem ___ pracoval. (не) | nepracoval
+Ty jsi se ___ ? (dívat; чол. форма) | díval
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Майбутній час">
+<h2><span class="no">Розділ 2</span>Майбутній час (<span class="fr">budoucí čas</span>)</h2>
+<p class="lead">У чеській два способи говорити про майбутнє: <b>budu + інфінітив</b> (недоконаний вид) і <b>теперішня форма доконаного дієслова</b>.</p>
+<h3>2.1. Недоконані дієслова: budu + інфінітив</h3>
+<div class="cj" data-verb="budu pracovat" data-note="я буду працювати" data-ipa="буду працоват">
+já | budu pracovat | буду працоват
+ty | budeš pracovat | будеш працоват
+on / ona | bude pracovat | буде працоват
+my | budeme pracovat | будеме працоват
+vy | budete pracovat | будете працоват
+oni | budou pracovat | будоу працоват
+</div>
+<div class="exs">
+Zítra budu pracovat. | зі:тра буду працоват | Завтра буду працювати.
+Budeme se učit česky. | будеме се учіт чески | Будемо вчити чеську.
+Bude pršet. | буде пршет | Буде дощ.
+Budete doma? | будете дома | Ви будете вдома?
+Nebudu tam. | небуду там | Мене там не буде.
+</div>
+<h3>2.2. Доконані дієслова: майбутнє без budu</h3>
+<p>Якщо дієслово доконаного виду (відповідає на «що зробити?»), його форма, що виглядає як теперішня, означає <b>майбутнє</b>: <span class="fr">udělám</span> = зроблю, <span class="fr">napíšu</span> = напишу, <span class="fr">koupím</span> = куплю.</p>
+<div class="exs">
+Zítra to udělám. | зі:тра то удела:м | Завтра я це зроблю.
+Napíšu ti. | напішу ті | Я тобі напишу.
+Koupím chleba. | коупі:м хлеба | Куплю хліб.
+Zavolám ti večer. | завола:м ті вечер | Зателефоную тобі ввечері.
+Přijedu v pátek. | пршиєду в па:тек | Приїду в п'ятницю.
+Pojedu do Prahy. | пойеду до праги | Поїду до Праги.
+Půjdu tam. | пуйду там | Піду туди.
+</div>
+<div class="warn"><b>Не вживай budu з доконаним!</b> Немає <s>budu udělat</s>. Лише <span class="fr">udělám</span> або <span class="fr">budu dělat</span>.</div>
+<h3>2.3. Корисні слова майбутнього</h3>
+<div class="vocab">
+zítra | зі:тра | завтра
+pozítří | позі:трші | післязавтра
+příští týden | прші:штьі: ті:ден | наступного тижня
+příští měsíc | прші:штьі: мнєсі:ц | наступного місяця
+příští rok | прші:штьі: рок | наступного року
+za týden | за ті:ден | через тиждень
+za dva dny | за два дни | через два дні
+brzy | брзі | скоро
+později | позьдєйі | пізніше
+jednou | єдноу | колись
+až | аж | коли (у майбутньому)
+</div>
+<div class="tip"><b class="t">Až і když.</b> <span class="fr">Až přijedu, zavolám.</span> (Коли приїду, зателефоную.) Після <span class="fr">až</span> про майбутнє теж використовуємо майбутнє. А <span class="fr">když</span> — для минулого й загального: <span class="fr">Když jsem byl malý, bydlel jsem v Praze.</span></div>
+<div class="qz" data-title="Вправа 2. Майбутнє">
+Zítra ___ pracovat. (budu) | budu
+My ___ doma. (budeme) | budeme
+Ty ___ spát? (budeš) | budeš
+Oni ___ tam. (budou) | budou
+Zítra to ___ . (udělat, я) | udělám
+Já ti ___ . (napsat) | napíšu
+Příští týden ___ do Prahy. (pojet, я) | pojedu
+Nebudu ___ . (pracovat) | pracovat
+Ona ___ pršet. (bude) | bude
+___ přijedu, zavolám. (коли) | Až
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Умовний спосіб">
+<h2><span class="no">Розділ 3</span>Умовний спосіб (<span class="fr">podmiňovací způsob</span>)</h2>
+<p class="lead">Потрібен, щоб <b>ввічливо попросити, дати пораду, висловити бажання</b> і для нереальних умов. Утворення: <b>дієприкметник на -l + bych / bys / by / bychom / byste / by</b>.</p>
+<div class="cj" data-verb="chtít" data-note="Умовний спосіб (чол.)" data-ipa="хтьі:т">
+já | chtěl bych | хтьєл біх
+ty | chtěl bys | хтьєл біс
+on / ona | chtěl by | хтьєл бі
+my | chtěli bychom | хтьєлі біхом
+vy | chtěli byste | хтьєлі бісте
+oni | chtěli by | хтьєлі бі
+</div>
+<div class="tip">Жінка: <span class="fr">chtěla bych</span>, <span class="fr">chtěla bys</span>. «Би» (<span class="fr">by</span>) стоїть на другому місці, як <span class="fr">jsem</span>. Ніколи не додавай <span class="fr">jsem</span> до <span class="fr">bych</span>: <s>chtěl jsem bych</s>.</div>
+<h3>3.1. Для чого</h3>
+<div class="exs">
+Chtěl bych kávu. | хтьєл біх ка:ву | Я б хотів каву.
+Dal bych si pivo. | дал біх сі піво | Я б узяв пиво.
+Mohl byste mi pomoct? | мохл бісте мі помоцт | Чи не могли б ви мені допомогти?
+Mohla bys zavřít okno? | мохла біс зав-ржіт окно | Чи не могла б ти зачинити вікно?
+Měl bys více spát. | мнєл біс віце спат | Тобі варто більше спати.
+Byla by to chyba. | била бі то хіба | Це була б помилка.
+Šel bych s tebou. | шел біх с тебоу | Я б пішов з тобою.
+Rád bych cestoval. | ра:д біх цестовал | Я б залюбки подорожував.
+</div>
+<h3>3.2. Нереальна умова: kdyby</h3>
+<p><span class="fr">Kdyby</span> = якби. Формула: <b>kdybych / kdybys / kdyby / kdybychom / kdybyste + l-форма</b>, головна частина — умовний.</p>
+<div class="exs">
+Kdybych měl čas, jel bych do Prahy. | гдібих мнєл час єл біх до праги | Якби я мав час, поїхав би до Праги.
+Kdybys chtěl, mohli bychom jít. | гдібис хтьєл мохлі біхом йіт | Якби ти хотів, ми могли б піти.
+Kdyby pršelo, zůstali bychom doma. | гдібі пршело зуста:лі біхом дома | Якби йшов дощ, ми б залишилися вдома.
+Co bys dělal, kdybys byl bohatý? | цо біс дьєлал гдібис бил богаті: | Що б ти робив, якби був багатим?
+</div>
+<div class="warn"><b>Реальна умова</b> — зі словом <span class="fr">jestli / pokud</span> і звичайним часом: <span class="fr">Jestli přijdeš, budu rád.</span> (Якщо прийдеш, я буду радий.) Нереальна — <span class="fr">kdyby</span>.</div>
+<h3>3.3. Фрази ввічливості</h3>
+<div class="vocab">
+Mohl bych … ? | мохл біх | Чи міг би я …?
+Mohl byste … ? | мохл бісте | Чи не могли б ви …?
+Chtěl bych … | хтьєл біх | Я б хотів …
+Dal bych si … | дал біх сі | Я б узяв …
+Měl byste … | мнєл бісте | Вам слід …
+Rád bych … | ра:д біх | Я б залюбки …
+Byl bych rád, kdyby … | бил біх ра:д гдібі | Я був би радий, якби …
+Nevadilo by vám … ? | неваділо бі вам | Чи не заважало б вам …?
+</div>
+<div class="qz" data-title="Вправа 3. Умовний спосіб">
+___ bych kávu. (chtěl) | Chtěl
+Dal ___ si čaj. (б) | bych
+Mohl ___ mi pomoct? (ви) | byste
+Měl ___ více spát. (ти) | bys
+Šla ___ s tebou. (б, я) | bych
+___ měl čas, jel bych. (якби, я) | Kdybych
+___ pršelo, zůstali bychom doma. | Kdyby
+Rád ___ cestoval. (б) | bych
+Chtěla ___ jít domů. (я б) | bych
+Co ___ dělal? (б, ти; dělat) | bys
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Вид дієслова">
+<h2><span class="no">Розділ 4</span>Вид дієслова: недоконаний і доконаний</h2>
+<p class="lead">Як в українській, чеське дієслово має <b>недоконаний</b> (<span class="fr">nedokonavý</span>: що робити? процес, звичка) і <b>доконаний</b> (<span class="fr">dokonavý</span>: що зробити? результат) вид. Для українця це знайома система, лише слова інші.</p>
+<h3>4.1. Пари видів</h3>
+<div class="tw"><table>
+<tr><th>Недоконаний</th><th>Доконаний</th><th>Значення</th></tr>
+<tr><td><span class="fr">dělat</span></td><td><span class="fr">udělat</span></td><td>робити / зробити</td></tr>
+<tr><td><span class="fr">psát</span></td><td><span class="fr">napsat</span></td><td>писати / написати</td></tr>
+<tr><td><span class="fr">číst</span></td><td><span class="fr">přečíst</span></td><td>читати / прочитати</td></tr>
+<tr><td><span class="fr">kupovat</span></td><td><span class="fr">koupit</span></td><td>купувати / купити</td></tr>
+<tr><td><span class="fr">vařit</span></td><td><span class="fr">uvařit</span></td><td>варити / зварити</td></tr>
+<tr><td><span class="fr">jíst</span></td><td><span class="fr">sníst</span></td><td>їсти / з'їсти</td></tr>
+<tr><td><span class="fr">pít</span></td><td><span class="fr">vypít</span></td><td>пити / випити</td></tr>
+<tr><td><span class="fr">platit</span></td><td><span class="fr">zaplatit</span></td><td>платити / заплатити</td></tr>
+<tr><td><span class="fr">říkat</span></td><td><span class="fr">říct</span></td><td>казати / сказати</td></tr>
+<tr><td><span class="fr">brát</span></td><td><span class="fr">vzít</span></td><td>брати / взяти</td></tr>
+<tr><td><span class="fr">dávat</span></td><td><span class="fr">dát</span></td><td>давати / дати</td></tr>
+<tr><td><span class="fr">volat</span></td><td><span class="fr">zavolat</span></td><td>телефонувати / зателефонувати</td></tr>
+<tr><td><span class="fr">otvírat</span></td><td><span class="fr">otevřít</span></td><td>відкривати / відкрити</td></tr>
+<tr><td><span class="fr">zavírat</span></td><td><span class="fr">zavřít</span></td><td>зачиняти / зачинити</td></tr>
+<tr><td><span class="fr">začínat</span></td><td><span class="fr">začít</span></td><td>починати / почати</td></tr>
+<tr><td><span class="fr">končit</span></td><td><span class="fr">skončit</span></td><td>закінчувати / закінчити</td></tr>
+<tr><td><span class="fr">odpovídat</span></td><td><span class="fr">odpovědět</span></td><td>відповідати / відповісти</td></tr>
+<tr><td><span class="fr">ptát se</span></td><td><span class="fr">zeptat se</span></td><td>питати / запитати</td></tr>
+<tr><td><span class="fr">vstávat</span></td><td><span class="fr">vstát</span></td><td>вставати / встати</td></tr>
+<tr><td><span class="fr">učit se</span></td><td><span class="fr">naučit se</span></td><td>вчитися / вивчити</td></tr>
+<tr><td><span class="fr">dívat se</span></td><td><span class="fr">podívat se</span></td><td>дивитися / подивитися</td></tr>
+<tr><td><span class="fr">potkávat</span></td><td><span class="fr">potkat</span></td><td>зустрічати / зустріти</td></tr>
+<tr><td><span class="fr">vracet se</span></td><td><span class="fr">vrátit se</span></td><td>повертатися / повернутися</td></tr>
+<tr><td><span class="fr">přicházet</span></td><td><span class="fr">přijít</span></td><td>приходити / прийти</td></tr>
+<tr><td><span class="fr">odcházet</span></td><td><span class="fr">odejít</span></td><td>відходити / піти</td></tr>
+<tr><td><span class="fr">přijíždět</span></td><td><span class="fr">přijet</span></td><td>приїжджати / приїхати</td></tr>
+<tr><td><span class="fr">odjíždět</span></td><td><span class="fr">odjet</span></td><td>від'їжджати / від'їхати</td></tr>
+</table></div>
+<div class="rule"><b class="t">Як утворюються пари</b>
+<ul>
+<li><b>Префікс</b> робить доконаним: <span class="fr">dělat → <b>u</b>dělat, psát → <b>na</b>psat, číst → <b>pře</b>číst, platit → <b>za</b>platit, pít → <b>vy</b>pít</span>.</li>
+<li><b>Суфікс</b> робить недоконаним: <span class="fr">koupit → koup<b>ovat</b> (куп<b>ува</b>ти), vrátit → vrac<b>et</b>, přijít → přicház<b>et</b></span>.</li>
+<li>Деякі пари — <b>різні корені</b>: <span class="fr">brát — vzít, říkat — říct, dávat — dát</span>.</li>
+</ul></div>
+<h3>4.2. Коли який</h3>
+<div class="tw"><table>
+<tr><th></th><th>Недоконаний</th><th>Доконаний</th></tr>
+<tr><td>Процес</td><td><span class="fr">Včera jsem psal e-mail.</span> (писав, може, не дописав)</td><td><span class="fr">Včera jsem napsal e-mail.</span> (написав, готово)</td></tr>
+<tr><td>Звичка</td><td><span class="fr">Každý den čtu noviny.</span></td><td></td></tr>
+<tr><td>Майбутнє</td><td><span class="fr">Budu psát.</span> (буду писати)</td><td><span class="fr">Napíšu.</span> (напишу)</td></tr>
+<tr><td>Теперішній</td><td><span class="fr">Píšu.</span> (пишу зараз)</td><td>— (немає)</td></tr>
+</table></div>
+<div class="exs">
+Čtu knihu. | чту книгу | Читаю книгу (зараз).
+Přečetl jsem knihu. | пршечетл сем книгу | Я прочитав книжку.
+Každý den vařím večeři. | кажді: ден варжі:м вечерші | Щодня готую вечерю.
+Uvařím večeři. | увар-жі:м вечерші | Приготую вечерю.
+Pořád jí. | поржа:т йі: | Він усе їсть.
+Už to snědl. | уж то снєдл | Він це вже з'їв.
+</div>
+<div class="qz" data-title="Вправа 4. Вид дієслова">
+dělat → ___ | udělat
+psát → ___ | napsat
+číst → ___ | přečíst
+koupit → ___ (недокон.) | kupovat
+platit → ___ | zaplatit
+Včera jsem ___ e-mail. (napsat; чол.) | napsal
+Každý den ___ noviny. (číst, я) | čtu
+Zítra ___ večeři. (uvařit, я) | uvařím
+Už jsem to ___ . (sníst; чол.) | snědl
+Budu ___ . (psát) | psát
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Відмінки (повний огляд)" data-short="Огляд відмінків">
+<h2><span class="no">Розділ 5</span>Сім відмінків: огляд</h2>
+<p class="lead">У чеській сім відмінків. Номер відмінка прийнято називати: «druhý pád» тощо. Коротка таблиця: питання, головні вживання.</p>
+<div class="tw"><table>
+<tr><th>#</th><th>Назва</th><th>Питання</th><th>Де вживається</th></tr>
+<tr><td>1</td><td>називний (<span class="fr">nominativ</span>)</td><td>kdo? co?</td><td>підмет, «to je …»</td></tr>
+<tr><td>2</td><td>родовий (<span class="fr">genitiv</span>)</td><td>koho? čeho?</td><td>do, z, od, bez, u, vedle, quantity</td></tr>
+<tr><td>3</td><td>давальний (<span class="fr">dativ</span>)</td><td>komu? čemu?</td><td>k, díky, proti, комусь давати, допомагати</td></tr>
+<tr><td>4</td><td>знахідний (<span class="fr">akuzativ</span>)</td><td>koho? co?</td><td>mít, chtít, vidět, na/za/pro/přes (куди)</td></tr>
+<tr><td>5</td><td>кличний (<span class="fr">vokativ</span>)</td><td>—</td><td>звертання: <span class="fr">Pane Nováku!</span> <span class="fr">Evo!</span> <span class="fr">Mami!</span></td></tr>
+<tr><td>6</td><td>місцевий (<span class="fr">lokál</span>)</td><td>o kom? o čem?</td><td>v, na, o, po, při (де, про що)</td></tr>
+<tr><td>7</td><td>орудний (<span class="fr">instrumentál</span>)</td><td>s kým? čím?</td><td>s, před, za, nad, pod, mezi, засіб</td></tr>
+</table></div>
+<h3>5.1. Узагальнена таблиця закінчень (однина)</h3>
+<div class="tw"><table>
+<tr><th>Відмінок</th><th><span class="fr m">m неістота</span><br>stůl</th><th><span class="fr m">m істота</span><br>pán, student</th><th><span class="fr f">f -a</span><br>žena</th><th><span class="fr f">f -e</span><br>růže</th><th><span class="fr f">f прим.</span><br>noc</th><th><span class="fr n">n</span><br>město</th></tr>
+<tr><td>1</td><td>stůl</td><td>pán</td><td>žena</td><td>růže</td><td>noc</td><td>město</td></tr>
+<tr><td>2</td><td>stolu</td><td>pána</td><td>ženy</td><td>růže</td><td>noci</td><td>města</td></tr>
+<tr><td>3</td><td>stolu</td><td>pánovi</td><td>ženě</td><td>růži</td><td>noci</td><td>městu</td></tr>
+<tr><td>4</td><td>stůl</td><td>pána</td><td>ženu</td><td>růži</td><td>noc</td><td>město</td></tr>
+<tr><td>5</td><td>stole!</td><td>pane!</td><td>ženo!</td><td>růže!</td><td>noci!</td><td>město!</td></tr>
+<tr><td>6</td><td>stole</td><td>pánovi</td><td>ženě</td><td>růži</td><td>noci</td><td>městě</td></tr>
+<tr><td>7</td><td>stolem</td><td>pánem</td><td>ženou</td><td>růží</td><td>nocí</td><td>městem</td></tr>
+</table></div>
+<div class="tip"><b class="t">Зміни при відмінюванні.</b> Перед закінченнями в d, t, n пом'якшення: <span class="fr">žena → ženě</span>, <span class="fr">sestra → sestře</span>. Але k, h, g, ch, r перед -e змінюються: <span class="fr">kniha → knize, matka → matce, ruka → ruce, Praha → Praze</span>. Ця зміна («k → c, h → z, ch → š, r → ř») працює завжди в давальному й місцевому жін. роду.</div>
+<h3>5.2. Особові займенники у відмінках</h3>
+<div class="tw"><table>
+<tr><th>#</th><th>já</th><th>ty</th><th>on / ono</th><th>ona</th><th>my</th><th>vy</th><th>oni</th></tr>
+<tr><td>1</td><td>já</td><td>ty</td><td>on</td><td>ona</td><td>my</td><td>vy</td><td>oni</td></tr>
+<tr><td>2</td><td>mě</td><td>tebe</td><td>jeho</td><td>jí</td><td>nás</td><td>vás</td><td>jich</td></tr>
+<tr><td>3</td><td>mi / mně</td><td>ti / tobě</td><td>mu / jemu</td><td>jí</td><td>nám</td><td>vám</td><td>jim</td></tr>
+<tr><td>4</td><td>mě</td><td>tě / tebe</td><td>ho / jeho</td><td>ji</td><td>nás</td><td>vás</td><td>je</td></tr>
+<tr><td>6</td><td>mně</td><td>tobě</td><td>něm</td><td>ní</td><td>nás</td><td>vás</td><td>nich</td></tr>
+<tr><td>7</td><td>mnou</td><td>tebou</td><td>jím</td><td>jí</td><td>námi</td><td>vámi</td><td>jimi</td></tr>
+</table></div>
+<div class="qz" data-title="Вправа 5. Відмінки: огляд">
+Kniha je na ___ . (stůl, місцевий) | stole
+Mluvíme o ___ . (práce, місцевий) | práci
+Jdu s ___ . (kamarád, орудний) | kamarádem
+Dej to ___ . (sestra, давальний) | sestře
+Bez ___ . (cukr, родовий) | cukru
+Vidím ___ . (matka, знахідний) | matku
+Vidím ___ . (pán, знахідний) | pána
+Dobrý den, ___ Nováku! (pan, кличний) | pane
+Jsem s ___ . (ty, орудний) | tebou
+Mluvím o ___ . (on, місцевий; прийм. дано) | něm
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Родовий, давальний, орудний">
+<h2><span class="no">Розділ 6</span>Родовий, давальний, орудний: коли який</h2>
+<h3>6.1. Родовий відмінок (<i>koho? čeho?</i>)</h3>
+<div class="tw"><table>
+<tr><th>Де</th><th>Приклади</th></tr>
+<tr><td>Прийменники <span class="fr">do, z, od, bez, u, vedle, blízko, kolem, podle, během, kromě</span></td><td><span class="fr">do školy, z práce, od kamaráda, bez cukru, u lékaře, vedle domu, během léta</span></td></tr>
+<tr><td>Кількість: <span class="fr">hodně, málo, trochu, spousta, kousek, sklenice, láhev, kilo</span></td><td><span class="fr">hodně lidí, trochu mléka, kousek chleba, láhev vody, kilo jablek</span></td></tr>
+<tr><td>Після чисел 5+</td><td><span class="fr">pět korun, deset let, sto lidí</span></td></tr>
+<tr><td>Належність</td><td><span class="fr">kniha mého bratra, auto Petra, dům mých rodičů</span></td></tr>
+<tr><td>Дата</td><td><span class="fr">pátého května</span> (п'ятого травня)</td></tr>
+<tr><td>Після слів <span class="fr">bát se, ptát se (na)</span>? Ні: <span class="fr">bát se</span> + родовий</td><td><span class="fr">bojím se psa</span> (боюся собаки)</td></tr>
+</table></div>
+<div class="exs">
+Jdu do obchodu. | йду до обходу | Іду в магазин.
+Jsem z České republiky. | сем з чеське републікі | Я з Чеської республіки.
+Čaj bez cukru, prosím. | чай без цукру просі:м | Чай без цукру, будь ласка.
+Je to od kamaráda. | є то од камарада | Це від друга.
+Bydlím vedle parku. | бідлі:м ведле парку | Живу поруч із парком.
+Mám hodně práce. | ма:м годньє працє | У мене багато роботи.
+Dal bych si trochu mléka. | дал біх сі трохо мле:ка | Я б узяв трохи молока.
+Kolik je to korun? Padesát korun. | колік є то корун падеса:т корун | Скільки це крон? П'ятдесят.
+</div>
+<h3>6.2. Давальний відмінок (<i>komu? čemu?</i>)</h3>
+<div class="tw"><table>
+<tr><th>Де</th><th>Приклади</th></tr>
+<tr><td>Кому давати, казати, показувати</td><td><span class="fr">dát mamce, říct bratrovi, ukázat kamarádovi</span></td></tr>
+<tr><td>Дієслова: <span class="fr">pomáhat, děkovat, věřit, telefonovat, líbit se, chutnat, patřit</span></td><td><span class="fr">pomáhám mamince, děkuji vám, líbí se mi to</span></td></tr>
+<tr><td>Прийменники <span class="fr">k / ke, díky, proti, naproti, kvůli</span></td><td><span class="fr">k lékaři, díky tobě, naproti poště</span></td></tr>
+<tr><td>Стан: «мені (є)…»</td><td><span class="fr">Je mi zima. Je mi třicet. Je mi smutno.</span></td></tr>
+</table></div>
+<div class="exs">
+Dej mi vodu, prosím. | дей мі воду просі:м | Дай мені воду, будь ласка.
+Pomáhám sestře. | пома:га:м сестрже | Допомагаю сестрі.
+Řekni mu to. | ржекні му то | Скажи йому це.
+Líbí se mi Praha. | лі:бі: се мі прага | Мені подобається Прага.
+Chutná mi polévka. | хутна: мі поле:вка | Суп смакує мені.
+Jdu k lékaři. | йду к ле:каржі | Іду до лікаря.
+Je mi zima. | є мі зіма | Мені холодно.
+Telefonuji kamarádovi. | телефонуї камара:дові | Телефоную другові.
+</div>
+<h3>6.3. Орудний відмінок (<i>s kým? čím?</i>)</h3>
+<div class="tw"><table>
+<tr><th>Де</th><th>Приклади</th></tr>
+<tr><td><span class="fr">s / se</span> (з)</td><td><span class="fr">s kamarádem, s mlékem, se sestrou, s tebou</span></td></tr>
+<tr><td><span class="fr">před, za, nad, pod, mezi</span> (де)</td><td><span class="fr">před domem, za domem, nad stolem, pod stolem</span></td></tr>
+<tr><td>Засіб, транспорт</td><td><span class="fr">jet autobusem / vlakem / autem, psát perem</span></td></tr>
+<tr><td>Після <span class="fr">být, stát se</span> (стати кимось)</td><td><span class="fr">chci být lékařem, stal se učitelem</span></td></tr>
+</table></div>
+<div class="exs">
+Jdu do kina s kamarádem. | йду до кіна с камарадем | Іду в кіно з другом.
+Kávu s mlékem, prosím. | ка:ву с мле:кем просі:м | Каву з молоком, будь ласка.
+Jedu autobusem. | єду аутобусем | Їду автобусом.
+Bydlím se sestrou. | бідлі:м се сестроу | Живу з сестрою.
+Chci být učitelem. | хці біт учітелем | Хочу бути вчителем.
+Mluvím s vámi. | млувім с вамі | Говорю з вами.
+Auto stojí před domem. | ауто стої: пршет домем | Авто стоїть перед будинком.
+</div>
+<div class="warn"><b>Куди? / Де?</b> З прийменниками <span class="fr">na, v / ve, před, za, nad, pod, mezi</span> важливо: на питання <b>«куди?»</b> — знахідний, на питання <b>«де?»</b> — місцевий або орудний. <span class="fr">Jdu <b>na</b> poštu</span> (куди, знахідний) — <span class="fr">Jsem <b>na</b> poště</span> (де, місцевий). <span class="fr">Dej to <b>na</b> stůl</span> — <span class="fr">Je to <b>na</b> stole</span>. <span class="fr">Jdu <b>za</b> dům</span> — <span class="fr">Stojím <b>za</b> domem</span>.</div>
+<div class="qz" data-title="Вправа 6. Родовий, давальний, орудний">
+Jdu do ___ . (obchod) | obchodu
+Čaj bez ___ . (cukr) | cukru
+Dej to ___ . (sestra) | sestře
+Pomáhám ___ . (bratr) | bratrovi
+Jdu s ___ . (kamarád) | kamarádem
+Kávu s ___ . (mléko) | mlékem
+Jedu ___ . (autobus) | autobusem
+Auto stojí před ___ . (dům) | domem
+Líbí ___ se Praha. (мені) | mi
+Chci být ___ . (učitel) | učitelem
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Модальні дієслова й наказовий">
+<h2><span class="no">Розділ 7</span>Модальні дієслова й наказовий спосіб</h2>
+<h3>7.1. Модальні дієслова + інфінітив</h3>
+<div class="cj" data-verb="muset" data-note="мусити" data-ipa="мусет">
+já | musím | мусі:м
+ty | musíš | мусі:ш
+on / ona | musí | мусі:
+my | musíme | мусі:ме
+vy | musíte | мусі:те
+oni | musejí | мусеї:
+</div>
+<div class="cj" data-verb="moct" data-note="могти" data-ipa="моцт">
+já | můžu / mohu | му:жу
+ty | můžeš | му:жеш
+on / ona | může | му:же
+my | můžeme | му:жеме
+vy | můžete | му:жете
+oni | můžou / mohou | му:жоу
+</div>
+<div class="cj" data-verb="umět" data-note="вміти" data-ipa="умнєт">
+já | umím | умі:м
+ty | umíš | умі:ш
+on / ona | umí | умі:
+my | umíme | умі:ме
+vy | umíte | умі:те
+oni | umějí | умнєї:
+</div>
+<div class="exs">
+Musím jít domů. | мусі:м йіт дому | Мушу йти додому.
+Nemusíš přijít. | немусі:ш пршійіт | Тобі не обов'язково приходити.
+Nesmíš tady parkovat. | несмі:ш тад-і парковат | Тут не можна паркуватись.
+Můžu otevřít okno? | му:жу отев-ржіт окно | Можна відчинити вікно?
+Můžete mi pomoct? | му:жете мі помоцт | Можете мені допомогти?
+Umím plavat. | умі:м плават | Вмію плавати.
+Neumím vařit. | неумі:м варжіт | Не вмію готувати.
+Chci se naučit česky. | хці се науч-іт чески | Хочу навчитися чеської.
+</div>
+<div class="warn"><b>Обережно: muset і smět.</b> <span class="fr">Musím</span> = мушу. <span class="fr">Nemusím</span> = не мушу (не обов'язково). <span class="fr">Nesmím</span> = не можна, заборонено.</div>
+<h3>7.2. Наказовий спосіб</h3>
+<p>Утворення: <b>3-тя особа множини, відкинь -í / -ou / -ejí</b> і додай нуль, -ej або -i. Часто просто основа.</p>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>ty</th><th>my</th><th>vy</th></tr>
+<tr><td><span class="fr">dělat</span></td><td>dělej!</td><td>dělejme!</td><td>dělejte!</td></tr>
+<tr><td><span class="fr">mluvit</span></td><td>mluv!</td><td>mluvme!</td><td>mluvte!</td></tr>
+<tr><td><span class="fr">číst</span></td><td>čti!</td><td>čtěme!</td><td>čtěte!</td></tr>
+<tr><td><span class="fr">psát</span></td><td>piš!</td><td>pišme!</td><td>pište!</td></tr>
+<tr><td><span class="fr">jít</span></td><td>jdi!</td><td>pojďme!</td><td>jděte!</td></tr>
+<tr><td><span class="fr">přijít</span></td><td>pojď!</td><td>pojďme!</td><td>pojďte!</td></tr>
+<tr><td><span class="fr">být</span></td><td>buď!</td><td>buďme!</td><td>buďte!</td></tr>
+<tr><td><span class="fr">dát</span></td><td>dej!</td><td>dejme!</td><td>dejte!</td></tr>
+<tr><td><span class="fr">říct</span></td><td>řekni!</td><td>řekněme!</td><td>řekněte!</td></tr>
+<tr><td><span class="fr">počkat</span></td><td>počkej!</td><td>počkejme!</td><td>počkejte!</td></tr>
+</table></div>
+<div class="exs">
+Pojď sem! | пойд сем | Іди сюди!
+Řekněte mi to. | ржекнєте мі то | Скажіть мені це.
+Počkej chvíli. | почкей хвілі | Зачекай хвилинку.
+Nedělej to! | недьєлей то | Не роби цього!
+Buďte opatrní. | будьте опатрні: | Будьте обережні.
+Pojďme do kina! | пойдьме до кіна | Ходімо в кіно!
+</div>
+<div class="tip">Заборона: <span class="fr">ne- + недоконана форма</span>: <span class="fr">Nedělej to! Nekupuj to!</span> Доконана тут рідкісна й означає «обережно, не…» (<span class="fr">Neupadni!</span> Не впади).</div>
+<div class="qz" data-title="Вправа 7. Модальні та наказовий">
+Já ___ jít domů. (musit) | musím
+Ty ___ přijít. (не мусиш) | nemusíš
+Tady ___ parkovat. (не можна, ty) | nesmíš
+Já ___ plavat. (вмію) | umím
+___ sem! (прийди, ty) | Pojď
+___ mi to! (скажіть) | Řekněte
+___ to! (не роби, ty) | Nedělej
+___ opatrní. (будьте) | Buďte
+___ chvíli. (зачекай) | Počkej
+Můžu ___ okno? (відчинити) | otevřít
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Зворотні дієслова">
+<h2><span class="no">Розділ 8</span>Зворотні дієслова: se і si</h2>
+<p class="lead">Чеське <span class="fr">se</span> відповідає українському «-ся» (<span class="fr">myju se</span> = мию себе, мюся). Але є ще <span class="fr">si</span> (давальний: «собі»).</p>
+<div class="vocab">
+# Дієслова з se
+učit se | учіт се | вчитися
+dívat se (na) | дьіват се | дивитися (на)
+jmenovat se | йменоват се | зватися
+bát se | ба:т се | боятися
+ptát se | пта:т се | питати
+těšit se (na) | тьєшіт се | радіти, чекати з нетерпінням
+smát se | сма:т се | сміятися
+vracet se | врацет се | повертатися
+procházet se | прохазет се | гуляти
+usmívat se | усмі:ват се | усміхатися
+setkat se | сеткат се | зустрітися
+# Дієслова з si
+dát si | дат сі | узяти собі (їжі)
+myslet si | мислет сі | думати
+koupit si | коупіт сі | купити собі
+vzít si | візіт сі | узяти (з собою)
+přát si | пршат сі | бажати
+představit si | пршетставіт сі | уявити собі
+všimnout si | вшімноут сі | помітити
+</div>
+<div class="cj" data-verb="učit se" data-note="вчитися (present)" data-ipa="учіт се">
+já | učím se | учі:м се
+ty | učíš se | учі:ш се
+on / ona | učí se | учі: се
+my | učíme se | учі:ме се
+vy | učíte se | учі:те се
+oni | učí se | учі: се
+</div>
+<div class="exs">
+Jmenuji se Michal. | йменуї се міхал | Мене звати Михайло.
+Učím se česky. | учі:м се чески | Вчу чеську.
+Dívám se na televizi. | дьіва:м се на телевізі | Дивлюся телевізор.
+Těším se na víkend. | тьєші:м се на ві:кенд | Чекаю на вихідні.
+Myslím si, že máš pravdu. | міслі:м сі же ма:ш правду | Думаю, що ти маєш рацію.
+Dám si kávu. | да:м сі ка:ву | Візьму каву.
+Koupila jsem si nové boty. | коупіла сем сі нове боти | Я купила собі нове взуття.
+Bojím se psů. | бойі:м се псуу | Боюся собак.
+</div>
+<div class="rule"><b class="t">Місце se / si</b>
+<p><span class="fr">se, si</span> — слабкі слова, стоять на <b>другому місці</b> після першого наголошеного слова: <span class="fr">Dnes se učím. Včera jsem se učil. Zítra se budu učit.</span> У минулому <span class="fr">jsem</span> стоїть <b>перед</b> <span class="fr">se</span>: <span class="fr">jsem se</span>, не <span class="fr">se jsem</span>. Винятково: <span class="fr">Učil jsem se.</span></p></div>
+<div class="qz" data-title="Вправа 8. Se і si">
+Jmenuji ___ Michal. | se
+Učím ___ česky. | se
+Těším ___ na víkend. | se
+Dám ___ kávu. | si
+Myslím ___ , že ano. | si
+Koupil jsem ___ nové boty. | si
+Včera jsem ___ učil. | se
+Ty ___ bojíš? | se
+Dívám ___ na film. | se
+Chci ___ dát čaj. | si
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Порівняння">
+<h2><span class="no">Розділ 9</span>Порівняння прикметників і прислівників</h2>
+<h3>9.1. Вищий ступінь</h3>
+<p>Основа + <b>-ější / -ejší</b> або <b>-ší</b>. Коротка форма для найчастіших.</p>
+<div class="tw"><table>
+<tr><th>Положеній</th><th>Вищий</th><th>Найвищий</th><th>Значення</th></tr>
+<tr><td><span class="fr">nový</span></td><td>novější</td><td>nejnovější</td><td>новіший</td></tr>
+<tr><td><span class="fr">rychlý</span></td><td>rychlejší</td><td>nejrychlejší</td><td>швидший</td></tr>
+<tr><td><span class="fr">levný</span></td><td>levnější</td><td>nejlevnější</td><td>дешевший</td></tr>
+<tr><td><span class="fr">starý</span></td><td>starší</td><td>nejstarší</td><td>старший</td></tr>
+<tr><td><span class="fr">mladý</span></td><td>mladší</td><td>nejmladší</td><td>молодший</td></tr>
+<tr><td><span class="fr">hezký</span></td><td>hezčí</td><td>nejhezčí</td><td>гарніший</td></tr>
+<tr><td><span class="fr">drahý</span></td><td>dražší</td><td>nejdražší</td><td>дорожчий</td></tr>
+<tr><td><span class="fr">krátký</span></td><td>kratší</td><td>nejkratší</td><td>коротший</td></tr>
+<tr><td><span class="fr">dlouhý</span></td><td>delší</td><td>nejdelší</td><td>довший</td></tr>
+<tr><td><span class="fr">vysoký</span></td><td>vyšší</td><td>nejvyšší</td><td>вищий</td></tr>
+<tr><td><span class="fr">nízký</span></td><td>nižší</td><td>nejnižší</td><td>нижчий</td></tr>
+<tr><td><span class="fr">dobrý</span></td><td><b>lepší</b></td><td><b>nejlepší</b></td><td>кращий</td></tr>
+<tr><td><span class="fr">špatný</span></td><td><b>horší</b></td><td><b>nejhorší</b></td><td>гірший</td></tr>
+<tr><td><span class="fr">velký</span></td><td><b>větší</b></td><td><b>největší</b></td><td>більший</td></tr>
+<tr><td><span class="fr">malý</span></td><td><b>menší</b></td><td><b>nejmenší</b></td><td>менший</td></tr>
+</table></div>
+<div class="rule"><b class="t">Як порівнювати</b>
+<ul>
+<li><b>Than:</b> <span class="fr">než</span> + називний: <span class="fr">Praha je větší než Brno.</span></li>
+<li><b>Так само:</b> <span class="fr">stejně … jako</span> або <span class="fr">tak … jako</span>: <span class="fr">Je stejně starý jako já.</span></li>
+<li><b>Найвищий:</b> <span class="fr">nej-</span> + вищий ступінь: <span class="fr">To je nejlepší kniha.</span> Із прийменником: <span class="fr">nejlepší z nich</span>.</li>
+<li>Прикметник у вищому ступені зберігає рід: <span class="fr">starší bratr, starší sestra, starší auto</span>.</li>
+</ul></div>
+<div class="exs">
+Moje sestra je starší než já. | мойе сестра є старші: нєж я: | Моя сестра старша за мене.
+Tento telefon je dražší. | тенто телефон є дражші: | Цей телефон дорожчий.
+Praha je nejhezčí město. | прага є нехезчі: мнєсто | Прага найгарніше місто.
+Dnes je teplejší než včera. | днес є теплейші: нєж вчера | Сьогодні тепліше, ніж учора.
+Ten film byl lepší než kniha. | тен фільм бил лепші: нєж книга | Фільм був кращий за книжку.
+</div>
+<h3>9.2. Прислівники</h3>
+<div class="tw"><table>
+<tr><th>Положеній</th><th>Вищий</th><th>Значення</th></tr>
+<tr><td><span class="fr">dobře</span></td><td>lépe / líp</td><td>добре → краще</td></tr>
+<tr><td><span class="fr">špatně</span></td><td>hůře / hůř</td><td>погано → гірше</td></tr>
+<tr><td><span class="fr">hodně</span></td><td>více / víc</td><td>багато → більше</td></tr>
+<tr><td><span class="fr">málo</span></td><td>méně / míň</td><td>мало → менше</td></tr>
+<tr><td><span class="fr">rychle</span></td><td>rychleji</td><td>швидко → швидше</td></tr>
+<tr><td><span class="fr">pomalu</span></td><td>pomaleji</td><td>повільно → повільніше</td></tr>
+<tr><td><span class="fr">často</span></td><td>častěji</td><td>часто → частіше</td></tr>
+</table></div>
+<div class="qz" data-title="Вправа 9. Порівняння">
+dobrý → ___ | lepší
+špatný → ___ | horší
+velký → ___ | větší
+malý → ___ | menší
+drahý → ___ | dražší
+levný → ___ | levnější
+Praha je větší ___ Brno. | než
+To je ___ kniha. (найкраща) | nejlepší
+Ona je ___ než já. (старша) | starší
+Mluví ___ . (краще; прислівник) | lépe
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Складні речення">
+<h2><span class="no">Розділ 10</span>Складні речення: зв'язки й відносні</h2>
+<h3>10.1. Сполучники</h3>
+<div class="tw"><table>
+<tr><th>Функція</th><th>Слова</th><th>Приклад</th></tr>
+<tr><td>Що</td><td><span class="fr">že</span></td><td><span class="fr">Myslím, že máš pravdu.</span></td></tr>
+<tr><td>Причина</td><td><span class="fr">protože, jelikož, kvůli</span></td><td><span class="fr">Nešel jsem, protože jsem byl nemocný.</span></td></tr>
+<tr><td>Наслідок</td><td><span class="fr">proto, takže, a tak</span></td><td><span class="fr">Pršelo, takže jsme zůstali doma.</span></td></tr>
+<tr><td>Протиставлення</td><td><span class="fr">ale, však, přesto, avšak</span></td><td><span class="fr">Je drahý, ale hezký.</span></td></tr>
+<tr><td>Мета</td><td><span class="fr">aby, abych, abys, …</span></td><td><span class="fr">Učím se česky, abych mohl žít v Praze.</span></td></tr>
+<tr><td>Час</td><td><span class="fr">když, až, než, zatímco, ještě než, jakmile</span></td><td><span class="fr">Než odejdeš, zavři okno.</span></td></tr>
+<tr><td>Умова</td><td><span class="fr">jestli, pokud, kdyby</span></td><td><span class="fr">Jestli přijdeš, budu rád.</span></td></tr>
+<tr><td>Альтернатива</td><td><span class="fr">nebo, buď … nebo, ani … ani</span></td><td><span class="fr">Chceš čaj, nebo kávu?</span></td></tr>
+<tr><td>Послідовність</td><td><span class="fr">nejdřív, potom, pak, nakonec</span></td><td><span class="fr">Nejdřív snídám, potom jdu do práce.</span></td></tr>
+</table></div>
+<div class="exs">
+Myslím, že je to dobrý nápad. | міслі:м же є то добрі: на:пад | Гадаю, це добра ідея.
+Nemohl jsem přijít, protože jsem byl nemocný. | немохл сем пршіійіт протоже сем бил немоцні: | Я не міг прийти, бо був хворий.
+Dívám se na film, zatímco vařím. | дьіва:м се на фільм затім-цо варжі:м | Дивлюся фільм, поки готую.
+Než půjdeš domů, zavolej mi. | нєж пуйдеш дому заволей мі | Перш ніж підеш додому, зателефонуй мені.
+Učím se česky, abych rozuměl lidem. | учі:м се чески абих розумнєл лідем | Вчу чеську, щоб розуміти людей.
+</div>
+<h3>10.2. Відносні займенники</h3>
+<div class="tw"><table>
+<tr><th>Слово</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td><span class="fr">který, která, které</span></td><td>який, котрий (узгоджується з іменником)</td><td><span class="fr">muž, který bydlí vedle; žena, která pracuje; dům, který stojí</span></td></tr>
+<tr><td><span class="fr">co</span></td><td>що (після vše, všechno, nic, то)</td><td><span class="fr">Všechno, co chceš.</span></td></tr>
+<tr><td><span class="fr">kde</span></td><td>де</td><td><span class="fr">město, kde bydlím</span></td></tr>
+<tr><td><span class="fr">kdo</span></td><td>хто</td><td><span class="fr">ten, kdo čeká</span></td></tr>
+<tr><td>з прийменником</td><td><span class="fr">ve kterém, na které, s kterým</span></td><td><span class="fr">dům, ve kterém bydlím; žena, o které mluvím</span></td></tr>
+</table></div>
+<div class="exs">
+To je muž, který bydlí vedle. | то є муж кторі: бідлі: ведле | Це чоловік, що живе поруч.
+Znám ženu, která pracuje v bance. | зна:м жену ктера: працує в банце | Знаю жінку, яка працює в банку.
+Dům, ve kterém bydlím, je starý. | дум ве кторем бідлі:м є старі: | Будинок, у якому живу, старий.
+Kniha, kterou čtu, je zajímavá. | кніга ктороу чту є зайіма:ва: | Книга, яку читаю, цікава.
+To je všechno, co mám. | то є фшехно цо ма:м | Це все, що я маю.
+</div>
+<div class="qz" data-title="Вправа 10. Сполучники">
+Myslím, ___ máš pravdu. (що) | že
+Nešel jsem, ___ jsem byl nemocný. (бо) | protože
+Je to drahé, ___ hezké. (але) | ale
+Chceš čaj, ___ kávu? (чи) | nebo
+Nejdřív snídám, ___ jdu do práce. (потім) | potom
+___ přijdeš, budu rád. (якщо) | Jestli
+Učím se česky, ___ rozuměl lidem. (щоб; я) | abych
+Znám ženu, ___ pracuje v bance. (яка) | která
+Dům, ___ stojí vedle, je starý. (що, m) | který
+To je všechno, ___ mám. (що) | co
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Час і дієслова руху">
+<h2><span class="no">Розділ 11</span>Вирази часу й дієслова руху</h2>
+<h3>11.1. Вирази часу</h3>
+<div class="tw"><table>
+<tr><th>Слово</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td><span class="fr">před + орудний</span></td><td>тому (у минулому)</td><td><span class="fr">před týdnem, před dvěma lety, před hodinou</span></td></tr>
+<tr><td><span class="fr">za + знахідний</span></td><td>через (у майбутньому)</td><td><span class="fr">za týden, za dva dny, za hodinu</span></td></tr>
+<tr><td><span class="fr">během + родовий</span></td><td>протягом</td><td><span class="fr">během léta, během dne</span></td></tr>
+<tr><td><span class="fr">od … do</span></td><td>від … до</td><td><span class="fr">od osmi do čtyř</span></td></tr>
+<tr><td><span class="fr">po + місцевий</span></td><td>після</td><td><span class="fr">po práci, po obědě</span></td></tr>
+<tr><td><span class="fr">už / ještě</span></td><td>вже / ще</td><td><span class="fr">už jsem jedl; ještě jsem nejedl</span></td></tr>
+<tr><td><span class="fr">každý den / týden</span></td><td>щодня / щотижня</td><td><span class="fr">každé ráno, každý večer</span></td></tr>
+<tr><td><span class="fr">často, někdy, nikdy, vždy</span></td><td>часто, іноді, ніколи, завжди</td><td><span class="fr">Často cvičím. Nikdy nepiju kávu.</span></td></tr>
+</table></div>
+<div class="exs">
+Přijel jsem před týdnem. | пршієл сем пршет ті:днем | Я приїхав тиждень тому.
+Přijedu za týden. | пршієду за ті:ден | Приїду через тиждень.
+Pracuji od osmi do čtyř. | працуї од осмі до чтирш | Працюю з восьмої до четвертої.
+Po práci jdu domů. | по праці йду дому | Після роботи йду додому.
+Ještě jsem nejedl. | єштє: сем неєдл | Я ще не їв.
+Už jsem jedl. | уж сем єдл | Я вже їв.
+</div>
+<h3>11.2. Дієслова руху: jít / chodit, jet / jezdit</h3>
+<div class="tw"><table>
+<tr><th>Одна дія в один бік</th><th>Багаторазова / туди й назад</th><th>Значення</th></tr>
+<tr><td><span class="fr">jít</span> (jdu)</td><td><span class="fr">chodit</span> (chodím)</td><td>йти пішки</td></tr>
+<tr><td><span class="fr">jet</span> (jedu)</td><td><span class="fr">jezdit</span> (jezdím)</td><td>їхати</td></tr>
+<tr><td><span class="fr">nést</span> (nesu)</td><td><span class="fr">nosit</span> (nosím)</td><td>нести</td></tr>
+<tr><td><span class="fr">letět</span> (letím)</td><td><span class="fr">létat</span> (létám)</td><td>летіти</td></tr>
+</table></div>
+<div class="exs">
+Teď jdu do školy. | теть йду до школі | Зараз іду до школи.
+Do školy chodím pěšky. | до школі ходьі:м пєшкі | До школи ходжу пішки.
+Jedu do Prahy. | єду до праги | Їду до Праги.
+Každý týden jezdím do Prahy. | кажді: ті:ден єздьі:м до праги | Щотижня їжджу до Праги.
+Nosím brýle. | носі:м бри:ле | Ношу окуляри.
+</div>
+<h3>11.3. Префікси руху</h3>
+<div class="vocab">
+přijít | пршиійіт | прийти
+odejít | одейіт | піти геть
+vyjít | вийіт | вийти
+vejít | вейіт | увійти
+projít | проійіт | пройти
+přejít | пршеійіт | перейти
+dojít | доійіт | дійти
+přijet | пршиєт | приїхати
+odjet | одєт | поїхати геть
+vyjet | виєт | виїхати
+</div>
+<div class="qz" data-title="Вправа 11. Час і рух">
+Přijel jsem ___ týdnem. (тому) | před
+Přijedu ___ týden. (через) | za
+___ práci jdu domů. (після) | Po
+___ jsem jedl. (вже) | Už
+Do školy ___ pěšky. (ходжу) | chodím
+Teď ___ do školy. (іду) | jdu
+Každý týden ___ do Prahy. (їжджу) | jezdím
+Zítra ___ do Prahy. (поїду) | pojedu
+Pracuji ___ osmi do čtyř. | od
+Nikdy ___ pivo. (не п'ю) | nepiju
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Як будуються слова">
+<h2><span class="no">Розділ 12</span>Як будуються слова: A2</h2>
+<p class="lead">У чеській, як в українській, слова росте з коренів: префікси змінюють значення дієслова, суфікси творять іменники й прикметники. Знаючи кілька моделей, ти розумієш багато нових слів.</p>
+<h3>12.1. Префікси дієслів руху й дії</h3>
+<div class="tw"><table>
+<tr><th>Префікс</th><th>Значення</th><th>Приклади</th></tr>
+<tr><td><b>při-</b></td><td>приходити, наближення</td><td><span class="fr">přijít, přijet, přinést</span></td></tr>
+<tr><td><b>od- / ode-</b></td><td>відходити</td><td><span class="fr">odejít, odjet, odpovědět</span></td></tr>
+<tr><td><b>vy-</b></td><td>вихід назовні, завершення</td><td><span class="fr">vyjít, vypít, vyprat</span></td></tr>
+<tr><td><b>za-</b></td><td>початок, зайти, закінчення</td><td><span class="fr">zavolat, zaplatit, zavřít</span></td></tr>
+<tr><td><b>pře-</b></td><td>через; знову</td><td><span class="fr">přejít, přečíst, přeložit</span></td></tr>
+<tr><td><b>pro-</b></td><td>наскрізь; докладно</td><td><span class="fr">projít, prohlédnout</span></td></tr>
+<tr><td><b>do-</b></td><td>до кінця, дійти</td><td><span class="fr">dojít, dopsat, dokončit</span></td></tr>
+<tr><td><b>roz-</b></td><td>розпочати, розвести</td><td><span class="fr">rozdělit, rozumět, rozpovídat</span></td></tr>
+<tr><td><b>po-</b></td><td>трохи, за певний час</td><td><span class="fr">počkat, posedět</span></td></tr>
+<tr><td><b>u-, na-</b></td><td>результат</td><td><span class="fr">udělat, napsat</span></td></tr>
+</table></div>
+<h3>12.2. Суфікси іменників</h3>
+<div class="tw"><table>
+<tr><th>Суфікс</th><th>Значення</th><th>Приклади</th></tr>
+<tr><td><b>-ka</b></td><td>жін. форма професії</td><td><span class="fr">učitel → učitelka, student → studentka, kamarád → kamarádka</span></td></tr>
+<tr><td><b>-ař / -ář</b></td><td>професія (виконавець)</td><td><span class="fr">pekař (пекар), lékař, kuchař, malíř</span></td></tr>
+<tr><td><b>-ník</b></td><td>людина / предмет</td><td><span class="fr">dělník, lékárník, slovník, kalendář</span></td></tr>
+<tr><td><b>-ost</b></td><td>якість</td><td><span class="fr">radost (радість), možnost, rychlost, nemocnost</span></td></tr>
+<tr><td><b>-ní, -tí</b></td><td>дія (з дієслова)</td><td><span class="fr">čtení (читання), psaní, učení, vaření, bydlení</span></td></tr>
+<tr><td><b>-ství</b></td><td>галузь, стан</td><td><span class="fr">přátelství, členství</span></td></tr>
+<tr><td><b>-ek, -ka, -ko</b></td><td>зменшення</td><td><span class="fr">domek, knížka, pivečko</span></td></tr>
+</table></div>
+<h3>12.3. Суфікси прикметників</h3>
+<div class="tw"><table>
+<tr><th>Суфікс</th><th>Значення</th><th>Приклади</th></tr>
+<tr><td><b>-ský / -cký</b></td><td>відносний</td><td><span class="fr">český, ukrajinský, městský, lidský</span></td></tr>
+<tr><td><b>-ový</b></td><td>з чого, для чого</td><td><span class="fr">zimní, čokoládový, papírový</span></td></tr>
+<tr><td><b>-ný</b></td><td>здатний, повний</td><td><span class="fr">hladový, nemocný, bohatý</span></td></tr>
+<tr><td><b>-ní</b></td><td>пов'язаний із часом</td><td><span class="fr">dnešní, večerní, zimní</span></td></tr>
+</table></div>
+<h3>12.4. Родини слів</h3>
+<div class="tw"><table>
+<tr><th>Корінь</th><th>Родина</th></tr>
+<tr><td><span class="fr">práce</span></td><td><span class="fr">pracovat, pracovník, pracovna, nepracovní</span></td></tr>
+<tr><td><span class="fr">kniha</span></td><td><span class="fr">knížka, knihovna, knihkupectví, knihovník</span></td></tr>
+<tr><td><span class="fr">učit</span></td><td><span class="fr">učitel, učitelka, učebnice, učení, naučit se</span></td></tr>
+<tr><td><span class="fr">čas</span></td><td><span class="fr">časopis, časový, časný, časem</span></td></tr>
+<tr><td><span class="fr">pít</span></td><td><span class="fr">pití, nápoj, pitná voda, vypít</span></td></tr>
+</table></div>
+<div class="warn"><b>Хибні друзі A2.</b> <span class="fr">časopis</span> = журнал (не «часопис»), <span class="fr">noviny</span> = газета, <span class="fr">nápoj</span> = напій, <span class="fr">úkol</span> = завдання, <span class="fr">pozor</span> = увага, <span class="fr">zajímavý</span> = цікавий, <span class="fr">krásný</span> = гарний, <span class="fr">ulice</span> = вулиця, <span class="fr">zájem</span> = інтерес, <span class="fr">čerstvý</span> = свіжий, <span class="fr">sklo</span> = скло, <span class="fr">vysoký</span> = високий, <span class="fr">smutný</span> = сумний, <span class="fr">pokoj</span> = кімната, <span class="fr">pomoc</span> = допомога, <span class="fr">čekat</span> = чекати, <span class="fr">vzor</span> = зразок.</div>
+<div class="qz" data-title="Вправа 12. Словотвір">
+učitel → жін.: ___ | učitelka
+student → жін.: ___ | studentka
+lékař → жін.: ___ | lékařka
+číst → čtení. psát → ___ | psaní
+radost: «радість». rychlý → ___ | rychlost
+dělat → результат: ___ | udělat
+psát → результат: ___ | napsat
+kniha → зменшене: ___ | knížka
+jít → «прийти»: ___ | přijít
+jít → «піти геть»: ___ | odejít
+</div>
+</section>
+
+<section class="unit" id="u13" data-grp="Словник" data-short="Словник за темами">
+<h2><span class="no">Розділ 13</span>Тематичний словник A2</h2>
+<p class="lead">Понад 300 слів і виразів. Колір: синій чоловічий, червоний жіночий, зелений середній рід.</p>
+<h3>13.1. Робота й навчання</h3>
+<div class="vocab">
+práce | праце | робота | f
+zaměstnání | заметна:ні: | місце роботи | n
+firma | фірма | фірма | f
+kancelář | канцела:рж | офіс | f
+šéf | шеф | шеф | m
+kolega | колега | колега | m
+plat | плат | зарплата | m
+smlouva | смлоува | договір | f
+životopis | жівотопіс | резюме | m
+pohovor | поговор | співбесіда | m
+schůzka | схуска | зустріч | f
+dovolená | доволена: | відпустка | f
+nezaměstnaný | незамєстнані: | безробітний | m
+hledat práci | гледат праці | шукати роботу
+dostat práci | достат праці | отримати роботу
+podepsat smlouvu | подепсат смлоуву | підписати договір
+univerzita | універзіта | університет | f
+fakulta | факулта | факультет | f
+přednáška | пршедна:шка | лекція | f
+zkouška | зкоушка | іспит | f
+předmět | пршедмнєт | предмет | m
+učebnice | учебніце | підручник | f
+sešit | сешіт | зошит | m
+úkol | у:кол | завдання | m
+</div>
+<h3>13.2. Здоров'я</h3>
+<div class="vocab">
+zdraví | здраві: | здоров'я | n
+nemoc | немоц | хвороба | f
+lékař | ле:карж | лікар | m
+nemocnice | немоцніце | лікарня | f
+ordinace | ордінаце | кабінет лікаря | f
+recept | рецепт | рецепт | m
+lék | ле:к | ліки | m
+bolest | болест | біль | f
+horečka | горечка | температура | f
+kašel | кашел | кашель | m
+rýma | рі:ма | нежить | f
+chřipka | хршіпка | грип | f
+alergie | алерґіє | алергія | f
+Bolí mě v krku. | болі: мнє в крку | У мене болить горло.
+Bolí mě záda. | болі: мнє за:да | Болить спина.
+Mám rýmu. | ма:м рі:му | У мене нежить.
+Je mi špatně. | є мі шпатнє | Мені зле.
+Potřebuji k lékaři. | потр-жебуї к ле:каржі | Мені треба до лікаря.
+Objednal jsem se. | обєднал сем се | Я записався (до лікаря).
+</div>
+<h3>13.3. Подорож і транспорт</h3>
+<div class="vocab">
+cesta | цеста | подорож, дорога | f
+jízdenka / lístek | йі:зденка | квиток | f
+zpoždění | зпожд-єні: | запізнення | n
+odjezd | одєзт | відправлення | m
+příjezd | пршіезт | прибуття | m
+nástupiště | на:ступішьте | платформа | n
+spojení | споєні: | пересадка, сполучення | n
+zavazadlo | заваздло | багаж | n
+kufr | куфр | валіза | m
+pas | пас | паспорт | m
+letiště | летішьте | аеропорт | n
+letadlo | летадло | літак | n
+vlak | влак | потяг | m
+autobus | аутобус | автобус | m
+metro | метро | метро | n
+tramvaj | трамвай | трамвай | f
+řidič | ржідьіч | водій | m
+pronajmout | пронаймоут | орендувати
+rezervace | резерваце | бронювання | f
+dálnice | да:льніце | автострада | f
+benzín | бензі:н | бензин | m
+</div>
+<h3>13.4. Місто й послуги</h3>
+<div class="vocab">
+radnice | раднице | мерія | f
+policie | поліціє | поліція | f
+pojišťovna | поїштьовна | страхова | f
+úřad | у:ржад | відомство | m
+formulář | формуля:рж | бланк | m
+vyplnit | виплнит | заповнити
+podepsat | подепсат | підписати
+občanský průkaz | обчанськи: пру:каз | посвідчення особи | m
+adresa | адреса | адреса | f
+telefonní číslo | телефоні: чі:сло | номер телефону | n
+semafor | семафор | світлофор | m
+křižovatka | кржіжоватка | перехрестя | f
+chodník | ходьні:к | тротуар | m
+přechod | пр-жехот | перехід | m
+</div>
+<h3>13.5. Технології</h3>
+<div class="vocab">
+počítač | почі:тач | комп'ютер | m
+notebook | ноутбук | ноутбук | m
+mobil | мобіл | мобільний | m
+internet | інтернет | інтернет | m
+heslo | гесло | пароль | n
+nabíječka | набі:ечка | зарядка | f
+zpráva | зпра:ва | повідомлення, новина | f
+e-mail | імейл | електронний лист | m
+přihlásit se | пр-жіглa:сіт се | увійти (в акаунт)
+stáhnout | ста:гноут | завантажити
+poslat | послат | надіслати
+zavolat | заволат | зателефонувати
+zrušit | зрушіт | скасувати
+</div>
+<h3>13.6. Почуття й характер</h3>
+<div class="vocab">
+radost | радост | радість | f
+smutek | смутек | смуток | m
+strach | страх | страх | m
+láska | ла:ска | любов | f
+vztek | вз-тек | гнів | m
+nuda | нуда | нудьга | f
+šťastný | штьястні: | щасливий
+smutný | смутні: | сумний
+naštvaný | наштвані: | розлючений
+nervózní | нерво:зні: | нервовий
+spokojený | спокойені: | задоволений
+překvapený | пр-жеквапені: | здивований
+ustaraný | устарані: | стурбований
+upřímný | упр-жі:мні: | щирий
+vtipný | втіпні: | дотепний
+trpělivý | трпєліві: | терплячий
+lenivý | леніві: | лінивий
+Mám radost. | ма:м радост | Я радий.
+Bojím se. | бойі:м се | Я боюся.
+Nudím se. | нудьі:м се | Мені нудно.
+</div>
+<h3>13.7. Дозвілля</h3>
+<div class="vocab">
+koníček | конье:чек | хобі | m
+sport | спорт | спорт | m
+fotbal | фотбал | футбол | m
+plavání | плава:ні: | плавання | n
+kolo | коло | велосипед | n
+turistika | турістика | туризм | f
+výlet | ві:лет | поїздка | m
+koncert | концерт | концерт | m
+výstava | ві:става | виставка | f
+představení | пр-жедставені: | вистава | n
+film | фільм | фільм | m
+hra | гра | гра, п'єса | f
+hrát na kytaru | гра:т на кітару | грати на гітарі
+jít do kina | йіт до кіна | йти в кіно
+číst knihy | чі:ст кніги | читати книги
+poslouchat hudbu | послоухат гудбу | слухати музику
+vařit | варжіт | готувати
+chodit na procházky | ходьіт на проха:зкі | ходити на прогулянки
+</div>
+<h3>13.8. Природа й довкілля</h3>
+<div class="vocab">
+příroda | пр-жі:рода | природа | f
+hory | гори | гори | f
+les | лес | ліс | m
+pole | поле | поле | n
+louka | лоука | луг | f
+řeka | ржека | річка | f
+jezero | єзеро | озеро | n
+strom | стром | дерево | m
+květina | квєтіна | квітка | f
+zvíře | звірже | тварина | n
+pes | пес | пес | m
+kočka | кочка | кішка | f
+kůň | куньь | кінь | m
+pták | пта:к | птах | m
+odpad | одпад | сміття | m
+třídit odpad | тр-жьідьіт одпад | сортувати сміття
+životní prostředí | жівотні: пр-жостр-жедьі: | довкілля | n
+</div>
+<div class="qz" data-title="Вправа 13. Словник у контексті">
+Hledám ___ . (роботу, знахідний f) | práci
+Mám ___ . (температура; знахідний) | horečku
+Potřebuji k ___ . (лікар; давальний) | lékaři
+Kdy jede další ___ ? (потяг) | vlak
+Mám ___ . (я радий; радість, f) | radost
+Bojím se ___ . (собак: psů) | psů
+Chodím na ___ . (прогулянки) | procházky
+Čtu ___ . (журнал; не «žurnál») | časopis
+Musím vyplnit ___ . (бланк) | formulář
+Chci ___ rezervaci. (скасувати) | zrušit
+</div>
+</section>
+
+<section class="unit" id="u14" data-grp="Практика" data-short="Діалоги">
+<h2><span class="no">Розділ 14</span>Діалоги</h2>
+<div class="dg">
+# 1. Co jsi dělal o víkendu? (Що ти робив на вихідних?)
+Eva: Ahoj, Petře! Jak ses měl o víkendu? | Привіт, Петре! Як ти провів вихідні?
+Petr: Dobře. V sobotu jsem byl na výletě v horách. | Добре. У суботу ми були на поїздці в горах.
+Eva: To zní skvěle. Bylo hezky? | Звучить чудово. Була гарна погода?
+Petr: Ano, svítilo slunce, ale nahoře foukal vítr. | Так, світило сонце, але нагорі дув вітер.
+Eva: A v neděli? | А в неділю?
+Petr: V neděli jsem zůstal doma a četl jsem knihu. | У неділю я залишився вдома й читав книжку.
+# 2. Plány na příští týden (плани на наступний тиждень)
+Anna: Co budeš dělat příští týden? | Що ти будеш робити наступного тижня?
+Michal: V pondělí budu pracovat, ale ve středu pojedu do Prahy. | У понеділок буду працювати, а в середу поїду до Праги.
+Anna: Na jak dlouho? | На скільки?
+Michal: Jen na dva dny. Chtěl bych navštívit kamaráda. | Лише на два дні. Хотів би відвідати друга.
+Anna: Až se vrátíš, zavolej mi. | Коли повернешся, зателефонуй мені.
+Michal: Určitě. Napíšu ti. | Обов'язково. Напишу тобі.
+# 3. V hotelu (в готелі)
+Host: Dobrý den, mám rezervaci na jméno Novák. | Добрий день, у мене бронювання на прізвище Новак.
+Recepční: Ano, dvoulůžkový pokoj na tři noci. | Так, двомісний номер на три ночі.
+Host: Je snídaně v ceně? | Сніданок включений?
+Recepční: Ano, od sedmi do deseti hodin. | Так, з сьомої до десятої.
+Host: Mohl bych dostat pokoj ve vyšším patře? | Чи міг би я отримати номер на вищому поверсі?
+Recepční: Samozřejmě, dám vám pokoj ve třetím patře. | Звісно, дам вам номер на третьому поверсі.
+# 4. U lékaře (у лікаря)
+Lékař: Dobrý den. Co vás trápí? | Добрий день. Що вас турбує?
+Pacient: Bolí mě v krku a mám horečku už tři dny. | Болить горло, і температура вже три дні.
+Lékař: Kašlete? | Кашляєте?
+Pacient: Trochu. | Трохи.
+Lékař: Napíšu vám recept. Berte léky třikrát denně a odpočívejte. | Випишу рецепт. Приймайте ліки тричі на день і відпочивайте.
+Pacient: Děkuji. Můžu jít zítra do práce? | Дякую. Можу піти завтра на роботу?
+Lékař: Raději zůstaňte doma ještě dva dny. | Краще залишайтеся вдома ще два дні.
+# 5. Pohovor (співбесіда)
+Šéf: Dobrý den, posaďte se. Povězte mi něco o sobě. | Добрий день, сідайте. Розкажіть мені дещо про себе.
+Kandidát: Jmenuji se Michal. Jsem učitel angličtiny, pracuji osm let ve škole. | Мене звати Михайло. Я вчитель англійської, працюю вісім років у школі.
+Šéf: Proč chcete změnit práci? | Чому ви хочете змінити роботу?
+Kandidát: Chtěl bych se naučit něco nového a pracovat v mezinárodním prostředí. | Хотів би навчитися чогось нового й працювати в міжнародному середовищі.
+Šéf: Děkuji. Ozveme se vám do týdne. | Дякую. Ми вам відповімо протягом тижня.
+# 6. V restauraci: stížnost (скарга)
+Host: Promiňte, objednal jsem si polévku už před půlhodinou. | Вибачте, я замовив суп пів години тому.
+Číšník: Moc se omlouvám. Hned se podívám do kuchyně. | Дуже перепрошую. Зараз подивлюся на кухні.
+Host: A také bych chtěl jiné pivo, tohle je teplé. | І ще хотів би інше пиво, це тепле.
+Číšník: Samozřejmě. Přinesu vám nové. | Звісно. Принесу вам нове.
+# 7. V obchodě s oblečením (у магазині одягу)
+Zákaznice: Dobrý den, hledám kabát pro sebe. | Добрий день, шукаю пальто для себе.
+Prodavačka: Jakou barvu byste chtěla? | Який колір ви б хотіли?
+Zákaznice: Nejraději černý nebo modrý. | Найбільше чорний або синій.
+Prodavačka: Tenhle je velmi pěkný. Můžete si ho vyzkoušet. | Ось цей дуже гарний. Можете приміряти.
+Zákaznice: Sedí mi dobře. Kolik stojí? | Сидить добре. Скільки коштує?
+Prodavačka: Dva tisíce korun. Je ve slevě. | Дві тисячі крон. Він зі знижкою.
+</div>
+<div class="qz" data-title="Вправа 14. Фрази з діалогів">
+V sobotu jsem ___ na výletě. (був) | byl
+Ve středu ___ do Prahy. (поїду) | pojedu
+Až se vrátíš, ___ mi. (зателефонуй) | zavolej
+Mám rezervaci na ___ Novák. (прізвище) | jméno
+Je snídaně v ___ ? (ціна; місцевий) | ceně
+Berte léky ___ denně. (тричі) | třikrát
+Chtěl bych se ___ něco nového. (навчитися) | naučit
+Moc se ___ . (перепрошую) | omlouvám
+Sedí mi ___ . (добре) | dobře
+Je ve ___ . (знижка; місцевий) | slevě
+</div>
+</section>
+
+<section class="unit" id="u15" data-short="Читання: три тексти">
+<h2><span class="no">Розділ 15</span>Читання: три тексти</h2>
+<h3>Text 1. Víkend v Brně (вихідні в Брні)</h3>
+<div class="exs">
+Minulý víkend jsme s kamarádem jeli vlakem do Brna. | мінулі: ві:кент смє с камарадем єлі влакем до брна | Минулих вихідних ми з другом поїхали потягом до Брна.
+Cesta trvala dvě hodiny a bylo hezky. | цеста трвала двє годіни а било геські | Дорога тривала дві години, і було гарно.
+V sobotu jsme navštívili hrad Špilberk a prošli jsme staré město. | в собото смє навштівілі град шпільберк а проші смє старе мнєсто | У суботу ми відвідали замок Шпільберк і пройшли старим містом.
+Na oběd jsme měli smažený sýr a knedlíky. | на обєт смє мнєлі смажені: сі:р а кнедлі:кі | На обід ми їли смажений сир і кнедлики.
+Večer jsme šli do divadla. | вечер смє шлі до дьівадла | Увечері ми пішли до театру.
+V neděli jsme se vrátili domů, unavení, ale šťastní. | в нєделі смє се вра:тілі дому унавені але штьястні: | У неділю ми повернулися додому, втомлені, але щасливі.
+Příště zůstaneme déle. | пр-жі:штьє зустанеме де:ле | Наступного разу залишимося довше.
+</div>
+<div class="qz" data-title="Otázky k textu 1 (Запитання)">
+Čím jeli do Brna? | Vlakem
+Jak dlouho trvala cesta? | Dvě hodiny
+Co navštívili v sobotu? | Hrad Špilberk
+Kam šli večer? | Do divadla
+Kdy se vrátili domů? | V neděli
+</div>
+<h3>Text 2. Můj nový byt (моя нова квартира)</h3>
+<div class="exs">
+Před měsícem jsem se přestěhoval do nového bytu. | пршет мнєсі:цем сем се пршестьєговал до нового біту | Місяць тому я переїхав у нову квартиру.
+Je malý, ale světlý. | є малі: але свєтлі: | Вона маленька, але світла.
+Mám tam obývák, ložnici, malou kuchyni a koupelnu. | ма:м там обі:ва:к ложніци малоу кухіні а коупелну | Там є вітальня, спальня, невелика кухня й ванна.
+V obýváku je velká pohovka a televize. | в обі:ва:ку є велка: погофка а телевізе | У вітальні великий диван і телевізор.
+Z okna vidím park. | з окна відьі:м парк | З вікна бачу парк.
+Líbí se mi, že je blízko metro. | лі:бі: се мі же є бліско метро | Мені подобається, що поруч метро.
+Příští měsíc pozvu rodiče na návštěvu. | прші:штьі: мнєсі:ц позву родіче на на:вштєву | Наступного місяця запрошу батьків у гості.
+</div>
+<div class="qz" data-title="Otázky k textu 2">
+Kdy se přestěhoval? | Před měsícem
+Je byt velký? | Ne
+Co vidí z okna? | Park
+Co se mu líbí? | Že je blízko metro
+Koho pozve příští měsíc? | Rodiče
+</div>
+<h3>Text 3. E-mail kamarádce (лист подрузі)</h3>
+<div class="exs">
+Ahoj Evo, | агой єво | Привіт, Єво,
+doufám, že se máš dobře. | доуфа:м же се ма:ш доб-рже | сподіваюся, ти в порядку.
+Já se mám fajn, jen mám hodně práce. | я се ма:м файн єн ма:м годнє праце | У мене все добре, лише багато роботи.
+V sobotu bych chtěl uspořádat malou oslavu u mě doma. | в собото біх хтьєл усппоржа:дат малоу ославу у мнє дома | У суботу я хотів би влаштувати невелике свято в мене вдома.
+Přijdeš? Začínáme v sedm. | пршійдеш зачіна:ме в седм | Прийдеш? Починаємо о сьомій.
+Prosím, dej mi vědět do čtvrtka. | просі:м дей мі вєдьєт до чтвртка | Прошу, дай мені знати до четверга.
+Těším se na tebe! | тьєші:м се на тебе | Чекаю на тебе!
+Michal | міхал | Михайло
+</div>
+<div class="qz" data-title="Otázky k textu 3">
+Co chce Michal uspořádat? | Oslavu
+Kdy bude oslava? | V sobotu
+Kdy začínají? | V sedm
+Do kdy má Eva odpovědět? | Do čtvrtka
+</div>
+</section>
+
+<section class="unit" id="u16" data-short="Як писати: листи">
+<h2><span class="no">Розділ 16</span>Як писати: листи й повідомлення</h2>
+<h3>16.1. Вітання та прощання</h3>
+<div class="tw"><table>
+<tr><th></th><th>Неформально</th><th>Формально</th></tr>
+<tr><td>Початок</td><td><span class="fr">Ahoj Evo, / Čau Petře, / Milá Evo,</span></td><td><span class="fr">Dobrý den, / Vážená paní Nováková, / Vážený pane Nováku,</span></td></tr>
+<tr><td>Мета</td><td><span class="fr">Píšu ti, protože…</span></td><td><span class="fr">Obracím se na Vás s prosbou…</span></td></tr>
+<tr><td>Прохання</td><td><span class="fr">Můžeš mi pomoct?</span></td><td><span class="fr">Mohl byste mi prosím poslat…</span></td></tr>
+<tr><td>Подяка</td><td><span class="fr">Díky moc!</span></td><td><span class="fr">Předem děkuji.</span></td></tr>
+<tr><td>Кінець</td><td><span class="fr">Měj se hezky! / Pa! / Zatím ahoj!</span></td><td><span class="fr">S pozdravem, / S úctou,</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Звертання.</b> Пан і пані у вокативі: <span class="fr">Vážený pane Nováku</span> (до чоловіка, прізвище у вокативі), <span class="fr">Vážená paní Nováková</span> (до жінки: жіноче прізвище закінчується на -ová).</div>
+<h3>16.2. Запрошення</h3>
+<div class="exs">
+Ahoj Evo, v sobotu pořádám oslavu. | агой єво в собото порж-а:да:м ославу | Привіт, Єво, у суботу я влаштовую свято.
+Přijdeš? | пршійдеш | Прийдеш?
+Začínáme v sedm hodin u mě doma. | зачіна:ме в седм годін у мнє дома | Починаємо о сьомій у мене вдома.
+Napiš mi, jestli můžeš. | напіш мі єстлі можеш | Напиши, чи можеш.
+Měj se hezky, Michal | мей се геські міхал | Гарно тобі, Михайло
+</div>
+<h3>16.3. Формальний лист</h3>
+<div class="exs">
+Vážená paní Nováková, | ва:жена: пані новакова: | Шановна пані Новакова,
+chtěl bych se zeptat na volný pokoj v termínu od 10. do 15. července. | хтьєл біх се зептат на волні: покой в терміну од деса:тего до патна:ште:го червенце | хотів би запитати про вільну кімнату на період із 10 по 15 липня.
+Prosím o informaci o ceně a podmínkách. | просі:м о інформаці о цене а подмі:нка:х | Прошу інформацію про ціну й умови.
+Předem děkuji. | пр-жедем дьєкуї | Заздалегідь дякую.
+S pozdravem, | с позгравем | З привітанням,
+Michal Petrenko | міхал петренко | Михайло Петренко
+</div>
+<div class="tip"><b class="t">Завдання.</b> Напиши: (1) короткий лист другові про минулі вихідні, (2) запрошення на свято, (3) формальне прохання про бронювання. Використай минулий, майбутній час і умовний спосіб.</div>
+</section>
+
+<section class="unit" id="u17" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 17</span>Шпаргалка, план і тест</h2>
+<h3>Шпаргалка</h3>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Формула</th></tr>
+<tr><td>Минулий</td><td>корінь + <b>-l, -la, -lo, -li</b> + <span class="fr">jsem, jsi, —, jsme, jste, —</span></td></tr>
+<tr><td>Майбутній</td><td><span class="fr">budu / budeš / bude / budeme / budete / budou</span> + інфінітив. Доконані: теперішня форма</td></tr>
+<tr><td>Умовний</td><td>l-форма + <span class="fr">bych, bys, by, bychom, byste, by</span></td></tr>
+<tr><td>Kdyby</td><td><span class="fr">Kdybych měl čas, jel bych.</span></td></tr>
+<tr><td>Вид</td><td>префікс: dělat → udělat; суфікс: koupit → kupovat; різні корені: brát → vzít</td></tr>
+<tr><td>2. pád (родовий)</td><td>do, z, od, bez, u, vedle; hodně, málo; після 5</td></tr>
+<tr><td>3. pád (давальний)</td><td>komu? k, díky; <span class="fr">Je mi zima.</span></td></tr>
+<tr><td>4. pád (знахідний)</td><td>mít, chtít, vidět; куди? (na, za, pro, přes)</td></tr>
+<tr><td>6. pád (місцевий)</td><td>v, na, o, po (де, про що)</td></tr>
+<tr><td>7. pád (орудний)</td><td>s, před, za, nad, pod, mezi; транспорт</td></tr>
+<tr><td>Наказовий</td><td>dělej, mluv, čti, buď, pojď, dej</td></tr>
+<tr><td>Порівняння</td><td>-ější / -ší + <span class="fr">než</span>; nej- = найвищий. lepší, horší, větší, menší</td></tr>
+</table></div>
+<h3>План на 12 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0–1</td><td>Минулий час: утворення й виняткові форми.</td></tr>
+<tr><td>2</td><td>2</td><td>Майбутній час. Доконані дієслова.</td></tr>
+<tr><td>3</td><td>3</td><td>Умовний спосіб, ввічливі прохання.</td></tr>
+<tr><td>4</td><td>4</td><td>Вид дієслова: 30 пар.</td></tr>
+<tr><td>5</td><td>5</td><td>Сім відмінків: огляд. Займенники у відмінках.</td></tr>
+<tr><td>6</td><td>6</td><td>Родовий, давальний, орудний.</td></tr>
+<tr><td>7</td><td>7–8</td><td>Модальні, наказовий, зворотні дієслова.</td></tr>
+<tr><td>8</td><td>9–10</td><td>Порівняння, складні речення.</td></tr>
+<tr><td>9</td><td>11–12</td><td>Час, рух, словотвір.</td></tr>
+<tr><td>10</td><td>13</td><td>Словник за темами.</td></tr>
+<tr><td>11</td><td>14–16</td><td>Діалоги, читання, листи.</td></tr>
+<tr><td>12</td><td>Повторення, «Вправи»</td><td>Говориш 5 хвилин без підготовки.</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A2">
+Včera jsem ___ doma. (být; чол.) | byl
+Včera jsem ___ doma. (být; жін.) | byla
+Zítra ___ pracovat. (я буду) | budu
+Zítra to ___ . (udělat) | udělám
+___ bych kávu. (chtít; чол.) | Chtěl
+Kdybych ___ čas, jel bych. (mít; чол.) | měl
+dělat → ___ | udělat
+Jdu do ___ . (obchod) | obchodu
+Pomáhám ___ . (sestra) | sestře
+Jedu ___ . (autobus) | autobusem
+Praha je větší ___ Brno. | než
+Dobrý → ___ | lepší
+Nešel jsem, ___ jsem byl nemocný. | protože
+Znám ženu, ___ pracuje v bance. | která
+___ sem! (прийди, ty) | Pojď
+</div>
+<h3>Чек-лист: я вмію…</h3>
+<ul class="check">
+<li><label><input type="checkbox"> Розповісти про вчорашній день і відпустку (минулий час)</label></li>
+<li><label><input type="checkbox"> Говорити про плани (budu + інфінітив, доконані дієслова)</label></li>
+<li><label><input type="checkbox"> Ввічливо просити й радити (умовний спосіб)</label></li>
+<li><label><input type="checkbox"> Розрізняти доконаний і недоконаний вид</label></li>
+<li><label><input type="checkbox"> Користуватися всіма відмінками в типових ситуаціях</label></li>
+<li><label><input type="checkbox"> Утворити наказовий спосіб</label></li>
+<li><label><input type="checkbox"> Порівнювати речі й людей</label></li>
+<li><label><input type="checkbox"> Будувати складні речення зі сполучниками й відносними словами</label></li>
+<li><label><input type="checkbox"> Написати лист другові й офіційне прохання</label></li>
+<li><label><input type="checkbox"> Говорити 5 хвилин про себе, свою роботу й плани</label></li>
+</ul>
+<h3>Що далі: B1</h3>
+<p>На B1: пасив, пасивні й дієприслівникові звороти, умовний у минулому, непряма мова, відмінки з прикметниками в множині, більш складні сполучники, розмова на абстрактні теми.</p>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A2. Для слухання додавай живе мовлення: чеські подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Čeština</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^cs[-_]CZ/i.test(x.lang))||v.find(x=>/^cs/i.test(x.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='cs-CZ';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('cs2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('cs2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('cs2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('cs2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='cs2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

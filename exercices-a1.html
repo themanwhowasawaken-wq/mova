@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Français A1: вправи</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}.topbar a.back:hover{border-color:var(--accent)}@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}.topbar .brand{overflow:hidden;text-overflow:ellipsis;min-width:0}}</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">A1: вправи</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Вправи A1</h1>
+  <p>Прості тести на кожну тему рівня A1. Пиши відповідь у порожнє поле й натискай «Перевірити». Діакритика важлива: é, è, à, ç. Якщо застряг, «Показати відповіді», а потім спробуй ще раз зі «Спочатку».</p>
+</div>
+<section class="unit" id="e1" data-grp="Вимова й основи" data-short="1. Привітання й знайомство">
+<h2><span class="no">Вправи 1</span>Привітання й знайомство</h2>
+<div class="qz" data-title="1.1. Скажи по-французьки">
+Добрий день! | Bonjour
+Добрий вечір! | Bonsoir
+До побачення! | Au revoir
+Дякую! | Merci
+Будь ласка (відповідь на «дякую») | De rien
+Будь ласка (прохання), ввічливо | S'il vous plaît
+Привіт! (неформально) | Salut
+Вибачте! | Excusez-moi / Pardon
+Як справи? | Ça va ?
+Добре, дякую. | Ça va bien, merci
+</div>
+<div class="qz" data-title="1.2. Допиши фразу">
+Je m'___ Michel. (мене звати) | appelle
+Comment tu t'___ ? | appelles
+Je ___ ukrainien. (я є) | suis
+J'___ vingt ans. (мені 20) | ai
+Je ___ de Svaliava. (я з) | viens
+J'___ à Svaliava. (живу) | habite
+Je ne ___ pas. (не знаю, savoir) | sais
+Tu ___ où ? (де живеш; habiter, 2 ос.) | habites
+</div>
+</section>
+
+<section class="unit" id="e2" data-short="2. Артиклі">
+<h2><span class="no">Вправи 2</span>Артиклі: un, une, le, la, les</h2>
+<div class="qz" data-title="2.1. Неозначений артикль (un / une)">
+___ livre (книга, m) | un
+___ maison (будинок, f) | une
+___ chat (кіт, m) | un
+___ voiture (авто, f) | une
+___ ami (друг, m) | un
+___ amie (подруга, f) | une
+___ table (стіл, f) | une
+___ garçon (хлопець, m) | un
+</div>
+<div class="qz" data-title="2.2. Означений артикль (le / la / l' / les)">
+___ livre | le
+___ maison | la
+___ école (школа, f) | l'
+___ ami | l'
+___ enfants (діти) | les
+___ pomme (яблуко, f) | la
+___ hôtel (готель, m) | l'
+___ amis (друзі) | les
+</div>
+</section>
+
+<section class="unit" id="e3" data-short="3. Рід і множина">
+<h2><span class="no">Вправи 3</span>Рід і множина</h2>
+<div class="qz" data-title="3.1. Образуй множину">
+un livre → des ___ | livres
+une table → des ___ | tables
+un ami → des ___ | amis
+un chat → des ___ | chats
+un cheval → des ___ | chevaux
+un gâteau → des ___ | gâteaux
+un journal → des ___ | journaux
+un fils → des ___ | fils
+</div>
+<div class="qz" data-title="3.2. Жіночий рід">
+un ami → une ___ | amie
+un étudiant → une ___ | étudiante
+un voisin → une ___ | voisine
+un chat → une ___ | chatte
+un acteur → une ___ | actrice
+un boulanger → une ___ | boulangère
+un directeur → une ___ | directrice
+un cuisinier → une ___ | cuisinière
+</div>
+</section>
+
+<section class="unit" id="e4" data-grp="Дієслова" data-short="4. Être й avoir">
+<h2><span class="no">Вправи 4</span>Être й avoir</h2>
+<div class="qz" data-title="4.1. Être (бути)">
+Je ___ étudiant. | suis
+Tu ___ gentil. | es
+Il ___ médecin. | est
+Elle ___ professeur. | est
+Nous ___ amis. | sommes
+Vous ___ ukrainiens. | êtes
+Ils ___ à la maison. | sont
+Elles ___ contentes. | sont
+</div>
+<div class="qz" data-title="4.2. Avoir (мати)">
+J'___ un chat. | ai
+Tu ___ un frère. | as
+Il ___ une voiture. | a
+Nous ___ une maison. | avons
+Vous ___ des enfants ? | avez
+Elles ___ faim. (голодні) | ont
+J'___ vingt ans. | ai
+Tu ___ quel âge ? | as
+</div>
+</section>
+
+<section class="unit" id="e5" data-short="5. Дієслова на -er">
+<h2><span class="no">Вправи 5</span>Дієслова на -er</h2>
+<div class="qz" data-title="5.1. Відміняй">
+Je ___ français. (parler) | parle
+Tu ___ à Paris. (habiter) | habites
+Il ___ la musique. (aimer) | aime
+Nous ___ le matin. (travailler) | travaillons
+Vous ___ le café. (aimer) | aimez
+Ils ___ la télé. (regarder) | regardent
+Elle ___ un livre. (chercher) | cherche
+Nous ___ à la maison. (rester) | restons
+</div>
+<div class="qz" data-title="5.2. Aller, faire, prendre">
+Je ___ au cinéma. (aller) | vais
+Tu ___ au marché. (aller) | vas
+Nous ___ à l'école. (aller) | allons
+Elle ___ du sport. (faire) | fait
+Nous ___ la cuisine. (faire) | faisons
+Il ___ le bus. (prendre) | prend
+Vous ___ un café ? (prendre) | prenez
+Ils ___ à Paris. (aller) | vont
+</div>
+</section>
+
+<section class="unit" id="e6" data-short="6. Заперечення й питання">
+<h2><span class="no">Вправи 6</span>Заперечення й питання</h2>
+<div class="qz" data-title="6.1. Заперечення">
+Je ne parle ___ allemand. | pas
+Il ne mange ___ de viande. | pas
+Je n'___ pas faim. (avoir) | ai
+Nous ne ___ pas à la maison. (être) | sommes
+Elle ne travaille ___ . (більше не) | plus
+Je ne bois ___ de café. (ніколи) | jamais
+Je ne vois ___ . (нічого) | rien
+Tu n'as pas ___ frère ? (de/un: після pas) | de
+</div>
+<div class="qz" data-title="6.2. Питання">
+___ tu habites ? (де) | Où
+___ tu t'appelles ? (як) | Comment
+___ ça coûte ? (скільки) | Combien
+___ tu viens ? (звідки? d'où) | D'où
+___ heure est-il ? (котра година) | Quelle
+Est-___ que tu parles français ? | ce
+___ tu pars ? (коли) | Quand
+___ tu pleures ? (чому) | Pourquoi
+</div>
+</section>
+
+<section class="unit" id="e7" data-grp="Слова й числа" data-short="7. Числа">
+<h2><span class="no">Вправи 7</span>Числа</h2>
+<div class="qz" data-title="7.1. Напиши словом">
+1 | un
+2 | deux
+3 | trois
+4 | quatre
+5 | cinq
+6 | six
+7 | sept
+8 | huit
+9 | neuf
+10 | dix
+</div>
+<div class="qz" data-title="7.2. Більші числа">
+11 | onze
+12 | douze
+15 | quinze
+20 | vingt
+30 | trente
+40 | quarante
+50 | cinquante
+60 | soixante
+100 | cent
+17 | dix-sept
+</div>
+<div class="qz" data-title="7.3. Пори й дні">
+понеділок | lundi
+вівторок | mardi
+середа | mercredi
+четвер | jeudi
+п'ятниця | vendredi
+субота | samedi
+неділя | dimanche
+січень | janvier
+липень | juillet
+грудень | décembre
+</div>
+</section>
+
+<section class="unit" id="e8" data-short="8. Родина, їжа, дім">
+<h2><span class="no">Вправи 8</span>Слова: родина, їжа, дім</h2>
+<p class="lead">Пиши слово без артикля.</p>
+<div class="qz" data-title="8.1. Родина">
+мама | mère / maman
+тато | père / papa
+брат | frère
+сестра | sœur
+бабуся | grand-mère
+дідусь | grand-père
+син | fils
+дочка | fille
+</div>
+<div class="qz" data-title="8.2. Їжа та напої">
+хліб | pain
+вода | eau
+молоко | lait
+сир | fromage
+яблуко | pomme
+м'ясо | viande
+риба | poisson
+кава | café
+</div>
+<div class="qz" data-title="8.3. Дім і місто">
+кухня | cuisine
+спальня | chambre
+вулиця | rue
+школа | école
+магазин | magasin
+вокзал | gare
+пошта | poste
+аптека | pharmacie
+</div>
+</section>
+
+<section class="unit" id="e9" data-short="9. Кольори й прикметники">
+<h2><span class="no">Вправи 9</span>Кольори й прикметники</h2>
+<div class="qz" data-title="9.1. Кольори">
+червоний | rouge
+синій | bleu
+зелений | vert
+жовтий | jaune
+білий | blanc
+чорний | noir
+сірий | gris
+рожевий | rose
+</div>
+<div class="qz" data-title="9.2. Узгодь прикметник">
+une maison ___ (grand) | grande
+un livre ___ (petit) | petit
+une voiture ___ (blanc) | blanche
+une fille ___ (content) | contente
+un garçon ___ (gentil) | gentil
+une amie ___ (français) | française
+des livres ___ (intéressant) | intéressants
+des maisons ___ (petit) | petites
+</div>
+<div class="qz" data-title="9.3. Присвійні (mon, ma, mes ...)">
+___ père (мій) | mon
+___ mère (моя) | ma
+___ amis (мої) | mes
+___ frère (твій) | ton
+___ sœur (твоя) | ta
+___ maison (його) | sa
+___ amis (наші) | nos
+___ parents (ваші) | vos
+</div>
+</section>
+
+<section class="unit" id="e10" data-short="10. Прийменники й час">
+<h2><span class="no">Вправи 10</span>Прийменники й час</h2>
+<div class="qz" data-title="10.1. À, de, chez, dans, sur">
+Je vais ___ cinéma. (à + le) | au
+Je vais ___ école. (à + la) | à l'
+Je viens ___ France. | de
+Il mange ___ pain. (трохи, de + le) | du
+Elle parle ___ enfants. (з, à + les) | aux
+Je suis ___ Paul. (у Поля вдома) | chez
+Le livre est ___ la table. (на) | sur
+Le chat est ___ la maison. (у) | dans
+</div>
+<div class="qz" data-title="10.2. Котра година">
+3:00 → Il est trois ___ . | heures
+12:00 → Il est ___ . | midi
+00:00 → Il est ___ . | minuit
+7:15 → Il est sept heures et ___ . | quart
+5:30 → Il est cinq heures et ___ . | demie
+8:00 → À huit ___ . | heures
+</div>
+<div class="qz" data-title="10.3. Підсумок: різне">
+Je ___ professeur. (бути) | suis
+J'___ un frère. (мати) | ai
+Nous ___ au marché. (aller) | allons
+Voici ___ amie. (моя) | mon
+C'est ___ livre. (мій) | mon
+Il n'y a pas ___ pain. (de) | de
+Où ___ la gare ? (est) | est
+Je ___ le matin à sept heures. (me lever: me lève) | me lève
+</div>
+</section>
+<section class="unit" id="e11" data-grp="Ще вправ: основи" data-short="11. Рід: m чи f">
+<h2><span class="no">Вправи 11</span>Рід іменників: m чи f</h2>
+<p class="lead">Напиши одну літеру: <b>m</b> (чоловічий) або <b>f</b> (жіночий).</p>
+<div class="qz" data-title="11.1. Визнач рід">
+livre (книга) | m
+maison (будинок) | f
+table (стіл) | f
+chat (кіт) | m
+voiture (авто) | f
+garçon (хлопець) | m
+fille (дівчина) | f
+fromage (сир) | m
+pomme (яблуко) | f
+école (школа) | f
+café (кава) | m
+chambre (кімната) | f
+</div>
+<div class="qz" data-title="11.2. Рід за закінченням: -tion, -age, -ment, -eur">
+nation | f
+fromage | m
+appartement | m
+chaleur (спека) | f
+bonheur (щастя) | m
+question | f
+voyage (подорож) | m
+information | f
+</div>
+</section>
+
+<section class="unit" id="e12" data-short="12. Читання й правопис">
+<h2><span class="no">Вправи 12</span>Читання й правопис</h2>
+<div class="qz" data-title="12.1. Яка літера німа? Допиши слово">
+petit [pəti]: petit без кінцевого ___ | t
+grand [ɡʁɑ̃]: grand без кінцевого ___ | d
+beaucoup [boku]: кінцева німа літера | p
+trop [tʁo]: кінцева німа літера | p
+deux [dø]: кінцева німа літера | x
+vous [vu]: кінцева німа літера | s
+nuit [nɥi]: кінцева німа літера | t
+mot [mo]: кінцева німа літера | t
+</div>
+<div class="qz" data-title="12.2. Поставити діакритику (напиши слово правильно)">
+ecole → | école
+etudiant → | étudiant
+francais → | français
+mere → | mère
+frere → | frère
+tres (дуже) → | très
+eleve (учень) → | élève
+ete (літо) → | été
+</div>
+<div class="qz" data-title="12.3. Звуки: як пишеться [ɔ̃], [ɑ̃], [wa], [ɛ̃]">
+[bɔ̃] (добрий) | bon
+[mɑ̃ʒe] (їсти) | manger
+[lwa] (закон) | loi
+[pɛ̃] (хліб) | pain
+[mwa] (я) | moi
+[sɛ̃k] (п'ять) | cinq
+[ɛ̃] (один, чол.) | un
+[mɔ̃] (мій) | mon
+</div>
+</section>
+
+<section class="unit" id="e13" data-short="13. Артиклі: частковий і заперечення">
+<h2><span class="no">Вправи 13</span>Du, de la, des і заперечення</h2>
+<div class="qz" data-title="13.1. Частковий артикль (du, de la, de l', des)">
+Je mange ___ pain. | du
+Je bois ___ eau. (de l') | de l'
+Elle prend ___ café. | du
+Tu veux ___ salade ? | de la
+Il achète ___ fromage. | du
+Nous mangeons ___ légumes. | des
+Je voudrais ___ lait. | du
+Elle boit ___ thé. | du
+</div>
+<div class="qz" data-title="13.2. Після заперечення: de / d'">
+Je mange du pain. → Je ne mange pas ___ pain. | de
+Il a une voiture. → Il n'a pas ___ voiture. | de
+Tu as des frères. → Tu n'as pas ___ frères. | de
+Elle boit du café. → Elle ne boit pas ___ café. | de
+J'ai un chat. → Je n'ai pas ___ chat. | de
+Il y a de l'eau. → Il n'y a pas ___ eau. | d'
+</div>
+<div class="qz" data-title="13.3. Un, une, des чи le, la, les?">
+J'ai ___ chat. (якийсь) | un
+Le chat est ___ la maison. (у) | dans
+___ livre est sur la table. (ця конкретна, відома книга) | Le
+Je vois ___ fille. (якусь дівчину) | une
+___ filles sont au parc. (ці дівчата, відомі) | Les
+Elle a ___ enfants. (якісь) | des
+J'aime ___ musique. (загальне) | la
+Tu aimes ___ chocolat ? (загальне) | le
+</div>
+</section>
+
+<section class="unit" id="e14" data-short="14. C'est, il est, il y a">
+<h2><span class="no">Вправи 14</span>C'est, il est, il y a, voici</h2>
+<div class="qz" data-title="14.1. C'est чи Il est / Elle est">
+___ un livre. | C'est
+___ Marie. | C'est
+___ professeur. (професія, він) | Il est
+___ grande. (вона) | Elle est
+___ bien ! | C'est
+___ gentil. (він) | Il est
+___ ma sœur. | C'est
+___ médecin. (вона) | Elle est
+</div>
+<div class="qz" data-title="14.2. Il y a, voici, voilà">
+___ un livre sur la table. (є) | Il y a
+___ mon ami Paul. (ось) | Voici
+___ la gare ! (ось вона, вказуємо) | Voilà
+Il y ___ trois chats. | a
+Il n'y a ___ de lait. | pas
+Combien ___ il y a de personnes ? | de
+Qu'est-ce qu'il y ___ ? (що є?) | a
+___ ma voiture. (ось) | Voici
+</div>
+</section>
+
+<section class="unit" id="e15" data-short="15. Ця, цей, мій">
+<h2><span class="no">Вправи 15</span>Ce, cet, cette, ces та присвійні</h2>
+<div class="qz" data-title="15.1. Вказівні (ce / cet / cette / ces)">
+___ livre (цей) | ce
+___ maison (ця) | cette
+___ hôtel (цей) | cet
+___ enfants (ці) | ces
+___ voiture (ця) | cette
+___ garçon (цей) | ce
+___ ami (цей) | cet
+___ filles (ці) | ces
+</div>
+<div class="qz" data-title="15.2. Присвійні: mon, ma, mes, ton, ta, tes, son, sa, ses">
+___ livre (мій) | mon
+___ voiture (моя) | ma
+___ amis (мої) | mes
+___ sœur (твоя) | ta
+___ frère (твій) | ton
+___ parents (його) | ses
+___ maison (її) | sa
+___ école (моя, голосна) | mon
+</div>
+<div class="qz" data-title="15.3. Присвійні: notre, votre, leur">
+___ maison (наша) | notre
+___ enfants (наші) | nos
+___ voiture (ваша) | votre
+___ amis (ваші) | vos
+___ chat (їхній) | leur
+___ parents (їхні) | leurs
+___ livre (наш) | notre
+___ professeur (ваш) | votre
+</div>
+</section>
+
+<section class="unit" id="e16" data-grp="Слова" data-short="16. Тіло й одяг">
+<h2><span class="no">Вправи 16</span>Тіло й одяг</h2>
+<p class="lead">Пиши слово без артикля.</p>
+<div class="qz" data-title="16.1. Тіло">
+голова | tête
+рука | main
+нога | jambe
+око | œil / oeil
+рот | bouche
+ніс | nez
+зуб | dent
+спина | dos
+живіт | ventre
+серце | cœur / coeur
+</div>
+<div class="qz" data-title="16.2. Одяг">
+сорочка | chemise
+штани | pantalon
+сукня | robe
+спідниця | jupe
+куртка | veste
+взуття (черевики) | chaussures
+шапка | bonnet
+светр | pull
+пальто | manteau
+шкарпетки | chaussettes
+</div>
+</section>
+
+<section class="unit" id="e17" data-short="17. Місто й дорога">
+<h2><span class="no">Вправи 17</span>Місто й дорога</h2>
+<div class="qz" data-title="17.1. Місця міста (без артикля)">
+банк | banque
+ресторан | restaurant
+готель | hôtel
+лікарня | hôpital
+парк | parc
+музей | musée
+кінотеатр | cinéma
+церква | église
+площа | place
+міст | pont
+</div>
+<div class="qz" data-title="17.2. Напрямки">
+ліворуч | à gauche
+праворуч | à droite
+прямо | tout droit
+далеко | loin
+близько | près
+поруч із (à côté de) → поруч | à côté
+перед (devant) | devant
+позаду (derrière) | derrière
+між (entre) | entre
+навпроти (en face de) → навпроти | en face
+</div>
+<div class="qz" data-title="17.3. Питання про дорогу">
+Où ___ la gare ? | est
+Où ___ les toilettes ? | sont
+C'est ___ ? (далеко) | loin
+Allez tout ___ . (прямо) | droit
+Tournez à ___ . (ліворуч) | gauche
+Prenez la ___ rue à droite. (друга) | deuxième
+C'est à dix ___ à pied. (хвилин) | minutes
+Excusez-___ , où est la poste ? (мене) | moi
+</div>
+</section>
+
+<section class="unit" id="e18" data-short="18. Професії та країни">
+<h2><span class="no">Вправи 18</span>Професії, країни, національності</h2>
+<div class="qz" data-title="18.1. Професії (чол. рід, без артикля)">
+вчитель | professeur
+лікар | médecin
+інженер | ingénieur
+водій | chauffeur
+кухар | cuisinier
+продавець | vendeur
+студент | étudiant
+медбрат | infirmier
+пекар | boulanger
+юрист | avocat
+</div>
+<div class="qz" data-title="18.2. Країни">
+Франція | France
+Україна | Ukraine
+Німеччина | Allemagne
+Англія | Angleterre
+Італія | Italie
+Іспанія | Espagne
+Польща | Pologne
+США | États-Unis
+</div>
+<div class="qz" data-title="18.3. Національності">
+Il est de France. Il est ___ . | français
+Elle est d'Ukraine. Elle est ___ . | ukrainienne
+Il est d'Italie. Il est ___ . | italien
+Elle est d'Espagne. Elle est ___ . | espagnole
+Il est d'Allemagne. Il est ___ . | allemand
+Elle est de Pologne. Elle est ___ . | polonaise
+Il est d'Angleterre. Il est ___ . | anglais
+Elle est de France. Elle est ___ . | française
+</div>
+</section>
+
+<section class="unit" id="e19" data-short="19. Погода, пори, місяці">
+<h2><span class="no">Вправи 19</span>Погода, пори року, місяці</h2>
+<div class="qz" data-title="19.1. Погода">
+Il ___ beau. (гарна погода; faire) | fait
+Il ___ froid. (холодно) | fait
+Il ___ . (іде дощ; pleuvoir) | pleut
+Il ___ . (іде сніг; neiger) | neige
+Il y a du ___ . (вітер) | vent
+Il y a du ___ . (сонце) | soleil
+Il fait ___ . (жарко) | chaud
+Il y a des ___ . (хмари) | nuages
+</div>
+<div class="qz" data-title="19.2. Пори року (без артикля)">
+весна | printemps
+літо | été
+осінь | automne
+зима | hiver
+у літо (влітку): ___ été | en
+взимку: ___ hiver | en
+навесні: ___ printemps | au
+восени: ___ automne | en
+</div>
+<div class="qz" data-title="19.3. Місяці">
+лютий | février
+березень | mars
+квітень | avril
+травень | mai
+червень | juin
+серпень | août
+вересень | septembre
+жовтень | octobre
+листопад | novembre
+</div>
+</section>
+
+<section class="unit" id="e20" data-short="20. Транспорт і їжа">
+<h2><span class="no">Вправи 20</span>Транспорт і їжа</h2>
+<div class="qz" data-title="20.1. Транспорт (без артикля)">
+автобус | bus
+потяг | train
+літак | avion
+велосипед | vélo
+метро | métro
+таксі | taxi
+автомобіль | voiture
+мотоцикл | moto
+</div>
+<div class="qz" data-title="20.2. Фрукти й овочі">
+банан | banane
+апельсин | orange
+груша | poire
+картопля | pomme de terre
+морква | carotte
+помідор | tomate
+цибуля | oignon
+салат | salade
+</div>
+<div class="qz" data-title="20.3. У кафе">
+Je voudrais ___ café, s'il vous plaît. (одну каву: un) | un
+___ , s'il vous plaît. (рахунок) | L'addition
+Un ___ de vin. (склянка) | verre
+Une ___ d'eau. (пляшка) | bouteille
+Je voudrais la ___ . (меню) | carte
+Je prends ___ soupe. (суп: la) | la
+C'est combien ? Це питання про ___ . (ціну) | prix
+Avec ___ ? (цукром) | sucre
+</div>
+</section>
+
+<section class="unit" id="e21" data-grp="Дієслова ще" data-short="21. Дієслова -ir та зворотні">
+<h2><span class="no">Вправи 21</span>Дієслова на -ir і зворотні дієслова</h2>
+<div class="qz" data-title="21.1. Finir, choisir">
+Je ___ le travail. (finir) | finis
+Tu ___ à six heures. (finir) | finis
+Il ___ un livre. (choisir) | choisit
+Nous ___ à midi. (finir) | finissons
+Vous ___ un dessert ? (choisir) | choisissez
+Ils ___ tard. (finir) | finissent
+Elle ___ une robe. (choisir) | choisit
+Je ___ un café. (choisir) | choisis
+</div>
+<div class="qz" data-title="21.2. Se lever, s'appeler, se coucher">
+Je me ___ à sept heures. (lever) | lève
+Tu te ___ tard. (coucher) | couches
+Il s'___ Paul. (appeler) | appelle
+Nous nous ___ à huit heures. (lever) | levons
+Vous vous ___ à onze heures. (coucher) | couchez
+Elles se ___ vite. (dépêcher) | dépêchent
+Comment vous ___ -vous ? (appeler) | appelez
+Je m'___ Michel. | appelle
+</div>
+<div class="qz" data-title="21.3. Наказовий спосіб">
+___ ! (Говори; parler, tu) | Parle
+___ ! (Слухайте; écouter, vous) | Écoutez
+___ ! (Іди; aller, tu) | Va
+___ ! (Ходімо; aller, nous) | Allons
+___ ! (Будь ласкавий; être, tu) | Sois
+___ ! (Візьміть; prendre, vous) | Prenez
+___ ! (Роби; faire, tu) | Fais
+___ ! (Ідіть; venir, vous) | Venez
+</div>
+</section>
+
+<section class="unit" id="e22" data-short="22. Минулий і майбутній (початково)">
+<h2><span class="no">Вправи 22</span>Passé composé й futur proche (початково)</h2>
+<div class="qz" data-title="22.1. Passé composé з avoir">
+Hier, j'___ mangé une pizza. | ai
+Tu ___ regardé le film ? | as
+Il ___ travaillé hier. | a
+Nous ___ parlé avec Paul. | avons
+Vous ___ fini ? | avez
+Elles ___ acheté du pain. | ont
+J'ai ___ un livre. (lire: lu) | lu
+Il a ___ un café. (prendre: pris) | pris
+</div>
+<div class="qz" data-title="22.2. Futur proche (aller + інфінітив)">
+Je ___ manger. (aller) | vais
+Tu ___ partir ? (aller) | vas
+Il ___ travailler. (aller) | va
+Nous ___ voir un film. (aller) | allons
+Vous ___ acheter du pain ? (aller) | allez
+Ils ___ venir demain. (aller) | vont
+Je vais ___ . (їсти) | manger
+Elle va ___ . (піти; partir) | partir
+</div>
+</section>
+
+<section class="unit" id="e23" data-grp="Збірні вправи" data-short="23. Переклад коротких фраз">
+<h2><span class="no">Вправи 23</span>Переклад коротких фраз</h2>
+<p class="lead">Пиши відповідь повністю. Великі літери та крапки не потрібні, діакритика потрібна.</p>
+<div class="qz" data-title="23.1. З української на французьку">
+Мене звати Анна. | Je m'appelle Anna
+Мені двадцять років. | J'ai vingt ans
+Я живу в Україні. | J'habite en Ukraine
+Я не говорю по-німецьки. | Je ne parle pas allemand
+У мене є брат. | J'ai un frère
+Ми йдемо в кіно. | Nous allons au cinéma
+Де вокзал? | Où est la gare
+Скільки це коштує? | Combien ça coûte
+Я хочу води. | Je voudrais de l'eau / Je veux de l'eau
+Я люблю каву. | J'aime le café
+</div>
+<div class="qz" data-title="23.2. З французької на українську (одне слово: ключове)">
+Il fait chaud. → погода: ___ (жарко / спекотно) | жарко / спекотно
+J'ai faim. → я ___ (голодний) | голодний
+J'ai soif. → я ___ (хочу пити, спраглий) | хочу пити / спраглий
+J'ai froid. → мені ___ (холодно) | холодно
+J'ai sommeil. → я хочу ___ (спати) | спати
+Bonne nuit ! → на добраніч: ___ | на добраніч / добраніч
+À demain ! → до ___ (завтра) | завтра
+Bon appétit ! → смачного: ___ | смачного
+</div>
+</section>
+
+<section class="unit" id="e24" data-short="24. Великий тест A1">
+<h2><span class="no">Вправи 24</span>Великий тест A1: 40 пунктів</h2>
+<div class="qz" data-title="24.1. Тест, частина 1: дієслова">
+Je ___ ukrainien. (être) | suis
+Tu ___ vingt ans. (avoir) | as
+Elle ___ à Paris. (habiter) | habite
+Nous ___ au cinéma. (aller) | allons
+Ils ___ du thé. (boire) | boivent
+Vous ___ français ? (parler) | parlez
+Il ___ à six heures. (se lever) | se lève
+Je ___ un café. (prendre) | prends
+Nous ___ la cuisine. (faire) | faisons
+Elles ___ contentes. (être) | sont
+</div>
+<div class="qz" data-title="24.2. Тест, частина 2: артиклі й прийменники">
+Je mange ___ pain. (du) | du
+Voilà ___ chat. (un) | un
+___ livre est sur la table. (відомий) | Le
+Je vais ___ cinéma. (à + le) | au
+Je vais ___ école. | à l'
+Je viens ___ France. | de
+Il parle ___ enfants. (aux) | aux
+Je suis ___ Paul. (chez) | chez
+Il y a beaucoup ___ gens. | de
+Je n'ai pas ___ voiture. | de
+</div>
+<div class="qz" data-title="24.3. Тест, частина 3: прикметники, присвійні, вказівні">
+une maison ___ (grand) | grande
+une voiture ___ (blanc) | blanche
+___ père (мій) | mon
+___ sœur (його) | sa
+___ maison (ця) | cette
+___ ami (цей) | cet
+___ enfants (наші) | nos
+___ chat (їхній) | leur
+Il est ___ . (gentil, чол.) | gentil
+Elle est ___ . (gentil, жін.) | gentille
+</div>
+<div class="qz" data-title="24.4. Тест, частина 4: питання й слова">
+___ tu habites ? (де) | Où
+___ tu t'appelles ? (як) | Comment
+___ ça coûte ? (скільки) | Combien
+___ tu pars ? (коли) | Quand
+___ tu pleures ? (чому) | Pourquoi
+20 | vingt
+50 | cinquante
+17 | dix-sept
+середа | mercredi
+вересень | septembre
+</div>
+</section>
+<footer>Вправи до курсу A1. Правила й пояснення шукай у файлі курсу.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Français</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^fr[-_]FR/i.test(x.lang))||v.find(x=>/^fr/i.test(x.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('fr_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('fr_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('fr_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('fr_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='fr_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>
