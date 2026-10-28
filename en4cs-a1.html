@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angličtina A1: ucelený kurz</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="english.html" title="Domů">&larr;</a>
+  <button id="menuBtn" aria-label="Obsah">Obsah</button>
+  <span class="brand">Angličtina A1</span>
+  <input id="q" type="search" placeholder="Najít slovo" aria-label="Najít slovo">
+  <button id="uaBtn" title="Zobrazit nebo skrýt překlady příkladů a dialogů">Překlad</button>
+  <button id="thBtn" title="Světlý nebo tmavý motiv">Motiv</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Obsah"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Angličtina A1</h1>
+  <p>Samostatný kurz angličtiny pro mluvčí češtiny: výslovnost, gramatika, slovní zásoba podle témat, dialogy, texty a cvičení. Klepnutím na slovo nebo větu si je poslechnete.</p>
+  <p class="crumbs"><a href="english.html">&larr; Domů</a><a href="en4cs-a2.html">Úroveň A2</a><a href="en4cs-vpravy.html">Cvičení</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Úvod" data-short="Jak s kurzem pracovat">
+<h2><span class="no">Oddíl 0</span>Jak s kurzem pracovat</h2>
+<p class="lead">Angličtina je pro Čecha překvapivě „laskavá“: nemá pády, nemá rod podstatných jmen a slovesa mají jen pár tvarů. Těžká je jiná věc: <b>výslovnost</b>, protože se anglicky často čte jinak, než se píše. Tento kurz vás dovede na úroveň A1: seznámení, rodina, jídlo, orientace ve městě, nakupování, čas a každodenní situace.</p>
+<h3>Co je na vaší straně</h3>
+<ul>
+<li><b>Žádné pády.</b> Slovo se nemění podle místa ve větě: <span class="fr">book</span> je vždy <span class="fr">book</span>.</li>
+<li><b>Žádný rod.</b> Člen je jen <span class="fr">the</span> (ten, ta, to) a <span class="fr">a / an</span> (nějaký).</li>
+<li><b>Slova, která znáte:</b> <span class="fr">hotel, taxi, pizza, bank, police, doctor, metro, football</span>.</li>
+<li><b>Jednoduchá slovesa.</b> V přítomném čase se mění jen třetí osoba (<span class="fr">he works</span>).</li>
+
+
+</ul>
+<div class="warn"><b>Co bude nové.</b> Vždy je nutné říct podmět (<span class="fr">I work</span>, ne jen „work“). Slovosled je pevný: podmět, sloveso, předmět. Při otázkách a zápoře se používá pomocné sloveso <span class="fr">do</span>. A čte se jinak, než se píše.</div>
+<div class="tip"><b class="t">Hlavní rada.</b> Učte se celé věty, ne jednotlivá slova: ne „drink = pít“, ale <span class="fr">I drink coffee</span>. A každé nové slovo si poslechněte (klepněte na něj).</div>
+<div class="warn"><b>Falešní přátelé.</b> <span class="fr">actual</span> = skutečný (ne aktuální), <span class="fr">sympathetic</span> = soucitný, <span class="fr">eventually</span> = nakonec (ne eventuálně), <span class="fr">pension</span> = důchod, <span class="fr">gymnasium</span> = tělocvična, <span class="fr">chef</span> = šéfkuchař, <span class="fr">fabric</span> = látka, <span class="fr">sensible</span> = rozumný, <span class="fr">sympathy</span> = soucit, <span class="fr">physician</span> = lékař, <span class="fr">biscuit</span> = sušenka.</div>
+<h3>Jak pracovat</h3>
+<ol>
+<li>Přečtěte si vysvětlení a klepnutím na slova si je poslechněte.</li>
+<li>Dělejte cvičení tady i na stránce Cvičení.</li>
+<li>20 až 30 minut denně. Plán je v oddílu 12.</li>
+</ol>
+<div class="tip"><b class="t">O výslovnostním sloupci.</b> Výslovnost je zapsána mezinárodní fonetickou abecedou (IPA), v americké výslovnosti. Najdete ji u každého slova. Značka <span class="fr">ˈ</span> stojí před přízvučnou slabikou, <span class="fr">ː</span> označuje dlouhou hlásku. Zvuk v telefonu nebo počítači se může lišit (americká nebo britská angličtina), vždy se řiďte hlavně sluchem.</div>
+</section>
+
+<section class="unit" id="u1" data-short="Výslovnost a pravopis">
+<h2><span class="no">Oddíl 1</span>Výslovnost a pravopis</h2>
+<p class="lead">Angličtina má 26 písmen, ale asi 44 hlásek. Pravopis a výslovnost se často liší, proto se každé slovo učte i poslechem. Základ, který potřebujete, se vejde na jednu stránku.</p>
+<h3>1.1. Samohlásky</h3>
+<div class="tw"><table>
+<tr><th>IPA</th><th>Jako v češtině</th><th>Příklady</th></tr>
+<tr><td><span class="fr">iː</span></td><td>dlouhé „í“</td><td><span class="fr">see, eat, key</span></td></tr>
+<tr><td><span class="fr">ɪ</span></td><td>krátké „i“, uvolněné</td><td><span class="fr">sit, big, it</span></td></tr>
+<tr><td><span class="fr">e / ɛ</span></td><td>jako „e“ v „pes“</td><td><span class="fr">bed, red, ten</span></td></tr>
+<tr><td><span class="fr">æ</span></td><td>mezi „a“ a „e“, ústa dokořán</td><td><span class="fr">cat, man, apple</span></td></tr>
+<tr><td><span class="fr">ɑː</span></td><td>dlouhé „á“</td><td><span class="fr">car, father, start</span></td></tr>
+<tr><td><span class="fr">ɔː</span></td><td>dlouhé „ó“, zaoblené</td><td><span class="fr">all, four, door</span></td></tr>
+<tr><td><span class="fr">ʊ / uː</span></td><td>krátké / dlouhé „u“</td><td><span class="fr">book, good / food, blue</span></td></tr>
+<tr><td><span class="fr">ʌ</span></td><td>krátké „a“, nezaoblené</td><td><span class="fr">cup, but, love</span></td></tr>
+<tr><td><span class="fr">ə</span></td><td>neurčitá hláska (šva), velmi slabá</td><td><span class="fr">about, teacher, banana</span></td></tr>
+<tr><td><span class="fr">eɪ, aɪ, ɔɪ</span></td><td>dvojhlásky „ej, áj, oj“</td><td><span class="fr">day, my, boy</span></td></tr>
+<tr><td><span class="fr">oʊ, aʊ</span></td><td>dvojhlásky „ou, au“</td><td><span class="fr">go, now</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Dlouhé a krátké</b><p>Délka rozlišuje slova: <span class="fr">ship</span> (loď) a <span class="fr">sheep</span> (ovce), <span class="fr">full</span> a <span class="fr">fool</span>. Čeština délku zná, využijte to: dlouhou hlásku opravdu prodlužte.</p></div>
+<h3>1.2. Souhlásky, které dělají potíže</h3>
+<div class="tw"><table>
+<tr><th>IPA</th><th>Jak na to</th><th>Příklady</th></tr>
+<tr><td><span class="fr">θ</span></td><td>jazyk mezi zuby, jen vzduch, bez hlasu (ne „s“, ne „f“)</td><td><span class="fr">think, three, Thursday</span></td></tr>
+<tr><td><span class="fr">ð</span></td><td>stejné postavení jazyka, ale se zvukem (ne „z“, ne „d“)</td><td><span class="fr">the, this, mother</span></td></tr>
+<tr><td><span class="fr">w</span></td><td>zakulacené rty jako u „u“, pak rychle další hláska (ne „v“)</td><td><span class="fr">water, we, window</span></td></tr>
+<tr><td><span class="fr">v</span></td><td>horní zuby na dolní ret, se zvukem</td><td><span class="fr">very, voice, live</span></td></tr>
+<tr><td><span class="fr">r</span></td><td>nevalivé „r“, jazyk se nedotýká patra</td><td><span class="fr">red, right, very</span></td></tr>
+<tr><td><span class="fr">ŋ</span></td><td>„n“ vzadu v hrdle, bez „g“ na konci</td><td><span class="fr">sing, long, morning</span></td></tr>
+<tr><td><span class="fr">tʃ, dʒ</span></td><td>jako „č“ a „dž“</td><td><span class="fr">chair, cheese, job, bridge</span></td></tr>
+<tr><td><span class="fr">ʃ, ʒ</span></td><td>jako „š“ a „ž“</td><td><span class="fr">she, fish, vision</span></td></tr>
+<tr><td><span class="fr">h</span></td><td>slabé „h“</td><td><span class="fr">house, hello</span></td></tr>
+</table></div>
+<div class="warn"><b>Typické chyby.</b> (1) <span class="fr">th</span> nahrazené „s“ nebo „t“: neříkejte „sank“ místo <span class="fr">thank</span>. (2) <span class="fr">w</span> řečené jako „v“: <span class="fr">wine</span> a <span class="fr">vine</span> jsou dvě slova. (3) Na konci slova se nesmí ztrácet znělost: <span class="fr">bad</span> není „bat“, <span class="fr">dog</span> není „dok“. (4) Přízvuk není vždy na první slabice jako v češtině: <span class="fr">ho-TEL, a-BOUT, to-DAY</span>.</div>
+<h3>1.3. Přízvuk a koncovky</h3>
+<ul>
+<li>Každé víceslabičné slovo má jednu hlavní přízvučnou slabiku. V přízvučné slabice je hláska plná, v nepřízvučných se často změní na <span class="fr">ə</span>: <span class="fr">teacher, banana, family</span>.</li>
+<li>-s: <span class="fr">books /s/</span>, <span class="fr">dogs /z/</span>, <span class="fr">buses /ɪz/</span>. -ed: <span class="fr">worked /t/</span>, <span class="fr">lived /d/</span>, <span class="fr">wanted /ɪd/</span>.</li>
+<li>Tiché písmeno: <span class="fr">knife, write, hour, listen, answer, Wednesday</span>.</li>
+<li>Stejné písmeno, různé hlásky: <span class="fr">through, though, thought, tough, cough</span>.</li>
+</ul>
+<h3>1.4. Abeceda</h3>
+<div class="vocab">
+A | eɪ | apple
+B | bi | book
+C | si | car
+D | di | dog
+E | i | egg
+F | ɛf | fish
+G | dʒi | green
+H | eɪtʃ | house
+I | aɪ | ice
+J | dʒeɪ | job
+K | keɪ | key
+L | ɛl | light
+M | ɛm | milk
+N | ɛn | name
+O | oʊ | orange
+P | pi | pen
+Q | kju | queen
+R | ɑr | red
+S | ɛs | sun
+T | ti | tea
+U | ju | uncle
+V | vi | very
+W | ˈdʌbəl ju | water
+X | ɛks | box
+Y | waɪ | yes
+Z | zi | zero
+</div>
+<div class="exs">
+How do you spell your name? | haʊ du ju spɛl jɔr neɪm | Jak se vaše jméno hláskuje?
+Could you repeat that, please? | kʊd ju rɪˈpit ðæt pliz | Můžete to zopakovat, prosím?
+Thank you very much. | θæŋk ju ˈvɛri mʌtʃ | Děkuji vám mnohokrát.
+I think this is the right answer. | aɪ θɪŋk ðɪs ɪz ðə raɪt ˈænsɚ | Myslím, že tohle je správná odpověď.
+The weather is nice today. | ðə ˈwɛðɚ ɪz naɪs təˈdeɪ | Dnes je hezké počasí.
+</div>
+<div class="qz" data-title="Cvičení 1. Čtěte a pište">
+/θɪŋk/ — myslet | think
+/θri/ — číslo 3 | three
+/ˈwɔtɚ/ — voda | water
+/ʃi/ — ona | she
+/ˈhaʊs/ — dům | house
+/tʃɛr/ — židle | chair
+/dɔɡ/ — pes | dog
+/ˈmɔrnɪŋ/ — ráno | morning
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Pozdravy a seznámení">
+<h2><span class="no">Oddíl 2</span>Pozdravy a seznámení</h2>
+<p class="lead">V angličtině není rozdíl mezi „ty“ a „vy“: je jen <span class="fr">you</span>. Zdvořilost se vyjadřuje slovy (<span class="fr">please, thank you, could you</span>), ne tvarem.</p>
+<div class="vocab">
+# Pozdravy
+Hello | həˈloʊ | ahoj, dobrý den
+Hi | haɪ | ahoj (neformálně)
+Good morning | ɡʊd ˈmɔrnɪŋ | dobré ráno
+Good afternoon | ɡʊd ˌæftɚˈnun | dobré odpoledne
+Good evening | ɡʊd ˈivnɪŋ | dobrý večer
+Good night | ɡʊd naɪt | dobrou noc
+Goodbye | ˌɡʊdˈbaɪ | na shledanou
+See you | si ju | ahoj (při loučení)
+# Zdvořilost
+Please | pliz | prosím
+Thank you | θæŋk ju | děkuji
+You're welcome | jʊr ˈwɛlkəm | není zač
+Sorry | ˈsɑri | promiňte, pardon
+Excuse me | ɪksˈkjus mi | promiňte (oslovení)
+Yes | jɛs | ano
+No | noʊ | ne
+</div>
+<h3>2.1. Představení</h3>
+<div class="exs">
+My name is Michael. | maɪ neɪm ɪz ˈmaɪkəl | Jmenuji se Michael.
+What's your name? | wʌts jɔr neɪm | Jak se jmenujete?
+Nice to meet you. | naɪs tə mit ju | Těší mě.
+Where are you from? | wɛr ɑr ju frʌm | Odkud jste?
+I'm from Prague. | aɪm frʌm prɑɡ | Jsem z Prahy.
+I'm thirty years old. | aɪm ˈθɝˌdi jɪrz oʊld | Je mi třicet let.
+I live in London. | aɪ laɪv ɪn ˈlʌndən | Bydlím v Londýně.
+I'm a teacher. | aɪm ə ˈtitʃɚ | Jsem učitel.
+Do you speak English? | du ju spik ˈɪŋɡlɪʃ | Mluvíte anglicky?
+I don't understand. | aɪ doʊnt ˌʌndɚˈstænd | Nerozumím.
+Can you repeat that, please? | kæn ju rɪˈpit ðæt pliz | Můžete to zopakovat, prosím?
+</div>
+<div class="rule"><b class="t">Podmět je povinný</b><p>V češtině říkáte „Jsem učitel“. V angličtině musí být vždy podmět: <span class="fr">I am a teacher</span>, ne „am a teacher“. Také <span class="fr">it</span> v <span class="fr">It is cold</span> (je zima) nesmí chybět.</p></div>
+<h3>2.2. Zájmena</h3>
+<div class="tw"><table>
+<tr><th>Osoba</th><th>English</th><th>Význam</th><th>Předmět</th><th>Přivlastňovací</th></tr>
+<tr><td>1</td><td><span class="fr">I</span></td><td>já</td><td><span class="fr">me</span></td><td><span class="fr">my</span></td></tr>
+<tr><td>2</td><td><span class="fr">you</span></td><td>ty, vy</td><td><span class="fr">you</span></td><td><span class="fr">your</span></td></tr>
+<tr><td>3</td><td><span class="fr">he / she / it</span></td><td>on / ona / ono</td><td><span class="fr">him / her / it</span></td><td><span class="fr">his / her / its</span></td></tr>
+<tr><td>1 pl.</td><td><span class="fr">we</span></td><td>my</td><td><span class="fr">us</span></td><td><span class="fr">our</span></td></tr>
+<tr><td>2 pl.</td><td><span class="fr">you</span></td><td>vy</td><td><span class="fr">you</span></td><td><span class="fr">your</span></td></tr>
+<tr><td>3 pl.</td><td><span class="fr">they</span></td><td>oni, ony</td><td><span class="fr">them</span></td><td><span class="fr">their</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Pozor.</b> <span class="fr">I</span> se píše vždy velkým písmenem. Osoby se označují <span class="fr">he</span> (muž), <span class="fr">she</span> (žena), <span class="fr">it</span> (věc, zvíře). <span class="fr">They</span> jsou „oni“ i „ony“.</div>
+<div class="qz" data-title="Cvičení 2. Pozdravy">
+Dobrý den! (ráno) | Good morning
+Dobrý večer! | Good evening
+Děkuji. | Thank you
+Prosím. | Please
+Promiňte. | Excuse me
+Na shledanou. | Goodbye
+Jmenuji se Anna. | My name is Anna
+Těší mě. | Nice to meet you
+Nerozumím. | I don't understand
+Odkud jste? | Where are you from
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Podstatná jména, členy">
+<h2><span class="no">Oddíl 3</span>Podstatná jména, členy a množné číslo</h2>
+<p class="lead">Čeština členy nemá, angličtina ano: <span class="fr">a / an</span> (neurčitý) a <span class="fr">the</span> (určitý). Rod podstatných jmen neexistuje, takže se nic neskloňuje.</p>
+<h3>3.1. A, an, the</h3>
+<div class="tw"><table>
+<tr><th>Člen</th><th>Kdy</th><th>Příklad</th></tr>
+<tr><td><span class="fr">a</span></td><td>před souhláskou (zvukem)</td><td><span class="fr">a book, a car, a university</span></td></tr>
+<tr><td><span class="fr">an</span></td><td>před samohláskou (zvukem)</td><td><span class="fr">an apple, an hour, an egg</span></td></tr>
+<tr><td><span class="fr">the</span></td><td>určitý, známý předmět</td><td><span class="fr">the book on the table</span></td></tr>
+<tr><td>žádný člen</td><td>množné číslo obecně, nepočitatelná slova</td><td><span class="fr">I like books. I drink water.</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Rozhoduje zvuk, ne písmeno</b><p><span class="fr">an hour</span> /aʊr/, ale <span class="fr">a university</span> /ju/. Říkáme <span class="fr">a</span> před souhláskovou hláskou a <span class="fr">an</span> před samohláskovou.</p></div>
+<h3>3.2. Množné číslo</h3>
+<div class="tw"><table>
+<tr><th>Pravidlo</th><th>Příklad</th></tr>
+<tr><td>+ s</td><td><span class="fr">book → books, car → cars</span></td></tr>
+<tr><td>s, x, ch, sh → + es</td><td><span class="fr">bus → buses, box → boxes, watch → watches</span></td></tr>
+<tr><td>souhláska + y → ies</td><td><span class="fr">city → cities, baby → babies</span></td></tr>
+<tr><td>nepravidelné</td><td><span class="fr">man → men, woman → women, child → children, foot → feet, person → people, tooth → teeth</span></td></tr>
+</table></div>
+<div class="warn"><b>Nepočitatelná slova.</b> <span class="fr">information, advice, news, money, water, bread</span> nemají množné číslo a nepoužívají <span class="fr">a</span>: <span class="fr">some information</span>, ne „an information“.</div>
+<h3>3.3. This, that, these, those</h3>
+<div class="tw"><table>
+<tr><th></th><th>blízko</th><th>daleko</th></tr>
+<tr><td>jednotné</td><td><span class="fr">this</span> (tento)</td><td><span class="fr">that</span> (tamten)</td></tr>
+<tr><td>množné</td><td><span class="fr">these</span></td><td><span class="fr">those</span></td></tr>
+</table></div>
+<div class="exs">
+This is a book. | ðɪs ɪz ə bʊk | Tohle je kniha.
+That is my brother. | ðæt ɪz maɪ ˈbrʌðɚ | To (tam) je můj bratr.
+These are my keys. | ðiz ɑr maɪ kiz | Tohle jsou moje klíče.
+I have a brother and two sisters. | aɪ hæv ə ˈbrʌðɚ ənd tu ˈsɪstɚz | Mám bratra a dvě sestry.
+The book is on the table. | ðə bʊk ɪz ɑn ðə ˈteɪbəl | Kniha je na stole.
+She is an engineer. | ʃi ɪz ən ˈɛndʒəˈnɪr | Je inženýrka.
+I like apples. | aɪ laɪk ˈæpəlz | Mám rád jablka.
+</div>
+<div class="vocab">
+# Rodina
+family | ˈfæməli | rodina
+mother (mum) | ˈmʌðɚ mʌm | matka (máma)
+father (dad) | ˈfɑðɚ dæd | otec (táta)
+brother | ˈbrʌðɚ | bratr
+sister | ˈsɪstɚ | sestra
+son | sʌn | syn
+daughter | ˈdɔtɚ | dcera
+grandmother | ˈɡrændˌmʌðɚ | babička
+grandfather | ˈɡrændˌfɑðɚ | dědeček
+husband | ˈhʌzbənd | manžel
+wife | waɪf | manželka
+child | tʃaɪld | dítě
+# Věci
+house | haʊs | dům
+flat (apartment) | flæt əˈpɑrtmənt | byt
+room | rum | pokoj
+kitchen | ˈkɪtʃən | kuchyně
+table | ˈteɪbəl | stůl
+chair | tʃɛr | židle
+window | ˈwɪndoʊ | okno
+door | dɔr | dveře
+bed | bɛd | postel
+car | kɑr | auto
+phone | foʊn | telefon
+book | bʊk | kniha
+</div>
+<div class="qz" data-title="Cvičení 3. Členy a množné číslo">
+rodina | family
+bratr | brother
+sestra | sister
+dítě | child
+dům | house
+stůl | table
+kniha | book
+kuchyně | kitchen
+I have ___ apple. (a / an) | an
+She is ___ teacher. (a / an) | a
+I have ___ umbrella. (a / an) | an
+book → ___ (pl.) | books
+box → ___ (pl.) | boxes
+city → ___ (pl.) | cities
+child → ___ (pl.) | children
+man → ___ (pl.) | men
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Slovesa" data-short="Be, have, there is">
+<h2><span class="no">Oddíl 4</span>Slovesa <span class="fr">to be</span> a <span class="fr">to have</span>, <span class="fr">there is</span></h2>
+<div class="cj" data-verb="to be" data-note="být" data-ipa="tə bi">
+I | am | æm
+you | are | ɑr
+he / she / it | is | ɪz
+we | are | ɑr
+you | are | ɑr
+they | are | ɑr
+</div>
+<div class="cj" data-verb="to have" data-note="mít" data-ipa="tə hæv">
+I | have | hæv
+you | have | hæv
+he / she / it | has | hæz
+we | have | hæv
+you | have | hæv
+they | have | hæv
+</div>
+<div class="tw"><table>
+<tr><th>Tvar</th><th>to be</th><th>to have</th></tr>
+<tr><td>Zkráceně</td><td><span class="fr">I'm, you're, he's, we're, they're</span></td><td><span class="fr">I've, she's got</span></td></tr>
+<tr><td>Zápor</td><td><span class="fr">I am not, he isn't, they aren't</span></td><td><span class="fr">I don't have / I haven't got</span></td></tr>
+<tr><td>Otázka</td><td><span class="fr">Are you tired? Is he here?</span></td><td><span class="fr">Do you have a car? / Have you got a car?</span></td></tr>
+</table></div>
+<div class="exs">
+I am a student. | aɪ æm ə ˈstudənt | Jsem student.
+Are you tired? | ɑr ju ˈtaɪɚd | Jste unavený?
+We are at home. | wi ɑr ət hoʊm | Jsme doma.
+She is not a doctor. | ʃi ɪz nɑt ə ˈdɑktɚ | Není lékařka.
+I have a brother. | aɪ hæv ə ˈbrʌðɚ | Mám bratra.
+Do you have time? | du ju hæv taɪm | Máte čas?
+I don't have time. | aɪ doʊnt hæv taɪm | Nemám čas.
+He has two children. | hi hæz tu ˈtʃɪldrən | Má dvě děti.
+It's cold today. | ɪts koʊld təˈdeɪ | Dnes je zima.
+I'm hungry. | aɪm ˈhʌŋɡri | Mám hlad.
+</div>
+<div class="warn"><b>Pozor.</b> Stáří a pocity se v angličtině vyjadřují slovesem <span class="fr">be</span>: <span class="fr">I am 30</span> (ne „have 30“), <span class="fr">I am hungry / cold / afraid</span>.</div>
+<h3>4.1. There is / there are</h3>
+<div class="tw"><table>
+<tr><th>Tvar</th><th>Příklad</th></tr>
+<tr><td><span class="fr">There is + jednotné</span></td><td><span class="fr">There is a bank near here.</span></td></tr>
+<tr><td><span class="fr">There are + množné</span></td><td><span class="fr">There are two shops on this street.</span></td></tr>
+<tr><td>Zápor</td><td><span class="fr">There isn't a park. There aren't any shops.</span></td></tr>
+<tr><td>Otázka</td><td><span class="fr">Is there a bank? Are there any shops?</span></td></tr>
+</table></div>
+<div class="qz" data-title="Cvičení 4. Be a have">
+I ___ a student. (be) | am
+You ___ from England. (be) | are
+He ___ a doctor. (be) | is
+We ___ friends. (be) | are
+They ___ at home. (be) | are
+I ___ a brother. (have) | have
+She ___ a car. (have) | has
+We ___ a house. (have) | have
+___ you tired? | Are
+___ there a bank near here? | Is
+She ___ a doctor. (negative: is not) | isn't / is not
+</div>
+</section>
+
+<section class="unit" id="u5" data-short="Přítomný čas">
+<h2><span class="no">Oddíl 5</span>Přítomný čas prostý a průběhový</h2>
+<h3>5.1. Present Simple</h3>
+<p>Pro zvyky, fakta a pravidelné činnosti. Slovesný tvar je základní, jen ve 3. osobě jednotného čísla se přidává <b>-s</b>: <span class="fr">I work, he works</span>.</p>
+<div class="cj" data-verb="to work" data-note="pracovat" data-ipa="tə wɝk">
+I | work | wɝk
+you | work | wɝk
+he / she / it | works | wɝks
+we | work | wɝk
+you | work | wɝk
+they | work | wɝk
+</div>
+<div class="tw"><table>
+<tr><th>Pravidlo</th><th>Příklad</th></tr>
+<tr><td>+ s</td><td><span class="fr">he works, she lives, it rains</span></td></tr>
+<tr><td>s, sh, ch, x, o → + es</td><td><span class="fr">he watches, she goes, it fixes</span></td></tr>
+<tr><td>souhláska + y → ies</td><td><span class="fr">he studies, she tries</span></td></tr>
+<tr><td>nepravidelné</td><td><span class="fr">have → has, be → is</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Zápor a otázka: pomocné sloveso do</b><p><span class="fr">I don't work. He doesn't work. Do you work? Does he work?</span> Po <span class="fr">does</span> už není -s na slovesu: <span class="fr">Does she work?</span>, ne „Does she works?“. Nepoužívá se u <span class="fr">be</span>.</p></div>
+<div class="exs">
+I work in a bank. | aɪ wɝk ɪn ə bæŋk | Pracuji v bance.
+She lives in Berlin. | ʃi lɪvz ɪn bɚˈlɪn | Bydlí v Berlíně.
+He doesn't drink coffee. | hi ˈdʌzənt drɪŋk ˈkɑfi | Nepije kávu.
+Do you speak English? | du ju spik ˈɪŋɡlɪʃ | Mluvíte anglicky?
+Does she like tea? | dʌz ʃi laɪk ti | Má ráda čaj?
+We go to school by bus. | wi ɡoʊ tə skul baɪ bʌs | Do školy jezdíme autobusem.
+They don't have a car. | ðeɪ doʊnt hæv ə kɑr | Nemají auto.
+What time does the train leave? | wʌt taɪm dʌz ðə treɪn liv | V kolik odjíždí vlak?
+</div>
+<h3>5.2. Příslovce četnosti</h3>
+<div class="vocab">
+always | ˈɔˌlweɪz | vždy
+usually | ˈjuʒəwəli | obvykle
+often | ˈɔfən | často
+sometimes | səmˈtaɪmz | někdy
+rarely | ˈrɛrli | zřídka
+never | ˈnɛvɚ | nikdy
+</div>
+<p>Stojí před slovesem, ale za <span class="fr">be</span>: <span class="fr">I always drink tea. He is never late.</span></p>
+<h3>5.3. Present Continuous</h3>
+<div class="rule"><b class="t">be + -ing</b><p>Pro to, co se děje právě teď nebo v tomto období. Čeština tu nemá zvláštní čas: „Čtu“ je <span class="fr">I read</span> (obvykle) i <span class="fr">I am reading</span> (právě teď).</p></div>
+<div class="exs">
+I am reading a book. | aɪ æm ˈridɪŋ ə bʊk | Právě čtu knihu.
+She is cooking dinner now. | ʃi ɪz ˈkʊkɪŋ ˈdɪnɚ naʊ | Právě vaří večeři.
+Are you working today? | ɑr ju ˈwɝkɪŋ təˈdeɪ | Pracujete dnes?
+It is raining. | ɪt ɪz ˈreɪnɪŋ | Prší.
+They aren't watching TV. | ðeɪ ˈɑrənt ˈwɑtʃɪŋ ˈtiˈvi | Nedívají se na televizi.
+I'm learning English. | aɪm ˈlɝnɪŋ ˈɪŋɡlɪʃ | Učím se anglicky.
+</div>
+<div class="vocab">
+work | wɝk | pracovat
+live | laɪv | bydlet
+speak | spik | mluvit
+read | rɛd | číst
+drink | drɪŋk | pít
+eat | it | jíst
+go | ɡoʊ | jít, jet
+see | si | vidět
+buy | baɪ | koupit
+want | wɑnt | chtít
+like | laɪk | mít rád
+play | pleɪ | hrát
+learn | lɝn | učit se
+</div>
+<div class="qz" data-title="Cvičení 5. Přítomný čas">
+I ___ in London. (live) | live
+She ___ in London. (live) | lives
+He ___ tea. (drink) | drinks
+They ___ English. (speak) | speak
+He ___ in a bank. (work) | works
+She ___ TV. (watch) | watches
+I ___ like coffee. (negative) | don't
+She ___ speak German. (negative) | doesn't
+___ you work here? | Do
+___ he like tea? | Does
+Look! It ___ raining. (is / are) | is
+I ___ reading now. (am / is) | am
+</div>
+</section>
+
+<section class="unit" id="u6" data-grp="Jazyk v praxi" data-short="Otázky, přídavná jména, předložky">
+<h2><span class="no">Oddíl 6</span>Otázky, přídavná jména, předložky</h2>
+<div class="vocab">
+who | hu | kdo
+what | wʌt | co
+where | wɛr | kde, kam
+when | wɛn | kdy
+why | waɪ | proč
+how | haʊ | jak
+how much | haʊ mʌtʃ | kolik (nepočitatelné)
+how many | haʊ ˈmɛni | kolik (počitatelné)
+which | wɪtʃ | který
+whose | huz | čí
+</div>
+<div class="exs">
+Who is that? | hu ɪz ðæt | Kdo je to?
+What do you do? | wʌt du ju du | Čím se živíte?
+Where do you live? | wɛr du ju laɪv | Kde bydlíte?
+When does the shop open? | wɛn dʌz ðə ʃɑp ˈoʊpən | Kdy se obchod otevírá?
+Why are you learning English? | waɪ ɑr ju ˈlɝnɪŋ ˈɪŋɡlɪʃ | Proč se učíte anglicky?
+How much is it? | haʊ mʌtʃ ɪz ɪt | Kolik to stojí?
+How many children do you have? | haʊ ˈmɛni ˈtʃɪldrən du ju hæv | Kolik máte dětí?
+</div>
+<div class="rule"><b class="t">Slovosled otázky</b><p><span class="fr">Question word + do/does + subject + verb</span>: <span class="fr">Where does she work?</span> V češtině stačí intonace nebo změna pořadí; v angličtině je pomocné sloveso nutné.</p></div>
+<h3>6.1. Přídavná jména</h3>
+<p>Přídavná jména se nemění (ani v čísle) a stojí <b>před</b> podstatným jménem: <span class="fr">a new house, new houses</span>.</p>
+<div class="vocab">
+new | nu | nový
+old | oʊld | starý
+big | bɪɡ | velký
+small | smɔl | malý
+good | ɡʊd | dobrý
+bad | bæd | špatný
+beautiful | ˈbjutəfəl | krásný
+expensive | ɪkˈspɛnsɪv | drahý
+cheap | tʃip | levný
+nice | naɪs | milý, hezký
+tired | ˈtaɪɚd | unavený
+happy | ˈhæpi | šťastný
+</div>
+<h3>6.2. Přivlastňovací</h3>
+<div class="tw"><table>
+<tr><th>Čí</th><th>Před jménem</th><th>Samostatně</th></tr>
+<tr><td>můj</td><td><span class="fr">my</span></td><td><span class="fr">mine</span></td></tr>
+<tr><td>tvůj, váš</td><td><span class="fr">your</span></td><td><span class="fr">yours</span></td></tr>
+<tr><td>jeho</td><td><span class="fr">his</span></td><td><span class="fr">his</span></td></tr>
+<tr><td>její</td><td><span class="fr">her</span></td><td><span class="fr">hers</span></td></tr>
+<tr><td>náš</td><td><span class="fr">our</span></td><td><span class="fr">ours</span></td></tr>
+<tr><td>jejich</td><td><span class="fr">their</span></td><td><span class="fr">theirs</span></td></tr>
+</table></div>
+<p>Vlastnictví se vyjadřuje také <span class="fr">'s</span>: <span class="fr">Anna's book</span> = Annina kniha, <span class="fr">my brother's car</span>.</p>
+<h3>6.3. Předložky</h3>
+<div class="tw"><table>
+<tr><th>Předložka</th><th>Význam</th><th>Příklad</th></tr>
+<tr><td><span class="fr">in</span></td><td>v, ve (město, měsíc, rok)</td><td><span class="fr">in London, in May, in 2024</span></td></tr>
+<tr><td><span class="fr">on</span></td><td>na, v (den)</td><td><span class="fr">on the table, on Monday</span></td></tr>
+<tr><td><span class="fr">at</span></td><td>u, v (přesné místo, čas)</td><td><span class="fr">at home, at 5 o'clock, at the station</span></td></tr>
+<tr><td><span class="fr">to</span></td><td>do, k (směr)</td><td><span class="fr">go to school, to Prague</span></td></tr>
+<tr><td><span class="fr">from</span></td><td>z, od</td><td><span class="fr">from England, from 9 to 5</span></td></tr>
+<tr><td><span class="fr">with / without</span></td><td>s / bez</td><td><span class="fr">with milk, without sugar</span></td></tr>
+<tr><td><span class="fr">for</span></td><td>pro, na (dobu)</td><td><span class="fr">for you, for two hours</span></td></tr>
+<tr><td><span class="fr">next to / behind / in front of</span></td><td>vedle / za / před</td><td><span class="fr">next to the bank</span></td></tr>
+</table></div>
+<div class="exs">
+I live in Prague. | aɪ laɪv ɪn prɑɡ | Bydlím v Praze.
+The book is on the table. | ðə bʊk ɪz ɑn ðə ˈteɪbəl | Kniha je na stole.
+We meet at six o'clock. | wi mit ət sɪks əˈklɑk | Sejdeme se v šest hodin.
+I go to school on Monday. | aɪ ɡoʊ tə skul ɑn ˈmʌndi | V pondělí chodím do školy.
+Coffee with milk, please. | ˈkɑfi wɪð mɪlk pliz | Kávu s mlékem, prosím.
+The bank is next to the post office. | ðə bæŋk ɪz nɛkst tə ðə poʊst ˈɔfɪs | Banka je vedle pošty.
+</div>
+<div class="qz" data-title="Cvičení 6. Otázky a předložky">
+___ is that? (who) | Who
+___ do you do? (what) | What
+___ do you live? (where) | Where
+___ is it? (how much) | How much
+The house is ___ . (new) | new
+___ brother is a doctor. (my) | My
+I live ___ Prague. (in) | in
+The book is ___ the table. (on) | on
+I am ___ home. (at) | at
+Coffee ___ milk. (with) | with
+I go ___ school. (to) | to
+The bank is ___ to the post office. (next) | next
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Čísla, čas, data">
+<h2><span class="no">Oddíl 7</span>Čísla, čas a data</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">zero</span></td><td>1 <span class="fr">one</span></td><td>2 <span class="fr">two</span></td><td>3 <span class="fr">three</span></td></tr>
+<tr><td>4 <span class="fr">four</span></td><td>5 <span class="fr">five</span></td><td>6 <span class="fr">six</span></td><td>7 <span class="fr">seven</span></td></tr>
+<tr><td>8 <span class="fr">eight</span></td><td>9 <span class="fr">nine</span></td><td>10 <span class="fr">ten</span></td><td>11 <span class="fr">eleven</span></td></tr>
+<tr><td>12 <span class="fr">twelve</span></td><td>13 <span class="fr">thirteen</span></td><td>20 <span class="fr">twenty</span></td><td>30 <span class="fr">thirty</span></td></tr>
+<tr><td>40 <span class="fr">forty</span></td><td>50 <span class="fr">fifty</span></td><td>100 <span class="fr">one hundred</span></td><td>1000 <span class="fr">one thousand</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Složená čísla</b><p>21 = <span class="fr">twenty-one</span> (stejné pořadí jako v češtině, ale bez „a“ uprostřed). -teen (13–19) má přízvuk na konci, -ty (30–90) na začátku: <span class="fr">thir-TEEN</span> × <span class="fr">THIR-ty</span>.</p></div>
+<div class="vocab">
+# Dny
+Monday | ˈmʌndi | pondělí
+Tuesday | ˈtuzdi | úterý
+Wednesday | ˈwɛnzdi | středa
+Thursday | ˈθɝzˌdeɪ | čtvrtek
+Friday | ˈfraɪdi | pátek
+Saturday | ˈsætɚdi | sobota
+Sunday | ˈsʌnˌdeɪ | neděle
+# Měsíce
+January | ˈdʒænjuˌɛri | leden
+February | ˈfɛbjəˌwɛri | únor
+March | mɑrtʃ | březen
+April | ˈeɪprəl | duben
+May | meɪ | květen
+June | dʒun | červen
+July | ˌdʒuˈlaɪ | červenec
+August | ˈɑɡəst | srpen
+September | sɛpˈtɛmbɚ | září
+October | ɑkˈtoʊbɚ | říjen
+November | noʊˈvɛmbɚ | listopad
+December | dɪˈsɛmbɚ | prosinec
+# Čas
+today | təˈdeɪ | dnes
+tomorrow | təˈmɑˌroʊ | zítra
+yesterday | ˈjɛstɚˌdeɪ | včera
+in the morning | ɪn ðə ˈmɔrnɪŋ | ráno, dopoledne
+in the evening | ɪn ðə ˈivnɪŋ | večer
+now | naʊ | teď
+</div>
+<p>Dny a měsíce se píší velkým písmenem. Datum: <span class="fr">the fifth of May</span> nebo <span class="fr">May 5th</span>. Řadové číslovky: <span class="fr">first, second, third, fourth, fifth</span>.</p>
+<div class="exs">
+What time is it? | wʌt taɪm ɪz ɪt | Kolik je hodin?
+It's five o'clock. | ɪts faɪv əˈklɑk | Je pět hodin.
+It's half past six. | ɪts hæf pæst sɪks | Je půl sedmé.
+It's a quarter past two. | ɪts ə ˈkwɔrtɚ pæst tu | Je čtvrt na tři.
+It's a quarter to eight. | ɪts ə ˈkwɔrtɚ tə eɪt | Je tři čtvrtě na osm.
+At what time? | ət wʌt taɪm | V kolik hodin?
+Today is Monday. | təˈdeɪ ɪz ˈmʌndi | Dnes je pondělí.
+My birthday is in May. | maɪ ˈbɝθˌdeɪ ɪz ɪn meɪ | Mám narozeniny v květnu.
+</div>
+<div class="warn"><b>Pozor.</b> České „půl sedmé“ je 6:30, tedy <span class="fr">half past six</span>. Pozor na <span class="fr">half seven</span>: v britské mluvě to může být 7:30. Nejjistější je říkat čas digitálně: <span class="fr">six thirty</span>.</div>
+<div class="qz" data-title="Cvičení 7. Čísla a dny">
+2 | two
+3 | three
+5 | five
+10 | ten
+20 | twenty
+100 | one hundred / a hundred
+pondělí | Monday
+pátek | Friday
+neděle | Sunday
+říjen | October
+zítra | tomorrow
+včera | yesterday
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Slovní zásoba a dialogy" data-short="Jídlo, město, nákupy">
+<h2><span class="no">Oddíl 8</span>Jídlo, město a nákupy</h2>
+<div class="vocab">
+# Jídlo
+bread | brɛd | chleba
+butter | ˈbʌtɚ | máslo
+cheese | tʃiz | sýr
+meat | mit | maso
+fish | fɪʃ | ryba
+egg | ɛɡ | vejce
+soup | sup | polévka
+rice | raɪs | rýže
+potato | pəˈteɪˌtoʊ | brambor
+apple | ˈæpəl | jablko
+sugar | ˈʃʊɡɚ | cukr
+salt | sɔlt | sůl
+# Nápoje
+water | ˈwɔtɚ | voda
+milk | mɪlk | mléko
+coffee | ˈkɑfi | káva
+tea | ti | čaj
+juice | dʒus | džus
+beer | bɪr | pivo
+wine | waɪn | víno
+# Město
+station | ˈsteɪʃən | nádraží
+post office | poʊst ˈɔfɪs | pošta
+bank | bæŋk | banka
+hospital | ˈhɑˌspɪtəl | nemocnice
+pharmacy | ˈfɑrməsi | lékárna
+shop | ʃɑp | obchod
+street | strit | ulice
+bridge | brɪdʒ | most
+park | pɑrk | park
+</div>
+<div class="exs">
+A coffee, please. | ə ˈkɑfi pliz | Jednu kávu, prosím.
+Can I have the bill, please? | kæn aɪ hæv ðə bɪl pliz | Mohu dostat účet, prosím?
+Enjoy your meal! | ˌɛnˈdʒɔɪ jɔr mil | Dobrou chuť!
+How much is it? | haʊ mʌtʃ ɪz ɪt | Kolik to stojí?
+That's expensive. | ðæts ɪkˈspɛnsɪv | To je drahé.
+Can I pay by card? | kæn aɪ peɪ baɪ kɑrd | Mohu platit kartou?
+Where is the station? | wɛr ɪz ðə ˈsteɪʃən | Kde je nádraží?
+Go straight, then turn left. | ɡoʊ streɪt ðɛn tɝn lɛft | Jděte rovně a pak zahněte doleva.
+I'm hungry. | aɪm ˈhʌŋɡri | Mám hlad.
+</div>
+<div class="qz" data-title="Cvičení 8. Káva a město">
+Jednu kávu, prosím. | A coffee, please
+Účet, prosím. | The bill, please
+Dobrou chuť! | Enjoy your meal
+Kolik to stojí? | How much is it
+Kde je nádraží? | Where is the station
+To je drahé. | That is expensive / That's expensive
+Mám hlad. | I am hungry / I'm hungry
+chleba | bread
+mléko | milk
+nádraží | station
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Další slova">
+<h2><span class="no">Oddíl 9</span>Další slova: práce, tělo, oblečení, počasí, doprava</h2>
+<div class="vocab">
+# Povolání
+teacher | ˈtitʃɚ | učitel
+doctor | ˈdɑktɚ | lékař
+nurse | nɝs | zdravotní sestra
+engineer | ˈɛndʒəˈnɪr | inženýr
+driver | ˈdraɪvɚ | řidič
+shop assistant | ʃɑp əˈsɪstənt | prodavač
+cook | kʊk | kuchař
+student | ˈstudənt | student
+police officer | pəˈlis ˈɔfəsɚ | policista
+lawyer | ˈlɔjɚ | právník
+# Tělo a zdraví
+head | hɛd | hlava
+eye | aɪ | oko
+ear | ir | ucho
+nose | noʊz | nos
+mouth | maʊθ | ústa
+hand | hænd | ruka
+leg | lɛɡ | noha
+stomach | ˈstʌmək | břicho, žaludek
+back | bæk | záda
+heart | hɑrt | srdce
+fever | ˈfivɚ | horečka
+I have a headache. | aɪ hæv ə ˈhɛˌdeɪk | Bolí mě hlava.
+# Oblečení
+shirt | ʃɝt | košile
+trousers | ˈtraʊzɚz | kalhoty
+dress | drɛs | šaty
+jacket | ˈdʒækət | bunda
+shoes | ʃuz | boty
+size | saɪz | velikost
+# Počasí
+weather | ˈwɛðɚ | počasí
+sun | sʌn | slunce
+rain | reɪn | déšť
+snow | snoʊ | sníh
+wind | waɪnd | vítr
+It's cold. | ɪts koʊld | Je zima.
+It's hot. | ɪts hɑt | Je horko.
+# Doprava
+bus | bʌs | autobus
+train | treɪn | vlak
+tram | træm | tramvaj
+plane | pleɪn | letadlo
+bicycle | ˈbaɪsɪkəl | kolo
+ticket | ˈtɪkət | jízdenka
+stop | stɑp | zastávka
+airport | ˈɛrˌpɔrt | letiště
+</div>
+<div class="exs">
+I'm a teacher. | aɪm ə ˈtitʃɚ | Jsem učitel.
+I work as a driver. | aɪ wɝk æz ə ˈdraɪvɚ | Pracuji jako řidič.
+My throat hurts. | maɪ θroʊt hɝts | Bolí mě v krku.
+What size are you? | wʌt saɪz ɑr ju | Jakou máte velikost?
+It's raining. | ɪts ˈreɪnɪŋ | Prší.
+Where is the bus stop? | wɛr ɪz ðə bʌs stɑp | Kde je zastávka autobusu?
+</div>
+<div class="qz" data-title="Cvičení 9. Nová slova">
+lékař | doctor
+učitel | teacher
+hlava | head
+ruka | hand
+šaty | dress
+déšť | rain
+sníh | snow
+vlak | train
+jízdenka | ticket
+letiště | airport
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Modální slovesa, rozkaz">
+<h2><span class="no">Oddíl 10</span>Modální slovesa a rozkazovací způsob</h2>
+<div class="tw"><table>
+<tr><th>Sloveso</th><th>Význam</th><th>Příklad</th></tr>
+<tr><td><span class="fr">can</span></td><td>moci, umět</td><td><span class="fr">I can swim. Can you help me?</span></td></tr>
+<tr><td><span class="fr">must / have to</span></td><td>muset</td><td><span class="fr">I must go. I have to work.</span></td></tr>
+<tr><td><span class="fr">want to</span></td><td>chtít</td><td><span class="fr">I want to learn English.</span></td></tr>
+<tr><td><span class="fr">would like</span></td><td>chtěl bych</td><td><span class="fr">I would like a tea.</span></td></tr>
+<tr><td><span class="fr">should</span></td><td>měl by</td><td><span class="fr">You should rest.</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Pravidlo</b><p>Po <span class="fr">can, must, should</span> následuje infinitiv <b>bez</b> <span class="fr">to</span>, bez -s ve 3. osobě a bez <span class="fr">do</span>: <span class="fr">She can swim. Can she swim? She can't swim.</span></p></div>
+<div class="exs">
+I can speak a little English. | aɪ kæn spik ə ˈlɪtəl ˈɪŋɡlɪʃ | Umím trochu anglicky.
+Can I come in? | kæn aɪ kʌm ɪn | Mohu vstoupit?
+I have to work today. | aɪ hæv tə wɝk təˈdeɪ | Dnes musím pracovat.
+I can't talk now. | aɪ kænt tɔk naʊ | Teď nemohu mluvit.
+Can you cook? | kæn ju kʊk | Umíte vařit?
+You mustn't smoke here. | ju ˈmʌsənt smoʊk hir | Tady se nesmí kouřit.
+I would like a tea, please. | aɪ wʊd laɪk ə ti pliz | Chtěl bych čaj, prosím.
+</div>
+<div class="warn"><b>Pozor.</b> <span class="fr">mustn't</span> znamená „nesmí“, ne „nemusí“. „Nemusí“ je <span class="fr">doesn't have to</span>.</div>
+<h3>10.1. Rozkazovací způsob</h3>
+<p>Je to základní tvar slovesa, pro všechny stejný: <span class="fr">Come here! Wait! Listen!</span> Zápor: <span class="fr">Don't</span> + sloveso. Zdvořile: <span class="fr">Please</span>.</p>
+<div class="exs">
+Wait a moment! | weɪt ə ˈmoʊmənt | Počkejte chvíli!
+Come here, please. | kʌm hir pliz | Pojďte sem, prosím.
+Speak more slowly, please. | spik mɔr ˈsloʊli pliz | Mluvte pomaleji, prosím.
+Don't smoke here! | doʊnt smoʊk hir | Nekuřte tady!
+Be careful! | bi ˈkɛrfəl | Buďte opatrní!
+</div>
+<div class="qz" data-title="Cvičení 10. Modální slovesa">
+I ___ swim. (can) | can
+___ you help me? (can) | Can
+I ___ to work today. (must: have) | have
+I ___ like a tea. (would) | would
+You ___ rest. (should) | should
+She ___ swim. (negative: can't) | can't / cannot
+___ wait! (imperative negative: Don't) | Don't
+___ here, please. (Come) | Come
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Dialogy">
+<h2><span class="no">Oddíl 11</span>Každodenní dialogy</h2>
+<div class="dg">
+# 1. In a café
+Waiter: Good afternoon. What would you like? | Dobré odpoledne. Co si dáte?
+Guest: A coffee and a piece of cake, please. | Jednu kávu a kousek dortu, prosím.
+Waiter: With milk? | S mlékem?
+Guest: No, thank you. Black, please. | Ne, děkuji. Černou, prosím.
+Waiter: Here you are. Enjoy! | Prosím. Dobrou chuť!
+Guest: Thanks. Can I pay by card? | Děkuji. Mohu platit kartou?
+# 2. At the station
+Traveller: A ticket to London, please. | Jízdenku do Londýna, prosím.
+Clerk: Single or return? | Jedním směrem, nebo tam a zpět?
+Traveller: Single. When does the train leave? | Jedním směrem. Kdy jede vlak?
+Clerk: At ten fifteen. | V deset patnáct.
+Traveller: How much is the ticket? | Kolik stojí jízdenka?
+Clerk: Twenty pounds. | Dvacet liber.
+# 3. Asking the way
+Tourist: Excuse me, where is the museum? | Promiňte, kde je muzeum?
+Woman: Go straight and then turn right. | Jděte rovně a pak zahněte doprava.
+Tourist: Is it far? | Je to daleko?
+Woman: No, it's five minutes on foot. | Ne, je to pět minut pěšky.
+Tourist: Thank you very much. | Moc děkuji.
+Woman: You're welcome. | Není zač.
+# 4. Getting to know someone
+Peter: Hi, I'm Peter. What's your name? | Ahoj, jsem Petr. Jak se jmenuješ?
+Anna: I'm Anna. Nice to meet you. | Jsem Anna. Těší mě.
+Peter: Where are you from? | Odkud jsi?
+Anna: I'm from London. And you? | Jsem z Londýna. A ty?
+Peter: I'm from here. Your English is very good! | Já jsem odtud. Tvoje angličtina je velmi dobrá!
+Anna: Thanks, I'm still learning. | Děkuji, ještě se učím.
+# 5. At the doctor's
+Doctor: Good morning. What's the problem? | Dobré ráno. Co vás trápí?
+Patient: I have a headache and a fever. | Bolí mě hlava a mám horečku.
+Doctor: How long? | Jak dlouho?
+Patient: Two days. | Dva dny.
+Doctor: Take these tablets and stay at home. | Berte tyto tablety a zůstaňte doma.
+Patient: Thank you, doctor. | Děkuji, pane doktore.
+# 6. In a clothes shop
+Assistant: Can I help you? | Mohu vám pomoci?
+Customer: I'm looking for a jacket. | Hledám bundu.
+Assistant: What size are you? | Jakou máte velikost?
+Customer: Medium. Can I try it on? | Střední. Mohu si ji vyzkoušet?
+Assistant: Of course. The fitting room is over there. | Samozřejmě. Kabinka je támhle.
+Customer: How much is it? | Kolik stojí?
+# 7. At the hotel
+Guest: Good evening, I have a reservation. | Dobrý večer, mám rezervaci.
+Receptionist: What's your name? | Jak se jmenujete?
+Guest: Smith. A single room for three nights. | Smith. Jednolůžkový pokoj na tři noci.
+Receptionist: Here is your key. Breakfast is from seven to ten. | Tady je klíč. Snídaně je od sedmi do deseti.
+Guest: Is there Wi-Fi? | Je tu wifi?
+Receptionist: Yes, the password is on the key. | Ano, heslo je na klíči.
+# 8. On the phone
+Anna: Hello? | Haló?
+Mark: Hi Anna, it's Mark. How are you? | Ahoj Anno, tady Marek. Jak se máš?
+Anna: Fine, thanks. And you? | Dobře, děkuji. A ty?
+Mark: Fine too. Are you free tomorrow evening? | Taky dobře. Máš zítra večer čas?
+Anna: Yes, why? | Ano, proč?
+Mark: Shall we go to the cinema? | Půjdeme do kina?
+Anna: I'd love to! | Ráda!
+</div>
+<div class="qz" data-title="Cvičení 11. Fráze z dialogů">
+Co si dáte? | What would you like
+Jízdenku do Londýna, prosím. | A ticket to London, please
+Kde je muzeum? | Where is the museum
+Pět minut pěšky. | Five minutes on foot
+Není zač. | You're welcome / You are welcome
+Bolí mě hlava. | I have a headache
+Hledám bundu. | I'm looking for a jacket / I am looking for a jacket
+Mám rezervaci. | I have a reservation
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Tahák, plán, test">
+<h2><span class="no">Oddíl 12</span>Tahák, plán a test</h2>
+<div class="tw"><table>
+<tr><th>Téma</th><th>Zapamatujte si</th></tr>
+<tr><td>Be</td><td>I am, you are, he/she/it is, we/you/they are</td></tr>
+<tr><td>Have</td><td>I have, he/she/it has</td></tr>
+<tr><td>Present Simple</td><td>he works; don't / doesn't; do / does + subject + verb</td></tr>
+<tr><td>Present Continuous</td><td>be + -ing</td></tr>
+<tr><td>Členy</td><td>a / an / the; žádný člen u množného čísla obecně</td></tr>
+<tr><td>Slovosled</td><td>Subject + Verb + Object</td></tr>
+<tr><td>Předložky</td><td>in London, on Monday, at 5 o'clock</td></tr>
+<tr><td>Modals</td><td>can, must, should + infinitive</td></tr>
+</table></div>
+<h3>8týdenní plán</h3>
+<div class="tw"><table>
+<tr><th>Týden</th><th>Oddíly</th><th>Cíl</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Zvládnout th, w, přízvuk</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Představit se, členy, množné číslo</td></tr>
+<tr><td>3</td><td>4</td><td>Be, have, there is</td></tr>
+<tr><td>4</td><td>5</td><td>Present Simple a Continuous</td></tr>
+<tr><td>5</td><td>6, 7</td><td>Otázky, předložky, čísla, čas</td></tr>
+<tr><td>6</td><td>8, 9</td><td>Slovní zásoba</td></tr>
+<tr><td>7</td><td>10, 11</td><td>Modální slovesa, dialogy nahlas</td></tr>
+<tr><td>8</td><td>Opakování</td><td>Mluvit o sobě 3–5 minut</td></tr>
+</table></div>
+<h3>Závěrečný test</h3>
+<div class="qz" data-title="A1 test">
+I ___ a student. (be) | am
+She ___ a brother. (have) | has
+He ___ in London. (live) | lives
+___ you speak English? | Do
+I ___ like coffee. (negative) | don't
+I live ___ Prague. (in / on) | in
+This is ___ apple. (a / an) | an
+5 | five
+pátek | Friday
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Přečtu libovolné anglické slovo podle IPA</label></li>
+<li><label><input type="checkbox"> Představím se a pozdravím</label></li>
+<li><label><input type="checkbox"> Používám be, have a Present Simple</label></li>
+<li><label><input type="checkbox"> Používám a/an/the správně</label></li>
+<li><label><input type="checkbox"> Řeknu čísla, dny, měsíce a čas</label></li>
+<li><label><input type="checkbox"> Objednám kávu a zeptám se na cestu</label></li>
+</ul>
+</section>
+
+
+<footer>Samostatná osa kurzu A1. Doplňte skutečným poslechem: podcasty, videa s titulky, rozhovor s rodilým mluvčím.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>English</th><th>Výslovnost</th><th>Česky</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Cvičení';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Odpověď: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Zkontrolovat</button><button type="button" data-act="show">Ukázat odpovědi</button><button type="button" data-act="reset">Znovu</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' z '+tot+(ok===tot?'. Vše správně.':'. Zkontroluj pravopis.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^en[-_]US/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='en-US';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('en4cs1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('en4cs1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('en4cs1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('en4cs1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='en4cs1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Výsledky: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">k oddílu</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Zobrazeno prvních 40.</div>';
+    } else h+='<div class="mini">Nic nenalezeno. Hledání probíhá v anglických a českých slovech ve slovníkových tabulkách.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日本語 A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">日本語 A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>日本語 A1</h1>
+  <p>Курс японська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="ja-a2.html">Рівень A2</a><a href="ja-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Японська (日本語) — мова Японії, ізольована або з невеликою родиною японських мов. Пишеться трьома системами: <b>хірагана</b>, <b>катакана</b> і <b>кандзі</b> (китайські ієрогліфи). У цьому курсі ми тримаємося переважно <b>хіраганою і катаканою</b>, а кандзі показуємо поруч для впізнавання. Для українців у Японії та тих, хто вчиться, це перший крок до читання.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Вимова проста:</b> лише п'ять голосних (<span class="fr">あ い う え お</span>), кожен приголосний чергується з ними. Склад завжди відкритий.</li>
+<li><b>Нема роду, множини й артиклів.</b> <span class="fr">ほん</span> — «книжка» або «книжки».</li>
+<li><b>Слова ставляться за схемою «підмет – додаток – присудок».</b> Дієслово завжди в кінці.</li>
+<li><b>Частки</b> (<span class="fr">は、が、を、に、で</span>) позначають роль слова в реченні.</li>
+</ul>
+<div class="warn"><b>Пастки.</b> <span class="fr">はい</span> = «так» (не «ні»), <span class="fr">いいえ</span> = «ні», <span class="fr">すみません</span> = «вибачте» і «дякую». Довгі голосні (<span class="fr">おおきい</span>) змінюють значення слова: <span class="fr">おばさん</span> «тітка», <span class="fr">おばあさん</span> «бабуся».</div>
+<div class="tip"><b class="t">Введення.</b> Відповіді у вправах треба вводити японською. Увімкни на пристрої японську розкладку (IME) і набирай латиницею (romaji), IME сама перетворить на кану. Пробіли між словами у відповіді не потрібні, їх можна не ставити. Для слів з кандзі приймаються обидва варіанти запису: кана й кандзі.</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Спершу вивчи хірагану в розділі 1.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й хірагана">
+<h2><span class="no">Розділ 1</span>Вимова й хірагана</h2>
+<p class="lead">Хірагана — 46 основних знаків. Кожен — це склад (а не літера). Нижче таблиця з кириличною транскрипцією.</p>
+<div class="tw"><table>
+<tr><th></th><th>а</th><th>і</th><th>у</th><th>е</th><th>о</th></tr>
+<tr><td>—</td><td><span class="fr">あ</span> а</td><td><span class="fr">い</span> і</td><td><span class="fr">う</span> у</td><td><span class="fr">え</span> е</td><td><span class="fr">お</span> о</td></tr>
+<tr><td>к</td><td><span class="fr">か</span> ка</td><td><span class="fr">き</span> кі</td><td><span class="fr">く</span> ку</td><td><span class="fr">け</span> ке</td><td><span class="fr">こ</span> ко</td></tr>
+<tr><td>с</td><td><span class="fr">さ</span> са</td><td><span class="fr">し</span> сі</td><td><span class="fr">す</span> су</td><td><span class="fr">せ</span> се</td><td><span class="fr">そ</span> со</td></tr>
+<tr><td>т</td><td><span class="fr">た</span> та</td><td><span class="fr">ち</span> ті</td><td><span class="fr">つ</span> цу</td><td><span class="fr">て</span> те</td><td><span class="fr">と</span> то</td></tr>
+<tr><td>н</td><td><span class="fr">な</span> на</td><td><span class="fr">に</span> ні</td><td><span class="fr">ぬ</span> ну</td><td><span class="fr">ね</span> не</td><td><span class="fr">の</span> но</td></tr>
+<tr><td>х</td><td><span class="fr">は</span> ха</td><td><span class="fr">ひ</span> хі</td><td><span class="fr">ふ</span> фу</td><td><span class="fr">へ</span> хе</td><td><span class="fr">ほ</span> хо</td></tr>
+<tr><td>м</td><td><span class="fr">ま</span> ма</td><td><span class="fr">み</span> мі</td><td><span class="fr">む</span> му</td><td><span class="fr">め</span> ме</td><td><span class="fr">も</span> мо</td></tr>
+<tr><td>й</td><td><span class="fr">や</span> я</td><td></td><td><span class="fr">ゆ</span> ю</td><td></td><td><span class="fr">よ</span> йо</td></tr>
+<tr><td>р</td><td><span class="fr">ら</span> ра</td><td><span class="fr">り</span> рі</td><td><span class="fr">る</span> ру</td><td><span class="fr">れ</span> ре</td><td><span class="fr">ろ</span> ро</td></tr>
+<tr><td>в, н</td><td><span class="fr">わ</span> ва</td><td></td><td><span class="fr">ん</span> н</td><td></td><td><span class="fr">を</span> о</td></tr>
+</table></div>
+<div class="rule"><b class="t">Додаткові знаки.</b><p><b>Дакутен</b> (две рисочки ゛) робить приголосні дзвінкими: <span class="fr">か → が</span> ґа, <span class="fr">さ → ざ</span> дза, <span class="fr">た → だ</span> да, <span class="fr">は → ば</span> ба. <b>Хандакутен</b> (кружечок ゜): <span class="fr">は → ぱ</span> па. <b>Малий っ</b> подвоює наступний приголосний: <span class="fr">がっこう</span> ґаккоо (школа). <b>Малі ゃ ゅ ょ</b> створюють склади: <span class="fr">きょう</span> кьоо (сьогодні). Довга голосна — знак подовження: <span class="fr">おおきい</span> оокіі.</p></div>
+<div class="tip"><b class="t">Катакана.</b> Друга абетка для запозичень: <span class="fr">コーヒー</span> (кава), <span class="fr">ビール</span> (пиво), <span class="fr">パン</span> (хліб). Знак <span class="fr">ー</span> подовжує голосну. Катакану вивчаємо в наступних розділах.</div>
+<div class="exs">
+こんにちは。 | коннітіва | Добрий день.
+さようなら。 | сайонара | До побачення.
+ありがとう ございます。 | аріґато ґодзаймас | Дякую.
+わかりません。 | вакарімасен | Не розумію.
+すこし にほんごを はなします。 | сукосі ніхонґоо ханасімасу | Трохи говорю по-японськи.
+みずを ください。 | мідзуо кудасай | Дайте, будь ласка, воду.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[коннітіва] — привітання | こんにちは
+[сайонара] — прощання | さようなら
+[аріґато] — подяка | ありがとう
+[мідзу] — напій | みず / 水
+[хай] — відповідь «так» | はい
+[ііе] — відповідь «ні» | いいえ
+[сумімасен] — вибачте | すみません
+[нихонґо] — мова | にほんご / 日本語
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+おはよう ございます | охайо ґодзаймас | доброго ранку
+こんにちは | коннітіва | добрий день
+こんばんは | комбанва | добрий вечір
+おやすみなさい | оясумінасай | на добраніч
+さようなら | сайонара | до побачення
+# Ввічливість
+ありがとう ございます | аріґато ґодзаймас | дякую
+どういたしまして | дооітасімасіте | будь ласка (у відповідь)
+すみません | сумімасен | вибачте
+おねがいします | онеґайсімасу | прошу, будь ласка
+はい | хай | так
+いいえ | ііе | ні
+# Розмова
+おげんきですか | оґенкідесука | як справи?
+げんきです | ґенкідесу | добре
+はじめまして | хадзімемасіте | дуже приємно (при знайомстві)
+わたしは オレナです | ватасіва оренадесу | я Олена
+おなまえは | онамева | як вас звати?
+どこから きましたか | дококара кімасітака | звідки ви?
+ウクライナから きました | укурайнакара кімасіта | я з України
+すこし はなせます | сукосі ханасемасу | трохи розмовляю
+</div>
+<div class="tw"><table>
+<tr><th>Займенник</th><th>Японська</th></tr>
+<tr><td>я</td><td>わたし</td></tr>
+<tr><td>ти</td><td>あなた</td></tr>
+<tr><td>він</td><td>かれ</td></tr>
+<tr><td>вона</td><td>かのじょ</td></tr>
+<tr><td>ми</td><td>わたしたち</td></tr>
+<tr><td>ви</td><td>あなたたち</td></tr>
+<tr><td>вони</td><td>かれら</td></tr>
+</table></div>
+<div class="cj" data-verb="です" data-note="бути (ввічливо)" data-ipa="десу">
+Присудок + | わたしは がくせいです | ватасіва ґакусейдесу
+Заперечення | わたしは がくせいでは ありません | ватасіва ґакусейдева арімасен
+Минулий + | わたしは がくせいでした | ватасіва ґакусейдесіта
+Минулий − | がくせいでは ありませんでした | ґакусейдева арімасендесіта
+Питання | あなたは がくせいですか | анатава ґакусейдесука
+Припущення | がくせいでしょう | ґакусейдесьо
+</div>
+<div class="rule"><b class="t">Частка は.</b><p>Частка <span class="fr">は</span> читається «ва» (не «ха») і позначає тему. <span class="fr">わたしは がくせいです。</span> («Що стосується мене — я студент»). Питання утворюється часткою <span class="fr">か</span>.</p></div>
+<div class="exs">
+おはよう ございます。 おげんきですか。 | охайо ґодзаймас оґенкідесука | Доброго ранку. Як справи?
+げんきです。 ありがとう ございます。 | ґенкідесу аріґато ґодзаймас | Добре. Дякую.
+おなまえは なんですか。 | онамева нандесука | Як вас звати?
+わたしは オレナです。 | ватасіва оренадесу | Мене звати Олена.
+どこから きましたか。 | дококара кімасітака | Звідки ви?
+ウクライナから きました。 | укурайнакара кімасіта | Я з України.
+わたしは がくせいです。 | ватасіва ґакусейдесу | Я студент.
+かれは かいしゃいんです。 | карева кайсяіндесу | Він службовець.
+</div>
+<div class="qz" data-title="Вправа 2. Знайомство">
+Доброго ранку: ___ ございます | おはよう
+Як справи? ___ ですか | おげんき
+Я студент: わたしは ___ | がくせいです
+Звідки ви? ___ きましたか | どこから
+Я (займенник): ___ | わたし
+Ти (займенник): ___ | あなた
+Дякую: ありがとう ___ | ございます
+Так: ___ | はい
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники та частки">
+<h2><span class="no">Розділ 3</span>Іменники та частки</h2>
+<p>Нема роду й множини. Частка <span class="fr">の</span> з'єднує іменники («належить»): <span class="fr">わたしの ほん</span> («моя книжка»). Інші частки: <span class="fr">を</span> (прямий додаток), <span class="fr">に</span> (мета, час), <span class="fr">で</span> (місце дії), <span class="fr">と</span> («і», «з»), <span class="fr">も</span> («теж»).</p>
+<div class="vocab">
+ひと | хіто | людина | 人
+おとこ | ното | чоловік | 男
+おんな | онна | жінка | 女
+こども | кодомо | дитина | 子ども
+いえ | іе | дім | 家
+ほん | хон | книжка | 本
+くるま | курума | автомобіль | 車
+ともだち | томодаті | друг | 友だち
+まち | маті | місто | 町
+がっこう | ґаккоо | школа | 学校
+つくえ | цукуе | стіл | 机
+いす | ісу | стілець | 椅子
+しごと | сіґото | робота | 仕事
+たべもの | табемоно | їжа | 食べ物
+</div>
+<div class="tw"><table>
+<tr><th>Частка</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td>は</td><td>тема (ва)</td><td>わたしは がくせいです。</td></tr>
+<tr><td>の</td><td>належність</td><td>わたしの ほん</td></tr>
+<tr><td>を</td><td>прямий додаток (о)</td><td>ほんを よみます。</td></tr>
+<tr><td>に</td><td>мета, час</td><td>がっこうに いきます。</td></tr>
+<tr><td>で</td><td>місце дії</td><td>うちで たべます。</td></tr>
+<tr><td>と</td><td>і, з</td><td>ともだちと いきます。</td></tr>
+<tr><td>も</td><td>теж</td><td>わたしも がくせいです。</td></tr>
+</table></div>
+<div class="rule"><b class="t">Прикметник</b><p>стоїть <b>перед</b> іменником і закінчується на <span class="fr">-い</span>: <span class="fr">おおきい いえ</span> (великий дім). Другий тип закінчується на <span class="fr">-な</span> перед іменником: <span class="fr">きれいな いえ</span> (чистий, гарний дім).</p></div>
+<div class="exs">
+これは ほんです。 | корева хондесу | Це книжка.
+これは いえです。 | корева іедесу | Це дім.
+わたしは ともだちが います。 | ватасіва томодатіґа імасу | У мене є друг.
+こどもたちは ここに います。 | кодомотатіва коконі імасу | Діти тут.
+おおきい いえが あります。 | оокіі іеґа арімасу | Є великий дім.
+コーヒーは あついです。 | коохіва ацуйдесу | Кава гаряча.
+</div>
+<div class="qz" data-title="Вправа 3. Іменники та частки">
+Моя книжка: わたし___ ほん | の
+Читаю книжку: ほん___ よみます | を
+Йду до школи: がっこう___ いきます | に
+Іду з ним: かれ___ いきます | と
+Я теж студент: わたし___ がくせいです | も
+Книжка: ___ | ほん / 本
+Автомобіль: ___ | くるま / 車
+Друг: ___ | ともだち / 友だち
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Дієслова і «мати»">
+<h2><span class="no">Розділ 4</span>Дієслова й «мати»</h2>
+<p>Ввічлива форма закінчується на <span class="fr">-ます</span>. Одна форма для всіх осіб і чисел.</p>
+<div class="cj" data-verb="はなす" data-note="говорити (ввічливо)" data-ipa="ханасу">
+Теперішній + | はなします | ханасімасу
+Теперішній − | はなしません | ханасімасен
+Минулий + | はなしました | ханасімасіта
+Минулий − | はなしませんでした | ханасімасендесіта
+Прохання | はなしてください | ханасіте кудасай
+Закликання | はなしましょう | ханасімасьо
+</div>
+<div class="tw"><table>
+<tr><th>Словникова</th><th>Ввічлива</th><th>Значення</th></tr>
+<tr><td>のむ</td><td>のみます</td><td>пити</td></tr>
+<tr><td>たべる</td><td>たべます</td><td>їсти</td></tr>
+<tr><td>いく</td><td>いきます</td><td>іти, їхати</td></tr>
+<tr><td>くる</td><td>きます</td><td>приходити</td></tr>
+<tr><td>する</td><td>します</td><td>робити</td></tr>
+<tr><td>みる</td><td>みます</td><td>дивитися, бачити</td></tr>
+<tr><td>よむ</td><td>よみます</td><td>читати</td></tr>
+<tr><td>かう</td><td>かいます</td><td>купувати</td></tr>
+</table></div>
+<div class="rule"><b class="t">«Мати».</b><p>Два слова: <span class="fr">あります</span> (для неживого) і <span class="fr">います</span> (для живого): <span class="fr">ほんが あります</span> (є книжка), <span class="fr">ともだちが います</span> (є друг). Заперечення — <span class="fr">ありません</span>, <span class="fr">いません</span>. Час: <span class="fr">じかんが ありません</span> (нема часу).</p></div>
+<div class="exs">
+わたしは にほんごを はなします。 | ватасіва ніхонґоо ханасімасу | Я розмовляю японською.
+あなたは えいごを はなしますか。 | анатава ейґоо ханасімасука | Ти розмовляєш англійською?
+わたしは きょうだいが います。 | ватасіва кьоодайґа імасу | У мене є брат/сестра.
+じかんが ありますか。 | дзіканґа арімасука | Маєш час?
+じかんが ありません。 | дзіканґа арімасен | Не маю часу.
+かれは くるまが あります。 | карева курумаґа арімасу | У нього є машина.
+わたしたちは にほんごを べんきょうします。 | ватасітатіва ніхонґоо бенкьоосімасу | Ми вчимо японську.
+ほんを よみます。 | хоно йомімасу | Читаю книжку.
+</div>
+<div class="qz" data-title="Вправа 4. Дієслова">
+Я говорю: はなし___ | ます
+Я не говорю: はなし___ | ません
+Я говорив: はなし___ | ました
+Є друг: ともだちが ___ | います
+Є книжка: ほんが ___ | あります
+Не маю часу: じかんが ___ | ありません
+Читаю: よみ___ | ます
+Давайте говорити: はなし___ | ましょう
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, порядок слів">
+<h2><span class="no">Розділ 5</span>Питання й заперечення</h2>
+<div class="vocab">
+なに / なん | насі / нан | що? | 何
+だれ | даре | хто? | 誰
+どこ | доко | де? |
+いつ | ітсу | коли? |
+どう | доо | як? |
+いくら | ікура | скільки коштує? |
+いくつ | ікуцу | скільки? |
+どうして | доосіте | чому? |
+</div>
+<div class="rule"><b class="t">Порядок слів.</b><p>Присудок завжди <b>в кінці</b>. Питання утворюється часткою <span class="fr">か</span> без зміни порядку: <span class="fr">これは ほんですか。</span> Питальне слово стоїть там, де стояла б відповідь: <span class="fr">どこに いきますか。</span> (Куди йдеш?)</p></div>
+<div class="exs">
+あなたは どこに いますか。 | анатава доконі імасука | Де ти?
+これは なんですか。 | корева нандесука | Що це?
+あの ひとは だれですか。 | ано хітова даредесука | Хто та людина?
+いつ きますか。 | іцу кімасука | Коли приїдеш?
+これは いくらですか。 | корева ікурадесука | Скільки це коштує?
+どうして ここに いませんか。 | доосіте коконі імасенка | Чому ти не тут?
+おげんきですか。 | оґенкідесука | Як справи?
+わかりません。 | вакарімасен | Не знаю.
+</div>
+<div class="qz" data-title="Вправа 5. Питання">
+Де ти? ___ に いますか | どこ
+Хто це? ___ ですか | だれ
+Скільки коштує? ___ ですか | いくら
+Що це? ___ ですか | なん
+Коли? ___ | いつ
+Чому? ___ | どうして
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, дні й місяці</h2>
+<div class="vocab">
+いち | ічі | один | 一
+に | ні | два | 二
+さん | сан | три | 三
+よん / し | йон / сі | чотири | 四
+ご | ґо | п'ять | 五
+ろく | року | шість | 六
+なな / しち | нана / сіті | сім | 七
+はち | хаті | вісім | 八
+きゅう / く | кюу / ку | дев'ять | 九
+じゅう | дзюу | десять | 十
+にじゅう | нідзюу | двадцять | 二十
+ひゃく | хьяку | сто | 百
+# Дні
+げつようび | ґецуйообі | понеділок | 月曜日
+かようび | кайообі | вівторок | 火曜日
+すいようび | суйообі | середа | 水曜日
+もくようび | мокуйообі | четвер | 木曜日
+きんようび | кінйообі | п'ятниця | 金曜日
+どようび | дойообі | субота | 土曜日
+にちようび | нітійообі | неділя | 日曜日
+# Час
+きょう | кьоо | сьогодні | 今日
+あした | асіта | завтра | 明日
+きのう | кіноо | вчора | 昨日
+いま | іма | зараз | 今
+じ | дзі | година | 時
+</div>
+<div class="exs">
+いま なんじですか。 | іма нандзідесука | Котра година?
+さんじです。 | санзідесу | Три години.
+きょうは もくようびです。 | кьоова мокуйообідесу | Сьогодні четвер.
+あしたは きんようびです。 | асітава кінйообідесу | Завтра п'ятниця.
+わたしは にじゅっさいです。 | ватасіва ніджуссайдесу | Мені двадцять років.
+これは ひゃくえんです。 | корева хьякуендесу | Це коштує сто єн.
+</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+три: ___ | さん / 三
+п'ять: ___ | ご / 五
+десять: ___ | じゅう / 十
+двадцять: ___ | にじゅう / 二十
+сьогодні: ___ | きょう / 今日
+завтра: ___ | あした / 明日
+неділя: ___ | にちようび / 日曜日
+понеділок: ___ | げつようび / 月曜日
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа
+パン | пан | хліб
+みず | мідзу | вода | 水
+ぎゅうにゅう | ґюунюу | молоко | 牛乳
+コーヒー | коохі | кава
+おちゃ | отя | чай | お茶
+ワイン | вайн | вино
+ビール | біру | пиво
+チーズ | тіідзу | сир
+にく | ніку | м'ясо | 肉
+さかな | сакана | риба | 魚
+くだもの | кудамоно | фрукти | 果物
+やさい | ясай | овочі | 野菜
+すし | сусі | суші
+# Місто
+まち | маті | місто | 町
+みち | міті | дорога | 道
+みせ | місе | магазин | 店
+レストラン | ресуторан | ресторан
+ぎんこう | ґінкоо | банк | 銀行
+えき | еки | вокзал | 駅
+くうこう | куукоо | аеропорт | 空港
+やっきょく | яккьоку | аптека | 薬局
+# Покупки
+いくらですか | ікурадесука | скільки коштує?
+たかい | такай | дорого | 高い
+やすい | ясуй | дешево | 安い
+えん | ен | єна | 円
+カード | каадо | картка
+</div>
+<div class="exs">
+パンと チーズを ください。 | панто тіідзуо кудасай | Хліб і сир, будь ласка.
+コーヒーを ください。 | коохіо кудасай | Каву, будь ласка.
+ぎんこうは どこですか。 | ґінкоова докодесука | Де банк?
+これは いくらですか。 | корева ікурадесука | Скільки це коштує?
+これは とても たかいです。 | корева тотемо такайдесу | Це дуже дорого.
+ワインを いっぱい おねがいします。 | вайно іппай онеґайсімасу | Келих вина, будь ласка.
+やっきょくは どこですか。 | яккьокува докодесука | Де аптека?
+カードで はらえますか。 | каадоде хараемасука | Можна заплатити карткою?
+</div>
+<div class="qz" data-title="Вправа 7. Слова">
+хліб | パン
+вода | みず / 水
+молоко | ぎゅうにゅう / 牛乳
+сир | チーズ
+риба | さかな / 魚
+магазин | みせ / 店
+банк | ぎんこう / 銀行
+вокзал | えき / 駅
+дорого | たかい / 高い
+дешево | やすい / 安い
+Скільки коштує? | いくらですか
+Каву, будь ласка. | コーヒーをください
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. Знайомство
+アンナ: はじめまして。 アンナです。 | Дуже приємно. Я Анна.
+たなか: はじめまして。 たなかです。 どこから きましたか。 | Дуже приємно. Я Танака. Звідки ви?
+アンナ: ウクライナから きました。 すこし にほんごを はなします。 | Я з України. Трохи говорю по-японськи.
+たなか: じょうずですね。 | Ви добре говорите!
+# 2. У кафе
+てんいん: いらっしゃいませ。 ごちゅうもんは。 | Ласкаво просимо. Ваше замовлення?
+アンナ: コーヒーを おねがいします。 | Каву, будь ласка.
+てんいん: ほかに なにか ありますか。 | Ще щось?
+アンナ: いいえ、けっこうです。 いくらですか。 | Ні, дякую. Скільки коштує?
+てんいん: さんびゃくえんです。 | Триста єн.
+# 3. Дорога
+アンナ: すみません、えきは どこですか。 | Вибачте, де вокзал?
+たなか: まっすぐ いって、ひだりに まがります。 | Йдіть прямо, потім ліворуч.
+アンナ: ありがとう ございます。 | Дуже дякую.
+たなか: どういたしまして。 | Прошу.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Дуже приємно. | はじめまして
+Звідки ви? | どこからきましたか
+Трохи говорю по-японськи. | すこしにほんごをはなします
+Каву, будь ласка. | コーヒーをおねがいします
+Скільки коштує? | いくらですか
+Де вокзал? | えきはどこですか
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="vocab">
+# Професії
+せんせい | сенсей | вчитель | 先生
+いしゃ | ісья | лікар | 医者
+かんごし | канґосі | медсестра | 看護師
+エンジニア | енджініа | інженер
+うんてんしゅ | унтенсю | водій | 運転手
+てんいん | тенін | продавець | 店員
+コック | кокку | кухар
+がくせい | ґакусей | студент | 学生
+けいさつかん | кейсацукан | поліцейський | 警察官
+べんごし | бенґосі | адвокат | 弁護士
+# Тіло й здоров'я
+あたま | атама | голова | 頭
+め | ме | око | 目
+みみ | мімі | вухо | 耳
+はな | хана | ніс | 鼻
+くち | кучі | рот | 口
+て | те | рука | 手
+あし | асі | нога | 足
+おなか | онака | живіт
+せなか | сенака | спина | 背中
+こころ | кокоро | серце | 心
+あたまが いたいです | | У мене болить голова. |
+びょうきです | | Я хворий. |
+ねつ | неци | гарячка | 熱
+やっきょく | яккьоку | аптека | 薬局
+くすり | кусурі | ліки | 薬
+# Одяг
+シャツ | сяцу | сорочка
+ズボン | дзубон | штани
+ワンピース | ванпіісу | сукня
+ジャケット | дзякетто | куртка
+くつ | куцу | взуття | 靴
+セーター | сеетаа | светр
+ぼうし | боосі | капелюх | 帽子
+サイズ | сайдзу | розмір
+# Погода
+てんき | тенкі | погода | 天気
+たいよう | тайоо | сонце | 太陽
+あめ | аме | дощ | 雨
+ゆき | юкі | сніг | 雪
+かぜ | казе | вітер | 風
+さむいです | | Холодно. |
+あついです | | Жарко. |
+あめが ふっています | | Іде дощ. |
+# Транспорт
+バス | басу | автобус
+でんしゃ | денся | потяг | 電車
+トラム | тораму | трамвай
+ひこうき | хікоокі | літак | 飛行機
+じてんしゃ | дзітенся | велосипед | 自転車
+きっぷ | кіппу | квиток | 切符
+バスてい | басутеї | зупинка
+くうこう | куукоо | аеропорт | 空港
+# Дім і дозвілля
+へや | хея | кімната | 部屋
+だいどころ | дайдокоро | кухня | 台所
+おふろ | офуро | ванна | お風呂
+れいぞうこ | рейдзоко | холодильник | 冷蔵庫
+ソファー | софаа | диван
+えいが | ейґа | фільм | 映画
+おんがく | онґаку | музика | 音楽
+スポーツ | супоцу | спорт
+りょうり | рьоорі | готування | 料理
+りょこう | рьокоо | подорожі | 旅行
+</div>
+<div class="exs">
+わたしは せんせいです。 | ватасіва сенсейдесу | Я вчитель.
+うんてんしゅとして はたらいて います。 | унтенсютосіте хатарайте імасу | Працюю водієм.
+のどが いたいです。 | нодоґа ітайдесу | У мене болить горло.
+サイズは なんですか。 | сайдзува нандесука | Який у вас розмір?
+きょうは さむいです。 | кьоова самуйдесу | Сьогодні холодно.
+あめが ふって います。 | амеґа футте імасу | Іде дощ.
+バスていは どこですか。 | басутеїва докодесука | Де зупинка?
+りょうりが すきです。 | рьооріґа сукидесу | Люблю готувати.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | いしゃ / 医者
+вчитель | せんせい / 先生
+голова | あたま / 頭
+рука | て / 手
+дощ | あめ / 雨
+сніг | ゆき / 雪
+автобус | バス
+потяг | でんしゃ / 電車
+квиток | きっぷ / 切符
+аеропорт | くうこう / 空港
+Сьогодні холодно. | きょうはさむいです
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Бажання, можливість і наказовий спосіб</h2>
+<h3>10.1. Модальні конструкції</h3>
+<p>Бажання передає закінчення <span class="fr">-たいです</span> («хочу»): <span class="fr">のみたいです</span> («хочу пити»). Можливість — <span class="fr">-ことが できます</span> або потенційна форма: <span class="fr">はなせます</span> («можу говорити»). Необхідність — <span class="fr">-なければ なりません</span> («мушу»).</p>
+<div class="tw"><table>
+<tr><th>Конструкція</th><th>Приклад</th><th>Значення</th></tr>
+<tr><td>-たいです</td><td>のみたいです</td><td>хочу пити</td></tr>
+<tr><td>-ことが できます</td><td>くる ことが できます</td><td>можу прийти</td></tr>
+<tr><td>-なければ なりません</td><td>いかなければ なりません</td><td>мушу йти</td></tr>
+<tr><td>-てもいいですか</td><td>はいっても いいですか</td><td>можна ввійти?</td></tr>
+<tr><td>-てはいけません</td><td>すっては いけません</td><td>не можна</td></tr>
+</table></div>
+<div class="rule"><b class="t">Ввічливо і заборона.</b><p>«Можна?» — <span class="fr">-ても いいですか</span>. «Не можна» — <span class="fr">-ては いけません</span>. «Я б хотів» — <span class="fr">-たいのですが</span> або <span class="fr">ください</span>.</p></div>
+<div class="exs">
+はいっても いいですか。 | хайттемо іїдесука | Можна ввійти?
+コーヒーを のみたいです。 | коохіо номітайдесу | Хочу пити каву.
+きょうは はたらかなければ なりません。 | кьоова хатараканакереба наримасен | Сьогодні мені треба працювати.
+いま はなす ことが できません。 | іма ханасу котоґа декімасен | Зараз не можу говорити.
+りょうりが できますか。 | рьооріґа декімасука | Ти вмієш готувати?
+ここで たばこを すっては いけません。 | кокоде табакоо суттева ікемасен | Тут не можна курити.
+おちゃを おねがいします。 | отяо онеґайсімасу | Чай, будь ласка.
+</div>
+<h3>10.2. Прохання й заклик</h3>
+<div class="tw"><table>
+<tr><th>Дієслово</th><th>Прохання (-てください)</th><th>Заклик (-ましょう)</th></tr>
+<tr><td>まつ</td><td>まってください</td><td>まちましょう</td></tr>
+<tr><td>くる</td><td>きてください</td><td>きましょう</td></tr>
+<tr><td>はなす</td><td>はなしてください</td><td>はなしましょう</td></tr>
+<tr><td>かく</td><td>かいてください</td><td>かきましょう</td></tr>
+</table></div>
+<p>Заборона-прохання: <span class="fr">-ないでください</span>: <span class="fr">たばこを すわないでください。</span></p>
+<div class="exs">
+ちょっと まってください。 | чотто маттекудасай | Зачекайте хвилинку!
+ここに きてください。 | коконі кітекудасай | Підійдіть сюди, будь ласка.
+ゆっくり はなしてください。 | юккурі ханасітекудасай | Говоріть повільніше, будь ласка.
+たばこを すわないでください。 | табакоо суванаїдекудасай | Не куріть, будь ласка.
+きを つけてください。 | кіо цукетекудасай | Будьте обережні!
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Хочу пити: のみ___ | たいです
+Можна ввійти? はいっても ___ | いいですか
+Не можна: すっては ___ | いけません
+Підожди, будь ласка: まって___ | ください
+Говори повільніше: ゆっくり はなして___ | ください
+Давайте йти: いき___ | ましょう
+Не куріть: たばこを すわない___ | でください
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. У лікаря
+いしゃ: こんにちは。 どう しましたか。 | Добрий день, що вас турбує?
+かんじゃ: あたまが いたくて、ねつが あります。 | Болить голова, і в мене температура.
+いしゃ: いつから ですか。 | Відколи?
+かんじゃ: ふつか まえからです。 | Уже два дні.
+いしゃ: この くすりを のんで、うちで やすんでください。 | Приймайте ці ліки й відпочивайте вдома.
+かんじゃ: ありがとう ございます。 | Дякую, лікарю.
+# 2. У магазині одягу
+てんいん: いらっしゃいませ。 なにを おさがしですか。 | Ласкаво просимо. Що шукаєте?
+きゃく: ジャケットを さがして います。 | Шукаю куртку.
+てんいん: サイズは なんですか。 | Який розмір?
+きゃく: M です。 しちゃくしても いいですか。 | Розмір M. Можна приміряти?
+てんいん: はい、どうぞ。 | Так, будь ласка.
+きゃく: いくらですか。 | Скільки коштує?
+てんいん: いちまん えんです。 | Десять тисяч єн.
+# 3. У готелі
+きゃく: こんばんは。 よやくが あります。 | Добрий вечір, у мене бронь.
+フロント: おなまえは。 | На яке ім'я?
+きゃく: スミスです。 ひとりべやを さんぱくです。 | Сміт. Одномісний номер на три ночі.
+フロント: こちらが かぎです。 ちょうしょくは しちじから じゅうじまでです。 | Ось ключ. Сніданок з сьомої до десятої.
+きゃく: ワイファイは ありますか。 | Є вайфай?
+フロント: はい、パスワードは かぎに かいて あります。 | Так, пароль на ключі.
+# 4. По телефону
+アンナ: もしもし。 | Алло?
+たなか: アンナさん、こんにちは。 たなかです。 おげんきですか。 | Добрий день, Анно, це Танака. Як справи?
+アンナ: げんきです。 たなかさんは。 | Добре. А ви?
+たなか: わたしも げんきです。 あした の ばん、ひまですか。 | Я теж. Ви вільні завтра ввечері?
+アンナ: はい、どうしてですか。 | Так, а чому?
+たなか: えいがに いきませんか。 | Підемо в кіно?
+アンナ: ぜひ。 | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що вас турбує? | どうしましたか
+Шукаю куртку. | ジャケットをさがしています
+Який розмір? | サイズはなんですか
+Скільки коштує? | いくらですか
+У мене бронь. | よやくがあります
+Є вайфай? | ワイファイはありますか
+Підемо в кіно? | えいがにいきませんか
+З радістю! | ぜひ
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Порядок слів</td><td>підмет – додаток – дієслово (в кінці)</td></tr>
+<tr><td>Бути</td><td>です / ではありません</td></tr>
+<tr><td>Мати</td><td>あります (неживе) / います (живе)</td></tr>
+<tr><td>Дієслово</td><td>-ます, -ません, -ました</td></tr>
+<tr><td>Частки</td><td>は、の、を、に、で、と、も、か</td></tr>
+<tr><td>Питання</td><td>частка か у кінці</td></tr>
+<tr><td>Писемність</td><td>хірагана, катакана, кандзі</td></tr>
+</table></div>
+<h3>План на 4 тижні</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>1</td><td>Хірагана</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомство, частки</td></tr>
+<tr><td>3</td><td>4, 5, 6</td><td>Дієслова, питання, числа</td></tr>
+<tr><td>4</td><td>7, 8</td><td>Слова, діалоги</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест">
+Добрий день: ___ | こんにちは
+Дякую: ありがとう ___ | ございます
+Я студент: わたしは がくせい___ | です
+Є друг: ともだちが ___ | います
+Хліб: ___ | パン
+Де банк? ぎんこうは ___ ですか | どこ
+Скільки коштує? ___ ですか | いくら
+Три: ___ | さん / 三
+Завтра: ___ | あした / 明日
+Читаю: よみ___ | ます
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Читаю хірагану</label></li>
+<li><label><input type="checkbox"> Знайомлюся й прощаюся</label></li>
+<li><label><input type="checkbox"> Називаю числа, дні, їжу</label></li>
+<li><label><input type="checkbox"> Питаю дорогу й ціну</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>日本語</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const sem=s=>s.replace(/[\u0591-\u05c7\u064b-\u065f\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').normalize('NFC');
+const jp=s=>s.replace(/[。、！？，]/g,'').replace(/([\u3040-\u30ff\u3400-\u9fff])\s+(?=[\u3040-\u30ff\u3400-\u9fff])/g,'$1');
+const norm=s=>jp(sem(gk(s.toLowerCase()))).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^ja[-_]JP/i.test(x.lang))||v.find(x=>/^ja/i.test(x.lang))||('ja'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='ja-JP';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('ja1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('ja1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('ja1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('ja1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='ja1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

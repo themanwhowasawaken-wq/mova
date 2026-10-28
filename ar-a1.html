@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>العربية A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+.fr,.frt,.vtable td:first-child,.cj td:first-child{direction:rtl;unicode-bidi:isolate}.quiz input[data-a]{direction:rtl;text-align:right}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">العربية A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>العربية A1</h1>
+  <p>Курс арабська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="ar-a2.html">Рівень A2</a><a href="ar-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Арабська (<span class="fr">العربية</span>) — офіційна мова понад 20 країн, нею говорять сотні мільйонів людей. Цей курс учить <b>сучасну літературну арабську</b> (فصحى): це мова новин, книжок, написів і офіційних розмов. У розмові кожна країна має свій діалект (єгипетський, левантійський, перській затоки, магрибський), але читання й писання скрізь однакові. Пишеться <b>справа наліво</b>, літери <b>з'єднуються</b>, а короткі голосні зазвичай не пишуться.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>28 літер.</b> Усі приголосні; довгі голосні «а, і, у» позначають літери <span class="fr">ا، ي، و</span>.</li>
+<li><b>Нема великих літер.</b> Кожна літера має до 4 форм (окрема, на початку, всередині, в кінці).</li>
+<li><b>Корінь з трьох літер.</b> Від кореня <span class="fr">ك־ت־ب</span> йдуть <span class="fr">كتاب</span> (книжка), <span class="fr">كاتب</span> (письменник), <span class="fr">مكتب</span> (офіс), <span class="fr">مكتبة</span> (бібліотека).</li>
+<li><b>Багато міжнародних слів:</b> <span class="fr">تلفون، بنك، فندق، سينما، قهوة، شاي، تاكسي</span>.</li>
+</ul>
+<div class="warn"><b>Пастки.</b> У теперішньому часі «бути» <b>нема</b>: <span class="fr">أنا طالب</span> — «я студент». Прикметники й дієслова <b>змінюються за родом</b>, а іменники мають <b>означений артикль <span class="fr">ال</span></b> і <b>невидимі закінчення відмінків</b> (у цьому курсі їх нема). У Магрибі цифри такі ж, як у нас (0 1 2 3), а на Близькому Сході — ٠ ١ ٢ ٣; у курсі ми вживаємо 0 1 2 3.</div>
+<div class="tip"><b class="t">Вимова.</b> Озвучка використовує арабський голос пристрою. Якщо його нема, почуєш інший голос, тож вимова буде приблизною. Орієнтуйся на транскрипцію кирилицею. Звуки <span class="fr">ع</span> (глибоке горлове «а»), <span class="fr">ح</span> (глибоке «х»), <span class="fr">ق</span> (глибоке «к») — найскладніші, передаємо їх як «а», «х», «к».</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення, натискай на слова — почуєш озвучку.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План — у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">28 літер. Нижче — літера, назва, звук і приклад.</p>
+<div class="tw"><table>
+<tr><th>Літера</th><th>Назва</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td><span class="fr">ا</span></td><td>алиф</td><td>довге «а»</td><td><span class="fr">باب</span> [баб] — двері</td></tr>
+<tr><td><span class="fr">ب</span></td><td>ба</td><td>«б»</td><td><span class="fr">بيت</span> [бейт] — дім</td></tr>
+<tr><td><span class="fr">ت</span></td><td>та</td><td>«т»</td><td><span class="fr">تمر</span> [тамр] — фініки</td></tr>
+<tr><td><span class="fr">ث</span></td><td>са</td><td>«с» (між зубами, як англ. th)</td><td><span class="fr">ثلاثة</span> [саляса] — три</td></tr>
+<tr><td><span class="fr">ج</span></td><td>джим</td><td>«дж»</td><td><span class="fr">جميل</span> [джаміль] — гарний</td></tr>
+<tr><td><span class="fr">ح</span></td><td>ха</td><td>глибоке «х»</td><td><span class="fr">حليب</span> [халіб] — молоко</td></tr>
+<tr><td><span class="fr">خ</span></td><td>хха</td><td>«х» (як укр. «х»)</td><td><span class="fr">خبز</span> [хубз] — хліб</td></tr>
+<tr><td><span class="fr">د</span></td><td>даль</td><td>«д»</td><td><span class="fr">دار</span> [дар] — дім</td></tr>
+<tr><td><span class="fr">ذ</span></td><td>заль</td><td>«з» (між зубами, як англ. th)</td><td><span class="fr">ذهب</span> [захаб] — золото</td></tr>
+<tr><td><span class="fr">ر</span></td><td>ра</td><td>«р» (дзвінке)</td><td><span class="fr">رجل</span> [раджуль] — чоловік</td></tr>
+<tr><td><span class="fr">ز</span></td><td>зай</td><td>«з»</td><td><span class="fr">زيت</span> [зейт] — олія</td></tr>
+<tr><td><span class="fr">س</span></td><td>сін</td><td>«с»</td><td><span class="fr">سمك</span> [самак] — риба</td></tr>
+<tr><td><span class="fr">ش</span></td><td>шін</td><td>«ш»</td><td><span class="fr">شاي</span> [шай] — чай</td></tr>
+<tr><td><span class="fr">ص</span></td><td>сад</td><td>важке «с»</td><td><span class="fr">صباح</span> [сабах] — ранок</td></tr>
+<tr><td><span class="fr">ض</span></td><td>дад</td><td>важке «д»</td><td><span class="fr">ضيف</span> [дейф] — гість</td></tr>
+<tr><td><span class="fr">ط</span></td><td>та</td><td>важке «т»</td><td><span class="fr">طالب</span> [таліб] — студент</td></tr>
+<tr><td><span class="fr">ظ</span></td><td>за</td><td>важке «з»</td><td><span class="fr">ظهر</span> [зухр] — полудень</td></tr>
+<tr><td><span class="fr">ع</span></td><td>айн</td><td>глибоке горлове «а»</td><td><span class="fr">عين</span> [айн] — око</td></tr>
+<tr><td><span class="fr">غ</span></td><td>гайн</td><td>«ґ» із тертям (як французьке r)</td><td><span class="fr">غرفة</span> [ґурфа] — кімната</td></tr>
+<tr><td><span class="fr">ف</span></td><td>фа</td><td>«ф»</td><td><span class="fr">فندق</span> [фундук] — готель</td></tr>
+<tr><td><span class="fr">ق</span></td><td>каф</td><td>глибоке «к»</td><td><span class="fr">قهوة</span> [кахва] — кава</td></tr>
+<tr><td><span class="fr">ك</span></td><td>кяф</td><td>«к»</td><td><span class="fr">كتاب</span> [кітаб] — книга</td></tr>
+<tr><td><span class="fr">ل</span></td><td>лям</td><td>«л»</td><td><span class="fr">لحم</span> [лахм] — м'ясо</td></tr>
+<tr><td><span class="fr">م</span></td><td>мім</td><td>«м»</td><td><span class="fr">ماء</span> [ма] — вода</td></tr>
+<tr><td><span class="fr">ن</span></td><td>нун</td><td>«н»</td><td><span class="fr">نهر</span> [нахр] — ріка</td></tr>
+<tr><td><span class="fr">ه</span></td><td>ха</td><td>«г» (слабке)</td><td><span class="fr">هو</span> [хува] — він</td></tr>
+<tr><td><span class="fr">و</span></td><td>вав</td><td>«в» або довге «у»</td><td><span class="fr">ولد</span> [валад] — хлопчик</td></tr>
+<tr><td><span class="fr">ي</span></td><td>я</td><td>«й» або довге «і»</td><td><span class="fr">يد</span> [яд] — рука</td></tr>
+</table></div>
+<div class="tip"><b class="t">З'єднання літер.</b> Шість літер <span class="fr">ا د ذ ر ز و</span> не з'єднуються з наступною. Решта міняє форму: <span class="fr">ب</span> окремо, <span class="fr">بـ</span> на початку, <span class="fr">ـبـ</span> всередині, <span class="fr">ـب</span> в кінці. <b>Короткі голосні</b> (<span class="fr">َ ُ ِ</span>) у звичайному тексті не пишуться, лише в Корані й підручниках. У цьому курсі їх нема, а читання підказує колонка транскрипції.</div>
+<div class="exs">
+مرحبا! | мархабан | Привіт!
+صباح الخير. | сабах аль-хайр | Доброго ранку.
+شكرا. | шукран | Дякую.
+أنا لا أفهم. | ана ля афхам | Я не розумію.
+أتكلم العربية قليلا. | атакаллям аль-арабійя калілян | Трохи говорю арабською.
+خبز وشاي، من فضلك. | хубз ва шай мін фадлік | Хліб і чай, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[шукран] — дякую | شكرا
+[маа] — вода | ماء
+[хубз] — хліб | خبز
+[шай] — чай | شاي
+[кітаб] — книга | كتاب
+[бейт] — дім | بيت
+[кахва] — кава | قهوة
+[халіб] — молоко | حليب
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Привітання
+مرحبا | мархабан | привіт
+السلام عليكم | ас-саляму алейкум | мир вам (основне вітання)
+وعليكم السلام | ва алейкуму ас-салям | і вам мир (відповідь)
+صباح الخير | сабах аль-хайр | доброго ранку
+صباح النور | сабах ан-нур | відповідь на «доброго ранку»
+مساء الخير | маса аль-хайр | добрий вечір
+تصبح على خير | тусбіх аля хайр | на добраніч
+مع السلامة | маа ас-саляма | до побачення
+إلى اللقاء | іля аль-ліка | до зустрічі
+# Ввічливість
+شكرا | шукран | дякую
+عفوا | афван | нема за що, вибачте
+من فضلك | мін фадлік | будь ласка
+نعم | наам | так
+لا | ля | ні
+ربما | рубба-ма | можливо
+لا أفهم | ля афхам | не розумію
+</div>
+<h3>2.1. Як представитися</h3>
+<div class="exs">
+اسمي ميخايلو. | ісмі міхайло | Мене звати Михайло.
+ما اسمك؟ | ма ісмук | Як тебе звати?
+تشرفنا. | ташаррафна | Дуже приємно.
+من أين أنت؟ | мін айна анта | Звідки ти? (до чол.)
+أنا من أوكرانيا. | ана мін укранія | Я з України.
+عمري ثلاثون سنة. | умрі саляясун сана | Мені тридцять років.
+أسكن في أوجهورود. | аскун фі ужгород | Я живу в Ужгороді.
+أنا معلم. | ана муаллім | Я вчитель.
+هل تتكلم الإنجليزية؟ | халь татакаллям аль-інджлізійя | Ти говориш англійською? (до чол.)
+أعد من فضلك. | аід мін фадлік | Повтори, будь ласка.
+</div>
+<h3>2.2. Займенники</h3>
+<div class="tw"><table>
+<tr><th></th><th>Арабською</th><th></th><th>Арабською</th></tr>
+<tr><td>я</td><td><span class="fr">أنا</span></td><td>ми</td><td><span class="fr">نحن</span></td></tr>
+<tr><td>ти (чол.)</td><td><span class="fr">أنتَ</span></td><td>ви (чол.)</td><td><span class="fr">أنتم</span></td></tr>
+<tr><td>ти (жін.)</td><td><span class="fr">أنتِ</span></td><td>ви (жін.)</td><td><span class="fr">أنتن</span></td></tr>
+<tr><td>він</td><td><span class="fr">هو</span></td><td>вони (чол.)</td><td><span class="fr">هم</span></td></tr>
+<tr><td>вона</td><td><span class="fr">هي</span></td><td>вони (жін.)</td><td><span class="fr">هن</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Ти і Ви.</b><p>Окремого ввічливого «Ви» нема. До однієї людини — <span class="fr">أنتَ</span> (чол.) чи <span class="fr">أنتِ</span> (жін.). Множина — <span class="fr">أنتم / أنتن</span>. Вітання <span class="fr">السلام عليكم</span> — нормальне й для незнайомих.</p></div>
+<div class="qz" data-title="Вправа 2. Привітання">
+Привіт | مرحبا
+Дякую | شكرا
+Будь ласка | من فضلك
+Так | نعم
+Ні | لا
+Доброго ранку | صباح الخير
+До побачення | مع السلامة
+Мир вам | السلام عليكم
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники: рід, множина, артикль">
+<h2><span class="no">Розділ 3</span>Іменники: рід, множина, артикль</h2>
+<p>Іменники бувають <b>чоловічого</b> й <b>жіночого</b> роду. Більшість жіночих закінчується на <span class="fr">ـة</span> (та марбута): <span class="fr">مدينة</span> (місто), <span class="fr">مدرسة</span> (школа). Множина двох типів: <b>правильна</b> (<span class="fr">ـون / ـين</span> для чол., <span class="fr">ـات</span> для жін.) і <b>ламана</b> (змінюється корінь): <span class="fr">كتاب → كتب</span>.</p>
+<h3>3.1. Множина, артикль, прийменники</h3>
+<div class="tw"><table>
+<tr><th>Однина</th><th>Множина</th><th>Значення</th></tr>
+<tr><td>كتاب</td><td>كتب</td><td>книга (ламана)</td></tr>
+<tr><td>بيت</td><td>بيوت</td><td>дім (ламана)</td></tr>
+<tr><td>ولد</td><td>أولاد</td><td>хлопчик, діти</td></tr>
+<tr><td>مدينة</td><td>مدن</td><td>місто (ламана)</td></tr>
+<tr><td>طالب</td><td>طلاب</td><td>студент (ламана)</td></tr>
+<tr><td>معلم</td><td>معلمون</td><td>вчитель (правильна)</td></tr>
+<tr><td>سيارة</td><td>سيارات</td><td>автомобіль (правильна жін.)</td></tr>
+</table></div>
+<div class="rule"><b class="t">Артикль і прийменники.</b><p>Неозначеного артикля нема: <span class="fr">كتاب</span> = «книга» або «якась книга». Означений — префікс <span class="fr">ال</span>: <span class="fr">الكتاب</span> (ця книжка). Перед «сонячними» літерами (ت ث د ذ ر ز س ش ص ض ط ظ ل ن) <span class="fr">ل</span> не вимовляється, а подвоює наступну: <span class="fr">الشمس</span> [аш-шамс]. Прикметник стоїть <b>після</b> іменника й теж приймає артикль: <span class="fr">البيت الكبير</span>. Прийменники: <span class="fr">في</span> (в), <span class="fr">إلى</span> (до), <span class="fr">من</span> (з), <span class="fr">على</span> (на), <span class="fr">مع</span> (з, разом): <span class="fr">في البيت</span> (в домі).</p></div>
+<div class="exs">
+أنا في البيت. | ана фі аль-бейт | Я вдома.
+أذهب إلى المدرسة. | азхаб іля аль-мадраса | Я йду до школи.
+أنا قادم من العمل. | ана кадім мін аль-амаль | Я йду з роботи. (чол.)
+الكتاب على الطاولة. | аль-кітаб аля ат-тавіла | Книжка на столі.
+عندي أخ. | інді ах | У мене є брат.
+هذا بيتي. | хаза бейті | Це мій дім.
+</div>
+<div class="vocab">
+# Дім і речі
+بيت | бейт | дім
+شقة | шікка | квартира
+غرفة | ґурфа | кімната
+مطبخ | матбах | кухня
+طاولة | тавіла | стіл
+كرسي | курсі | стілець
+نافذة | назіза | вікно
+باب | баб | двері
+سرير | сарір | ліжко
+كتاب | кітаб | книга
+هاتف | хатіф | телефон
+سيارة | саййара | автомобіль
+</div>
+<div class="qz" data-title="Вправа 3. Множина й артикль">
+كتاب → (множина) | كتب
+بيت → (множина) | بيوت
+ولد → (множина) | أولاد
+مدينة → (множина) | مدن
+سيارة → (множина) | سيارات
+كتاب → (ця книжка: з артиклем) | الكتاب
+بيت → (у домі) | في البيت
+مدرسة → (до школи) | إلى المدرسة
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Бути, عند, дієслова">
+<h2><span class="no">Розділ 4</span>«Бути», <span class="fr">عند</span> і дієслова</h2>
+<p>У теперішньому часі «бути» <b>нема</b>: <span class="fr">أنا طالب</span> (я студент). «Мати» передає прийменник <span class="fr">عند</span> із суфіксом: <span class="fr">عندي أخ</span> (у мене є брат). Заперечення: <span class="fr">ليس عندي وقت</span> (у мене нема часу).</p>
+<div class="exs">
+أنا طالب. | ана таліб | Я студент.
+هل أنت متعب؟ | халь анта мутаб | Ти втомлений? (до чол.)
+نحن في البيت. | нахну фі аль-бейт | Ми вдома.
+عندي أخ. | інді ах | У мене є брат.
+هل عندك وقت؟ | халь індак вакт | У тебе є час? (до чол.)
+ليس عندي وقت. | лейса інді вакт | У мене нема часу.
+</div>
+<h3>4.1. Теперішній час</h3>
+<p>Теперішній час утворюють префікси <span class="fr">أ־</span> (я), <span class="fr">ت־</span> (ти, вона), <span class="fr">ي־</span> (він), <span class="fr">ن־</span> (ми) та закінчення. Нижче — дієслова <span class="fr">تكلم</span> (говорити) та <span class="fr">سكن</span> (жити).</p>
+<div class="cj" data-verb="يتكلم" data-note="говорити (теперішній)" data-ipa="ятакаллям">
+أنا | أتكلم | атакаллям
+أنتَ | تتكلم | татакаллям
+أنتِ | تتكلمين | татакаллямін
+هو | يتكلم | ятакаллям
+هي | تتكلم | татакаллям
+نحن | نتكلم | натакаллям
+</div>
+<div class="cj" data-verb="يسكن" data-note="жити, мешкати" data-ipa="яскун">
+أنا | أسكن | аскун
+أنتَ | تسكن | таскун
+أنتِ | تسكنين | таскунін
+هو | يسكن | яскун
+هي | تسكن | таскун
+نحن | نسكن | наскун
+</div>
+<div class="vocab">
+# Найпоширеніші дієслова (форма «він»)
+يتكلم | ятакаллям | говорити
+يقرأ | якра | читати
+يكتب | якутуб | писати
+يعمل | яамаль | працювати
+يسكن | яскун | жити
+يأكل | якуль | їсти
+يشرب | яшраб | пити
+ينام | янам | спати
+يشتري | яштарі | купувати
+يفهم | яфхам | розуміти
+يعرف | яариф | знати
+يريد | юрід | хотіти
+يرى | яра | бачити
+يحب | юхіб | любити
+يذهب | язхаб | йти, їхати
+يأتي | яті | приходити
+</div>
+<div class="exs">
+أتكلم العربية. | атакаллям аль-арабійя | Я говорю арабською.
+هي تسكن في أوجهورود. | хі таскун фі ужгород | Вона живе в Ужгороді.
+نحن نشرب الشاي. | нахну наштраб аш-шай | Ми п'ємо чай.
+ماذا تفعل؟ | маза тафаль | Що ти робиш? (до чол.)
+أنا أعمل. | ана аамаль | Я працюю.
+هم يذهبون إلى المدرسة. | хум язхабун іля аль-мадраса | Вони йдуть до школи.
+</div>
+<div class="qz" data-title="Вправа 4. Бути, عند, дієслова">
+Я студент: أنا ___ | طالب
+У мене є брат: ___ أخ | عندي
+У мене нема часу: ___ عندي وقت | ليس
+Я говорю: أنا ___ | أتكلم
+Вона говорить: هي ___ | تتكلم
+Він живе: هو ___ | يسكن
+Ми п'ємо чай: نحن ___ الشاي | نشرب
+Я працюю: أنا ___ | أعمل
+</div>
+</section>
+
+<section class="unit" id="u5" data-short="Питання, заперечення">
+<h2><span class="no">Розділ 5</span>Питання, заперечення, порядок слів</h2>
+<h3>5.1. Порядок слів</h3>
+<p>У дієслівному реченні порядок: <b>дієслово — підмет — додаток</b>: <span class="fr">يقرأ الولد الكتاب.</span> (Хлопчик читає книжку.) У іменному реченні — <b>підмет — присудок</b>: <span class="fr">الكتاب جديد.</span> (Книжка нова.) Питання: слово <span class="fr">هل</span> на початку або питальне слово. Заперечення: <span class="fr">لا</span> перед дієсловом, <span class="fr">ليس</span> в іменному.</p>
+<div class="vocab">
+# Питальні слова
+هل | халь | чи (загальне питання)
+ما / ماذا | ма / маза | що
+من | ман | хто
+أين | айна | де
+إلى أين | іля айна | куди
+من أين | мін айна | звідки
+متى | мата | коли
+لماذا | лімаза | чому
+كيف | кейфа | як
+كم | кам | скільки
+أي | айй | який
+</div>
+<div class="exs">
+من هذا؟ | ман хаза | Хто це?
+ماذا تفعل؟ | маза тафаль | Що ти робиш?
+أين تسكن؟ | айна таскун | Де ти живеш?
+إلى أين تذهب؟ | іля айна тазхаб | Куди ти йдеш?
+بكم هذا؟ | бікам хаза | Скільки це коштує?
+هل عندك أخ؟ | халь індак ах | У тебе є брат?
+لا أشرب. | ля ашраб | Я не п'ю.
+هي ليست في البيت الآن. | хіййа лейсат фі аль-бейт аль-ан | Зараз її нема вдома.
+</div>
+<h3>5.2. Прикметники й присвійні суфікси</h3>
+<div class="tw"><table>
+<tr><th>Чол.</th><th>Жін.</th><th>Значення</th></tr>
+<tr><td>كبير</td><td>كبيرة</td><td>великий</td></tr>
+<tr><td>صغير</td><td>صغيرة</td><td>малий</td></tr>
+<tr><td>جيد</td><td>جيدة</td><td>добрий</td></tr>
+<tr><td>جميل</td><td>جميلة</td><td>гарний</td></tr>
+<tr><td>جديد</td><td>جديدة</td><td>новий</td></tr>
+<tr><td>غالٍ</td><td>غالية</td><td>дорогий</td></tr>
+<tr><td>رخيص</td><td>رخيصة</td><td>дешевий</td></tr>
+<tr><td>متعب</td><td>متعبة</td><td>втомлений</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>Чий?</th><th>Суфікс</th><th>بيت (дім)</th></tr>
+<tr><td>мій</td><td><span class="fr">ـي</span></td><td><span class="fr">بيتي</span></td></tr>
+<tr><td>твій (чол.)</td><td><span class="fr">ـك</span></td><td><span class="fr">بيتك</span></td></tr>
+<tr><td>його</td><td><span class="fr">ـه</span></td><td><span class="fr">بيته</span></td></tr>
+<tr><td>її</td><td><span class="fr">ـها</span></td><td><span class="fr">بيتها</span></td></tr>
+<tr><td>наш</td><td><span class="fr">ـنا</span></td><td><span class="fr">بيتنا</span></td></tr>
+<tr><td>ваш</td><td><span class="fr">ـكم</span></td><td><span class="fr">بيتكم</span></td></tr>
+<tr><td>їхній</td><td><span class="fr">ـهم</span></td><td><span class="fr">بيتهم</span></td></tr>
+</table></div>
+<div class="exs">
+بيتي كبير. | бейті кабір | Мій дім великий.
+أين كتابك؟ | айна кітабук | Де твоя книжка? (до чол.)
+شقتنا صغيرة. | шіккатуна сагіра | Наша квартира маленька.
+عنده صديق. | індаху садік | У нього є друг.
+</div>
+<div class="qz" data-title="Вправа 5. Питання, присвійні">
+Що ти робиш? ___ تفعل | ماذا
+Хто це? ___ هذا | من
+Де ти живеш? ___ تسكن | أين
+Чи є в тебе брат? ___ عندك أخ | هل
+Я не п'ю: ___ أشرب | لا
+Мій дім: ___ | بيتي
+Твій дім (чол.): ___ | بيتك
+Наш дім: ___ | بيتنا
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, час і дати</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">صفر</span></td><td>1 <span class="fr">واحد</span></td><td>2 <span class="fr">اثنان</span></td><td>3 <span class="fr">ثلاثة</span></td></tr>
+<tr><td>4 <span class="fr">أربعة</span></td><td>5 <span class="fr">خمسة</span></td><td>6 <span class="fr">ستة</span></td><td>7 <span class="fr">سبعة</span></td></tr>
+<tr><td>8 <span class="fr">ثمانية</span></td><td>9 <span class="fr">تسعة</span></td><td>10 <span class="fr">عشرة</span></td><td>11 <span class="fr">أحد عشر</span></td></tr>
+<tr><td>20 <span class="fr">عشرون</span></td><td>30 <span class="fr">ثلاثون</span></td><td>40 <span class="fr">أربعون</span></td><td>50 <span class="fr">خمسون</span></td></tr>
+<tr><td>100 <span class="fr">مئة</span></td><td>200 <span class="fr">مئتان</span></td><td>1000 <span class="fr">ألف</span></td><td></td></tr>
+</table></div>
+<div class="vocab">
+# Дні тижня
+الأحد | аль-ахад | неділя
+الاثنين | аль-існіййн | понеділок
+الثلاثاء | ас-саляса | вівторок
+الأربعاء | аль-арбаа | середа
+الخميس | аль-хаміс | четвер
+الجمعة | аль-джумаа | п'ятниця
+السبت | ас-сабт | субота
+# Місяці
+يناير | януайр | січень
+فبراير | фебрайр | лютий
+مارس | марс | березень
+أبريل | абріль | квітень
+مايو | майо | травень
+يونيو | юніо | червень
+يوليو | юліо | липень
+أغسطس | уґустус | серпень
+سبتمبر | себтембер | вересень
+أكتوبر | октобер | жовтень
+نوفمبر | новембер | листопад
+ديسمبر | дісембер | грудень
+# Час
+الآن | аль-ан | зараз
+اليوم | аль-йаум | сьогодні
+غدا | ґадан | завтра
+أمس | амс | вчора
+صباحا | сабахан | вранці
+ظهرا | зухран | вдень
+مساء | маса | ввечері
+ساعة | саа | година
+دقيقة | дакіка | хвилина
+أسبوع | усбуа | тиждень
+شهر | шахр | місяць
+سنة | сана | рік
+</div>
+<div class="exs">
+كم الساعة؟ | кам ас-саа | Котра година?
+الساعة الثالثة. | ас-саа ас-саліса | Третя година.
+الثالثة والنصف. | ас-саліса ва ан-нісф | Пів на четверту (3:30).
+الرابعة إلا ربعا. | ар-рабіа ілля рубан | Без чверті чотири.
+اليوم الجمعة. | аль-йаум аль-джумаа | Сьогодні п'ятниця.
+غدا السبت. | ґадан ас-сабт | Завтра субота.
+عيد ميلادي في أكتوبر. | ід міляді фі октобер | Мій день народження в жовтні.
+أعمل صباحا. | аамаль сабахан | Я працюю вранці.
+</div>
+<div class="qz" data-title="Вправа 6. Числа, дні, місяці">
+3 | ثلاثة
+5 | خمسة
+8 | ثمانية
+10 | عشرة
+20 | عشرون
+100 | مئة
+п'ятниця | الجمعة
+субота | السبت
+жовтень | أكتوبر
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа й напої
+خبز | хубз | хліб
+ماء | ма | вода
+شاي | шай | чай
+قهوة | кахва | кава
+حليب | халіб | молоко
+لحم | лахм | м'ясо
+سمك | самак | риба
+بيض | бейд | яйця
+تفاح | туффах | яблука
+خضروات | хударат | овочі
+فواكه | фаваких | фрукти
+أرز | аруз | рис
+سكر | суккар | цукор
+ملح | мільх | сіль
+شوربة | шорба | суп
+حمص | хуммус | хумус
+فلافل | фалафіль | фалафель
+# Місто
+مدينة | мадіна | місто
+شارع | шарі | вулиця
+متجر | матджар | магазин
+صيدلية | сайдалія | аптека
+بنك | банк | банк
+محطة | махатта | станція
+مطار | матар | аеропорт
+مطعم | матам | ресторан
+مستشفى | мусташфа | лікарня
+فندق | фундук | готель
+# Покупки
+بكم هذا | бікам хаза | скільки коштує
+غالٍ | галін | дорого
+رخيص | рахіс | дешево
+نقدا | накдан | готівка
+بطاقة | бітака | картка
+الفاتورة | аль-фатура | рахунок
+</div>
+<div class="exs">
+قهوة واحدة، من فضلك. | кахва вахіда мін фадлік | Одну каву, будь ласка.
+الفاتورة، من فضلك. | аль-фатура мін фадлік | Рахунок, будь ласка.
+هل أستطيع الدفع بالبطاقة؟ | халь астатіа ад-дафа бі-аль-бітака | Чи можна платити карткою?
+أين المحطة؟ | айна аль-махатта | Де станція?
+على طول. | аля туль | Прямо.
+يسارا. | ясарян | Ліворуч.
+يمينا. | ямінан | Праворуч.
+هذا غالٍ. | хаза галін | Це дорого.
+</div>
+<div class="qz" data-title="Вправа 7. Їжа й місто">
+хліб | خبز
+вода | ماء
+чай | شاي
+молоко | حليب
+м'ясо | لحم
+готель | فندق
+аптека | صيدلية
+аеропорт | مطار
+дешево | رخيص
+Скільки це коштує? | بكم هذا
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги на щодень">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. في المقهى (у кав'ярні)
+النادل: صباح الخير، ماذا تريد؟ | Доброго ранку, що замовите?
+الزبون: قهوة وكعكة، من فضلك. | Каву й тістечко, будь ласка.
+النادل: مع حليب؟ | З молоком?
+الزبون: لا، شكرا. بدون حليب. | Ні, дякую. Без молока.
+النادل: تفضل. بالهناء والشفاء! | Прошу. Смачного!
+الزبون: شكرا. هل أستطيع الدفع بالبطاقة؟ | Дякую. Можна заплатити карткою?
+# 2. في محطة القطار (на вокзалі)
+مسافر: صباح الخير، تذكرة واحدة إلى القاهرة، من فضلك. | Доброго ранку, один квиток до Каїра, будь ласка.
+موظف: ذهاب فقط أم ذهاب وعودة؟ | В один бік чи туди й назад?
+مسافر: ذهاب فقط. متى يغادر القطار؟ | В один бік. Коли відправляється потяг?
+موظف: في العاشرة والنصف. | О пів на одинадцяту.
+مسافر: بكم التذكرة؟ | Скільки коштує квиток?
+موظف: عشرون جنيها. | Двадцять фунтів.
+# 3. سؤال عن الطريق (дорога)
+سائح: عفوا، أين المتحف؟ | Вибачте, де музей?
+امرأة: امش على طول ثم يمينا. | Ідіть прямо, потім праворуч.
+سائح: هل هو بعيد؟ | Це далеко?
+امرأة: لا، خمس دقائق سيرا. | Ні, п'ять хвилин пішки.
+سائح: شكرا جزيلا. | Дуже дякую.
+امرأة: عفوا. | Нема за що.
+# 4. التعارف (знайомство)
+أحمد: مرحبا، أنا أحمد. وأنت؟ | Привіт, я Ахмед. А ти?
+آنا: أنا آنا. تشرفنا. | Я Анна. Приємно.
+أحمد: من أين أنتِ؟ | Звідки ти?
+آنا: أنا من أوكرانيا، من أوجهورود. | Я з України, з Ужгорода.
+أحمد: تتكلمين العربية جيدا! | Ти добре говориш арабською!
+آنا: شكرا، ما زلت أتعلم. | Дякую, я ще вчуся.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Що замовите? | ماذا تريد
+Каву, будь ласка. | قهوة من فضلك
+Квиток до Каїра. | تذكرة واحدة إلى القاهرة
+Де музей? | أين المتحف
+П'ять хвилин пішки. | خمس دقائق سيرا
+Нема за що. | عفوا
+Я Анна. | أنا آنا
+Я ще вчуся. | ما زلت أتعلم
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="vocab">
+# Професії
+معلم | муаллім | вчитель | m
+طبيب | табіб | лікар | m
+ممرضة | мумаррида | медсестра | f
+مهندس | мухандіс | інженер | m
+سائق | саїк | водій | m
+بائع | баї | продавець | m
+طباخ | таббах | кухар | m
+طالب | таліб | студент | m
+شرطي | шурті | поліцейський | m
+محامي | мухамі | адвокат | m
+# Тіло й здоров'я
+رأس | рас | голова
+عين | айн | око
+أذن | узун | вухо
+أنف | анф | ніс
+فم | фам | рот
+يد | яд | рука
+رجل | ріджль | нога
+بطن | батн | живіт
+ظهر | захр | спина
+قلب | калб | серце
+رأسي يؤلمني |  | У мене болить голова. |
+أنا مريض |  | Я хворий. |
+حرارة | харара | гарячка
+صيدلية | сайдалія | аптека
+دواء | дава | ліки
+# Одяг
+قميص | камис | сорочка
+بنطلون | бантулон | штани
+فستان | фустан | сукня
+معطف | міта | куртка, пальто
+حذاء | хіза | взуття
+كنزة | кінза | светр
+قبعة | кубба | шапка, капелюх
+مقاس | мікас | розмір
+# Погода
+الطقس | ат-тікс | погода
+شمس | шамс | сонце
+مطر | матар | дощ
+ثلج | салдж | сніг
+ريح | ріх | вітер
+الجو بارد |  | Холодно. |
+الجو حار |  | Жарко. |
+تمطر |  | Іде дощ. |
+# Транспорт
+حافلة | хафіла | автобус
+قطار | кіта | потяг
+ترام | трам | трамвай
+طائرة | таїра | літак
+دراجة | даррадж | велосипед
+تذكرة | тазкіра | квиток
+موقف | маукіф | зупинка
+مطار | матар | аеропорт
+# Дім і дозвілля
+غرفة المعيشة | ґурфат аль-майша | вітальня
+حمام | хаммам | ванна
+ثلاجة | салладжа | холодильник
+أريكة | арика | диван
+فيلم | фільм | фільм
+موسيقى | мусіка | музика
+رياضة | рияда | спорт
+الطبخ | ат-табх | готування
+السفر | ас-сафар | подорожі
+</div>
+<div class="exs">
+أنا معلم. | ана муаллім | Я вчитель.
+أعمل سائقا. | аамаль саїкан | Працюю водієм.
+حلقي يؤلمني. | хальки юлімуні | У мене болить горло.
+ما مقاسك؟ | ма мікасук | Який у тебе розмір?
+الجو بارد اليوم. | аль-джав барід аль-йаум | Сьогодні холодно.
+تمطر. | тумтір | Іде дощ.
+أين الموقف؟ | айна аль-маукіф | Де зупинка?
+أحب الطبخ. | юхіббу ат-табх | Люблю готувати.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | طبيب
+вчитель | معلم
+голова | رأس
+рука | يد
+сукня | فستان
+дощ | مطر
+сніг | ثلج
+автобус | حافلة
+потяг | قطار
+квиток | تذكرة
+аеропорт | مطار
+Іде дощ. | تمطر
+Сьогодні холодно. | الجو بارد اليوم
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Бажання, можливість і наказовий спосіб</h2>
+<h3>10.1. Модальні конструкції</h3>
+<p>Після модального слова друге дієслово стоїть у <b>теперішньому</b> часі з часткою <span class="fr">أن</span>: <span class="fr">أستطيع أن آتي</span> (я можу прийти), <span class="fr">أريد أن أشرب قهوة</span> (хочу пити каву), <span class="fr">يجب أن أعمل</span> (мені треба працювати).</p>
+<div class="tw"><table>
+<tr><th></th><th>أستطيع (могти)</th><th>أريد (хотіти)</th></tr>
+<tr><td>я</td><td>أستطيع</td><td>أريد</td></tr>
+<tr><td>ти (чол.)</td><td>تستطيع</td><td>تريد</td></tr>
+<tr><td>ти (жін.)</td><td>تستطيعين</td><td>تريدين</td></tr>
+<tr><td>він</td><td>يستطيع</td><td>يريد</td></tr>
+<tr><td>вона</td><td>تستطيع</td><td>تريد</td></tr>
+<tr><td>ми</td><td>نستطيع</td><td>نريد</td></tr>
+</table></div>
+<div class="rule"><b class="t">Ввічливо і заборона.</b><p>«Можна?» — <span class="fr">هل يمكنني…؟</span>: <span class="fr">هل يمكنني الدخول؟</span> «Не можна» — <span class="fr">ممنوع</span>: <span class="fr">ممنوع التدخين.</span> «Я б хотів» — <span class="fr">أود</span>: <span class="fr">أود شاي، من فضلك.</span></p></div>
+<div class="exs">
+هل يمكنني الدخول؟ | халь юмкінуні ад-духуль | Можна ввійти?
+أريد أن أشرب قهوة. | урід ан ашраба кахва | Хочу пити каву.
+يجب أن أعمل اليوم. | яджіб ан аамаль аль-йаум | Сьогодні мені треба працювати.
+لا أستطيع أن أتكلم الآن. | ля астатіа ан атакаллям аль-ан | Зараз не можу говорити.
+هل تستطيع أن تطبخ؟ | халь тастатіа ан татбух | Ти вмієш готувати? (до чол.)
+ممنوع التدخين هنا. | мамну ат-татхін хуна | Тут не можна курити.
+أود شاي، من فضلك. | авуд шай мін фадлік | Я б хотів чаю, будь ласка.
+</div>
+<h3>10.2. Наказовий спосіб</h3>
+<div class="tw"><table>
+<tr><th>Дієслово</th><th>до чол.</th><th>до жін.</th><th>до кількох</th></tr>
+<tr><td>تكلم</td><td>تكلم!</td><td>تكلمي!</td><td>تكلموا!</td></tr>
+<tr><td>قرأ</td><td>اقرأ!</td><td>اقرئي!</td><td>اقرؤوا!</td></tr>
+<tr><td>انتظر</td><td>انتظر!</td><td>انتظري!</td><td>انتظروا!</td></tr>
+<tr><td>أتى</td><td>تعال!</td><td>تعالي!</td><td>تعالوا!</td></tr>
+<tr><td>كتب</td><td>اكتب!</td><td>اكتبي!</td><td>اكتبوا!</td></tr>
+</table></div>
+<p>Заборона: <span class="fr">لا</span> + форма теперішнього: <span class="fr">لا تدخن!</span> Ввічливо: <span class="fr">من فضلك، تعال هنا.</span></p>
+<div class="exs">
+انتظر لحظة! | інтазір лахза | Зачекай хвилинку! (до чол.)
+تعال هنا، من فضلك. | таал хуна мін фадлік | Підійди сюди, будь ласка. (до чол.)
+تكلم ببطء، من فضلك. | такаллям бібут мін фадлік | Говори повільніше, будь ласка. (до чол.)
+لا تدخن هنا! | ля тудаххін хуна | Не кури тут! (до чол.)
+كن حذرا! | кун хазіран | Будь обережний! (до чол.)
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Я можу прийти: ___ أن آتي | أستطيع
+Я хочу пити каву: ___ أن أشرب قهوة | أريد
+Мені треба працювати: ___ أن أعمل | يجب
+Можна ввійти? ___ الدخول | هل يمكنني
+Тут не можна курити: ___ التدخين هنا | ممنوع
+اقرأ → (до жінки) | اقرئي
+تكلم → (до кількох) | تكلموا
+Не кури тут! ___ تدخن هنا | لا
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. عند الطبيب (у лікаря)
+الطبيب: مرحبا، ما الذي يؤلمك؟ | Добрий день, що вас турбує?
+المريض: رأسي يؤلمني وعندي حرارة. | Болить голова, і в мене температура.
+الطبيب: منذ متى؟ | Відколи?
+المريض: منذ يومين. | Уже два дні.
+الطبيب: خذ هذا الدواء وابق في البيت. | Приймайте ці ліки й залишайтеся вдома.
+المريض: شكرا يا دكتور. | Дякую, докторе.
+# 2. في محل الملابس (у магазині одягу)
+البائعة: هل أستطيع مساعدتك؟ | Вам допомогти?
+الزبون: أبحث عن معطف. | Шукаю куртку.
+البائعة: ما هو المقاس؟ | Який розмір?
+الزبون: مقاس M. هل يمكنني التجربة؟ | Розмір M. Можна приміряти?
+البائعة: طبعا، غرفة القياس هناك. | Звісно, примірочна там.
+الزبون: بكم هذا؟ | Скільки коштує?
+البائعة: مئة وعشرون دولارا. | Сто двадцять доларів.
+# 3. في الفندق (у готелі)
+الضيف: مساء الخير، عندي حجز. | Добрий вечір, у мене бронь.
+الموظف: باسم من؟ | На яке ім'я?
+الضيف: سميث. غرفة لشخص واحد لثلاث ليال. | Сміт. Одномісний номер на три ночі.
+الموظف: تفضل المفتاح. الإفطار من السابعة إلى العاشرة. | Ось ключ. Сніданок з сьомої до десятої.
+الضيف: هل يوجد واي فاي؟ | Є вайфай?
+الموظف: نعم، كلمة السر على المفتاح. | Так, пароль на ключі.
+# 4. على الهاتف (по телефону)
+آنا: ألو؟ | Алло?
+أحمد: مرحبا آنا، أنا أحمد. كيف حالك؟ | Привіт, Анно, це Ахмед. Як справи?
+آنا: بخير، شكرا. وأنت؟ | Добре, дякую. А ти?
+أحمد: أنا بخير أيضا. هل أنتِ متفرغة غدا مساء؟ | Теж добре. Ти вільна завтра ввечері?
+آنا: نعم، لماذا؟ | Так, а чому?
+أحمد: هل نذهب إلى السينما؟ | Підемо в кіно?
+آنا: بكل سرور! | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що вас турбує? | ما الذي يؤلمك
+У мене болить голова. | رأسي يؤلمني
+Шукаю куртку. | أبحث عن معطف
+Який розмір? | ما هو المقاس
+Скільки коштує? | بكم هذا
+У мене бронь. | عندي حجز
+Є вайфай? | هل يوجد واي فاي
+Підемо в кіно? | هل نذهب إلى السينما
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Бути</td><td>нема в теперішньому; أنا طالب</td></tr>
+<tr><td>«Мати»</td><td>عندي / ليس عندي</td></tr>
+<tr><td>Артикль</td><td>ال (означений); неозначеного нема</td></tr>
+<tr><td>Множина</td><td>правильна ـون / ـات; ламана</td></tr>
+<tr><td>Прийменники</td><td>في в, إلى до, من з, على на</td></tr>
+<tr><td>Теперішній час</td><td>префікси أ ت ي ن</td></tr>
+<tr><td>Заперечення</td><td>لا + дієслово; ليس</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Читаєш 28 літер і їх форми</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомишся, рід і множина</td></tr>
+<tr><td>3</td><td>4</td><td>عند, теперішній час і 10 дієслів</td></tr>
+<tr><td>4</td><td>5</td><td>Питання, прикметники</td></tr>
+<tr><td>5</td><td>6</td><td>Числа, час, дні</td></tr>
+<tr><td>6</td><td>7</td><td>Їжа, місто</td></tr>
+<tr><td>7</td><td>8</td><td>Діалоги вголос</td></tr>
+<tr><td>8</td><td>Повторення</td><td>Говориш 3–5 хвилин про себе</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1">
+Я студент: أنا ___ | طالب
+У мене нема часу: ___ عندي وقت | ليس
+كتاب → (множина) | كتب
+بيت → (у домі) | في البيت
+Скільки це коштує? ___ هذا | بكم
+Я говорю арабською: أنا ___ العربية | أتكلم
+5 | خمسة
+п'ятниця | الجمعة
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати 28 літер і прості слова</label></li>
+<li><label><input type="checkbox"> Привітатися й представитися</label></li>
+<li><label><input type="checkbox"> Вживати عند і дієслова в теперішньому часі</label></li>
+<li><label><input type="checkbox"> Утворити множину й вжити артикль ال</label></li>
+<li><label><input type="checkbox"> Назвати числа, дні, місяці, час</label></li>
+<li><label><input type="checkbox"> Замовити каву й спитати дорогу</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>العربية</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const sem=s=>s.replace(/[\u0591-\u05c7\u064b-\u065f\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').normalize('NFC');
+const norm=s=>sem(gk(s.toLowerCase())).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^ar[-_]SA/i.test(x.lang))||v.find(x=>/^ar/i.test(x.lang))||('ar'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='ar-SA';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('ar1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('ar1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('ar1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('ar1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='ar1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

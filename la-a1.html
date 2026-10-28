@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latina A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Latina A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Latina A1</h1>
+  <p>Курс латинська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="la-a2.html">Рівень A2</a><a href="la-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Латинська (<span class="fr">lingua Latina</span>) — мова Давнього Риму й мати романських мов. Сьогодні її вчать, щоб читати античних авторів, розуміти наукову, медичну й юридичну лексику та вловлювати спільне коріння європейських мов. Цей курс веде до рівня A1 і дає основи, на яких можна читати прості тексти й вести прості діалоги.</p>
+<h3>Чому українцю латинь дається легко</h3>
+<ul>
+<li><b>Відмінки.</b> У латині їх шість (називний, родовий, давальний, знахідний, кличний, орудний-місцевий). Ти звик до відмінків з рідної мови: це величезна перевага над англійцем чи французом.</li>
+<li><b>Немає артиклів.</b> <span class="fr">Puella</span> може означати «дівчина» і «ця дівчина».</li>
+<li><b>Гнучкий порядок слів.</b> Роль слова видно за закінченням, як і в українській. Дієслово зазвичай стоїть наприкінці.</li>
+<li><b>Багато слів вже знайомі:</b> <span class="fr">familia, universitas, natura, doctor, scientia, patria</span>.</li>
+</ul>
+<div class="warn"><b>Пастки.</b> <span class="fr">sum</span> = я є; <span class="fr">sol</span> = сонце; <span class="fr">ego</span> = я; <span class="fr">pes</span> = нога; <span class="fr">mensa</span> = стіл; <span class="fr">liber</span> = книга (і «вільний»); <span class="fr">annus</span> = рік; <span class="fr">hora</span> = година.</div>
+<div class="tip"><b class="t">Озвучка.</b> Живих носіїв латини нема, а на пристроях рідко є латинський голос. Тому озвучка читає латинь італійським голосом — це близько до церковної вимови (ц замість к перед е, і). У транскрипції кирилицею ми навчаємо <b>класичної</b> вимови, якою читали в часи Цицерона. Дрібні розходження — не біда.</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення, натискай на слова — почуєш озвучку.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План — у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">Латинська абетка — 23 літери: наша латиниця без <span class="fr">J, U, W</span> (їх писали <span class="fr">I, V</span>). Читається так, як пишеться, і кожна літера має один звук.</p>
+<div class="tw"><table>
+<tr><th>Літери</th><th>Звук (класична)</th><th>Приклад</th></tr>
+<tr><td><span class="fr">c</span></td><td>завжди «к»</td><td><span class="fr">Cicero</span> [кікеро]</td></tr>
+<tr><td><span class="fr">g</span></td><td>завжди «ґ»</td><td><span class="fr">gens</span> [ґенс]</td></tr>
+<tr><td><span class="fr">v</span></td><td>«в» (англ. w)</td><td><span class="fr">vita</span> [віта]</td></tr>
+<tr><td><span class="fr">i</span> перед голосною</td><td>«й»</td><td><span class="fr">iam</span> [йам]</td></tr>
+<tr><td><span class="fr">qu</span></td><td>«кв»</td><td><span class="fr">quis</span> [квіс]</td></tr>
+<tr><td><span class="fr">x</span></td><td>«кс»</td><td><span class="fr">rex</span> [рекс]</td></tr>
+<tr><td><span class="fr">ae</span></td><td>«ай»</td><td><span class="fr">aestas</span> [айстас]</td></tr>
+<tr><td><span class="fr">oe</span></td><td>«ой»</td><td><span class="fr">poena</span> [пойна]</td></tr>
+<tr><td><span class="fr">au</span></td><td>«ау»</td><td><span class="fr">aurum</span> [аурум]</td></tr>
+<tr><td><span class="fr">ch, ph, th</span></td><td>«х», «ф», «т» (грецькі)</td><td><span class="fr">schola</span> [схола]</td></tr>
+<tr><td><span class="fr">h</span></td><td>слабке «г/х»</td><td><span class="fr">homo</span> [хомо]</td></tr>
+<tr><td><span class="fr">s</span></td><td>завжди «с»</td><td><span class="fr">rosa</span> [роса]</td></tr>
+</table></div>
+<div class="tip"><b class="t">Наголос.</b> У слові з двох складів наголошений перший. Якщо складів більше, дивимося на передостанній: довгий — наголос на ньому (<span class="fr">amícus</span>), короткий — наголос на складі раніше (<span class="fr">dóminus</span>). Довгота позначається рискою (<span class="fr">ā ē ī ō ū</span>), але в тексті її зазвичай не пишуть.</div>
+<div class="exs">
+Salve! | сальве | Вітаю!
+Vale! | вале | Бувай!
+Gratias tibi ago. | ґратіас тібі аґо | Дякую тобі.
+Non intellego. | нон інтеллеґо | Не розумію.
+Parum Latine scio. | парум латіне скіо | Трохи знаю латину.
+Panem et aquam, quaeso. | панем ет аквам квайсо | Хліб і воду, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[сальве] — привітання | salve
+[вале] — прощання | vale
+[ґратіас] — подяка | gratias
+[квайсо] — прохання | quaeso
+[аква] — вода | aqua
+[віта] — життя | vita
+[рекс] — цар | rex
+[роса] — квітка | rosa
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+Salve | сальве | привіт (одному)
+Salvete | сальвете | привіт (багатьом)
+Ave | аве | вітаю
+Vale | вале | бувай (одному)
+Valete | валете | бувайте
+Bonum mane | бонум мане | доброго ранку
+Bonum vesperum | бонум веспе-рум | добрий вечір
+Bonam noctem | бонам ноктем | на добраніч
+# Ввічливість
+Gratias | ґратіас | дякую
+Quaeso | квайсо | будь ласка
+Nihil est | нігіль ест | нема за що
+Ignosce | іґносце | вибач
+Ita | іта | так
+Non | нон | ні
+Fortasse | фортассе | можливо
+</div>
+<h3>2.1. Як представитися</h3>
+<div class="exs">
+Mihi nomen est Mykhailo. | міхі номен ест михайло | Мене звати Михайло.
+Quod nomen tibi est? | квод номен тібі ест | Як тебе звати?
+Gaudeo te cognoscere. | ґаудео те коґноскере | Радий з тобою познайомитися.
+Unde es? | унде ес | Звідки ти?
+Ex Ucraina sum. | екс украйна сум | Я з України.
+Triginta annos habeo. | тріґінта аннос габео | Мені тридцять років.
+Uzhhorodi habito. | ужгороді габіто | Живу в Ужгороді.
+Magister sum. | маґістер сум | Я вчитель.
+Loquerisne Anglice? | локверісне анґліке | Ти говориш англійською?
+Iterum dic, quaeso. | ітерум дік квайсо | Повтори, будь ласка.
+</div>
+<div class="rule"><b class="t">Tu чи vos?</b><p><span class="fr">Tu</span> — до однієї людини, <span class="fr">vos</span> — до багатьох. Ввічливого «Ви» до однієї особи в латині нема: до всіх звертаються на <span class="fr">tu</span>, а повагу виражають словами (<span class="fr">domine</span> — пане).</p></div>
+<h3>2.2. Займенники</h3>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Латинською</th><th>Українською</th></tr>
+<tr><td>1 одн.</td><td><span class="fr">ego</span></td><td>я</td></tr>
+<tr><td>2 одн.</td><td><span class="fr">tu</span></td><td>ти</td></tr>
+<tr><td>3 одн.</td><td><span class="fr">is / ea / id</span></td><td>він / вона / воно</td></tr>
+<tr><td>1 множ.</td><td><span class="fr">nos</span></td><td>ми</td></tr>
+<tr><td>2 множ.</td><td><span class="fr">vos</span></td><td>ви</td></tr>
+<tr><td>3 множ.</td><td><span class="fr">ei / eae / ea</span></td><td>вони</td></tr>
+</table></div>
+<div class="tip"><b class="t">Підмет не обов'язковий.</b> Закінчення дієслова вже показує особу: <span class="fr">amo</span> = «я люблю», <span class="fr">amas</span> = «ти любиш». Займенник ставлять для наголосу: <span class="fr">Ego laboro, tu dormis.</span></div>
+<div class="qz" data-title="Вправа 2. Привітання">
+Привіт! | Salve
+Дякую! | Gratias
+Будь ласка | Quaeso
+Вибач! | Ignosce
+Бувай! | Vale
+Мене звати Михайло. | Mihi nomen est Mykhailo
+Я не розумію. | Non intellego
+Звідки ти? | Unde es
+Я з України. | Ex Ucraina sum
+Доброго ранку! | Bonum mane
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники: відмінки, рід, множина">
+<h2><span class="no">Розділ 3</span>Іменники: відмінки, рід, множина</h2>
+<p class="lead">Латинські іменники змінюються за відмінками так само, як українські. Нижче — дві найпростіші відміни (1-ша на -a і 2-га на -us / -um), на яких тримається половина мови.</p>
+<div class="tw"><table>
+<tr><th>Відмінок</th><th>Питання</th><th>1-ша (puella, ж.)</th><th>2-га (dominus, ч.)</th><th>2-га (bellum, с.)</th></tr>
+<tr><td>Nominativus</td><td>хто? що?</td><td>puella</td><td>dominus</td><td>bellum</td></tr>
+<tr><td>Genetivus</td><td>кого? чого?</td><td>puellae</td><td>domini</td><td>belli</td></tr>
+<tr><td>Dativus</td><td>кому?</td><td>puellae</td><td>domino</td><td>bello</td></tr>
+<tr><td>Accusativus</td><td>кого? що?</td><td>puellam</td><td>dominum</td><td>bellum</td></tr>
+<tr><td>Ablativus</td><td>ким? де? звідки?</td><td>puella</td><td>domino</td><td>bello</td></tr>
+<tr><td>Vocativus</td><td>звертання</td><td>puella</td><td>domine</td><td>bellum</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>Відмінок (множина)</th><th>puellae</th><th>domini</th><th>bella</th></tr>
+<tr><td>Nom.</td><td>puellae</td><td>domini</td><td>bella</td></tr>
+<tr><td>Gen.</td><td>puellarum</td><td>dominorum</td><td>bellorum</td></tr>
+<tr><td>Dat. / Abl.</td><td>puellis</td><td>dominis</td><td>bellis</td></tr>
+<tr><td>Acc.</td><td>puellas</td><td>dominos</td><td>bella</td></tr>
+</table></div>
+<div class="rule"><b class="t">Рід і слова.</b><p>Є три роди: чоловічий, жіночий і середній. Слова на <span class="fr">-a</span> зазвичай жіночі, на <span class="fr">-us</span> — чоловічі, на <span class="fr">-um</span> — середні. Винятки: <span class="fr">agricola</span> (землероб, ч.), <span class="fr">nauta</span> (моряк, ч.). Словникова форма: <span class="fr">puella, -ae f.</span> (називний, закінчення родового, рід).</p></div>
+<div class="vocab">
+# Родина
+familia | фаміліа | родина | f
+mater | матер | мати | f
+pater | патер | батько | m
+frater | фратер | брат | m
+soror | сорор | сестра | f
+filius | філіус | син | m
+filia | філіа | дочка | f
+avus | авус | дідусь | m
+avia | авіа | бабуся | f
+maritus | марітус | чоловік | m
+uxor | уксор | дружина | f
+infans | інфанс | дитина | m/f
+# Речі
+domus | домус | дім | f
+cubiculum | кубікулум | кімната | n
+culina | куліна | кухня | f
+mensa | менса | стіл | f
+sella | селла | стілець | f
+fenestra | фенестра | вікно | f
+ianua | йануа | двері | f
+lectus | лектус | ліжко | m
+currus | куррус | візок, колісниця | m
+liber | лібер | книга | m
+</div>
+<div class="qz" data-title="Вправа 3. Відмінки">
+puella → (родовий одн.) | puellae
+puella → (знахідний одн.) | puellam
+dominus → (родовий одн.) | domini
+dominus → (знахідний одн.) | dominum
+dominus → (кличний одн.) | domine
+puella → (називний множ.) | puellae
+bellum → (родовий одн.) | belli
+bellum → (називний множ.) | bella
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Sum, habeo, amo">
+<h2><span class="no">Розділ 4</span>Дієслова <span class="fr">sum</span> (бути), <span class="fr">habeo</span> (мати), <span class="fr">amo</span> (любити)</h2>
+<div class="cj" data-verb="sum" data-note="бути" data-ipa="сум">
+ego | sum | сум
+tu | es | ес
+is / ea / id | est | ест
+nos | sumus | сумус
+vos | estis | естіс
+ei / eae / ea | sunt | сунт
+</div>
+<div class="cj" data-verb="habeo" data-note="мати" data-ipa="габео">
+ego | habeo | габео
+tu | habes | габес
+is / ea / id | habet | габет
+nos | habemus | габемус
+vos | habetis | габетіс
+ei / eae / ea | habent | габент
+</div>
+<div class="cj" data-verb="amo" data-note="любити" data-ipa="амо">
+ego | amo | амо
+tu | amas | амас
+is / ea / id | amat | амат
+nos | amamus | амамус
+vos | amatis | аматіс
+ei / eae / ea | amant | амант
+</div>
+<div class="rule"><b class="t">Закінчення особи.</b> <span class="fr">-o / -m, -s, -t, -mus, -tis, -nt</span> — по ним одразу видно, хто діє. Заперечення: <span class="fr">non</span> перед дієсловом: <span class="fr">Non sum fessus.</span> Питання: частка <span class="fr">-ne</span> після першого слова: <span class="fr">Habesne tempus?</span></div>
+<div class="exs">
+Discipulus sum. | діскіпулус сум | Я учень.
+Fessus es. | фессус ес | Ти втомлений.
+Domi sumus. | домі сумус | Ми вдома.
+Fratrem habeo. | фратрем габео | У мене є брат.
+Habesne tempus? | габесне темпус | Маєш час?
+Tempus non habeo. | темпус нон габео | Не маю часу.
+</div>
+<h3>4.1. Дієслова першої та другої дієвідмін</h3>
+<div class="tw"><table>
+<tr><th>Дієвідміна</th><th>Інфінітив</th><th>Теперішній (я)</th><th>Приклад</th></tr>
+<tr><td>I (-are)</td><td>amare, laborare</td><td>amo, laboro</td><td>laboras, laborat</td></tr>
+<tr><td>II (-ere)</td><td>habere, videre</td><td>habeo, video</td><td>habes, habet</td></tr>
+<tr><td>III (-ere)</td><td>legere, scribere</td><td>lego, scribo</td><td>legis, legit</td></tr>
+<tr><td>IV (-ire)</td><td>audire, dormire</td><td>audio, dormio</td><td>audis, audit</td></tr>
+</table></div>
+<div class="vocab">
+laborare | лабораре | працювати | laboro
+habitare | габітаре | жити | habito
+legere | леґере | читати | lego
+scribere | скрібере | писати | scribo
+vivere | вівере | жити | vivo
+discere | діскере | вчити | disco
+edere | едере | їсти | edo
+bibere | бібере | пити | bibo
+dormire | дорміре | спати | dormio
+emere | емере | купувати | emo
+intellegere | інтеллеґере | розуміти | intellego
+scire | сціре | знати | scio
+videre | відере | бачити | video
+velle | велле | хотіти | volo
+</div>
+<div class="cj" data-verb="ire" data-note="йти" data-ipa="іре">
+ego | eo | ео
+tu | is | іс
+is / ea / id | it | іт
+nos | imus | імус
+vos | itis | ітіс
+ei / eae / ea | eunt | еунт
+</div>
+<div class="qz" data-title="Вправа 4. Відмінювання">
+Ego ___ discipulus. (sum) | sum
+Tu ___ fessus. (sum) | es
+Nos ___ domi. (sum) | sumus
+Ei ___ in foro. (sum) | sunt
+Ego ___ fratrem. (habeo) | habeo
+Tu ___ tempus. (habeo) | habes
+Ille ___ librum. (lego) | legit
+Ego ___ Latine. (знаю) | scio
+Nos ___ ad scholam. (eo) | imus
+Ego ___ aquam. (bibo) | bibo
+Ei ___ Romae. (vivo) | vivunt
+Vos ___ multum. (laboro) | laboratis
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, порядок слів">
+<h2><span class="no">Розділ 5</span>Питання, заперечення, порядок слів</h2>
+<div class="vocab">
+quis | квіс | хто
+quid | квід | що
+ubi | убі | де
+quo | кво | куди
+unde | унде | звідки
+quando | квандо | коли
+quomodo | квомодо | як
+cur | кур | чому
+quot | квот | скільки (рахунок)
+quantum | квантум | скільки (кількість)
+qualis | кваліс | який
+cuius | куйус | чий
+</div>
+<div class="exs">
+Quis est? | квіс ест | Хто це?
+Quid facis? | квід факіс | Що ти робиш?
+Ubi habitas? | убі габітас | Де ти живеш?
+Quo is? | кво іс | Куди ти йдеш?
+Quanti constat? | кванті констат | Скільки це коштує?
+Quod nomen tibi est? | квод номен тібі ест | Як тебе звати?
+</div>
+<h3>5.1. Порядок слів</h3>
+<div class="rule"><b class="t">Дієслово наприкінці.</b><p>У типовому латинському реченні присудок стоїть <b>в кінці</b>: <span class="fr">Puella librum legit.</span> Але завдяки відмінкам порядок вільний. Вирішальне: <span class="fr">puella</span> (називний) діє, <span class="fr">librum</span> (знахідний) — об'єкт. Питання без питального слова: <span class="fr">-ne</span>: <span class="fr">Legitne puella librum?</span> Заперечення: <span class="fr">non</span>. Подвійне заперечення скасовується: <span class="fr">nemo non</span> = «кожен».</p></div>
+<div class="exs">
+Puella librum legit. | пуелла лібрум леґіт | Дівчина читає книжку.
+Hodie multum laboro. | ходіе мультум лаборо | Сьогодні багато працюю.
+Canem video. | канем відео | Бачу собаку.
+Liber in mensa est. | лібер ін менса ест | Книжка на столі.
+In schola sum. | ін схола сум | Я в школі.
+Ad scholam eo. | ад схолам ео | Іду до школи.
+Neminem video. | немінем відео | Нікого не бачу.
+</div>
+<div class="tip"><b class="t">Де і куди.</b> Місце — <span class="fr">in</span> + орудний (<span class="fr">in urbe</span>) або місцевий відмінок для міст (<span class="fr">Romae</span>); напрямок — <span class="fr">ad</span> + знахідний (<span class="fr">ad urbem</span>) або просто знахідний для міст (<span class="fr">Romam</span>); «з» — <span class="fr">ex / ab</span> + орудний; «разом з» — <span class="fr">cum</span> + орудний.</div>
+<h3>5.2. Прикметники й присвійні</h3>
+<div class="tw"><table>
+<tr><th></th><th>чол.</th><th>жін.</th><th>сер.</th></tr>
+<tr><td>добрий</td><td><span class="fr">bonus</span></td><td><span class="fr">bona</span></td><td><span class="fr">bonum</span></td></tr>
+<tr><td>великий</td><td><span class="fr">magnus</span></td><td><span class="fr">magna</span></td><td><span class="fr">magnum</span></td></tr>
+<tr><td>малий</td><td><span class="fr">parvus</span></td><td><span class="fr">parva</span></td><td><span class="fr">parvum</span></td></tr>
+<tr><td>новий</td><td><span class="fr">novus</span></td><td><span class="fr">nova</span></td><td><span class="fr">novum</span></td></tr>
+</table></div>
+<p>Прикметник узгоджується з іменником у <b>роді, числі й відмінку</b>, як в українській: <span class="fr">puella bona</span>, <span class="fr">puellae bonae</span>, <span class="fr">puellam bonam</span>. Присвійні — також прикметники: <span class="fr">meus, mea, meum</span> (мій), <span class="fr">tuus</span> (твій), <span class="fr">suus</span> (свій), <span class="fr">noster</span> (наш), <span class="fr">vester</span> (ваш). Можна поставити після іменника: <span class="fr">liber meus</span>.</p>
+<div class="qz" data-title="Вправа 5. Мова в дії">
+___ est? (хто) | Quis
+___ facis? (що) | Quid
+___ habitas? (де) | Ubi
+Ego ___ habeo tempus. (Заперечення) | non
+___ scholam eo. (до) | Ad
+Puella ___ legit. (книжку) | librum
+puella ___ (добра: bonus) | bona
+liber ___ (мій) | meus
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, час і дати</h2>
+<div class="tw"><table>
+<tr><td>1 <span class="fr">unus</span></td><td>2 <span class="fr">duo</span></td><td>3 <span class="fr">tres</span></td><td>4 <span class="fr">quattuor</span></td></tr>
+<tr><td>5 <span class="fr">quinque</span></td><td>6 <span class="fr">sex</span></td><td>7 <span class="fr">septem</span></td><td>8 <span class="fr">octo</span></td></tr>
+<tr><td>9 <span class="fr">novem</span></td><td>10 <span class="fr">decem</span></td><td>11 <span class="fr">undecim</span></td><td>12 <span class="fr">duodecim</span></td></tr>
+<tr><td>20 <span class="fr">viginti</span></td><td>30 <span class="fr">triginta</span></td><td>40 <span class="fr">quadraginta</span></td><td>50 <span class="fr">quinquaginta</span></td></tr>
+<tr><td>100 <span class="fr">centum</span></td><td>200 <span class="fr">ducenti</span></td><td>1000 <span class="fr">mille</span></td><td></td></tr>
+</table></div>
+<div class="tip"><b class="t">Римські цифри.</b> I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000. Менша цифра перед більшою віднімається: IV = 4, IX = 9.</div>
+<div class="vocab">
+# Дні тижня (відомі за планетами)
+dies Solis | дієс соліс | неділя
+dies Lunae | дієс лунай | понеділок
+dies Martis | дієс мартіс | вівторок
+dies Mercurii | дієс меркурії | середа
+dies Iovis | дієс йовіс | четвер
+dies Veneris | дієс венерис | п'ятниця
+dies Saturni | дієс сатурні | субота
+# Місяці
+Ianuarius | януаріус | січень
+Februarius | фебруаріус | лютий
+Martius | мартіус | березень
+Aprilis | апріліс | квітень
+Maius | майус | травень
+Iunius | юніус | червень
+Iulius | юліус | липень
+Augustus | авґустус | серпень
+September | септембер | вересень
+October | октобер | жовтень
+November | новембер | листопад
+December | децембер | грудень
+# Час
+hodie | ходіе | сьогодні
+cras | крас | завтра
+heri | хері | вчора
+mane | мане | вранці
+vespere | веспере | ввечері
+nunc | нунк | зараз
+</div>
+<div class="exs">
+Quota hora est? | квота хора ест | Котра година?
+Hora quinta est. | хора квінта ест | П'ята година.
+Qua hora? | ква хора | О котрій?
+Hora octava. | хора октава | О восьмій.
+Hodie dies Lunae est. | ходіе дієс лунай ест | Сьогодні понеділок.
+Die Veneris liber sum. | діє венеріс лібер сум | У п'ятницю я вільний.
+</div>
+<div class="tip"><b class="t">Година.</b> Римляни ділили день на 12 годин: від сходу до заходу сонця. <span class="fr">Hora sexta</span> — це наше полудне. Чверті й половини не вживали.</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+2 | duo
+3 | tres
+5 | quinque
+10 | decem
+20 | viginti
+100 | centum
+понеділок | dies Lunae
+п'ятниця | dies Veneris
+неділя | dies Solis
+жовтень | October
+завтра | cras
+вчора | heri
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа й напої
+panis | паніс | хліб | m
+aqua | аква | вода | f
+lac | лак | молоко | n
+vinum | вінум | вино | n
+cervisia | кервізіа | пиво | f
+caseus | казеус | сир | m
+caro | каро | м'ясо | f
+piscis | піскіс | риба | m
+fructus | фруктус | фрукти | m
+malum | малум | яблуко | n
+ova | ова | яйця | n pl
+sal | саль | сіль | m
+mel | мель | мед | n
+oleum | олеум | олія | n
+# Місто
+urbs | урбс | місто | f
+via | віа | дорога | f
+forum | форум | площа | n
+statio | статіо | зупинка | f
+museum | мусеум | музей | n
+taberna | табера | крамниця | f
+pharmacopolium | фармакополіум | аптека | n
+templum | темплум | храм | n
+nosocomium | носокоміум | лікарня | n
+# Покупки
+quanti constat? | кванті констат | скільки коштує |
+carus | карус | дорогий | adj
+vilis | віліс | дешевий | adj
+pecunia | пекунія | гроші | f
+nummus | нуммус | монета | m
+</div>
+<div class="exs">
+Panem et vinum, quaeso. | панем ет вінум квайсо | Хліб і вино, будь ласка.
+Pecuniam solvere volo. | пекуніам сольвере воло | Хочу заплатити.
+Quanti panis constat? | кванті паніс констат | Скільки коштує хліб?
+Nimis carum est. | німіс карум ест | Це занадто дорого.
+Ubi est statio? | убі ест статіо | Де зупинка?
+Aquam sine bullis volo. | аквам сіне булліс воло | Хочу негазовану воду.
+</div>
+<div class="qz" data-title="Вправа 7. Слова">
+хліб | panis
+вода | aqua
+сир | caseus
+вино | vinum
+місто | urbs
+дорога | via
+храм | templum
+гроші | pecunia
+дорогий | carus
+дешевий | vilis
+Скільки коштує? | Quanti constat
+Хочу воду. | Aquam volo
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. In taberna (у таверні)
+Caupo: Salve! Quid vis? | Вітаю! Що бажаєш?
+Hospes: Vinum et panem, quaeso. | Вина й хліба, будь ласка.
+Caupo: Cum caseo? | З сиром?
+Hospes: Ita, gratias. | Так, дякую.
+Caupo: Ecce. Bene edas! | Ось. Смачного!
+Hospes: Quanti constat? | Скільки це коштує?
+# 2. In via (на вулиці)
+Viator: Ignosce, ubi est forum? | Вибач, де форум?
+Mulier: Recta ito et deinde ad dextram. | Іди прямо, потім праворуч.
+Viator: Estne longe? | Це далеко?
+Mulier: Non, quinque minuta pedibus. | Ні, п'ять хвилин пішки.
+Viator: Gratias multas. | Дуже дякую.
+Mulier: Nihil est. | Нема за що.
+# 3. Navigatio (подорож)
+Viator: Salve, ad Ostiam navem quaero. | Вітаю, шукаю корабель до Остії.
+Nauta: Navis octava hora solvit. | Корабель відпливає о восьмій.
+Viator: Quanti constat? | Скільки коштує?
+Nauta: Decem nummi. | Десять монет.
+# 4. Salutatio (знайомство)
+Marcus: Salve, mihi nomen est Marcus. Et tibi? | Вітаю, мене звати Марк. А тобі?
+Anna: Mihi nomen est Anna. Gaudeo. | Мене звати Анна. Радію.
+Marcus: Unde es? | Звідки ти?
+Anna: Ex Ucraina sum, ex urbe Uzhhorod. | Я з України, з Ужгорода.
+Marcus: Bene Latine loqueris! | Ти добре говориш латиною!
+Anna: Gratias, adhuc disco. | Дякую, ще вчуся.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Що бажаєш? | Quid vis
+Хліб і вино, будь ласка. | Panem et vinum, quaeso
+Де форум? | Ubi est forum
+П'ять хвилин пішки. | Quinque minuta pedibus
+Нема за що. | Nihil est
+Мене звати Анна. | Mihi nomen est Anna
+Ще вчуся. | Adhuc disco
+Скільки коштує? | Quanti constat
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: професії, тіло, одяг, природа, подорож</h2>
+<div class="vocab">
+# Професії
+magister | маґістер | вчитель | m
+medicus | медікус | лікар | m
+agricola | аґрікола | землероб | m
+nauta | наута | моряк | m
+miles | мілес | воїн | m
+scriba | скріба | писар | m
+coquus | кокус | кухар | m
+discipulus | діскіпулус | учень | m
+advocatus | адвокатус | адвокат | m
+mercator | меркатор | купець | m
+# Тіло й здоров'я
+caput | капут | голова | n
+oculus | окулус | око | m
+auris | ауріс | вухо | f
+nasus | насус | ніс | m
+os | ос | рот | n
+manus | манус | рука | f
+pes | пес | нога | m
+venter | вентер | живіт | m
+tergum | терґум | спина | n
+cor | кор | серце | n
+Caput mihi dolet. |  | У мене болить голова. |
+Aeger sum. |  | Я хворий. |
+febris | фебріс | гарячка | f
+medicamentum | медікаментум | ліки | n
+# Одяг
+tunica | туніка | туніка, сорочка | f
+toga | тоґа | тога | f
+calceus | кальцеус | взуття | m
+pallium | палліум | плащ | n
+stola | стола | сукня (жін.) | f
+pileus | пілеус | шапка | m
+# Природа й погода
+tempestas | темпестас | погода | f
+sol | соль | сонце | m
+pluvia | плувіа | дощ | f
+nix | нікс | сніг | f
+ventus | вентус | вітер | m
+Frigus est. |  | Холодно. |
+Calor est. |  | Жарко. |
+Pluit. |  | Іде дощ. |
+# Подорож
+via | віа | дорога | f
+navis | навіс | корабель | f
+equus | екус | кінь | m
+currus | куррус | колісниця, віз | m
+portus | портус | порт | m
+iter | ітер | подорож, шлях | n
+pons | понс | міст | m
+porta | порта | брама | f
+# Дім і дозвілля
+atrium | атріум | атріум, зала | n
+balneum | бальнеум | лазня | n
+culina | куліна | кухня | f
+hortus | хортус | сад | m
+fabula | фабула | розповідь, п'єса | f
+musica | музіка | музика | f
+ludus | людус | гра, школа | m
+coquere | коквере | готувати | verb
+navigare | наваґаре | подорожувати морем | verb
+</div>
+<div class="exs">
+Magister sum. | маґістер сум | Я вчитель.
+Medicus in urbe laborat. | медікус ін урбе лаборат | Лікар працює в місті.
+Caput mihi dolet. | капут міхі долет | У мене болить голова.
+Frigus est. | фріґус ест | Холодно.
+Pluit. | плуіт | Іде дощ.
+Ubi est portus? | убі ест портус | Де порт?
+Coquere amo. | коквере амо | Люблю готувати.
+Equum in horto video. | екум ін хорто відео | Бачу коня в саду.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | medicus
+вчитель | magister
+голова | caput
+рука | manus
+нога | pes
+дощ | pluvia
+сніг | nix
+корабель | navis
+кінь | equus
+дорога | via
+порт | portus
+Іде дощ. | Pluit
+У мене болить голова. | Caput mihi dolet
+Холодно. | Frigus est
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Бажання, можливість і наказовий спосіб</h2>
+<h3>10.1. Модальні дієслова + інфінітив</h3>
+<p>Як і в українській, після модального дієслова йде інфінітив: <span class="fr">Volo bibere aquam.</span> <span class="fr">Possum intrare?</span> <span class="fr">Debeo laborare.</span></p>
+<div class="tw"><table>
+<tr><th></th><th>volo (хотіти)</th><th>possum (могти)</th><th>debeo (мусити)</th><th>scio (вміти)</th></tr>
+<tr><td>ego</td><td>volo</td><td>possum</td><td>debeo</td><td>scio</td></tr>
+<tr><td>tu</td><td>vis</td><td>potes</td><td>debes</td><td>scis</td></tr>
+<tr><td>is / ea</td><td>vult</td><td>potest</td><td>debet</td><td>scit</td></tr>
+<tr><td>nos</td><td>volumus</td><td>possumus</td><td>debemus</td><td>scimus</td></tr>
+<tr><td>vos</td><td>vultis</td><td>potestis</td><td>debetis</td><td>scitis</td></tr>
+<tr><td>ei / eae</td><td>volunt</td><td>possunt</td><td>debent</td><td>sciunt</td></tr>
+</table></div>
+<div class="rule"><b class="t">Ввічливе прохання.</b><p><span class="fr">Velim…</span> (Я хотів би…): <span class="fr">Velim aquam, quaeso.</span> Заборона: <span class="fr">noli / nolite</span> + інфінітив: <span class="fr">Noli timere!</span> (Не бійся!)</p></div>
+<div class="exs">
+Possum intrare? | поссум інтраре | Можна ввійти?
+Volo bibere vinum. | воло бібере вінум | Хочу пити вино.
+Hodie laborare debeo. | ходіе лабораре дебео | Сьогодні мушу працювати.
+Nunc loqui non possum. | нунк локві нон поссум | Зараз не можу говорити.
+Scisne coquere? | сцісне коквере | Вмієш готувати?
+Hic fumare non licet. | хік фумаре нон лікет | Тут не можна курити.
+Velim aquam, quaeso. | велім аквам квайсо | Я б хотів води, будь ласка.
+</div>
+<h3>10.2. Наказовий спосіб</h3>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>ти</th><th>ви</th></tr>
+<tr><td>amare</td><td>ama!</td><td>amate!</td></tr>
+<tr><td>legere</td><td>lege!</td><td>legite!</td></tr>
+<tr><td>audire</td><td>audi!</td><td>audite!</td></tr>
+<tr><td>manere</td><td>mane!</td><td>manete!</td></tr>
+<tr><td>venire</td><td>veni!</td><td>venite!</td></tr>
+<tr><td>esse</td><td>es!</td><td>este!</td></tr>
+<tr><td>scribere</td><td>scribe!</td><td>scribite!</td></tr>
+</table></div>
+<p>Заборона: <span class="fr">noli</span> / <span class="fr">nolite</span> + інфінітив: <span class="fr">Noli fumare!</span> Ввічливо: <span class="fr">quaeso</span>, <span class="fr">sis</span> (= si vis, «будь ласка»).</p>
+<div class="exs">
+Mane paulum! | мане паулум | Зачекай хвилинку!
+Veni huc, quaeso. | вені хук квайсо | Підійди сюди, будь ласка.
+Loquere lentius, quaeso. | локвере лентіус квайсо | Говори повільніше, будь ласка.
+Noli hic fumare! | нолі хік фумаре | Не кури тут!
+Esto cautus! | есто каутус | Будь обережний!
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Ego ___ laborare. (мушу) | debeo
+___ bibere vinum. (Я хочу) | Volo
+Nos ___ intrare. (можемо) | possumus
+Is ___ vinum. (хоче) | vult
+___ coquere? (Ти вмієш) | Scisne
+___ aquam. (Я б хотів) | Velim
+legere → (ти!) ___ | lege
+audire → (ти!) ___ | audi
+legere → (ви!) ___ | legite
+___ fumare! (Не) | Noli
+Ego ___ intrare. (можу) | possum
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. Apud medicum (у лікаря)
+Medicus: Salve, quid tibi accidit? | Вітаю, що з тобою?
+Aeger: Caput mihi dolet et febrim habeo. | У мене болить голова й гарячка.
+Medicus: Ex quo tempore? | З якого часу?
+Aeger: Ex duobus diebus. | Два дні.
+Medicus: Haec medicamenta sume et domi mane. | Прийми ці ліки й залишайся вдома.
+Aeger: Gratias, medice. | Дякую, лікарю.
+# 2. In taberna vestiaria (у крамниці одягу)
+Venditor: Quid vis, amice? | Що бажаєш, друже?
+Emptor: Pallium quaero. | Шукаю плащ.
+Venditor: Quae magnitudo tibi convenit? | Який розмір тобі потрібен?
+Emptor: Mediocris. Possumne temptare? | Середній. Можна приміряти?
+Venditor: Certe, ecce. | Звісно, ось.
+Emptor: Quanti constat? | Скільки коштує?
+Venditor: Centum viginti nummi. | Сто двадцять монет.
+# 3. In deversorio (на заїзді)
+Hospes: Salve, cubiculum reservavi. | Вітаю, я забронював кімнату.
+Deversor: Quod nomen tibi est? | Як тебе звати?
+Hospes: Smith. Cubiculum unum in tres noctes. | Сміт. Одну кімнату на три ночі.
+Deversor: Ecce clavis. Prandium a septima ad decimam horam. | Ось ключ. Сніданок з сьомої до десятої.
+Hospes: Estne aqua calida? | Є гаряча вода?
+Deversor: Ita, in balneo. | Так, у лазні.
+# 4. Epistula per nuntium (повідомлення)
+Anna: Salve, Marce! Quid agis? | Привіт, Марку! Як справи?
+Marcus: Bene, gratias. Et tu? | Добре, дякую. А ти?
+Anna: Et ego. Esne liber cras vespere? | Теж добре. Ти вільний завтра ввечері?
+Marcus: Ita, cur rogas? | Так, а чому питаєш?
+Anna: Eamus ad theatrum? | Підемо в театр?
+Marcus: Libenter! | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що з тобою? | Quid tibi accidit
+У мене болить голова. | Caput mihi dolet
+Шукаю плащ. | Pallium quaero
+Скільки коштує? | Quanti constat
+Я забронював кімнату. | Cubiculum reservavi
+Є гаряча вода? | Estne aqua calida
+Підемо в театр? | Eamus ad theatrum
+З радістю! | Libenter
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Sum</td><td>sum, es, est, sumus, estis, sunt</td></tr>
+<tr><td>Habeo</td><td>habeo, habes, habet, habemus, habetis, habent</td></tr>
+<tr><td>Amo</td><td>-o, -as, -at, -amus, -atis, -ant</td></tr>
+<tr><td>Іменники</td><td>-a / -us / -um; шість відмінків</td></tr>
+<tr><td>Питання</td><td>quis, quid, ubi, -ne</td></tr>
+<tr><td>Заперечення</td><td>non перед дієсловом</td></tr>
+<tr><td>Прикметник</td><td>узгоджується в роді, числі, відмінку</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Читаєш усе: c, g, v, ae, qu</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомишся, відмінки</td></tr>
+<tr><td>3</td><td>4</td><td>Sum, habeo, 10 дієслів</td></tr>
+<tr><td>4</td><td>5</td><td>Питання, порядок слів</td></tr>
+<tr><td>5</td><td>6</td><td>Числа, дні, місяці</td></tr>
+<tr><td>6</td><td>7</td><td>Їжа, місто</td></tr>
+<tr><td>7</td><td>8</td><td>Діалоги вголос</td></tr>
+<tr><td>8</td><td>Повторення</td><td>Читаєш прості римські тексти</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1">
+Ego ___ discipulus. (sum) | sum
+Tu ___ tempus. (habeo) | habes
+Ego ___ habeo tempus. (Заперечення) | non
+puella → (знахідний одн.) | puellam
+dominus → (родовий одн.) | domini
+___ est? (хто) | Quis
+___ constat? (скільки) | Quanti
+Nos ___ domi. (sum) | sumus
+5 | quinque
+п'ятниця | dies Veneris
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати будь-яке латинське слово</label></li>
+<li><label><input type="checkbox"> Привітатися й представитися</label></li>
+<li><label><input type="checkbox"> Вживати sum, habeo і дієслова першої дієвідміни</label></li>
+<li><label><input type="checkbox"> Відрізнити називний, родовий і знахідний відмінки</label></li>
+<li><label><input type="checkbox"> Назвати числа, дні, місяці</label></li>
+<li><label><input type="checkbox"> Замовити їжу й спитати дорогу</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Latina</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^it[-_]IT/i.test(x.lang))||v.find(x=>/^it/i.test(x.lang))||('it'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='it-IT';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('la1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('la1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('la1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('la1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='la1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

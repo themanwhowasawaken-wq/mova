@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suomi A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Suomi A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Suomi A1</h1>
+  <p>Курс фінська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="fi-a2.html">Рівень A2</a><a href="fi-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Фінська (<span class="fr">suomi</span>) — мова Фінляндії, одна з найближчих родичів естонської й далека родичка угорської. Вона не схожа на слов'янські чи германські мови, але вимова дуже проста: кожна літера читається завжди однаково. Цей курс веде до рівня A1.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Читається так, як пишеться.</b> Одна літера — один звук, наголос завжди на першому складі.</li>
+<li><b>Немає артиклів і роду.</b> <span class="fr">hän</span> = він, вона; <span class="fr">talo</span> = дім, цей дім, якийсь дім.</li>
+<li><b>Немає майбутнього часу.</b> Для майбутнього вживають теперішній: <span class="fr">Huomenna menen töihin.</span> (Завтра піду на роботу.)</li>
+<li><b>Слова-запозичення:</b> <span class="fr">bussi, taksi, kahvi, hotelli, pankki, ravintola, sauna</span>.</li>
+</ul>
+<div class="warn"><b>Пастки.</b> Фінська мова має 15 відмінків, але для початківця достатньо 5–6. Приголосні в середині слова чергуються (<span class="fr">kukka → kukan</span>), а подвійна літера — це довгий звук і інше слово: <span class="fr">tuli</span> (вогонь), <span class="fr">tuuli</span> (вітер), <span class="fr">tulli</span> (митниця).</div>
+<div class="tip"><b class="t">Вимова.</b> Озвучка використовує фінський голос пристрою. Якщо його нема, почуєш інший голос — вимова буде приблизною. Орієнтуйся на транскрипцію кирилицею: <span class="fr">ä</span> передаємо як «я» (відкрите «е»), <span class="fr">ö</span> — як «ьо», <span class="fr">y</span> — як «ю» (німецьке ü).</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення, натискай на слова — почуєш озвучку.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План — у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">29 літер. Наголос <b>завжди на першому складі</b>. Довгі голосні й приголосні пишуться подвійно, і довжина змінює значення.</p>
+<div class="tw"><table>
+<tr><th>Літери</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td><span class="fr">a, e, i, o, u</span></td><td>як в українській («а, е, і, о, у»)</td><td><span class="fr">kala</span> [кала]</td></tr>
+<tr><td><span class="fr">ä</span></td><td>відкрите «е» (ближче до «я»)</td><td><span class="fr">päivä</span> [пяйвя]</td></tr>
+<tr><td><span class="fr">ö</span></td><td>«ьо» (як у нім. ö)</td><td><span class="fr">työ</span> [тюо]</td></tr>
+<tr><td><span class="fr">y</span></td><td>«ю» (як у нім. ü)</td><td><span class="fr">kylä</span> [кюля]</td></tr>
+<tr><td><span class="fr">aa, ee, ii, …</span></td><td>довга голосна</td><td><span class="fr">tuuli</span> [туулі]</td></tr>
+<tr><td><span class="fr">kk, pp, tt</span></td><td>довгий приголосний (з паузою)</td><td><span class="fr">kukka</span> [кукка]</td></tr>
+<tr><td><span class="fr">h</span></td><td>«х»</td><td><span class="fr">hei</span> [хей]</td></tr>
+<tr><td><span class="fr">r</span></td><td>розкотисте «р»</td><td><span class="fr">kirja</span> [кірья]</td></tr>
+<tr><td><span class="fr">j</span></td><td>«й»</td><td><span class="fr">joki</span> [йокі]</td></tr>
+<tr><td><span class="fr">s</span></td><td>«с» (завжди глухий)</td><td><span class="fr">sana</span> [сана]</td></tr>
+<tr><td><span class="fr">ng</span></td><td>носове «нг» (як в англ. sing)</td><td><span class="fr">kenkä</span> [кенкя]</td></tr>
+</table></div>
+<div class="tip"><b class="t">Гармонія голосних.</b> Суфікси мають дві форми: з <span class="fr">a, o, u</span> у слові — глибока (<span class="fr">talossa</span>), з <span class="fr">ä, ö, y</span> — передня (<span class="fr">kylässä</span>). Голосні <span class="fr">e, i</span> нейтральні: з ними суфікс залежить від інших голосних.</div>
+<div class="exs">
+Hei! | хей | Привіт!
+Hyvää päivää. | хювя пяйвя | Добрий день.
+Kiitos. | кіітос | Дякую.
+En ymmärrä. | ен юммярря | Я не розумію.
+Puhun vähän suomea. | пухун вяхян суомеа | Трохи говорю фінською.
+Kahvi ja leipä, kiitos. | кахві йа лейпя кіітос | Каву й хліб, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[кірья] — книжка | kirja
+[хей] — привіт | hei
+[кіітос] — дякую | kiitos
+[пяйвя] — день | päivä
+[тюо] — робота | työ
+[кахві] — кава | kahvi
+[весі] — вода | vesi
+[суоми] — Фінляндія, фінська | suomi
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+Hei | хей | привіт
+Moi | мой | привіт (неформально)
+Hyvää huomenta | хювя хуомента | доброго ранку
+Hyvää päivää | хювя пяйвя | добрий день
+Hyvää iltaa | хювя ілта | добрий вечір
+Hyvää yötä | хювя юотя | на добраніч
+Näkemiin | някеміін | до побачення
+Hei hei | хей хей | бувай
+# Ввічливість
+Kiitos | кіітос | дякую
+Ole hyvä | оле хювя | будь ласка
+Anteeksi | антеекси | вибачте
+Kyllä | кюлля | так
+Ei | ей | ні
+Ehkä | ехкя | можливо
+</div>
+<h3>2.1. Як представитися</h3>
+<div class="exs">
+Minun nimeni on Mikael. | мінун німені он мікаел | Мене звати Михайло.
+Mikä sinun nimesi on? | мікя сінун німесі он | Як тебе звати?
+Hauska tutustua. | хауска тутусту | Приємно познайомитися.
+Mistä sinä olet? | містя сінях олет | Звідки ти?
+Olen Ukrainasta. | олен українасті | Я з України.
+Olen kolmekymmentä vuotta. | олен колмекюммента вуотта | Мені тридцять років.
+Asun Uzhhorodissa. | асун ужгородісса | Живу в Ужгороді.
+Olen opettaja. | олен опеттайя | Я вчитель.
+Puhutko englantia? | пухутко енглантіа | Ти говориш англійською?
+Voitko toistaa? | войтко тойстаа | Можеш повторити?
+</div>
+<div class="rule"><b class="t">Sinä чи Te?</b><p><span class="fr">Sinä</span> — «ти», до друзів і однолітків. <span class="fr">Te</span> — «Ви» (і множина). Фіни рідко вживають <span class="fr">Te</span>, зазвичай ввічливо спілкуються через <span class="fr">sinä</span>. Дієслово при <span class="fr">te</span> у множині: <span class="fr">Te olette</span>.</p></div>
+<h3>2.2. Займенники</h3>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Фінською</th><th>Українською</th></tr>
+<tr><td>1 одн.</td><td><span class="fr">minä (mä)</span></td><td>я</td></tr>
+<tr><td>2 одн.</td><td><span class="fr">sinä (sä)</span></td><td>ти</td></tr>
+<tr><td>3 одн.</td><td><span class="fr">hän</span></td><td>він, вона</td></tr>
+<tr><td>1 множ.</td><td><span class="fr">me</span></td><td>ми</td></tr>
+<tr><td>2 множ.</td><td><span class="fr">te</span></td><td>ви</td></tr>
+<tr><td>3 множ.</td><td><span class="fr">he</span></td><td>вони</td></tr>
+</table></div>
+<div class="tip"><b class="t">Підмет не обов'язковий.</b> Закінчення дієслова вказує особу: <span class="fr">puhun</span> = «я говорю». У розмові замість <span class="fr">hän</span> вживають <span class="fr">se</span> («воно»): <span class="fr">Se on hyvä.</span> Про предмети й тварин завжди <span class="fr">se</span>.</div>
+<div class="qz" data-title="Вправа 2. Привітання">
+Привіт! | Hei
+Дякую! | Kiitos
+Будь ласка! | Ole hyvä
+Вибачте! | Anteeksi
+До побачення! | Näkemiin
+Добрий день! | Hyvää päivää
+Мене звати Михайло. | Minun nimeni on Mikael
+Я не розумію. | En ymmärrä
+Звідки ти? | Mistä sinä olet
+Я з України. | Olen Ukrainasta
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники: множина, відмінки">
+<h2><span class="no">Розділ 3</span>Іменники: множина, відмінки</h2>
+<div class="rule"><b class="t">Правила.</b><p>Артиклів і роду нема. Множина: <span class="fr">-t</span> (<span class="fr">talo → talot</span>, <span class="fr">kirja → kirjat</span>). Додаток у знахідному відмінку (<b>акузатив</b>): повний предмет — <span class="fr">-n</span> (<span class="fr">Luen kirjan.</span> — Прочитаю цю книжку цілком), а процес або невизначена кількість — <b>парціатив</b> (<span class="fr">-a / -ä</span>): <span class="fr">Luen kirjaa.</span> (Читаю книжку), <span class="fr">Juon kahvia.</span> (П'ю каву.) Парціатив стоїть також після заперечення й після чисел: <span class="fr">en juo kahvia, kaksi kirjaa</span>.</p></div>
+<h3>3.1. Основні відмінки</h3>
+<div class="tw"><table>
+<tr><th>Суфікс</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td>-ssa / -ssä</td><td>в (де?)</td><td><span class="fr">talossa</span></td></tr>
+<tr><td>-sta / -stä</td><td>з (звідки?)</td><td><span class="fr">talosta</span></td></tr>
+<tr><td>-an / -en / -on…</td><td>у (куди?)</td><td><span class="fr">taloon</span></td></tr>
+<tr><td>-lla / -llä</td><td>на, біля, (в людини)</td><td><span class="fr">pöydällä</span></td></tr>
+<tr><td>-lta / -ltä</td><td>з поверхні, від людини</td><td><span class="fr">pöydältä</span></td></tr>
+<tr><td>-lle</td><td>на, до, для (людини)</td><td><span class="fr">pöydälle</span></td></tr>
+<tr><td>-n</td><td>чий (присвійний)</td><td><span class="fr">äidin kirja</span></td></tr>
+<tr><td>-ksi</td><td>«стає» чимось</td><td><span class="fr">opettajaksi</span></td></tr>
+</table></div>
+<div class="vocab">
+# Родина
+perhe | перхе | родина
+äiti | яйті | мати
+isä | ісе | батько
+veli | веліі | брат
+sisko | сіско | сестра
+poika | пойка | син, хлопець
+tytär | тютяр | дочка
+isoäiti | ісоїяйті | бабуся
+isoisä | ісоісе | дідусь
+mies | міес | чоловік
+vaimo | вайно | дружина
+lapsi | лапсі | дитина
+# Речі
+talo | тало | дім
+asunto | асунто | квартира
+huone | хуоне | кімната
+keittiö | кейттіо | кухня
+pöytä | пьотя | стіл
+tuoli | туолі | стілець
+ikkuna | іккуна | вікно
+ovi | ові | двері
+sänky | сянкю | ліжко
+auto | ауто | автомобіль
+puhelin | пухелін | телефон
+kirja | кірья | книжка
+</div>
+<div class="qz" data-title="Вправа 3. Множина й відмінки">
+talo → (множина) | talot
+kirja → (множина) | kirjat
+talo → (в домі: -ssa) | talossa
+talo → (з дому: -sta) | talosta
+pöytä → (на столі: -llä) | pöydällä
+Luen ___ . (книжку, парціатив: kirja) | kirjaa
+Juon ___ . (каву, парціатив: kahvi) | kahvia
+en juo ___ (кава, парціатив) | kahvia
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Olla, дієслова">
+<h2><span class="no">Розділ 4</span>Дієслово <span class="fr">olla</span> (бути) і правильні дієслова</h2>
+<div class="cj" data-verb="olla" data-note="бути" data-ipa="олла">
+minä | olen | олен
+sinä | olet | олет
+hän | on | он
+me | olemme | олемме
+te | olette | олетте
+he | ovat | оват
+</div>
+<div class="rule"><b class="t">«Мати» нема.</b><p>Фінською не кажуть «я маю», а «у мене є»: <span class="fr">Minulla on kirja.</span> (У мене є книжка.) <span class="fr">Sinulla on aikaa.</span> (У тебе є час.) Заперечення: <span class="fr">Minulla ei ole aikaa.</span> (У мене нема часу.) Заперечення дієслова: допоміжне слово <span class="fr">en, et, ei, emme, ette, eivät</span> + основа: <span class="fr">En puhu. Hän ei puhu.</span></p></div>
+<div class="exs">
+Olen opiskelija. | олен опіскеліййа | Я студент.
+Oletko väsynyt? | олетко вясюнюют | Ти втомлений?
+Olemme kotona. | олемме котона | Ми вдома.
+Minulla on veli. | мінулла он веліі | У мене є брат.
+Onko sinulla aikaa? | онко сінулла айкаа | У тебе є час?
+Minulla ei ole aikaa. | мінулла ей оле айкаа | Мені нема часу.
+</div>
+<h3>4.1. Правильні дієслова (тип 1)</h3>
+<div class="tw"><table>
+<tr><th></th><th>puhua (говорити)</th><th>syödä (їсти)</th></tr>
+<tr><td>minä</td><td>puhun</td><td>syön</td></tr>
+<tr><td>sinä</td><td>puhut</td><td>syöt</td></tr>
+<tr><td>hän</td><td>puhuu</td><td>syö</td></tr>
+<tr><td>me</td><td>puhumme</td><td>syömme</td></tr>
+<tr><td>te</td><td>puhutte</td><td>syötte</td></tr>
+<tr><td>he</td><td>puhuvat</td><td>syövät</td></tr>
+</table></div>
+<div class="tip"><b class="t">Закінчення.</b> Особове закінчення: <span class="fr">-n, -t, (подовження голосної), -mme, -tte, -vat / -vät</span>. Тип 1 (<span class="fr">puhua, lukea, ostaa</span>): відкидаємо <span class="fr">-a / -ä</span>. Тип 2 (<span class="fr">syödä, juoda, tehdä</span>): відкидаємо <span class="fr">-da / -dä</span>. Питання: <span class="fr">-ko / -kö</span> після першого слова: <span class="fr">Puhutko suomea?</span></div>
+<div class="vocab">
+puhua | пухуа | говорити | puhun
+lukea | лукеа | читати | luen
+kirjoittaa | кірьойттаа | писати | kirjoitan
+työskennellä | тюоскеннеллія | працювати | työskentelen
+asua | асуа | жити | asun
+opiskella | опіскелла | вчитися | opiskelen
+syödä | сюьодя | їсти | syön
+juoda | юода | пити | juon
+nukkua | нуккуа | спати | nukun
+ostaa | остаа | купувати | ostan
+ymmärtää | юммяртяя | розуміти | ymmärrän
+osata | осата | вміти | osaan
+nähdä | няхдя | бачити | näen
+haluta | халута | хотіти | haluan
+</div>
+<div class="cj" data-verb="mennä" data-note="йти" data-ipa="меннях">
+minä | menen | менен
+sinä | menet | менет
+hän | menee | менее
+me | menemme | менемме
+te | menette | менетте
+he | menevät | меневат
+</div>
+<div class="qz" data-title="Вправа 4. Відмінювання">
+Minä ___ opiskelija. (olla) | olen
+Sinä ___ väsynyt. (olla) | olet
+Me ___ kotona. (olla) | olemme
+He ___ väsyneitä. (olla) | ovat
+Minulla ___ veli. (olla) | on
+Minä ___ suomea. (puhua) | puhun
+Sinä ___ kirjaa. (lukea) | luet
+Me ___ kouluun. (mennä) | menemme
+He ___ suomea. (puhua) | puhuvat
+Minä ___ vettä. (juoda) | juon
+___ puhu. (Я не) | En
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, порядок слів">
+<h2><span class="no">Розділ 5</span>Питання, заперечення, порядок слів</h2>
+<div class="vocab">
+kuka | кука | хто
+mikä | мікя | що
+missä | міссяя | де
+mihin | міхін | куди
+mistä | містя | звідки
+milloin | міллойн | коли
+miten | мітен | як
+miksi | мікси | чому
+paljonko | пальонко | скільки
+mikä | мікя | який
+kenen | кенен | чий
+</div>
+<div class="exs">
+Kuka se on? | кука се он | Хто це?
+Mitä sinä teet? | мітя сінях теет | Що ти робиш?
+Missä sinä asut? | міссяя сінях асут | Де ти живеш?
+Mihin sinä menet? | міхін сінях менет | Куди ти йдеш?
+Paljonko se maksaa? | пальонко се максаа | Скільки це коштує?
+Mikä sinun nimesi on? | мікя сінун німесі он | Як тебе звати?
+</div>
+<h3>5.1. Порядок слів</h3>
+<div class="rule"><b class="t">Підмет — присудок — додаток.</b><p>Порядок гнучкий; новий важливий елемент ставлять на початок. Питання без питального слова: <span class="fr">-ko / -kö</span> до дієслова: <span class="fr">Asutko Uzhhorodissa?</span> «Так» — повторення дієслова: <span class="fr">Puhutko suomea? — Puhun.</span> Заперечення: <span class="fr">en, et, ei…</span> перед основою дієслова. Подвійне заперечення нормальне: <span class="fr">En näe ketään.</span> (Нікого не бачу.)</p></div>
+<div class="exs">
+Luen kirjaa. | луен кірьяа | Читаю книжку.
+Tänään työskentelen paljon. | тянян тюоскентелен пальон | Сьогодні багато працюю.
+Näen koiran. | няен койран | Бачу собаку.
+Kirja on pöydällä. | кірья он пьодяллія | Книжка на столі.
+Olen koulussa. | олен коулусса | Я в школі.
+Menen kouluun. | менен коулуун | Іду до школи.
+En näe ketään. | ен няе кетяян | Нікого не бачу.
+</div>
+<div class="tip"><b class="t">Де і куди.</b> Де? — <span class="fr">-ssa / -ssä</span>; куди? — <span class="fr">-an / -en / -hin</span>; звідки? — <span class="fr">-sta / -stä</span>; на, біля — <span class="fr">-lla / -llä</span>.</div>
+<h3>5.2. Прикметники й присвійні слова</h3>
+<div class="tw"><table>
+<tr><th>Прикметник</th><th>Приклад</th></tr>
+<tr><td>новий</td><td><span class="fr">uusi talo</span>, <span class="fr">uudet talot</span></td></tr>
+<tr><td>великий</td><td><span class="fr">iso talo</span>, <span class="fr">isot talot</span></td></tr>
+<tr><td>маленький</td><td><span class="fr">pieni talo</span>, <span class="fr">pienet talot</span></td></tr>
+</table></div>
+<p>Прикметник стоїть <b>перед</b> іменником і узгоджується з ним у відмінку й числі: <span class="fr">uudessa talossa</span> (у новому домі). Присвійність: <span class="fr">minun talo(ni)</span> — мій дім, <span class="fr">sinun talosi</span>, <span class="fr">hänen talonsa</span>, <span class="fr">meidän talomme</span>, <span class="fr">teidän talonne</span>, <span class="fr">heidän talonsa</span>. У розмові вистачає <span class="fr">minun talo</span>.</p>
+<div class="qz" data-title="Вправа 5. Мова в дії">
+___ se on? (хто) | Kuka
+___ se maksaa? (скільки) | Paljonko
+___ sinä asut? (де) | Missä
+En näe ___ . (нікого) | ketään
+___ kouluun. (Іду) | Menen
+Luen ___ . (книжку, парціатив) | kirjaa
+iso → (множина) | isot
+___ puhut suomea? (питальна частка) | Puhutko
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, час і дати</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">nolla</span></td><td>1 <span class="fr">yksi</span></td><td>2 <span class="fr">kaksi</span></td><td>3 <span class="fr">kolme</span></td></tr>
+<tr><td>4 <span class="fr">neljä</span></td><td>5 <span class="fr">viisi</span></td><td>6 <span class="fr">kuusi</span></td><td>7 <span class="fr">seitsemän</span></td></tr>
+<tr><td>8 <span class="fr">kahdeksan</span></td><td>9 <span class="fr">yhdeksän</span></td><td>10 <span class="fr">kymmenen</span></td><td>11 <span class="fr">yksitoista</span></td></tr>
+<tr><td>12 <span class="fr">kaksitoista</span></td><td>20 <span class="fr">kaksikymmentä</span></td><td>30 <span class="fr">kolmekymmentä</span></td><td>40 <span class="fr">neljäkymmentä</span></td></tr>
+<tr><td>50 <span class="fr">viisikymmentä</span></td><td>100 <span class="fr">sata</span></td><td>200 <span class="fr">kaksisataa</span></td><td>1000 <span class="fr">tuhat</span></td></tr>
+</table></div>
+<div class="vocab">
+# Дні тижня
+maanantai | маанантай | понеділок
+tiistai | тіістай | вівторок
+keskiviikko | кесківіікко | середа
+torstai | торстай | четвер
+perjantai | перйантай | п'ятниця
+lauantai | лауантай | субота
+sunnuntai | суннунтай | неділя
+# Місяці
+tammikuu | таммікуу | січень
+helmikuu | хелмікуу | лютий
+maaliskuu | мааліскуу | березень
+huhtikuu | хухтікуу | квітень
+toukokuu | тоукокуу | травень
+kesäkuu | кесякуу | червень
+heinäkuu | хейнякуу | липень
+elokuu | елокуу | серпень
+syyskuu | сюскуу | вересень
+lokakuu | локакуу | жовтень
+marraskuu | марраскуу | листопад
+joulukuu | йоулукуу | грудень
+# Час
+tänään | тянян | сьогодні
+huomenna | хуомена | завтра
+eilen | ейлен | вчора
+aamulla | аамулла | вранці
+illalla | іллалла | ввечері
+nyt | нют | зараз
+</div>
+<div class="exs">
+Paljonko kello on? | пальонко келло он | Котра година?
+Kello on viisi. | келло он віісі | П'ята година.
+Mihin aikaan? | міхін айкаан | О котрій?
+Kello kahdeksan. | келло кахдексан | О восьмій.
+Tänään on maanantai. | тянян он маанантай | Сьогодні понеділок.
+Perjantaina olen vapaalla. | пер'йантаіна олен вапаалла | У п'ятницю я вільний.
+Kello on puoli kolme. | келло он пуолі колме | Пів на третю (2:30).
+</div>
+<div class="tip"><b class="t">Пів на третю.</b> <span class="fr">puoli kolme</span> = 2:30 («пів до третьої»), як в українській «пів на третю». Чверть: <span class="fr">varttia vaille kolme</span> = 2:45, <span class="fr">vartin yli kaksi</span> = 2:15.</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+2 | kaksi
+3 | kolme
+5 | viisi
+10 | kymmenen
+20 | kaksikymmentä
+100 | sata
+понеділок | maanantai
+п'ятниця | perjantai
+неділя | sunnuntai
+жовтень | lokakuu
+завтра | huomenna
+вчора | eilen
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа й напої
+leipä | лейпя | хліб
+vesi | весі | вода
+maito | майто | молоко
+kahvi | кахві | кава
+tee | тее | чай
+mehu | меху | сік
+viini | віііні | вино
+olut | олут | пиво
+juusto | юусто | сир
+liha | ліха | м'ясо
+kala | кала | риба
+hedelmä | хеделмя | фрукти
+omena | омена | яблуко
+muna | муна | яйце
+keitto | кейтто | суп
+riisi | ріісі | рис
+suklaa | суклаа | шоколад
+sokeri | сокері | цукор
+suola | суола | сіль
+# Місто
+kaupunki | каупункі | місто
+katu | кату | вулиця
+tori | торі | площа, ринок
+asema | асема | вокзал, зупинка
+museo | мусео | музей
+pankki | панкі | банк
+apteekki | аптеекі | аптека
+ravintola | равінтола | ресторан
+sairaala | сайраала | лікарня
+metro | метро | метро
+bussi | буссі | автобус
+# Покупки
+Paljonko se maksaa? | пальонко се максаа | скільки коштує
+halpa | халпа | дешевий
+kallis | каллис | дорогий
+raha | раха | гроші
+kortti | кортті | картка
+lasku | ласку | рахунок
+</div>
+<div class="exs">
+Yksi kahvi maidolla, kiitos. | юксі кахві майдолла кіітос | Каву з молоком, будь ласка.
+Lasku, kiitos. | ласку кіітос | Рахунок, будь ласка.
+Paljonko leipä maksaa? | пальонко лейпя максаа | Скільки коштує хліб?
+Tämä on liian kallis. | тяма он ліян каллис | Це занадто дорого.
+Missä asema on? | міссяя асема он | Де вокзал?
+Voinko maksaa kortilla? | войнко максаа кортілла | Можна заплатити карткою?
+Vettä, kiitos. | веття кіітос | Води, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 7. Слова">
+хліб | leipä
+вода | vesi
+молоко | maito
+сир | juusto
+вулиця | katu
+вокзал | asema
+лікарня | sairaala
+аптека | apteekki
+гроші | raha
+дорогий | kallis
+дешевий | halpa
+Рахунок, будь ласка. | Lasku, kiitos
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. Kahvilassa (у кав'ярні)
+Tarjoilija: Hyvää päivää. Mitä saisi olla? | Добрий день. Що бажаєте?
+Asiakas: Kahvi ja pala kakkua, kiitos. | Каву й шматок торта, будь ласка.
+Tarjoilija: Maidolla? | З молоком?
+Asiakas: Ei kiitos. Ilman maitoa. | Ні, дякую. Без молока.
+Tarjoilija: Ole hyvä. Hyvää ruokahalua! | Прошу. Смачного!
+Asiakas: Kiitos. Voinko maksaa kortilla? | Дякую. Можна заплатити карткою?
+# 2. Asemalla (на вокзалі)
+Matkustaja: Hyvää huomenta, yksi lippu Helsinkiin, kiitos. | Доброго ранку, один квиток до Гельсінкі, будь ласка.
+Myyjä: Meno vai meno-paluu? | В один бік чи туди й назад?
+Matkustaja: Meno. Milloin juna lähtee? | В один бік. Коли відправляється потяг?
+Myyjä: Varttia yli kymmenen. | О чверть по десятій.
+Matkustaja: Paljonko lippu maksaa? | Скільки коштує квиток?
+Myyjä: Kaksikymmentä euroa. | Двадцять євро.
+# 3. Tien kysyminen (дорога)
+Turisti: Anteeksi, missä museo on? | Вибачте, де музей?
+Nainen: Kävelkää suoraan ja kääntykää oikealle. | Ідіть прямо й поверніть праворуч.
+Turisti: Onko se kaukana? | Це далеко?
+Nainen: Ei, viiden minuutin kävelymatka. | Ні, п'ять хвилин пішки.
+Turisti: Kiitos paljon. | Дуже дякую.
+Nainen: Eipä kestä. | Нема за що.
+# 4. Tutustuminen (знайомство)
+Pekka: Hei, minä olen Pekka. Entä sinä? | Привіт, я Пекка. А ти?
+Anna: Minä olen Anna. Hauska tutustua. | Я Анна. Приємно.
+Pekka: Mistä sinä olet? | Звідки ти?
+Anna: Ukrainasta, Uzhhorodista. | З України, з Ужгорода.
+Pekka: Puhut hyvin suomea! | Ти дуже добре говориш фінською!
+Anna: Kiitos, opiskelen vielä. | Дякую, ще вчуся.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Що бажаєте? | Mitä saisi olla
+Каву, будь ласка. | Kahvi, kiitos
+Квиток до Гельсінкі. | Yksi lippu Helsinkiin
+Де музей? | Missä museo on
+П'ять хвилин пішки. | Viiden minuutin kävelymatka
+Нема за що. | Eipä kestä
+Я Анна. | Minä olen Anna
+Ще вчуся. | Opiskelen vielä
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="vocab">
+# Професії
+opettaja | опеттайя | вчитель | m
+lääkäri | ляякяріі | лікар | m
+sairaanhoitaja | сайраанхойтайя | медсестра | f
+insinööri | інсінооріі | інженер | m
+kuljettaja | кульєттайя | водій | m
+myyjä | мюйя | продавець | m
+kokki | кокі | кухар | m
+opiskelija | опіскеліййа | студент | m
+poliisi | поліісі | поліцейський | m
+asianajaja | асіанайайя | адвокат | m
+# Тіло й здоров'я
+pää | пяя | голова
+silmä | сільмя | око
+korva | корва | вухо
+nenä | неня | ніс
+suu | суу | рот
+käsi | кясі | рука
+jalka | ялка | нога
+vatsa | ватса | живіт
+selkä | селкя | спина
+sydän | сюдян | серце
+Päätä särkee. |  | Болить голова. |
+Olen sairas. |  | Я хворий. |
+kuume | кууме | гарячка
+apteekki | аптеекі | аптека
+lääke | ляке | ліки
+# Одяг
+paita | пайта | сорочка
+housut | хоусут | штани
+mekko | мекко | сукня
+takki | таккі | куртка
+kengät | кенгят | взуття
+villapaita | віллапайта | светр
+hattu | хатту | шапка
+koko | коко | розмір
+# Погода
+sää | сяя | погода
+aurinko | аурінко | сонце
+sade | саде | дощ
+lumi | лумі | сніг
+tuuli | туулі | вітер
+On kylmä. |  | Холодно. |
+On kuuma. |  | Жарко. |
+Sataa. |  | Іде дощ. |
+# Транспорт
+bussi | буссі | автобус
+juna | юна | потяг
+raitiovaunu | райтіовауну | трамвай
+lentokone | лентоконе | літак
+polkupyörä | полкупюоря | велосипед
+lippu | ліппу | квиток
+pysäkki | пюсякі | зупинка
+lentokenttä | лентокентя | аеропорт
+# Дім і дозвілля
+olohuone | олохуоне | вітальня
+kylpyhuone | кюлпюхуоне | ванна
+jääkaappi | яякаапі | холодильник
+sohva | сохва | диван
+elokuva | елокува | фільм
+musiikki | мусііккі | музика
+urheilu | урхейлу | спорт
+laittaa ruokaa | лайттаа руокаа | готувати
+matkustaa | маткустаа | подорожувати
+</div>
+<div class="exs">
+Olen opettaja. | олен опеттайя | Я вчитель.
+Työskentelen kuljettajana. | тюоскентелен кульєттайяна | Працюю водієм.
+Kurkkuun sattuu. | куркун саттуу | У мене болить горло.
+Mikä sinun kokosi on? | мікя сінун кокосі он | Який у тебе розмір?
+Tänään on kylmä. | тянян он кюлмя | Сьогодні холодно.
+Sataa. | сатаа | Іде дощ.
+Missä pysäkki on? | міссяя пюсякі он | Де зупинка?
+Tykkään laittaa ruokaa. | тюккян лайттаа руокаа | Люблю готувати.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | lääkäri
+вчитель | opettaja
+голова | pää
+рука | käsi
+сукня | mekko
+дощ | sade
+сніг | lumi
+автобус | bussi
+потяг | juna
+квиток | lippu
+аеропорт | lentokenttä
+Іде дощ. | Sataa
+Сьогодні холодно. | Tänään on kylmä
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Бажання, можливість і наказовий спосіб</h2>
+<h3>10.1. Модальні дієслова</h3>
+<p>Модальне дієслово відмінюється, а головне стоїть в <b>інфінітиві</b>: <span class="fr">Voin tulla.</span> (Можу прийти.) <span class="fr">Haluan juoda kahvia.</span> (Хочу випити кави.) <span class="fr">Minun täytyy työskennellä.</span> (Мені треба працювати; <b>minun</b> — родовий відмінок.)</p>
+<div class="tw"><table>
+<tr><th></th><th>voida (могти)</th><th>haluta (хотіти)</th><th>osata (вміти)</th></tr>
+<tr><td>minä</td><td>voin</td><td>haluan</td><td>osaan</td></tr>
+<tr><td>sinä</td><td>voit</td><td>haluat</td><td>osaat</td></tr>
+<tr><td>hän</td><td>voi</td><td>haluaa</td><td>osaa</td></tr>
+<tr><td>me</td><td>voimme</td><td>haluamme</td><td>osaamme</td></tr>
+<tr><td>te</td><td>voitte</td><td>haluatte</td><td>osaatte</td></tr>
+<tr><td>he</td><td>voivat</td><td>haluavat</td><td>osaavat</td></tr>
+</table></div>
+<div class="rule"><b class="t">Ввічливо і заборона.</b><p>«Я б хотів…» — <span class="fr">Haluaisin…</span> (<span class="fr">Haluaisin teetä.</span>). «Можна?» — <span class="fr">Saako…?</span> або <span class="fr">Voinko…?</span> «Не можна» — <span class="fr">Ei saa</span>: <span class="fr">Täällä ei saa tupakoida.</span></p></div>
+<div class="exs">
+Saanko tulla sisään? | саанко тулла сісяян | Можна ввійти?
+Haluan juoda kahvia. | халуан юода кахвіа | Хочу пити каву.
+Minun täytyy tänään työskennellä. | мінун тяютюю тянян тюоскеннеллія | Сьогодні мені треба працювати.
+En voi nyt puhua. | ен вой нют пухуа | Зараз не можу говорити.
+Osaatko laittaa ruokaa? | осаатко лайттаа руокаа | Вмієш готувати?
+Täällä ei saa tupakoida. | тяялля ей саа тупакойда | Тут не можна курити.
+Haluaisin teetä, kiitos. | халуайсін теетя кіітос | Я б хотів чаю, будь ласка.
+</div>
+<h3>10.2. Наказовий спосіб</h3>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>ти</th><th>ви</th></tr>
+<tr><td>puhua</td><td>puhu!</td><td>puhukaa!</td></tr>
+<tr><td>lukea</td><td>lue!</td><td>lukekaa!</td></tr>
+<tr><td>odottaa</td><td>odota!</td><td>odottakaa!</td></tr>
+<tr><td>tulla</td><td>tule!</td><td>tulkaa!</td></tr>
+<tr><td>olla</td><td>ole!</td><td>olkaa!</td></tr>
+<tr><td>kirjoittaa</td><td>kirjoita!</td><td>kirjoittakaa!</td></tr>
+</table></div>
+<p>Заборона: <span class="fr">älä</span> + основа: <span class="fr">Älä polta tupakkaa!</span> Ввічливо: <span class="fr">Olkaa hyvä ja tulkaa tänne.</span></p>
+<div class="exs">
+Odota hetki! | одота хеткі | Зачекай хвилинку!
+Tule tänne, ole hyvä. | туле тянне оле хювя | Підійди сюди, будь ласка.
+Puhu hitaammin, kiitos. | пуху хітаамін кіітос | Говори повільніше, будь ласка.
+Älä polta täällä! | ялля полта тяялля | Не кури тут!
+Ole varovainen! | оле варовайнен | Будь обережний!
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Minä ___ tulla. (могти) | voin
+Minä ___ juoda kahvia. (хочу) | haluan
+Me ___ mennä. (можемо) | voimme
+Hän ___ kahvia. (хоче) | haluaa
+___ laittaa ruokaa? (Ти вмієш) | Osaatko
+___ teetä. (Я б хотів) | Haluaisin
+lukea → (ти!) ___ | lue
+puhua → (ти!) ___ | puhu
+puhua → (ви!) ___ | puhukaa
+___ polta täällä! (Не) | Älä
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. Lääkärillä (у лікаря)
+Lääkäri: Hyvää päivää, mikä vaivaa? | Добрий день, що вас турбує?
+Potilas: Päätä särkee ja minulla on kuumetta. | Болить голова, і в мене температура.
+Lääkäri: Kauanko se on kestänyt? | Як довго це триває?
+Potilas: Kaksi päivää. | Два дні.
+Lääkäri: Ottakaa nämä tabletit ja pysykää kotona. | Приймайте ці таблетки й залишайтеся вдома.
+Potilas: Kiitos, tohtori. | Дякую, докторе.
+# 2. Vaatekaupassa (у магазині одягу)
+Myyjä: Voinko auttaa? | Вам допомогти?
+Asiakas: Etsin takkia. | Шукаю куртку.
+Myyjä: Mikä koko? | Який розмір?
+Asiakas: Koko M. Voinko sovittaa? | Розмір M. Можна приміряти?
+Myyjä: Tietysti, sovituskoppi on tuolla. | Звісно, примірочна там.
+Asiakas: Paljonko se maksaa? | Скільки коштує?
+Myyjä: Sata kaksikymmentä euroa. | Сто двадцять євро.
+# 3. Hotellissa (у готелі)
+Vieras: Hyvää iltaa, minulla on varaus. | Добрий вечір, у мене бронь.
+Vastaanottovirkailija: Millä nimellä? | На яке ім'я?
+Vieras: Smith. Yhden hengen huone kolmeksi yöksi. | Сміт. Одномісний номер на три ночі.
+Vastaanottovirkailija: Tässä avain. Aamiainen on seitsemästä kymmeneen. | Ось ключ. Сніданок з сьомої до десятої.
+Vieras: Onko täällä wifi? | Є вайфай?
+Vastaanottovirkailija: On, salasana on avaimessa. | Так, пароль на ключі.
+# 4. Puhelimessa (по телефону)
+Anna: Haloo? | Алло?
+Pekka: Hei Anna, täällä Pekka. Mitä kuuluu? | Привіт, Анно, це Пекка. Як справи?
+Anna: Hyvää, kiitos. Entä sinulle? | Добре, дякую. А тобі?
+Pekka: Hyvää minullekin. Oletko vapaa huomenna illalla? | Теж добре. Ти вільна завтра ввечері?
+Anna: Olen, miksi? | Так, а чому?
+Pekka: Mennäänkö elokuviin? | Підемо в кіно?
+Anna: Mielelläni! | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що вас турбує? | Mikä vaivaa
+Болить голова. | Päätä särkee
+Шукаю куртку. | Etsin takkia
+Який розмір? | Mikä koko
+Скільки коштує? | Paljonko se maksaa
+У мене бронь. | Minulla on varaus
+Є вайфай? | Onko täällä wifi
+Підемо в кіно? | Mennäänkö elokuviin
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Olla</td><td>olen, olet, on, olemme, olette, ovat</td></tr>
+<tr><td>Теперішній</td><td>-n, -t, (довга голосна), -mme, -tte, -vat / -vät</td></tr>
+<tr><td>Артикль</td><td>нема; роду нема</td></tr>
+<tr><td>Множина</td><td>-t</td></tr>
+<tr><td>Відмінки</td><td>-n, -a / -ä, -ssa, -sta, -an, -lla</td></tr>
+<tr><td>Заперечення</td><td>en, et, ei, emme, ette, eivät + основа</td></tr>
+<tr><td>«Мати»</td><td>minulla on …</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Читаєш усе: ä, ö, y, подвійні літери</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомишся, множина, відмінки</td></tr>
+<tr><td>3</td><td>4</td><td>Olla і 10 дієслів</td></tr>
+<tr><td>4</td><td>5</td><td>Питання, порядок слів</td></tr>
+<tr><td>5</td><td>6</td><td>Числа, час, дні</td></tr>
+<tr><td>6</td><td>7</td><td>Їжа, місто</td></tr>
+<tr><td>7</td><td>8</td><td>Діалоги вголос</td></tr>
+<tr><td>8</td><td>Повторення</td><td>Говориш 3–5 хвилин про себе</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1">
+Minä ___ opiskelija. (olla) | olen
+Sinä ___ väsynyt. (olla) | olet
+Minulla ___ aikaa. (У мене нема) | ei ole
+talo → (множина) | talot
+talo → (в домі) | talossa
+___ se maksaa? (скільки) | Paljonko
+Minä ___ suomea. (puhua) | puhun
+5 | viisi
+п'ятниця | perjantai
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати будь-яке фінське слово</label></li>
+<li><label><input type="checkbox"> Привітатися й представитися</label></li>
+<li><label><input type="checkbox"> Вживати olla і правильні дієслова</label></li>
+<li><label><input type="checkbox"> Утворити множину та основні відмінки</label></li>
+<li><label><input type="checkbox"> Назвати числа, дні, місяці, час</label></li>
+<li><label><input type="checkbox"> Замовити каву й спитати дорогу</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Suomi</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^fi[-_]FI/i.test(x.lang))||v.find(x=>/^fi/i.test(x.lang))||('fi'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='fi-FI';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('fi1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('fi1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('fi1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('fi1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='fi1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

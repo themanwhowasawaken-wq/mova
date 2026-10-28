@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deutsch A2: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Deutsch A2</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Deutsch A2</h1>
+  <p>Продовження курсу німецька: минулий і майбутній час, відмінки та форми, порівняння, складні речення, читання, листи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="de-a1.html">Рівень A1</a><a href="de-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Рівень A2: вчишся <b>розповідати про минуле, будувати плани, ввічливо просити, порівнювати й пояснювати причини</b>. Вимова, <span class="fr">sein, haben</span>, артиклі, порядок слів, числа й час розібрані в курсі A1.</p>
+<h3>Що вмітимеш наприкінці</h3>
+<ul>
+<li>розповісти про минуле (<span class="fr">ich habe gemacht, ich bin gegangen, ich war</span>);</li>
+<li>говорити про плани (<span class="fr">ich werde…, ich will…</span>);</li>
+<li>ввічливо просити (<span class="fr">ich hätte gern, könnten Sie…</span>);</li>
+<li>користуватися Akkusativ і Dativ, займенниками, прийменниками;</li>
+<li>будувати підрядні речення (<span class="fr">weil, dass, wenn, obwohl</span>);</li>
+<li>порівнювати, писати лист.</li>
+</ul>
+<div class="tip"><b class="t">Перевага українця.</b> Відмінки й роди вам знайомі з української — це полегшує німецьку. Нове — порядок слів і дієслово в кінці підрядного речення.</div>
+<div class="warn"><b>Хибні друзі.</b> <span class="fr">das Gift</span> = отрута (а не подарунок), <span class="fr">der Rock</span> = спідниця, <span class="fr">bald</span> = незабаром, <span class="fr">die Fabrik</span> = завод, <span class="fr">der Brief</span> = лист, <span class="fr">wer</span> = хто, <span class="fr">bekommen</span> = отримувати, <span class="fr">der Kuchen</span> = пиріг, <span class="fr">der Hut</span> = капелюх.</div>
+<h3>Швидка перевірка A1</h3>
+<div class="qz" data-title="Вправа 0. Повторення A1">
+Ich ___ Student. (sein) | bin
+Du ___ zu Hause. (sein) | bist
+Ich ___ einen Bruder. (haben) | habe
+Ich ___ Deutsch. (sprechen) | spreche
+Ich wohne ___ Berlin. (in) | in
+Ich ___ einen Kaffee. (möchten) | möchte
+Du ___ helfen. (können) | kannst
+Ich gehe ___ Arbeit. (до) | zur
+Kaffee ___ Zucker. (без) | ohne
+Ich ___ arbeiten. (müssen) | muss
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Минулі часи" data-short="Perfekt">
+<h2><span class="no">Розділ 1</span>Минулий час: <span class="fr">Perfekt</span></h2>
+<p class="lead">Головний минулий час у розмові: <b>haben</b> або <b>sein</b> (2-ге місце) + <b>Partizip II</b> (у кінці).</p>
+<div class="tw"><table>
+<tr><th>Тип</th><th>Утворення</th><th>Приклад</th></tr>
+<tr><td>Слабкі</td><td>ge-…-t</td><td>machen → gemacht; arbeiten → gearbeitet</td></tr>
+<tr><td>Сильні</td><td>ge-…-en (часто зміна голосної)</td><td>essen → gegessen; sehen → gesehen; trinken → getrunken</td></tr>
+<tr><td>З віддільним префіксом</td><td>префікс + ge + …</td><td>einkaufen → eingekauft; aufstehen → aufgestanden</td></tr>
+<tr><td>Без ge- (be-, ver-, er-, -ieren)</td><td>без ge-</td><td>besuchen → besucht; verstehen → verstanden; studieren → studiert</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>Partizip II</th><th>Допоміжне</th></tr>
+<tr><td>sein</td><td>gewesen</td><td>sein</td></tr>
+<tr><td>haben</td><td>gehabt</td><td>haben</td></tr>
+<tr><td>gehen</td><td>gegangen</td><td>sein</td></tr>
+<tr><td>kommen</td><td>gekommen</td><td>sein</td></tr>
+<tr><td>fahren</td><td>gefahren</td><td>sein</td></tr>
+<tr><td>lesen</td><td>gelesen</td><td>haben</td></tr>
+<tr><td>schreiben</td><td>geschrieben</td><td>haben</td></tr>
+<tr><td>sprechen</td><td>gesprochen</td><td>haben</td></tr>
+<tr><td>nehmen</td><td>genommen</td><td>haben</td></tr>
+</table></div>
+<div class="rule"><b class="t">Sein чи haben?</b><p>З <b>sein</b> — дієслова руху та зміни стану (<span class="fr">gehen, kommen, fahren, fliegen, aufstehen</span>) і <span class="fr">sein, bleiben, werden</span>. Усі інші — з <b>haben</b>.</p></div>
+<div class="exs">
+Gestern habe ich den ganzen Tag gearbeitet. | ґестерн хабе іх ден ґанцен таґ ґеарбайтет | Вчора я працював цілий день.
+Hast du den Film gesehen? | хаст ду ден філм ґезеен | Ти бачив цей фільм?
+Wir sind ans Meer gefahren. | вір зінд анс меер ґефарен | Ми їздили на море.
+Maria ist um acht angekommen. | маріа іст ум ахт анґекоммен | Марія приїхала о восьмій.
+Ich habe keine Zeit gehabt. | іх хабе кайне цайт ґеабт | У мене не було часу.
+Was hast du am Samstag gemacht? | вас хаст ду ам замстаґ ґемахт | Що ти робив у суботу?
+</div>
+<div class="qz" data-title="Вправа 1. Perfekt">
+Ich ___ gearbeitet. (haben) | habe
+Du ___ gegessen. | hast
+Sie ___ gesprochen. | hat
+Wir ___ gesehen. | haben
+Ihr ___ gelesen? | habt
+Ich ___ nach Hause gegangen. (sein) | bin
+Er ___ gekommen. | ist
+Wir ___ gefahren. | sind
+machen → ich habe ___ | gemacht
+sehen → ich habe ___ | gesehen
+schreiben → ich habe ___ | geschrieben
+aufstehen → ich bin ___ | aufgestanden
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Präteritum">
+<h2><span class="no">Розділ 2</span>Präteritum: war, hatte, wollte</h2>
+<p class="lead">У розмові для <span class="fr">sein, haben</span> і модальних частіше вживають Präteritum, а не Perfekt.</p>
+<div class="tw"><table>
+<tr><th></th><th>sein</th><th>haben</th><th>können</th><th>müssen</th><th>wollen</th></tr>
+<tr><td>ich</td><td>war</td><td>hatte</td><td>konnte</td><td>musste</td><td>wollte</td></tr>
+<tr><td>du</td><td>warst</td><td>hattest</td><td>konntest</td><td>musstest</td><td>wolltest</td></tr>
+<tr><td>er / sie / es</td><td>war</td><td>hatte</td><td>konnte</td><td>musste</td><td>wollte</td></tr>
+<tr><td>wir</td><td>waren</td><td>hatten</td><td>konnten</td><td>mussten</td><td>wollten</td></tr>
+<tr><td>ihr</td><td>wart</td><td>hattet</td><td>konntet</td><td>musstet</td><td>wolltet</td></tr>
+<tr><td>sie / Sie</td><td>waren</td><td>hatten</td><td>konnten</td><td>mussten</td><td>wollten</td></tr>
+</table></div>
+<div class="exs">
+Gestern war ich zu Hause. | ґестерн вар іх цу хаузе | Вчора я був удома.
+Wir hatten keine Zeit. | вір хаттен кайне цайт | У нас не було часу.
+Ich konnte nicht kommen. | іх коннте ніхт коммен | Я не міг прийти.
+Er musste lange arbeiten. | ер муссте ланґе арбайтен | Йому довелось довго працювати.
+Als Kind wollte ich Arzt werden. | алс кінд воллте іх арцт верден | У дитинстві я хотів стати лікарем.
+Es war kalt, und es regnete. | ес вар калт унд ес реґнете | Було холодно, і йшов дощ.
+</div>
+<div class="qz" data-title="Вправа 2. Präteritum">
+Gestern ___ ich zu Hause. (sein) | war
+Du ___ krank. (sein) | warst
+Wir ___ im Kino. (sein) | waren
+Ich ___ keine Zeit. (haben) | hatte
+Sie ___ Hunger. (haben, sie/Sie) | hatten
+Ich ___ nicht kommen. (können) | konnte
+Er ___ arbeiten. (müssen) | musste
+Wir ___ ins Kino gehen. (wollen) | wollten
+</div>
+</section>
+
+<section class="unit" id="u3" data-grp="Майбутнє й умовний" data-short="Futur">
+<h2><span class="no">Розділ 3</span>Майбутній час</h2>
+<h3>3.1. Presens + час</h3>
+<p>Найчастіше — звичайне теперішнє з вказівкою часу: <span class="fr">Morgen fahre ich nach Berlin.</span></p>
+<h3>3.2. Futur I: werden + інфінітив</h3>
+<div class="cj" data-verb="werden" data-note="Futur I" data-ipa="верден">
+ich | werde | верде
+du | wirst | вірст
+er / sie / es | wird | вірд
+wir | werden | верден
+ihr | werdet | вердет
+sie / Sie | werden | верден
+</div>
+<div class="exs">
+Morgen fahre ich nach Berlin. | морґен фаре іх нах берлін | Завтра їду до Берліна.
+Ich werde morgen mit ihm sprechen. | іх верде морґен міт ім шпрехен | Завтра поговорю з ним.
+Nächstes Jahr werden wir reisen. | нехстес йар верден вір райзен | Наступного року ми подорожуватимемо.
+Wirst du Zeit haben? | вірст ду цайт хабен | Чи матимеш час?
+Ich werde die Hausaufgaben heute Abend machen. | іх верде ді хаузауфґабен хойте абенд махен | Зроблю домашнє ввечері.
+</div>
+<div class="qz" data-title="Вправа 3. Майбутній час">
+Ich ___ morgen sprechen. (werden) | werde
+Du ___ Zeit haben. (werden) | wirst
+Er ___ kommen. (werden) | wird
+Wir ___ reisen. (werden) | werden
+Ihr ___ sehen. (werden) | werdet
+Morgen ___ ich nach Berlin. (fahren) | fahre
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Konjunktiv II">
+<h2><span class="no">Розділ 4</span>Умовний спосіб і ввічливі прохання</h2>
+<p class="lead">Ввічливість і мрії: <span class="fr">würde + інфінітив</span>, а також короткі форми <span class="fr">hätte, wäre, könnte, möchte</span>.</p>
+<div class="tw"><table>
+<tr><th></th><th>würde + inf.</th><th>hätte</th><th>wäre</th><th>könnte</th></tr>
+<tr><td>ich</td><td>würde</td><td>hätte</td><td>wäre</td><td>könnte</td></tr>
+<tr><td>du</td><td>würdest</td><td>hättest</td><td>wärst</td><td>könntest</td></tr>
+<tr><td>er / sie / es</td><td>würde</td><td>hätte</td><td>wäre</td><td>könnte</td></tr>
+<tr><td>wir</td><td>würden</td><td>hätten</td><td>wären</td><td>könnten</td></tr>
+<tr><td>ihr</td><td>würdet</td><td>hättet</td><td>wärt</td><td>könntet</td></tr>
+<tr><td>sie / Sie</td><td>würden</td><td>hätten</td><td>wären</td><td>könnten</td></tr>
+</table></div>
+<div class="exs">
+Ich hätte gern einen Kaffee. | іх хетте ґерн айнен каффее | Я б хотів каву.
+Ich möchte einen Tisch reservieren. | іх мьохте айнен тіш резерфірен | Хотів би забронювати столик.
+Könnten Sie mir helfen? | кьоннтен зі мір хелфен | Чи не могли б Ви мені допомогти?
+Könntest du mir das Salz geben? | кьоннтест ду мір дас залц ґебен | Не міг би ти передати сіль?
+Wenn ich Zeit hätte, würde ich mehr reisen. | венн іх цайт хетте вюрде іх мер райзен | Якби я мав час, подорожував би більше.
+An deiner Stelle würde ich mich ausruhen. | ан дайнер штелле вюрде іх міх аусруен | На твоєму місці я б відпочив.
+</div>
+<div class="qz" data-title="Вправа 4. Konjunktiv II">
+Я б хотів каву. | Ich hätte gern einen Kaffee
+Хотів би забронювати столик. | Ich möchte einen Tisch reservieren
+Чи не могли б Ви допомогти? | Könnten Sie mir helfen
+Не міг би ти допомогти? | Könntest du mir helfen
+Якби я мав час | Wenn ich Zeit hätte
+Ich ___ gern ein Wasser. (haben, Konj. II) | hätte
+Wenn ich reich ___ , ... (sein, Konj. II) | wäre
+Ich ___ mehr reisen. (würde) | würde
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Відмінки" data-short="Akkusativ і Dativ">
+<h2><span class="no">Розділ 5</span>Akkusativ і Dativ</h2>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th><th>n</th><th>pl</th></tr>
+<tr><td>Nominativ</td><td>der / ein</td><td>die / eine</td><td>das / ein</td><td>die</td></tr>
+<tr><td>Akkusativ</td><td><b>den / einen</b></td><td>die / eine</td><td>das / ein</td><td>die</td></tr>
+<tr><td>Dativ</td><td><b>dem / einem</b></td><td><b>der / einer</b></td><td><b>dem / einem</b></td><td><b>den + -n</b></td></tr>
+</table></div>
+<p><b>Akkusativ</b> — прямий додаток (кого? що?): <span class="fr">Ich sehe den Mann.</span> <b>Dativ</b> — кому? <span class="fr">Ich gebe dem Mann das Buch.</span></p>
+<h3>5.1. Займенники</h3>
+<div class="tw"><table>
+<tr><th>Nom.</th><th>Akk.</th><th>Dat.</th></tr>
+<tr><td>ich</td><td>mich</td><td>mir</td></tr>
+<tr><td>du</td><td>dich</td><td>dir</td></tr>
+<tr><td>er</td><td>ihn</td><td>ihm</td></tr>
+<tr><td>sie</td><td>sie</td><td>ihr</td></tr>
+<tr><td>es</td><td>es</td><td>ihm</td></tr>
+<tr><td>wir</td><td>uns</td><td>uns</td></tr>
+<tr><td>ihr</td><td>euch</td><td>euch</td></tr>
+<tr><td>sie / Sie</td><td>sie / Sie</td><td>ihnen / Ihnen</td></tr>
+</table></div>
+<h3>5.2. Прийменники з Dativ</h3>
+<p><b>aus, bei, mit, nach, seit, von, zu</b> — завжди Dativ: <span class="fr">mit dem Bus, nach der Arbeit, zu meiner Mutter, seit einem Jahr.</span></p>
+<h3>5.3. Wechselpräpositionen: wo? чи wohin?</h3>
+<p><b>in, an, auf, unter, über, vor, hinter, neben, zwischen</b>: <span class="fr">wo?</span> (де) → Dativ; <span class="fr">wohin?</span> (куди) → Akkusativ.</p>
+<div class="exs">
+Ich liebe dich. | іх лібе діх | Я тебе люблю.
+Ich sehe ihn. | іх зее ін | Бачу його.
+Ich kenne sie. | іх кенне зі | Я її знаю.
+Ich gebe dir das Buch. | іх ґебе дір дас бух | Даю тобі книгу.
+Ich schreibe ihm einen Brief. | іх шрайбе ім айнен бріф | Пишу йому лист.
+Kannst du mir helfen? | каннст ду мір хелфен | Можеш мені допомогти?
+Ich fahre mit dem Bus. | іх фаре міт дем бус | Їду автобусом.
+Ich bin in der Stadt. | іх бін ін дер штадт | Я в місті.
+Ich gehe in die Stadt. | іх ґее ін ді штадт | Іду в місто.
+</div>
+<div class="qz" data-title="Вправа 5. Відмінки">
+Ich sehe ___ Mann. (der → Akk.) | den
+Ich sehe ___ Frau. (die → Akk.) | die
+Ich gebe ___ Mann das Buch. (Dat.) | dem
+Ich gebe ___ Frau das Buch. (Dat.) | der
+Ich sehe ___ . (Його) | ihn
+Ich liebe ___ . (Тебе) | dich
+Ich gebe ___ das Buch. (Тобі) | dir
+Kannst du ___ helfen? (мені) | mir
+Ich fahre mit ___ Bus. (dem) | dem
+Ich gehe in ___ Stadt. (die) | die
+Ich bin in ___ Stadt. (der) | der
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Зворотні дієслова">
+<h2><span class="no">Розділ 6</span>Зворотні дієслова</h2>
+<div class="cj" data-verb="sich freuen" data-note="радіти" data-ipa="зіх фройен">
+ich | freue mich | фройе міх
+du | freust dich | фройст діх
+er / sie / es | freut sich | фройт зіх
+wir | freuen uns | фройен унс
+ihr | freut euch | фройт ойх
+sie / Sie | freuen sich | фройен зіх
+</div>
+<div class="vocab">
+sich waschen | зіх вашен | митися | verb
+sich anziehen | зіх анціен | одягатися | verb
+sich setzen | зіх зецен | сідати | verb
+sich fühlen | зіх фюлен | почуватися | verb
+sich interessieren für | зіх інтересзірен фюр | цікавитися | verb
+sich erinnern an | зіх еріннерн ан | пам'ятати | verb
+sich treffen | зіх треффен | зустрічатися | verb
+sich ausruhen | зіх аусруен | відпочивати | verb
+</div>
+<div class="exs">
+Ich freue mich auf das Wochenende. | іх фройе міх ауф дас вохененде | Я радий вихідним.
+Wie fühlst du dich? | ві фюлст ду діх | Як ти почуваєшся?
+Wir treffen uns morgen. | вір треффен унс морґен | Зустрінемось завтра.
+Ich interessiere mich für Musik. | іх інтересзіре міх фюр музік | Я цікавлюся музикою.
+Er hat sich ausgeruht. | ер хат зіх аусґерут | Він відпочив.
+Ich ziehe mich an. | іх ціе міх ан | Я одягаюсь.
+</div>
+<div class="qz" data-title="Вправа 6. Зворотні">
+Ich freue ___ . | mich
+Du freust ___ . | dich
+Er freut ___ . | sich
+Wir freuen ___ . | uns
+Ihr freut ___ . | euch
+Sie freuen ___ . | sich
+Ich interessiere mich ___ Musik. (für) | für
+Wie fühlst du ___ ? | dich
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Порівняння">
+<h2><span class="no">Розділ 7</span>Порівняння</h2>
+<div class="rule"><b class="t">Правило</b><p>Вищий ступінь: <span class="fr">прикметник + -er + als</span>; найвищий: <span class="fr">am + -sten</span>; рівність: <span class="fr">so … wie</span>. Часто голосна а/о/u → ä/ö/ü: <span class="fr">alt → älter → am ältesten</span>.</p></div>
+<div class="tw"><table>
+<tr><th>Звичайний</th><th>Вищий</th><th>Найвищий</th></tr>
+<tr><td>groß</td><td>größer</td><td>am größten</td></tr>
+<tr><td>klein</td><td>kleiner</td><td>am kleinsten</td></tr>
+<tr><td>teuer</td><td>teurer</td><td>am teuersten</td></tr>
+<tr><td>alt</td><td>älter</td><td>am ältesten</td></tr>
+<tr><td>jung</td><td>jünger</td><td>am jüngsten</td></tr>
+<tr><td>gut</td><td>besser</td><td>am besten</td></tr>
+<tr><td>viel</td><td>mehr</td><td>am meisten</td></tr>
+<tr><td>gern</td><td>lieber</td><td>am liebsten</td></tr>
+</table></div>
+<div class="exs">
+Berlin ist größer als Wien. | берлін іст ґрьосер алс він | Берлін більший за Відень.
+Mein Bruder ist älter als ich. | майн брудер іст елтер алс іх | Мій брат старший за мене.
+Das ist der beste Film. | дас іст дер бесте філм | Це найкращий фільм.
+Sprechen Sie bitte langsamer. | шпрехен зі бітте ланґзамер | Говоріть повільніше, будь ласка.
+Es ist so teuer wie das da. | ес іст зо тойер ві дас да | Воно таке ж дороге, як те.
+Ich trinke lieber Tee als Kaffee. | іх трінке лібер тее алс каффее | Я більше люблю чай, а не каву.
+</div>
+<div class="qz" data-title="Вправа 7. Порівняння">
+klein → ___ | kleiner
+teuer → ___ | teurer
+alt → ___ | älter
+gut → ___ | besser
+viel → ___ | mehr
+gern → ___ | lieber
+Berlin ist größer ___ Wien. (ніж) | als
+Es ist so teuer ___ das da. (як) | wie
+gut → am ___ | besten
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Підрядні речення">
+<h2><span class="no">Розділ 8</span>Складні речення: дієслово в кінці</h2>
+<div class="vocab">
+und | унд | і
+aber | абер | але
+oder | одер | або
+denn | денн | бо (порядок слів не змінюється)
+weil | вайл | бо (дієслово в кінці)
+dass | дасс | що (дієслово в кінці)
+wenn | венн | якщо, коли (дієслово в кінці)
+ob | об | чи (дієслово в кінці)
+obwohl | обвол | хоча (дієслово в кінці)
+deshalb | десхалб | тому (дієслово на 2-му місці)
+damit | даміт | щоб (дієслово в кінці)
+während | веренд | поки (дієслово в кінці)
+</div>
+<div class="rule"><b class="t">Правило</b><p>Після <span class="fr">weil, dass, wenn, ob, obwohl, damit</span> відмінюване дієслово йде <b>в кінець</b>: <span class="fr">Ich komme nicht, weil ich krank bin.</span> Якщо підрядне речення стоїть першим, головне починається з дієслова: <span class="fr">Wenn es regnet, bleibe ich zu Hause.</span></p></div>
+<div class="exs">
+Ich weiß, dass du recht hast. | іх вайс дасс ду рехт хаст | Знаю, що ти маєш рацію.
+Ich bin nicht gekommen, weil ich krank war. | іх бін ніхт ґекоммен вайл іх кранк вар | Не прийшов, бо був хворий.
+Ich lerne Deutsch, damit ich in Deutschland arbeiten kann. | іх лерне дойтш даміт іх ін дойтшланд арбайтен канн | Вчу німецьку, щоб працювати в Німеччині.
+Wenn ich zurückkomme, rufe ich dich an. | венн іх цурюккомме руфе іх діх ан | Коли повернусь, зателефоную.
+Wenn es regnet, bleiben wir zu Hause. | венн ес реґнет блайбен вір цу хаузе | Якщо буде дощ, залишимось удома.
+Obwohl ich müde bin, gehe ich zur Arbeit. | обвол іх мюде бін ґее іх цур арбайт | Хоч я втомлений, іду на роботу.
+Ich weiß nicht, ob er kommt. | іх вайс ніхт об ер коммт | Не знаю, чи він прийде.
+</div>
+<div class="qz" data-title="Вправа 8. Сполучники">
+Ich weiß, ___ du Zeit hast. (що) | dass
+Ich komme nicht, ___ ich krank bin. (бо) | weil
+___ es regnet, bleibe ich hier. (Якщо) | Wenn
+Ich bin müde, ___ gehe ich. (але) | aber
+___ ich müde bin, gehe ich. (Хоча) | Obwohl
+Ich weiß nicht, ___ er kommt. (чи) | ob
+Ich bleibe zu Hause, weil ich krank ___ . (sein) | bin
+Ich weiß, dass er Zeit ___ . (haben) | hat
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Час і дієслова руху">
+<h2><span class="no">Розділ 9</span>Вирази часу й дієслова руху</h2>
+<div class="vocab">
+gestern | ґестерн | вчора
+heute | хойте | сьогодні
+morgen | морґен | завтра
+übermorgen | юберморґен | післязавтра
+morgens | морґенс | вранці
+abends | абендс | ввечері
+am Montag | ам монтаґ | у понеділок
+letztes Jahr | лецтес йар | торік
+nächste Woche | нехсте вохе | наступного тижня
+vor einer Woche | фор айнер вохе | тиждень тому
+in einer Stunde | ін айнер штунде | через годину
+jede Woche | йеде вохе | щотижня
+schon | шон | вже
+noch | нох | ще
+oft | офт | часто
+selten | зелтен | рідко
+immer | іммер | завжди
+nie | ні | ніколи
+</div>
+<div class="rule"><b class="t">Vor / in</b><p><span class="fr">vor einer Stunde</span> = годину тому. <span class="fr">in einer Stunde</span> = через годину.</p></div>
+<h3>Дієслова руху</h3>
+<div class="tw"><table>
+<tr><th>Дієслово</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td>gehen</td><td>йти пішки</td><td>Ich gehe zur Arbeit.</td></tr>
+<tr><td>fahren</td><td>їхати</td><td>Ich fahre mit dem Zug.</td></tr>
+<tr><td>kommen</td><td>приходити</td><td>Ich komme zu dir.</td></tr>
+<tr><td>abfahren</td><td>відправлятися</td><td>Der Zug fährt ab.</td></tr>
+<tr><td>ankommen</td><td>прибувати</td><td>Ich komme um sechs an.</td></tr>
+<tr><td>fliegen</td><td>летіти</td><td>Morgen fliege ich nach Berlin.</td></tr>
+<tr><td>zurückkommen</td><td>повертатися</td><td>Ich komme bald zurück.</td></tr>
+</table></div>
+<div class="exs">
+Jetzt gehe ich zur Arbeit. | йецт ґее іх цур арбайт | Зараз іду на роботу.
+Jeden Tag gehe ich zu Fuß zur Arbeit. | йеден таґ ґее іх цу фус цур арбайт | Щодня йду на роботу пішки.
+Ich fahre mit dem Zug nach München. | іх фаре міт дем цуґ нах мюнхен | Їду потягом до Мюнхена.
+Morgen fliege ich nach Berlin. | морґен фліґе іх нах берлін | Завтра лечу до Берліна.
+</div>
+<div class="qz" data-title="Вправа 9. Час і рух">
+вчора | gestern
+завтра | morgen
+завжди | immer
+ніколи | nie
+тиждень тому | vor einer Woche
+через годину | in einer Stunde
+Jetzt ___ ich zur Arbeit. (gehen) | gehe
+Ich ___ mit dem Zug. (fahren) | fahre
+Ich ___ um sechs an. (ankommen) | komme
+Morgen ___ ich nach Berlin. (fliegen) | fliege
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Словник і практика" data-short="Словник за темами">
+<h2><span class="no">Розділ 10</span>Словник за темами</h2>
+<div class="vocab">
+# Подорож
+die Reise | ді райзе | подорож | f
+der Koffer | дер коффер | валіза | m
+der Reisepass | дер райзепасс | паспорт | m
+die Reservierung | ді резерфірунґ | бронювання | f
+das Hotel | дас хотел | готель | n
+die Karte | ді карте | карта | f
+der Urlaub | дер урлауб | відпустка | m
+der Strand | дер штранд | пляж | m
+der Berg | дер берґ | гора | m
+das Meer | дас меер | море | n
+# Робота й навчання
+die Arbeit | ді арбайт | робота | f
+das Büro | дас бюро | офіс | n
+der Chef | дер хеф | начальник | m
+der Kollege | дер коллеґе | колега | m
+das Gehalt | дас ґеалт | зарплата | n
+der Vertrag | дер фертраґ | договір | m
+die Schule | ді шуле | школа | f
+die Prüfung | ді прюфунґ | іспит | f
+der Unterricht | дер унтерріхт | урок | m
+lernen | лернен | вчити | verb
+# Здоров'я й побут
+die Gesundheit | ді ґезундхайт | здоров'я | f
+das Rezept | дас рецепт | рецепт | n
+der Schmerz | дер шмерц | біль | m
+die Erkältung | ді еркелтунґ | застуда | f
+der Einkauf | дер айнкауф | покупки | m
+der Nachbar | дер нахбар | сусід | m
+die Wohnung | ді вонунґ | квартира | f
+mieten | мітен | орендувати | verb
+</div>
+<div class="qz" data-title="Вправа 10. Словник">
+подорож | Reise
+валіза | Koffer
+паспорт | Reisepass
+бронювання | Reservierung
+пляж | Strand
+відпустка | Urlaub
+робота | Arbeit
+начальник | Chef
+зарплата | Gehalt
+іспит | Prüfung
+сусід | Nachbar
+квартира | Wohnung
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Діалоги">
+<h2><span class="no">Розділ 11</span>Діалоги</h2>
+<div class="dg">
+# 1. Pläne fürs Wochenende (плани на вихідні)
+Maria: Was machst du am Wochenende? | Що робитимеш на вихідних?
+Peter: Am Samstag fahre ich nach Dresden und am Sonntag ruhe ich mich aus. | У суботу їду до Дрездена, а в неділю відпочиватиму.
+Maria: Ich würde gern mitkommen. | Я б хотіла поїхати з тобою.
+Peter: Super! Wir fahren mit dem Zug. | Чудово! Поїдемо потягом.
+Maria: Um wie viel Uhr? | О котрій?
+Peter: Der Zug fährt in zwei Stunden ab. | Потяг відходить через дві години.
+# 2. Nach dem Urlaub (після відпустки)
+Kata: Wie war dein Urlaub? | Як минула відпустка?
+Thomas: Sehr schön. Ich war am Meer. | Дуже добре. Я був на морі.
+Kata: Was hast du dort gemacht? | Що ти там робив?
+Thomas: Ich bin geschwommen, habe gelesen und mich ausgeruht. | Плавав, читав і відпочивав.
+Kata: Ich bin neidisch! | Я заздрю!
+# 3. Vorstellungsgespräch (співбесіда)
+Chef: Erzählen Sie etwas über sich. | Розкажіть про себе.
+Kandidat: Ich bin Englischlehrer. Ich arbeite seit fünf Jahren an einer Schule. | Я вчитель англійської. Працюю в школі п'ять років.
+Chef: Warum möchten Sie die Stelle wechseln? | Чому Ви хочете змінити роботу?
+Kandidat: Ich möchte mehr verdienen und mich weiterentwickeln. | Хочу більше заробляти й розвиватися.
+Chef: Danke, wir melden uns bei Ihnen. | Дякую, ми з Вами зв'яжемось.
+# 4. In der Apotheke (в аптеці)
+Kunde: Guten Tag, ich suche etwas gegen Erkältung. | Добрий день, шукаю щось від застуди.
+Apotheker: Haben Sie Fieber? | У Вас є температура?
+Kunde: Ja, ein bisschen. | Так, невелика.
+Apotheker: Nehmen Sie diese Tabletten zweimal täglich. | Приймайте ці таблетки двічі на день.
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що робитимеш на вихідних? | Was machst du am Wochenende
+Поїдемо потягом. | Wir fahren mit dem Zug
+Як минула відпустка? | Wie war dein Urlaub
+Я був на морі. | Ich war am Meer
+Розкажіть про себе. | Erzählen Sie etwas über sich
+Хочу більше заробляти. | Ich möchte mehr verdienen
+Шукаю щось від застуди. | Ich suche etwas gegen Erkältung
+Двічі на день. | Zweimal täglich
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Читання">
+<h2><span class="no">Розділ 12</span>Читання: три тексти</h2>
+<h3>Text 1. Meine Familie</h3>
+<p class="fr">Ich heiße Anna und wohne in Berlin. Ich habe einen Mann und zwei Kinder. Mein Mann ist Arzt und ich bin Lehrerin. Unser Sohn ist zehn Jahre alt und unsere Tochter sieben. Am Wochenende fahren wir oft in die Berge. Im Sommer wollen wir ans Meer fahren.</p>
+<p><i>Мене звати Анна, живу в Берліні. Маю чоловіка й двох дітей. Чоловік лікар, я вчителька. Синові десять, дочці сім. На вихідних часто їздимо в гори. Влітку хочемо на море.</i></p>
+<h3>Text 2. Gestern</h3>
+<p class="fr">Gestern bin ich um sieben Uhr aufgestanden, habe gefrühstückt und bin mit dem Bus zur Arbeit gefahren. Ich war bis fünf Uhr im Büro. Danach habe ich Brot und Milch gekauft. Abends habe ich gekocht und einen Film gesehen. Um elf Uhr bin ich ins Bett gegangen.</p>
+<p><i>Учора я встав о сьомій, поснідав і поїхав на роботу автобусом. Був в офісі до п'ятої. Потім купив хліб і молоко. Ввечері готував і дивився фільм. О одинадцятій ліг спати.</i></p>
+<h3>Text 3. Pläne für den Sommer</h3>
+<p class="fr">Diesen Sommer fahre ich mit meinen Freunden ans Meer. Wir werden ein kleines Haus am Strand mieten. Wir werden schwimmen, Volleyball spielen und abends am Feuer sitzen. Wenn das Wetter schön ist, bleiben wir zwei Wochen.</p>
+<p><i>Цього літа поїду з друзями на море. Орендуємо будиночок на пляжі. Будемо плавати, грати у волейбол, увечері сидіти біля вогню. Якщо буде гарна погода, залишимось на два тижні.</i></p>
+<div class="qz" data-title="Вправа 12. Запитання до текстів">
+Ким працює чоловік Анни? (Arzt) | Arzt
+Скільки років синові? (10) | zehn
+О котрій встав автор? (7) | um sieben Uhr
+Чим він поїхав на роботу? (Bus) | mit dem Bus
+Що він купив? (Brot und Milch) | Brot und Milch
+Куди поїдуть влітку? (ans Meer) | ans Meer
+З ким? (mit meinen Freunden) | mit meinen Freunden
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Як писати листи">
+<h2><span class="no">Розділ 13</span>Як писати листи</h2>
+<div class="tw"><table>
+<tr><th>Ситуація</th><th>Фраза</th></tr>
+<tr><td>Початок (друг)</td><td><span class="fr">Hallo Anna! / Lieber Peter,</span></td></tr>
+<tr><td>Початок (офіційно)</td><td><span class="fr">Sehr geehrter Herr…, / Sehr geehrte Frau…,</span></td></tr>
+<tr><td>Дякую за лист</td><td><span class="fr">Vielen Dank für deinen Brief.</span></td></tr>
+<tr><td>Пишу, щоб…</td><td><span class="fr">Ich schreibe Ihnen, weil ich Informationen über … möchte.</span></td></tr>
+<tr><td>Прошу</td><td><span class="fr">Könnten Sie mir bitte … schicken?</span></td></tr>
+<tr><td>Кінець (друг)</td><td><span class="fr">Liebe Grüße, / Bis bald,</span></td></tr>
+<tr><td>Кінець (офіційно)</td><td><span class="fr">Mit freundlichen Grüßen,</span></td></tr>
+</table></div>
+<h3>Приклад. Лист другові</h3>
+<p class="fr">Hallo Peter!<br>Vielen Dank für deinen Brief. Hier ist alles in Ordnung. Letzte Woche war ich in den Karpaten. Das Wetter war wunderschön. Ich würde gern wieder dorthin fahren. Und wie geht es dir? Schreib bald.<br>Liebe Grüße,<br>Michael</p>
+<h3>Приклад. Офіційний лист</h3>
+<p class="fr">Sehr geehrte Frau Müller,<br>ich schreibe Ihnen, weil ich Informationen über den Deutschkurs für Anfänger möchte. Ich würde gern wissen, wie viel er kostet und wann er beginnt. Vielen Dank im Voraus.<br>Mit freundlichen Grüßen,<br>Michael Kovalenko</p>
+<div class="qz" data-title="Вправа 13. Листи">
+Привіт, Анно! | Hallo Anna
+Шановна пані, | Sehr geehrte Frau
+Дякую за лист. | Vielen Dank für deinen Brief
+З повагою | Mit freundlichen Grüßen
+До скорого! | Bis bald
+Дякую заздалегідь. | Vielen Dank im Voraus
+Напиши скоро. | Schreib bald
+Щирі вітання | Liebe Grüße
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 14</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Perfekt</td><td>haben / sein (2-ге місце) + Partizip II (в кінці)</td></tr>
+<tr><td>Präteritum</td><td>war, hatte, konnte, musste, wollte</td></tr>
+<tr><td>Futur</td><td>werden + інфінітив; або Presens + час</td></tr>
+<tr><td>Konjunktiv II</td><td>hätte, wäre, könnte, würde + inf.</td></tr>
+<tr><td>Відмінки</td><td>Akk.: den / einen; Dat.: dem, der, dem, den + -n</td></tr>
+<tr><td>Dativ-прийменники</td><td>aus, bei, mit, nach, seit, von, zu</td></tr>
+<tr><td>Підрядні</td><td>weil, dass, wenn, ob, obwohl — дієслово в кінці</td></tr>
+<tr><td>Порівняння</td><td>-er + als; am -sten; besser, mehr, lieber</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>1</td><td>Розповідаєш про вчорашній день</td></tr>
+<tr><td>2</td><td>2</td><td>war, hatte, модальні в минулому</td></tr>
+<tr><td>3</td><td>3, 4</td><td>Плани й ввічливі прохання</td></tr>
+<tr><td>4</td><td>5, 6</td><td>Akkusativ, Dativ, зворотні</td></tr>
+<tr><td>5</td><td>7, 8</td><td>Порівняння, підрядні речення</td></tr>
+<tr><td>6</td><td>9, 10</td><td>Час, рух, слова</td></tr>
+<tr><td>7</td><td>11, 12</td><td>Діалоги й читання</td></tr>
+<tr><td>8</td><td>13, 14</td><td>Лист + повторення</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A2">
+Gestern ___ ich zu Hause. (sein, Präteritum) | war
+Heute habe ich viel ___ . (arbeiten) | gearbeitet
+Ich ___ nach Hause gegangen. (sein) | bin
+Ich ___ morgen kommen. (werden) | werde
+Ich ___ gern einen Kaffee. (haben, Konj. II) | hätte
+Ich sehe ___ . (Його) | ihn
+Kannst du ___ helfen? (мені) | mir
+Ich weiß, ___ du recht hast. (що) | dass
+gut → ___ | besser
+Ich fahre ___ dem Zug. (mit) | mit
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Розповісти про минуле</label></li>
+<li><label><input type="checkbox"> Розповісти про плани</label></li>
+<li><label><input type="checkbox"> Ввічливо попросити</label></li>
+<li><label><input type="checkbox"> Розрізняти Akkusativ і Dativ</label></li>
+<li><label><input type="checkbox"> Будувати підрядні речення</label></li>
+<li><label><input type="checkbox"> Написати короткий лист</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A2. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Deutsch</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^de[-_]DE/i.test(x.lang))||v.find(x=>/^de/i.test(x.lang))||('de'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='de-DE';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('de2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('de2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('de2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('de2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='de2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

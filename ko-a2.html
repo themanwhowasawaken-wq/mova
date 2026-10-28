@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한국어 A2: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">한국어 A2</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>한국어 A2</h1>
+  <p>Продовження курсу корейська: минулий і майбутній час, відмінки та форми, порівняння, складні речення, читання, листи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="ko-a1.html">Рівень A1</a><a href="ko-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Рівень A2: ти вже читаєш хангиль, знаєш частки й 해요체, тепер вчишся <b>розповідати про минуле й плани, ввічливо просити, порівнювати й будувати складні речення</b>.</p>
+<h3>Що вмітимеш наприкінці</h3>
+<ul>
+<li>розповісти про вчорашній день і відпустку (минулий час);</li>
+<li>говорити про плани (<span class="fr">-ㄹ 거예요</span>);</li>
+<li>ввічливо просити й пропонувати (<span class="fr">-아 주세요</span>, <span class="fr">-ㄹ까요</span>);</li>
+<li>вказувати належність (<span class="fr">제 책</span>);</li>
+<li>користуватися словами положення (<span class="fr">책상 위에</span>);</li>
+<li>порівнювати, будувати складні речення, написати лист.</li>
+</ul>
+<div class="tip"><b class="t">Порада.</b> У корейській нема особових закінчень: усе передається часом (<span class="fr">먹어요 / 먹었어요 / 먹을 거예요</span>) і частками. Вчи дієслова парами «основа + закінчення».</div>
+<div class="warn"><b>Хибні друзі.</b> Слова з англійської звучать по-корейськи: <span class="fr">아이스크림, 컴퓨터, 호텔</span>, але вимова відрізняється від очікуваної.</div>
+<h3>Швидка перевірка A1</h3>
+<div class="qz" data-title="Вправа 0. Повторення A1">
+Я студент: 저는 ___ | 학생이에요
+Є друг: 친구가 ___ | 있어요
+Дякую: ___ | 감사합니다
+Хліб: ___ | 빵
+Скільки коштує? ___ | 얼마예요
+Я йду: ___ | 가요
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Часи й способи" data-short="Минулий час">
+<h2><span class="no">Розділ 1</span>Минулий час</h2>
+<p>Минулий час: основа + <span class="fr">-았어요 / -었어요</span> (за тим самим правилом гармонії голосних). Для <span class="fr">하다</span> — <span class="fr">했어요</span>. Заперечення: <span class="fr">안 먹었어요</span>.</p>
+<div class="cj" data-verb="먹다" data-note="їсти (часи)" data-ipa="мокта">
+Минуле | 먹었어요 | мокоссойо
+Минуле − | 안 먹었어요 | ан мокоссойо
+Теперішнє | 먹어요 | мокойо
+Майбутнє | 먹을 거예요 | мокил коейо
+Хочу | 먹고 싶어요 | мокко сіпойо
+Прохання | 드세요 | тисейо
+</div>
+<div class="tw"><table>
+<tr><th>Словникова</th><th>Теперішній</th><th>Минулий</th><th>Значення</th></tr>
+<tr><td>가다</td><td>가요</td><td>갔어요</td><td>йти</td></tr>
+<tr><td>보다</td><td>봐요</td><td>봤어요</td><td>дивитися</td></tr>
+<tr><td>사다</td><td>사요</td><td>샀어요</td><td>купувати</td></tr>
+<tr><td>마시다</td><td>마셔요</td><td>마셨어요</td><td>пити</td></tr>
+<tr><td>쓰다</td><td>써요</td><td>썼어요</td><td>писати</td></tr>
+<tr><td>하다</td><td>해요</td><td>했어요</td><td>робити</td></tr>
+<tr><td>오다</td><td>와요</td><td>왔어요</td><td>приходити</td></tr>
+</table></div>
+<div class="exs">
+어제 집에 있었어요. | оче чібе іссоссойо | Вчора я був удома.
+지난주에 서울에 갔어요. | чинанчуе соулье кассойо | Минулого тижня я їздив до Сеула.
+책을 읽었어요. | чхеґиль ільґоссойо | Я прочитав книжку.
+어제 뭐 했어요? | оче мво хессойо | Що ти вчора робив?
+시간이 없었어요. | сіґані опсоссойо | У мене не було часу.
+영화를 보러 갔어요. | йоньхваріль порро кассойо | Ми ходили в кіно.
+역에서 그를 만났어요. | йогесо киріль маннассойо | Я зустрів його на станції.
+벌써 먹었어요? | польсо мокоссойо | Ти вже їв?
+</div>
+<div class="qz" data-title="Вправа 1. Минулий час">
+Я пішов: ___ | 갔어요
+Я прочитав: 책을 ___ | 읽었어요
+Я купив: ___ | 샀어요
+Я дивився: ___ | 봤어요
+Я зробив: ___ | 했어요
+Я їв: ___ | 먹었어요
+Я прийшов: ___ | 왔어요
+Не мав часу: 시간이 ___ | 없었어요
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Майбутній час і плани">
+<h2><span class="no">Розділ 2</span>Майбутній час і плани</h2>
+<p>Майбутнє: основа + <span class="fr">-ㄹ 거예요 / -을 거예요</span>. Намір: <span class="fr">-려고 해요</span> або <span class="fr">-ㄹ 생각이에요</span>. Часто досить теперішнього часу з часовим словом: <span class="fr">내일 일해요</span>.</p>
+<div class="cj" data-verb="가다" data-note="іти (плани)" data-ipa="ката">
+Майбутнє | 갈 거예요 | кал коейо
+Намір | 가려고 해요 | карйого хейо
+Припущення | 갈 거 같아요 | кал ко катхайо
+Пропозиція | 갈까요 | калькайо
+Бажання | 가고 싶어요 | каґо сіпойо
+Заклик | 가요 | кайо
+</div>
+<div class="tw"><table>
+<tr><th>Слово</th><th>Значення</th></tr>
+<tr><td>내일</td><td>завтра</td></tr>
+<tr><td>다음 주</td><td>наступного тижня</td></tr>
+<tr><td>다음 달</td><td>наступного місяця</td></tr>
+<tr><td>내년</td><td>наступного року</td></tr>
+<tr><td>오늘 밤</td><td>сьогодні ввечері</td></tr>
+<tr><td>모레</td><td>післязавтра</td></tr>
+</table></div>
+<div class="exs">
+내일 일할 거예요. | неіль ільхаль коейо | Завтра працюватиму.
+토요일에 뭐 할 거예요? | тхойоіре мво халь коейо | Що робитимеш у суботу?
+다음 주에 바다에 갈 거예요. | таим чуе падає кал коейо | Наступного тижня поїдемо до моря.
+오늘 밤에 전화할게요. | онуль паме чонхвалькейо | Зателефоную тобі ввечері.
+새 휴대폰을 살 생각이에요. | се хюдепхоніль саль сенґаґіейо | Збираюся купити новий телефон.
+집에서 안 먹을 거예요. | чібесо ан могиль коейо | Вдома їсти не будемо.
+</div>
+<div class="qz" data-title="Вправа 2. Майбутнє">
+Завтра: ___ | 내일
+Наступного тижня: ___ | 다음 주
+Піду: 갈 ___ | 거예요
+Хочу піти: 가고 ___ | 싶어요
+Піти? 갈___ | 까요
+Не їстимемо: ___ 먹을 거예요 | 안
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Умовний спосіб">
+<h2><span class="no">Розділ 3</span>Умовний спосіб і ввічливі прохання</h2>
+<div class="tw"><table>
+<tr><th>Конструкція</th><th>Приклад</th><th>Значення</th></tr>
+<tr><td>-고 싶어요</td><td>커피를 마시고 싶어요.</td><td>Хочу кави.</td></tr>
+<tr><td>-아 주세요</td><td>도와 주세요.</td><td>Допоможіть, будь ласка.</td></tr>
+<tr><td>-면</td><td>시간이 있으면 와요.</td><td>Якщо матимеш час, приходь.</td></tr>
+<tr><td>-ㄹ까요?</td><td>같이 갈까요?</td><td>Підемо разом?</td></tr>
+</table></div>
+<div class="exs">
+커피를 마시고 싶어요. | кхопхіриль масіґо сіпойо | Хочу кави.
+바다에 가고 싶어요. | падає каґо сіпойо | Хочу поїхати до моря.
+도와 주세요. | това чусейо | Допоможіть, будь ласка.
+시간이 있으면 가요. | сіґані іссимйон кайо | Якщо буде час, піду.
+자리를 예약하고 싶은데요. | чаріриль йєякхаго сипиндейо | Я хотів би забронювати столик.
+돈이 있으면 차를 살 거예요. | тони іссимйон чхариль саль коейо | Якби були гроші, купив би авто.
+</div>
+<div class="tip"><b class="t">Ввічливо.</b> <span class="fr">-아 주세요</span> і <span class="fr">부탁합니다</span> — м'які прохання. «Якщо» — <span class="fr">-면</span> після основи: <span class="fr">있으면, 가면</span>.</div>
+<div class="qz" data-title="Вправа 3. Умовний спосіб">
+Хочу кави: 커피를 마시고 ___ | 싶어요
+Допоможіть: 도와 ___ | 주세요
+Якщо буде час: 시간이 있___ | 으면
+Якщо поїдеш: 가___ | 면
+Прошу: ___ | 부탁합니다
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Присвійні займенники">
+<h2><span class="no">Розділ 4</span>Присвійні займенники та вказівні слова</h2>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Слово</th><th>Приклад</th></tr>
+<tr><td>мій</td><td>제 / 내</td><td>제 책</td></tr>
+<tr><td>твій</td><td>네 / 너의</td><td>네 책</td></tr>
+<tr><td>його</td><td>그의</td><td>그의 책</td></tr>
+<tr><td>її</td><td>그녀의</td><td>그녀의 책</td></tr>
+<tr><td>наш</td><td>우리</td><td>우리 책</td></tr>
+<tr><td>їхній</td><td>그들의</td><td>그들의 책</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>Близько до мене</th><th>Близько до тебе</th><th>Далеко від обох</th><th>Питання</th></tr>
+<tr><td>이것 (це)</td><td>그것 (те)</td><td>저것 (он те)</td><td>어느 것 (котре)</td></tr>
+<tr><td>이 (цей)</td><td>그 (той)</td><td>저 (он той)</td><td>어느 (який)</td></tr>
+<tr><td>여기 (тут)</td><td>거기 (там)</td><td>저기 (он там)</td><td>어디 (де)</td></tr>
+</table></div>
+<div class="rule"><b class="t">Належність:</b><p>Частка <span class="fr">의</span>: <span class="fr">선생님의 책</span> (книжка вчителя), <span class="fr">차의 열쇠</span> (ключ від авто), <span class="fr">도시의 이름</span> (назва міста).</p></div>
+<div class="exs">
+이것은 선생님의 책이에요. | ігосин сонсенниме чхеґіейо | Це книжка вчителя.
+차 열쇠는 어디예요? | чха йолсеьнин одіейо | Де ключ від авто?
+이 도시의 이름이 뭐예요? | і тосіе іріми мвоейо | Як називається це місто?
+제 책은 책상 위에 있어요. | че чхеґин чхекксан уіе іссойо | Моя книжка на столі.
+저는 당신의 새 책이 좋아요. | чонин тансіне се чхеґі чоайо | Мені подобається твоя нова книжка.
+우리 어머니는 선생님이에요. | урі омонінин сонсенниміейо | Моя мама вчителька.
+</div>
+<div class="qz" data-title="Вправа 4. Належність">
+Моя книжка: ___ 책 | 제
+Наша книжка: ___ 책 | 우리
+Його книжка: ___ 책 | 그의
+Книжка вчителя: 선생님___ 책 | 의
+Це (близько мені): ___ | 이것
+Там (далеко): ___ | 저기
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Прийменники" data-short="Частки місця">
+<h2><span class="no">Розділ 5</span>Частки місця</h2>
+<div class="tw"><table>
+<tr><th>Частка</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td>에</td><td>в (існування), до (мета)</td><td>학교에 있어요</td></tr>
+<tr><td>에서</td><td>в (місце дії), з</td><td>학교에서 공부해요</td></tr>
+<tr><td>부터</td><td>від (початок)</td><td>아침부터 일해요</td></tr>
+<tr><td>까지</td><td>до (межа)</td><td>역까지 걸어요</td></tr>
+<tr><td>하고</td><td>з (разом)</td><td>친구하고 가요</td></tr>
+<tr><td>(으)로</td><td>за допомогою, у напрямі</td><td>카드로 내요</td></tr>
+</table></div>
+<div class="rule"><b class="t">Правило.</b><p><span class="fr">에</span> з <span class="fr">있어요</span> показує місце існування, а <span class="fr">에서</span> — місце дії. <span class="fr">학교에 있어요</span> (я в школі), <span class="fr">학교에서 배워요</span> (вчуся в школі).</p></div>
+<div class="exs">
+저는 학교에 있어요. | чонин хаккьое іссойо | Я в школі.
+학교에 가요. | хаккьое кайо | Іду до школи.
+학교에서 와요. | хаккьосо вайо | Іду зі школи.
+책은 책상 위에 있어요. | чхеґин чхекксан уіе іссойо | Книжка на столі.
+병원에 가요. | пйонвоне кайо | Іду до лікаря.
+형에게서 편지를 받았어요. | хйонґесо пхйонджіриль падассойо | Отримав листа від брата.
+저하고 갈래요? | чохаґо калльойо | Підеш зі мною?
+이건 당신에게 줄게요. | ігон тансінеґе чулькейо | Це тобі.
+</div>
+<div class="qz" data-title="Вправа 5. Частки місця">
+Я в школі: 학교___ 있어요 | 에
+Вчуся в школі: 학교___ 공부해요 | 에서
+До станції: 역___ 걸어요 | 까지
+З другом: 친구___ 가요 | 하고
+Карткою: 카드___ 내요 | 로
+Іду до лікаря: 병원___ 가요 | 에
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Слова положення">
+<h2><span class="no">Розділ 6</span>Слова положення й часу</h2>
+<div class="tw"><table>
+<tr><th>Слово</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td>앞</td><td>перед</td><td><span class="fr">집 앞</span></td></tr>
+<tr><td>뒤</td><td>за, після</td><td><span class="fr">집 뒤</span></td></tr>
+<tr><td>옆</td><td>поряд</td><td><span class="fr">문 옆</span></td></tr>
+<tr><td>아래</td><td>під</td><td><span class="fr">책상 아래</span></td></tr>
+<tr><td>위</td><td>над, на</td><td><span class="fr">책상 위</span></td></tr>
+<tr><td>사이</td><td>між</td><td><span class="fr">집 사이</span></td></tr>
+<tr><td>안</td><td>всередині</td><td><span class="fr">방 안</span></td></tr>
+</table></div>
+<div class="exs">
+설탕 없이 주세요. | солтхан опсі чусейо | Без цукру, будь ласка.
+점심 후에 잘 거예요. | чомсім хуе чаль коейо | Після обіду посплю.
+친구하고 가요. | чхінуґо кайо | Іду з другом.
+책상 아래에 있어요. | чхекксан арее іссойо | Лежить під столом.
+집 앞에 차가 있어요. | чіп апхе чхаґа іссойо | Перед будинком машина.
+이건 당신을 위해서예요. | ігон тансініль віхесоейо | Це для тебе.
+</div>
+<div class="qz" data-title="Вправа 6. Слова положення">
+Без цукру: 설탕 ___ 주세요 | 없이
+Під столом: 책상 ___ | 아래
+Перед домом: 집 ___ | 앞
+Над столом: 책상 ___ | 위
+Поряд: ___ | 옆
+Між: ___ | 사이
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Додатки">
+<h2><span class="no">Розділ 7</span>Додатки: <span class="fr">을/를</span> і <span class="fr">에게</span></h2>
+<p>Прямий додаток позначається часткою <span class="fr">을/를</span>: <span class="fr">그를 봐요</span> («бачу його»). Непрямий — <span class="fr">에게 / 한테</span>: <span class="fr">그에게 줘요</span> («даю йому»).</p>
+<div class="tw"><table>
+<tr><th>Займенник</th><th>Прямий (을/를)</th><th>Непрямий (에게)</th></tr>
+<tr><td>я</td><td>저를</td><td>저에게</td></tr>
+<tr><td>ти</td><td>당신을</td><td>당신에게</td></tr>
+<tr><td>він</td><td>그를</td><td>그에게</td></tr>
+<tr><td>вона</td><td>그녀를</td><td>그녀에게</td></tr>
+<tr><td>ми</td><td>우리를</td><td>우리에게</td></tr>
+<tr><td>вони</td><td>그들을</td><td>그들에게</td></tr>
+</table></div>
+<div class="exs">
+당신을 봐요. | тансініль пвайо | Бачу тебе.
+저를 알아요? | чориль араййо | Ти мене знаєш?
+이게 이해가 안 돼요. | іґе іхеґа ан твейо | Я цього не розумію.
+우리를 도와줄래요? | уриль товаджульлейо | Ти нам допоможеш?
+그를 좋아해요. | киріль чоаххейо | Люблю його.
+그녀를 좋아해요. | киньориль чоаххейо | Люблю її.
+저에게 물 좀 주세요. | чоеґе муль чом чусейо | Дайте мені води, будь ласка.
+당신에게 이걸 줄게요. | тансінеґе іголь чулькейо | Даю тобі це.
+</div>
+<div class="qz" data-title="Вправа 7. Додатки">
+Бачу його: 그___ 봐요 | 를
+Даю йому: 그___ 줘요 | 에게
+Люблю його: 그___ 좋아해요 | 를
+Дайте мені: 저___ 주세요 | 에게
+Бачу їх: 그들___ 봐요 | 을
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Граматика" data-short="Порівняння">
+<h2><span class="no">Розділ 8</span>Порівняння</h2>
+<div class="tw"><table>
+<tr><th>Звичайний</th><th>Вищий (더)</th><th>Найвищий (제일)</th></tr>
+<tr><td>크다 (великий)</td><td>더 커요</td><td>제일 커요</td></tr>
+<tr><td>작다 (малий)</td><td>더 작아요</td><td>제일 작아요</td></tr>
+<tr><td>비싸다 (дорогий)</td><td>더 비싸요</td><td>제일 비싸요</td></tr>
+<tr><td>싸다 (дешевий)</td><td>더 싸요</td><td>제일 싸요</td></tr>
+<tr><td>좋다 (добрий)</td><td>더 좋아요</td><td>제일 좋아요</td></tr>
+<tr><td>나쁘다 (поганий)</td><td>더 나빠요</td><td>제일 나빠요</td></tr>
+<tr><td>예쁘다 (гарний)</td><td>더 예뻐요</td><td>제일 예뻐요</td></tr>
+<tr><td>길다 (довгий)</td><td>더 길어요</td><td>제일 길어요</td></tr>
+</table></div>
+<div class="rule"><b class="t">Правило.</b><p>Порівняння: <span class="fr">A가 B보다 더 ~</span> («A більший за B»). Найвищий ступінь — <span class="fr">제일</span> або <span class="fr">가장</span> перед прикметником. Повільніше: <span class="fr">더 천천히</span>.</p></div>
+<div class="exs">
+서울은 부산보다 더 커요. | соуринин пусанпода то кхойо | Сеул більший за Пусан.
+그는 저보다 나이가 많아요. | киниин чопода наіґа манайо | Він старший за мене.
+이게 더 좋아요. | іґе то чоайо | Це краще.
+이건 도시에서 제일 큰 가게예요. | иґон тосісо чеіль кхин каґеейо | Це найбільший магазин міста.
+더 천천히 말해 주세요. | то чхонччхоні мальхе чусейо | Говоріть повільніше, будь ласка.
+파리처럼 예뻐요. | пхарічхором єппойо | Гарно, як Париж.
+</div>
+<div class="qz" data-title="Вправа 8. Порівняння">
+більший: ___ 커요 | 더
+найбільший: ___ 커요 | 제일
+Сеул більший за Пусан: 부산___ 더 커요 | 보다
+Краще: 더 ___ | 좋아요
+дорожчий: 더 ___ | 비싸요
+дешевший: 더 ___ | 싸요
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Складні речення">
+<h2><span class="no">Розділ 9</span>Складні речення</h2>
+<div class="vocab">
+그리고 | кирико | і
+하지만 | хаджіман | але
+때문에 | темуне | через
+만약 | манйак | якщо
+-라고 생각해요 | | вважаю, що |
+그래서 | кирейсо | тому
+때 | те | коли
+그런데 | киронде | але, до речі
+또는 | тону | або
+</div>
+<div class="rule"><b class="t">Порядок слів.</b><p>Підрядне речення стоїть <b>перед</b> головним. «Думаю, що» — <span class="fr">-라고 생각해요</span>. Причина — <span class="fr">-아서/-어서</span> або <span class="fr">-니까</span>: <span class="fr">비가 와서 안 가요.</span> Результат — <span class="fr">그래서</span>.</p></div>
+<div class="exs">
+그는 집에 있다고 생각해요. | кину чібе іттаґо сенґакхейо | Думаю, що він удома.
+당신이 한국어를 한다는 걸 알아요. | тансіні хангуґориль ханданин коль араййо | Знаю, що ти говориш корейською.
+비가 와서 안 가요. | піґа васо ан кайо | Не йду, бо йде дощ.
+비가 와요. 그래서 집에 있어요. | піґа вайо кирейсо чібе іссойо | Іде дощ, тому я вдома.
+시간이 있으면 오세요. | сіґані іссиймйон осейо | Якщо маєш час, приходь!
+도착할 때 전화할게요. | точчхакхаль те чонхвалькейо | Коли дістануся, зателефоную.
+피곤하지만 일해요. | пхіґонхаджіман ільхейо | Хоч я втомлений, працюю.
+당신이 오면 좋겠어요. | тансіні оми чокессойо | Хочу, щоб ти прийшов.
+</div>
+<div class="qz" data-title="Вправа 9. Складні речення">
+Не йду, бо йде дощ: 비가 와___ 안 가요 | 서
+Тому: ___ | 그래서
+Але: ___ | 하지만
+І: ___ | 그리고
+Коли: ___ | 때
+Якщо маєш час: 시간이 있___ | 으면
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Час і дієслова руху">
+<h2><span class="no">Розділ 10</span>Час і дієслова руху</h2>
+<p>Години називають власними числами (<span class="fr">세 시</span>), хвилини — китайсько-корейськими (<span class="fr">십오 분</span>).</p>
+<div class="tw"><table>
+<tr><th>Час</th><th>Корейською</th></tr>
+<tr><td>3:00</td><td>세 시예요</td></tr>
+<tr><td>3:05</td><td>세 시 오 분이에요</td></tr>
+<tr><td>3:10</td><td>세 시 십 분이에요</td></tr>
+<tr><td>3:15</td><td>세 시 십오 분이에요</td></tr>
+<tr><td>3:30</td><td>세 시 반이에요</td></tr>
+<tr><td>3:45</td><td>네 시 십오 분 전이에요</td></tr>
+<tr><td>3:55</td><td>네 시 오 분 전이에요</td></tr>
+</table></div>
+<div class="vocab">
+가다 | ката | йти, їхати
+오다 | ота | приходити
+여행하다 | йохенхада | подорожувати
+운전하다 | унджонхада | вести авто
+도착하다 | точчхакхада | прибувати
+나가다 | наґада | виходити
+돌아가다 | торагада | повертатися
+날다 | нальда | літати
+걷다 | котта | ходити пішки
+서다 | сода | зупинятися
+들어가다 | туроґада | входити
+</div>
+<div class="exs">
+기차는 아홉 시에 출발해요. | кічханин ахоп сіе чхульбалхейо | Потяг відправляється о дев'ятій.
+열한 시 반에 도착해요. | йорхан сі пане точчхакхейо | Прибуваю о пів на дванадцяту.
+여덟 시에 집을 나가요. | йодоль сіе чібиль наґайо | Виходжу з дому о восьмій.
+다섯 시에 돌아와요. | тасос сіе торавайо | Повертаюсь о п'ятій.
+가게에 들어가요. | каґее туроґайо | Заходжу в магазин.
+역까지 어떻게 가요? | йоккаджі отокхе кайо | Як дістатися до станції?
+차를 운전해요. | чхариль унджонхейо | Їду на авто.
+</div>
+<div class="qz" data-title="Вправа 10. Час і рух">
+Пів на четверту: 세 시 ___ | 반
+Потяг відправляється: 기차는 아홉 시에 ___ | 출발해요
+Повертаюсь: 다섯 시에 ___ | 돌아와요
+Заходжу: 가게에 ___ | 들어가요
+Їду на авто: 차를 ___ | 운전해요
+Прибуваю: ___ | 도착해요
+</div>
+</section>
+
+<section class="unit" id="u11" data-grp="Словник і практика" data-short="Словник за темами">
+<h2><span class="no">Розділ 11</span>Словник за темами</h2>
+<div class="vocab">
+# Мандрівки
+여행 | йохен | подорож
+여권 | йокквон | паспорт
+가방 | капан | валіза, сумка
+예약 | йєяк | бронь
+표 | пхйо | квиток
+휴가 | хюка | відпустка
+호텔 | хотхель | готель
+바다 | пада | море
+# Робота й навчання
+일 | іль | робота
+학교 | хаккьо | школа
+대학교 | тєхаккьо | університет
+상사 | санґса | начальник
+회의 | хвеи | зустріч
+월급 | волькуп | зарплата
+시험 | сіхом | іспит
+# Почуття
+기쁘다 | кіппида | радісний
+슬프다 | сильпхида | сумний
+피곤하다 | пхіґонхада | втомлений
+화나다 | хвананда | сердитий
+만족하다 | манджокхада | задоволений
+# Побут
+아파트 | апхатхи | квартира
+열쇠 | йольсве | ключ
+세탁기 | сетхакки | пральна машина
+월세 | вольсе | оренда
+이웃 | іут | сусід
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Діалоги">
+<h2><span class="no">Розділ 12</span>Діалоги</h2>
+<div class="dg">
+# 1. Плани на вихідні
+안나: 주말에 뭐 해요? | Що робитимеш на вихідних?
+민수: 토요일에 바다에 갈 거예요. 일요일은 집에 있을 거예요. | У суботу поїдемо до моря, а в неділю буду вдома.
+안나: 어디에 가요? | Куди ви їдете?
+민수: 부산이에요. 같이 갈래요? | У Пусан. Хочеш поїхати з нами?
+안나: 가고 싶지만 일이 있어요. | Охоче, але мушу працювати.
+# 2. У лікаря
+의사: 언제부터 아팠어요? | Як довго болить?
+환자: 삼 일 전부터요. | Три дні.
+의사: 약을 먹었어요? | Ви приймали якісь ліки?
+환자: 아니요, 아무것도요. | Ні, нічого.
+의사: 약을 드릴게요. | Випишу вам ліки.
+# 3. Оренда квартири
+손님: 안녕하세요. 아파트를 찾고 있어요. | Добрий день, шукаю квартиру.
+부동산: 방이 몇 개 필요하세요? | Скільки кімнат хочете?
+손님: 방 두 개요. 역에서 가까우면 좋겠어요. | Двох, поблизу станції.
+부동산: 이건 한 달에 오십만 원이에요. | Ця коштує п'ятсот тисяч вон на місяць.
+손님: 봐도 돼요? | Можна подивитися?
+</div>
+<div class="qz" data-title="Вправа 12. Фрази з діалогів">
+Що робитимеш на вихідних? | 주말에 뭐 해요
+Охоче, але мушу працювати. | 가고 싶지만 일이 있어요
+Три дні. | 삼 일 전부터요
+Шукаю квартиру. | 아파트를 찾고 있어요
+Можна подивитися? | 봐도 돼요
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Читання">
+<h2><span class="no">Розділ 13</span>Читання: три тексти</h2>
+<div class="dg">
+# 1. 나의 하루 (мій день)
+저는 일곱 시에 일어나요. | Вранці встаю о сьомій.
+커피를 마시고 일하러 가요. | П'ю каву й іду на роботу.
+다섯 시에 집에 돌아와요. | О п'ятій повертаюсь додому.
+저녁에는 책을 읽거나 영화를 봐요. | Ввечері читаю або дивлюся фільм.
+# 2. 우리 가족 (моя родина)
+아버지와 어머니와 형이 있어요. | У мене є тато, мама й брат.
+어머니는 선생님이에요. | Мама — вчителька.
+형은 서울에서 공부해요. | Брат вчиться в Сеулі.
+일요일에는 같이 점심을 먹어요. | У неділю обідаємо разом.
+# 3. 여행 (відпустка)
+작년 여름에 바다에 갔어요. | Минулого літа ми були на морі.
+날씨가 아주 좋았어요. | Погода була чудова.
+수영하고 생선을 먹었어요. | Ми плавали й їли рибу.
+내년 여름에는 산에 갈 거예요. | Наступного літа їдемо в гори.
+</div>
+<div class="qz" data-title="Вправа 13. Запитання до текстів">
+Коли встаю? | 일곱 시
+Де вчиться брат? | 서울
+Де були минулого літа? | 바다
+Що їли у відпустці? | 생선
+Куди наступного літа? | 산
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Як писати листи">
+<h2><span class="no">Розділ 14</span>Як писати листи</h2>
+<div class="tw"><table>
+<tr><th></th><th>Неформально</th><th>Формально</th></tr>
+<tr><td>Початок</td><td><span class="fr">민수야, 안녕.</span></td><td><span class="fr">김 선생님께.</span></td></tr>
+<tr><td>Подяка</td><td><span class="fr">편지 고마워.</span></td><td><span class="fr">답장 감사합니다.</span></td></tr>
+<tr><td>Прохання</td><td><span class="fr">보내 줄래?</span></td><td><span class="fr">보내 주시겠어요?</span></td></tr>
+<tr><td>Кінець</td><td><span class="fr">잘 지내, 안나</span></td><td><span class="fr">안나 올림</span></td></tr>
+</table></div>
+<div class="dg">
+# Приклад листа другу
+민수야 | Дорогий Мінсу,
+편지 고마워. 잘 지내? | Дякую за листа. Як справи?
+나는 잘 지내. 다음 주에 서울에 갈 거야. | У мене все добре. Наступного тижня приїду до Сеула.
+금요일에 시간 있어? | Чи будеш вільний у п'ятницю?
+안나가 | З повагою, Анна
+</div>
+<div class="qz" data-title="Вправа 14. Листи">
+Дякую за листа | 편지 고마워
+Як справи? | 잘 지내
+Дорогий (Мінсу) | 민수야
+Наступного тижня | 다음 주
+</div>
+</section>
+
+<section class="unit" id="u15" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 15</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Минулий</td><td>-았어요 / -었어요</td></tr>
+<tr><td>Майбутній</td><td>-ㄹ 거예요; -려고 해요</td></tr>
+<tr><td>Умовний</td><td>-고 싶어요; -면</td></tr>
+<tr><td>Належність</td><td>제…; 의</td></tr>
+<tr><td>Частки</td><td>에, 에서, 부터, 까지, 하고</td></tr>
+<tr><td>Порівняння</td><td>보다 더; 제일</td></tr>
+<tr><td>Складні речення</td><td>-아서, 그래서, 때</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>1</td><td>Минулий час</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Плани, умовний спосіб</td></tr>
+<tr><td>3</td><td>4</td><td>Належність</td></tr>
+<tr><td>4</td><td>5, 6</td><td>Частки місця</td></tr>
+<tr><td>5</td><td>7, 8</td><td>Додатки, порівняння</td></tr>
+<tr><td>6</td><td>9, 10</td><td>Складні речення, час</td></tr>
+<tr><td>7</td><td>11–13</td><td>Слова, діалоги, читання</td></tr>
+<tr><td>8</td><td>14, 15</td><td>Лист + повторення</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A2">
+Я пішов: ___ | 갔어요
+Завтра працюватиму: 내일 일할 ___ | 거예요
+Хочу кави: 커피를 마시고 ___ | 싶어요
+Моя книжка: ___ 책 | 제
+Я в школі: 학교___ 있어요 | 에
+Сеул більший за Пусан: 부산___ 더 커요 | 보다
+Не йду, бо йде дощ: 비가 와___ 안 가요 | 서
+Пів на четверту: 세 시 ___ | 반
+Бачу його: 그___ 봐요 | 를
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Розповісти про минуле</label></li>
+<li><label><input type="checkbox"> Розповісти про плани</label></li>
+<li><label><input type="checkbox"> Ввічливо попросити (-아 주세요)</label></li>
+<li><label><input type="checkbox"> Вжити частки місця</label></li>
+<li><label><input type="checkbox"> Порівнювати й будувати складні речення</label></li>
+<li><label><input type="checkbox"> Написати короткий лист</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A2. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>한국어</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const sem=s=>s.replace(/[\u0591-\u05c7\u064b-\u065f\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').normalize('NFC');
+const jp=s=>s.replace(/[。、！？，]/g,'').replace(/([\u3040-\u30ff\u3400-\u9fff])\s+(?=[\u3040-\u30ff\u3400-\u9fff])/g,'$1');
+const norm=s=>jp(sem(gk(s.toLowerCase()))).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^ko[-_]KR/i.test(x.lang))||v.find(x=>/^ko/i.test(x.lang))||('ko'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='ko-KR';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('ko2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('ko2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('ko2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('ko2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='ko2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

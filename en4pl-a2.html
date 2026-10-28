@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angielski A2: pełny kurs</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="start-pl.html" title="Strona główna">&larr;</a>
+  <button id="menuBtn" aria-label="Spis treści">Spis treści</button>
+  <span class="brand">Angielski A2</span>
+  <input id="q" type="search" placeholder="Znajdź słowo" aria-label="Znajdź słowo">
+  <button id="uaBtn" title="Pokaż lub ukryj tłumaczenia przykładów i dialogów">Tłumaczenie</button>
+  <button id="thBtn" title="Jasny lub ciemny motyw">Motyw</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Spis treści"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Angielski A2</h1>
+  <p>Kolejny krok w angielskim: czas przeszły i przyszły, Present Perfect, stopniowanie, warunki, zdania złożone, czytanie i listy. Stuknij słowo lub zdanie, żeby go posłuchać.</p>
+  <p class="crumbs"><a href="start-pl.html">&larr; Strona główna</a><a href="en4pl-a1.html">Poziom A1</a><a href="en4pl-vpravy.html">Ćwiczenia</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Wstęp" data-short="Jak pracować z kursem">
+<h2><span class="no">Rozdział 0</span>Jak pracować z kursem</h2>
+<p class="lead">Poziom A2: nauczysz się <b>mówić o przeszłości i przyszłości, porównywać, radzić, wyrażać warunki</b> i pisać proste e-maile i listy. Podstawowa wymowa, rodzajnik, <span class="fr">be</span>, <span class="fr">have</span> i czas teraźniejszy są w kursie A1.</p>
+<h3>Na końcu będziesz umieć</h3>
+<ul>
+<li>mówić o przeszłości (<span class="fr">I worked, I went</span>) i o doświadczeniu (<span class="fr">I have been to London</span>);</li>
+<li>mówić o planach (<span class="fr">I will, I'm going to</span>);</li>
+<li>porównywać (<span class="fr">bigger than, the best</span>);</li>
+<li>grzecznie prosić i radzić (<span class="fr">could you, you should</span>);</li>
+<li>budować zdania złożone (<span class="fr">because, if, when, who, which</span>) i napisać list.</li>
+</ul>
+<div class="warn"><b>Główna pułapka.</b> W polskim czas przeszły jest jeden, w angielskim wybiera się między <span class="fr">Past Simple</span> a <span class="fr">Present Perfect</span>. Zasada: z określonym czasem w przeszłości (<span class="fr">yesterday, in 2020</span>) używa się <span class="fr">Past Simple</span>.</div>
+<h3>Szybki test A1</h3>
+<div class="qz" data-title="Ćwiczenie 0. Powtórka A1">
+I ___ a teacher. (be) | am
+She ___ two brothers. (have) | has
+He ___ in London. (live) | lives
+___ you speak English? | Do
+I ___ like coffee. (negative) | don't
+She ___ working now. (be) | is
+The book is ___ the table. (on / in) | on
+___ is it? (how much) | How much
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Czasy" data-short="Past Simple">
+<h2><span class="no">Rozdział 1</span>Past Simple</h2>
+<p class="lead">Dla zakończonych czynności w przeszłości. <b>Czasowniki regularne</b> mają końcówkę <b>-ed</b> dla wszystkich osób: <span class="fr">I worked, he worked, they worked</span>. Nie ma rodzaju ani osoby.</p>
+<div class="tw"><table>
+<tr><th>Reguła</th><th>Przykład</th></tr>
+<tr><td>+ ed</td><td><span class="fr">work → worked, play → played</span></td></tr>
+<tr><td>e → + d</td><td><span class="fr">live → lived, like → liked</span></td></tr>
+<tr><td>spółgłoska + y → ied</td><td><span class="fr">study → studied, try → tried</span></td></tr>
+<tr><td>podwojenie spółgłoski</td><td><span class="fr">stop → stopped, plan → planned</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Przeczenie i pytanie</b><p><span class="fr">didn't + forma podstawowa</span>, <span class="fr">Did + subject + forma podstawowa?</span> Czas przeszły jest wyrażony tylko w <span class="fr">did</span>: <span class="fr">Did you go?</span>, nie „Did you went?”.</p></div>
+<h3>1.1. Czasowniki nieregularne</h3>
+<div class="tw"><table>
+<tr><th>Forma podstawowa</th><th>Past Simple</th><th>Past Participle</th><th>Znaczenie</th></tr>
+<tr><td><span class="fr">be</span></td><td><span class="fr">was / were</span></td><td><span class="fr">been</span></td><td>być</td></tr>
+<tr><td><span class="fr">have</span></td><td><span class="fr">had</span></td><td><span class="fr">had</span></td><td>mieć</td></tr>
+<tr><td><span class="fr">do</span></td><td><span class="fr">did</span></td><td><span class="fr">done</span></td><td>robić</td></tr>
+<tr><td><span class="fr">go</span></td><td><span class="fr">went</span></td><td><span class="fr">gone</span></td><td>iść, jechać</td></tr>
+<tr><td><span class="fr">see</span></td><td><span class="fr">saw</span></td><td><span class="fr">seen</span></td><td>widzieć</td></tr>
+<tr><td><span class="fr">eat</span></td><td><span class="fr">ate</span></td><td><span class="fr">eaten</span></td><td>jeść</td></tr>
+<tr><td><span class="fr">drink</span></td><td><span class="fr">drank</span></td><td><span class="fr">drunk</span></td><td>pić</td></tr>
+<tr><td><span class="fr">buy</span></td><td><span class="fr">bought</span></td><td><span class="fr">bought</span></td><td>kupić</td></tr>
+<tr><td><span class="fr">make</span></td><td><span class="fr">made</span></td><td><span class="fr">made</span></td><td>zrobić, wykonać</td></tr>
+<tr><td><span class="fr">take</span></td><td><span class="fr">took</span></td><td><span class="fr">taken</span></td><td>wziąć</td></tr>
+<tr><td><span class="fr">come</span></td><td><span class="fr">came</span></td><td><span class="fr">come</span></td><td>przyjść</td></tr>
+<tr><td><span class="fr">get</span></td><td><span class="fr">got</span></td><td><span class="fr">got</span></td><td>dostać, zdobyć</td></tr>
+<tr><td><span class="fr">give</span></td><td><span class="fr">gave</span></td><td><span class="fr">given</span></td><td>dać</td></tr>
+<tr><td><span class="fr">know</span></td><td><span class="fr">knew</span></td><td><span class="fr">known</span></td><td>wiedzieć, znać</td></tr>
+<tr><td><span class="fr">say</span></td><td><span class="fr">said</span></td><td><span class="fr">said</span></td><td>powiedzieć</td></tr>
+<tr><td><span class="fr">write</span></td><td><span class="fr">wrote</span></td><td><span class="fr">written</span></td><td>pisać</td></tr>
+<tr><td><span class="fr">read</span></td><td><span class="fr">read</span></td><td><span class="fr">read</span></td><td>czytać</td></tr>
+<tr><td><span class="fr">speak</span></td><td><span class="fr">spoke</span></td><td><span class="fr">spoken</span></td><td>mówić</td></tr>
+<tr><td><span class="fr">sleep</span></td><td><span class="fr">slept</span></td><td><span class="fr">slept</span></td><td>spać</td></tr>
+<tr><td><span class="fr">meet</span></td><td><span class="fr">met</span></td><td><span class="fr">met</span></td><td>spotkać</td></tr>
+</table></div>
+<div class="exs">
+I worked all day yesterday. | aɪ wɝkt ɔl deɪ ˈjɛstɚˌdeɪ | Wczoraj pracowałem cały dzień.
+She was at home. | ʃi wəz ət hoʊm | Była w domu.
+Where were you? | wɛr wɝ ju | Gdzie byliście?
+We ate in a restaurant. | wi eɪt ɪn ə ˈrɛstɚˌɑnt | Jedliśmy w restauracji.
+I didn't have time. | aɪ ˈdɪdənt hæv taɪm | Nie miałem czasu.
+What did you do on Saturday? | wʌt dɪd ju du ɑn ˈsætɚdi | Co robiliście w sobotę?
+I went to school. | aɪ wɛnt tə skul | Poszedłem do szkoły.
+He said that he would come. | hi sɛd ðæt hi wʊd kʌm | Powiedział, że przyjdzie.
+</div>
+<div class="qz" data-title="Ćwiczenie 1. Past Simple">
+I ___ yesterday. (work) | worked
+She ___ in Berlin in 2020. (live) | lived
+They ___ football. (play) | played
+He ___ for the exam. (study) | studied
+I ___ to school. (go) | went
+We ___ pizza. (eat) | ate
+She ___ a letter. (write) | wrote
+I ___ a new car. (buy) | bought
+I ___ not have time. (negative) | did
+___ you go to the cinema? | Did
+go → ___ | went
+see → ___ | saw
+have → ___ | had
+make → ___ | made
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Przyszłość">
+<h2><span class="no">Rozdział 2</span>Przyszłość: will i going to</h2>
+<div class="tw"><table>
+<tr><th>Forma</th><th>Użycie</th><th>Przykład</th></tr>
+<tr><td><span class="fr">will + infinitive</span></td><td>decyzja w chwili mówienia, przewidywanie, obietnica</td><td><span class="fr">I'll call you. It will rain.</span></td></tr>
+<tr><td><span class="fr">be going to</span></td><td>plan, zamiar, oczywisty dowód</td><td><span class="fr">I'm going to study English. Look at the clouds, it's going to rain.</span></td></tr>
+<tr><td><span class="fr">Present Continuous</span></td><td>umówiony plan z godziną</td><td><span class="fr">I'm meeting Anna tomorrow.</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Przeczenie i pytanie</b><p><span class="fr">I will not (won't) go. Will you come? I'm not going to leave. Are you going to buy it?</span> Po <span class="fr">will</span> zawsze stoi podstawowa forma czasownika, taka sama dla wszystkich osób (bez -s).</p></div>
+<div class="exs">
+I will call you tomorrow. | aɪ wɪl kɔl ju təˈmɑˌroʊ | Zadzwonię do ciebie jutro.
+It will rain tomorrow. | ɪt wɪl reɪn təˈmɑˌroʊ | Jutro będzie padać.
+I'm going to learn English. | aɪm ˈɡoʊɪŋ tə lɝn ˈɪŋɡlɪʃ | Będę się uczyć angielskiego.
+We are going to travel next year. | wi ɑr ˈɡoʊɪŋ tə ˈtrævəl nɛkst jɪr | W przyszłym roku będziemy podróżować.
+I'm meeting Anna at six. | aɪm ˈmitɪŋ ˈænə ət sɪks | Spotykam się z Anną o szóstej.
+Will you help me? | wɪl ju hɛlp mi | Pomożesz mi?
+I won't be late. | aɪ woʊnt bi leɪt | Nie spóźnię się.
+</div>
+<div class="vocab">
+tomorrow | təˈmɑˌroʊ | jutro
+next week | nɛkst wik | w przyszłym tygodniu
+next year | nɛkst jɪr | w przyszłym roku
+soon | sun | wkrótce
+later | ˈleɪtɚ | później
+in an hour | ɪn ən ˈaʊɚ | za godzinę
+</div>
+<div class="qz" data-title="Ćwiczenie 2. Przyszłość">
+I ___ call you tomorrow. (will) | will
+It ___ rain tomorrow. (will) | will
+I ___ going to study. (am / is) | am
+She ___ going to travel. (am / is) | is
+We ___ going to buy a car. (are) | are
+I will ___ late. (negative: not be) | not be
+___ you help me? (will) | Will
+She is ___ to buy a house. (going) | going
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Present Perfect">
+<h2><span class="no">Rozdział 3</span>Present Perfect</h2>
+<p class="lead"><span class="fr">have / has + past participle</span>. Używa się, gdy czas czynności nie jest ważny albo czynność ma związek z teraźniejszością: doświadczenie, rezultat, okres trwający do teraz.</p>
+<div class="tw"><table>
+<tr><th>Użycie</th><th>Przykład</th></tr>
+<tr><td>doświadczenie (<span class="fr">ever, never</span>)</td><td><span class="fr">I have been to London. Have you ever eaten sushi?</span></td></tr>
+<tr><td>rezultat (<span class="fr">just, already, yet</span>)</td><td><span class="fr">I have just finished. She hasn't come yet.</span></td></tr>
+<tr><td>okres do teraz (<span class="fr">for, since</span>)</td><td><span class="fr">I have lived here for five years. I've known him since 2019.</span></td></tr>
+</table></div>
+<div class="warn"><b>Uwaga.</b> Polski mówi „mieszkam tu pięć lat” (czas teraźniejszy), angielski <span class="fr">I have lived here for five years</span>. Z dokładnym czasem (<span class="fr">yesterday, last year, in 2020</span>) Present Perfect się nie używa: <span class="fr">I saw him yesterday</span>.</div>
+<div class="tw"><table>
+<tr><th><span class="fr">for</span></th><th><span class="fr">since</span></th></tr>
+<tr><td>okres: <span class="fr">for two years, for an hour</span></td><td>początek: <span class="fr">since 2020, since Monday</span></td></tr>
+</table></div>
+<div class="exs">
+I have been to London. | aɪ hæv bɪn tə ˈlʌndən | Byłem w Londynie.
+Have you ever eaten sushi? | hæv ju ˈɛvɚ ˈitən ˈsuʃi | Czy jadłeś kiedyś sushi?
+I have never seen that film. | aɪ hæv ˈnɛvɚ sin ðæt fɪlm | Nigdy nie widziałem tego filmu.
+She has just arrived. | ʃi hæz dʒʌst ɚˈaɪvd | Właśnie przyjechała.
+I haven't finished yet. | aɪ ˈhævənt ˈfɪnɪʃt jɛt | Jeszcze nie skończyłem.
+We have lived here for ten years. | wi hæv lɪvd hir fər tɛn jɪrz | Mieszkamy tu od dziesięciu lat.
+He has worked here since 2018. | hi hæz wɝkt hir sɪns 2018 | Pracuje tu od 2018 roku.
+</div>
+<div class="qz" data-title="Ćwiczenie 3. Present Perfect">
+I ___ been to London. (have / has) | have
+She ___ lived here for five years. | has
+I have never ___ sushi. (eat) | eaten
+She has ___ arrived. (just) | just
+I haven't finished ___ . (yet) | yet
+We have lived here ___ ten years. (for / since) | for
+He has worked here ___ 2018. (for / since) | since
+___ you ever been to Paris? (Have / Do) | Have
+see → (participle) ___ | seen
+write → (participle) ___ | written
+go → (participle) ___ | gone
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Gramatyka" data-short="Stopniowanie">
+<h2><span class="no">Rozdział 4</span>Stopniowanie</h2>
+<div class="tw"><table>
+<tr><th>Reguła</th><th>Podstawowy</th><th>2. stopień</th><th>3. stopień</th></tr>
+<tr><td>krótki przymiotnik + -er / -est</td><td><span class="fr">big</span></td><td><span class="fr">bigger</span></td><td><span class="fr">the biggest</span></td></tr>
+<tr><td></td><td><span class="fr">old</span></td><td><span class="fr">older</span></td><td><span class="fr">the oldest</span></td></tr>
+<tr><td>-y → -ier / -iest</td><td><span class="fr">happy</span></td><td><span class="fr">happier</span></td><td><span class="fr">the happiest</span></td></tr>
+<tr><td>długi przymiotnik: more / most</td><td><span class="fr">expensive</span></td><td><span class="fr">more expensive</span></td><td><span class="fr">the most expensive</span></td></tr>
+<tr><td>nieregularne</td><td><span class="fr">good</span></td><td><span class="fr">better</span></td><td><span class="fr">the best</span></td></tr>
+<tr><td></td><td><span class="fr">bad</span></td><td><span class="fr">worse</span></td><td><span class="fr">the worst</span></td></tr>
+<tr><td></td><td><span class="fr">far</span></td><td><span class="fr">farther</span></td><td><span class="fr">the farthest</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Than, as … as</b><p><span class="fr">Prague is bigger than Brno. She is as tall as me.</span> „Niż” tłumaczy się <span class="fr">than</span>. Przy trzecim stopniu zawsze jest <span class="fr">the</span>.</p></div>
+<div class="exs">
+Prague is bigger than Brno. | prɑɡ ɪz ˈbɪɡɚ ðæn ˈbɝnoʊ | Warszawa jest większa niż Kraków.
+My brother is older than me. | maɪ ˈbrʌðɚ ɪz ˈoʊldɚ ðæn mi | Mój brat jest starszy ode mnie.
+It is the best film. | ɪt ɪz ðə bɛst fɪlm | To najlepszy film.
+This phone is more expensive than that one. | ðɪs foʊn ɪz mɔr ɪkˈspɛnsɪv ðæn ðæt wʌn | Ten telefon jest droższy niż tamten.
+She is as tall as her sister. | ʃi ɪz æz tɔl æz hɝ ˈsɪstɚ | Jest tak wysoka jak jej siostra.
+Please speak more slowly. | pliz spik mɔr ˈsloʊli | Mów wolniej, proszę.
+</div>
+<div class="qz" data-title="Ćwiczenie 4. Stopniowanie">
+big → ___ | bigger
+small → ___ | smaller
+good → ___ | better
+bad → ___ | worse
+happy → ___ | happier
+expensive → ___ | more expensive
+good → ___ (superlative) | the best
+old → ___ (superlative) | the oldest
+Prague is bigger ___ Brno. (than / as) | than
+She is as tall ___ me. (as / than) | as
+</div>
+</section>
+
+<section class="unit" id="u5" data-short="Czasowniki modalne">
+<h2><span class="no">Rozdział 5</span>Czasowniki modalne i grzeczne prośby</h2>
+<div class="tw"><table>
+<tr><th>Funkcja</th><th>Zwroty</th></tr>
+<tr><td>Umiejętność</td><td><span class="fr">I can swim. She could read at four.</span></td></tr>
+<tr><td>Pozwolenie</td><td><span class="fr">Can I come in? May I sit here?</span></td></tr>
+<tr><td>Grzeczna prośba</td><td><span class="fr">Could you help me, please? Would you mind opening the window?</span></td></tr>
+<tr><td>Rada</td><td><span class="fr">You should see a doctor. You ought to rest.</span></td></tr>
+<tr><td>Obowiązek</td><td><span class="fr">I must go. I have to work. You mustn't smoke here.</span></td></tr>
+<tr><td>Brak obowiązku</td><td><span class="fr">You don't have to come.</span></td></tr>
+<tr><td>Propozycja</td><td><span class="fr">Shall I open the window? Would you like some tea?</span></td></tr>
+<tr><td>Prawdopodobieństwo</td><td><span class="fr">It may rain. He might be late.</span></td></tr>
+</table></div>
+<div class="exs">
+Could you help me, please? | kʊd ju hɛlp mi pliz | Czy mógłby mi pan pomóc?
+Can you pass me the salt? | kæn ju pæs mi ðə sɔlt | Możesz mi podać sól?
+You should rest. | ju ʃʊd rɛst | Powinieneś odpocząć.
+I would like to book a table. | aɪ wʊd laɪk tə bʊk ə ˈteɪbəl | Chciałbym zarezerwować stolik.
+Would you like some coffee? | wʊd ju laɪk sʌm ˈkɑfi | Napije się pan kawy?
+You don't have to come. | ju doʊnt hæv tə kʌm | Nie musisz przychodzić.
+If I had time, I would travel more. | ɪf aɪ hæd taɪm aɪ wʊd ˈtrævəl mɔr | Gdybym miał czas, podróżowałbym więcej.
+</div>
+<div class="qz" data-title="Ćwiczenie 5. Czasowniki modalne">
+___ you help me, please? (polite) | Could
+You ___ see a doctor. (advice) | should
+I ___ to work today. (obligation: have) | have
+You ___ smoke here. (not allowed: mustn't) | mustn't
+You ___ to come. (not necessary: don't have) | don't have
+___ I open the window? (offer) | Shall
+I ___ like a coffee. (would) | would
+___ you like some tea? | Would
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Ilość">
+<h2><span class="no">Rozdział 6</span>Ilość: some, any, much, many</h2>
+<div class="tw"><table>
+<tr><th>Słowo</th><th>Użycie</th><th>Przykład</th></tr>
+<tr><td><span class="fr">some</span></td><td>w zdaniu twierdzącym</td><td><span class="fr">I have some friends. I need some water.</span></td></tr>
+<tr><td><span class="fr">any</span></td><td>w przeczeniu i pytaniu</td><td><span class="fr">I don't have any money. Do you have any questions?</span></td></tr>
+<tr><td><span class="fr">much</span></td><td>niepoliczalne, głównie zdania przeczące</td><td><span class="fr">I don't have much time. How much is it?</span></td></tr>
+<tr><td><span class="fr">many</span></td><td>policzalne</td><td><span class="fr">I don't have many friends. How many people?</span></td></tr>
+<tr><td><span class="fr">a lot of</span></td><td>zdania twierdzące, oba rodzaje</td><td><span class="fr">I have a lot of work. A lot of people came.</span></td></tr>
+<tr><td><span class="fr">a few / a little</span></td><td>kilka (policzalne) / trochę (niepoliczalne)</td><td><span class="fr">a few friends, a little milk</span></td></tr>
+</table></div>
+<div class="exs">
+Do you have any brothers or sisters? | du ju hæv ˈɛni ˈbrʌðɚz ɔr ˈsɪstɚz | Masz rodzeństwo?
+I'd like some water, please. | aɪd laɪk sʌm ˈwɔtɚ pliz | Poproszę wodę.
+There isn't any milk. | ðɛr ˈɪzənt ˈɛni mɪlk | Nie ma tu mleka.
+How much does it cost? | haʊ mʌtʃ dʌz ɪt kɑst | Ile to kosztuje?
+How many languages do you speak? | haʊ ˈmɛni ˈlæŋɡwədʒəz du ju spik | W ilu językach mówisz?
+She has a lot of friends. | ʃi hæz ə lɑt əv frɛndz | Ma dużo przyjaciół.
+</div>
+<div class="qz" data-title="Ćwiczenie 6. Ilość">
+I have ___ friends. (some / any) | some
+I don't have ___ money. (some / any) | any
+Do you have ___ questions? (some / any) | any
+How ___ is it? (much / many) | much
+How ___ people? (much / many) | many
+I have a ___ of work. (lot) | lot
+There are a ___ apples. (few / little) | few
+There is a ___ milk. (few / little) | little
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Warunki">
+<h2><span class="no">Rozdział 7</span>Zdania warunkowe i czasowe</h2>
+<div class="tw"><table>
+<tr><th>Typ</th><th>Forma</th><th>Przykład</th></tr>
+<tr><td>0</td><td>If + present, present</td><td><span class="fr">If you heat ice, it melts.</span></td></tr>
+<tr><td>1</td><td>If + present, will + infinitive</td><td><span class="fr">If it rains, we will stay at home.</span></td></tr>
+<tr><td>2</td><td>If + past, would + infinitive</td><td><span class="fr">If I had time, I would travel more.</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">W zdaniu z if nie ma will</b><p>Po <span class="fr">if</span> i <span class="fr">when</span> (o przyszłości) stoi czas teraźniejszy: <span class="fr">If it rains tomorrow, ...</span>, nie „If it will rain”. To samo przy <span class="fr">when, as soon as, before, after</span>: <span class="fr">When I arrive, I'll call you.</span></p></div>
+<div class="exs">
+If it rains, we will stay at home. | ɪf ɪt reɪnz wi wɪl steɪ ət hoʊm | Jeśli będzie padać, zostaniemy w domu.
+If you study, you will pass the exam. | ɪf ju ˈstʌdi ju wɪl pæs ðə ɪɡˈzæm | Jeśli będziesz się uczyć, zdasz egzamin.
+When I arrive, I will call you. | wɛn aɪ ɚˈaɪv aɪ wɪl kɔl ju | Kiedy dotrę na miejsce, zadzwonię do ciebie.
+If I had a car, I would drive to work. | ɪf aɪ hæd ə kɑr aɪ wʊd draɪv tə wɝk | Gdybym miał samochód, jeździłbym do pracy samochodem.
+If I were you, I would call him. | ɪf aɪ wɝ ju aɪ wʊd kɔl hɪm | Na twoim miejscu zadzwoniłbym do niego.
+I'll tell you as soon as I know. | aɪl tɛl ju æz sun æz aɪ noʊ | Powiem ci, jak tylko się dowiem.
+</div>
+<div class="qz" data-title="Ćwiczenie 7. Warunki">
+If it ___ , we will stay at home. (rain) | rains
+If you study, you ___ pass. (will) | will
+When I ___ , I will call you. (arrive) | arrive
+If I had time, I ___ travel. (would) | would
+If I ___ you, I would call him. (were) | were
+I will call you as ___ as I know. (soon) | soon
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Zdania" data-short="Zdania złożone">
+<h2><span class="no">Rozdział 8</span>Zdania złożone i względne</h2>
+<div class="vocab">
+and | ənd | i
+but | bʌt | ale
+or | ɔr | albo
+because | bɪˈkɔz | ponieważ
+so | soʊ | więc
+that | ðæt | że
+when | wɛn | kiedy
+if | ɪf | jeśli, jeżeli
+although | ˌɔlˈðoʊ | chociaż
+while | waɪl | podczas gdy
+who | hu | który (o osobie)
+which | wɪtʃ | który (o rzeczy)
+</div>
+<div class="rule"><b class="t">Who / which / that</b><p>Zaimki względne nie zmieniają się według rodzaju i przypadku: <span class="fr">the man who lives next door</span>, <span class="fr">the book which I read</span>. <span class="fr">That</span> jest możliwe dla osób i rzeczy.</p></div>
+<div class="exs">
+I know that you are right. | aɪ noʊ ðæt ju ɑr raɪt | Wiem, że masz rację.
+I didn't come because I was ill. | aɪ ˈdɪdənt kʌm bɪˈkɔz aɪ wəz ɪl | Nie przyszedłem, ponieważ byłem chory.
+I'm learning English so that I can work abroad. | aɪm ˈlɝnɪŋ ˈɪŋɡlɪʃ soʊ ðæt aɪ kæn wɝk əˈbrɔd | Uczę się angielskiego, żeby móc pracować za granicą.
+Although I'm tired, I'm going to work. | ˌɔlˈðoʊ aɪm ˈtaɪɚd aɪm ˈɡoʊɪŋ tə wɝk | Chociaż jestem zmęczony, idę do pracy.
+That is the man who lives next door. | ðæt ɪz ðə mæn hu lɪvz nɛkst dɔr | To mężczyzna, który mieszka obok.
+This is the book that I told you about. | ðɪs ɪz ðə bʊk ðæt aɪ toʊld ju əˈbaʊt | To jest książka, o której ci mówiłem.
+I don't know if he is coming. | aɪ doʊnt noʊ ɪf hi ɪz ˈkʌmɪŋ | Nie wiem, czy przyjdzie.
+</div>
+<div class="qz" data-title="Ćwiczenie 8. Spójniki">
+I know ___ you are right. (that) | that
+I didn't come ___ I was ill. (because) | because
+I'm tired, ___ I'm going to work. (but) | but
+___ I'm tired, I'm going. (Although) | Although
+That is the man ___ lives next door. (who) | who
+This is the book ___ I read. (which) | which
+I don't know ___ he is coming. (if) | if
+I stayed at home ___ it was raining. (because) | because
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Czas i przyimki">
+<h2><span class="no">Rozdział 9</span>Wyrażenia czasu, przyimki i czasowniki z partykułami</h2>
+<div class="vocab">
+yesterday | ˈjɛstɚˌdeɪ | wczoraj
+last week | læst wik | w zeszłym tygodniu
+a week ago | ə wik əˈɡoʊ | tydzień temu
+in an hour | ɪn ən ˈaʊɚ | za godzinę
+every day | ˈɛvɚi deɪ | codziennie
+already | ɔˈlrɛdi | już
+still | stɪl | jeszcze
+often | ˈɔfən | często
+never | ˈnɛvɚ | nigdy
+during | ˈdʊrɪŋ | podczas
+before | bɪˈfɔr | przed, wcześniej
+after | ˈæftɚ | po, potem
+</div>
+<div class="rule"><b class="t">Ago / in / for</b><p><span class="fr">two hours ago</span> = dwie godziny temu; <span class="fr">in two hours</span> = za dwie godziny; <span class="fr">for two hours</span> = przez dwie godziny.</p></div>
+<h3>9.1. Ruch</h3>
+<div class="tw"><table>
+<tr><th>Czasownik</th><th>Znaczenie</th><th>Przykład</th></tr>
+<tr><td><span class="fr">go</span></td><td>iść, jechać</td><td><span class="fr">I go to work by bus.</span></td></tr>
+<tr><td><span class="fr">come</span></td><td>przyjść, przyjść tu</td><td><span class="fr">Come here, please.</span></td></tr>
+<tr><td><span class="fr">arrive (at / in)</span></td><td>dotrzeć</td><td><span class="fr">I arrive at the station at six.</span></td></tr>
+<tr><td><span class="fr">leave</span></td><td>wyjść</td><td><span class="fr">The train leaves at eight.</span></td></tr>
+<tr><td><span class="fr">fly</span></td><td>lecieć</td><td><span class="fr">Tomorrow I fly to Berlin.</span></td></tr>
+<tr><td><span class="fr">come back</span></td><td>wrócić</td><td><span class="fr">I'll come back soon.</span></td></tr>
+</table></div>
+<h3>9.2. Phrasal verbs</h3>
+<div class="vocab">
+get up | ɡɛt ʌp | wstać
+sit down | sɪt daʊn | usiąść
+look for | lʊk fər | szukać
+look at | lʊk ət | patrzeć na
+turn on / off | tɝn ɑn ɔf | włączyć / wyłączyć
+put on | pʊt ɑn | włożyć na siebie
+take off | teɪk ɔf | zdjąć; wystartować
+wake up | weɪk ʌp | obudzić się
+come back | kʌm bæk | wrócić
+find out | faɪnd aʊt | dowiedzieć się
+</div>
+<div class="exs">
+I get up at seven. | aɪ ɡɛt ʌp ət ˈsɛvən | Wstaję o siódmej.
+I'm looking for my keys. | aɪm ˈlʊkɪŋ fər maɪ kiz | Szukam moich kluczy.
+Please turn off the light. | pliz tɝn ɔf ðə laɪt | Proszę wyłączyć światło.
+He put on his jacket. | hi pʊt ɑn hɪz ˈdʒækət | Włożył kurtkę.
+I arrived two hours ago. | aɪ ɚˈaɪvd tu ˈaʊɚz əˈɡoʊ | Przyjechałem dwie godziny temu.
+</div>
+<div class="qz" data-title="Ćwiczenie 9. Czas i przyimki">
+wczoraj | yesterday
+jutro | tomorrow
+tydzień temu | a week ago
+za godzinę | in an hour
+I arrived two hours ___ . (ago) | ago
+I'll come back ___ an hour. (in) | in
+I live here ___ five years. (for) | for
+I get ___ at seven. (up) | up
+I'm looking ___ my keys. (for) | for
+Please turn ___ the light. (off) | off
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Słownictwo i praktyka" data-short="Słownictwo tematyczne">
+<h2><span class="no">Rozdział 10</span>Słownictwo tematyczne</h2>
+<div class="vocab">
+# Podróże
+journey | ˈdʒɝni | podróż
+suitcase | ˈsutˌkeɪs | walizka
+passport | ˈpæˌspɔrt | paszport
+booking | ˈbʊkɪŋ | rezerwacja
+hotel | hoʊˈtɛl | hotel
+map | mæp | mapa
+holiday | ˈhɑləˌdeɪ | urlop
+beach | bitʃ | plaża
+mountain | ˈmaʊntən | góra
+sea | si | morze
+# Praca i nauka
+work | wɝk | praca
+office | ˈɔfɪs | biuro
+boss | bɑs | szef
+colleague | ˈkɑliɡ | kolega
+salary | ˈsælɚi | pensja
+contract | ˈkɑnˌtrækt | umowa
+school | skul | szkoła
+exam | ɪɡˈzæm | egzamin
+lesson | ˈlɛsən | lekcja
+# Zdrowie i dom
+health | hɛlθ | zdrowie
+prescription | prəˈskrɪpʃən | recepta
+pain | peɪn | ból
+cold | koʊld | katar, przeziębienie
+shopping | ˈʃɑpɪŋ | zakupy
+neighbour | ˈneɪbɚ | sąsiad
+flat | flæt | mieszkanie
+rent | rɛnt | wynająć; czynsz
+</div>
+<div class="qz" data-title="Ćwiczenie 10. Słownictwo">
+podróż | journey
+walizka | suitcase
+paszport | passport
+rezerwacja | booking
+plaża | beach
+urlop | holiday
+praca | work
+szef | boss
+pensja | salary
+egzamin | exam
+sąsiad | neighbour
+mieszkanie | flat
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Dialogi">
+<h2><span class="no">Rozdział 11</span>Dialogi</h2>
+<div class="dg">
+# 1. Weekend plans
+Mary: What are you doing at the weekend? | Co robisz w weekend?
+Peter: On Saturday I'm going to Brno, and on Sunday I'm going to rest. | W sobotę jadę do Krakowa, a w niedzielę będę odpoczywać.
+Mary: I'd love to come with you. | Chciałabym pojechać z tobą.
+Peter: Great! We'll go by train. | Świetnie! Pojedziemy pociągiem.
+Mary: What time does it leave? | O której odjeżdża?
+Peter: In two hours. | Za dwie godziny.
+# 2. After the holiday
+Kate: How was your holiday? | Jak było na urlopie?
+Tom: Very nice. I was at the sea. | Bardzo ładnie. Byłem nad morzem.
+Kate: What did you do there? | Co tam robiłeś?
+Tom: I swam, I read and I relaxed. | Pływałem, czytałem i odpoczywałem.
+Kate: I envy you! | Zazdroszczę ci!
+# 3. A job interview
+Boss: Tell me something about yourself. | Opowiedz mi coś o sobie.
+Candidate: I'm an English teacher. I have worked at a school for five years. | Jestem nauczycielem angielskiego. Pracuję w szkole od pięciu lat.
+Boss: Why do you want to change jobs? | Dlaczego chce pan zmienić pracę?
+Candidate: I would like to earn more and develop. | Chciałbym zarabiać więcej i rozwijać się.
+Boss: Thank you, we'll be in touch. | Dziękuję, skontaktujemy się z panem.
+# 4. At the pharmacy
+Customer: Hello, I'm looking for something for a cold. | Dzień dobry, szukam czegoś na katar.
+Pharmacist: Do you have a fever? | Czy ma pan gorączkę?
+Customer: Yes, a little. | Tak, trochę.
+Pharmacist: Take these tablets twice a day. | Proszę brać te tabletki dwa razy dziennie.
+</div>
+<div class="qz" data-title="Ćwiczenie 11. Zwroty z dialogów">
+Co robisz w weekend? | What are you doing at the weekend
+Pojedziemy pociągiem. | We'll go by train / We will go by train
+Jak było na urlopie? | How was your holiday
+Byłem nad morzem. | I was at the sea
+Opowiedz mi coś o sobie. | Tell me something about yourself
+Chciałbym zarabiać więcej. | I would like to earn more
+Szukam czegoś na katar. | I'm looking for something for a cold / I am looking for something for a cold
+Dwa razy dziennie. | Twice a day
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Czytanie">
+<h2><span class="no">Rozdział 12</span>Czytanie: trzy teksty</h2>
+<h3>Text 1. My family</h3>
+<p class="fr">My name is Anna and I live in Prague. I have a husband and two children. My husband is a doctor and I am a teacher. Our son is ten and our daughter is seven. At weekends we often go to the mountains. In summer we want to go to the sea.</p>
+<p><i>Mam na imię Anna i mieszkam w Warszawie. Mam męża i dwoje dzieci. Mąż jest lekarzem, a ja jestem nauczycielką. Naszemu synowi jest dziesięć lat, a córce siedem. W weekendy często jeździmy w góry. Latem chcemy pojechać nad morze.</i></p>
+<h3>Text 2. Yesterday</h3>
+<p class="fr">Yesterday I got up at seven, had breakfast and went to work by bus. I was in the office until five. Then I bought bread and milk. In the evening I cooked dinner and watched a film. At eleven I went to bed.</p>
+<p><i>Wczoraj wstałem o siódmej, zjadłem śniadanie i pojechałem do pracy autobusem. W biurze byłem do piątej. Potem kupiłem chleb i mleko. Wieczorem ugotowałem kolację i obejrzałem film. O jedenastej poszedłem spać.</i></p>
+<h3>Text 3. Summer plans</h3>
+<p class="fr">This summer I'm going to the sea with friends. We will rent a house near the beach. We will swim, play volleyball and sit by the fire in the evenings. If the weather is nice, we will stay for two weeks.</p>
+<p><i>W tym roku latem pojadę z kolegami nad morze. Wynajmiemy domek blisko plaży. Będziemy pływać, grać w siatkówkę i wieczorem siedzieć przy ognisku. Jeśli będzie ładna pogoda, zostaniemy dwa tygodnie.</i></p>
+<div class="qz" data-title="Ćwiczenie 12. Pytania do tekstów">
+What is Anna's husband? | a doctor / doctor
+How old is the son? | ten
+When did he get up? | at seven / seven
+How did he go to work? | by bus
+What did he buy? | bread and milk
+Where is he going in summer? | to the sea
+Who is he going with? | with friends
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Pisanie listów">
+<h2><span class="no">Rozdział 13</span>Jak pisać e-maile i listy</h2>
+<div class="tw"><table>
+<tr><th>Sytuacja</th><th>Zwroty</th></tr>
+<tr><td>Zwrot (przyjaciel)</td><td><span class="fr">Hi Anna, / Dear Peter,</span></td></tr>
+<tr><td>Zwrot (formalny)</td><td><span class="fr">Dear Mr Smith, / Dear Ms Jones, / Dear Sir or Madam,</span></td></tr>
+<tr><td>Dziękuję za list</td><td><span class="fr">Thank you for your email.</span></td></tr>
+<tr><td>Piszę, ponieważ…</td><td><span class="fr">I am writing to ask about…</span></td></tr>
+<tr><td>Prośba</td><td><span class="fr">Could you please send me…?</span></td></tr>
+<tr><td>Zakończenie (przyjaciel)</td><td><span class="fr">Best wishes, / See you soon, / Take care,</span></td></tr>
+<tr><td>Zakończenie (formalne)</td><td><span class="fr">Yours sincerely, / Kind regards,</span></td></tr>
+</table></div>
+<h3>Przykład. List do przyjaciela</h3>
+<p class="fr">Hi Peter,<br>Thank you for your email. Everything is fine here. Last week I was in the Carpathians. The weather was beautiful. I would like to go back there. How are you? Write to me soon.<br>Best wishes,<br>Michael</p>
+<h3>Przykład. List formalny</h3>
+<p class="fr">Dear Ms Jones,<br>I am writing to ask about your English course for beginners. I would like to know how much it costs and when it starts. Thank you in advance for your reply.<br>Yours sincerely,<br>Michael Smith</p>
+<div class="warn"><b>Uwaga.</b> Po zwrocie otwierającym w brytyjskim angielskim pisze się przecinek (w amerykańskim dwukropek) i zaczyna się małą literą. Zakończenie <span class="fr">Yours sincerely</span> stosuje się, gdy znasz nazwisko adresata, <span class="fr">Yours faithfully</span> po <span class="fr">Dear Sir or Madam</span>.</div>
+<div class="qz" data-title="Ćwiczenie 13. Listy">
+Cześć Anno | Hi Anna
+Szanowna Pani Jones | Dear Ms Jones
+Dziękuję za Pani e-mail. | Thank you for your email
+Z poważaniem | Yours sincerely / Kind regards
+Trzymaj się | Take care
+Z góry dziękuję. | Thank you in advance
+Napisz do mnie wkrótce. | Write to me soon
+Piszę, żeby zapytać | I am writing to ask
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Ściąga, plan, test">
+<h2><span class="no">Rozdział 14</span>Ściąga, plan i test</h2>
+<div class="tw"><table>
+<tr><th>Temat</th><th>Zapamiętaj</th></tr>
+<tr><td>Past Simple</td><td>V+ed / nieregularne; did + V</td></tr>
+<tr><td>Future</td><td>will + V; be going to + V; plan: Present Continuous</td></tr>
+<tr><td>Present Perfect</td><td>have / has + V3; for, since, ever, just, yet</td></tr>
+<tr><td>Comparison</td><td>-er, -est; more, most; than; as … as</td></tr>
+<tr><td>Modals</td><td>could, should, must, have to, would like</td></tr>
+<tr><td>Quantity</td><td>some, any, much, many, a lot of</td></tr>
+<tr><td>Conditionals</td><td>if + present, will; if + past, would</td></tr>
+<tr><td>Relative</td><td>who, which, that</td></tr>
+</table></div>
+<h3>8-tygodniowy plan</h3>
+<div class="tw"><table>
+<tr><th>Tydzień</th><th>Rozdziały</th><th>Cel</th></tr>
+<tr><td>1</td><td>1</td><td>Mówić o wczoraj</td></tr>
+<tr><td>2</td><td>2</td><td>Plany</td></tr>
+<tr><td>3</td><td>3</td><td>Present Perfect</td></tr>
+<tr><td>4</td><td>4, 5</td><td>Stopniowanie i grzeczne prośby</td></tr>
+<tr><td>5</td><td>6, 7</td><td>Ilość i warunki</td></tr>
+<tr><td>6</td><td>8, 9, 10</td><td>Zdania złożone, czas, słownictwo</td></tr>
+<tr><td>7</td><td>11, 12</td><td>Dialogi i czytanie</td></tr>
+<tr><td>8</td><td>13, 14</td><td>E-mail + powtórka</td></tr>
+</table></div>
+<h3>Test końcowy</h3>
+<div class="qz" data-title="A2 test">
+I ___ to London last year. (go) | went
+Tomorrow I ___ call you. (will) | will
+I have ___ been to Paris. (never) | never
+He ___ lived here since 2018. (have / has) | has
+big → ___ | bigger
+Prague is bigger ___ Brno. (than) | than
+You ___ see a doctor. (should) | should
+If it rains, we ___ stay at home. (will) | will
+I didn't come ___ I was ill. (because) | because
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Mówię o przeszłości</label></li>
+<li><label><input type="checkbox"> Mówię o planach</label></li>
+<li><label><input type="checkbox"> Używam Present Perfect do doświadczenia</label></li>
+<li><label><input type="checkbox"> Grzecznie proszę i radzę</label></li>
+<li><label><input type="checkbox"> Porównuję i buduję zdania złożone</label></li>
+<li><label><input type="checkbox"> Napiszę krótki e-mail</label></li>
+</ul>
+</section>
+
+
+<footer>Samodzielny szkielet kursu A2. Uzupełnij go prawdziwym słuchaniem: podcasty, filmy z napisami, rozmowy z native speakerem.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>English</th><th>Wymowa</th><th>Po polsku</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Ćwiczenie';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Odpowiedź: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Sprawdź</button><button type="button" data-act="show">Pokaż odpowiedzi</button><button type="button" data-act="reset">Od nowa</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' z '+tot+(ok===tot?'. Wszystko dobrze.':'. Sprawdź pisownię.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^en[-_]US/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||('en'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='en-US';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('en4pl2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('en4pl2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('en4pl2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('en4pl2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='en4pl2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Wyniki: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">do rozdziału</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Pokazano pierwsze 40.</div>';
+    } else h+='<div class="mini">Nic nie znaleziono. Wyszukiwanie obejmuje angielskie i polskie słowa w tabelach słownictwa.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

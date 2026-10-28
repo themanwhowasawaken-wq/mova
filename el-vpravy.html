@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ελληνικά: вправи</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Ελληνικά: вправи</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Вправи: грецька</h1>
+  <p>Прості тести за темами A1 і A2. Пиши відповідь у порожнє поле й натискай «Перевірити». Діакритика важлива. «Показати відповіді» — після спроби.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="el-a1.html">Курс A1</a><a href="el-a2.html">Курс A2</a></p>
+</div>
+<section class="unit" id="e1" data-grp="Вправи A1" data-short="A1 · 1 Абетка й вимова">
+<h2><span class="no">A1 · 1</span>Абетка й вимова</h2>
+<div class="qz" data-title="A1 · 1.1. Прочитай і впиши">
+[неро] — вода | νερό
+[псомі] — хліб | ψωμί
+[спіті] — де живуть | σπίτι
+[кафес] — напій | καφές
+[сколіо] — де вчаться | σχολείο
+[філос] — друг | φίλος
+[ефхарісто] — подяка | ευχαριστώ
+[калімера] — привітання | καλημέρα
+</div>
+<div class="qz" data-title="A1 · 1.2. Переклад фраз">
+Добрий ранок! | Καλημέρα!
+Привіт! | Γεια σου!
+Дуже дякую. | Ευχαριστώ πολύ.
+Я не розумію. | Δεν καταλαβαίνω.
+Трохи говорю по-грецьки. | Μιλάω λίγα ελληνικά.
+Хліб і молоко, будь ласка. | Ψωμί και γάλα, παρακαλώ.
+</div>
+</section>
+<section class="unit" id="e2" data-short="A1 · 2 Привітання й знайомство">
+<h2><span class="no">A1 · 2</span>Привітання й знайомство</h2>
+<div class="qz" data-title="A1 · 2.1. Привітання">
+Добрий ранок! | Καλημέρα
+Дякую! | Ευχαριστώ
+Будь ласка | Παρακαλώ
+Вибачте! | Συγγνώμη
+До побачення! | Αντίο
+Добрий вечір! | Καλησπέρα
+Приємно познайомитися. | Χάρηκα
+Я не розумію. | Δεν καταλαβαίνω
+Звідки ти? | Από πού είσαι
+Я з України. | Είμαι από την Ουκρανία
+</div>
+<div class="qz" data-title="A1 · 2.2. Слова">
+добрий ранок | Καλημέρα
+добрий вечір | Καλησπέρα
+на добраніч | Καληνύχτα
+привіт (на «ти») | Γεια σου
+добрий день (на «ви») | Γεια σας
+вітаю | Χαίρετε
+до побачення | Αντίο
+до зустрічі | Τα λέμε
+дякую | Ευχαριστώ
+будь ласка | Παρακαλώ
+</div>
+<div class="qz" data-title="A1 · 2.3. Слова">
+вибачте | Συγγνώμη
+так | Ναι
+ні | Όχι
+можливо | Ίσως
+</div>
+<div class="qz" data-title="A1 · 2.4. Переклад фраз">
+Мене звати Михайло. | Με λένε Μιχάλη.
+Як тебе звати? | Πώς σε λένε;
+Як вас звати? | Πώς σας λένε;
+Мені тридцять років. | Είμαι τριάντα χρονών.
+Живу в Ужгороді. | Μένω στο Ούζγκοροντ.
+Я вчитель. | Είμαι δάσκαλος.
+Ти говориш англійською? | Μιλάς αγγλικά;
+Можеш повторити? | Μπορείς να το επαναλάβεις;
+</div>
+</section>
+<section class="unit" id="e3" data-short="A1 · 3 Іменники: рід, артикль, множина">
+<h2><span class="no">A1 · 3</span>Іменники: рід, артикль, множина</h2>
+<div class="qz" data-title="A1 · 3.1. Артикль">
+(рід) φίλος → (чол., артикль) | ο
+(рід) γυναίκα → (жін., артикль) | η
+(рід) παιδί → (сер., артикль) | το
+ο φίλος → (мн., з артиклем) | οι φίλοι
+η γυναίκα → (мн., з артиклем) | οι γυναίκες
+το παιδί → (мн., з артиклем) | τα παιδιά
+το βιβλίο → (мн., з артиклем) | τα βιβλία
+(знах.) ___ φίλο (ч, одн.) | τον
+</div>
+<div class="qz" data-title="A1 · 3.2. Слова">
+родина | η οικογένεια
+мати | η μητέρα / η μαμά
+батько | ο πατέρας / ο μπαμπάς
+брат | ο αδελφός
+сестра | η αδελφή
+син | ο γιος
+дочка | η κόρη
+дідусь | ο παππούς
+бабуся | η γιαγιά
+чоловік | ο άντρας
+</div>
+<div class="qz" data-title="A1 · 3.3. Слова">
+жінка, дружина | η γυναίκα
+дитина | το παιδί
+дім | το σπίτι
+квартира | το διαμέρισμα
+кімната | το δωμάτιο
+кухня | η κουζίνα
+стіл | το τραπέζι
+стілець | η καρέκλα
+вікно | το παράθυρο
+двері | η πόρτα
+</div>
+<div class="qz" data-title="A1 · 3.4. Слова">
+ліжко | το κρεβάτι
+автомобіль | το αυτοκίνητο
+телефон | το τηλέφωνο
+книжка | το βιβλίο
+</div>
+</section>
+<section class="unit" id="e4" data-short="A1 · 4 Είμαι і έχω">
+<h2><span class="no">A1 · 4</span>Дієслова είμαι (бути) і έχω (мати)</h2>
+<div class="qz" data-title="A1 · 4.1. Відмінювання">
+Εγώ ___ φοιτητής. (είμαι) | είμαι
+Εσύ ___ στο σπίτι. (είμαι) | είσαι
+Εμείς ___ από την Ουκρανία. (είμαι) | είμαστε
+Αυτοί ___ στη δουλειά. (είμαι) | είναι
+Εγώ ___ έναν αδελφό. (έχω) | έχω
+Εσύ ___ χρόνο. (έχω) | έχεις
+Αυτός ___ βιβλίο. (διαβάζω) | διαβάζει
+Εγώ ___ ελληνικά. (μιλάω) | μιλάω
+Εμείς ___ στο σχολείο. (πηγαίνω) | πηγαίνουμε
+Εγώ ___ τσάι. (θέλω) | θέλω
+Αυτοί ___ στο Ούζγκοροντ. (μένω) | μένουν
+Εσείς ___ πολύ. (δουλεύω) | δουλεύετε
+</div>
+<div class="qz" data-title="A1 · 4.2. Слова">
+говорити | μιλάω
+читати | διαβάζω
+писати | γράφω
+працювати | δουλεύω
+жити, залишатися | μένω
+вчити, вчитися | μαθαίνω
+їсти | τρώω
+пити | πίνω
+спати | κοιμάμαι
+купувати | αγοράζω
+</div>
+<div class="qz" data-title="A1 · 4.3. Слова">
+розуміти | καταλαβαίνω
+знати | ξέρω
+бачити | βλέπω
+хотіти | θέλω
+</div>
+<div class="qz" data-title="A1 · 4.4. Переклад фраз">
+Я студент. | Είμαι φοιτητής.
+Ти втомлений. | Είσαι κουρασμένος.
+Ми вдома. | Είμαστε στο σπίτι.
+У мене є брат. | Έχω έναν αδελφό.
+Маєш час? | Έχεις χρόνο;
+Не маю часу. | Δεν έχω χρόνο.
+</div>
+</section>
+<section class="unit" id="e5" data-short="A1 · 5 Питання, відмінки">
+<h2><span class="no">A1 · 5</span>Питання, заперечення, відмінки</h2>
+<div class="qz" data-title="A1 · 5.1. Мова в дії">
+___ είναι αυτός; (хто) | Ποιος
+___ κάνει; (скільки) | Πόσο
+___ μένεις; (де) | Πού
+Δεν ___ χρόνο. (маю) | έχω
+Διαβάζω ___ βιβλίο. (знах. сер.) | το
+Βλέπω ___ φίλο. (знах. ч.) | τον
+Είμαι ___ σχολείο. (σε + το) | στο
+ο αδελφός ___ (мій) | μου
+η αδελφή ___ (моя) | μου
+σπίτι ___ (великий, с.) | μεγάλο
+</div>
+<div class="qz" data-title="A1 · 5.2. Слова">
+хто, який | ποιος / ποια / ποιο
+що | τι
+де, куди | πού
+звідки | από πού
+коли | πότε
+як | πώς
+чому | γιατί
+скільки | πόσο / πόσα
+чий | τίνος
+</div>
+<div class="qz" data-title="A1 · 5.3. Переклад фраз">
+Хто це? | Ποιος είναι αυτός;
+Що ти робиш? / Як справи? | Τι κάνεις;
+Де ти живеш? | Πού μένεις;
+Куди ти йдеш? | Πού πηγαίνεις;
+Скільки коштує? | Πόσο κάνει;
+Як тебе звати? | Πώς σε λένε;
+У мене є сестра. | Έχω μια αδελφή.
+Читаю книжку. | Διαβάζω το βιβλίο.
+</div>
+<div class="qz" data-title="A1 · 5.4. Переклад фраз">
+Бачу собаку. | Βλέπω τον σκύλο.
+Живу в Ужгороді. | Μένω στο Ούζγκοροντ.
+Книжка на столі. | Το βιβλίο είναι στο τραπέζι.
+Я в школі. | Είμαι στο σχολείο.
+Іду до школи. | Πηγαίνω στο σχολείο.
+</div>
+</section>
+<section class="unit" id="e6" data-short="A1 · 6 Числа, час, дати">
+<h2><span class="no">A1 · 6</span>Числа, час і дати</h2>
+<div class="qz" data-title="A1 · 6.1. Числа й дні">
+2 | δύο
+3 | τρία
+5 | πέντε
+10 | δέκα
+20 | είκοσι
+100 | εκατό
+понеділок | Δευτέρα
+п'ятниця | Παρασκευή
+неділя | Κυριακή
+жовтень | Οκτώβριος
+завтра | αύριο
+вчора | χθες
+</div>
+<div class="qz" data-title="A1 · 6.2. Слова">
+вівторок | Τρίτη
+середа | Τετάρτη
+четвер | Πέμπτη
+субота | Σάββατο
+січень | Ιανουάριος
+лютий | Φεβρουάριος
+березень | Μάρτιος
+квітень | Απρίλιος
+травень | Μάιος
+червень | Ιούνιος
+</div>
+<div class="qz" data-title="A1 · 6.3. Слова">
+липень | Ιούλιος
+серпень | Αύγουστος
+вересень | Σεπτέμβριος
+листопад | Νοέμβριος
+грудень | Δεκέμβριος
+сьогодні | σήμερα
+вранці | το πρωί
+ввечері | το βράδυ
+зараз | τώρα
+</div>
+<div class="qz" data-title="A1 · 6.4. Переклад фраз">
+Котра година? | Τι ώρα είναι;
+П'ята година. | Είναι πέντε.
+О восьмій. | Στις οχτώ.
+Сьогодні понеділок. | Σήμερα είναι Δευτέρα.
+У п'ятницю я вільний. | Την Παρασκευή είμαι ελεύθερος.
+Пів на четверту. | Είναι τρεις και μισή.
+</div>
+</section>
+<section class="unit" id="e7" data-short="A1 · 7 Їжа, місто, покупки">
+<h2><span class="no">A1 · 7</span>Їжа, місто й покупки</h2>
+<div class="qz" data-title="A1 · 7.1. Кафе й місто">
+Одну каву, будь ласка. | Έναν καφέ, παρακαλώ
+Рахунок, будь ласка. | Τον λογαριασμό, παρακαλώ
+Смачного! | Καλή όρεξη
+Скільки коштує? | Πόσο κάνει
+Де вокзал? | Πού είναι ο σταθμός
+Дорого. | Είναι ακριβό
+Я голодний. | Πεινάω
+хліб | ψωμί
+молоко | γάλα
+вокзал | σταθμός
+</div>
+<div class="qz" data-title="A1 · 7.2. Слова">
+масло | το βούτυρο
+сир | το τυρί
+м'ясо | το κρέας
+риба | το ψάρι
+яйце | το αυγό
+суп | η σούπα
+рис | το ρύζι
+картопля | η πατάτα
+яблуко | το μήλο
+цукор | η ζάχαρη
+</div>
+<div class="qz" data-title="A1 · 7.3. Слова">
+сіль | το αλάτι
+вода | το νερό
+кава | ο καφές
+чай | το τσάι
+сік | ο χυμός
+пиво | η μπίρα
+вино | το κρασί
+пошта | το ταχυδρομείο
+банк | η τράπεζα
+лікарня | το νοσοκομείο
+</div>
+<div class="qz" data-title="A1 · 7.4. Слова">
+аптека | το φαρμακείο
+магазин | το μαγαζί
+вулиця | ο δρόμος
+міст | η γέφυρα
+парк | το πάρκο
+</div>
+</section>
+<section class="unit" id="e8" data-short="A1 · 8 Діалоги">
+<h2><span class="no">A1 · 8</span>Діалоги на щодень</h2>
+<div class="qz" data-title="A1 · 8.1. Фрази з діалогів">
+Що бажаєте? | Τι θα θέλετε
+Одну каву, будь ласка. | Έναν καφέ, παρακαλώ
+Квиток до Афін. | Ένα εισιτήριο για την Αθήνα
+Де музей? | Πού είναι το μουσείο
+П'ять хвилин пішки. | Πέντε λεπτά με τα πόδια
+Нема за що. | Παρακαλώ
+Мене звати Анна. | Με λένε Άννα
+Ще вчуся. | Μαθαίνω ακόμα
+</div>
+</section>
+<section class="unit" id="e9" data-short="A1 · 9 Шпаргалка, план, тест">
+<h2><span class="no">A1 · 9</span>Шпаргалка, план і тест</h2>
+<div class="qz" data-title="A1 · 9.1. A1">
+Εγώ ___ φοιτητής. (είμαι) | είμαι
+Εσύ ___ χρόνο. (έχω) | έχεις
+Εγώ δεν ___ χρόνο. (έχω) | έχω
+Διαβάζω ___ βιβλίο. (το) | το
+Είμαι ___ σχολείο. (σε + το) | στο
+ο φίλος → (мн., з артиклем) | οι φίλοι
+το παιδί → (мн., з артиклем) | τα παιδιά
+___ κάνει; (скільки) | Πόσο
+5 | πέντε
+п'ятниця | Παρασκευή
+</div>
+</section>
+
+<section class="unit" id="e10" data-grp="Вправи A1 (ще)" data-short="A1 · 10 Більше слів">
+<h2><span class="no">A1 · 10</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="qz" data-title="A1 · 10.1. Нові слова">
+лікар | γιατρός
+вчитель | δάσκαλος
+голова | κεφάλι
+рука | χέρι
+сукня | φόρεμα
+дощ | βροχή
+сніг | χιόνι
+автобус | λεωφορείο
+потяг | τρένο
+квиток | εισιτήριο
+аеропорт | αεροδρόμιο
+Іде дощ. | Βρέχει
+У мене болить голова. | Με πονάει το κεφάλι
+Сьогодні холодно. | Σήμερα κάνει κρύο
+</div>
+<div class="qz" data-title="A1 · 10.2. Слова">
+медсестра | η νοσοκόμα
+інженер | ο μηχανικός
+водій | ο οδηγός
+продавець | ο πωλητής
+кухар | ο μάγειρας
+студент | ο φοιτητής
+поліцейський | ο αστυνομικός
+адвокат | ο δικηγόρος
+око | το μάτι
+вухо | το αυτί
+</div>
+<div class="qz" data-title="A1 · 10.3. Слова">
+ніс | η μύτη
+рот | το στόμα
+нога | το πόδι
+живіт | η κοιλιά
+спина | η πλάτη
+серце | η καρδιά
+гарячка | ο πυρετός
+аптека | το φαρμακείο
+ліки | τα φάρμακα
+сорочка | το πουκάμισο
+</div>
+<div class="qz" data-title="A1 · 10.4. Слова">
+штани | το παντελόνι
+куртка | το μπουφάν
+взуття | τα παπούτσια
+светр | το πουλόβερ
+шапка, капелюх | το καπέλο
+розмір | το μέγεθος
+погода | ο καιρός
+сонце | ο ήλιος
+вітер | ο άνεμος
+таксі | το ταξί
+</div>
+<div class="qz" data-title="A1 · 10.5. Слова">
+літак | το αεροπλάνο
+велосипед | το ποδήλατο
+зупинка | η στάση
+вітальня | το σαλόνι
+ванна | το μπάνιο
+холодильник | το ψυγείο
+диван | ο καναπές
+фільм | η ταινία
+музика | η μουσική
+футбол | το ποδόσφαιρο
+</div>
+<div class="qz" data-title="A1 · 10.6. Переклад фраз">
+Я вчитель. | Είμαι δάσκαλος.
+Працюю водієм. | Δουλεύω ως οδηγός.
+У мене болить горло. | Με πονάει ο λαιμός.
+Який у тебе розмір? | Τι μέγεθος φοράς;
+Де зупинка? | Πού είναι η στάση;
+Люблю готувати. | Μου αρέσει να μαγειρεύω.
+</div>
+</section>
+<section class="unit" id="e11" data-short="A1 · 11 Модальні, наказовий">
+<h2><span class="no">A1 · 11</span>Модальні дієслова й наказовий спосіб</h2>
+<div class="qz" data-title="A1 · 11.1. Модальні й наказовий">
+Εγώ ___ να έρθω. (μπορώ) | μπορώ
+Εσύ ___ να πας. (μπορώ) | μπορείς
+Αυτός ___ καφέ. (θέλω) | θέλει
+Εμείς ___ να πάμε. (μπορώ) | μπορούμε
+___ να μαγειρεύω. (Я вмію) | Ξέρω
+Θα ___ ένα τσάι. (Я б хотів) | ήθελα
+μιλάω → (ти!) ___ | μίλα
+γράφω → (ти!) ___ | γράψε
+μιλάω → (ви!) ___ | μιλήστε
+έρχομαι → (ти!) ___ | έλα
+___ καπνίζεις! (Не) | Μην
+</div>
+<div class="qz" data-title="A1 · 11.2. Переклад фраз">
+Можна ввійти? | Μπορώ να μπω;
+Хочу пити каву. | Θέλω να πιω καφέ.
+Сьогодні мушу працювати. | Σήμερα πρέπει να δουλέψω.
+Зараз не можу говорити. | Τώρα δεν μπορώ να μιλήσω.
+Вмієш готувати? | Ξέρεις να μαγειρεύεις;
+Тут не можна курити. | Εδώ απαγορεύεται το κάπνισμα.
+Я б хотів чаю, будь ласка. | Θα ήθελα ένα τσάι, παρακαλώ.
+Зачекай хвилинку! | Περίμενε ένα λεπτό!
+</div>
+<div class="qz" data-title="A1 · 11.3. Переклад фраз">
+Підійдіть сюди, будь ласка. | Ελάτε εδώ, παρακαλώ.
+Говори повільніше, будь ласка. | Μίλα πιο αργά, παρακαλώ.
+Не кури тут! | Μην καπνίζεις εδώ!
+Будь обережний! | Πρόσεχε!
+</div>
+</section>
+<section class="unit" id="e12" data-short="A1 · 12 Більше діалогів">
+<h2><span class="no">A1 · 12</span>Ще чотири діалоги</h2>
+<div class="qz" data-title="A1 · 12.1. Фрази з діалогів">
+Що у вас болить? | Τι σας πονάει
+У мене болить голова. | Με πονάει το κεφάλι
+Шукаю куртку. | Ψάχνω ένα μπουφάν
+Який у вас розмір? | Τι μέγεθος φοράτε
+Скільки коштує? | Πόσο κάνει
+У мене бронь. | Έχω κράτηση
+Є вайфай? | Υπάρχει wifi
+Підемо в кіно? | Πάμε σινεμά
+</div>
+</section>
+<section class="unit" id="a1" data-grp="Вправи A2" data-short="A2 · 1 Як користуватися курсом">
+<h2><span class="no">A2 · 1</span>Як користуватися курсом</h2>
+<div class="qz" data-title="A2 · 1.1. Повторення A1">
+Εγώ ___ φοιτητής. (είμαι) | είμαι
+Εσύ ___ έναν αδελφό. (έχω) | έχεις
+Εμείς ___ ελληνικά. (μιλάω) | μιλάμε
+Εγώ ___ το βιβλίο. (διαβάζω) | διαβάζω
+Είμαι ___ σχολείο. (σε + το) | στο
+ο φίλος → (знах., одн.) ___ φίλο | τον
+το παιδί → (мн., з артиклем) | τα παιδιά
+ο αδελφός ___ (мій) | μου
+</div>
+</section>
+<section class="unit" id="a2" data-short="A2 · 2 Минулий час">
+<h2><span class="no">A2 · 2</span>Минулий час</h2>
+<div class="qz" data-title="A2 · 2.1. Минулий час">
+Χθες ___ στο σπίτι. (εγώ, είμαι) | ήμουν
+Αυτή ___ ένα βιβλίο. (διαβάζω) | διάβασε
+Εμείς ___ σινεμά. (πηγαίνω) | πήγαμε
+Αυτοί ___ στην Αθήνα. (είμαι) | ήταν
+Εγώ ___ μια ταινία. (βλέπω) | είδα
+Εσύ ___ χρόνο. (δεν, έχω) | δεν είχες
+Εγώ ___ χθες. (δουλεύω) | δούλεψα
+Εμείς ___ ελληνικά. (μιλάω) | μιλήσαμε
+</div>
+<div class="qz" data-title="A2 · 2.2. Переклад фраз">
+Вчора я був (була) вдома. | Χθες ήμουν στο σπίτι.
+Минулого тижня ми були в Афінах. | Την περασμένη εβδομάδα ήμασταν στην Αθήνα.
+Я прочитав книжку. | Διάβασα ένα βιβλίο.
+Що ти робив? | Τι έκανες;
+Я не мав часу. | Δεν είχα χρόνο.
+Ми ходили в кіно. | Πήγαμε σινεμά.
+Я бачив його на вокзалі. | Τον είδα στον σταθμό.
+Ти вже їв? | Έφαγες ήδη;
+</div>
+</section>
+<section class="unit" id="a3" data-short="A2 · 3 Майбутній час">
+<h2><span class="no">A2 · 3</span>Майбутній час</h2>
+<div class="qz" data-title="A2 · 3.1. Майбутнє">
+Αύριο ___ στο σπίτι. (είμαι) | θα είμαι
+Εσύ ___ . (γράφω) | θα γράψεις
+Εμείς ___ σινεμά. (πηγαίνω) | θα πάμε
+Αυτοί ___ . (γράφω) | θα γράψουν
+Εσείς ___ στο σπίτι. (είμαι) | θα είστε
+Αυτή ___ αύριο. (έχω) | θα έχει
+</div>
+<div class="qz" data-title="A2 · 3.2. Переклад фраз">
+Завтра я працюватиму. | Αύριο θα δουλέψω.
+Що робитимеш у суботу? | Τι θα κάνεις το Σάββατο;
+Наступного тижня поїдемо до моря. | Την άλλη εβδομάδα θα πάμε στη θάλασσα.
+Зателефоную тобі ввечері. | Θα σου τηλεφωνήσω το βράδυ.
+Куплю новий телефон. | Θα αγοράσω ένα καινούργιο τηλέφωνο.
+Ми не будемо їсти вдома. | Δεν θα φάμε στο σπίτι.
+</div>
+</section>
+<section class="unit" id="a4" data-short="A2 · 4 Умовний спосіб">
+<h2><span class="no">A2 · 4</span>Умовний спосіб і ввічливі прохання</h2>
+<div class="qz" data-title="A2 · 4.1. Умовний спосіб">
+Θα ___ έναν καφέ. (Я б хотів) | ήθελα
+Θα ___ να με βοηθήσετε; (μπορώ) | μπορούσατε
+Αν ___ χρόνο, θα ερχόμουν. (έχω) | είχα
+Θα ___ να κλείσω ένα τραπέζι. (Я б хотів) | ήθελα
+Εσύ θα ___ να έρθεις; (μπορώ) | μπορούσες
+</div>
+<div class="qz" data-title="A2 · 4.2. Переклад фраз">
+Я б хотів кави. | Θα ήθελα έναν καφέ.
+Я б хотів поїхати до моря. | Θα ήθελα να πάω στη θάλασσα.
+Чи не могли б ви мені допомогти? | Θα μπορούσατε να με βοηθήσετε;
+Якби я мав час, прийшов би. | Αν είχα χρόνο, θα ερχόμουν.
+Я хотів би забронювати столик. | Θα ήθελα να κλείσω ένα τραπέζι.
+</div>
+</section>
+<section class="unit" id="a5" data-short="A2 · 5 Вид дієслова">
+<h2><span class="no">A2 · 5</span>Вид дієслова: повторення й результат</h2>
+<div class="qz" data-title="A2 · 5.1. Вид дієслова">
+писати → минулий (я) | έγραψα
+читати → минулий (я) | διάβασα
+купувати → минулий (я) | αγόρασα
+їсти → минулий (я) | έφαγα
+Κάθε μέρα ___ . (διαβάζω, εγώ) | διαβάζω
+Χθες ___ ένα βιβλίο. (διαβάζω, аорист) | διάβασα
+</div>
+<div class="qz" data-title="A2 · 5.2. Переклад фраз">
+Щодня читаю газету. | Κάθε μέρα διαβάζω την εφημερίδα.
+Вчора прочитав книжку. | Χθες διάβασα ένα βιβλίο.
+Пишу листа. | Γράφω ένα γράμμα.
+Я вже написав листа. | Έγραψα ήδη το γράμμα.
+Щодня купую хліб. | Κάθε μέρα αγοράζω ψωμί.
+Купив хліб. | Αγόρασα ψωμί.
+</div>
+</section>
+<section class="unit" id="a6" data-short="A2 · 6 Родовий відмінок">
+<h2><span class="no">A2 · 6</span>Родовий відмінок</h2>
+<div class="qz" data-title="A2 · 6.1. Родовий відмінок">
+το βιβλίο ___ αδελφού (του / της) | του
+η τσάντα ___ μητέρας (του / της) | της
+το σπίτι της ___ (Άννα) | Άννας
+το αυτοκίνητο του ___ (πατέρας) | πατέρα
+το όνομα του ___ (δάσκαλος) | δασκάλου
+το κέντρο της ___ (πόλη) | πόλης
+τα βιβλία των ___ (φίλοι) | φίλων
+το σπίτι του ___ (φίλος) | φίλου
+</div>
+<div class="qz" data-title="A2 · 6.2. Переклад фраз">
+Це книжка брата. | Αυτό είναι το βιβλίο του αδελφού.
+Це сумка мами. | Αυτή είναι η τσάντα της μητέρας.
+Дім Анни великий. | Το σπίτι της Άννας είναι μεγάλο.
+Ім'я вчителя — Нікос. | Το όνομα του δασκάλου είναι Νίκος.
+Центр міста близько. | Το κέντρο της πόλης είναι κοντά.
+Книжки друзів тут. | Τα βιβλία των φίλων είναι εδώ.
+</div>
+</section>
+<section class="unit" id="a7" data-short="A2 · 7 Непрямий додаток, прийменники">
+<h2><span class="no">A2 · 7</span>Непрямий додаток і прийменники</h2>
+<div class="qz" data-title="A2 · 7.1. Непрямий додаток і прийменники">
+Πηγαίνω ___ γιατρό. (σε + τον) | στον
+Πηγαίνω ___ σχολείο. (σε + το) | στο
+Έρχομαι ___ τον φίλο. (з) | με
+Καφές ___ ζάχαρη. (без) | χωρίς
+___ το φαγητό. (після) | Μετά
+Είμαι ___ Ουκρανία. (з: από την) | από
+Μένω ___ στο σχολείο. (біля) | κοντά
+___ από το φαγητό. (перед) | Πριν
+</div>
+<div class="qz" data-title="A2 · 7.2. Переклад фраз">
+Даю книжку своєму другові. | Δίνω το βιβλίο στον φίλο μου.
+Пишу листа мамі. | Γράφω ένα γράμμα στη μητέρα μου.
+Телефоную татові. | Τηλεφωνώ στον πατέρα μου.
+Показую туристові дорогу. | Δείχνω τον δρόμο στον τουρίστα.
+Даю це йому. | Του το δίνω.
+Що ти сказав учителеві? | Τι είπες στον δάσκαλο;
+</div>
+</section>
+<section class="unit" id="a8" data-short="A2 · 8 Короткі форми займенників">
+<h2><span class="no">A2 · 8</span>Короткі й повні форми займенників</h2>
+<div class="qz" data-title="A2 · 8.1. Займенники">
+(Бачу тебе) ___ βλέπω | σε
+(Ти мене знаєш) ___ ξέρεις | με
+(Не розумію цього) Δεν ___ καταλαβαίνω | το
+(Даю тобі книжку) ___ δίνω το βιβλίο | σου
+(Ми вас бачимо) ___ βλέπουμε | σας
+Έρχομαι μαζί ___ (з тобою) | σου
+Αυτό είναι για ___ (для мене) | μένα
+Αυτό είναι για ___ (для тебе) | σένα
+</div>
+<div class="qz" data-title="A2 · 8.2. Переклад фраз">
+Бачу тебе. | Σε βλέπω.
+Ти мене знаєш? | Με ξέρεις;
+Я цього не розумію. | Δεν το καταλαβαίνω.
+Ти нам допомагаєш? | Μας βοηθάς;
+Іду з тобою. | Έρχομαι μαζί σου.
+Це для тебе. | Αυτό είναι για σένα.
+Я це бачив. | Το έχω δει.
+Дай мені води, будь ласка. | Δώσε μου νερό, παρακαλώ.
+</div>
+</section>
+<section class="unit" id="a9" data-short="A2 · 9 Порівняння">
+<h2><span class="no">A2 · 9</span>Порівняння</h2>
+<div class="qz" data-title="A2 · 9.1. Порівняння">
+Η Αθήνα είναι ___ μεγάλη από τη Θεσσαλονίκη. (більша) | πιο
+Αυτός είναι πιο ψηλός ___ μένα. (ніж) | από
+καλός → кращий: ___ | καλύτερος
+κακός → гірший: ___ | χειρότερος
+___ αργά, παρακαλώ. (повільніше) | Πιο
+Αυτή είναι η ___ μεγάλη πόλη. (найбільша) | πιο
+</div>
+<div class="qz" data-title="A2 · 9.2. Переклад фраз">
+Афіни більші за Салоніки. | Η Αθήνα είναι πιο μεγάλη από τη Θεσσαλονίκη.
+Він вищий за мене. | Αυτός είναι πιο ψηλός από μένα.
+Це краще. | Αυτό είναι καλύτερο.
+Це найбільше місто. | Αυτή είναι η πιο μεγάλη πόλη.
+Говори повільніше, будь ласка. | Μίλα πιο αργά, παρακαλώ.
+Так само гарно, як Крит. | Τόσο όμορφο όσο η Κρήτη.
+</div>
+</section>
+<section class="unit" id="a10" data-short="A2 · 10 Складні речення">
+<h2><span class="no">A2 · 10</span>Складні речення</h2>
+<div class="qz" data-title="A2 · 10.1. Складні речення">
+Δεν πάω ___ βρέχει. (тому що) | γιατί
+___ έχεις χρόνο, έλα. (Якщо) | Αν
+___ έρθω, θα σου τηλεφωνήσω. (Коли) | Όταν
+___ είμαι κουρασμένος, δουλεύω. (Хоч) | Παρόλο που
+Νομίζω ___ είναι εδώ. (що) | ότι
+Θέλω ___ έρθεις. (щоб) | να
+</div>
+<div class="qz" data-title="A2 · 10.2. Слова">
+що | ότι / πως
+тому що | γιατί / επειδή
+тому | γι' αυτό
+але | αλλά
+і | και
+або | ή
+якщо | αν
+коли | όταν
+тоді як | ενώ
+хоча | παρόλο που
+</div>
+<div class="qz" data-title="A2 · 10.3. Переклад фраз">
+Думаю, що він удома. | Νομίζω ότι είναι στο σπίτι.
+Знаю, що ти говориш по-грецьки. | Ξέρω ότι μιλάς ελληνικά.
+Не йду, бо йде дощ. | Δεν πάω γιατί βρέχει.
+Іде дощ, тому лишаюся вдома. | Βρέχει, γι' αυτό μένω στο σπίτι.
+Якщо маєш час, приходь. | Αν έχεις χρόνο, έλα.
+Коли прийду, зателефоную. | Όταν έρθω, θα σου τηλεφωνήσω.
+Хоч я втомлений, працюю. | Παρόλο που είμαι κουρασμένος, δουλεύω.
+Хочу, щоб ти прийшов. | Θέλω να έρθεις.
+</div>
+</section>
+<section class="unit" id="a11" data-short="A2 · 11 Час і дієслова руху">
+<h2><span class="no">A2 · 11</span>Час і дієслова руху</h2>
+<div class="qz" data-title="A2 · 11.1. Час і рух">
+3:15 → τρεις και ___ | τέταρτο
+3:30 → τρεις και ___ | μισή
+3:45 → τέσσερις ___ τέταρτο | παρά
+3:55 → τέσσερις ___ πέντε | παρά
+Το τρένο ___ στις εννιά. (відправляється) | φεύγει
+___ από το σπίτι στις οχτώ. (Я виходжу) | Βγαίνω
+___ στο σπίτι στις πέντε. (Я повертаюсь) | Γυρίζω
+___ στο μαγαζί. (Я заходжу) | Μπαίνω
+</div>
+<div class="qz" data-title="A2 · 11.2. Слова">
+приходити | έρχομαι
+йти, їхати | πάω
+виходити | βγαίνω
+входити | μπαίνω
+повертатися | γυρίζω
+відходити, виїжджати | φεύγω
+прибувати | φτάνω
+подорожувати | ταξιδεύω
+вести авто | οδηγώ
+літати | πετάω
+</div>
+<div class="qz" data-title="A2 · 11.3. Переклад фраз">
+Потяг відправляється о дев'ятій. | Το τρένο φεύγει στις εννιά.
+Прибуваю о пів на одинадцяту. | Φτάνω στις δέκα και μισή.
+Виходжу з дому о восьмій. | Βγαίνω από το σπίτι στις οχτώ.
+Повертаюсь додому о п'ятій. | Γυρίζω στο σπίτι στις πέντε.
+Заходжу в магазин. | Μπαίνω στο μαγαζί.
+Як дійти до вокзалу? | Πώς να πάω στον σταθμό;
+Їду авто. | Οδηγώ το αυτοκίνητο.
+</div>
+</section>
+<section class="unit" id="a12" data-short="A2 · 12 Словник за темами">
+<h2><span class="no">A2 · 12</span>Словник за темами</h2>
+<div class="qz" data-title="A2 · 12.1. Слова">
+подорож | το ταξίδι
+паспорт | το διαβατήριο
+валіза | η βαλίτσα
+бронь | η κράτηση
+квиток | το εισιτήριο
+відпустка | οι διακοπές
+готель | το ξενοδοχείο
+пляж | η παραλία
+робота | η δουλειά
+школа | το σχολείο
+</div>
+<div class="qz" data-title="A2 · 12.2. Слова">
+університет | το πανεπιστήμιο
+начальник | το αφεντικό
+зустріч | η συνάντηση
+зарплата | ο μισθός
+іспити | οι εξετάσεις
+радісний | χαρούμενος
+сумний | λυπημένος
+втомлений | κουρασμένος
+сердитий | θυμωμένος
+щасливий | ευτυχισμένος
+</div>
+<div class="qz" data-title="A2 · 12.3. Слова">
+квартира | το διαμέρισμα
+ключ | το κλειδί
+пральна машина | το πλυντήριο
+оренда | το ενοίκιο
+сусід | ο γείτονας
+</div>
+</section>
+<section class="unit" id="a13" data-short="A2 · 13 Діалоги">
+<h2><span class="no">A2 · 13</span>Діалоги</h2>
+<div class="qz" data-title="A2 · 13.1. Фрази з діалогів">
+Що ти робитимеш цими вихідними? | Τι θα κάνεις αυτό το Σαββατοκύριακο
+Хотіла б, але мушу працювати. | Θα ήθελα, αλλά πρέπει να δουλέψω
+Вже три дні. | Τρεις μέρες τώρα
+Шукаю квартиру. | Ψάχνω ένα διαμέρισμα
+Можна подивитися? | Μπορώ να το δω
+</div>
+</section>
+<section class="unit" id="a14" data-short="A2 · 14 Читання">
+<h2><span class="no">A2 · 14</span>Читання: три тексти</h2>
+<div class="qz" data-title="A2 · 14.1. Запитання до текстів">
+Коли прокидаюсь? | στις επτά / επτά
+Де вчиться брат? | στην Αθήνα / Αθήνα
+Де були торік? | στη θάλασσα / θάλασσα
+Що їли у відпустці? | ψάρι
+Куди наступного року? | στο βουνό / βουνό
+</div>
+</section>
+<section class="unit" id="a15" data-short="A2 · 15 Як писати листи">
+<h2><span class="no">A2 · 15</span>Як писати листи</h2>
+<div class="qz" data-title="A2 · 15.1. Листи">
+Дорогий (m) | Αγαπητέ
+З повагою | Με εκτίμηση
+Дякую за листа. | Ευχαριστώ για το γράμμα
+З привітом | Φιλικά
+</div>
+</section>
+<section class="unit" id="a16" data-short="A2 · 16 Шпаргалка, план, тест">
+<h2><span class="no">A2 · 16</span>Шпаргалка, план і тест</h2>
+<div class="qz" data-title="A2 · 16.1. A2">
+Χθες ___ στο σπίτι. (εγώ, είμαι) | ήμουν
+Αύριο ___ . (εγώ, δουλεύω) | θα δουλέψω
+Θα ___ έναν καφέ. (Я б хотів) | ήθελα
+το σπίτι της ___ (Άννα) | Άννας
+Έρχομαι μαζί ___ (з тобою) | σου
+Η Αθήνα είναι ___ μεγάλη από τη Θεσσαλονίκη. (πιο) | πιο
+Αυτός είναι πιο ψηλός ___ μένα. (ніж) | από
+Δεν πάω ___ βρέχει. (тому що) | γιατί
+3:15 → τρεις και ___ | τέταρτο
+Εγώ ___ ένα βιβλίο. (διαβάζω, аорист) | διάβασα
+</div>
+</section>
+
+<footer>Вправи до курсів. Пояснення й таблиці дивись у курсах A1 і A2.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Ελληνικά</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^el[-_]GR/i.test(x.lang))||v.find(x=>/^el/i.test(x.lang))||('el'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='el-GR';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('elx_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('elx_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('elx_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('elx_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='elx_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

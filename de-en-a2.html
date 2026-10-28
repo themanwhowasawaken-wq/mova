@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>German A2: complete course</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="Home">&larr;</a>
+  <button id="menuBtn" aria-label="Contents">Contents</button>
+  <span class="brand">German A2</span>
+  <input id="q" type="search" placeholder="Find a word" aria-label="Find a word">
+  <button id="uaBtn" title="Show or hide translations of examples and dialogues">Translation</button>
+  <button id="thBtn" title="Light or dark theme">Theme</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Contents"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>German A2</h1>
+  <p>The next step in German: past and future, cases and forms, comparison, complex sentences, reading and letters. Tap a word or phrase to hear it.</p>
+  <p class="crumbs"><a href="index.html">&larr; Home</a><a href="de-en-a1.html">Level A1</a><a href="de-en-vpravy.html">Exercises</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Start" data-short="How to use this course">
+<h2><span class="no">Section 0</span>How to use this course</h2>
+<p class="lead">Level A2: you learn to <b>talk about the past, make plans, ask politely, compare things and give reasons</b>. Pronunciation, <span class="fr">sein, haben</span>, articles, word order, numbers and time are covered in the A1 course.</p>
+<h3>By the end you will be able to</h3>
+<ul>
+<li>talk about the past (<span class="fr">ich habe gemacht, ich bin gegangen, ich war</span>);</li>
+<li>talk about plans (<span class="fr">ich werde…, ich will…</span>);</li>
+<li>ask politely (<span class="fr">ich hätte gern, könnten Sie…</span>);</li>
+<li>use the accusative and dative, pronouns and prepositions;</li>
+<li>build subordinate clauses (<span class="fr">weil, dass, wenn, obwohl</span>);</li>
+<li>compare things and write a letter.</li>
+</ul>
+<div class="tip"><b class="t">Good news for English speakers.</b> German and English are close cousins: <span class="fr">Haus, Hand, Wasser, Winter, Buch, trinken, finden, Apfel</span>. What is new is the case system and the verb at the end of subordinate clauses.</div>
+<div class="warn"><b>False friends.</b> <span class="fr">das Gift</span> = poison (not a present), <span class="fr">der Rock</span> = skirt, <span class="fr">bald</span> = soon, <span class="fr">die Fabrik</span> = factory, <span class="fr">der Brief</span> = letter, <span class="fr">bekommen</span> = to get, <span class="fr">der Kuchen</span> = cake, <span class="fr">der Hut</span> = hat, <span class="fr">sensibel</span> = sensitive, <span class="fr">will</span> = wants (not will), <span class="fr">wer</span> = who.</div>
+<h3>Quick A1 check</h3>
+<div class="qz" data-title="Exercise 0. A1 review">
+Ich ___ Student. (sein) | bin
+Du ___ zu Hause. (sein) | bist
+Ich ___ einen Bruder. (haben) | habe
+Ich ___ Deutsch. (sprechen) | spreche
+Ich wohne ___ Berlin. (in) | in
+Ich ___ einen Kaffee. (möchten) | möchte
+Du ___ helfen. (können) | kannst
+Ich gehe ___ Arbeit. (to the) | zur
+Kaffee ___ Zucker. (without) | ohne
+Ich ___ arbeiten. (must) | muss
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Past tenses" data-short="Perfekt">
+<h2><span class="no">Section 1</span>The past: <span class="fr">Perfekt</span></h2>
+<p class="lead">The main spoken past tense: <b>haben</b> or <b>sein</b> (2nd position) + <b>past participle</b> (at the end). It covers both English "I worked" and "I have worked".</p>
+<div class="tw"><table>
+<tr><th>Type</th><th>Formation</th><th>Example</th></tr>
+<tr><td>Weak</td><td>ge-…-t</td><td>machen → gemacht; arbeiten → gearbeitet</td></tr>
+<tr><td>Strong</td><td>ge-…-en (often a vowel change)</td><td>essen → gegessen; sehen → gesehen; trinken → getrunken</td></tr>
+<tr><td>Separable prefix</td><td>prefix + ge + …</td><td>einkaufen → eingekauft; aufstehen → aufgestanden</td></tr>
+<tr><td>No ge- (be-, ver-, er-, -ieren)</td><td>no ge-</td><td>besuchen → besucht; verstehen → verstanden; studieren → studiert</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>Infinitive</th><th>Participle</th><th>Auxiliary</th></tr>
+<tr><td>sein</td><td>gewesen</td><td>sein</td></tr>
+<tr><td>haben</td><td>gehabt</td><td>haben</td></tr>
+<tr><td>gehen</td><td>gegangen</td><td>sein</td></tr>
+<tr><td>kommen</td><td>gekommen</td><td>sein</td></tr>
+<tr><td>fahren</td><td>gefahren</td><td>sein</td></tr>
+<tr><td>lesen</td><td>gelesen</td><td>haben</td></tr>
+<tr><td>schreiben</td><td>geschrieben</td><td>haben</td></tr>
+<tr><td>sprechen</td><td>gesprochen</td><td>haben</td></tr>
+<tr><td>nehmen</td><td>genommen</td><td>haben</td></tr>
+</table></div>
+<div class="rule"><b class="t">Sein or haben?</b><p>Use <b>sein</b> with verbs of movement and change of state (<span class="fr">gehen, kommen, fahren, fliegen, aufstehen</span>) and with <span class="fr">sein, bleiben, werden</span>. All other verbs take <b>haben</b>.</p></div>
+<div class="exs">
+Gestern habe ich den ganzen Tag gearbeitet. | gehstehrn hahbuh ikh den gahntsen tahg gehahrbeyeteht | Yesterday I worked all day.
+Hast du den Film gesehen? | hahst doo den film gehzehen | Have you seen the film?
+Wir sind ans Meer gefahren. | vir zind ahns mer gehfahren | We went to the seaside.
+Maria ist um acht angekommen. | mahriah ist oom ahkht ahngehkohmmen | Maria arrived at eight.
+Ich habe keine Zeit gehabt. | ikh hahbuh keyenuh tseyet gehahbt | I had no time.
+Was hast du am Samstag gemacht? | vahs hahst doo ahm zahmstahg gehmahkht | What did you do on Saturday?
+</div>
+<div class="qz" data-title="Exercise 1. Perfekt">
+Ich ___ gearbeitet. (haben) | habe
+Du ___ gegessen. | hast
+Sie ___ gesprochen. | hat
+Wir ___ gesehen. | haben
+Ihr ___ gelesen? | habt
+Ich ___ nach Hause gegangen. (sein) | bin
+Er ___ gekommen. | ist
+Wir ___ gefahren. | sind
+machen → ich habe ___ | gemacht
+sehen → ich habe ___ | gesehen
+schreiben → ich habe ___ | geschrieben
+aufstehen → ich bin ___ | aufgestanden
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Präteritum">
+<h2><span class="no">Section 2</span>Präteritum: war, hatte, wollte</h2>
+<p class="lead">In conversation, <span class="fr">sein, haben</span> and the modals are usually used in the simple past (Präteritum), not in Perfekt.</p>
+<div class="tw"><table>
+<tr><th></th><th>sein</th><th>haben</th><th>können</th><th>müssen</th><th>wollen</th></tr>
+<tr><td>ich</td><td>war</td><td>hatte</td><td>konnte</td><td>musste</td><td>wollte</td></tr>
+<tr><td>du</td><td>warst</td><td>hattest</td><td>konntest</td><td>musstest</td><td>wolltest</td></tr>
+<tr><td>er / sie / es</td><td>war</td><td>hatte</td><td>konnte</td><td>musste</td><td>wollte</td></tr>
+<tr><td>wir</td><td>waren</td><td>hatten</td><td>konnten</td><td>mussten</td><td>wollten</td></tr>
+<tr><td>ihr</td><td>wart</td><td>hattet</td><td>konntet</td><td>musstet</td><td>wolltet</td></tr>
+<tr><td>sie / Sie</td><td>waren</td><td>hatten</td><td>konnten</td><td>mussten</td><td>wollten</td></tr>
+</table></div>
+<div class="exs">
+Gestern war ich zu Hause. | gehstehrn vahr ikh tsoo howzuh | Yesterday I was at home.
+Wir hatten keine Zeit. | vir hahtten keyenuh tseyet | We had no time.
+Ich konnte nicht kommen. | ikh kohnntuh nikht kohmmen | I couldn't come.
+Er musste lange arbeiten. | ehr moosstuh lahnguh ahrbeyeten | He had to work for a long time.
+Als Kind wollte ich Arzt werden. | ahls kind vohlltuh ikh ahrtst vehrden | As a child I wanted to be a doctor.
+Es war kalt, und es regnete. | ehs vahr kahlt oond ehs rehgnehtuh | It was cold, and it was raining.
+</div>
+<div class="qz" data-title="Exercise 2. Präteritum">
+Gestern ___ ich zu Hause. (sein) | war
+Du ___ krank. (sein) | warst
+Wir ___ im Kino. (sein) | waren
+Ich ___ keine Zeit. (haben) | hatte
+Sie ___ Hunger. (haben, they) | hatten
+Ich ___ nicht kommen. (können) | konnte
+Er ___ arbeiten. (müssen) | musste
+Wir ___ ins Kino gehen. (wollen) | wollten
+</div>
+</section>
+
+<section class="unit" id="u3" data-grp="Future and conditional" data-short="Future">
+<h2><span class="no">Section 3</span>The future</h2>
+<h3>3.1. Present tense + time word</h3>
+<p>Most often you simply use the present with a time expression, like English "I'm going to Berlin tomorrow": <span class="fr">Morgen fahre ich nach Berlin.</span></p>
+<h3>3.2. Futur I: werden + infinitive</h3>
+<div class="cj" data-verb="werden" data-note="Futur I" data-ipa="VAIR-den">
+ich | werde | vehrduh
+du | wirst | virst
+er / sie / es | wird | vird
+wir | werden | vehrden
+ihr | werdet | vehrdeht
+sie / Sie | werden | vehrden
+</div>
+<div class="exs">
+Morgen fahre ich nach Berlin. | mohrgen fahruh ikh nahkh behrlin | Tomorrow I'm going to Berlin.
+Ich werde morgen mit ihm sprechen. | ikh vehrduh mohrgen mit im shprehkhen | I will talk to him tomorrow.
+Nächstes Jahr werden wir reisen. | nehkhstehs yahr vehrden vir reyezen | Next year we will travel.
+Wirst du Zeit haben? | virst doo tseyet hahben | Will you have time?
+Ich werde die Hausaufgaben heute Abend machen. | ikh vehrduh dee howzowfgahben hoytuh ahbehnd mahkhen | I'll do the homework this evening.
+</div>
+<div class="qz" data-title="Exercise 3. The future">
+Ich ___ morgen sprechen. (werden) | werde
+Du ___ Zeit haben. (werden) | wirst
+Er ___ kommen. (werden) | wird
+Wir ___ reisen. (werden) | werden
+Ihr ___ sehen. (werden) | werdet
+Morgen ___ ich nach Berlin. (fahren) | fahre
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Konjunktiv II">
+<h2><span class="no">Section 4</span>The conditional and polite requests</h2>
+<p class="lead">Politeness and wishes: <span class="fr">würde + infinitive</span>, plus the short forms <span class="fr">hätte, wäre, könnte, möchte</span>.</p>
+<div class="tw"><table>
+<tr><th></th><th>würde + inf.</th><th>hätte</th><th>wäre</th><th>könnte</th></tr>
+<tr><td>ich</td><td>würde</td><td>hätte</td><td>wäre</td><td>könnte</td></tr>
+<tr><td>du</td><td>würdest</td><td>hättest</td><td>wärst</td><td>könntest</td></tr>
+<tr><td>er / sie / es</td><td>würde</td><td>hätte</td><td>wäre</td><td>könnte</td></tr>
+<tr><td>wir</td><td>würden</td><td>hätten</td><td>wären</td><td>könnten</td></tr>
+<tr><td>ihr</td><td>würdet</td><td>hättet</td><td>wärt</td><td>könntet</td></tr>
+<tr><td>sie / Sie</td><td>würden</td><td>hätten</td><td>wären</td><td>könnten</td></tr>
+</table></div>
+<div class="exs">
+Ich hätte gern einen Kaffee. | ikh hehttuh gehrn eyenen kahffe | I'd like a coffee.
+Ich möchte einen Tisch reservieren. | ikh merkhtuh eyenen tish rehzehrfeeren | I would like to reserve a table.
+Könnten Sie mir helfen? | kernnten zee mir hehlfen | Could you help me?
+Könntest du mir das Salz geben? | kernntehst doo mir dahs zahlts gehben | Could you pass me the salt?
+Wenn ich Zeit hätte, würde ich mehr reisen. | vehnn ikh tseyet hehttuh vuerduh ikh mehr reyezen | If I had time, I would travel more.
+An deiner Stelle würde ich mich ausruhen. | ahn deyenuh shtehlluh vuerduh ikh mikh owsrooen | In your place I would rest.
+</div>
+<div class="qz" data-title="Exercise 4. Konjunktiv II">
+I'd like a coffee. | Ich hätte gern einen Kaffee
+I would like to reserve a table. | Ich möchte einen Tisch reservieren
+Could you help me? | Könnten Sie mir helfen
+Could you help me? (informal) | Könntest du mir helfen
+If I had time | Wenn ich Zeit hätte
+Ich ___ gern ein Wasser. (haben, Konj. II) | hätte
+Wenn ich reich ___ , ... (sein, Konj. II) | wäre
+Ich ___ mehr reisen. (würde) | würde
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Cases" data-short="Accusative and dative">
+<h2><span class="no">Section 5</span>Accusative and dative</h2>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th><th>n</th><th>pl</th></tr>
+<tr><td>Nominative</td><td>der / ein</td><td>die / eine</td><td>das / ein</td><td>die</td></tr>
+<tr><td>Accusative</td><td><b>den / einen</b></td><td>die / eine</td><td>das / ein</td><td>die</td></tr>
+<tr><td>Dative</td><td><b>dem / einem</b></td><td><b>der / einer</b></td><td><b>dem / einem</b></td><td><b>den + -n</b></td></tr>
+</table></div>
+<p><b>Accusative</b> is the direct object (whom? what?): <span class="fr">Ich sehe den Mann.</span> <b>Dative</b> is the indirect object (to whom?): <span class="fr">Ich gebe dem Mann das Buch.</span> English shows this only in pronouns (he / him); German also marks the articles.</p>
+<h3>5.1. Pronouns</h3>
+<div class="tw"><table>
+<tr><th>Nom.</th><th>Acc.</th><th>Dat.</th></tr>
+<tr><td>ich</td><td>mich</td><td>mir</td></tr>
+<tr><td>du</td><td>dich</td><td>dir</td></tr>
+<tr><td>er</td><td>ihn</td><td>ihm</td></tr>
+<tr><td>sie</td><td>sie</td><td>ihr</td></tr>
+<tr><td>es</td><td>es</td><td>ihm</td></tr>
+<tr><td>wir</td><td>uns</td><td>uns</td></tr>
+<tr><td>ihr</td><td>euch</td><td>euch</td></tr>
+<tr><td>sie / Sie</td><td>sie / Sie</td><td>ihnen / Ihnen</td></tr>
+</table></div>
+<h3>5.2. Prepositions with the dative</h3>
+<p><b>aus, bei, mit, nach, seit, von, zu</b> always take the dative: <span class="fr">mit dem Bus, nach der Arbeit, zu meiner Mutter, seit einem Jahr.</span></p>
+<h3>5.3. Two-way prepositions: wo? or wohin?</h3>
+<p><b>in, an, auf, unter, über, vor, hinter, neben, zwischen</b>: <span class="fr">wo?</span> (where, position) → dative; <span class="fr">wohin?</span> (where to, movement) → accusative.</p>
+<div class="exs">
+Ich liebe dich. | ikh leebuh dikh | I love you.
+Ich sehe ihn. | ikh zehuh in | I see him.
+Ich kenne sie. | ikh kehnnuh zee | I know her.
+Ich gebe dir das Buch. | ikh gehbuh dir dahs bookh | I give you the book.
+Ich schreibe ihm einen Brief. | ikh shreyebuh im eyenen breef | I write him a letter.
+Kannst du mir helfen? | kahnnst doo mir hehlfen | Can you help me?
+Ich fahre mit dem Bus. | ikh fahruh mit dehm boos | I go by bus.
+Ich bin in der Stadt. | ikh bin in duh shtahdt | I am in the city.
+Ich gehe in die Stadt. | ikh gehuh in dee shtahdt | I am going into the city.
+</div>
+<div class="qz" data-title="Exercise 5. Cases">
+Ich sehe ___ Mann. (der → acc.) | den
+Ich sehe ___ Frau. (die → acc.) | die
+Ich gebe ___ Mann das Buch. (dat.) | dem
+Ich gebe ___ Frau das Buch. (dat.) | der
+Ich sehe ___ . (him) | ihn
+Ich liebe ___ . (you) | dich
+Ich gebe ___ das Buch. (you) | dir
+Kannst du ___ helfen? (me) | mir
+Ich fahre mit ___ Bus. (dem) | dem
+Ich gehe in ___ Stadt. (die) | die
+Ich bin in ___ Stadt. (der) | der
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Reflexive verbs">
+<h2><span class="no">Section 6</span>Reflexive verbs</h2>
+<div class="cj" data-verb="sich freuen" data-note="to be glad" data-ipa="zikh FROY-en">
+ich | freue mich | froyuh mikh
+du | freust dich | froyst dikh
+er / sie / es | freut sich | froyt zikh
+wir | freuen uns | froyen oons
+ihr | freut euch | froyt oykh
+sie / Sie | freuen sich | froyen zikh
+</div>
+<div class="vocab">
+sich waschen | zikh vahshen | to wash (oneself) | verb
+sich anziehen | zikh ahntseeen | to get dressed | verb
+sich setzen | zikh zehtsen | to sit down | verb
+sich fühlen | zikh fuelen | to feel | verb
+sich interessieren für | zikh intehrehszeeren fuer | to be interested in | verb
+sich erinnern an | zikh ehrinnehrn ahn | to remember | verb
+sich treffen | zikh trehffen | to meet | verb
+sich ausruhen | zikh owsrooen | to rest | verb
+</div>
+<div class="exs">
+Ich freue mich auf das Wochenende. | ikh froyuh mikh owf dahs vohkhehnehnduh | I'm looking forward to the weekend.
+Wie fühlst du dich? | vee fuelst doo dikh | How do you feel?
+Wir treffen uns morgen. | vir trehffen oons mohrgen | We're meeting tomorrow.
+Ich interessiere mich für Musik. | ikh intehrehszeeruh mikh fuer moozik | I am interested in music.
+Er hat sich ausgeruht. | ehr haht zikh owsgehroot | He rested.
+Ich ziehe mich an. | ikh tseeuh mikh ahn | I get dressed.
+</div>
+<div class="qz" data-title="Exercise 6. Reflexive verbs">
+Ich freue ___ . | mich
+Du freust ___ . | dich
+Er freut ___ . | sich
+Wir freuen ___ . | uns
+Ihr freut ___ . | euch
+Sie freuen ___ . | sich
+Ich interessiere mich ___ Musik. (für) | für
+Wie fühlst du ___ ? | dich
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Comparison">
+<h2><span class="no">Section 7</span>Comparison</h2>
+<div class="rule"><b class="t">Rule</b><p>Comparative: <span class="fr">adjective + -er + als</span>; superlative: <span class="fr">am + -sten</span>; equality: <span class="fr">so … wie</span>. Often a/o/u becomes ä/ö/ü: <span class="fr">alt → älter → am ältesten</span>. Just like English "old, older, oldest".</p></div>
+<div class="tw"><table>
+<tr><th>Basic</th><th>Comparative</th><th>Superlative</th></tr>
+<tr><td>groß</td><td>größer</td><td>am größten</td></tr>
+<tr><td>klein</td><td>kleiner</td><td>am kleinsten</td></tr>
+<tr><td>teuer</td><td>teurer</td><td>am teuersten</td></tr>
+<tr><td>alt</td><td>älter</td><td>am ältesten</td></tr>
+<tr><td>jung</td><td>jünger</td><td>am jüngsten</td></tr>
+<tr><td>gut</td><td>besser</td><td>am besten</td></tr>
+<tr><td>viel</td><td>mehr</td><td>am meisten</td></tr>
+<tr><td>gern</td><td>lieber</td><td>am liebsten</td></tr>
+</table></div>
+<div class="exs">
+Berlin ist größer als Wien. | behrlin ist grerssuh ahls veen | Berlin is bigger than Vienna.
+Mein Bruder ist älter als ich. | meyen brooduh ist ehltuh ahls ikh | My brother is older than me.
+Das ist der beste Film. | dahs ist duh behstuh film | That is the best film.
+Sprechen Sie bitte langsamer. | shprehkhen zee bittuh lahngzahmuh | Please speak more slowly.
+Es ist so teuer wie das da. | ehs ist zoh toyuh vee dahs dah | It is as expensive as that one.
+Ich trinke lieber Tee als Kaffee. | ikh trinkuh leebuh te ahls kahffe | I prefer tea to coffee.
+</div>
+<div class="qz" data-title="Exercise 7. Comparison">
+klein → ___ | kleiner
+teuer → ___ | teurer
+alt → ___ | älter
+gut → ___ | besser
+viel → ___ | mehr
+gern → ___ | lieber
+Berlin ist größer ___ Wien. (than) | als
+Es ist so teuer ___ das da. (as) | wie
+gut → am ___ | besten
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Subordinate clauses">
+<h2><span class="no">Section 8</span>Complex sentences: verb at the end</h2>
+<div class="vocab">
+und | oond | and
+aber | ahbuh | but
+oder | ohduh | or
+denn | dehnn | because (word order unchanged)
+weil | veyel | because (verb at the end)
+dass | dahss | that (verb at the end)
+wenn | vehnn | if, when (verb at the end)
+ob | ohb | whether (verb at the end)
+obwohl | ohbvohl | although (verb at the end)
+deshalb | dehshahlb | therefore (verb in 2nd place)
+damit | dahmit | so that (verb at the end)
+während | vehrehnd | while (verb at the end)
+</div>
+<div class="rule"><b class="t">Rule</b><p>After <span class="fr">weil, dass, wenn, ob, obwohl, damit</span> the conjugated verb goes <b>to the end</b>: <span class="fr">Ich komme nicht, weil ich krank bin.</span> If the subordinate clause comes first, the main clause starts with the verb: <span class="fr">Wenn es regnet, bleibe ich zu Hause.</span></p></div>
+<div class="exs">
+Ich weiß, dass du recht hast. | ikh veyess dahss doo rehkht hahst | I know that you are right.
+Ich bin nicht gekommen, weil ich krank war. | ikh bin nikht gehkohmmen veyel ikh krahnk vahr | I didn't come because I was ill.
+Ich lerne Deutsch, damit ich in Deutschland arbeiten kann. | ikh lehrnuh doytsh dahmit ikh in doytshlahnd ahrbeyeten kahnn | I'm learning German so that I can work in Germany.
+Wenn ich zurückkomme, rufe ich dich an. | vehnn ikh tsooruekkohmmuh roofuh ikh dikh ahn | When I come back, I'll call you.
+Wenn es regnet, bleiben wir zu Hause. | vehnn ehs rehgneht bleyeben vir tsoo howzuh | If it rains, we'll stay at home.
+Obwohl ich müde bin, gehe ich zur Arbeit. | ohbvohl ikh mueduh bin gehuh ikh tsoor ahrbeyet | Although I'm tired, I'm going to work.
+Ich weiß nicht, ob er kommt. | ikh veyess nikht ohb ehr kohmmt | I don't know whether he is coming.
+</div>
+<div class="qz" data-title="Exercise 8. Conjunctions">
+Ich weiß, ___ du Zeit hast. (that) | dass
+Ich komme nicht, ___ ich krank bin. (because) | weil
+___ es regnet, bleibe ich hier. (If) | Wenn
+Ich bin müde, ___ gehe ich. (but) | aber
+___ ich müde bin, gehe ich. (Although) | Obwohl
+Ich weiß nicht, ___ er kommt. (whether) | ob
+Ich bleibe zu Hause, weil ich krank ___ . (sein) | bin
+Ich weiß, dass er Zeit ___ . (haben) | hat
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Time and motion">
+<h2><span class="no">Section 9</span>Time expressions and verbs of motion</h2>
+<div class="vocab">
+gestern | gehstehrn | yesterday
+heute | hoytuh | today
+morgen | mohrgen | tomorrow
+übermorgen | uebehrmohrgen | the day after tomorrow
+morgens | mohrgehns | in the mornings
+abends | ahbehnds | in the evenings
+am Montag | ahm mohntahg | on Monday
+letztes Jahr | lehtstehs yahr | last year
+nächste Woche | nehkhstuh vohkhuh | next week
+vor einer Woche | fohr eyenuh vohkhuh | a week ago
+in einer Stunde | in eyenuh shtoonduh | in an hour
+jede Woche | yehduh vohkhuh | every week
+schon | shohn | already
+noch | nohkh | still, yet
+oft | ohft | often
+selten | zehlten | rarely
+immer | immuh | always
+nie | nee | never
+</div>
+<div class="rule"><b class="t">Vor / in</b><p><span class="fr">vor einer Stunde</span> = an hour ago. <span class="fr">in einer Stunde</span> = in an hour.</p></div>
+<h3>Verbs of motion</h3>
+<div class="tw"><table>
+<tr><th>Verb</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>gehen</td><td>go on foot, walk</td><td>Ich gehe zur Arbeit.</td></tr>
+<tr><td>fahren</td><td>go by vehicle</td><td>Ich fahre mit dem Zug.</td></tr>
+<tr><td>kommen</td><td>come</td><td>Ich komme zu dir.</td></tr>
+<tr><td>abfahren</td><td>depart</td><td>Der Zug fährt ab.</td></tr>
+<tr><td>ankommen</td><td>arrive</td><td>Ich komme um sechs an.</td></tr>
+<tr><td>fliegen</td><td>fly</td><td>Morgen fliege ich nach Berlin.</td></tr>
+<tr><td>zurückkommen</td><td>come back</td><td>Ich komme bald zurück.</td></tr>
+</table></div>
+<div class="exs">
+Jetzt gehe ich zur Arbeit. | yehtst gehuh ikh tsoor ahrbeyet | Now I'm going to work.
+Jeden Tag gehe ich zu Fuß zur Arbeit. | yehden tahg gehuh ikh tsoo fooss tsoor ahrbeyet | Every day I walk to work.
+Ich fahre mit dem Zug nach München. | ikh fahruh mit dehm tsoog nahkh muenkhen | I'm going to Munich by train.
+Morgen fliege ich nach Berlin. | mohrgen fleeguh ikh nahkh behrlin | Tomorrow I'm flying to Berlin.
+</div>
+<div class="qz" data-title="Exercise 9. Time and motion">
+yesterday | gestern
+tomorrow | morgen
+always | immer
+never | nie
+a week ago | vor einer Woche
+in an hour | in einer Stunde
+Jetzt ___ ich zur Arbeit. (gehen) | gehe
+Ich ___ mit dem Zug. (fahren) | fahre
+Ich ___ um sechs an. (ankommen) | komme
+Morgen ___ ich nach Berlin. (fliegen) | fliege
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Vocabulary and practice" data-short="Vocabulary by topic">
+<h2><span class="no">Section 10</span>Vocabulary by topic</h2>
+<div class="vocab">
+# Travel
+die Reise | dee reyezuh | journey, trip | f
+der Koffer | duh kohffuh | suitcase | m
+der Reisepass | duh reyezehpahss | passport | m
+die Reservierung | dee rehzehrfeeroong | booking | f
+das Hotel | dahs hohtehl | hotel | n
+die Karte | dee kahrtuh | map, card | f
+der Urlaub | duh oorlowb | holiday, leave | m
+der Strand | duh shtrahnd | beach | m
+der Berg | duh behrg | mountain | m
+das Meer | dahs mer | sea | n
+# Work and study
+die Arbeit | dee ahrbeyet | work | f
+das Büro | dahs bueroh | office | n
+der Chef | duh khehf | boss | m
+der Kollege | duh kohllehguh | colleague | m
+das Gehalt | dahs gehahlt | salary | n
+der Vertrag | duh fehrtrahg | contract | m
+die Schule | dee shooluh | school | f
+die Prüfung | dee pruefoong | exam | f
+der Unterricht | duh oontehrrikht | lesson | m
+lernen | lehrnen | to learn | verb
+# Health and home
+die Gesundheit | dee gehzoondheyet | health | f
+das Rezept | dahs rehtsehpt | prescription, recipe | n
+der Schmerz | duh shmehrts | pain | m
+die Erkältung | dee ehrkehltoong | cold | f
+der Einkauf | duh eyenkowf | shopping | m
+der Nachbar | duh nahkhbahr | neighbour | m
+die Wohnung | dee vohnoong | flat | f
+mieten | meeten | to rent | verb
+</div>
+<div class="qz" data-title="Exercise 10. Vocabulary">
+journey | Reise
+suitcase | Koffer
+passport | Reisepass
+booking | Reservierung
+beach | Strand
+holiday | Urlaub
+work | Arbeit
+boss | Chef
+salary | Gehalt
+exam | Prüfung
+neighbour | Nachbar
+flat | Wohnung
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Dialogues">
+<h2><span class="no">Section 11</span>Dialogues</h2>
+<div class="dg">
+# 1. Pläne fürs Wochenende (weekend plans)
+Maria: Was machst du am Wochenende? | What are you doing at the weekend?
+Peter: Am Samstag fahre ich nach Dresden und am Sonntag ruhe ich mich aus. | On Saturday I'm going to Dresden and on Sunday I'll rest.
+Maria: Ich würde gern mitkommen. | I'd like to come along.
+Peter: Super! Wir fahren mit dem Zug. | Great! We'll go by train.
+Maria: Um wie viel Uhr? | At what time?
+Peter: Der Zug fährt in zwei Stunden ab. | The train leaves in two hours.
+# 2. Nach dem Urlaub (after the holiday)
+Kata: Wie war dein Urlaub? | How was your holiday?
+Thomas: Sehr schön. Ich war am Meer. | Very nice. I was at the seaside.
+Kata: Was hast du dort gemacht? | What did you do there?
+Thomas: Ich bin geschwommen, habe gelesen und mich ausgeruht. | I swam, read and rested.
+Kata: Ich bin neidisch! | I'm jealous!
+# 3. Vorstellungsgespräch (job interview)
+Chef: Erzählen Sie etwas über sich. | Tell me something about yourself.
+Kandidat: Ich bin Englischlehrer. Ich arbeite seit fünf Jahren an einer Schule. | I am an English teacher. I have worked at a school for five years.
+Chef: Warum möchten Sie die Stelle wechseln? | Why do you want to change jobs?
+Kandidat: Ich möchte mehr verdienen und mich weiterentwickeln. | I want to earn more and develop.
+Chef: Danke, wir melden uns bei Ihnen. | Thank you, we will be in touch.
+# 4. In der Apotheke (at the pharmacy)
+Kunde: Guten Tag, ich suche etwas gegen Erkältung. | Hello, I'm looking for something for a cold.
+Apotheker: Haben Sie Fieber? | Do you have a fever?
+Kunde: Ja, ein bisschen. | Yes, a little.
+Apotheker: Nehmen Sie diese Tabletten zweimal täglich. | Take these tablets twice a day.
+</div>
+<div class="qz" data-title="Exercise 11. Phrases from the dialogues">
+What are you doing at the weekend? | Was machst du am Wochenende
+We'll go by train. | Wir fahren mit dem Zug
+How was your holiday? | Wie war dein Urlaub
+I was at the seaside. | Ich war am Meer
+Tell me something about yourself. | Erzählen Sie etwas über sich
+I want to earn more. | Ich möchte mehr verdienen
+I'm looking for something for a cold. | Ich suche etwas gegen Erkältung
+Twice a day. | Zweimal täglich
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Reading">
+<h2><span class="no">Section 12</span>Reading: three texts</h2>
+<h3>Text 1. Meine Familie</h3>
+<p class="fr">Ich heiße Anna und wohne in Berlin. Ich habe einen Mann und zwei Kinder. Mein Mann ist Arzt und ich bin Lehrerin. Unser Sohn ist zehn Jahre alt und unsere Tochter sieben. Am Wochenende fahren wir oft in die Berge. Im Sommer wollen wir ans Meer fahren.</p>
+<p><i>My name is Anna and I live in Berlin. I have a husband and two children. My husband is a doctor and I am a teacher. Our son is ten years old and our daughter seven. At weekends we often go to the mountains. In summer we want to go to the seaside.</i></p>
+<h3>Text 2. Gestern</h3>
+<p class="fr">Gestern bin ich um sieben Uhr aufgestanden, habe gefrühstückt und bin mit dem Bus zur Arbeit gefahren. Ich war bis fünf Uhr im Büro. Danach habe ich Brot und Milch gekauft. Abends habe ich gekocht und einen Film gesehen. Um elf Uhr bin ich ins Bett gegangen.</p>
+<p><i>Yesterday I got up at seven, had breakfast and went to work by bus. I was in the office until five. After that I bought bread and milk. In the evening I cooked and watched a film. At eleven I went to bed.</i></p>
+<h3>Text 3. Pläne für den Sommer</h3>
+<p class="fr">Diesen Sommer fahre ich mit meinen Freunden ans Meer. Wir werden ein kleines Haus am Strand mieten. Wir werden schwimmen, Volleyball spielen und abends am Feuer sitzen. Wenn das Wetter schön ist, bleiben wir zwei Wochen.</p>
+<p><i>This summer I'm going to the seaside with my friends. We will rent a small house on the beach. We will swim, play volleyball and sit by the fire in the evenings. If the weather is nice, we'll stay two weeks.</i></p>
+<div class="qz" data-title="Exercise 12. Questions on the texts">
+What is Anna's husband? (Arzt) | Arzt
+How old is the son? (10) | zehn
+When did he get up? (7) | um sieben Uhr
+How did he get to work? (Bus) | mit dem Bus
+What did he buy? (Brot und Milch) | Brot und Milch
+Where will they go in summer? (ans Meer) | ans Meer
+With whom? (mit meinen Freunden) | mit meinen Freunden
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Writing letters">
+<h2><span class="no">Section 13</span>How to write letters</h2>
+<div class="tw"><table>
+<tr><th>Situation</th><th>Phrase</th></tr>
+<tr><td>Opening (friend)</td><td><span class="fr">Hallo Anna! / Lieber Peter,</span></td></tr>
+<tr><td>Opening (formal)</td><td><span class="fr">Sehr geehrter Herr…, / Sehr geehrte Frau…,</span></td></tr>
+<tr><td>Thanks for your letter</td><td><span class="fr">Vielen Dank für deinen Brief.</span></td></tr>
+<tr><td>I am writing to…</td><td><span class="fr">Ich schreibe Ihnen, weil ich Informationen über … möchte.</span></td></tr>
+<tr><td>Request</td><td><span class="fr">Könnten Sie mir bitte … schicken?</span></td></tr>
+<tr><td>Closing (friend)</td><td><span class="fr">Liebe Grüße, / Bis bald,</span></td></tr>
+<tr><td>Closing (formal)</td><td><span class="fr">Mit freundlichen Grüßen,</span></td></tr>
+</table></div>
+<h3>Example. A letter to a friend</h3>
+<p class="fr">Hallo Peter!<br>Vielen Dank für deinen Brief. Hier ist alles in Ordnung. Letzte Woche war ich in den Karpaten. Das Wetter war wunderschön. Ich würde gern wieder dorthin fahren. Und wie geht es dir? Schreib bald.<br>Liebe Grüße,<br>Michael</p>
+<h3>Example. A formal letter</h3>
+<p class="fr">Sehr geehrte Frau Müller,<br>ich schreibe Ihnen, weil ich Informationen über den Deutschkurs für Anfänger möchte. Ich würde gern wissen, wie viel er kostet und wann er beginnt. Vielen Dank im Voraus.<br>Mit freundlichen Grüßen,<br>Michael Smith</p>
+<div class="qz" data-title="Exercise 13. Letters">
+Hi Anna! | Hallo Anna
+Dear Mrs … (formal) | Sehr geehrte Frau
+Thanks for your letter. | Vielen Dank für deinen Brief
+Yours sincerely | Mit freundlichen Grüßen
+See you soon! | Bis bald
+Thank you in advance. | Vielen Dank im Voraus
+Write soon. | Schreib bald
+Kind regards | Liebe Grüße
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Cheat sheet, plan, test">
+<h2><span class="no">Section 14</span>Cheat sheet, plan and test</h2>
+<div class="tw"><table>
+<tr><th>Topic</th><th>Remember</th></tr>
+<tr><td>Perfekt</td><td>haben / sein (2nd place) + past participle (at the end)</td></tr>
+<tr><td>Präteritum</td><td>war, hatte, konnte, musste, wollte</td></tr>
+<tr><td>Future</td><td>werden + infinitive; or present + time word</td></tr>
+<tr><td>Konjunktiv II</td><td>hätte, wäre, könnte, würde + inf.</td></tr>
+<tr><td>Cases</td><td>Acc.: den / einen; Dat.: dem, der, dem, den + -n</td></tr>
+<tr><td>Dative prepositions</td><td>aus, bei, mit, nach, seit, von, zu</td></tr>
+<tr><td>Subordinate clauses</td><td>weil, dass, wenn, ob, obwohl: verb at the end</td></tr>
+<tr><td>Comparison</td><td>-er + als; am -sten; besser, mehr, lieber</td></tr>
+</table></div>
+<h3>8-week plan</h3>
+<div class="tw"><table>
+<tr><th>Week</th><th>Sections</th><th>Goal</th></tr>
+<tr><td>1</td><td>1</td><td>Talk about yesterday</td></tr>
+<tr><td>2</td><td>2</td><td>war, hatte, modals in the past</td></tr>
+<tr><td>3</td><td>3, 4</td><td>Plans and polite requests</td></tr>
+<tr><td>4</td><td>5, 6</td><td>Accusative, dative, reflexives</td></tr>
+<tr><td>5</td><td>7, 8</td><td>Comparison, subordinate clauses</td></tr>
+<tr><td>6</td><td>9, 10</td><td>Time, motion, words</td></tr>
+<tr><td>7</td><td>11, 12</td><td>Dialogues and reading</td></tr>
+<tr><td>8</td><td>13, 14</td><td>A letter + review</td></tr>
+</table></div>
+<h3>Final test</h3>
+<div class="qz" data-title="A2 test">
+Gestern ___ ich zu Hause. (sein, Präteritum) | war
+Heute habe ich viel ___ . (arbeiten) | gearbeitet
+Ich ___ nach Hause gegangen. (sein) | bin
+Ich ___ morgen kommen. (werden) | werde
+Ich ___ gern einen Kaffee. (haben, Konj. II) | hätte
+Ich sehe ___ . (him) | ihn
+Kannst du ___ helfen? (me) | mir
+Ich weiß, ___ du recht hast. (that) | dass
+gut → ___ | besser
+Ich fahre ___ dem Zug. (by) | mit
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Talk about the past</label></li>
+<li><label><input type="checkbox"> Talk about plans</label></li>
+<li><label><input type="checkbox"> Ask politely</label></li>
+<li><label><input type="checkbox"> Tell accusative from dative</label></li>
+<li><label><input type="checkbox"> Build subordinate clauses</label></li>
+<li><label><input type="checkbox"> Write a short letter</label></li>
+</ul>
+</section>
+
+<footer>A self-study backbone for A2. Add real listening: podcasts, subtitled video, conversation with a native speaker.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>German</th><th>Pronunciation</th><th>English</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercise';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Answer: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Check</button><button type="button" data-act="show">Show answers</button><button type="button" data-act="reset">Reset</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' of '+tot+(ok===tot?'. All correct.':'. Check accents and articles.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^de[-_]DE/i.test(x.lang))||v.find(x=>/^de/i.test(x.lang))||('de'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='de-DE';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('deen2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('deen2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('deen2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('deen2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='deen2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Results: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">go to section</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">First 40 shown.</div>';
+    } else h+='<div class="mini">Nothing found. Search covers the foreign and English words in the vocabulary tables.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

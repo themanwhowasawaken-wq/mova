@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gaeilge: вправи</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Gaeilge: вправи</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Вправи: ірландська</h1>
+  <p>Прості тести за темами A1 і A2. Пиши відповідь у порожнє поле й натискай «Перевірити». Діакритика важлива. «Показати відповіді» — після спроби.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="ga-a1.html">Курс A1</a><a href="ga-a2.html">Курс A2</a></p>
+</div>
+<section class="unit" id="e1" data-grp="Вправи A1" data-short="A1 · 1 Вимова й абетка">
+<h2><span class="no">A1 · 1</span>Вимова й абетка</h2>
+<div class="qz" data-title="A1 · 1.1. Прочитай і впиши">
+[дія ґвіть] — привітання | Dia duit
+[слан] — прощання | Slán
+[аран] — їжа | arán
+[ішке] — напій | uisce
+[та] — «є» | Tá
+[ніль] — «нема» | Níl
+[ше] — відповідь «так» | Sea
+[ле до гол] — будь ласка | le do thoil
+</div>
+<div class="qz" data-title="A1 · 1.2. Переклад фраз">
+Привіт! | Dia duit!
+До побачення. | Slán.
+Дякую. | Go raibh maith agat.
+Я не розумію. | Ní thuigim.
+Трохи знаю ірландську. | Tá Gaeilge bheag agam.
+Хліб і воду, будь ласка. | Arán agus uisce, le do thoil.
+</div>
+</section>
+<section class="unit" id="e2" data-short="A1 · 2 Привітання й знайомство">
+<h2><span class="no">A1 · 2</span>Привітання й знайомство</h2>
+<div class="qz" data-title="A1 · 2.1. Знайомство">
+Як тебе звати? Cad is ___ duit | ainm
+Як справи? Conas ___ tú | atá
+Добре: Tá mé go ___ | maith
+Я студент: Is mac ___ mé | léinn
+Дякую: Go raibh ___ agat | maith
+Привіт: ___ duit | Dia
+Я (займенник): ___ | mé
+Ти: ___ | tú
+</div>
+<div class="qz" data-title="A1 · 2.2. Слова">
+привіт | Dia duit
+відповідь на привіт | Dia is Muire duit
+доброго ранку | Maidin mhaith
+добрий вечір | Tráthnóna maith
+на добраніч | Oíche mhaith
+бувай | Slán
+до побачення (тому, хто йде) | Slán leat
+до побачення (тому, хто лишається) | Slán agat
+дякую | Go raibh maith agat
+будь ласка | Le do thoil
+</div>
+<div class="qz" data-title="A1 · 2.3. Слова">
+вибачте | Gabh mo leithscéal
+так | Sea
+ні | Ní hea
+як справи? | Conas atá tú?
+добре | Tá mé go maith
+як тебе звати? | Cad is ainm duit?
+я… | Is mise…
+з якої ти країни? | Cén tír as tú?
+я з України | Is as an Úcráin mé
+трохи знаю ірландську | Tá Gaeilge bheag agam
+</div>
+<div class="qz" data-title="A1 · 2.4. Переклад фраз">
+Як справи? | Conas atá tú?
+Добре, дякую. | Tá mé go maith, go raibh maith agat.
+Як тебе звати? | Cad is ainm duit?
+Мене звати Олена. | Olena is ainm dom.
+З якої ти країни? | Cén tír as tú?
+Я з України. | Is as an Úcráin mé.
+Я студент. | Is mac léinn mé.
+Він працівник. | Is oibrí é.
+</div>
+</section>
+<section class="unit" id="e3" data-short="A1 · 3 Іменники, артикль, множина">
+<h2><span class="no">A1 · 3</span>Іменники, артикль, множина</h2>
+<div class="qz" data-title="A1 · 3.1. Іменники">
+(leabhar) книжки: na ___ | leabhair
+(teach) доми: na ___ | tithe
+(páiste) діти: na ___ | páistí
+(baile) міста: na ___ | bailte
+(cara) друзі: na ___ | cairde
+дім: an ___ | teach
+</div>
+<div class="qz" data-title="A1 · 3.2. Слова">
+чоловік | fear
+жінка | bean
+дитина | páiste
+дім | teach
+книжка | leabhar
+автомобіль | carr
+друг | cara
+місто | baile
+пальто | cóta
+стіл | bord
+</div>
+<div class="qz" data-title="A1 · 3.3. Слова">
+стілець | cathaoir
+школа | scoil
+робота | obair
+їжа | bia
+</div>
+<div class="qz" data-title="A1 · 3.4. Переклад фраз">
+Це книжка. | Is leabhar é seo.
+То дім. | Is teach é sin.
+У мене є друг. | Tá cara agam.
+Діти тут. | Tá na páistí anseo.
+У мене нова школа. | Tá scoil nua agam.
+Кава гаряча. | Tá an caife te.
+</div>
+</section>
+<section class="unit" id="e4" data-short="A1 · 4 Tá і «мати»">
+<h2><span class="no">A1 · 4</span>Дієслово tá (бути) і «мати»</h2>
+<div class="qz" data-title="A1 · 4.1. Дієслова">
+Я є: ___ mé | tá
+Ти є: tá ___ | tú
+У мене є: ___ | agam
+У тебе є: ___ | agat
+У нього є: ___ | aige
+У неї є: ___ | aici
+Не маю часу: ___ am agam | Níl
+Маєш час? ___ am agat | An bhfuil
+</div>
+<div class="qz" data-title="A1 · 4.2. Переклад фраз">
+Я втомлений. | Tá mé tuirseach.
+Ти тут. | Tá tú anseo.
+Ми вдома. | Tá muid sa bhaile.
+У мене є брат. | Tá deartháir agam.
+Маєш час? | An bhfuil am agat?
+Не маю часу. | Níl am agam.
+У нього є машина. | Tá carr aige.
+Ми знаємо ірландську. | Tá Gaeilge againn.
+</div>
+</section>
+<section class="unit" id="e5" data-short="A1 · 5 Питання, порядок слів">
+<h2><span class="no">A1 · 5</span>Питання й заперечення</h2>
+<div class="qz" data-title="A1 · 5.1. Питання">
+Де ти? ___ bhfuil tú | Cá
+Хто це? ___ hé seo | Cé
+Скільки коштує? ___ mhéad é | Cé
+Що це? ___ é seo | Cad
+Як? ___ | Conas
+Коли? ___ | Cathain
+</div>
+<div class="qz" data-title="A1 · 5.2. Слова">
+що? | Cad?
+хто? | Cé?
+де? | Cá?
+коли? | Cathain?
+як? | Conas?
+скільки? | Cé mhéad?
+чому? | Cén fáth?
+який? | Cén?
+</div>
+<div class="qz" data-title="A1 · 5.3. Переклад фраз">
+Де ти? | Cá bhfuil tú?
+Що це? | Cad é seo?
+Хто це? | Cé hé seo?
+Коли приїдеш? | Cathain a thagann tú?
+Скільки коштує? | Cé mhéad é?
+Чому ти не тут? | Cén fáth nach bhfuil tú anseo?
+Як справи? | Conas atá tú?
+Не знаю. | Níl a fhios agam.
+</div>
+</section>
+<section class="unit" id="e6" data-short="A1 · 6 Числа, час, дати">
+<h2><span class="no">A1 · 6</span>Числа, дні й місяці</h2>
+<div class="qz" data-title="A1 · 6.1. Числа й дні">
+три: a ___ | trí
+п'ять: a ___ | cúig
+десять: a ___ | deich
+двадцять: ___ | fiche
+сьогодні: ___ | inniu
+завтра: ___ | amárach
+вчора: ___ | inné
+сто: ___ | céad
+</div>
+<div class="qz" data-title="A1 · 6.2. Слова">
+один | a haon
+два | a dó
+три | a trí
+чотири | a ceathair
+п'ять | a cúig
+шість | a sé
+сім | a seacht
+вісім | a hocht
+дев'ять | a naoi
+десять | a deich
+</div>
+<div class="qz" data-title="A1 · 6.3. Слова">
+двадцять | fiche
+сто | céad
+понеділок | Dé Luain
+вівторок | Dé Máirt
+середа | Dé Céadaoin
+четвер | Déardaoin
+п'ятниця | Dé hAoine
+субота | Dé Sathairn
+неділя | Dé Domhnaigh
+сьогодні | inniu
+</div>
+<div class="qz" data-title="A1 · 6.4. Переклад фраз">
+Котра година? | Cén t-am é?
+Три години. | Tá sé a trí a chlog.
+Сьогодні четвер. | Is Déardaoin é inniu.
+Завтра п'ятниця. | Is Dé hAoine é amárach.
+Мені двадцять років. | Tá mé fiche bliain d'aois.
+Це коштує десять євро. | Cosnaíonn sé deich euro.
+</div>
+</section>
+<section class="unit" id="e7" data-short="A1 · 7 Їжа, місто, покупки">
+<h2><span class="no">A1 · 7</span>Їжа, місто й покупки</h2>
+<div class="qz" data-title="A1 · 7.1. Слова">
+хліб | arán
+вода | uisce
+молоко | bainne
+сир | cáis
+риба | iasc
+магазин | siopa
+банк | banc
+аптека | cógaslann
+дорого | daor
+дешево | saor
+Скільки коштує? | Cé mhéad é
+Каву, будь ласка. | Caife le do thoil
+</div>
+<div class="qz" data-title="A1 · 7.2. Слова">
+кава | caife
+чай | tae
+вино | fíon
+пиво | beoir
+м'ясо | feoil
+фрукти | torthaí
+овочі | glasraí
+місто | baile
+вулиця | sráid
+ресторан | bialann
+</div>
+<div class="qz" data-title="A1 · 7.3. Слова">
+вокзал | stáisiún
+аеропорт | aerfort
+скільки коштує? | Cé mhéad é?
+євро | euro
+картка | cárta
+</div>
+<div class="qz" data-title="A1 · 7.4. Переклад фраз">
+Хліб і сир, будь ласка. | Arán agus cáis, le do thoil.
+Де банк? | Cá bhfuil an banc?
+Скільки це коштує? | Cé mhéad atá air seo?
+Це задорого. | Tá sé rómhór.
+Я б хотів келих вина. | Ba mhaith liom gloine fíona.
+Де аптека? | Cá bhfuil an chógaslann?
+Можна заплатити карткою? | An féidir liom íoc le cárta?
+</div>
+</section>
+<section class="unit" id="e8" data-short="A1 · 8 Діалоги">
+<h2><span class="no">A1 · 8</span>Діалоги на щодень</h2>
+<div class="qz" data-title="A1 · 8.1. Фрази з діалогів">
+Мене звати Анна. | Anna is ainm dom
+З якої ти країни? | Cén tír as tú
+Каву й хліб, будь ласка. | Caife agus arán le do thoil
+Скільки коштує? | Cé mhéad é
+Де вокзал? | Cá bhfuil an stáisiún
+Щиро дякую. | Go raibh míle maith agat
+</div>
+</section>
+<section class="unit" id="e9" data-short="A1 · 9 Шпаргалка, план, тест">
+<h2><span class="no">A1 · 9</span>Шпаргалка, план і тест</h2>
+<div class="qz" data-title="A1 · 9.1. Шпаргалка, план і тест">
+Привіт: ___ duit | Dia
+Дякую: Go raibh ___ agat | maith
+Як тебе звати? Cad is ___ duit | ainm
+У мене є: ___ | agam
+Я є: ___ mé | tá
+Хліб: ___ | arán
+Де банк? ___ bhfuil an banc | Cá
+Скільки коштує? Cé ___ é | mhéad
+Три: a ___ | trí
+Завтра: ___ | amárach
+</div>
+</section>
+
+<section class="unit" id="e10" data-grp="Вправи A1 (ще)" data-short="A1 · 10 Більше слів">
+<h2><span class="no">A1 · 10</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="qz" data-title="A1 · 10.1. Нові слова">
+лікар | dochtúir
+вчитель | múinteoir
+голова | ceann
+рука | lámh
+сукня | gúna
+дощ | báisteach
+сніг | sneachta
+автобус | bus
+потяг | traein
+квиток | ticéad
+аеропорт | aerfort
+Сьогодні холодно. | Tá sé fuar inniu
+</div>
+<div class="qz" data-title="A1 · 10.2. Слова">
+медсестра | altra
+інженер | innealtóir
+водій | tiománaí
+продавець | siopadóir
+кухар | cócaire
+студент | mac léinn
+поліцейський | garda
+адвокат | dlíodóir
+око | súil
+вухо | cluas
+</div>
+<div class="qz" data-title="A1 · 10.3. Слова">
+ніс | srón
+рот | béal
+нога | cos
+живіт | bolg
+спина | droim
+серце | croí
+гарячка | fiabhras
+аптека | cógaslann
+ліки | leigheas
+сорочка | léine
+</div>
+<div class="qz" data-title="A1 · 10.4. Слова">
+штани | bríste
+куртка | seaicéad
+взуття | bróga
+светр | geansaí
+капелюх | hata
+розмір | méid
+погода | aimsir
+сонце | grian
+вітер | gaoth
+трамвай | tram
+</div>
+<div class="qz" data-title="A1 · 10.5. Слова">
+літак | eitleán
+велосипед | rothar
+зупинка | stad
+кімната | seomra
+кухня | cistin
+ванна | seomra folctha
+холодильник | cuisneoir
+диван | tolg
+фільм | scannán
+музика | ceol
+</div>
+<div class="qz" data-title="A1 · 10.6. Переклад фраз">
+Я вчитель. | Is múinteoir mé.
+Працюю водієм. | Oibrím mar thiománaí.
+У мене болить горло. | Tá tinneas scornaí orm.
+Який у тебе розмір? | Cén méid atá ort?
+Іде дощ. | Tá sé ag cur báistí.
+Де зупинка? | Cá bhfuil an stad?
+Люблю готувати. | Is maith liom cócaireacht.
+</div>
+</section>
+<section class="unit" id="e11" data-short="A1 · 11 Модальні, наказовий">
+<h2><span class="no">A1 · 11</span>Бажання, можливість і наказовий спосіб</h2>
+<div class="qz" data-title="A1 · 11.1. Модальні й наказовий">
+Я б хотів: ___ liom | Ba mhaith
+Я можу: Is ___ liom | féidir
+Мушу: ___ mé | Caithfidh
+Зачекай! ___ | Fan
+Підійди! ___ | Tar
+Не кури! ___ caith tobac | Ná
+Зі мною: ___ | liom
+З тобою: ___ | leat
+</div>
+<div class="qz" data-title="A1 · 11.2. Переклад фраз">
+Можна ввійти? | An bhfuil cead agam teacht isteach?
+Хочу каву. | Ba mhaith liom caife.
+Сьогодні мені треба працювати. | Caithfidh mé obair inniu.
+Зараз не можу говорити. | Ní féidir liom labhairt anois.
+Ти вмієш готувати? | An féidir leat cócaireacht a dhéanamh?
+Тут не можна курити. | Ní cead caitheamh tobac anseo.
+Я б хотів чаю, будь ласка. | Ba mhaith liom tae, le do thoil.
+Зачекай хвилинку! | Fan nóiméad!
+</div>
+<div class="qz" data-title="A1 · 11.3. Переклад фраз">
+Підійди сюди, будь ласка. | Tar anseo, le do thoil.
+Говори повільніше, будь ласка. | Labhair níos moille, le do thoil.
+Не кури тут! | Ná caith tobac anseo!
+Будь обережний! | Bí cúramach!
+</div>
+</section>
+<section class="unit" id="e12" data-short="A1 · 12 Більше діалогів">
+<h2><span class="no">A1 · 12</span>Ще чотири діалоги</h2>
+<div class="qz" data-title="A1 · 12.1. Фрази з діалогів">
+Що вас турбує? | cad atá cearr leat
+Мені потрібна куртка. | Tá seaicéad uaim
+Який розмір? | Cén méid
+Скільки коштує? | Cé mhéad é
+У мене бронь. | Tá áirithint agam
+Є вайфай? | An bhfuil Wi-Fi ann
+Підемо в кіно? | An rachaimid chuig scannán
+З радістю! | Le sásamh
+</div>
+</section>
+<section class="unit" id="a1" data-grp="Вправи A2" data-short="A2 · 1 Як користуватися курсом">
+<h2><span class="no">A2 · 1</span>Як користуватися курсом</h2>
+<div class="qz" data-title="A2 · 1.1. Повторення A1">
+Я студент: Is mac ___ mé | léinn
+У мене є брат: Tá deartháir ___ | agam
+Дякую: Go raibh ___ agat | maith
+Хліб: ___ | arán
+Не маю часу: ___ am agam | Níl
+Де банк? ___ bhfuil an banc | Cá
+</div>
+</section>
+<section class="unit" id="a2" data-short="A2 · 2 Минулий час">
+<h2><span class="no">A2 · 2</span>Минулий час</h2>
+<div class="qz" data-title="A2 · 2.1. Минулий час">
+Вчора я був вдома: ___ mé sa bhaile inné | Bhí
+Він купив: ___ sé | Cheannaigh
+Ми пішли: ___ muid | Chuaigh
+Я бачив фільм: ___ mé scannán | Chonaic
+Я не купив: ___ cheannaigh mé | Níor
+Що ти робив? Cad a ___ tú | rinne
+Я прочитав: ___ mé | Léigh
+</div>
+<div class="qz" data-title="A2 · 2.2. Переклад фраз">
+Вчора я був вдома. | Bhí mé sa bhaile inné.
+Минулого тижня ми були в Дубліні. | Bhí muid i mBaile Átha Cliath an tseachtain seo caite.
+Я прочитав книжку. | Léigh mé leabhar.
+Що ти робив? | Cad a rinne tú?
+У мене не було часу. | Ní raibh am agam.
+Ми ходили в кіно. | Chuaigh muid chuig scannán.
+Я бачив його на вокзалі. | Chonaic mé é ag an stáisiún.
+Ти вже їв? | Ar ith tú?
+</div>
+</section>
+<section class="unit" id="a3" data-short="A2 · 3 Майбутній час">
+<h2><span class="no">A2 · 3</span>Майбутній час</h2>
+<div class="qz" data-title="A2 · 3.1. Майбутнє">
+Завтра я працюватиму: ___ mé ag obair amárach | Beidh
+Я куплю телефон: ___ mé fón nua | Ceannóidh
+Ми підемо: ___ muid | Rachaidh
+Вона прийде: ___ sí | Tiocfaidh
+Він побачить: ___ sé | Feicfidh
+Не буду тут: Ní ___ mé anseo | bheidh
+</div>
+<div class="qz" data-title="A2 · 3.2. Переклад фраз">
+Завтра працюватиму. | Beidh mé ag obair amárach.
+Що робитимеш у суботу? | Cad a dhéanfaidh tú Dé Sathairn?
+Наступного тижня поїдемо до моря. | An tseachtain seo chugainn rachaidh muid chun na farraige.
+Зателефоную тобі ввечері. | Cuirfidh mé scairt ort anocht.
+Куплю новий телефон. | Ceannóidh mé fón nua.
+Ми не їстимемо вдома. | Ní íosfaimid sa bhaile.
+</div>
+</section>
+<section class="unit" id="a4" data-short="A2 · 4 Умовний спосіб">
+<h2><span class="no">A2 · 4</span>Умовний спосіб і ввічливі прохання</h2>
+<div class="qz" data-title="A2 · 4.1. Умовний спосіб">
+Я б хотів кави: ___ liom caife | Ba mhaith
+Чи не міг би ти допомогти? ___ cabhrú liom | An bhféadfá
+Якщо матиму час: ___ tá am agam | Má
+Я б хотів: ba mhaith ___ | liom
+Він би хотів: ba mhaith ___ | leis
+</div>
+<div class="qz" data-title="A2 · 4.2. Переклад фраз">
+Я б хотів кави. | Ba mhaith liom caife.
+Я б хотів поїхати до моря. | Ba mhaith liom dul chun na farraige.
+Чи не міг би ти мені допомогти? | An bhféadfá cabhrú liom?
+Якщо матиму час, прийду. | Má tá am agam, tiocfaidh mé.
+Я хотів би забронювати столик. | Ba mhaith liom tábla a chur in áirithe.
+Якби були гроші, купив би авто. | Dá mbeadh airgead agam, cheannóinn carr.
+</div>
+</section>
+<section class="unit" id="a5" data-short="A2 · 5 Присвійні займенники">
+<h2><span class="no">A2 · 5</span>Присвійні займенники</h2>
+<div class="qz" data-title="A2 · 5.1. Належність">
+Моя книжка: ___ leabhar | mo
+Твій дім: ___ theach | do
+Книжка вчителя: leabhar an ___ | mhúinteora
+Наш дім: ___ dteach | ár
+Мій друг: mo ___ | chara
+</div>
+<div class="qz" data-title="A2 · 5.2. Переклад фраз">
+Це моя книжка. | Seo mo leabhar.
+Де твій брат? | Cá bhfuil do dheartháir?
+Це книжка вчителя. | Seo leabhar an mhúinteora.
+Де ключ від авто? | Cá bhfuil eochair an chairr?
+Моя мама вчителька. | Is múinteoir í mo mháthair.
+Наш дім великий. | Tá ár dteach mór.
+Мені подобається твоя нова книжка. | Is maith liom do leabhar nua.
+</div>
+</section>
+<section class="unit" id="a6" data-short="A2 · 6 Прийменникові займенники">
+<h2><span class="no">A2 · 6</span>Прийменникові займенники</h2>
+<div class="qz" data-title="A2 · 6.1. Прийменники">
+Зі мною: ___ | liom
+У тебе: ___ | agat
+До мене: ___ | dom
+Від мене: ___ | uaim
+З нею: ___ | léi
+З нами: ___ | linn
+Тобі: ___ | duit
+</div>
+<div class="qz" data-title="A2 · 6.2. Переклад фраз">
+Я в школі. | Tá mé sa scoil.
+Йду до школи. | Téim chun na scoile.
+Іду зі школи. | Tagaim ón scoil.
+Книжка на столі. | Tá an leabhar ar an mbord.
+Іду до лікаря. | Téim chuig an dochtúir.
+Отримав листа від брата. | Fuair mé litir ó mo dheartháir.
+Підеш зі мною? | An dtiocfaidh tú liom?
+Це тобі. | Tá sé seo duit.
+</div>
+</section>
+<section class="unit" id="a7" data-short="A2 · 7 Прийменники місця й часу">
+<h2><span class="no">A2 · 7</span>Прийменники місця й часу</h2>
+<div class="qz" data-title="A2 · 7.1. Прийменники">
+Без цукру: ___ siúcra | gan
+Після обіду: ___ an lóin | tar éis
+Йду з другом: Téim ___ cara | le
+Під столом: ___ an mbord | faoin
+Перед домом: ___ an tí | os comhair
+До вокзалу: ___ an stáisiún | go dtí
+</div>
+<div class="qz" data-title="A2 · 7.2. Переклад фраз">
+Без цукру, будь ласка. | Gan siúcra, le do thoil.
+Після обіду посплю. | Tar éis an lóin codlóidh mé.
+Йду з другом. | Téim le cara.
+Під столом. | Faoin mbord.
+Перед будинком машина. | Tá carr os comhair an tí.
+Це для тебе. | Tá sé seo duit.
+</div>
+</section>
+<section class="unit" id="a8" data-short="A2 · 8 Займенники">
+<h2><span class="no">A2 · 8</span>Займенники-додатки</h2>
+<div class="qz" data-title="A2 · 8.1. Займенники">
+Бачу тебе: Feicim ___ | thú
+Бачу його: Feicim ___ | é
+Бачу її: Feicim ___ | í
+Бачу їх: Feicim ___ | iad
+Дай мені води: Tabhair uisce ___ | dom
+Люблю його: Is breá ___ é | liom
+</div>
+<div class="qz" data-title="A2 · 8.2. Переклад фраз">
+Бачу тебе. | Feicim thú.
+Ти мене знаєш? | An bhfuil aithne agat orm?
+Я цього не розумію. | Ní thuigim é seo.
+Ти нам допомагаєш? | An gcabhraíonn tú linn?
+Люблю його. | Is breá liom é.
+Люблю її. | Is breá liom í.
+Дай мені води, будь ласка. | Tabhair uisce dom, le do thoil.
+Даю тобі це. | Tugaim duit é.
+</div>
+</section>
+<section class="unit" id="a9" data-short="A2 · 9 Порівняння">
+<h2><span class="no">A2 · 9</span>Порівняння</h2>
+<div class="qz" data-title="A2 · 9.1. Порівняння">
+кращий: níos ___ | fearr
+гірший: níos ___ | measa
+більший: níos ___ | mó
+менший: níos ___ | lú
+Більший за Голвей: níos mó ___ Gaillimh | ná
+Найкращий: is ___ | fearr
+</div>
+<div class="qz" data-title="A2 · 9.2. Переклад фраз">
+Дублін більший за Голвей. | Tá Baile Átha Cliath níos mó ná Gaillimh.
+Він старший за мене. | Tá sé níos sine ná mé.
+Це краще. | Tá seo níos fearr.
+Це найбільший магазин у місті. | Is é seo an siopa is mó sa bhaile.
+Говори повільніше, будь ласка. | Labhair níos moille, le do thoil.
+Гарно, як у Парижі. | Tá sé chomh hálainn le Páras.
+</div>
+</section>
+<section class="unit" id="a10" data-short="A2 · 10 Складні речення">
+<h2><span class="no">A2 · 10</span>Складні речення</h2>
+<div class="qz" data-title="A2 · 10.1. Складні речення">
+Не йду, ___ йде дощ: Ní théim ___ tá sé ag cur báistí | mar
+___ tá am agat, tar! | Má
+Іде дощ, ___ я вдома: ... ___ tá mé sa bhaile | mar sin
+___ go bhfuil tuirse orm, táim ag obair. (хоча) | Cé
+Думаю, ___ він удома: Sílim ___ bhfuil sé sa bhaile | go
+Але: ___ | ach
+</div>
+<div class="qz" data-title="A2 · 10.2. Слова">
+і | agus
+але | ach
+тому що | mar
+якщо | má
+що | go
+тому | mar sin
+коли | nuair
+хоча | cé go
+або | nó
+</div>
+<div class="qz" data-title="A2 · 10.3. Переклад фраз">
+Думаю, що він удома. | Sílim go bhfuil sé sa bhaile.
+Знаю, що ти говориш ірландською. | Tá a fhios agam go labhraíonn tú Gaeilge.
+Не йду, бо йде дощ. | Ní théim mar tá sé ag cur báistí.
+Іде дощ, тому я вдома. | Tá sé ag cur báistí, mar sin tá mé sa bhaile.
+Якщо маєш час, приходь! | Má tá am agat, tar!
+Коли дістануся, зателефоную. | Nuair a shroichfidh mé, cuirfidh mé scairt ort.
+Хоч я втомлений, працюю. | Cé go bhfuil tuirse orm, táim ag obair.
+Хочу, щоб ти прийшов. | Ba mhaith liom go dtiocfá.
+</div>
+</section>
+<section class="unit" id="a11" data-short="A2 · 11 Час і дієслова руху">
+<h2><span class="no">A2 · 11</span>Час і дієслова руху</h2>
+<div class="qz" data-title="A2 · 11.1. Час і рух">
+3:15: ___ tar éis a trí | Ceathrú
+3:30: ___ tar éis a trí | Leathuair
+3:45: Ceathrú ___ a ceathair | chun
+Потяг відправляється: ___ an traein | Fágann
+Заходжу: ___ isteach sa siopa | Téim
+Їду на авто: ___ carr | Tiomáinim
+</div>
+<div class="qz" data-title="A2 · 11.2. Слова">
+йти, їхати | dul
+приходити | teacht
+подорожувати | taisteal
+вести авто | tiomáint
+прибувати | sroicheadh
+вирушати, залишати | fágáil
+повертатися | filleadh
+літати | eitilt
+ходити пішки | siúl
+зупинятися | stopadh
+</div>
+<div class="qz" data-title="A2 · 11.3. Переклад фраз">
+Потяг відправляється о дев'ятій. | Fágann an traein ar a naoi.
+Прибуваю о пів на дванадцяту. | Sroichim ar leathuair tar éis a haon déag.
+Виходжу з дому о восьмій. | Fágaim an teach ar a hocht.
+Повертаюсь о п'ятій. | Fillim ar a cúig.
+Заходжу в магазин. | Téim isteach sa siopa.
+Як дістатися до вокзалу? | Conas a shroichim an stáisiún?
+Їду на авто. | Tiomáinim carr.
+</div>
+</section>
+<section class="unit" id="a12" data-short="A2 · 12 Словник за темами">
+<h2><span class="no">A2 · 12</span>Словник за темами</h2>
+<div class="qz" data-title="A2 · 12.1. Слова">
+подорож | turas
+паспорт | pas
+валіза | mála
+бронь | áirithint
+квиток | ticéad
+відпустка | saoire
+готель | óstán
+пляж | trá
+робота | obair
+школа | scoil
+</div>
+<div class="qz" data-title="A2 · 12.2. Слова">
+університет | ollscoil
+начальник | bainisteoir
+зустріч | cruinniú
+зарплата | tuarastal
+іспит | scrúdú
+радісний | sásta
+сумний | brónach
+втомлений | tuirseach
+сердитий | feargach
+задоволений | sona
+</div>
+<div class="qz" data-title="A2 · 12.3. Слова">
+квартира | árasán
+ключ | eochair
+пральна машина | meaisín níocháin
+оренда | cíos
+сусід | comharsa
+</div>
+</section>
+<section class="unit" id="a13" data-short="A2 · 13 Діалоги">
+<h2><span class="no">A2 · 13</span>Діалоги</h2>
+<div class="qz" data-title="A2 · 13.1. Фрази з діалогів">
+Що робитимеш на вихідних? | Cad a dhéanfaidh tú ag an deireadh seachtaine
+Охоче, але мушу працювати. | Ba mhaith liom ach caithfidh mé obair
+Три дні. | Le trí lá
+Мені потрібна квартира. | Tá árasán uaim
+Можна подивитися? | An bhfuil cead agam é a fheiceáil
+</div>
+</section>
+<section class="unit" id="a14" data-short="A2 · 14 Читання">
+<h2><span class="no">A2 · 14</span>Читання: три тексти</h2>
+<div class="qz" data-title="A2 · 14.1. Запитання до текстів">
+Коли встаю? | ar a seacht
+Де вчиться брат? | i mBaile Átha Cliath
+Де були минулого літа? | cois farraige
+Що їли у відпустці? | iasc
+Куди наступного літа? | go dtí na sléibhte
+</div>
+</section>
+<section class="unit" id="a15" data-short="A2 · 15 Як писати листи">
+<h2><span class="no">A2 · 15</span>Як писати листи</h2>
+<div class="qz" data-title="A2 · 15.1. Листи">
+Дякую за листа. | Go raibh maith agat as do litir
+З любов'ю | Le grá
+З повагою | le meas
+Дорогий Шоне | A Sheáin, a chara
+</div>
+</section>
+<section class="unit" id="a16" data-short="A2 · 16 Шпаргалка, план, тест">
+<h2><span class="no">A2 · 16</span>Шпаргалка, план і тест</h2>
+<div class="qz" data-title="A2 · 16.1. A2">
+Вчора я був вдома: ___ mé sa bhaile inné | Bhí
+Завтра я працюватиму: ___ mé ag obair amárach | Beidh
+Я б хотів кави: Ba mhaith ___ caife | liom
+Моя книжка: ___ leabhar | mo
+Зі мною: ___ | liom
+Більший за Голвей: níos mó ___ Gaillimh | ná
+Не йду, бо йде дощ: Ní théim ___ tá sé ag cur báistí | mar
+Пів на четверту: ___ tar éis a trí | Leathuair
+Бачу тебе: Feicim ___ | thú
+</div>
+</section>
+
+<footer>Вправи до курсів. Пояснення й таблиці дивись у курсах A1 і A2.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Gaeilge</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const sem=s=>s.replace(/[\u0591-\u05c7\u064b-\u065f\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').normalize('NFC');
+const norm=s=>sem(gk(s.toLowerCase())).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^ga[-_]IE/i.test(x.lang))||v.find(x=>/^ga/i.test(x.lang))||('ga'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='ga-IE';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('gax_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('gax_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('gax_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('gax_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='gax_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

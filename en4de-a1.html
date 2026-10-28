@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Englisch A1: kompletter Kurs</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="start-de.html" title="Startseite">&larr;</a>
+  <button id="menuBtn" aria-label="Inhalt">Inhalt</button>
+  <span class="brand">Englisch A1</span>
+  <input id="q" type="search" placeholder="Wort suchen" aria-label="Wort suchen">
+  <button id="uaBtn" title="Übersetzungen der Beispiele und Dialoge ein- oder ausblenden">Übersetzung</button>
+  <button id="thBtn" title="Heller oder dunkler Modus">Modus</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Inhalt"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Englisch A1</h1>
+  <p>Ein Selbstlernkurs Englisch für Deutschsprachige: Aussprache, Grammatik, Wortschatz nach Themen, Dialoge, Texte und Übungen. Tippen Sie auf ein Wort oder einen Satz, um ihn zu hören.</p>
+  <p class="crumbs"><a href="start-de.html">&larr; Startseite</a><a href="en4de-a2.html">Niveau A2</a><a href="en4de-vpravy.html">Übungen</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Einstieg" data-short="So arbeiten Sie mit dem Kurs">
+<h2><span class="no">Abschnitt 0</span>So arbeiten Sie mit dem Kurs</h2>
+<p class="lead">Englisch ist für Deutschsprachige ein Glücksfall: Viele Wörter sind verwandt (<span class="fr">water, house, hand, book</span>), die Grammatik ist schlank, und es gibt nur einen Artikel für alles (<span class="fr">the</span>). Schwierig ist etwas anderes: die <b>Aussprache</b>, denn man liest Englisch oft anders, als man es schreibt. Dieser Kurs führt Sie auf das Niveau A1: Kennenlernen, Familie, Essen, Orientierung in der Stadt, Einkaufen, Uhrzeit und Alltagssituationen.</p>
+<h3>Was für Sie spricht</h3>
+<ul>
+
+
+<li><b>Verwandte Wörter.</b> <span class="fr">water, house, hand, finger, book, winter, summer, apple, milk, father</span> kennen Sie schon fast.</li>
+<li><b>Ein Artikel statt drei.</b> <span class="fr">the</span> ersetzt der, die und das.</li>
+<li><b>Einfache Verben.</b> Im Präsens ändert sich nur die dritte Person (<span class="fr">he works</span>). Es gibt kein „du“ und „Sie“: nur <span class="fr">you</span>.</li>
+<li><b>Kein Kasus am Nomen.</b> Es gibt keinen Dativ und keinen Akkusativ am Substantiv.</li>
+</ul>
+<div class="warn"><b>Was neu ist.</b> Das Subjekt muss immer genannt werden, und die Wortstellung ist fest: Subjekt, Verb, Objekt (kein „Heute gehe ich“, sondern <span class="fr">Today I go</span>). Fragen und Verneinung brauchen das Hilfsverb <span class="fr">do</span>. Und die Schreibung verrät die Aussprache nur unzuverlässig.</div>
+<div class="tip"><b class="t">Wichtigster Tipp.</b> Lernen Sie ganze Sätze, nicht einzelne Wörter: nicht „drink = trinken“, sondern <span class="fr">I drink coffee</span>. Und hören Sie sich jedes neue Wort an (antippen).</div>
+<div class="warn"><b>Falsche Freunde.</b> <span class="fr">gift</span> = Geschenk (nicht Gift!), <span class="fr">become</span> = werden (nicht bekommen: das ist <span class="fr">get</span>), <span class="fr">chef</span> = Koch, <span class="fr">sensible</span> = vernünftig (nicht sensibel), <span class="fr">actual</span> = tatsächlich, <span class="fr">eventually</span> = schließlich, <span class="fr">handy</span> = praktisch (Mobiltelefon: <span class="fr">mobile phone</span>), <span class="fr">fast</span> = schnell, <span class="fr">art</span> = Kunst, <span class="fr">brave</span> = mutig.</div>
+<h3>Arbeitsweise</h3>
+<ol>
+<li>Lesen Sie die Erklärungen und tippen Sie auf Wörter, um sie zu hören.</li>
+<li>Machen Sie die Übungen hier und auf der Seite „Übungen“.</li>
+<li>20 bis 30 Minuten täglich. Der Plan steht in Abschnitt 12.</li>
+</ol>
+<div class="tip"><b class="t">Zur Aussprachespalte.</b> Die Aussprache steht in der internationalen Lautschrift (IPA), in amerikanischer Aussprache. Sie finden sie bei jedem Wort. Das Zeichen <span class="fr">ˈ</span> steht vor der betonten Silbe. Der Ton auf Ihrem Gerät kann amerikanisch oder britisch klingen. Verlassen Sie sich vor allem auf Ihr Gehör.</div>
+</section>
+
+<section class="unit" id="u1" data-short="Aussprache und Schreibung">
+<h2><span class="no">Abschnitt 1</span>Aussprache und Schreibung</h2>
+<p class="lead">Das englische Alphabet hat 26 Buchstaben, aber etwa 44 Laute. Schreibung und Aussprache weichen oft voneinander ab, deshalb lernen Sie jedes Wort auch mit dem Ohr. Das Wichtigste passt auf eine Seite.</p>
+<h3>1.1. Vokale</h3>
+<div class="tw"><table>
+<tr><th>IPA</th><th>Ähnlich wie im Deutschen</th><th>Beispiele</th></tr>
+<tr><td><span class="fr">iː</span></td><td>langes „ie“</td><td><span class="fr">see, eat, key</span></td></tr>
+<tr><td><span class="fr">ɪ</span></td><td>kurzes „i“ wie in „Bitte“</td><td><span class="fr">sit, big, it</span></td></tr>
+<tr><td><span class="fr">e / ɛ</span></td><td>wie „e“ in „Bett“</td><td><span class="fr">bed, red, ten</span></td></tr>
+<tr><td><span class="fr">æ</span></td><td>zwischen „a“ und „ä“, Mund weit offen</td><td><span class="fr">cat, man, apple</span></td></tr>
+<tr><td><span class="fr">ɑː</span></td><td>langes „a“</td><td><span class="fr">car, father, start</span></td></tr>
+<tr><td><span class="fr">ɔː</span></td><td>langes, offenes „o“</td><td><span class="fr">all, four, door</span></td></tr>
+<tr><td><span class="fr">ʊ / uː</span></td><td>kurzes / langes „u“</td><td><span class="fr">book, good / food, blue</span></td></tr>
+<tr><td><span class="fr">ʌ</span></td><td>kurzes dumpfes „a“</td><td><span class="fr">cup, but, love</span></td></tr>
+<tr><td><span class="fr">ə</span></td><td>Schwa wie in „bitte“ (unbetont)</td><td><span class="fr">about, teacher, banana</span></td></tr>
+<tr><td><span class="fr">eɪ, aɪ, ɔɪ</span></td><td>Diphthonge „ei, ai, eu“</td><td><span class="fr">day, my, boy</span></td></tr>
+<tr><td><span class="fr">oʊ, aʊ</span></td><td>Diphthonge „ou, au“</td><td><span class="fr">go, now</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Lang und kurz</b><p>Die Länge unterscheidet Wörter: <span class="fr">ship</span> (Schiff) und <span class="fr">sheep</span> (Schaf), <span class="fr">full</span> und <span class="fr">fool</span>. Nicht nur die Länge, auch die Spannung ist anders: <span class="fr">ɪ</span> ist locker, <span class="fr">iː</span> gespannt.</p></div>
+<h3>1.2. Konsonanten, die Probleme machen</h3>
+<div class="tw"><table>
+<tr><th>IPA</th><th>So geht’s</th><th>Beispiele</th></tr>
+<tr><td><span class="fr">θ</span></td><td>Zunge zwischen den Zähnen, nur Luft, stimmlos (nicht „s“, nicht „f“)</td><td><span class="fr">think, three, Thursday</span></td></tr>
+<tr><td><span class="fr">ð</span></td><td>gleiche Zungenstellung, aber stimmhaft (nicht „z“, nicht „d“)</td><td><span class="fr">the, this, mother</span></td></tr>
+<tr><td><span class="fr">w</span></td><td>Lippen runden wie bei „u“, dann schnell weiter (nicht „w“ wie im Deutschen!)</td><td><span class="fr">water, we, window</span></td></tr>
+<tr><td><span class="fr">v</span></td><td>obere Zähne auf der Unterlippe, wie deutsches „w“</td><td><span class="fr">very, voice, live</span></td></tr>
+<tr><td><span class="fr">r</span></td><td>Zunge zurückgezogen, ohne Zäpfchen-r</td><td><span class="fr">red, right, very</span></td></tr>
+<tr><td><span class="fr">ŋ</span></td><td>wie „ng“ in „Ring“, am Ende kein „g“ hörbar</td><td><span class="fr">sing, long, morning</span></td></tr>
+<tr><td><span class="fr">tʃ, dʒ</span></td><td>wie „tsch“ und „dsch“</td><td><span class="fr">chair, cheese, job, bridge</span></td></tr>
+<tr><td><span class="fr">ʃ, ʒ</span></td><td>wie „sch“ und das „g“ in „Genie“</td><td><span class="fr">she, fish, vision</span></td></tr>
+<tr><td><span class="fr">h</span></td><td>schwaches „h“ wie in „Haus“</td><td><span class="fr">house, hello</span></td></tr>
+</table></div>
+<div class="warn"><b>Typische Fehler.</b> (1) <span class="fr">th</span> wird oft zu „s“ oder „z“: nicht „sank“ für <span class="fr">thank</span>. (2) <span class="fr">w</span> wird oft als „v“ gesprochen: <span class="fr">wine</span> und <span class="fr">vine</span> sind zwei Wörter. (3) Am Wortende bleibt der Konsonant stimmhaft: <span class="fr">bad</span> ist nicht „bat“, <span class="fr">dog</span> nicht „dock“ (Auslautverhärtung vermeiden!). (4) <span class="fr">r</span> nicht im Rachen sprechen.</div>
+<h3>1.3. Betonung und Endungen</h3>
+<ul>
+<li>Jedes mehrsilbige Wort hat eine Hauptbetonung. In unbetonten Silben wird der Vokal oft zu <span class="fr">ə</span>: <span class="fr">teacher, banana, family</span>.</li>
+<li>-s: <span class="fr">books /s/</span>, <span class="fr">dogs /z/</span>, <span class="fr">buses /ɪz/</span>. -ed: <span class="fr">worked /t/</span>, <span class="fr">lived /d/</span>, <span class="fr">wanted /ɪd/</span>.</li>
+<li>Stumme Buchstaben: <span class="fr">knife, write, hour, listen, answer, Wednesday</span>.</li>
+<li>Derselbe Buchstabe, verschiedene Laute: <span class="fr">through, though, thought, tough, cough</span>.</li>
+</ul>
+<h3>1.4. Alphabet</h3>
+<div class="vocab">
+A | eɪ | apple
+B | bi | book
+C | si | car
+D | di | dog
+E | i | egg
+F | ɛf | fish
+G | dʒi | green
+H | eɪtʃ | house
+I | aɪ | ice
+J | dʒeɪ | job
+K | keɪ | key
+L | ɛl | light
+M | ɛm | milk
+N | ɛn | name
+O | oʊ | orange
+P | pi | pen
+Q | kju | queen
+R | ɑr | red
+S | ɛs | sun
+T | ti | tea
+U | ju | uncle
+V | vi | very
+W | ˈdʌbəl ju | water
+X | ɛks | box
+Y | waɪ | yes
+Z | zi | zero
+</div>
+<div class="exs">
+How do you spell your name? | haʊ du ju spɛl jɔr neɪm | Wie buchstabiert man Ihren Namen?
+Could you repeat that, please? | kʊd ju rɪˈpit ðæt pliz | Können Sie das bitte wiederholen?
+Thank you very much. | θæŋk ju ˈvɛri mʌtʃ | Vielen Dank.
+I think this is the right answer. | aɪ θɪŋk ðɪs ɪz ðə raɪt ˈænsɚ | Ich denke, das ist die richtige Antwort.
+The weather is nice today. | ðə ˈwɛðɚ ɪz naɪs təˈdeɪ | Das Wetter ist heute schön.
+</div>
+<div class="qz" data-title="Übung 1. Lesen und schreiben">
+/θɪŋk/ — denken | think
+/θri/ — die Zahl 3 | three
+/ˈwɔtɚ/ — Wasser | water
+/ʃi/ — sie | she
+/ˈhaʊs/ — Haus | house
+/tʃɛr/ — Stuhl | chair
+/dɔɡ/ — Hund | dog
+/ˈmɔrnɪŋ/ — Morgen | morning
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Begrüßung, Kennenlernen">
+<h2><span class="no">Abschnitt 2</span>Begrüßung und Kennenlernen</h2>
+<p class="lead">Im Englischen gibt es kein „du“ und „Sie“: nur <span class="fr">you</span>. Höflichkeit steckt in den Wörtern (<span class="fr">please, thank you, could you</span>), nicht in einer Form.</p>
+<div class="vocab">
+# Begrüßung
+Hello | həˈloʊ | hallo, guten Tag
+Hi | haɪ | hallo (informell)
+Good morning | ɡʊd ˈmɔrnɪŋ | guten Morgen
+Good afternoon | ɡʊd ˌæftɚˈnun | guten Tag (nachmittags)
+Good evening | ɡʊd ˈivnɪŋ | guten Abend
+Good night | ɡʊd naɪt | gute Nacht
+Goodbye | ˌɡʊdˈbaɪ | auf Wiedersehen
+See you | si ju | bis dann
+# Höflichkeit
+Please | pliz | bitte
+Thank you | θæŋk ju | danke
+You're welcome | jʊr ˈwɛlkəm | gern geschehen
+Sorry | ˈsɑri | Entschuldigung
+Excuse me | ɪksˈkjus mi | Entschuldigung (Ansprache)
+Yes | jɛs | ja
+No | noʊ | nein
+</div>
+<h3>2.1. Sich vorstellen</h3>
+<div class="exs">
+My name is Michael. | maɪ neɪm ɪz ˈmaɪkəl | Ich heiße Michael.
+What's your name? | wʌts jɔr neɪm | Wie heißen Sie?
+Nice to meet you. | naɪs tə mit ju | Freut mich.
+Where are you from? | wɛr ɑr ju frʌm | Woher kommen Sie?
+I'm from Prague. | aɪm frʌm prɑɡ | Ich komme aus Prag.
+I'm thirty years old. | aɪm ˈθɝˌdi jɪrz oʊld | Ich bin dreißig Jahre alt.
+I live in London. | aɪ laɪv ɪn ˈlʌndən | Ich wohne in London.
+I'm a teacher. | aɪm ə ˈtitʃɚ | Ich bin Lehrer.
+Do you speak English? | du ju spik ˈɪŋɡlɪʃ | Sprechen Sie Englisch?
+I don't understand. | aɪ doʊnt ˌʌndɚˈstænd | Ich verstehe nicht.
+Can you repeat that, please? | kæn ju rɪˈpit ðæt pliz | Können Sie das bitte wiederholen?
+</div>
+<div class="rule"><b class="t">Das Subjekt ist Pflicht</b><p>Im Deutschen entfällt das Subjekt selten, aber bei Wetter und Zeit steht ein „es“, das im Englischen nie fehlen darf: <span class="fr">It is cold. It is late.</span></p></div>
+<h3>2.2. Pronomen</h3>
+<div class="tw"><table>
+<tr><th>Person</th><th>English</th><th>Bedeutung</th><th>Objekt</th><th>Possessiv</th></tr>
+<tr><td>1</td><td><span class="fr">I</span></td><td>ich</td><td><span class="fr">me</span></td><td><span class="fr">my</span></td></tr>
+<tr><td>2</td><td><span class="fr">you</span></td><td>du, Sie, ihr</td><td><span class="fr">you</span></td><td><span class="fr">your</span></td></tr>
+<tr><td>3</td><td><span class="fr">he / she / it</span></td><td>er / sie / es</td><td><span class="fr">him / her / it</span></td><td><span class="fr">his / her / its</span></td></tr>
+<tr><td>1 pl.</td><td><span class="fr">we</span></td><td>wir</td><td><span class="fr">us</span></td><td><span class="fr">our</span></td></tr>
+<tr><td>2 pl.</td><td><span class="fr">you</span></td><td>ihr, Sie</td><td><span class="fr">you</span></td><td><span class="fr">your</span></td></tr>
+<tr><td>3 pl.</td><td><span class="fr">they</span></td><td>sie</td><td><span class="fr">them</span></td><td><span class="fr">their</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Achtung.</b> <span class="fr">I</span> wird immer großgeschrieben. Ein Tisch ist <span class="fr">it</span> (nicht „er“ oder „sie“), egal welches Geschlecht das deutsche Wort hat: <span class="fr">the table – it</span>.</div>
+<div class="qz" data-title="Übung 2. Begrüßung">
+Guten Morgen! | Good morning
+Guten Abend! | Good evening
+Danke. | Thank you
+Bitte. | Please
+Entschuldigung. | Excuse me
+Auf Wiedersehen. | Goodbye
+Ich heiße Anna. | My name is Anna
+Freut mich. | Nice to meet you
+Ich verstehe nicht. | I don't understand
+Woher kommen Sie? | Where are you from
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Nomen, Artikel">
+<h2><span class="no">Abschnitt 3</span>Nomen, Artikel und Plural</h2>
+<p class="lead">Wie im Deutschen gibt es bestimmte und unbestimmte Artikel: <span class="fr">the</span> (der, die, das) und <span class="fr">a / an</span> (ein, eine). Aber: Die Nomen haben kein Geschlecht, und es gibt keine Kasusendungen.</p>
+<h3>3.1. A, an, the</h3>
+<div class="tw"><table>
+<tr><th>Artikel</th><th>Wann</th><th>Beispiel</th></tr>
+<tr><td><span class="fr">a</span></td><td>vor Konsonantenlaut</td><td><span class="fr">a book, a car, a university</span></td></tr>
+<tr><td><span class="fr">an</span></td><td>vor Vokallaut</td><td><span class="fr">an apple, an hour, an egg</span></td></tr>
+<tr><td><span class="fr">the</span></td><td>bestimmt, bekannt</td><td><span class="fr">the book on the table</span></td></tr>
+<tr><td>kein Artikel</td><td>Plural allgemein, Unzählbares</td><td><span class="fr">I like books. I drink water.</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Es zählt der Laut, nicht der Buchstabe</b><p><span class="fr">an hour</span> /aʊr/, ale <span class="fr">a university</span> /ju/. Maßgeblich ist der Anlaut, nicht die Schreibung.</p></div>
+<h3>3.2. Plural</h3>
+<div class="tw"><table>
+<tr><th>Regel</th><th>Beispiel</th></tr>
+<tr><td>+ s</td><td><span class="fr">book → books, car → cars</span></td></tr>
+<tr><td>s, x, ch, sh → + es</td><td><span class="fr">bus → buses, box → boxes, watch → watches</span></td></tr>
+<tr><td>Konsonant + y → ies</td><td><span class="fr">city → cities, baby → babies</span></td></tr>
+<tr><td>unregelmäßig</td><td><span class="fr">man → men, woman → women, child → children, foot → feet, person → people, tooth → teeth</span></td></tr>
+</table></div>
+<div class="warn"><b>Unzählbare Nomen.</b> <span class="fr">information, advice, news, money, water, bread</span> haben keinen Plural und kein <span class="fr">a</span>: <span class="fr">some information</span>, nicht „an information“. Auch <span class="fr">hair</span> ist Singular: <span class="fr">Her hair is long.</span></div>
+<h3>3.3. This, that, these, those</h3>
+<div class="tw"><table>
+<tr><th></th><th>nah</th><th>fern</th></tr>
+<tr><td>Singular</td><td><span class="fr">this</span> (dieser)</td><td><span class="fr">that</span> (jener)</td></tr>
+<tr><td>Plural</td><td><span class="fr">these</span></td><td><span class="fr">those</span></td></tr>
+</table></div>
+<div class="exs">
+This is a book. | ðɪs ɪz ə bʊk | Das ist ein Buch.
+That is my brother. | ðæt ɪz maɪ ˈbrʌðɚ | Das (dort) ist mein Bruder.
+These are my keys. | ðiz ɑr maɪ kiz | Das sind meine Schlüssel.
+I have a brother and two sisters. | aɪ hæv ə ˈbrʌðɚ ənd tu ˈsɪstɚz | Ich habe einen Bruder und zwei Schwestern.
+The book is on the table. | ðə bʊk ɪz ɑn ðə ˈteɪbəl | Das Buch liegt auf dem Tisch.
+She is an engineer. | ʃi ɪz ən ˈɛndʒəˈnɪr | Sie ist Ingenieurin.
+I like apples. | aɪ laɪk ˈæpəlz | Ich mag Äpfel.
+</div>
+<div class="vocab">
+# Familie
+family | ˈfæməli | Familie
+mother (mum) | ˈmʌðɚ mʌm | Mutter (Mama)
+father (dad) | ˈfɑðɚ dæd | Vater (Papa)
+brother | ˈbrʌðɚ | Bruder
+sister | ˈsɪstɚ | Schwester
+son | sʌn | Sohn
+daughter | ˈdɔtɚ | Tochter
+grandmother | ˈɡrændˌmʌðɚ | Großmutter
+grandfather | ˈɡrændˌfɑðɚ | Großvater
+husband | ˈhʌzbənd | Ehemann
+wife | waɪf | Ehefrau
+child | tʃaɪld | Kind
+# Dinge
+house | haʊs | Haus
+flat (apartment) | flæt əˈpɑrtmənt | Wohnung
+room | rum | Zimmer
+kitchen | ˈkɪtʃən | Küche
+table | ˈteɪbəl | Tisch
+chair | tʃɛr | Stuhl
+window | ˈwɪndoʊ | Fenster
+door | dɔr | Tür
+bed | bɛd | Bett
+car | kɑr | Auto
+phone | foʊn | Telefon
+book | bʊk | Buch
+</div>
+<div class="qz" data-title="Übung 3. Artikel und Plural">
+Familie | family
+Bruder | brother
+Schwester | sister
+Kind | child
+Haus | house
+Tisch | table
+Buch | book
+Küche | kitchen
+I have ___ apple. (a / an) | an
+She is ___ teacher. (a / an) | a
+I have ___ umbrella. (a / an) | an
+book → ___ (pl.) | books
+box → ___ (pl.) | boxes
+city → ___ (pl.) | cities
+child → ___ (pl.) | children
+man → ___ (pl.) | men
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Verben" data-short="Be, have, there is">
+<h2><span class="no">Abschnitt 4</span>Die Verben <span class="fr">to be</span> und <span class="fr">to have</span>, <span class="fr">there is</span></h2>
+<div class="cj" data-verb="to be" data-note="sein" data-ipa="tə bi">
+I | am | æm
+you | are | ɑr
+he / she / it | is | ɪz
+we | are | ɑr
+you | are | ɑr
+they | are | ɑr
+</div>
+<div class="cj" data-verb="to have" data-note="haben" data-ipa="tə hæv">
+I | have | hæv
+you | have | hæv
+he / she / it | has | hæz
+we | have | hæv
+you | have | hæv
+they | have | hæv
+</div>
+<div class="tw"><table>
+<tr><th>Form</th><th>to be</th><th>to have</th></tr>
+<tr><td>Kurzform</td><td><span class="fr">I'm, you're, he's, we're, they're</span></td><td><span class="fr">I've, she's got</span></td></tr>
+<tr><td>Verneinung</td><td><span class="fr">I am not, he isn't, they aren't</span></td><td><span class="fr">I don't have / I haven't got</span></td></tr>
+<tr><td>Frage</td><td><span class="fr">Are you tired? Is he here?</span></td><td><span class="fr">Do you have a car? / Have you got a car?</span></td></tr>
+</table></div>
+<div class="exs">
+I am a student. | aɪ æm ə ˈstudənt | Ich bin Student.
+Are you tired? | ɑr ju ˈtaɪɚd | Sind Sie müde?
+We are at home. | wi ɑr ət hoʊm | Wir sind zu Hause.
+She is not a doctor. | ʃi ɪz nɑt ə ˈdɑktɚ | Sie ist keine Ärztin.
+I have a brother. | aɪ hæv ə ˈbrʌðɚ | Ich habe einen Bruder.
+Do you have time? | du ju hæv taɪm | Haben Sie Zeit?
+I don't have time. | aɪ doʊnt hæv taɪm | Ich habe keine Zeit.
+He has two children. | hi hæz tu ˈtʃɪldrən | Er hat zwei Kinder.
+It's cold today. | ɪts koʊld təˈdeɪ | Es ist heute kalt.
+I'm hungry. | aɪm ˈhʌŋɡri | Ich habe Hunger.
+</div>
+<div class="warn"><b>Achtung.</b> Wie im Deutschen: Alter mit <span class="fr">be</span> (<span class="fr">I am 30</span>), aber Hunger, Durst, Angst im Englischen auch mit <span class="fr">be</span>, nicht mit <span class="fr">have</span>: <span class="fr">I am hungry / thirsty / afraid</span>. (Nicht: „I have hunger“.)</div>
+<h3>4.1. There is / there are</h3>
+<div class="tw"><table>
+<tr><th>Form</th><th>Beispiel</th></tr>
+<tr><td><span class="fr">There is + Singular</span></td><td><span class="fr">There is a bank near here.</span></td></tr>
+<tr><td><span class="fr">There are + Plural</span></td><td><span class="fr">There are two shops on this street.</span></td></tr>
+<tr><td>Verneinung</td><td><span class="fr">There isn't a park. There aren't any shops.</span></td></tr>
+<tr><td>Frage</td><td><span class="fr">Is there a bank? Are there any shops?</span></td></tr>
+</table></div>
+<div class="qz" data-title="Übung 4. Be und have">
+I ___ a student. (be) | am
+You ___ from England. (be) | are
+He ___ a doctor. (be) | is
+We ___ friends. (be) | are
+They ___ at home. (be) | are
+I ___ a brother. (have) | have
+She ___ a car. (have) | has
+We ___ a house. (have) | have
+___ you tired? | Are
+___ there a bank near here? | Is
+She ___ a doctor. (negative: is not) | isn't / is not
+</div>
+</section>
+
+<section class="unit" id="u5" data-short="Präsens">
+<h2><span class="no">Abschnitt 5</span>Present Simple und Present Continuous</h2>
+<h3>5.1. Present Simple</h3>
+<p>Für Gewohnheiten, Tatsachen und regelmäßige Tätigkeiten. Die Grundform bleibt, nur in der 3. Person Singular kommt <b>-s</b> dazu: <span class="fr">I work, he works</span>.</p>
+<div class="cj" data-verb="to work" data-note="arbeiten" data-ipa="tə wɝk">
+I | work | wɝk
+you | work | wɝk
+he / she / it | works | wɝks
+we | work | wɝk
+you | work | wɝk
+they | work | wɝk
+</div>
+<div class="tw"><table>
+<tr><th>Regel</th><th>Beispiel</th></tr>
+<tr><td>+ s</td><td><span class="fr">he works, she lives, it rains</span></td></tr>
+<tr><td>s, sh, ch, x, o → + es</td><td><span class="fr">he watches, she goes, it fixes</span></td></tr>
+<tr><td>Konsonant + y → ies</td><td><span class="fr">he studies, she tries</span></td></tr>
+<tr><td>unregelmäßig</td><td><span class="fr">have → has, be → is</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Verneinung und Frage: Hilfsverb do</b><p><span class="fr">I don't work. He doesn't work. Do you work? Does he work?</span> Nach <span class="fr">does</span> fällt das -s weg: <span class="fr">Does she work?</span>, nicht „Does she works?“. Bei <span class="fr">be</span> wird <span class="fr">do</span> nicht verwendet. Im Gegensatz zum Deutschen gibt es keine Inversion: nicht „Work you?“, sondern <span class="fr">Do you work?</span></p></div>
+<div class="exs">
+I work in a bank. | aɪ wɝk ɪn ə bæŋk | Ich arbeite in einer Bank.
+She lives in Berlin. | ʃi lɪvz ɪn bɚˈlɪn | Sie wohnt in Berlin.
+He doesn't drink coffee. | hi ˈdʌzənt drɪŋk ˈkɑfi | Er trinkt keinen Kaffee.
+Do you speak English? | du ju spik ˈɪŋɡlɪʃ | Sprechen Sie Englisch?
+Does she like tea? | dʌz ʃi laɪk ti | Mag sie Tee?
+We go to school by bus. | wi ɡoʊ tə skul baɪ bʌs | Wir fahren mit dem Bus zur Schule.
+They don't have a car. | ðeɪ doʊnt hæv ə kɑr | Sie haben kein Auto.
+What time does the train leave? | wʌt taɪm dʌz ðə treɪn liv | Wann fährt der Zug ab?
+</div>
+<h3>5.2. Häufigkeitsadverbien</h3>
+<div class="vocab">
+always | ˈɔˌlweɪz | immer
+usually | ˈjuʒəwəli | normalerweise
+often | ˈɔfən | oft
+sometimes | səmˈtaɪmz | manchmal
+rarely | ˈrɛrli | selten
+never | ˈnɛvɚ | nie
+</div>
+<p>Stehen vor dem Verb, aber nach <span class="fr">be</span>: <span class="fr">I always drink tea. He is never late.</span></p>
+<h3>5.3. Present Continuous</h3>
+<div class="rule"><b class="t">be + -ing</b><p>Für das, was gerade jetzt passiert oder in dieser Zeit. Deutsch hat dafür keine eigene Form: „Ich lese“ ist <span class="fr">I read</span> (gewohnheitsmäßig) oder <span class="fr">I am reading</span> (gerade jetzt).</p></div>
+<div class="exs">
+I am reading a book. | aɪ æm ˈridɪŋ ə bʊk | Ich lese gerade ein Buch.
+She is cooking dinner now. | ʃi ɪz ˈkʊkɪŋ ˈdɪnɚ naʊ | Sie kocht gerade das Abendessen.
+Are you working today? | ɑr ju ˈwɝkɪŋ təˈdeɪ | Arbeiten Sie heute?
+It is raining. | ɪt ɪz ˈreɪnɪŋ | Es regnet.
+They aren't watching TV. | ðeɪ ˈɑrənt ˈwɑtʃɪŋ ˈtiˈvi | Sie sehen nicht fern.
+I'm learning English. | aɪm ˈlɝnɪŋ ˈɪŋɡlɪʃ | Ich lerne Englisch.
+</div>
+<div class="vocab">
+work | wɝk | arbeiten
+live | laɪv | wohnen
+speak | spik | sprechen
+read | rɛd | lesen
+drink | drɪŋk | trinken
+eat | it | essen
+go | ɡoʊ | gehen, fahren
+see | si | sehen
+buy | baɪ | kaufen
+want | wɑnt | wollen
+like | laɪk | mögen
+play | pleɪ | spielen
+learn | lɝn | lernen
+</div>
+<div class="qz" data-title="Übung 5. Präsens">
+I ___ in London. (live) | live
+She ___ in London. (live) | lives
+He ___ tea. (drink) | drinks
+They ___ English. (speak) | speak
+He ___ in a bank. (work) | works
+She ___ TV. (watch) | watches
+I ___ like coffee. (negative) | don't
+She ___ speak German. (negative) | doesn't
+___ you work here? | Do
+___ he like tea? | Does
+Look! It ___ raining. (is / are) | is
+I ___ reading now. (am / is) | am
+</div>
+</section>
+
+<section class="unit" id="u6" data-grp="Sprache im Einsatz" data-short="Fragen, Adjektive, Präpositionen">
+<h2><span class="no">Abschnitt 6</span>Fragen, Adjektive, Präpositionen</h2>
+<div class="vocab">
+who | hu | wer
+what | wʌt | was
+where | wɛr | wo, wohin
+when | wɛn | wann
+why | waɪ | warum
+how | haʊ | wie
+how much | haʊ mʌtʃ | wie viel
+how many | haʊ ˈmɛni | wie viele
+which | wɪtʃ | welcher
+whose | huz | wessen
+</div>
+<div class="exs">
+Who is that? | hu ɪz ðæt | Wer ist das?
+What do you do? | wʌt du ju du | Was machen Sie beruflich?
+Where do you live? | wɛr du ju laɪv | Wo wohnen Sie?
+When does the shop open? | wɛn dʌz ðə ʃɑp ˈoʊpən | Wann öffnet das Geschäft?
+Why are you learning English? | waɪ ɑr ju ˈlɝnɪŋ ˈɪŋɡlɪʃ | Warum lernen Sie Englisch?
+How much is it? | haʊ mʌtʃ ɪz ɪt | Wie viel kostet das?
+How many children do you have? | haʊ ˈmɛni ˈtʃɪldrən du ju hæv | Wie viele Kinder haben Sie?
+</div>
+<div class="rule"><b class="t">Wortstellung in Fragen</b><p><span class="fr">Question word + do/does + subject + verb</span>: <span class="fr">Where does she work?</span> Die Frage folgt dem Muster Fragewort + do/does + Subjekt + Verb. Nicht wie im Deutschen: „Wo arbeitet sie?“ ≠ „Where works she?“.</p></div>
+<h3>6.1. Adjektive</h3>
+<p>Adjektive haben keine Endungen und stehen <b>vor</b> dem Nomen: <span class="fr">a new house, new houses</span> (nicht „ein neues Haus“ mit Endung).</p>
+<div class="vocab">
+new | nu | neu
+old | oʊld | alt
+big | bɪɡ | groß
+small | smɔl | klein
+good | ɡʊd | gut
+bad | bæd | schlecht
+beautiful | ˈbjutəfəl | schön
+expensive | ɪkˈspɛnsɪv | teuer
+cheap | tʃip | billig
+nice | naɪs | nett
+tired | ˈtaɪɚd | müde
+happy | ˈhæpi | glücklich
+</div>
+<h3>6.2. Possessiv</h3>
+<div class="tw"><table>
+<tr><th>Wessen</th><th>Vor dem Nomen</th><th>Allein stehend</th></tr>
+<tr><td>mein</td><td><span class="fr">my</span></td><td><span class="fr">mine</span></td></tr>
+<tr><td>dein, Ihr</td><td><span class="fr">your</span></td><td><span class="fr">yours</span></td></tr>
+<tr><td>sein</td><td><span class="fr">his</span></td><td><span class="fr">his</span></td></tr>
+<tr><td>ihr</td><td><span class="fr">her</span></td><td><span class="fr">hers</span></td></tr>
+<tr><td>unser</td><td><span class="fr">our</span></td><td><span class="fr">ours</span></td></tr>
+<tr><td>ihr (Pl.)</td><td><span class="fr">their</span></td><td><span class="fr">theirs</span></td></tr>
+</table></div>
+<p>Besitz wird auch mit <span class="fr">'s</span> ausgedrückt (ohne Apostroph im Deutschen nur bei „s“): <span class="fr">Anna's book</span>, <span class="fr">my brother's car</span>.</p>
+<h3>6.3. Präpositionen</h3>
+<div class="tw"><table>
+<tr><th>Präposition</th><th>Bedeutung</th><th>Beispiel</th></tr>
+<tr><td><span class="fr">in</span></td><td>in (Stadt, Monat, Jahr)</td><td><span class="fr">in London, in May, in 2024</span></td></tr>
+<tr><td><span class="fr">on</span></td><td>auf, an (Tag)</td><td><span class="fr">on the table, on Monday</span></td></tr>
+<tr><td><span class="fr">at</span></td><td>bei, um (genauer Ort, Zeit)</td><td><span class="fr">at home, at 5 o'clock, at the station</span></td></tr>
+<tr><td><span class="fr">to</span></td><td>nach, zu (Richtung)</td><td><span class="fr">go to school, to Prague</span></td></tr>
+<tr><td><span class="fr">from</span></td><td>aus, von</td><td><span class="fr">from England, from 9 to 5</span></td></tr>
+<tr><td><span class="fr">with / without</span></td><td>mit / ohne</td><td><span class="fr">with milk, without sugar</span></td></tr>
+<tr><td><span class="fr">for</span></td><td>für, seit/lang</td><td><span class="fr">for you, for two hours</span></td></tr>
+<tr><td><span class="fr">next to / behind / in front of</span></td><td>neben / hinter / vor</td><td><span class="fr">next to the bank</span></td></tr>
+</table></div>
+<div class="exs">
+I live in Prague. | aɪ laɪv ɪn prɑɡ | Ich wohne in Prag.
+The book is on the table. | ðə bʊk ɪz ɑn ðə ˈteɪbəl | Das Buch liegt auf dem Tisch.
+We meet at six o'clock. | wi mit ət sɪks əˈklɑk | Wir treffen uns um sechs Uhr.
+I go to school on Monday. | aɪ ɡoʊ tə skul ɑn ˈmʌndi | Am Montag gehe ich zur Schule.
+Coffee with milk, please. | ˈkɑfi wɪð mɪlk pliz | Kaffee mit Milch, bitte.
+The bank is next to the post office. | ðə bæŋk ɪz nɛkst tə ðə poʊst ˈɔfɪs | Die Bank ist neben der Post.
+</div>
+<div class="qz" data-title="Übung 6. Fragen und Präpositionen">
+___ is that? (who) | Who
+___ do you do? (what) | What
+___ do you live? (where) | Where
+___ is it? (how much) | How much
+The house is ___ . (new) | new
+___ brother is a doctor. (my) | My
+I live ___ Prague. (in) | in
+The book is ___ the table. (on) | on
+I am ___ home. (at) | at
+Coffee ___ milk. (with) | with
+I go ___ school. (to) | to
+The bank is ___ to the post office. (next) | next
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Zahlen, Uhrzeit, Daten">
+<h2><span class="no">Abschnitt 7</span>Zahlen, Uhrzeit und Datum</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">zero</span></td><td>1 <span class="fr">one</span></td><td>2 <span class="fr">two</span></td><td>3 <span class="fr">three</span></td></tr>
+<tr><td>4 <span class="fr">four</span></td><td>5 <span class="fr">five</span></td><td>6 <span class="fr">six</span></td><td>7 <span class="fr">seven</span></td></tr>
+<tr><td>8 <span class="fr">eight</span></td><td>9 <span class="fr">nine</span></td><td>10 <span class="fr">ten</span></td><td>11 <span class="fr">eleven</span></td></tr>
+<tr><td>12 <span class="fr">twelve</span></td><td>13 <span class="fr">thirteen</span></td><td>20 <span class="fr">twenty</span></td><td>30 <span class="fr">thirty</span></td></tr>
+<tr><td>40 <span class="fr">forty</span></td><td>50 <span class="fr">fifty</span></td><td>100 <span class="fr">one hundred</span></td><td>1000 <span class="fr">one thousand</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Zusammengesetzte Zahlen</b><p>21 = <span class="fr">twenty-one</span> (nicht „einundzwanzig“: die Einer kommen nach den Zehnern). -teen (13–19) wird am Ende betont, -ty (30–90) am Anfang: <span class="fr">thir-TEEN</span> × <span class="fr">THIR-ty</span>.</p></div>
+<div class="vocab">
+# Wochentage
+Monday | ˈmʌndi | Montag
+Tuesday | ˈtuzdi | Dienstag
+Wednesday | ˈwɛnzdi | Mittwoch
+Thursday | ˈθɝzˌdeɪ | Donnerstag
+Friday | ˈfraɪdi | Freitag
+Saturday | ˈsætɚdi | Samstag
+Sunday | ˈsʌnˌdeɪ | Sonntag
+# Monate
+January | ˈdʒænjuˌɛri | Januar
+February | ˈfɛbjəˌwɛri | Februar
+March | mɑrtʃ | März
+April | ˈeɪprəl | April
+May | meɪ | Mai
+June | dʒun | Juni
+July | ˌdʒuˈlaɪ | Juli
+August | ˈɑɡəst | August
+September | sɛpˈtɛmbɚ | September
+October | ɑkˈtoʊbɚ | Oktober
+November | noʊˈvɛmbɚ | November
+December | dɪˈsɛmbɚ | Dezember
+# Zeit
+today | təˈdeɪ | heute
+tomorrow | təˈmɑˌroʊ | morgen
+yesterday | ˈjɛstɚˌdeɪ | gestern
+in the morning | ɪn ðə ˈmɔrnɪŋ | morgens
+in the evening | ɪn ðə ˈivnɪŋ | abends
+now | naʊ | jetzt
+</div>
+<p>Tage und Monate werden großgeschrieben. Datum: <span class="fr">the fifth of May</span> oder <span class="fr">May 5th</span>. Ordnungszahlen: <span class="fr">first, second, third, fourth, fifth</span> (ohne Punkt!).</p>
+<div class="exs">
+What time is it? | wʌt taɪm ɪz ɪt | Wie spät ist es?
+It's five o'clock. | ɪts faɪv əˈklɑk | Es ist fünf Uhr.
+It's half past six. | ɪts hæf pæst sɪks | Es ist halb sieben.
+It's a quarter past two. | ɪts ə ˈkwɔrtɚ pæst tu | Es ist Viertel nach zwei.
+It's a quarter to eight. | ɪts ə ˈkwɔrtɚ tə eɪt | Es ist Viertel vor acht.
+At what time? | ət wʌt taɪm | Um wie viel Uhr?
+Today is Monday. | təˈdeɪ ɪz ˈmʌndi | Heute ist Montag.
+My birthday is in May. | maɪ ˈbɝθˌdeɪ ɪz ɪn meɪ | Mein Geburtstag ist im Mai.
+</div>
+<div class="warn"><b>Achtung.</b> „Halb sieben“ ist 6:30, im Englischen <span class="fr">half past six</span> (wörtlich „halb nach sechs“). Vorsicht bei <span class="fr">half seven</span>: Im britischen Alltag kann das 7:30 bedeuten. Am sichersten ist die digitale Form: <span class="fr">six thirty</span>.</div>
+<div class="qz" data-title="Übung 7. Zahlen und Tage">
+2 | two
+3 | three
+5 | five
+10 | ten
+20 | twenty
+100 | one hundred / a hundred
+Montag | Monday
+Freitag | Friday
+Sonntag | Sunday
+Oktober | October
+morgen | tomorrow
+gestern | yesterday
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Wortschatz und Dialoge" data-short="Essen, Stadt, Einkaufen">
+<h2><span class="no">Abschnitt 8</span>Essen, Stadt und Einkaufen</h2>
+<div class="vocab">
+# Essen
+bread | brɛd | Brot
+butter | ˈbʌtɚ | Butter
+cheese | tʃiz | Käse
+meat | mit | Fleisch
+fish | fɪʃ | Fisch
+egg | ɛɡ | Ei
+soup | sup | Suppe
+rice | raɪs | Reis
+potato | pəˈteɪˌtoʊ | Kartoffel
+apple | ˈæpəl | Apfel
+sugar | ˈʃʊɡɚ | Zucker
+salt | sɔlt | Salz
+# Getränke
+water | ˈwɔtɚ | Wasser
+milk | mɪlk | Milch
+coffee | ˈkɑfi | Kaffee
+tea | ti | Tee
+juice | dʒus | Saft
+beer | bɪr | Bier
+wine | waɪn | Wein
+# Stadt
+station | ˈsteɪʃən | Bahnhof
+post office | poʊst ˈɔfɪs | Post
+bank | bæŋk | Bank
+hospital | ˈhɑˌspɪtəl | Krankenhaus
+pharmacy | ˈfɑrməsi | Apotheke
+shop | ʃɑp | Geschäft
+street | strit | Straße
+bridge | brɪdʒ | Brücke
+park | pɑrk | Park
+</div>
+<div class="exs">
+A coffee, please. | ə ˈkɑfi pliz | Einen Kaffee, bitte.
+Can I have the bill, please? | kæn aɪ hæv ðə bɪl pliz | Kann ich bitte die Rechnung haben?
+Enjoy your meal! | ˌɛnˈdʒɔɪ jɔr mil | Guten Appetit!
+How much is it? | haʊ mʌtʃ ɪz ɪt | Wie viel kostet das?
+That's expensive. | ðæts ɪkˈspɛnsɪv | Das ist teuer.
+Can I pay by card? | kæn aɪ peɪ baɪ kɑrd | Kann ich mit Karte bezahlen?
+Where is the station? | wɛr ɪz ðə ˈsteɪʃən | Wo ist der Bahnhof?
+Go straight, then turn left. | ɡoʊ streɪt ðɛn tɝn lɛft | Gehen Sie geradeaus, dann links.
+I'm hungry. | aɪm ˈhʌŋɡri | Ich habe Hunger.
+</div>
+<div class="qz" data-title="Übung 8. Café und Stadt">
+Einen Kaffee, bitte. | A coffee, please
+Die Rechnung, bitte. | The bill, please
+Guten Appetit! | Enjoy your meal
+Wie viel kostet das? | How much is it
+Wo ist der Bahnhof? | Where is the station
+Das ist teuer. | That is expensive / That's expensive
+Ich habe Hunger. | I am hungry / I'm hungry
+Brot | bread
+Milch | milk
+Bahnhof | station
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Mehr Wörter">
+<h2><span class="no">Abschnitt 9</span>Mehr Wörter: Arbeit, Körper, Kleidung, Wetter, Verkehr</h2>
+<div class="vocab">
+# Berufe
+teacher | ˈtitʃɚ | Lehrer
+doctor | ˈdɑktɚ | Arzt
+nurse | nɝs | Krankenschwester
+engineer | ˈɛndʒəˈnɪr | Ingenieur
+driver | ˈdraɪvɚ | Fahrer
+shop assistant | ʃɑp əˈsɪstənt | Verkäufer
+cook | kʊk | Koch
+student | ˈstudənt | Student
+police officer | pəˈlis ˈɔfəsɚ | Polizist
+lawyer | ˈlɔjɚ | Anwalt
+# Körper und Gesundheit
+head | hɛd | Kopf
+eye | aɪ | Auge
+ear | ir | Ohr
+nose | noʊz | Nase
+mouth | maʊθ | Mund
+hand | hænd | Hand
+leg | lɛɡ | Bein
+stomach | ˈstʌmək | Bauch, Magen
+back | bæk | Rücken
+heart | hɑrt | Herz
+fever | ˈfivɚ | Fieber
+I have a headache. | aɪ hæv ə ˈhɛˌdeɪk | Ich habe Kopfschmerzen.
+# Kleidung
+shirt | ʃɝt | Hemd
+trousers | ˈtraʊzɚz | Hose
+dress | drɛs | Kleid
+jacket | ˈdʒækət | Jacke
+shoes | ʃuz | Schuhe
+size | saɪz | Größe
+# Wetter
+weather | ˈwɛðɚ | Wetter
+sun | sʌn | Sonne
+rain | reɪn | Regen
+snow | snoʊ | Schnee
+wind | waɪnd | Wind
+It's cold. | ɪts koʊld | Es ist kalt.
+It's hot. | ɪts hɑt | Es ist heiß.
+# Verkehr
+bus | bʌs | Bus
+train | treɪn | Zug
+tram | træm | Straßenbahn
+plane | pleɪn | Flugzeug
+bicycle | ˈbaɪsɪkəl | Fahrrad
+ticket | ˈtɪkət | Fahrkarte
+stop | stɑp | Haltestelle
+airport | ˈɛrˌpɔrt | Flughafen
+</div>
+<div class="exs">
+I'm a teacher. | aɪm ə ˈtitʃɚ | Ich bin Lehrer.
+I work as a driver. | aɪ wɝk æz ə ˈdraɪvɚ | Ich arbeite als Fahrer.
+My throat hurts. | maɪ θroʊt hɝts | Mein Hals tut weh.
+What size are you? | wʌt saɪz ɑr ju | Welche Größe haben Sie?
+It's raining. | ɪts ˈreɪnɪŋ | Es regnet.
+Where is the bus stop? | wɛr ɪz ðə bʌs stɑp | Wo ist die Bushaltestelle?
+</div>
+<div class="qz" data-title="Übung 9. Neue Wörter">
+Arzt | doctor
+Lehrer | teacher
+Kopf | head
+Hand | hand
+Kleid | dress
+Regen | rain
+Schnee | snow
+Zug | train
+Fahrkarte | ticket
+Flughafen | airport
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Modalverben, Imperativ">
+<h2><span class="no">Abschnitt 10</span>Modalverben und Imperativ</h2>
+<div class="tw"><table>
+<tr><th>Verb</th><th>Bedeutung</th><th>Beispiel</th></tr>
+<tr><td><span class="fr">can</span></td><td>können</td><td><span class="fr">I can swim. Can you help me?</span></td></tr>
+<tr><td><span class="fr">must / have to</span></td><td>müssen</td><td><span class="fr">I must go. I have to work.</span></td></tr>
+<tr><td><span class="fr">want to</span></td><td>wollen</td><td><span class="fr">I want to learn English.</span></td></tr>
+<tr><td><span class="fr">would like</span></td><td>möchten</td><td><span class="fr">I would like a tea.</span></td></tr>
+<tr><td><span class="fr">should</span></td><td>sollte</td><td><span class="fr">You should rest.</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Regel</b><p>Nach <span class="fr">can, must, should</span> steht der Infinitiv <b>ohne</b> <span class="fr">to</span>, ohne -s in der 3. Person und ohne <span class="fr">do</span>: <span class="fr">She can swim. Can she swim? She can't swim.</span> (Nicht „She cans“!)</p></div>
+<div class="exs">
+I can speak a little English. | aɪ kæn spik ə ˈlɪtəl ˈɪŋɡlɪʃ | Ich kann ein bisschen Englisch.
+Can I come in? | kæn aɪ kʌm ɪn | Darf ich hereinkommen?
+I have to work today. | aɪ hæv tə wɝk təˈdeɪ | Ich muss heute arbeiten.
+I can't talk now. | aɪ kænt tɔk naʊ | Ich kann jetzt nicht sprechen.
+Can you cook? | kæn ju kʊk | Können Sie kochen?
+You mustn't smoke here. | ju ˈmʌsənt smoʊk hir | Hier darf man nicht rauchen.
+I would like a tea, please. | aɪ wʊd laɪk ə ti pliz | Ich möchte einen Tee, bitte.
+</div>
+<div class="warn"><b>Achtung.</b> <span class="fr">mustn't</span> heißt „darf nicht“, nicht „muss nicht“. „Muss nicht“ ist <span class="fr">doesn't have to</span>.</div>
+<h3>10.1. Imperativ</h3>
+<p>Es ist die Grundform des Verbs, für alle gleich: <span class="fr">Come here! Wait! Listen!</span> Verneinung: <span class="fr">Don't</span> + Verb. Höflich: <span class="fr">Please</span>.</p>
+<div class="exs">
+Wait a moment! | weɪt ə ˈmoʊmənt | Warten Sie einen Moment!
+Come here, please. | kʌm hir pliz | Kommen Sie bitte her.
+Speak more slowly, please. | spik mɔr ˈsloʊli pliz | Sprechen Sie bitte langsamer.
+Don't smoke here! | doʊnt smoʊk hir | Hier nicht rauchen!
+Be careful! | bi ˈkɛrfəl | Seien Sie vorsichtig!
+</div>
+<div class="qz" data-title="Übung 10. Modalverben">
+I ___ swim. (can) | can
+___ you help me? (can) | Can
+I ___ to work today. (must: have) | have
+I ___ like a tea. (would) | would
+You ___ rest. (should) | should
+She ___ swim. (negative: can't) | can't / cannot
+___ wait! (imperative negative: Don't) | Don't
+___ here, please. (Come) | Come
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Dialoge">
+<h2><span class="no">Abschnitt 11</span>Alltagsdialoge</h2>
+<div class="dg">
+# 1. In a café
+Waiter: Good afternoon. What would you like? | Guten Tag. Was möchten Sie?
+Guest: A coffee and a piece of cake, please. | Einen Kaffee und ein Stück Kuchen, bitte.
+Waiter: With milk? | Mit Milch?
+Guest: No, thank you. Black, please. | Nein, danke. Schwarz, bitte.
+Waiter: Here you are. Enjoy! | Bitte sehr. Guten Appetit!
+Guest: Thanks. Can I pay by card? | Danke. Kann ich mit Karte zahlen?
+# 2. At the station
+Traveller: A ticket to London, please. | Eine Fahrkarte nach London, bitte.
+Clerk: Single or return? | Einfach oder hin und zurück?
+Traveller: Single. When does the train leave? | Einfach. Wann fährt der Zug?
+Clerk: At ten fifteen. | Um zehn Uhr fünfzehn.
+Traveller: How much is the ticket? | Wie viel kostet die Fahrkarte?
+Clerk: Twenty pounds. | Zwanzig Pfund.
+# 3. Asking the way
+Tourist: Excuse me, where is the museum? | Entschuldigung, wo ist das Museum?
+Woman: Go straight and then turn right. | Gehen Sie geradeaus und dann rechts.
+Tourist: Is it far? | Ist es weit?
+Woman: No, it's five minutes on foot. | Nein, es sind fünf Minuten zu Fuß.
+Tourist: Thank you very much. | Vielen Dank.
+Woman: You're welcome. | Gern geschehen.
+# 4. Getting to know someone
+Peter: Hi, I'm Peter. What's your name? | Hallo, ich bin Peter. Wie heißt du?
+Anna: I'm Anna. Nice to meet you. | Ich bin Anna. Freut mich.
+Peter: Where are you from? | Woher kommst du?
+Anna: I'm from London. And you? | Ich komme aus London. Und du?
+Peter: I'm from here. Your English is very good! | Ich komme von hier. Dein Englisch ist sehr gut!
+Anna: Thanks, I'm still learning. | Danke, ich lerne noch.
+# 5. At the doctor's
+Doctor: Good morning. What's the problem? | Guten Morgen. Was fehlt Ihnen?
+Patient: I have a headache and a fever. | Ich habe Kopfschmerzen und Fieber.
+Doctor: How long? | Wie lange schon?
+Patient: Two days. | Zwei Tage.
+Doctor: Take these tablets and stay at home. | Nehmen Sie diese Tabletten und bleiben Sie zu Hause.
+Patient: Thank you, doctor. | Danke, Herr Doktor.
+# 6. In a clothes shop
+Assistant: Can I help you? | Kann ich Ihnen helfen?
+Customer: I'm looking for a jacket. | Ich suche eine Jacke.
+Assistant: What size are you? | Welche Größe haben Sie?
+Customer: Medium. Can I try it on? | Mittel. Kann ich sie anprobieren?
+Assistant: Of course. The fitting room is over there. | Natürlich. Die Umkleide ist dort drüben.
+Customer: How much is it? | Wie viel kostet sie?
+# 7. At the hotel
+Guest: Good evening, I have a reservation. | Guten Abend, ich habe eine Reservierung.
+Receptionist: What's your name? | Wie ist Ihr Name?
+Guest: Smith. A single room for three nights. | Smith. Ein Einzelzimmer für drei Nächte.
+Receptionist: Here is your key. Breakfast is from seven to ten. | Hier ist Ihr Schlüssel. Frühstück gibt es von sieben bis zehn.
+Guest: Is there Wi-Fi? | Gibt es WLAN?
+Receptionist: Yes, the password is on the key. | Ja, das Passwort steht auf dem Schlüssel.
+# 8. On the phone
+Anna: Hello? | Hallo?
+Mark: Hi Anna, it's Mark. How are you? | Hallo Anna, hier ist Mark. Wie geht’s?
+Anna: Fine, thanks. And you? | Gut, danke. Und dir?
+Mark: Fine too. Are you free tomorrow evening? | Auch gut. Hast du morgen Abend Zeit?
+Anna: Yes, why? | Ja, warum?
+Mark: Shall we go to the cinema? | Gehen wir ins Kino?
+Anna: I'd love to! | Sehr gern!
+</div>
+<div class="qz" data-title="Übung 11. Sätze aus den Dialogen">
+Was möchten Sie? | What would you like
+Eine Fahrkarte nach London, bitte. | A ticket to London, please
+Wo ist das Museum? | Where is the museum
+Fünf Minuten zu Fuß. | Five minutes on foot
+Gern geschehen. | You're welcome / You are welcome
+Ich habe Kopfschmerzen. | I have a headache
+Ich suche eine Jacke. | I'm looking for a jacket / I am looking for a jacket
+Ich habe eine Reservierung. | I have a reservation
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Spickzettel, Plan, Test">
+<h2><span class="no">Abschnitt 12</span>Spickzettel, Plan und Test</h2>
+<div class="tw"><table>
+<tr><th>Thema</th><th>Merken</th></tr>
+<tr><td>Be</td><td>I am, you are, he/she/it is, we/you/they are</td></tr>
+<tr><td>Have</td><td>I have, he/she/it has</td></tr>
+<tr><td>Present Simple</td><td>he works; don't / doesn't; do / does + subject + verb</td></tr>
+<tr><td>Present Continuous</td><td>be + -ing</td></tr>
+<tr><td>Artikel</td><td>a / an / the; kein Artikel bei allgemeinem Plural</td></tr>
+<tr><td>Wortstellung</td><td>Subject + Verb + Object</td></tr>
+<tr><td>Präpositionen</td><td>in London, on Monday, at 5 o'clock</td></tr>
+<tr><td>Modals</td><td>can, must, should + infinitive</td></tr>
+</table></div>
+<h3>8-Wochen-Plan</h3>
+<div class="tw"><table>
+<tr><th>Woche</th><th>Abschnitte</th><th>Ziel</th></tr>
+<tr><td>1</td><td>0, 1</td><td>th, w, Betonung beherrschen</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Sich vorstellen, Artikel, Plural</td></tr>
+<tr><td>3</td><td>4</td><td>Be, have, there is</td></tr>
+<tr><td>4</td><td>5</td><td>Present Simple a Continuous</td></tr>
+<tr><td>5</td><td>6, 7</td><td>Fragen, Präpositionen, Zahlen, Uhrzeit</td></tr>
+<tr><td>6</td><td>8, 9</td><td>Wortschatz</td></tr>
+<tr><td>7</td><td>10, 11</td><td>Modalverben, Dialoge laut sprechen</td></tr>
+<tr><td>8</td><td>Wiederholung</td><td>3–5 Minuten über sich sprechen</td></tr>
+</table></div>
+<h3>Abschlusstest</h3>
+<div class="qz" data-title="A1 test">
+I ___ a student. (be) | am
+She ___ a brother. (have) | has
+He ___ in London. (live) | lives
+___ you speak English? | Do
+I ___ like coffee. (negative) | don't
+I live ___ Prague. (in / on) | in
+This is ___ apple. (a / an) | an
+5 | five
+Freitag | Friday
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Ich kann jedes englische Wort nach der IPA lesen</label></li>
+<li><label><input type="checkbox"> Ich kann mich vorstellen und grüßen</label></li>
+<li><label><input type="checkbox"> Ich nutze be, have und Present Simple</label></li>
+<li><label><input type="checkbox"> Ich nutze a/an/the richtig</label></li>
+<li><label><input type="checkbox"> Ich kann Zahlen, Tage, Monate und die Uhrzeit sagen</label></li>
+<li><label><input type="checkbox"> Ich kann Kaffee bestellen und nach dem Weg fragen</label></li>
+</ul>
+</section>
+
+
+<footer>Ein Selbstlerngerüst für A1. Ergänzen Sie es mit echtem Hören: Podcasts, Videos mit Untertiteln, Gespräche mit Muttersprachlern.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>English</th><th>Aussprache</th><th>Deutsch</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Übung';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Antwort: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Prüfen</button><button type="button" data-act="show">Lösungen zeigen</button><button type="button" data-act="reset">Zurücksetzen</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' von '+tot+(ok===tot?'. Alles richtig.':'. Prüfen Sie die Schreibweise.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^en[-_]US/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||('en'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='en-US';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('en4de1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('en4de1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('en4de1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('en4de1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='en4de1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Ergebnisse: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">zum Abschnitt</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Die ersten 40 werden angezeigt.</div>';
+    } else h+='<div class="mini">Nichts gefunden. Die Suche durchsucht die englischen und deutschen Wörter in den Vokabeltabellen.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

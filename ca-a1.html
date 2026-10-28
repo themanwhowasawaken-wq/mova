@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Català A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Català A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Català A1</h1>
+  <p>Курс каталанська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="ca-a2.html">Рівень A2</a><a href="ca-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Каталанська (<span class="fr">català</span>) — романська мова, нею говорять у Каталонії, Валенсії (там її називають <i>valencià</i>), на Балеарських островах, в Андоррі. Вона схожа на іспанську, французьку й італійську, тож, якщо ти знаєш одну з них, ти вже на півдорозі. Цей курс веде до рівня A1.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Читається майже як пишеться.</b> Правила стабільні, виняток — ненаголошені <span class="fr">a, e, o</span>.</li>
+<li><b>Багато спільних слів з іншими романськими мовами та з латинню:</b> <span class="fr">família, hospital, universitat, música</span>.</li>
+<li><b>Дієслова відмінюються за особами</b>, як в українській; підмет часто опускають: <span class="fr">Parlo català.</span></li>
+<li><b>Два роди:</b> чоловічий і жіночий; середнього нема.</li>
+</ul>
+<div class="warn"><b>Пастки.</b> <span class="fr">Sóc</span> = я є; <span class="fr">tinc</span> = маю; <span class="fr">carrer</span> = вулиця; <span class="fr">pa</span> = хліб; <span class="fr">sol</span> = сонце (і «самотній»); <span class="fr">fred</span> = холодний; <span class="fr">molt</span> = дуже; <span class="fr">gat</span> = кіт; <span class="fr">bé</span> = добре.</div>
+<div class="tip"><b class="t">Вимова.</b> Озвучка використовує каталанський голос пристрою. Якщо його нема, почуєш іспанський або французький голос — вимова буде приблизною. Орієнтуйся на транскрипцію кирилицею.</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення, натискай на слова — почуєш озвучку.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План — у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">Абетка — латиниця плюс діакритика: <span class="fr">à è é í ï ò ó ú ü ç</span> і <span class="fr">l·l</span>.</p>
+<div class="tw"><table>
+<tr><th>Літери</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td><span class="fr">ll</span></td><td>«ль» м'яке (як «льі» в «льє»)</td><td><span class="fr">llibre</span> [лібре]</td></tr>
+<tr><td><span class="fr">ny</span></td><td>«нь»</td><td><span class="fr">any</span> [ань]</td></tr>
+<tr><td><span class="fr">x</span></td><td>«ш» на початку й після голосної</td><td><span class="fr">xocolata</span> [шукулата]</td></tr>
+<tr><td><span class="fr">ç</span></td><td>«с»</td><td><span class="fr">plaça</span> [пласа]</td></tr>
+<tr><td><span class="fr">ig</span> в кінці</td><td>«ч»</td><td><span class="fr">puig</span> [пуч]</td></tr>
+<tr><td><span class="fr">tx</span></td><td>«ч»</td><td><span class="fr">cotxe</span> [коче]</td></tr>
+<tr><td><span class="fr">j, g</span> (перед e, i)</td><td>«ж»</td><td><span class="fr">gener</span> [жене]</td></tr>
+<tr><td><span class="fr">qu</span> (перед e, i)</td><td>«к»</td><td><span class="fr">que</span> [ке]</td></tr>
+<tr><td><span class="fr">h</span></td><td>не читається</td><td><span class="fr">hola</span> [ола]</td></tr>
+<tr><td><span class="fr">v, b</span></td><td>«б»</td><td><span class="fr">vi</span> [бі]</td></tr>
+<tr><td><span class="fr">r</span></td><td>коротке «р» (на початку — дрижачка)</td><td><span class="fr">gràcies</span> [ґрасієс]</td></tr>
+</table></div>
+<div class="tip"><b class="t">Ненаголошені голосні.</b> У центральній каталанській ненаголошені <span class="fr">a, e</span> звучать як нейтральне «е», а <span class="fr">o</span> — як «у»: <span class="fr">casa</span> [каза], <span class="fr">Barcelona</span> [барселона]. Наголос: якщо слово закінчується на голосну, <span class="fr">-s</span>, <span class="fr">-en</span>, <span class="fr">-in</span>, то наголос на передостанньому складі; інакше — на останньому. Інші випадки позначені акцентом.</div>
+<div class="exs">
+Hola! | ола | Привіт!
+Bon dia. | бон діа | Добрий день / доброго ранку.
+Moltes gràcies. | мултес ґрасієс | Дуже дякую.
+No ho entenc. | но у ентенк | Я не розумію.
+Parlo una mica de català. | парлу уна міка де катала | Трохи говорю каталанською.
+Pa i llet, si us plau. | па і льєт сі уз плау | Хліб і молоко, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[ола] — привіт | hola
+[ґрасієс] — подяка | gràcies
+[ань] — рік | any
+[пуч] — пагорб | puig
+[сі уз плау] — прохання | si us plau
+[каса] — дім | casa
+[шукулата] — солодке | xocolata
+[лібре] — книжка | llibre
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+Hola | ола | привіт
+Bon dia | бон діа | доброго ранку, добрий день
+Bona tarda | бона тарда | добрий день (після обіду)
+Bon vespre | бон веспре | добрий вечір
+Bona nit | бона ніт | на добраніч
+Adéu | адеу | до побачення
+Fins aviat | фінз авіат | до скорого
+# Ввічливість
+Gràcies | ґрасієс | дякую
+Si us plau | сі уз плау | будь ласка (прохання)
+De res | де рес | нема за що
+Perdó | пердо | вибачте
+Sí | сі | так
+No | но | ні
+Potser | пудсе | можливо
+</div>
+<h3>2.1. Як представитися</h3>
+<div class="exs">
+Em dic Mykhailo. | ем дік михайло | Мене звати Михайло.
+Com et dius? | ком ет діус | Як тебе звати?
+Encantat! | енкантат | Приємно познайомитися! (чол.)
+Encantada! | енкантада | Приємно познайомитися! (жін.)
+D'on ets? | дон етс | Звідки ти?
+Sóc d'Ucraïna. | сок дукраїна | Я з України.
+Tinc trenta anys. | тінк трента аньс | Мені тридцять років.
+Visc a Uzhhorod. | віск а ужгород | Живу в Ужгороді.
+Sóc professor. | сок професор | Я вчитель.
+Parles anglès? | парлес анґлес | Ти говориш англійською?
+Pots repetir-ho? | потс репетір-у | Можеш повторити?
+</div>
+<div class="rule"><b class="t">Tu чи vostè?</b><p><span class="fr">Tu</span> — до друзів, ровесників, дітей. <span class="fr">Vostè</span> («Ви») — до старших і в офіційній ситуації; дієслово при цьому ставиться в 3 особу: <span class="fr">Com es diu vostè?</span></p></div>
+<h3>2.2. Займенники</h3>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Каталанською</th><th>Українською</th></tr>
+<tr><td>1 одн.</td><td><span class="fr">jo</span></td><td>я</td></tr>
+<tr><td>2 одн.</td><td><span class="fr">tu</span></td><td>ти</td></tr>
+<tr><td>3 одн.</td><td><span class="fr">ell / ella</span></td><td>він / вона</td></tr>
+<tr><td>1 множ.</td><td><span class="fr">nosaltres</span></td><td>ми</td></tr>
+<tr><td>2 множ.</td><td><span class="fr">vosaltres</span></td><td>ви</td></tr>
+<tr><td>3 множ.</td><td><span class="fr">ells / elles</span></td><td>вони</td></tr>
+<tr><td>ввічливе</td><td><span class="fr">vostè / vostès</span></td><td>Ви</td></tr>
+</table></div>
+<div class="qz" data-title="Вправа 2. Привітання">
+Привіт! | Hola
+Дякую! | Gràcies
+Будь ласка (прохання) | Si us plau
+Вибачте! | Perdó
+До побачення! | Adéu
+Добрий вечір! | Bon vespre
+Мене звати Михайло. | Em dic Mykhailo
+Я не розумію. | No ho entenc
+Звідки ти? | D'on ets
+Я з України. | Sóc d'Ucraïna
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники: рід, артикль, множина">
+<h2><span class="no">Розділ 3</span>Іменники: рід, артикль, множина</h2>
+<div class="tw"><table>
+<tr><th>Рід</th><th>Означений</th><th>Неозначений</th></tr>
+<tr><td><span class="fr m">чол.</span></td><td><span class="fr">el llibre</span>, <span class="fr">l'amic</span></td><td><span class="fr">un llibre</span></td></tr>
+<tr><td><span class="fr f">жін.</span></td><td><span class="fr">la casa</span>, <span class="fr">l'amiga</span></td><td><span class="fr">una casa</span></td></tr>
+<tr><td>множина чол.</td><td><span class="fr">els llibres</span></td><td><span class="fr">uns llibres</span></td></tr>
+<tr><td>множина жін.</td><td><span class="fr">les cases</span></td><td><span class="fr">unes cases</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Правила.</b><p>Перед голосною або німим <span class="fr">h</span> артикль скорочується: <span class="fr">l'hotel, l'escola, l'aigua</span>. Множина: додаємо <span class="fr">-s</span> (<span class="fr">llibre → llibres</span>) або <span class="fr">-es</span> до жіночих на -a (<span class="fr">casa → cases</span>). Слова на -a здебільшого жіночі, на -o чи приголосну — чоловічі, але винятки є: <span class="fr">el mapa, el dia, la mà</span>.</p></div>
+<div class="vocab">
+# Родина
+la família | ла фамілія | родина | f
+la mare | ла маре | мати | f
+el pare | ел пара | батько | m
+el germà | ел жерма | брат | m
+la germana | ла жермана | сестра | f
+el fill | ел філь | син | m
+la filla | ла філья | дочка | f
+l'avi | лаві | дідусь | m
+l'àvia | лавія | бабуся | f
+el marit | ел марит | чоловік | m
+la dona | ла дона | дружина, жінка | f
+l'infant | лінфант | дитина | m
+# Речі
+la casa | ла каза | дім | f
+el pis | ел піс | квартира | m
+l'habitació | лабітасіо | кімната | f
+la cuina | ла куїна | кухня | f
+la taula | ла тавла | стіл | f
+la cadira | ла кадіра | стілець | f
+la finestra | ла фінестра | вікно | f
+la porta | ла порта | двері | f
+el llit | ел літ | ліжко | m
+el cotxe | ел коче | автомобіль | m
+el telèfon | ел телефон | телефон | m
+el llibre | ел лібре | книжка | m
+</div>
+<div class="qz" data-title="Вправа 3. Артикль і множина">
+___ casa (la/el) | la
+___ llibre (la/el) | el
+___ amic (l' / el) | l'
+___ casa (неозн.: una/un) | una
+llibre → (мн., з els) | els llibres
+casa → (мн., з les) | les cases
+___ taula (la/el) | la
+___ cotxe (la/el) | el
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Ser, estar, tenir">
+<h2><span class="no">Розділ 4</span>Дієслова <span class="fr">ser / estar</span> (бути) і <span class="fr">tenir</span> (мати)</h2>
+<div class="cj" data-verb="ser" data-note="бути (постійне)" data-ipa="се">
+jo | sóc | сок
+tu | ets | етс
+ell / ella | és | ес
+nosaltres | som | сом
+vosaltres | sou | соу
+ells / elles | són | сон
+</div>
+<div class="cj" data-verb="estar" data-note="бути (стан, місце)" data-ipa="естар">
+jo | estic | естік
+tu | estàs | естас
+ell / ella | està | еста
+nosaltres | estem | естем
+vosaltres | esteu | естеу
+ells / elles | estan | естан
+</div>
+<div class="cj" data-verb="tenir" data-note="мати" data-ipa="тені">
+jo | tinc | тінк
+tu | tens | тенс
+ell / ella | té | те
+nosaltres | tenim | тенім
+vosaltres | teniu | теніу
+ells / elles | tenen | тенен
+</div>
+<div class="rule"><b class="t">Ser чи estar?</b><p><span class="fr">Ser</span> — хто ти, звідки, яка людина або річ: <span class="fr">Sóc estudiant. És alt.</span> <span class="fr">Estar</span> — де ти або в якому стані: <span class="fr">Estic a casa. Estic cansat.</span> Заперечення — <span class="fr">no</span> перед дієсловом: <span class="fr">No sóc d'aquí.</span> Вік: <span class="fr">tenir</span> + роки: <span class="fr">Tinc trenta anys.</span></p></div>
+<div class="exs">
+Sóc estudiant. | сок естудіант | Я студент.
+Estic cansat. | естік кансат | Я втомлений.
+Estem a casa. | естем а каза | Ми вдома.
+Tinc un germà. | тінк ун жерма | У мене є брат.
+Tens temps? | тенс темпс | Маєш час?
+No tinc temps. | но тінк темпс | Не маю часу.
+</div>
+<h3>4.1. Правильні дієслова теперішнього часу</h3>
+<div class="tw"><table>
+<tr><th></th><th>-ar (parlar)</th><th>-re (viure)</th><th>-ir (dormir)</th></tr>
+<tr><td>jo</td><td>parlo</td><td>visc</td><td>dormo</td></tr>
+<tr><td>tu</td><td>parles</td><td>vius</td><td>dorms</td></tr>
+<tr><td>ell / ella</td><td>parla</td><td>viu</td><td>dorm</td></tr>
+<tr><td>nosaltres</td><td>parlem</td><td>vivim</td><td>dormim</td></tr>
+<tr><td>vosaltres</td><td>parleu</td><td>viviu</td><td>dormiu</td></tr>
+<tr><td>ells / elles</td><td>parlen</td><td>viuen</td><td>dormen</td></tr>
+</table></div>
+<div class="vocab">
+parlar | парла | говорити | parlo
+llegir | ліжи | читати | llegeixo
+escriure | ескріуре | писати | escric
+treballar | трабаля | працювати | treballo
+viure | віуре | жити | visc
+aprendre | апрендре | вчити | aprenc
+menjar | менжа | їсти | menjo
+beure | беурі | пити | bec
+dormir | дурмі | спати | dormo
+comprar | кумпра | купувати | compro
+entendre | ентендре | розуміти | entenc
+saber | сабе | знати | sé
+veure | беурі | бачити | veig
+voler | вуле | хотіти | vull
+</div>
+<div class="cj" data-verb="anar" data-note="йти, їхати" data-ipa="ана">
+jo | vaig | бач
+tu | vas | бас
+ell / ella | va | ба
+nosaltres | anem | анем
+vosaltres | aneu | анеу
+ells / elles | van | бан
+</div>
+<div class="qz" data-title="Вправа 4. Відмінювання">
+Jo ___ estudiant. (ser) | sóc
+Tu ___ de Barcelona. (ser) | ets
+Nosaltres ___ a casa. (estar) | estem
+Ells ___ cansats. (estar) | estan
+Jo ___ un germà. (tenir) | tinc
+Tu ___ temps. (tenir) | tens
+Ella ___ català. (parlar) | parla
+Jo ___ català. (parlar) | parlo
+Nosaltres ___ a l'escola. (anar) | anem
+Jo ___ aigua. (beure) | bec
+Ells ___ a Barcelona. (viure) | viuen
+Vosaltres ___ molt. (treballar) | treballeu
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, порядок слів">
+<h2><span class="no">Розділ 5</span>Питання, заперечення, порядок слів</h2>
+<div class="vocab">
+qui | кі | хто
+què | ке | що
+on | он | де
+cap on | кап он | куди
+d'on | дон | звідки
+quan | куан | коли
+com | ком | як
+per què | пер ке | чому
+quant | куант | скільки
+quin / quina | кін / куіна | який / яка
+de qui | де кі | чий
+</div>
+<div class="exs">
+Qui és? | кі ес | Хто це?
+Què fas? | ке фас | Що ти робиш?
+On vius? | он віус | Де ти живеш?
+On vas? | он бас | Куди ти йдеш?
+Quant val? | куант баль | Скільки це коштує?
+Com et dius? | ком ет діус | Як тебе звати?
+</div>
+<h3>5.1. Порядок слів</h3>
+<div class="rule"><b class="t">Простий порядок.</b><p>Підмет — присудок — додаток: <span class="fr">Llegeixo un llibre.</span> Підмет можна опустити. Питання без питального слова — просто з інтонацією або з <span class="fr">?</span>: <span class="fr">Parles català?</span> Заперечення: <span class="fr">no</span> + дієслово: <span class="fr">No parlo rus.</span> З <span class="fr">mai, res, ningú</span> — подвійне заперечення, як в українській: <span class="fr">No veig ningú.</span></p></div>
+<div class="exs">
+Llegeixo el llibre. | ліжешу ел лібре | Читаю книжку.
+Avui treballo molt. | авуй трабаю мол | Сьогодні багато працюю.
+Veig el gos. | беч ел ґос | Бачу собаку.
+El llibre és a la taula. | ел лібре ес а ла тавла | Книжка на столі.
+Estic a l'escola. | естік а лескола | Я в школі.
+Vaig a l'escola. | бач а лескола | Іду до школи.
+No veig ningú. | но беч нінґу | Нікого не бачу.
+</div>
+<div class="tip"><b class="t">Де і куди.</b> Місце — <span class="fr">a, en, a casa de</span> (<span class="fr">a Barcelona</span>); напрямок — теж <span class="fr">a</span> (<span class="fr">vaig a Girona</span>); «з» — <span class="fr">de</span>; «разом з» — <span class="fr">amb</span>; «для» — <span class="fr">per a</span>.</div>
+<h3>5.2. Прикметники й присвійні</h3>
+<div class="tw"><table>
+<tr><th></th><th>чол.</th><th>жін.</th><th>мн. (чол. / жін.)</th></tr>
+<tr><td>новий</td><td><span class="fr">nou</span></td><td><span class="fr">nova</span></td><td><span class="fr">nous / noves</span></td></tr>
+<tr><td>великий</td><td><span class="fr">gran</span></td><td><span class="fr">gran</span></td><td><span class="fr">grans</span></td></tr>
+<tr><td>маленький</td><td><span class="fr">petit</span></td><td><span class="fr">petita</span></td><td><span class="fr">petits / petites</span></td></tr>
+</table></div>
+<p>Прикметник зазвичай <b>після</b> іменника й узгоджується з ним: <span class="fr">un cotxe nou, una casa nova</span>. Присвійні: <span class="fr">el meu / la meva</span> (мій / моя), <span class="fr">el teu / la teva</span>, <span class="fr">el seu / la seva</span>, <span class="fr">el nostre</span>, <span class="fr">el vostre</span>. Для множини: <span class="fr">els meus, les meves</span>.</p>
+<div class="qz" data-title="Вправа 5. Мова в дії">
+___ és? (хто) | Qui
+___ val? (скільки) | Quant
+___ vius? (де) | On
+Jo ___ tinc temps. (Заперечення) | no
+Vaig ___ l'escola. (до) | a
+___ casa (моя) | la meva
+___ cotxe (мій) | el meu
+una casa ___ (нова: nou) | nova
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, час і дати</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">zero</span></td><td>1 <span class="fr">un / una</span></td><td>2 <span class="fr">dos / dues</span></td><td>3 <span class="fr">tres</span></td></tr>
+<tr><td>4 <span class="fr">quatre</span></td><td>5 <span class="fr">cinc</span></td><td>6 <span class="fr">sis</span></td><td>7 <span class="fr">set</span></td></tr>
+<tr><td>8 <span class="fr">vuit</span></td><td>9 <span class="fr">nou</span></td><td>10 <span class="fr">deu</span></td><td>11 <span class="fr">onze</span></td></tr>
+<tr><td>12 <span class="fr">dotze</span></td><td>20 <span class="fr">vint</span></td><td>30 <span class="fr">trenta</span></td><td>40 <span class="fr">quaranta</span></td></tr>
+<tr><td>50 <span class="fr">cinquanta</span></td><td>100 <span class="fr">cent</span></td><td>200 <span class="fr">dos-cents</span></td><td>1000 <span class="fr">mil</span></td></tr>
+</table></div>
+<div class="vocab">
+# Дні тижня
+dilluns | діль'юнс | понеділок
+dimarts | дімартс | вівторок
+dimecres | дімекрес | середа
+dijous | діжоус | четвер
+divendres | дібендрес | п'ятниця
+dissabte | дісапте | субота
+diumenge | діуменже | неділя
+# Місяці
+gener | жене | січень
+febrer | фебре | лютий
+març | марс | березень
+abril | абріль | квітень
+maig | мач | травень
+juny | жуньє | червень
+juliol | жуліоль | липень
+agost | аґост | серпень
+setembre | сетемпре | вересень
+octubre | уктубре | жовтень
+novembre | нубемпре | листопад
+desembre | десемпре | грудень
+# Час
+avui | авуй | сьогодні
+demà | дема | завтра
+ahir | аї | вчора
+al matí | аль мати | вранці
+al vespre | аль веспре | ввечері
+ara | ара | зараз
+</div>
+<div class="exs">
+Quina hora és? | кіна ора ес | Котра година?
+Són les cinc. | сон лес сінк | П'ята година.
+A quina hora? | а кіна ора | О котрій?
+A les vuit. | а лез буїт | О восьмій.
+Avui és dilluns. | авуй ес діль'юнс | Сьогодні понеділок.
+Divendres tinc festa. | дібендрес тінк феста | У п'ятницю я вільний.
+Són dos quarts de tres. | сон дос куартс де трес | Пів на третю.
+</div>
+<div class="tip"><b class="t">Пів на третю.</b> По-каталанськи годину рахують «чвертями»: <span class="fr">un quart de tres</span> = 2:15, <span class="fr">dos quarts de tres</span> = 2:30, <span class="fr">tres quarts de tres</span> = 2:45. Вони «до» наступної години, як у німецькій.</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+2 (чол.) | dos
+3 | tres
+5 | cinc
+10 | deu
+20 | vint
+100 | cent
+понеділок | dilluns
+п'ятниця | divendres
+неділя | diumenge
+жовтень | octubre
+завтра | demà
+вчора | ahir
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа й напої
+el pa | ел па | хліб | m
+l'aigua | лаіґва | вода | f
+la llet | ла льєт | молоко | f
+el cafè | ел кафе | кава | m
+el te | ел те | чай | m
+el suc | ел сук | сік | m
+el vi | ел бі | вино | m
+la cervesa | ла сербеза | пиво | f
+el formatge | ел фурматже | сир | m
+la carn | ла карн | м'ясо | f
+el peix | ел пеш | риба | m
+la fruita | ла фруїта | фрукти | f
+la poma | ла пома | яблуко | f
+els ous | елз оус | яйця | pl
+la sopa | ла сопа | суп | f
+l'arròs | ларос | рис | m
+la xocolata | ла шукулата | шоколад | f
+el sucre | ел сукре | цукор | m
+la sal | ла саль | сіль | f
+# Місто
+la ciutat | ла сіудат | місто | f
+el carrer | ел каре | вулиця | m
+la plaça | ла пласа | площа | f
+l'estació | лестасіо | вокзал | f
+el museu | ел мусеу | музей | m
+el banc | ел банк | банк | m
+la farmàcia | ла фармасія | аптека | f
+el supermercat | ел супермеркат | супермаркет | m
+el restaurant | ел рестаурант | ресторан | m
+l'hospital | луспітал | лікарня | m
+el metro | ел метро | метро | m
+l'autobús | лаутобус | автобус | m
+# Покупки
+quant val? | куант баль | скільки коштує |
+barat | барат | дешевий | adj
+car | кар | дорогий | adj
+el diner | ел діне | гроші | m
+la targeta | ла тарджета | картка | f
+el compte | ел компте | рахунок | m
+</div>
+<div class="exs">
+Un cafè amb llet, si us plau. | ун кафе амб льєт сі уз плау | Каву з молоком, будь ласка.
+El compte, si us plau. | ел компте сі уз плау | Рахунок, будь ласка.
+Quant val el pa? | куант баль ел па | Скільки коштує хліб?
+És massa car. | ес маса кар | Це занадто дорого.
+On és l'estació? | он ес лестасіо | Де вокзал?
+Puc pagar amb targeta? | пук паґа амб тарджета | Можна карткою?
+Vull aigua sense gas. | бул аіґва сенсе ґас | Хочу воду без газу.
+</div>
+<div class="qz" data-title="Вправа 7. Слова">
+хліб | el pa
+вода | l'aigua
+молоко | la llet
+сир | el formatge
+вулиця | el carrer
+вокзал | l'estació
+лікарня | l'hospital
+аптека | la farmàcia
+гроші | el diner
+дорогий | car
+дешевий | barat
+Рахунок, будь ласка. | El compte, si us plau
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. Al cafè (у кав'ярні)
+Cambrer: Bon dia. Què vol? | Добрий день. Що бажаєте?
+Clienta: Un cafè i un tros de pastís, si us plau. | Каву й шматок торта, будь ласка.
+Cambrer: Amb llet? | З молоком?
+Clienta: No, gràcies. Sense llet. | Ні, дякую. Без молока.
+Cambrer: Aquí té. Bon profit. | Прошу. Смачного.
+Clienta: Gràcies. Puc pagar amb targeta? | Дякую. Можна карткою?
+# 2. A l'estació (на вокзалі)
+Viatger: Bon dia, un bitllet per a Girona, si us plau. | Добрий ранок, квиток до Жирони.
+Venedor: Només d'anada o d'anada i tornada? | В один бік чи туди й назад?
+Viatger: Només d'anada. A quina hora surt el tren? | В один бік. О котрій відправляється потяг?
+Venedor: A tres quarts d'onze. | За чверть до одинадцятої.
+Viatger: Quant val el bitllet? | Скільки коштує квиток?
+Venedor: Vint euros. | Двадцять євро.
+# 3. Preguntar per un lloc (дорога)
+Turista: Perdoni, on és el museu? | Вибачте, де музей?
+Dona: Segueixi recte i giri a la dreta. | Ідіть прямо й поверніть праворуч.
+Turista: És lluny? | Це далеко?
+Dona: No, a cinc minuts a peu. | Ні, п'ять хвилин пішки.
+Turista: Moltes gràcies. | Дуже дякую.
+Dona: De res. | Нема за що.
+# 4. Coneixent algú (знайомство)
+Pau: Hola, em dic Pau. I tu? | Привіт, я Пау. А ти?
+Anna: Em dic Anna. Encantada. | Мене звати Анна. Приємно.
+Pau: D'on ets? | Звідки ти?
+Anna: Sóc d'Ucraïna, d'Uzhhorod. | Я з України, з Ужгорода.
+Pau: Parles molt bé català! | Ти дуже добре говориш каталанською!
+Anna: Gràcies, encara estic aprenent. | Дякую, ще вчуся.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Що бажаєте? | Què vol
+Каву, будь ласка. | Un cafè, si us plau
+Квиток до Жирони. | Un bitllet per a Girona
+Де музей? | On és el museu
+П'ять хвилин пішки. | A cinc minuts a peu
+Нема за що. | De res
+Мене звати Анна. | Em dic Anna
+Ще вчуся. | Encara estic aprenent
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="vocab">
+# Професії
+el professor | ел профессор | вчитель | m
+el metge | ел метже | лікар | m
+la infermera | ла інфермера | медсестра | f
+l'enginyer | ленжіньє | інженер | m
+el conductor | ел кондуктор | водій | m
+el venedor | ел бенедор | продавець | m
+el cuiner | ел куїне | кухар | m
+l'estudiant | лестудіант | студент | m
+el policia | ел пулісія | поліцейський | m
+l'advocat | ладдвокат | адвокат | m
+# Тіло й здоров'я
+el cap | ел кап | голова | m
+l'ull | луль | око | m
+l'orella | лорея | вухо | f
+el nas | ел нас | ніс | m
+la boca | ла бока | рот | f
+la mà | ла ма | рука | f
+la cama | ла кама | нога | f
+la panxa | ла панша | живіт | f
+l'esquena | лескена | спина | f
+el cor | ел кор | серце | m
+Em fa mal el cap. |  | У мене болить голова. |
+Estic malalt. |  | Я хворий. |
+la febre | ла фебре | гарячка | f
+la farmàcia | ла фармасія | аптека | f
+els medicaments | елз медікаментс | ліки | pl
+# Одяг
+la camisa | ла каміза | сорочка | f
+els pantalons | елс панталонс | штани | pl
+el vestit | ел бестіт | сукня | m
+la jaqueta | ла жакета | куртка | f
+les sabates | лес сабатес | взуття | pl
+el jersei | ел жерсей | светр | m
+el barret | ел баред | шапка | m
+la talla | ла талья | розмір | f
+# Погода
+el temps | ел темпс | погода | m
+el sol | ел соль | сонце | m
+la pluja | ла плужа | дощ | f
+la neu | ла неу | сніг | f
+el vent | ел бен | вітер | m
+Fa fred. |  | Холодно. | adv
+Fa calor. |  | Жарко. | adv
+Plou. |  | Іде дощ. | adv
+# Транспорт
+l'autobús | лаутобус | автобус | m
+el tren | ел трен | потяг | m
+el taxi | ел таксі | таксі | m
+l'avió | лабіо | літак | m
+la bicicleta | ла бісіклета | велосипед | f
+el bitllet | ел біліт | квиток | m
+l'estació | лестасіо | вокзал | f
+l'aeroport | лаеропорт | аеропорт | m
+# Дім і дозвілля
+la sala d'estar | ла сала дестар | вітальня | f
+el bany | ел бань | ванна | m
+la nevera | ла небера | холодильник | f
+el sofà | ел софа | диван | m
+la pel·lícula | ла пелікула | фільм | f
+la música | ла музіка | музика | f
+l'esport | леспорт | спорт | m
+cuinar | куїна | готувати | verb
+viatjar | біаджа | подорожувати | verb
+</div>
+<div class="exs">
+Sóc professor. | сок професор | Я вчитель.
+Treballo de conductor. | трабаю де кондуктор | Працюю водієм.
+Em fa mal la gola. | ем фа маль ла ґола | У мене болить горло.
+Quina talla tens? | кіна талья тенс | Який у тебе розмір?
+Avui fa fred. | авуй фа фред | Сьогодні холодно.
+Plou. | плоу | Іде дощ.
+On és l'estació? | он ес лестасіо | Де вокзал?
+M'agrada cuinar. | маґрада куїна | Люблю готувати.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | el metge
+вчитель | el professor
+голова | el cap
+рука | la mà
+сукня | el vestit
+дощ | la pluja
+сніг | la neu
+автобус | l'autobús
+потяг | el tren
+квиток | el bitllet
+аеропорт | l'aeroport
+Іде дощ. | Plou
+У мене болить голова. | Em fa mal el cap
+Сьогодні холодно. | Avui fa fred
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Бажання, можливість і наказовий спосіб</h2>
+<h3>10.1. Модальні дієслова + інфінітив</h3>
+<p>Як і в українській, після модального дієслова йде інфінітив: <span class="fr">Vull beure aigua.</span> <span class="fr">Puc entrar?</span> <span class="fr">He de treballar.</span> (дослівно «маю працювати»).</p>
+<div class="tw"><table>
+<tr><th></th><th>voler (хотіти)</th><th>poder (могти)</th><th>saber (вміти)</th><th>haver de (мусити)</th></tr>
+<tr><td>jo</td><td>vull</td><td>puc</td><td>sé</td><td>he de</td></tr>
+<tr><td>tu</td><td>vols</td><td>pots</td><td>saps</td><td>has de</td></tr>
+<tr><td>ell / ella</td><td>vol</td><td>pot</td><td>sap</td><td>ha de</td></tr>
+<tr><td>nosaltres</td><td>volem</td><td>podem</td><td>sabem</td><td>hem de</td></tr>
+<tr><td>vosaltres</td><td>voleu</td><td>podeu</td><td>sabeu</td><td>heu de</td></tr>
+<tr><td>ells / elles</td><td>volen</td><td>poden</td><td>saben</td><td>han de</td></tr>
+</table></div>
+<div class="rule"><b class="t">Ввічливе прохання.</b><p><span class="fr">Voldria…</span> (Я б хотів…): <span class="fr">Voldria un te, si us plau.</span> «Можна?» — <span class="fr">Puc…?</span> або <span class="fr">Es pot…?</span> «Не можна» — <span class="fr">No es pot.</span></p></div>
+<div class="exs">
+Puc entrar? | пук ентра | Можна ввійти?
+Vull beure cafè. | буль беурі кафе | Хочу пити каву.
+Avui he de treballar. | авуй е де трабаля | Сьогодні мушу працювати.
+Ara no puc parlar. | ара но пук парла | Зараз не можу говорити.
+Saps cuinar? | сапс куїна | Вмієш готувати?
+Aquí no es pot fumar. | акі но ес пот фума | Тут не можна курити.
+Voldria un te, si us plau. | булдрія ун те сі уз плау | Я б хотів чаю, будь ласка.
+</div>
+<h3>10.2. Наказовий спосіб</h3>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>ти</th><th>ви</th></tr>
+<tr><td>parlar</td><td>parla!</td><td>parleu!</td></tr>
+<tr><td>llegir</td><td>llegeix!</td><td>llegiu!</td></tr>
+<tr><td>esperar</td><td>espera!</td><td>espereu!</td></tr>
+<tr><td>venir</td><td>vine!</td><td>veniu!</td></tr>
+<tr><td>ser</td><td>sigues!</td><td>sigueu!</td></tr>
+<tr><td>escriure</td><td>escriu!</td><td>escriviu!</td></tr>
+</table></div>
+<p>Заборона: <span class="fr">no</span> + сполучний спосіб: <span class="fr">No fumis!</span> Ввічливо: <span class="fr">Segui, si us plau.</span></p>
+<div class="exs">
+Espera un moment! | еспера ун мумен | Зачекай хвилинку!
+Vine aquí, si us plau. | біне акі сі уз плау | Підійди сюди, будь ласка.
+Parla més a poc a poc, si us plau. | парла мес а пок а пок сі уз плау | Говори повільніше, будь ласка.
+No fumis aquí! | но фумис акі | Не кури тут!
+Sigues prudent! | сіґес прудент | Будь обережний!
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Jo ___ treballar. (мушу) | he de
+___ beure cafè. (Я хочу) | Vull
+Nosaltres ___ parlar. (можемо) | podem
+Ell ___ cafè. (хоче) | vol
+___ cuinar? (Ти вмієш) | Saps
+___ un te. (Я б хотів) | Voldria
+parlar → (ти!) ___ | parla
+llegir → (ти!) ___ | llegeix
+parlar → (ви!) ___ | parleu
+Jo ___ parlar. (можу) | puc
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. Al metge (у лікаря)
+Metge: Bon dia, què li passa? | Добрий день, що з вами?
+Pacient: Em fa mal el cap i tinc febre. | У мене болить голова й гарячка.
+Metge: Des de quan? | З якого часу?
+Pacient: Des de fa dos dies. | Два дні.
+Metge: Prengui aquestes pastilles i es quedi a casa. | Приймайте ці таблетки й залишайтеся вдома.
+Pacient: Gràcies, doctor. | Дякую, докторе.
+# 2. A la botiga de roba (у магазині одягу)
+Dependenta: Us puc ajudar? | Вам допомогти?
+Client: Busco una jaqueta. | Шукаю куртку.
+Dependenta: Quina talla fa? | Який у вас розмір?
+Client: Una M. Me la puc provar? | M. Можна приміряти?
+Dependenta: És clar, el provador és allà. | Звісно, примірочна там.
+Client: Quant val? | Скільки коштує?
+Dependenta: Cent vint euros. | Сто двадцять євро.
+# 3. A l'hotel (у готелі)
+Hoste: Bona tarda, tinc una reserva. | Добрий день, у мене бронь.
+Recepcionista: A quin nom? | На яке прізвище?
+Hoste: Smith. Una habitació individual per a tres nits. | Сміт. Одномісний номер на три ночі.
+Recepcionista: Aquí té la clau. L'esmorzar és de set a deu. | Ось ключ. Сніданок з сьомої до десятої.
+Hoste: Hi ha wifi? | Є вайфай?
+Recepcionista: Sí, la contrasenya és a la clau. | Так, пароль на ключі.
+# 4. Per telèfon (по телефону)
+Anna: Digui? | Алло?
+Pau: Hola, Anna, sóc el Pau. Com estàs? | Привіт, Анно, це Пау. Як справи?
+Anna: Bé, gràcies. I tu? | Добре, дякую. А ти?
+Pau: Jo també. Ets lliure demà al vespre? | Теж добре. Ти вільна завтра ввечері?
+Anna: Sí, per què? | Так, а чому?
+Pau: Anem al cinema? | Підемо в кіно?
+Anna: Encantada! | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що з вами? | Què li passa
+У мене болить голова. | Em fa mal el cap
+Шукаю куртку. | Busco una jaqueta
+Який у вас розмір? | Quina talla fa
+Скільки коштує? | Quant val
+У мене бронь. | Tinc una reserva
+Є вайфай? | Hi ha wifi
+Підемо в кіно? | Anem al cinema
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Ser</td><td>sóc, ets, és, som, sou, són</td></tr>
+<tr><td>Estar</td><td>estic, estàs, està, estem, esteu, estan</td></tr>
+<tr><td>Tenir</td><td>tinc, tens, té, tenim, teniu, tenen</td></tr>
+<tr><td>Теперішній</td><td>-ar: -o, -es, -a, -em, -eu, -en</td></tr>
+<tr><td>Артикль</td><td>el / la / l' ; els / les</td></tr>
+<tr><td>Заперечення</td><td>no перед дієсловом</td></tr>
+<tr><td>Присвійні</td><td>el meu / la meva</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Читаєш усе: ll, ny, x, ig</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомишся, рід і артикль</td></tr>
+<tr><td>3</td><td>4</td><td>Ser, estar, tenir, 10 дієслів</td></tr>
+<tr><td>4</td><td>5</td><td>Питання, порядок слів</td></tr>
+<tr><td>5</td><td>6</td><td>Числа, час, дні</td></tr>
+<tr><td>6</td><td>7</td><td>Їжа, місто</td></tr>
+<tr><td>7</td><td>8</td><td>Діалоги вголос</td></tr>
+<tr><td>8</td><td>Повторення</td><td>Говориш 3–5 хвилин про себе</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1">
+Jo ___ estudiant. (ser) | sóc
+Tu ___ temps. (tenir) | tens
+Jo ___ tinc temps. (Заперечення) | no
+___ casa (la/el) | la
+___ llibre (la/el) | el
+llibre → (мн., з els) | els llibres
+___ val? (скільки) | Quant
+Nosaltres ___ a casa. (estar) | estem
+5 | cinc
+п'ятниця | divendres
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати будь-яке каталанське слово</label></li>
+<li><label><input type="checkbox"> Привітатися й представитися</label></li>
+<li><label><input type="checkbox"> Вживати ser, estar, tenir і правильні дієслова</label></li>
+<li><label><input type="checkbox"> Вибрати el / la, утворити множину</label></li>
+<li><label><input type="checkbox"> Назвати числа, дні, місяці, час</label></li>
+<li><label><input type="checkbox"> Замовити каву й спитати дорогу</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Català</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^ca[-_]ES/i.test(x.lang))||v.find(x=>/^ca/i.test(x.lang))||('ca'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='ca-ES';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('ca1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('ca1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('ca1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('ca1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='ca1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

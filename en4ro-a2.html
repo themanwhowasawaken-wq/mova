@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engleză A2: curs complet</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="english.html" title="Acasă">&larr;</a>
+  <button id="menuBtn" aria-label="Cuprins">Cuprins</button>
+  <span class="brand">Engleză A2</span>
+  <input id="q" type="search" placeholder="Caută un cuvânt" aria-label="Caută un cuvânt">
+  <button id="uaBtn" title="Arată sau ascunde traducerile exemplelor și dialogurilor">Traducere</button>
+  <button id="thBtn" title="Temă luminoasă sau întunecată">Temă</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Cuprins"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Engleză A2</h1>
+  <p>Următorul pas în engleză: trecut și viitor, Present Perfect, comparația, condiții, propoziții complexe, citire și scrisori. Atinge un cuvânt sau o propoziție ca să o asculți.</p>
+  <p class="crumbs"><a href="english.html">&larr; Acasă</a><a href="en4ro-a1.html">Nivelul A1</a><a href="en4ro-vpravy.html">Exerciții</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Introducere" data-short="Cum să lucrezi cu cursul">
+<h2><span class="no">Capitol 0</span>Cum să lucrezi cu cursul</h2>
+<p class="lead">Nivelul A2: vei învăța să <b>vorbești despre trecut și viitor, să compari, să sfătuiești, să exprimi condiții</b> și să scrii e-mailuri și scrisori simple. Pronunția de bază, articolul, <span class="fr">be</span>, <span class="fr">have</span> și prezentul sunt în cursul A1.</p>
+<h3>La sfârșit vei putea</h3>
+<ul>
+<li>să vorbești despre trecut (<span class="fr">I worked, I went</span>) și despre experiență (<span class="fr">I have been to London</span>);</li>
+<li>să vorbești despre planuri (<span class="fr">I will, I'm going to</span>);</li>
+<li>să compari (<span class="fr">bigger than, the best</span>);</li>
+<li>să ceri politicos și să dai sfaturi (<span class="fr">could you, you should</span>);</li>
+<li>să construiești propoziții complexe (<span class="fr">because, if, when, who, which</span>) și să scrii o scrisoare.</li>
+</ul>
+<div class="warn"><b>Capcana principală.</b> În română există un trecut obișnuit (perfectul compus), în engleză alegi între <span class="fr">Past Simple</span> și <span class="fr">Present Perfect</span>. Regula: cu un moment precis din trecut (<span class="fr">yesterday, in 2020</span>) folosești <span class="fr">Past Simple</span>.</div>
+<h3>Test rapid A1</h3>
+<div class="qz" data-title="Exercițiul 0. Recapitulare A1">
+I ___ a teacher. (be) | am
+She ___ two brothers. (have) | has
+He ___ in London. (live) | lives
+___ you speak English? | Do
+I ___ like coffee. (negative) | don't
+She ___ working now. (be) | is
+The book is ___ the table. (on / in) | on
+___ is it? (how much) | How much
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Timpuri" data-short="Past Simple">
+<h2><span class="no">Capitol 1</span>Past Simple</h2>
+<p class="lead">Pentru acțiuni încheiate în trecut. <b>Verbele regulate</b> au terminația <b>-ed</b> pentru toate persoanele: <span class="fr">I worked, he worked, they worked</span>. Nu există gen sau persoană.</p>
+<div class="tw"><table>
+<tr><th>Regula</th><th>Exemplu</th></tr>
+<tr><td>+ ed</td><td><span class="fr">work → worked, play → played</span></td></tr>
+<tr><td>e → + d</td><td><span class="fr">live → lived, like → liked</span></td></tr>
+<tr><td>consoană + y → ied</td><td><span class="fr">study → studied, try → tried</span></td></tr>
+<tr><td>dublarea consoanei</td><td><span class="fr">stop → stopped, plan → planned</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Negație și întrebare</b><p><span class="fr">didn't + forma de bază</span>, <span class="fr">Did + subject + forma de bază?</span> Trecutul este exprimat doar prin <span class="fr">did</span>: <span class="fr">Did you go?</span>, nu „Did you went?”.</p></div>
+<h3>1.1. Verbe neregulate</h3>
+<div class="tw"><table>
+<tr><th>Forma de bază</th><th>Past Simple</th><th>Past Participle</th><th>Sens</th></tr>
+<tr><td><span class="fr">be</span></td><td><span class="fr">was / were</span></td><td><span class="fr">been</span></td><td>a fi</td></tr>
+<tr><td><span class="fr">have</span></td><td><span class="fr">had</span></td><td><span class="fr">had</span></td><td>a avea</td></tr>
+<tr><td><span class="fr">do</span></td><td><span class="fr">did</span></td><td><span class="fr">done</span></td><td>a face</td></tr>
+<tr><td><span class="fr">go</span></td><td><span class="fr">went</span></td><td><span class="fr">gone</span></td><td>a merge</td></tr>
+<tr><td><span class="fr">see</span></td><td><span class="fr">saw</span></td><td><span class="fr">seen</span></td><td>a vedea</td></tr>
+<tr><td><span class="fr">eat</span></td><td><span class="fr">ate</span></td><td><span class="fr">eaten</span></td><td>a mânca</td></tr>
+<tr><td><span class="fr">drink</span></td><td><span class="fr">drank</span></td><td><span class="fr">drunk</span></td><td>a bea</td></tr>
+<tr><td><span class="fr">buy</span></td><td><span class="fr">bought</span></td><td><span class="fr">bought</span></td><td>a cumpăra</td></tr>
+<tr><td><span class="fr">make</span></td><td><span class="fr">made</span></td><td><span class="fr">made</span></td><td>a face, a produce</td></tr>
+<tr><td><span class="fr">take</span></td><td><span class="fr">took</span></td><td><span class="fr">taken</span></td><td>a lua</td></tr>
+<tr><td><span class="fr">come</span></td><td><span class="fr">came</span></td><td><span class="fr">come</span></td><td>a veni</td></tr>
+<tr><td><span class="fr">get</span></td><td><span class="fr">got</span></td><td><span class="fr">got</span></td><td>a primi, a obține</td></tr>
+<tr><td><span class="fr">give</span></td><td><span class="fr">gave</span></td><td><span class="fr">given</span></td><td>a da</td></tr>
+<tr><td><span class="fr">know</span></td><td><span class="fr">knew</span></td><td><span class="fr">known</span></td><td>a ști, a cunoaște</td></tr>
+<tr><td><span class="fr">say</span></td><td><span class="fr">said</span></td><td><span class="fr">said</span></td><td>a spune</td></tr>
+<tr><td><span class="fr">write</span></td><td><span class="fr">wrote</span></td><td><span class="fr">written</span></td><td>a scrie</td></tr>
+<tr><td><span class="fr">read</span></td><td><span class="fr">read</span></td><td><span class="fr">read</span></td><td>a citi</td></tr>
+<tr><td><span class="fr">speak</span></td><td><span class="fr">spoke</span></td><td><span class="fr">spoken</span></td><td>a vorbi</td></tr>
+<tr><td><span class="fr">sleep</span></td><td><span class="fr">slept</span></td><td><span class="fr">slept</span></td><td>a dormi</td></tr>
+<tr><td><span class="fr">meet</span></td><td><span class="fr">met</span></td><td><span class="fr">met</span></td><td>a întâlni</td></tr>
+</table></div>
+<div class="exs">
+I worked all day yesterday. | aɪ wɝkt ɔl deɪ ˈjɛstɚˌdeɪ | Ieri am lucrat toată ziua.
+She was at home. | ʃi wəz ət hoʊm | Era acasă.
+Where were you? | wɛr wɝ ju | Unde ați fost?
+We ate in a restaurant. | wi eɪt ɪn ə ˈrɛstɚˌɑnt | Am mâncat la restaurant.
+I didn't have time. | aɪ ˈdɪdənt hæv taɪm | N-am avut timp.
+What did you do on Saturday? | wʌt dɪd ju du ɑn ˈsætɚdi | Ce ați făcut sâmbătă?
+I went to school. | aɪ wɛnt tə skul | Am mers la școală.
+He said that he would come. | hi sɛd ðæt hi wʊd kʌm | A spus că vine.
+</div>
+<div class="qz" data-title="Exercițiul 1. Past Simple">
+I ___ yesterday. (work) | worked
+She ___ in Berlin in 2020. (live) | lived
+They ___ football. (play) | played
+He ___ for the exam. (study) | studied
+I ___ to school. (go) | went
+We ___ pizza. (eat) | ate
+She ___ a letter. (write) | wrote
+I ___ a new car. (buy) | bought
+I ___ not have time. (negative) | did
+___ you go to the cinema? | Did
+go → ___ | went
+see → ___ | saw
+have → ___ | had
+make → ___ | made
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Viitor">
+<h2><span class="no">Capitol 2</span>Viitorul: will și going to</h2>
+<div class="tw"><table>
+<tr><th>Formă</th><th>Utilizare</th><th>Exemplu</th></tr>
+<tr><td><span class="fr">will + infinitive</span></td><td>hotărâre luată pe loc, predicție, promisiune</td><td><span class="fr">I'll call you. It will rain.</span></td></tr>
+<tr><td><span class="fr">be going to</span></td><td>plan, intenție, dovadă evidentă</td><td><span class="fr">I'm going to study English. Look at the clouds, it's going to rain.</span></td></tr>
+<tr><td><span class="fr">Present Continuous</span></td><td>plan stabilit cu oră</td><td><span class="fr">I'm meeting Anna tomorrow.</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Negație și întrebare</b><p><span class="fr">I will not (won't) go. Will you come? I'm not going to leave. Are you going to buy it?</span> După <span class="fr">will</span> urmează mereu forma de bază a verbului, aceeași pentru toate persoanele (fără -s).</p></div>
+<div class="exs">
+I will call you tomorrow. | aɪ wɪl kɔl ju təˈmɑˌroʊ | Te sun mâine.
+It will rain tomorrow. | ɪt wɪl reɪn təˈmɑˌroʊ | Mâine va ploua.
+I'm going to learn English. | aɪm ˈɡoʊɪŋ tə lɝn ˈɪŋɡlɪʃ | Voi învăța engleza.
+We are going to travel next year. | wi ɑr ˈɡoʊɪŋ tə ˈtrævəl nɛkst jɪr | Anul viitor vom călători.
+I'm meeting Anna at six. | aɪm ˈmitɪŋ ˈænə ət sɪks | Mă întâlnesc cu Anna la șase.
+Will you help me? | wɪl ju hɛlp mi | Mă ajuți?
+I won't be late. | aɪ woʊnt bi leɪt | Nu voi întârzia.
+</div>
+<div class="vocab">
+tomorrow | təˈmɑˌroʊ | mâine
+next week | nɛkst wik | săptămâna viitoare
+next year | nɛkst jɪr | anul viitor
+soon | sun | în curând
+later | ˈleɪtɚ | mai târziu
+in an hour | ɪn ən ˈaʊɚ | peste o oră
+</div>
+<div class="qz" data-title="Exercițiul 2. Viitorul">
+I ___ call you tomorrow. (will) | will
+It ___ rain tomorrow. (will) | will
+I ___ going to study. (am / is) | am
+She ___ going to travel. (am / is) | is
+We ___ going to buy a car. (are) | are
+I will ___ late. (negative: not be) | not be
+___ you help me? (will) | Will
+She is ___ to buy a house. (going) | going
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Present Perfect">
+<h2><span class="no">Capitol 3</span>Present Perfect</h2>
+<p class="lead"><span class="fr">have / has + past participle</span>. Se folosește când momentul acțiunii nu contează sau când acțiunea are legătură cu prezentul: experiență, rezultat, durată până acum.</p>
+<div class="tw"><table>
+<tr><th>Utilizare</th><th>Exemplu</th></tr>
+<tr><td>experiență (<span class="fr">ever, never</span>)</td><td><span class="fr">I have been to London. Have you ever eaten sushi?</span></td></tr>
+<tr><td>rezultat (<span class="fr">just, already, yet</span>)</td><td><span class="fr">I have just finished. She hasn't come yet.</span></td></tr>
+<tr><td>durată până acum (<span class="fr">for, since</span>)</td><td><span class="fr">I have lived here for five years. I've known him since 2019.</span></td></tr>
+</table></div>
+<div class="warn"><b>Atenție.</b> Româna spune „locuiesc aici de cinci ani” (prezent), engleza <span class="fr">I have lived here for five years</span>. Cu un moment precis (<span class="fr">yesterday, last year, in 2020</span>) Present Perfect nu se folosește: <span class="fr">I saw him yesterday</span>.</div>
+<div class="tw"><table>
+<tr><th><span class="fr">for</span></th><th><span class="fr">since</span></th></tr>
+<tr><td>durată: <span class="fr">for two years, for an hour</span></td><td>început: <span class="fr">since 2020, since Monday</span></td></tr>
+</table></div>
+<div class="exs">
+I have been to London. | aɪ hæv bɪn tə ˈlʌndən | Am fost la Londra.
+Have you ever eaten sushi? | hæv ju ˈɛvɚ ˈitən ˈsuʃi | Ai mâncat vreodată sushi?
+I have never seen that film. | aɪ hæv ˈnɛvɚ sin ðæt fɪlm | Nu am văzut niciodată filmul acela.
+She has just arrived. | ʃi hæz dʒʌst ɚˈaɪvd | Tocmai a sosit.
+I haven't finished yet. | aɪ ˈhævənt ˈfɪnɪʃt jɛt | Încă n-am terminat.
+We have lived here for ten years. | wi hæv lɪvd hir fər tɛn jɪrz | Locuim aici de zece ani.
+He has worked here since 2018. | hi hæz wɝkt hir sɪns 2018 | Lucrează aici din 2018.
+</div>
+<div class="qz" data-title="Exercițiul 3. Present Perfect">
+I ___ been to London. (have / has) | have
+She ___ lived here for five years. | has
+I have never ___ sushi. (eat) | eaten
+She has ___ arrived. (just) | just
+I haven't finished ___ . (yet) | yet
+We have lived here ___ ten years. (for / since) | for
+He has worked here ___ 2018. (for / since) | since
+___ you ever been to Paris? (Have / Do) | Have
+see → (participle) ___ | seen
+write → (participle) ___ | written
+go → (participle) ___ | gone
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Gramatică" data-short="Comparația">
+<h2><span class="no">Capitol 4</span>Comparația</h2>
+<div class="tw"><table>
+<tr><th>Regula</th><th>De bază</th><th>Gradul 2</th><th>Gradul 3</th></tr>
+<tr><td>adjectiv scurt + -er / -est</td><td><span class="fr">big</span></td><td><span class="fr">bigger</span></td><td><span class="fr">the biggest</span></td></tr>
+<tr><td></td><td><span class="fr">old</span></td><td><span class="fr">older</span></td><td><span class="fr">the oldest</span></td></tr>
+<tr><td>-y → -ier / -iest</td><td><span class="fr">happy</span></td><td><span class="fr">happier</span></td><td><span class="fr">the happiest</span></td></tr>
+<tr><td>adjectiv lung: more / most</td><td><span class="fr">expensive</span></td><td><span class="fr">more expensive</span></td><td><span class="fr">the most expensive</span></td></tr>
+<tr><td>neregulate</td><td><span class="fr">good</span></td><td><span class="fr">better</span></td><td><span class="fr">the best</span></td></tr>
+<tr><td></td><td><span class="fr">bad</span></td><td><span class="fr">worse</span></td><td><span class="fr">the worst</span></td></tr>
+<tr><td></td><td><span class="fr">far</span></td><td><span class="fr">farther</span></td><td><span class="fr">the farthest</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Than, as … as</b><p><span class="fr">Prague is bigger than Brno. She is as tall as me.</span> „Decât” se traduce <span class="fr">than</span>. La gradul 3 este mereu <span class="fr">the</span>.</p></div>
+<div class="exs">
+Prague is bigger than Brno. | prɑɡ ɪz ˈbɪɡɚ ðæn ˈbɝnoʊ | București este mai mare decât Brașov.
+My brother is older than me. | maɪ ˈbrʌðɚ ɪz ˈoʊldɚ ðæn mi | Fratele meu este mai mare decât mine.
+It is the best film. | ɪt ɪz ðə bɛst fɪlm | Este cel mai bun film.
+This phone is more expensive than that one. | ðɪs foʊn ɪz mɔr ɪkˈspɛnsɪv ðæn ðæt wʌn | Acest telefon este mai scump decât celălalt.
+She is as tall as her sister. | ʃi ɪz æz tɔl æz hɝ ˈsɪstɚ | Este la fel de înaltă ca sora ei.
+Please speak more slowly. | pliz spik mɔr ˈsloʊli | Vorbiți mai rar, vă rog.
+</div>
+<div class="qz" data-title="Exercițiul 4. Comparația">
+big → ___ | bigger
+small → ___ | smaller
+good → ___ | better
+bad → ___ | worse
+happy → ___ | happier
+expensive → ___ | more expensive
+good → ___ (superlative) | the best
+old → ___ (superlative) | the oldest
+Prague is bigger ___ Brno. (than / as) | than
+She is as tall ___ me. (as / than) | as
+</div>
+</section>
+
+<section class="unit" id="u5" data-short="Verbe modale">
+<h2><span class="no">Capitol 5</span>Verbe modale și cereri politicoase</h2>
+<div class="tw"><table>
+<tr><th>Funcție</th><th>Expresii</th></tr>
+<tr><td>Abilitate</td><td><span class="fr">I can swim. She could read at four.</span></td></tr>
+<tr><td>Permisiune</td><td><span class="fr">Can I come in? May I sit here?</span></td></tr>
+<tr><td>Cerere politicoasă</td><td><span class="fr">Could you help me, please? Would you mind opening the window?</span></td></tr>
+<tr><td>Sfat</td><td><span class="fr">You should see a doctor. You ought to rest.</span></td></tr>
+<tr><td>Obligație</td><td><span class="fr">I must go. I have to work. You mustn't smoke here.</span></td></tr>
+<tr><td>Lipsa obligației</td><td><span class="fr">You don't have to come.</span></td></tr>
+<tr><td>Ofertă</td><td><span class="fr">Shall I open the window? Would you like some tea?</span></td></tr>
+<tr><td>Probabilitate</td><td><span class="fr">It may rain. He might be late.</span></td></tr>
+</table></div>
+<div class="exs">
+Could you help me, please? | kʊd ju hɛlp mi pliz | Ați putea să mă ajutați, vă rog?
+Can you pass me the salt? | kæn ju pæs mi ðə sɔlt | Poți să-mi dai sarea?
+You should rest. | ju ʃʊd rɛst | Ar trebui să te odihnești.
+I would like to book a table. | aɪ wʊd laɪk tə bʊk ə ˈteɪbəl | Aș vrea să rezerv o masă.
+Would you like some coffee? | wʊd ju laɪk sʌm ˈkɑfi | Doriți o cafea?
+You don't have to come. | ju doʊnt hæv tə kʌm | Nu trebuie să vii.
+If I had time, I would travel more. | ɪf aɪ hæd taɪm aɪ wʊd ˈtrævəl mɔr | Dacă aș avea timp, aș călători mai mult.
+</div>
+<div class="qz" data-title="Exercițiul 5. Verbe modale">
+___ you help me, please? (polite) | Could
+You ___ see a doctor. (advice) | should
+I ___ to work today. (obligation: have) | have
+You ___ smoke here. (not allowed: mustn't) | mustn't
+You ___ to come. (not necessary: don't have) | don't have
+___ I open the window? (offer) | Shall
+I ___ like a coffee. (would) | would
+___ you like some tea? | Would
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Cantitate">
+<h2><span class="no">Capitol 6</span>Cantitate: some, any, much, many</h2>
+<div class="tw"><table>
+<tr><th>Cuvânt</th><th>Utilizare</th><th>Exemplu</th></tr>
+<tr><td><span class="fr">some</span></td><td>în propoziție afirmativă</td><td><span class="fr">I have some friends. I need some water.</span></td></tr>
+<tr><td><span class="fr">any</span></td><td>în negație și întrebare</td><td><span class="fr">I don't have any money. Do you have any questions?</span></td></tr>
+<tr><td><span class="fr">much</span></td><td>nenumărabil, mai ales propoziții negative</td><td><span class="fr">I don't have much time. How much is it?</span></td></tr>
+<tr><td><span class="fr">many</span></td><td>numărabil</td><td><span class="fr">I don't have many friends. How many people?</span></td></tr>
+<tr><td><span class="fr">a lot of</span></td><td>propoziții afirmative, ambele</td><td><span class="fr">I have a lot of work. A lot of people came.</span></td></tr>
+<tr><td><span class="fr">a few / a little</span></td><td>câțiva (numărabil) / puțin (nenumărabil)</td><td><span class="fr">a few friends, a little milk</span></td></tr>
+</table></div>
+<div class="exs">
+Do you have any brothers or sisters? | du ju hæv ˈɛni ˈbrʌðɚz ɔr ˈsɪstɚz | Ai frați sau surori?
+I'd like some water, please. | aɪd laɪk sʌm ˈwɔtɚ pliz | Aș dori apă, vă rog.
+There isn't any milk. | ðɛr ˈɪzənt ˈɛni mɪlk | Nu este lapte aici.
+How much does it cost? | haʊ mʌtʃ dʌz ɪt kɑst | Cât costă?
+How many languages do you speak? | haʊ ˈmɛni ˈlæŋɡwədʒəz du ju spik | Câte limbi vorbești?
+She has a lot of friends. | ʃi hæz ə lɑt əv frɛndz | Are mulți prieteni.
+</div>
+<div class="qz" data-title="Exercițiul 6. Cantitate">
+I have ___ friends. (some / any) | some
+I don't have ___ money. (some / any) | any
+Do you have ___ questions? (some / any) | any
+How ___ is it? (much / many) | much
+How ___ people? (much / many) | many
+I have a ___ of work. (lot) | lot
+There are a ___ apples. (few / little) | few
+There is a ___ milk. (few / little) | little
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Condiții">
+<h2><span class="no">Capitol 7</span>Condiții și propoziții temporale</h2>
+<div class="tw"><table>
+<tr><th>Tip</th><th>Formă</th><th>Exemplu</th></tr>
+<tr><td>0</td><td>If + present, present</td><td><span class="fr">If you heat ice, it melts.</span></td></tr>
+<tr><td>1</td><td>If + present, will + infinitive</td><td><span class="fr">If it rains, we will stay at home.</span></td></tr>
+<tr><td>2</td><td>If + past, would + infinitive</td><td><span class="fr">If I had time, I would travel more.</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">În propoziția cu if nu apare will</b><p>După <span class="fr">if</span> și <span class="fr">when</span> (despre viitor) se folosește prezentul: <span class="fr">If it rains tomorrow, ...</span>, nu „If it will rain”. La fel la <span class="fr">when, as soon as, before, after</span>: <span class="fr">When I arrive, I'll call you.</span></p></div>
+<div class="exs">
+If it rains, we will stay at home. | ɪf ɪt reɪnz wi wɪl steɪ ət hoʊm | Dacă va ploua, rămânem acasă.
+If you study, you will pass the exam. | ɪf ju ˈstʌdi ju wɪl pæs ðə ɪɡˈzæm | Dacă înveți, vei trece examenul.
+When I arrive, I will call you. | wɛn aɪ ɚˈaɪv aɪ wɪl kɔl ju | Când ajung, te sun.
+If I had a car, I would drive to work. | ɪf aɪ hæd ə kɑr aɪ wʊd draɪv tə wɝk | Dacă aș avea mașină, aș merge cu mașina la serviciu.
+If I were you, I would call him. | ɪf aɪ wɝ ju aɪ wʊd kɔl hɪm | În locul tău, l-aș suna.
+I'll tell you as soon as I know. | aɪl tɛl ju æz sun æz aɪ noʊ | Îți spun de îndată ce aflu.
+</div>
+<div class="qz" data-title="Exercițiul 7. Condiții">
+If it ___ , we will stay at home. (rain) | rains
+If you study, you ___ pass. (will) | will
+When I ___ , I will call you. (arrive) | arrive
+If I had time, I ___ travel. (would) | would
+If I ___ you, I would call him. (were) | were
+I will call you as ___ as I know. (soon) | soon
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Propoziții" data-short="Propoziții complexe">
+<h2><span class="no">Capitol 8</span>Propoziții complexe și relative</h2>
+<div class="vocab">
+and | ənd | și
+but | bʌt | dar
+or | ɔr | sau
+because | bɪˈkɔz | pentru că
+so | soʊ | deci
+that | ðæt | că
+when | wɛn | când
+if | ɪf | dacă
+although | ˌɔlˈðoʊ | deși
+while | waɪl | în timp ce
+who | hu | care (despre persoană)
+which | wɪtʃ | care (despre lucru)
+</div>
+<div class="rule"><b class="t">Who / which / that</b><p>Pronumele relative nu se schimbă după gen și caz: <span class="fr">the man who lives next door</span>, <span class="fr">the book which I read</span>. <span class="fr">That</span> este posibil pentru persoane și lucruri.</p></div>
+<div class="exs">
+I know that you are right. | aɪ noʊ ðæt ju ɑr raɪt | Știu că ai dreptate.
+I didn't come because I was ill. | aɪ ˈdɪdənt kʌm bɪˈkɔz aɪ wəz ɪl | N-am venit pentru că eram bolnav.
+I'm learning English so that I can work abroad. | aɪm ˈlɝnɪŋ ˈɪŋɡlɪʃ soʊ ðæt aɪ kæn wɝk əˈbrɔd | Învăț engleza ca să pot lucra în străinătate.
+Although I'm tired, I'm going to work. | ˌɔlˈðoʊ aɪm ˈtaɪɚd aɪm ˈɡoʊɪŋ tə wɝk | Deși sunt obosit, merg la serviciu.
+That is the man who lives next door. | ðæt ɪz ðə mæn hu lɪvz nɛkst dɔr | Acesta este bărbatul care locuiește alături.
+This is the book that I told you about. | ðɪs ɪz ðə bʊk ðæt aɪ toʊld ju əˈbaʊt | Aceasta este cartea despre care ți-am vorbit.
+I don't know if he is coming. | aɪ doʊnt noʊ ɪf hi ɪz ˈkʌmɪŋ | Nu știu dacă vine.
+</div>
+<div class="qz" data-title="Exercițiul 8. Conjuncții">
+I know ___ you are right. (that) | that
+I didn't come ___ I was ill. (because) | because
+I'm tired, ___ I'm going to work. (but) | but
+___ I'm tired, I'm going. (Although) | Although
+That is the man ___ lives next door. (who) | who
+This is the book ___ I read. (which) | which
+I don't know ___ he is coming. (if) | if
+I stayed at home ___ it was raining. (because) | because
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Timp și prepoziții">
+<h2><span class="no">Capitol 9</span>Expresii de timp, prepoziții și verbe cu particule</h2>
+<div class="vocab">
+yesterday | ˈjɛstɚˌdeɪ | ieri
+last week | læst wik | săptămâna trecută
+a week ago | ə wik əˈɡoʊ | acum o săptămână
+in an hour | ɪn ən ˈaʊɚ | peste o oră
+every day | ˈɛvɚi deɪ | în fiecare zi
+already | ɔˈlrɛdi | deja
+still | stɪl | încă
+often | ˈɔfən | des
+never | ˈnɛvɚ | niciodată
+during | ˈdʊrɪŋ | în timpul
+before | bɪˈfɔr | înainte
+after | ˈæftɚ | după
+</div>
+<div class="rule"><b class="t">Ago / in / for</b><p><span class="fr">two hours ago</span> = acum două ore; <span class="fr">in two hours</span> = peste două ore; <span class="fr">for two hours</span> = timp de două ore.</p></div>
+<h3>9.1. Mișcare</h3>
+<div class="tw"><table>
+<tr><th>Verb</th><th>Sens</th><th>Exemplu</th></tr>
+<tr><td><span class="fr">go</span></td><td>a merge</td><td><span class="fr">I go to work by bus.</span></td></tr>
+<tr><td><span class="fr">come</span></td><td>a veni, a veni aici</td><td><span class="fr">Come here, please.</span></td></tr>
+<tr><td><span class="fr">arrive (at / in)</span></td><td>a ajunge</td><td><span class="fr">I arrive at the station at six.</span></td></tr>
+<tr><td><span class="fr">leave</span></td><td>a pleca</td><td><span class="fr">The train leaves at eight.</span></td></tr>
+<tr><td><span class="fr">fly</span></td><td>a zbura</td><td><span class="fr">Tomorrow I fly to Berlin.</span></td></tr>
+<tr><td><span class="fr">come back</span></td><td>a se întoarce</td><td><span class="fr">I'll come back soon.</span></td></tr>
+</table></div>
+<h3>9.2. Phrasal verbs</h3>
+<div class="vocab">
+get up | ɡɛt ʌp | a se ridica
+sit down | sɪt daʊn | a se așeza
+look for | lʊk fər | a căuta
+look at | lʊk ət | a se uita la
+turn on / off | tɝn ɑn ɔf | a porni / a opri
+put on | pʊt ɑn | a îmbrăca
+take off | teɪk ɔf | a scoate; a decola
+wake up | weɪk ʌp | a se trezi
+come back | kʌm bæk | a se întoarce
+find out | faɪnd aʊt | a afla
+</div>
+<div class="exs">
+I get up at seven. | aɪ ɡɛt ʌp ət ˈsɛvən | Mă trezesc la șapte.
+I'm looking for my keys. | aɪm ˈlʊkɪŋ fər maɪ kiz | Îmi caut cheile.
+Please turn off the light. | pliz tɝn ɔf ðə laɪt | Vă rog, stingeți lumina.
+He put on his jacket. | hi pʊt ɑn hɪz ˈdʒækət | Și-a pus jacheta.
+I arrived two hours ago. | aɪ ɚˈaɪvd tu ˈaʊɚz əˈɡoʊ | Am ajuns acum două ore.
+</div>
+<div class="qz" data-title="Exercițiul 9. Timp și prepoziții">
+ieri | yesterday
+mâine | tomorrow
+acum o săptămână | a week ago
+peste o oră | in an hour
+I arrived two hours ___ . (ago) | ago
+I'll come back ___ an hour. (in) | in
+I live here ___ five years. (for) | for
+I get ___ at seven. (up) | up
+I'm looking ___ my keys. (for) | for
+Please turn ___ the light. (off) | off
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Vocabular și practică" data-short="Vocabular pe teme">
+<h2><span class="no">Capitol 10</span>Vocabular pe teme</h2>
+<div class="vocab">
+# Călătorii
+journey | ˈdʒɝni | călătorie
+suitcase | ˈsutˌkeɪs | valiză
+passport | ˈpæˌspɔrt | pașaport
+booking | ˈbʊkɪŋ | rezervare
+hotel | hoʊˈtɛl | hotel
+map | mæp | hartă
+holiday | ˈhɑləˌdeɪ | concediu
+beach | bitʃ | plajă
+mountain | ˈmaʊntən | munte
+sea | si | mare
+# Muncă și studiu
+work | wɝk | muncă
+office | ˈɔfɪs | birou
+boss | bɑs | șef
+colleague | ˈkɑliɡ | coleg
+salary | ˈsælɚi | salariu
+contract | ˈkɑnˌtrækt | contract
+school | skul | școală
+exam | ɪɡˈzæm | examen
+lesson | ˈlɛsən | lecție
+# Sănătate și casă
+health | hɛlθ | sănătate
+prescription | prəˈskrɪpʃən | rețetă
+pain | peɪn | durere
+cold | koʊld | guturai, răceală
+shopping | ˈʃɑpɪŋ | cumpărături
+neighbour | ˈneɪbɚ | vecin
+flat | flæt | apartament
+rent | rɛnt | a închiria; chirie
+</div>
+<div class="qz" data-title="Exercițiul 10. Vocabular">
+călătorie | journey
+valiză | suitcase
+pașaport | passport
+rezervare | booking
+plajă | beach
+concediu | holiday
+muncă | work
+șef | boss
+salariu | salary
+examen | exam
+vecin | neighbour
+apartament | flat
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Dialoguri">
+<h2><span class="no">Capitol 11</span>Dialoguri</h2>
+<div class="dg">
+# 1. Weekend plans
+Mary: What are you doing at the weekend? | Ce faci în weekend?
+Peter: On Saturday I'm going to Brno, and on Sunday I'm going to rest. | Sâmbătă merg la Sibiu, iar duminică mă odihnesc.
+Mary: I'd love to come with you. | Aș vrea să merg cu tine.
+Peter: Great! We'll go by train. | Super! Mergem cu trenul.
+Mary: What time does it leave? | La ce oră pleacă?
+Peter: In two hours. | Peste două ore.
+# 2. After the holiday
+Kate: How was your holiday? | Cum a fost în concediu?
+Tom: Very nice. I was at the sea. | Foarte frumos. Am fost la mare.
+Kate: What did you do there? | Ce ai făcut acolo?
+Tom: I swam, I read and I relaxed. | Am înotat, am citit și m-am odihnit.
+Kate: I envy you! | Te invidiez!
+# 3. A job interview
+Boss: Tell me something about yourself. | Spuneți-mi ceva despre dumneavoastră.
+Candidate: I'm an English teacher. I have worked at a school for five years. | Sunt profesor de engleză. Lucrez la o școală de cinci ani.
+Boss: Why do you want to change jobs? | De ce doriți să vă schimbați locul de muncă?
+Candidate: I would like to earn more and develop. | Aș vrea să câștig mai mult și să mă dezvolt.
+Boss: Thank you, we'll be in touch. | Mulțumesc, vă vom contacta.
+# 4. At the pharmacy
+Customer: Hello, I'm looking for something for a cold. | Bună ziua, caut ceva pentru guturai.
+Pharmacist: Do you have a fever? | Aveți febră?
+Customer: Yes, a little. | Da, puțin.
+Pharmacist: Take these tablets twice a day. | Luați aceste pastile de două ori pe zi.
+</div>
+<div class="qz" data-title="Exercițiul 11. Expresii din dialoguri">
+Ce faci în weekend? | What are you doing at the weekend
+Mergem cu trenul. | We'll go by train / We will go by train
+Cum a fost în concediu? | How was your holiday
+Am fost la mare. | I was at the sea
+Spuneți-mi ceva despre dumneavoastră. | Tell me something about yourself
+Aș vrea să câștig mai mult. | I would like to earn more
+Caut ceva pentru guturai. | I'm looking for something for a cold / I am looking for something for a cold
+De două ori pe zi. | Twice a day
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Citire">
+<h2><span class="no">Capitol 12</span>Citire: trei texte</h2>
+<h3>Text 1. My family</h3>
+<p class="fr">My name is Anna and I live in Prague. I have a husband and two children. My husband is a doctor and I am a teacher. Our son is ten and our daughter is seven. At weekends we often go to the mountains. In summer we want to go to the sea.</p>
+<p><i>Mă numesc Anna și locuiesc în București. Am un soț și doi copii. Soțul este medic, iar eu sunt profesoară. Fiul nostru are zece ani, iar fiica noastră șapte. În weekend mergem des la munte. Vara vrem să mergem la mare.</i></p>
+<h3>Text 2. Yesterday</h3>
+<p class="fr">Yesterday I got up at seven, had breakfast and went to work by bus. I was in the office until five. Then I bought bread and milk. In the evening I cooked dinner and watched a film. At eleven I went to bed.</p>
+<p><i>Ieri m-am trezit la ora șapte, am luat micul dejun și am mers la serviciu cu autobuzul. Am fost la birou până la cinci. Apoi am cumpărat pâine și lapte. Seara am gătit cina și m-am uitat la un film. La unsprezece m-am culcat.</i></p>
+<h3>Text 3. Summer plans</h3>
+<p class="fr">This summer I'm going to the sea with friends. We will rent a house near the beach. We will swim, play volleyball and sit by the fire in the evenings. If the weather is nice, we will stay for two weeks.</p>
+<p><i>În vara aceasta voi merge cu prietenii la mare. Vom închiria o căsuță lângă plajă. Vom înota, vom juca volei, iar seara vom sta la foc. Dacă va fi vreme frumoasă, vom rămâne două săptămâni.</i></p>
+<div class="qz" data-title="Exercițiul 12. Întrebări la texte">
+What is Anna's husband? | a doctor / doctor
+How old is the son? | ten
+When did he get up? | at seven / seven
+How did he go to work? | by bus
+What did he buy? | bread and milk
+Where is he going in summer? | to the sea
+Who is he going with? | with friends
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Scrierea scrisorilor">
+<h2><span class="no">Capitol 13</span>Cum se scriu e-mailuri și scrisori</h2>
+<div class="tw"><table>
+<tr><th>Situație</th><th>Expresii</th></tr>
+<tr><td>Adresare (prieten)</td><td><span class="fr">Hi Anna, / Dear Peter,</span></td></tr>
+<tr><td>Adresare (formală)</td><td><span class="fr">Dear Mr Smith, / Dear Ms Jones, / Dear Sir or Madam,</span></td></tr>
+<tr><td>Mulțumesc pentru scrisoare</td><td><span class="fr">Thank you for your email.</span></td></tr>
+<tr><td>Scriu pentru că…</td><td><span class="fr">I am writing to ask about…</span></td></tr>
+<tr><td>Cerere</td><td><span class="fr">Could you please send me…?</span></td></tr>
+<tr><td>Încheiere (prieten)</td><td><span class="fr">Best wishes, / See you soon, / Take care,</span></td></tr>
+<tr><td>Încheiere (formală)</td><td><span class="fr">Yours sincerely, / Kind regards,</span></td></tr>
+</table></div>
+<h3>Exemplu. Scrisoare către un prieten</h3>
+<p class="fr">Hi Peter,<br>Thank you for your email. Everything is fine here. Last week I was in the Carpathians. The weather was beautiful. I would like to go back there. How are you? Write to me soon.<br>Best wishes,<br>Michael</p>
+<h3>Exemplu. Scrisoare formală</h3>
+<p class="fr">Dear Ms Jones,<br>I am writing to ask about your English course for beginners. I would like to know how much it costs and when it starts. Thank you in advance for your reply.<br>Yours sincerely,<br>Michael Smith</p>
+<div class="warn"><b>Atenție.</b> După formula de adresare, în engleza britanică se pune virgulă (în cea americană două puncte) și se continuă cu literă mică. Încheierea <span class="fr">Yours sincerely</span> se folosește când știi numele destinatarului, <span class="fr">Yours faithfully</span> după <span class="fr">Dear Sir or Madam</span>.</div>
+<div class="qz" data-title="Exercițiul 13. Scrisori">
+Salut Anna | Hi Anna
+Stimată doamnă Jones | Dear Ms Jones
+Vă mulțumesc pentru e-mail. | Thank you for your email
+Cu stimă | Yours sincerely / Kind regards
+Ai grijă de tine | Take care
+Vă mulțumesc anticipat. | Thank you in advance
+Scrie-mi în curând. | Write to me soon
+Scriu ca să întreb | I am writing to ask
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Ghid rapid, plan, test">
+<h2><span class="no">Capitol 14</span>Ghid rapid, plan și test</h2>
+<div class="tw"><table>
+<tr><th>Temă</th><th>Reține</th></tr>
+<tr><td>Past Simple</td><td>V+ed / neregulate; did + V</td></tr>
+<tr><td>Future</td><td>will + V; be going to + V; plan: Present Continuous</td></tr>
+<tr><td>Present Perfect</td><td>have / has + V3; for, since, ever, just, yet</td></tr>
+<tr><td>Comparison</td><td>-er, -est; more, most; than; as … as</td></tr>
+<tr><td>Modals</td><td>could, should, must, have to, would like</td></tr>
+<tr><td>Quantity</td><td>some, any, much, many, a lot of</td></tr>
+<tr><td>Conditionals</td><td>if + present, will; if + past, would</td></tr>
+<tr><td>Relative</td><td>who, which, that</td></tr>
+</table></div>
+<h3>Plan pe 8 săptămâni</h3>
+<div class="tw"><table>
+<tr><th>Săptămâna</th><th>Capitole</th><th>Obiectiv</th></tr>
+<tr><td>1</td><td>1</td><td>Despre ieri</td></tr>
+<tr><td>2</td><td>2</td><td>Planuri</td></tr>
+<tr><td>3</td><td>3</td><td>Present Perfect</td></tr>
+<tr><td>4</td><td>4, 5</td><td>Comparația și cereri politicoase</td></tr>
+<tr><td>5</td><td>6, 7</td><td>Cantitate și condiții</td></tr>
+<tr><td>6</td><td>8, 9, 10</td><td>Propoziții complexe, timp, vocabular</td></tr>
+<tr><td>7</td><td>11, 12</td><td>Dialoguri și citire</td></tr>
+<tr><td>8</td><td>13, 14</td><td>E-mail + recapitulare</td></tr>
+</table></div>
+<h3>Testul final</h3>
+<div class="qz" data-title="A2 test">
+I ___ to London last year. (go) | went
+Tomorrow I ___ call you. (will) | will
+I have ___ been to Paris. (never) | never
+He ___ lived here since 2018. (have / has) | has
+big → ___ | bigger
+Prague is bigger ___ Brno. (than) | than
+You ___ see a doctor. (should) | should
+If it rains, we ___ stay at home. (will) | will
+I didn't come ___ I was ill. (because) | because
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Vorbesc despre trecut</label></li>
+<li><label><input type="checkbox"> Vorbesc despre planuri</label></li>
+<li><label><input type="checkbox"> Folosesc Present Perfect pentru experiență</label></li>
+<li><label><input type="checkbox"> Cer politicos și dau sfaturi</label></li>
+<li><label><input type="checkbox"> Compar și construiesc propoziții complexe</label></li>
+<li><label><input type="checkbox"> Scriu un e-mail scurt</label></li>
+</ul>
+</section>
+
+
+<footer>Un schelet de curs A2 pentru studiu individual. Completează-l cu ascultare reală: podcasturi, filme cu subtitrare, conversații cu vorbitori nativi.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>English</th><th>Pronunție</th><th>În română</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercițiu';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Răspuns: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Verifică</button><button type="button" data-act="show">Arată răspunsurile</button><button type="button" data-act="reset">De la început</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' din '+tot+(ok===tot?'. Totul corect.':'. Verifică ortografia.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^en[-_]US/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='en-US';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('en4ro2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('en4ro2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('en4ro2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('en4ro2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='en4ro2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Rezultate: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">la capitol</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Se afișează primele 40.</div>';
+    } else h+='<div class="mini">Nimic găsit. Căutarea cuprinde cuvintele englezești și românești din tabelele de vocabular.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

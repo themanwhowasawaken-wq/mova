@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>German A1: complete course</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="Home">&larr;</a>
+  <button id="menuBtn" aria-label="Contents">Contents</button>
+  <span class="brand">German A1</span>
+  <input id="q" type="search" placeholder="Find a word" aria-label="Find a word">
+  <button id="uaBtn" title="Show or hide translations of examples and dialogues">Translation</button>
+  <button id="thBtn" title="Light or dark theme">Theme</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Contents"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>German A1</h1>
+  <p>A self-study German course for English speakers: pronunciation, grammar, topic vocabulary, dialogues, texts and exercises. Tap a word or phrase to hear it.</p>
+  <p class="crumbs"><a href="index.html">&larr; Home</a><a href="de-en-a2.html">Level A2</a><a href="de-en-vpravy.html">Exercises</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Start" data-short="How to use this course">
+<h2><span class="no">Section 0</span>How to use this course</h2>
+<p class="lead">German has a reputation for being hard, but it is very logical: you pronounce what you see, and the rules are clear. This course takes you to A1: introductions, family, food, the city, shopping and time.</p>
+<h3>What is on your side</h3>
+<ul>
+<li><b>Spelling matches sound.</b> Learn a few rules for ei, ie, eu, ch, sch and the umlauts.</li>
+<li><b>Words you already know:</b> <span class="fr">Hotel, Familie, Bank, Telefon, Musik, Student, Apfel, Hand, Finger</span>.</li>
+<li><b>All nouns are capitalised.</b></li>
+<li><b>Three genders:</b> der (masculine), die (feminine), das (neuter). Learn each noun with its article.</li>
+<li><b>Word order:</b> the verb is always in second position in a simple sentence.</li>
+</ul>
+<div class="warn"><b>False friends.</b> <span class="fr">Gift</span> = poison, <span class="fr">bald</span> = soon, <span class="fr">Rock</span> = skirt, <span class="fr">also</span> = so, therefore, <span class="fr">Art</span> = kind, type, <span class="fr">Chef</span> = boss, <span class="fr">Kind</span> = child, <span class="fr">Fabrik</span> = factory, <span class="fr">Brief</span> = letter, <span class="fr">Rat</span> = advice, <span class="fr">Bad</span> = bath, <span class="fr">Handy</span> = mobile phone, <span class="fr">bekommen</span> = to get.</div>
+<div class="tip"><b class="t">Politeness.</b> <span class="fr">du</span> is for friends, family and children. <span class="fr">Sie</span> (capital S) is for strangers and formal situations. If in doubt, use <span class="fr">Sie</span>.</div>
+<h3>How to work</h3>
+<ol>
+<li>Read the explanations and tap words to hear them.</li>
+<li>Do the exercises here and on the Exercises page.</li>
+<li>20–30 minutes a day. The plan is in section 9.</li>
+</ol>
+<div class="tip"><b class="t">About the pronunciation column.</b> It is a simple English-style respelling. It is approximate, so treat it as a hint and rely on the audio. "kh" is the sound in Scottish <i>loch</i>, "ue" is like French <i>tu</i> (say "ee" with rounded lips), "uh" is a weak vowel like the a in <i>about</i>.</div>
+</section>
+
+<section class="unit" id="u1" data-short="Sounds and alphabet">
+<h2><span class="no">Section 1</span>Sounds and alphabet</h2>
+<p class="lead">26 letters plus ä, ö, ü and ß. You read it by rules, with almost no exceptions.</p>
+<div class="tw"><table>
+<tr><th>Letters</th><th>Sound</th><th>Example</th></tr>
+<tr><td><span class="fr">ei</span></td><td>like English "eye"</td><td><span class="fr">nein</span> [nine], <span class="fr">Eis</span> [ice]</td></tr>
+<tr><td><span class="fr">ie</span></td><td>long "ee"</td><td><span class="fr">Liebe</span> [LEE-buh], <span class="fr">Bier</span> [beer]</td></tr>
+<tr><td><span class="fr">eu, äu</span></td><td>like "oy" in <i>boy</i></td><td><span class="fr">neu</span> [noy], <span class="fr">Häuser</span> [HOY-zer]</td></tr>
+<tr><td><span class="fr">au</span></td><td>like "ow" in <i>cow</i></td><td><span class="fr">Haus</span> [house]</td></tr>
+<tr><td><span class="fr">ä</span></td><td>like "e" in <i>bed</i></td><td><span class="fr">Mädchen</span> [MED-khen]</td></tr>
+<tr><td><span class="fr">ö</span></td><td>like "e" in <i>her</i> with rounded lips</td><td><span class="fr">schön</span> [shern]</td></tr>
+<tr><td><span class="fr">ü</span></td><td>"ee" with rounded lips</td><td><span class="fr">Tür</span> [tuer]</td></tr>
+<tr><td><span class="fr">sch</span></td><td>"sh"</td><td><span class="fr">Schule</span> [SHOO-luh]</td></tr>
+<tr><td><span class="fr">sp, st at the start of a word</span></td><td>"shp", "sht"</td><td><span class="fr">sprechen</span> [SHPREKH-en], <span class="fr">Straße</span> [SHTRAH-suh]</td></tr>
+<tr><td><span class="fr">ch</span></td><td>soft "kh" (after e, i) or harder (after a, o, u)</td><td><span class="fr">ich</span> [ikh], <span class="fr">nach</span> [nakh]</td></tr>
+<tr><td><span class="fr">z, tz</span></td><td>"ts"</td><td><span class="fr">zehn</span> [tsayn], <span class="fr">Katze</span> [KAT-suh]</td></tr>
+<tr><td><span class="fr">s before a vowel</span></td><td>"z"</td><td><span class="fr">sehr</span> [zair], <span class="fr">Sonne</span> [ZON-nuh]</td></tr>
+<tr><td><span class="fr">ß</span></td><td>"ss"</td><td><span class="fr">Straße</span>, <span class="fr">heißen</span></td></tr>
+<tr><td><span class="fr">v</span></td><td>"f"</td><td><span class="fr">Vater</span> [FAH-ter]</td></tr>
+<tr><td><span class="fr">w</span></td><td>"v"</td><td><span class="fr">Wasser</span> [VAS-ser]</td></tr>
+<tr><td><span class="fr">j</span></td><td>"y"</td><td><span class="fr">ja</span> [yah], <span class="fr">Jahr</span> [yar]</td></tr>
+</table></div>
+<div class="rule"><b class="t">Stress</b><p>Usually on the first syllable of the root: <span class="fr">ARbeit, FAmilie</span>. In verbs with the prefixes <span class="fr">be-, ver-, er-</span> it falls after the prefix: <span class="fr">verSTEhen</span>.</p></div>
+<div class="exs">
+Hallo, wie geht's? | hahlloh vee geht's | Hi, how are you?
+Guten Tag. | gooten tahg | Good day.
+Vielen Dank. | feelen dahnk | Thank you very much.
+Ich verstehe nicht. | ikh fehrstehuh nikht | I don't understand.
+Ich spreche ein bisschen Deutsch. | ikh shprehkhuh eyen bisshen doytsh | I speak a little German.
+Brot und Milch, bitte. | broht oond milkh bittuh | Bread and milk, please.
+</div>
+<div class="qz" data-title="Exercise 1. Read and write">
+[GOO-ten tahk] — a greeting | Guten Tag
+[DAN-kuh] — thanks | Danke
+[house] — where you live | Haus
+[milkh] — a drink from cows | Milch
+[SHOO-luh] — where you study | Schule
+[broht] — you eat it | Brot
+[VAS-ser] — a drink | Wasser
+[beer] — a drink | Bier
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Greetings and introductions">
+<h2><span class="no">Section 2</span>Greetings and introductions</h2>
+<div class="vocab">
+# Greetings
+Hallo | hahlloh | hello
+Guten Morgen | gooten mohrgen | good morning
+Guten Tag | gooten tahg | good day
+Guten Abend | gooten ahbehnd | good evening
+Gute Nacht | gootuh nahkht | good night
+Auf Wiedersehen | owf veedehrzehen | goodbye
+Tschüss | tshuess | bye
+Bis bald | bis bahld | see you soon
+# Politeness
+Danke | dahnkuh | thank you
+Bitte | bittuh | please, you're welcome
+Entschuldigung | ehntshooldigoong | excuse me, sorry
+Ja | yah | yes
+Nein | neyen | no
+Vielleicht | feelleyekht | maybe
+</div>
+<h3>2.1. Introducing yourself</h3>
+<div class="exs">
+Ich heiße Michael. | ikh heyessuh mikhahehl | My name is Michael.
+Wie heißt du? | vee heyesst doo | What's your name?
+Freut mich. | froyt mikh | Nice to meet you.
+Woher kommst du? | vohuh kohmmst doo | Where are you from?
+Ich komme aus England. | ikh kohmmuh ows ehnglahnd | I come from England.
+Ich bin dreißig Jahre alt. | ikh bin dreyessig yahruh ahlt | I am thirty years old.
+Ich wohne in London. | ikh vohnuh in lohndohn | I live in London.
+Ich bin Lehrer. | ikh bin lehruh | I am a teacher.
+Sprechen Sie Englisch? | shprehkhen zee ehnglish | Do you speak English?
+Ich verstehe nicht. | ikh fehrstehuh nikht | I don't understand.
+Können Sie das wiederholen? | kernnen zee dahs veedehrhohlen | Can you repeat that?
+</div>
+<h3>2.2. Pronouns</h3>
+<div class="tw"><table>
+<tr><th>Person</th><th>German</th><th>English</th></tr>
+<tr><td>1st sing.</td><td><span class="fr">ich</span></td><td>I</td></tr>
+<tr><td>2nd sing.</td><td><span class="fr">du</span></td><td>you (informal)</td></tr>
+<tr><td>3rd sing.</td><td><span class="fr">er / sie / es</span></td><td>he / she / it</td></tr>
+<tr><td>1st pl.</td><td><span class="fr">wir</span></td><td>we</td></tr>
+<tr><td>2nd pl.</td><td><span class="fr">ihr</span></td><td>you (several friends)</td></tr>
+<tr><td>3rd pl.</td><td><span class="fr">sie</span></td><td>they</td></tr>
+<tr><td>formal</td><td><span class="fr">Sie</span></td><td>you (formal, one or more people)</td></tr>
+</table></div>
+<div class="tip"><b class="t">The pronoun is required.</b> You cannot say "Bin Student". Always <span class="fr">Ich bin Student.</span></div>
+<div class="qz" data-title="Exercise 2. Greetings">
+Good day! | Guten Tag
+Good morning! | Guten Morgen
+Thank you! | Danke
+Please | Bitte
+Excuse me! | Entschuldigung
+Goodbye! | Auf Wiedersehen
+My name is Anna. | Ich heiße Anna
+Nice to meet you. | Freut mich
+I don't understand. | Ich verstehe nicht
+Hello! | Hallo
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Nouns and articles">
+<h2><span class="no">Section 3</span>Nouns, gender, plurals and articles</h2>
+<p class="lead">Three genders: masculine <span class="fr m">der</span> (blue), feminine <span class="fr f">die</span> (red), neuter <span class="fr n">das</span> (green). Gender often does not match English logic (<span class="fr">das Mädchen</span> "the girl" is neuter), so learn every noun with its article.</p>
+<h3>3.1. Articles</h3>
+<div class="tw"><table>
+<tr><th></th><th>Definite (the)</th><th>Indefinite (a)</th></tr>
+<tr><td><span class="fr m">m</span></td><td><span class="fr">der Mann</span></td><td><span class="fr">ein Mann</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td><span class="fr">die Frau</span></td><td><span class="fr">eine Frau</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td><span class="fr">das Kind</span></td><td><span class="fr">ein Kind</span></td></tr>
+<tr><td>pl.</td><td><span class="fr">die Kinder</span></td><td>— (no article)</td></tr>
+</table></div>
+<div class="rule"><b class="t">Negation: kein and nicht</b><p><span class="fr">kein</span> negates a noun: <span class="fr">Ich habe keinen Bruder.</span> <span class="fr">nicht</span> negates a verb or adjective: <span class="fr">Ich arbeite nicht. Das ist nicht gut.</span></p></div>
+<div class="rule"><b class="t">Accusative</b><p>Only the masculine changes: <span class="fr">der → den</span>, <span class="fr">ein → einen</span>. Feminine, neuter and plural stay the same: <span class="fr">Ich sehe den Mann, die Frau, das Kind.</span> The accusative marks the direct object (what or whom you see, have, buy).</p></div>
+<h3>3.2. Plurals</h3>
+<div class="tw"><table>
+<tr><th>Type</th><th>Example</th></tr>
+<tr><td>-e (sometimes with umlaut)</td><td><span class="fr">der Tag → die Tage, die Stadt → die Städte</span></td></tr>
+<tr><td>-en / -n</td><td><span class="fr">die Frau → die Frauen, die Schule → die Schulen</span></td></tr>
+<tr><td>-er (with umlaut)</td><td><span class="fr">das Kind → die Kinder, das Haus → die Häuser</span></td></tr>
+<tr><td>no ending (± umlaut)</td><td><span class="fr">der Bruder → die Brüder, der Lehrer → die Lehrer</span></td></tr>
+<tr><td>-s (loanwords)</td><td><span class="fr">das Auto → die Autos, das Hotel → die Hotels</span></td></tr>
+</table></div>
+<p>Plurals are not predictable, so learn them with the word: <span class="fr">das Buch, die Bücher</span>.</p>
+<div class="vocab">
+# Family
+die Familie | dee fahmilee | family | f
+die Mutter | dee moottuh | mother | f
+der Vater | duh fahtuh | father | m
+der Bruder | duh brooduh | brother | m
+die Schwester | dee shvehstuh | sister | f
+der Sohn | duh zohn | son | m
+die Tochter | dee tohkhtuh | daughter | f
+die Oma | dee ohmah | grandma | f
+der Opa | duh ohpah | grandpa | m
+der Mann | duh mahnn | man, husband | m
+die Frau | dee frow | woman, wife | f
+das Kind | dahs kind | child | n
+# Things
+das Haus | dahs hows | house | n
+die Wohnung | dee vohnoong | flat, apartment | f
+das Zimmer | dahs tsimmuh | room | n
+die Küche | dee kuekhuh | kitchen | f
+der Tisch | duh tish | table | m
+der Stuhl | duh shtool | chair | m
+das Fenster | dahs fehnstuh | window | n
+die Tür | dee tuer | door | f
+das Bett | dahs behtt | bed | n
+das Auto | dahs owtoh | car | n
+das Telefon | dahs tehlehfohn | phone | n
+das Buch | dahs bookh | book | n
+</div>
+<div class="qz" data-title="Exercise 3. Articles and plurals">
+___ Mann (der/die/das) | der
+___ Frau (der/die/das) | die
+___ Kind (der/die/das) | das
+___ Haus (der/die/das) | das
+___ Tisch (der/die/das) | der
+___ Küche (der/die/das) | die
+Haus → ___ (pl.) | Häuser
+Kind → ___ (pl.) | Kinder
+Frau → ___ (pl.) | Frauen
+Auto → ___ (pl.) | Autos
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Verbs" data-short="Sein, haben">
+<h2><span class="no">Section 4</span>The verbs <span class="fr">sein</span> (to be) and <span class="fr">haben</span> (to have)</h2>
+<div class="cj" data-verb="sein" data-note="to be" data-ipa="zine">
+ich | bin | bin
+du | bist | bist
+er / sie / es | ist | ist
+wir | sind | zind
+ihr | seid | zeyed
+sie / Sie | sind | zind
+</div>
+<div class="cj" data-verb="haben" data-note="to have" data-ipa="HAH-ben">
+ich | habe | hahbuh
+du | hast | hahst
+er / sie / es | hat | haht
+wir | haben | hahben
+ihr | habt | hahbt
+sie / Sie | haben | hahben
+</div>
+<div class="exs">
+Ich bin Student. | ikh bin shtoodehnt | I am a student.
+Bist du müde? | bist doo mueduh | Are you tired?
+Wir sind zu Hause. | vir zind tsoo howzuh | We are at home.
+Ich habe einen Bruder. | ikh hahbuh eyenen brooduh | I have a brother.
+Hast du Zeit? | hahst doo tseyet | Do you have time?
+Ich habe keine Zeit. | ikh hahbuh keyenuh tseyet | I have no time.
+</div>
+<h3>4.1. Regular verbs</h3>
+<div class="rule"><b class="t">Rule</b><p>The infinitive ends in <span class="fr">-en</span>. Drop <span class="fr">-en</span> and add the endings <span class="fr">-e, -st, -t, -en, -t, -en</span>. German has one present tense: <span class="fr">Ich lerne</span> = "I learn" and "I am learning".</p></div>
+<div class="tw"><table>
+<tr><th>Person</th><th>machen (to do, make)</th><th>wohnen (to live)</th></tr>
+<tr><td>ich</td><td>mache</td><td>wohne</td></tr>
+<tr><td>du</td><td>machst</td><td>wohnst</td></tr>
+<tr><td>er/sie/es</td><td>macht</td><td>wohnt</td></tr>
+<tr><td>wir</td><td>machen</td><td>wohnen</td></tr>
+<tr><td>ihr</td><td>macht</td><td>wohnt</td></tr>
+<tr><td>sie/Sie</td><td>machen</td><td>wohnen</td></tr>
+</table></div>
+<div class="vocab">
+machen | mahkhen | to do, make | mache
+wohnen | vohnen | to live | wohne
+arbeiten | ahrbeyeten | to work | arbeite
+lernen | lehrnen | to learn | lerne
+kommen | kohmmen | to come | komme
+spielen | shpeelen | to play | spiele
+trinken | trinken | to drink | trinke
+kaufen | kowfen | to buy | kaufe
+sprechen | shprehkhen | to speak | spreche
+essen | ehszen | to eat | esse
+lesen | lehzen | to read | lese
+sehen | zehen | to see | sehe
+fahren | fahren | to drive, travel | fahre
+möchten | merkhten | would like | möchte
+gehen | gehen | to go, walk | gehe
+</div>
+<div class="rule"><b class="t">Vowel change</b><p>Some verbs change their vowel in <span class="fr">du</span> and <span class="fr">er/sie/es</span>: <span class="fr">sprechen → du sprichst, er spricht</span>; <span class="fr">essen → du isst, er isst</span>; <span class="fr">lesen → du liest, er liest</span>; <span class="fr">fahren → du fährst, er fährt</span>.</p></div>
+<div class="cj" data-verb="möchten" data-note="would like (polite)" data-ipa="MERKH-ten">
+ich | möchte | merkhtuh
+du | möchtest | merkhtehst
+er / sie / es | möchte | merkhtuh
+wir | möchten | merkhten
+ihr | möchtet | merkhteht
+sie / Sie | möchten | merkhten
+</div>
+<div class="cj" data-verb="gehen" data-note="to go" data-ipa="GAY-en">
+ich | gehe | gehuh
+du | gehst | gehst
+er / sie / es | geht | geht
+wir | gehen | gehen
+ihr | geht | geht
+sie / Sie | gehen | gehen
+</div>
+<div class="qz" data-title="Exercise 4. Conjugation">
+Ich ___ Student. (sein) | bin
+Du ___ aus England. (sein) | bist
+Wir ___ Freunde. (sein) | sind
+Ich ___ einen Bruder. (haben) | habe
+Du ___ Zeit. (haben) | hast
+Ich ___ in Berlin. (wohnen) | wohne
+Du ___ Deutsch. (lernen) | lernst
+Er ___ in einer Bank. (arbeiten) | arbeitet
+Wir ___ nach Hause. (gehen) | gehen
+Ich ___ einen Kaffee. (möchten) | möchte
+Du ___ Deutsch. (sprechen) | sprichst
+Er ___ ein Buch. (lesen) | liest
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Language in action" data-short="Questions, adjectives">
+<h2><span class="no">Section 5</span>Questions, adjectives, prepositions</h2>
+<div class="vocab">
+wer | vuh | who
+was | vahs | what
+wo | voh | where
+woher | vohuh | where from
+wohin | vohin | where to
+wann | vahnn | when
+wie | vee | how
+warum | vahroom | why
+wie viel | vee feel | how much
+welcher | vehlkhuh | which
+</div>
+<div class="exs">
+Wer ist das? | vuh ist dahs | Who is that?
+Was machst du? | vahs mahkhst doo | What are you doing?
+Wo wohnst du? | voh vohnst doo | Where do you live?
+Wohin gehst du? | vohin gehst doo | Where are you going?
+Wie viel kostet das? | vee feel kohsteht dahs | How much does that cost?
+Wie heißt du? | vee heyesst doo | What's your name?
+</div>
+<div class="rule"><b class="t">Word order</b><p>The verb is in 2nd position: <span class="fr">Ich wohne in Berlin. / In Berlin wohne ich.</span> In yes/no questions the verb comes first: <span class="fr">Wohnst du in Berlin?</span></p></div>
+<h3>5.1. Adjectives</h3>
+<p>After <span class="fr">sein</span> an adjective does not change: <span class="fr">Das Haus ist neu. Die Frau ist nett.</span> Before a noun it takes endings (that comes at A2).</p>
+<div class="vocab">
+neu | noy | new
+alt | ahlt | old
+groß | grohss | big
+klein | kleyen | small
+gut | goot | good
+schlecht | shlehkht | bad
+schön | shern | beautiful
+teuer | toyuh | expensive
+billig | billig | cheap
+nett | nehtt | nice
+müde | mueduh | tired
+</div>
+<h3>5.2. Possessives</h3>
+<div class="tw"><table>
+<tr><th>Whose</th><th>m / n</th><th>f / pl.</th></tr>
+<tr><td>my</td><td><span class="fr">mein</span></td><td><span class="fr">meine</span></td></tr>
+<tr><td>your</td><td><span class="fr">dein</span></td><td><span class="fr">deine</span></td></tr>
+<tr><td>his</td><td><span class="fr">sein</span></td><td><span class="fr">seine</span></td></tr>
+<tr><td>her</td><td><span class="fr">ihr</span></td><td><span class="fr">ihre</span></td></tr>
+<tr><td>our</td><td><span class="fr">unser</span></td><td><span class="fr">unsere</span></td></tr>
+</table></div>
+<p>For example: <span class="fr">mein Bruder, meine Schwester, mein Kind, meine Eltern</span>.</p>
+<h3>5.3. Prepositions</h3>
+<div class="tw"><table>
+<tr><th>Preposition</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><span class="fr">in</span></td><td>in (city, country, building)</td><td><span class="fr">in Berlin, in der Schule</span></td></tr>
+<tr><td><span class="fr">aus</span></td><td>from, out of (origin)</td><td><span class="fr">aus England</span></td></tr>
+<tr><td><span class="fr">nach</span></td><td>to (city, country), after</td><td><span class="fr">nach Hause, nach Berlin</span></td></tr>
+<tr><td><span class="fr">mit</span></td><td>with</td><td><span class="fr">mit meinem Bruder</span></td></tr>
+<tr><td><span class="fr">ohne</span></td><td>without</td><td><span class="fr">Kaffee ohne Zucker</span></td></tr>
+<tr><td><span class="fr">für</span></td><td>for</td><td><span class="fr">für meine Mutter</span></td></tr>
+<tr><td><span class="fr">auf</span></td><td>on</td><td><span class="fr">auf dem Tisch</span></td></tr>
+</table></div>
+<div class="exs">
+Ich gehe in die Schule. | ikh gehuh in dee shooluh | I'm going to school.
+Ich bin in der Schule. | ikh bin in duh shooluh | I'm at school.
+Ich wohne in Berlin. | ikh vohnuh in behrlin | I live in Berlin.
+Das Buch liegt auf dem Tisch. | dahs bookh leegt owf dehm tish | The book is on the table.
+Kaffee ohne Zucker. | kahffe ohnuh tsookuh | Coffee without sugar.
+Das ist mein Bruder. | dahs ist meyen brooduh | This is my brother.
+</div>
+<div class="qz" data-title="Exercise 5. Language in action">
+___ ist das? (who) | Wer
+___ machst du? (what) | Was
+___ wohnst du? (where) | Wo
+___ kostet das? (how much) | Wie viel
+Ich habe ___ Zeit. (no) | keine
+Das Haus ist ___ . (new) | neu
+___ Bruder (my) | mein
+___ Schwester (my) | meine
+Ich wohne ___ Berlin. (in) | in
+Ich komme ___ England. (from) | aus
+Kaffee ___ Zucker. (without) | ohne
+Ein Geschenk ___ meine Mutter. (for) | für
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Numbers, time, dates">
+<h2><span class="no">Section 6</span>Numbers, time and dates</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">null</span></td><td>1 <span class="fr">eins</span></td><td>2 <span class="fr">zwei</span></td><td>3 <span class="fr">drei</span></td></tr>
+<tr><td>4 <span class="fr">vier</span></td><td>5 <span class="fr">fünf</span></td><td>6 <span class="fr">sechs</span></td><td>7 <span class="fr">sieben</span></td></tr>
+<tr><td>8 <span class="fr">acht</span></td><td>9 <span class="fr">neun</span></td><td>10 <span class="fr">zehn</span></td><td>11 <span class="fr">elf</span></td></tr>
+<tr><td>12 <span class="fr">zwölf</span></td><td>20 <span class="fr">zwanzig</span></td><td>30 <span class="fr">dreißig</span></td><td>40 <span class="fr">vierzig</span></td></tr>
+<tr><td>50 <span class="fr">fünfzig</span></td><td>100 <span class="fr">hundert</span></td><td>200 <span class="fr">zweihundert</span></td><td>1000 <span class="fr">tausend</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Compound numbers are said backwards.</b><p>21 = <span class="fr">einundzwanzig</span> ("one-and-twenty"), 45 = <span class="fr">fünfundvierzig</span>.</p></div>
+<div class="vocab">
+# Days
+Montag | mohntahg | Monday
+Dienstag | deenstahg | Tuesday
+Mittwoch | mittvohkh | Wednesday
+Donnerstag | dohnnehrstahg | Thursday
+Freitag | freyetahg | Friday
+Samstag | zahmstahg | Saturday
+Sonntag | zohnntahg | Sunday
+# Months
+Januar | yahnooahr | January
+Februar | fehbrooahr | February
+März | mehrts | March
+April | ahpril | April
+Mai | mahi | May
+Juni | yooni | June
+Juli | yooli | July
+August | owgoost | August
+September | zehptehmbuh | September
+Oktober | ohktohbuh | October
+November | nohfehmbuh | November
+Dezember | dehtsehmbuh | December
+# Time
+heute | hoytuh | today
+morgen | mohrgen | tomorrow
+gestern | gehstehrn | yesterday
+am Morgen | ahm mohrgen | in the morning
+am Abend | ahm ahbehnd | in the evening
+jetzt | yehtst | now
+</div>
+<div class="exs">
+Wie spät ist es? | vee shpeht ist ehs | What time is it?
+Es ist fünf Uhr. | ehs ist fuenf oor | It is five o'clock.
+Es ist ein Uhr. | ehs ist eyen oor | It is one o'clock.
+Um wie viel Uhr? | oom vee feel oor | At what time?
+Um acht Uhr. | oom ahkht oor | At eight o'clock.
+Heute ist Montag. | hoytuh ist mohntahg | Today is Monday.
+</div>
+<div class="qz" data-title="Exercise 6. Numbers and days">
+2 | zwei
+3 | drei
+5 | fünf
+10 | zehn
+20 | zwanzig
+100 | hundert
+Monday | Montag
+Friday | Freitag
+Sunday | Sonntag
+October | Oktober
+tomorrow | morgen
+yesterday | gestern
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Words and dialogues" data-short="Food, city, shopping">
+<h2><span class="no">Section 7</span>Food, the city and shopping</h2>
+<div class="vocab">
+# Food
+das Brot | dahs broht | bread | n
+die Butter | dee boottuh | butter | f
+der Käse | duh kehzuh | cheese | m
+das Fleisch | dahs fleyesh | meat | n
+der Fisch | duh fish | fish | m
+das Ei | dahs eye | egg | n
+die Suppe | dee zooppuh | soup | f
+der Reis | duh reyes | rice | m
+die Kartoffel | dee kahrtohffehl | potato | f
+der Apfel | duh ahpfehl | apple | m
+der Zucker | duh tsookuh | sugar | m
+das Salz | dahs zahlts | salt | n
+# Drinks
+das Wasser | dahs vahszuh | water | n
+die Milch | dee milkh | milk | f
+der Kaffee | duh kahffe | coffee | m
+der Tee | duh te | tea | m
+der Saft | duh zahft | juice | m
+das Bier | dahs beer | beer | n
+der Wein | duh veyen | wine | m
+# City
+der Bahnhof | duh bahnhohf | railway station | m
+die Post | dee pohst | post office | f
+die Bank | dee bahnk | bank | f
+das Krankenhaus | dahs krahnkehnhows | hospital | n
+die Apotheke | dee ahpohtehkuh | pharmacy | f
+das Geschäft | dahs gehshehft | shop | n
+die Straße | dee shtrahssuh | street | f
+die Brücke | dee bruekuh | bridge | f
+der Park | duh pahrk | park | m
+</div>
+<div class="exs">
+Einen Kaffee, bitte. | eyenen kahffe bittuh | A coffee, please.
+Die Rechnung, bitte. | dee rehkhnoong bittuh | The bill, please.
+Guten Appetit! | gooten ahppehtit | Enjoy your meal!
+Wie viel kostet das? | vee feel kohsteht dahs | How much is that?
+Das ist teuer. | dahs ist toyuh | That is expensive.
+Kann ich mit Karte bezahlen? | kahnn ikh mit kahrtuh behtsahlen | Can I pay by card?
+Wo ist der Bahnhof? | voh ist duh bahnhohf | Where is the station?
+Gehen Sie geradeaus, dann links. | gehen zee gehrahdehows dahnn links | Go straight ahead, then left.
+Ich habe Hunger. | ikh hahbuh hoonguh | I am hungry.
+</div>
+<div class="qz" data-title="Exercise 7. Café and city">
+A coffee, please. | Einen Kaffee, bitte
+The bill, please. | Die Rechnung, bitte
+Enjoy your meal! | Guten Appetit
+How much is that? | Wie viel kostet das ?
+Where is the station? | Wo ist der Bahnhof ?
+That is expensive. | Das ist teuer
+I am hungry. | Ich habe Hunger
+bread | das Brot
+milk | die Milch
+station | der Bahnhof
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Dialogues">
+<h2><span class="no">Section 8</span>Everyday dialogues</h2>
+<div class="dg">
+# 1. Im Café (in a café)
+Kellner: Guten Tag. Was möchten Sie? | Good day. What would you like?
+Gast: Einen Kaffee und ein Stück Kuchen, bitte. | A coffee and a piece of cake, please.
+Kellner: Mit Milch? | With milk?
+Gast: Nein, danke. Ohne Milch. | No, thanks. Without milk.
+Kellner: Bitte schön. Guten Appetit. | Here you are. Enjoy.
+Gast: Danke. Kann ich mit Karte bezahlen? | Thanks. Can I pay by card?
+# 2. Am Bahnhof (at the station)
+Reisender: Guten Tag, eine Fahrkarte nach Berlin, bitte. | Hello, a ticket to Berlin, please.
+Verkäuferin: Einfach oder hin und zurück? | Single or return?
+Reisender: Einfach. Wann fährt der Zug? | Single. When does the train leave?
+Verkäuferin: Um zehn Uhr fünfzehn. | At ten fifteen.
+Reisender: Wie viel kostet die Fahrkarte? | How much is the ticket?
+Verkäuferin: Vierzig Euro. | Forty euros.
+# 3. Nach dem Weg fragen (asking the way)
+Tourist: Entschuldigung, wo ist das Museum? | Excuse me, where is the museum?
+Frau: Gehen Sie geradeaus und dann rechts. | Go straight ahead and then right.
+Tourist: Ist es weit? | Is it far?
+Frau: Nein, fünf Minuten zu Fuß. | No, five minutes on foot.
+Tourist: Vielen Dank. | Thank you very much.
+Frau: Bitte schön. | You're welcome.
+# 4. Sich kennenlernen (getting acquainted)
+Peter: Hallo, ich heiße Peter. Und du? | Hi, I'm Peter. And you?
+Anna: Ich heiße Anna. Freut mich. | I'm Anna. Nice to meet you.
+Peter: Woher kommst du? | Where are you from?
+Anna: Ich komme aus England, aus London. | I'm from England, from London.
+Peter: Du sprichst sehr gut Deutsch! | You speak German very well!
+Anna: Danke, ich lerne noch. | Thanks, I'm still learning.
+</div>
+<div class="qz" data-title="Exercise 8. Phrases from the dialogues">
+What would you like? | Was möchten Sie ?
+A coffee, please. | Einen Kaffee, bitte
+A ticket to Berlin. | Eine Fahrkarte nach Berlin
+Where is the museum? | Wo ist das Museum ?
+Five minutes on foot. | Fünf Minuten zu Fuß
+You're welcome. | Bitte schön
+My name is Anna. | Ich heiße Anna
+I'm still learning. | Ich lerne noch
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="A1 extension" data-short="More words">
+<h2><span class="no">Section 9</span>More words: work, body, clothes, weather, transport</h2>
+<div class="vocab">
+# Jobs
+der Lehrer | duh lehruh | teacher | m
+der Arzt | duh ahrtst | doctor | m
+die Krankenschwester | dee krahnkehnshvehstuh | nurse | f
+der Ingenieur | duh ingehneeoor | engineer | m
+der Fahrer | duh fahruh | driver | m
+der Verkäufer | duh fehrkoyfuh | shop assistant | m
+der Koch | duh kohkh | cook, chef | m
+der Student | duh shtoodehnt | student | m
+der Polizist | duh pohlitsist | police officer | m
+der Anwalt | duh ahnvahlt | lawyer | m
+# Body and health
+der Kopf | duh kohpf | head | m
+das Auge | dahs owguh | eye | n
+das Ohr | dahs ohr | ear | n
+die Nase | dee nahzuh | nose | f
+der Mund | duh moond | mouth | m
+die Hand | dee hahnd | hand | f
+das Bein | dahs beyen | leg | n
+der Bauch | duh bowkh | stomach, belly | m
+der Rücken | duh rueken | back | m
+das Herz | dahs hehrts | heart | n
+Ich habe Kopfschmerzen. | ikh hahbuh kohpfshmehrtsen | I have a headache. | 
+Ich bin krank. | ikh bin krahnk | I am ill. | 
+das Fieber | dahs feebuh | fever | n
+die Apotheke | dee ahpohtehkuh | pharmacy | f
+das Medikament | dahs mehdikahmehnt | medicine | n
+# Clothes
+das Hemd | dahs hehmd | shirt | n
+die Hose | dee hohzuh | trousers | f
+das Kleid | dahs kleyed | dress | n
+die Jacke | dee yahkuh | jacket | f
+die Schuhe | dee shoouh | shoes | pl
+der Pullover | duh poollohfuh | jumper | m
+die Mütze | dee muetsuh | hat, cap | f
+die Größe | dee grerssuh | size | f
+# Weather
+das Wetter | dahs vehttuh | weather | n
+die Sonne | dee zohnnuh | sun | f
+der Regen | duh rehgen | rain | m
+der Schnee | duh shne | snow | m
+der Wind | duh vind | wind | m
+Es ist kalt. | ehs ist kahlt | It is cold. | 
+Es ist heiß. | ehs ist heyess | It is hot. | 
+Die Sonne scheint. | dee zohnnuh sheyent | The sun is shining. | 
+# Transport
+der Bus | duh boos | bus | m
+der Zug | duh tsoog | train | m
+die Straßenbahn | dee shtrahssehnbahn | tram | f
+das Flugzeug | dahs floogtsoyg | plane | n
+das Fahrrad | dahs fahrrahd | bicycle | n
+die Fahrkarte | dee fahrkahrtuh | ticket | f
+die Haltestelle | dee hahltehstehlluh | stop | f
+der Flughafen | duh flooghahfen | airport | m
+# Home and hobbies
+das Wohnzimmer | dahs vohntsimmuh | living room | n
+das Bad | dahs bahd | bathroom | n
+der Kühlschrank | duh kuelshrahnk | fridge | m
+das Sofa | dahs zohfah | sofa | n
+der Film | duh film | film | m
+die Musik | dee moozik | music | f
+der Sport | duh shpohrt | sport | m
+kochen | kohkhen | to cook | verb
+reisen | reyezen | to travel | verb
+</div>
+<div class="exs">
+Ich bin Lehrer. | ikh bin lehruh | I am a teacher.
+Ich arbeite als Fahrer. | ikh ahrbeyetuh ahls fahruh | I work as a driver.
+Mir tut der Hals weh. | mir toot duh hahls veh | My throat hurts.
+Welche Größe haben Sie? | vehlkhuh grerssuh hahben zee | What size are you?
+Heute ist es kalt. | hoytuh ist ehs kahlt | It is cold today.
+Es regnet. | ehs rehgneht | It is raining.
+Wo ist die Haltestelle? | voh ist dee hahltehstehlluh | Where is the stop?
+Ich koche gern. | ikh kohkhuh gehrn | I like cooking.
+</div>
+<div class="qz" data-title="Exercise 9. New words">
+doctor | Arzt
+teacher | Lehrer
+head | Kopf
+hand | Hand
+dress | Kleid
+rain | Regen
+snow | Schnee
+bus | Bus
+train | Zug
+ticket | Fahrkarte
+airport | Flughafen
+It is raining. | Es regnet
+I have a headache. | Ich habe Kopfschmerzen
+It is cold today. | Heute ist es kalt
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Modals, imperative">
+<h2><span class="no">Section 10</span>Modal verbs, separable prefixes and the imperative</h2>
+<h3>10.1. Modal verbs</h3>
+<div class="tw"><table>
+<tr><th></th><th>können (can)</th><th>müssen (must)</th><th>wollen (want)</th><th>dürfen (may)</th></tr>
+<tr><td>ich</td><td>kann</td><td>muss</td><td>will</td><td>darf</td></tr>
+<tr><td>du</td><td>kannst</td><td>musst</td><td>willst</td><td>darfst</td></tr>
+<tr><td>er / sie / es</td><td>kann</td><td>muss</td><td>will</td><td>darf</td></tr>
+<tr><td>wir</td><td>können</td><td>müssen</td><td>wollen</td><td>dürfen</td></tr>
+<tr><td>ihr</td><td>könnt</td><td>müsst</td><td>wollt</td><td>dürft</td></tr>
+<tr><td>sie / Sie</td><td>können</td><td>müssen</td><td>wollen</td><td>dürfen</td></tr>
+</table></div>
+<div class="rule"><b class="t">The verb frame</b><p>The modal is in 2nd position and the main verb goes <b>to the end</b> as an infinitive: <span class="fr">Ich kann heute nicht kommen. Ich muss arbeiten.</span> Also: <span class="fr">sollen</span> (should), <span class="fr">möchten</span> (would like).</p></div>
+<div class="exs">
+Kann ich eintreten? | kahnn ikh eyentrehten | May I come in?
+Ich will einen Kaffee trinken. | ikh vill eyenen kahffe trinken | I want to drink a coffee.
+Ich muss heute arbeiten. | ikh mooss hoytuh ahrbeyeten | I have to work today.
+Ich kann jetzt nicht sprechen. | ikh kahnn yehtst nikht shprehkhen | I can't talk now.
+Kannst du kochen? | kahnnst doo kohkhen | Can you cook?
+Hier darf man nicht rauchen. | heer dahrf mahn nikht rowkhen | You may not smoke here.
+Ich möchte einen Tee, bitte. | ikh merkhtuh eyenen te bittuh | I would like a tea, please.
+</div>
+<h3>10.2. Separable prefixes</h3>
+<p>The prefix splits off and goes to the end: <span class="fr">aufstehen → Ich stehe um sieben auf.</span> With a modal the verb stays whole: <span class="fr">Ich muss früh aufstehen.</span></p>
+<div class="tw"><table>
+<tr><th>Verb</th><th>Meaning</th><th>Example</th></tr>
+<tr><td>aufstehen</td><td>get up</td><td>Ich stehe um sieben auf.</td></tr>
+<tr><td>einkaufen</td><td>shop</td><td>Wir kaufen heute ein.</td></tr>
+<tr><td>anrufen</td><td>phone</td><td>Ich rufe dich an.</td></tr>
+<tr><td>abfahren</td><td>depart</td><td>Der Zug fährt um acht ab.</td></tr>
+<tr><td>ankommen</td><td>arrive</td><td>Wir kommen um zehn an.</td></tr>
+<tr><td>mitkommen</td><td>come along</td><td>Kommst du mit?</td></tr>
+</table></div>
+<h3>10.3. The imperative</h3>
+<div class="tw"><table>
+<tr><th>Infinitive</th><th>du</th><th>ihr</th><th>Sie</th></tr>
+<tr><td>kommen</td><td>Komm!</td><td>Kommt!</td><td>Kommen Sie!</td></tr>
+<tr><td>warten</td><td>Warte!</td><td>Wartet!</td><td>Warten Sie!</td></tr>
+<tr><td>lesen</td><td>Lies!</td><td>Lest!</td><td>Lesen Sie!</td></tr>
+<tr><td>fahren</td><td>Fahr!</td><td>Fahrt!</td><td>Fahren Sie!</td></tr>
+<tr><td>sein</td><td>Sei!</td><td>Seid!</td><td>Seien Sie!</td></tr>
+</table></div>
+<div class="exs">
+Warte einen Moment! | vahrtuh eyenen mohmehnt | Wait a moment!
+Kommen Sie bitte her. | kohmmen zee bittuh huh | Please come here.
+Sprechen Sie bitte langsamer. | shprehkhen zee bittuh lahngzahmuh | Please speak more slowly.
+Rauch hier nicht! | rowkh heer nikht | Don't smoke here!
+Seid vorsichtig! | zeyed fohrzikhtig | Be careful!
+</div>
+<div class="qz" data-title="Exercise 10. Modals and imperative">
+Ich ___ arbeiten. (müssen) | muss
+Du ___ kommen. (können) | kannst
+Er ___ einen Kaffee. (wollen) | will
+Wir ___ gehen. (können) | können
+Ich stehe um sieben ___ . (auf) | auf
+Der Zug fährt um acht ___ . (ab) | ab
+___ du mit? (Are you coming along: mitkommen) | Kommst
+Kommen → (du!) ___ | Komm
+Lesen → (du!) ___ | Lies
+Warten → (ihr!) ___ | Wartet
+Kommen → (Sie!) ___ | Kommen Sie
+Hier ___ man nicht rauchen. (dürfen) | darf
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="More dialogues">
+<h2><span class="no">Section 11</span>Four more dialogues</h2>
+<div class="dg">
+# 1. Beim Arzt (at the doctor's)
+Arzt: Guten Tag, wie geht es Ihnen? | Good day, how are you feeling?
+Patient: Nicht gut. Ich habe Kopfschmerzen und Fieber. | Not well. I have a headache and a fever.
+Arzt: Seit wann? | Since when?
+Patient: Seit zwei Tagen. | For two days.
+Arzt: Nehmen Sie diese Tabletten und bleiben Sie zu Hause. | Take these tablets and stay at home.
+Patient: Danke, Herr Doktor. | Thank you, doctor.
+# 2. Im Kleidergeschäft (in a clothes shop)
+Verkäuferin: Kann ich Ihnen helfen? | Can I help you?
+Kunde: Ich suche eine Jacke. | I'm looking for a jacket.
+Verkäuferin: Welche Größe haben Sie? | What size are you?
+Kunde: Größe 48. Kann ich sie anprobieren? | Size 48. Can I try it on?
+Verkäuferin: Natürlich, die Umkleide ist dort. | Of course, the changing room is over there.
+Kunde: Was kostet sie? | How much is it?
+Verkäuferin: Hundertzwanzig Euro. | A hundred and twenty euros.
+# 3. Im Hotel (at the hotel)
+Gast: Guten Abend, ich habe ein Zimmer reserviert. | Good evening, I have booked a room.
+Rezeption: Wie ist Ihr Name? | What is your name?
+Gast: Smith. Ein Einzelzimmer für drei Nächte. | Smith. A single room for three nights.
+Rezeption: Hier ist Ihr Schlüssel. Das Frühstück gibt es von sieben bis zehn. | Here is your key. Breakfast is from seven to ten.
+Gast: Gibt es WLAN? | Is there Wi-Fi?
+Rezeption: Ja, das Passwort steht auf dem Schlüssel. | Yes, the password is on the key.
+# 4. Am Telefon (on the phone)
+Anna: Hallo? | Hello?
+Markus: Hallo Anna, hier ist Markus. Wie geht's? | Hi Anna, it's Markus. How are you?
+Anna: Gut, danke. Und dir? | Fine, thanks. And you?
+Markus: Auch gut. Hast du morgen Abend Zeit? | Fine too. Are you free tomorrow evening?
+Anna: Ja, warum? | Yes, why?
+Markus: Gehen wir ins Kino? | Shall we go to the cinema?
+Anna: Gern! | Gladly!
+</div>
+<div class="qz" data-title="Exercise 11. Phrases from the dialogues">
+How are you feeling? | Wie geht es Ihnen
+I have a headache. | Ich habe Kopfschmerzen
+I'm looking for a jacket. | Ich suche eine Jacke
+Can I try it on? | Kann ich sie anprobieren
+How much is it? | Was kostet sie
+I have booked a room. | Ich habe ein Zimmer reserviert
+Is there Wi-Fi? | Gibt es WLAN
+Shall we go to the cinema? | Gehen wir ins Kino
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Cheat sheet, plan, test">
+<h2><span class="no">Section 12</span>Cheat sheet, plan and test</h2>
+<div class="tw"><table>
+<tr><th>Topic</th><th>Remember</th></tr>
+<tr><td>Sein</td><td>bin, bist, ist, sind, seid, sind</td></tr>
+<tr><td>Haben</td><td>habe, hast, hat, haben, habt, haben</td></tr>
+<tr><td>Endings</td><td>-e, -st, -t, -en, -t, -en</td></tr>
+<tr><td>Word order</td><td>verb in 2nd position</td></tr>
+<tr><td>Articles</td><td>der / die / das; ein / eine</td></tr>
+<tr><td>Accusative</td><td>der → den, ein → einen</td></tr>
+<tr><td>Negation</td><td>kein + noun; nicht + everything else</td></tr>
+<tr><td>Nouns</td><td>always capitalised</td></tr>
+</table></div>
+<h3>8-week plan</h3>
+<div class="tw"><table>
+<tr><th>Week</th><th>Sections</th><th>Goal</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Read anything: ei ie eu sch ch</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Introduce yourself, learn words with articles</td></tr>
+<tr><td>3</td><td>4</td><td>Sein, haben, 10 verbs</td></tr>
+<tr><td>4</td><td>5</td><td>Questions, adjectives, prepositions</td></tr>
+<tr><td>5</td><td>6</td><td>Numbers, time, days</td></tr>
+<tr><td>6</td><td>7</td><td>Food, city</td></tr>
+<tr><td>7</td><td>8</td><td>Dialogues out loud</td></tr>
+<tr><td>8</td><td>Review</td><td>Talk about yourself for 3–5 minutes</td></tr>
+</table></div>
+<h3>Final test</h3>
+<div class="qz" data-title="A1 test">
+Ich ___ Student. (sein) | bin
+Du ___ Zeit. (haben) | hast
+Ich habe ___ Zeit. (no) | keine
+___ Haus (der/die/das) | das
+___ Frau (der/die/das) | die
+Kind → ___ (pl.) | Kinder
+Wo ___ du? (wohnen) | wohnst
+___ kostet das? (how much) | Wie viel
+5 | fünf
+Friday | Freitag
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Read any German word</label></li>
+<li><label><input type="checkbox"> Greet people and introduce myself</label></li>
+<li><label><input type="checkbox"> Conjugate sein, haben and regular verbs</label></li>
+<li><label><input type="checkbox"> Learn each noun with its article</label></li>
+<li><label><input type="checkbox"> Say numbers, days, months, time</label></li>
+<li><label><input type="checkbox"> Order a coffee and ask the way</label></li>
+</ul>
+</section>
+
+<footer>A self-study backbone for A1. Add real listening: podcasts, subtitled video, conversation with a native speaker.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>German</th><th>Pronunciation</th><th>English</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercise';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Answer: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Check</button><button type="button" data-act="show">Show answers</button><button type="button" data-act="reset">Reset</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' of '+tot+(ok===tot?'. All correct.':'. Check accents and articles.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^de[-_]DE/i.test(x.lang))||v.find(x=>/^de/i.test(x.lang))||('de'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='de-DE';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('deen1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('deen1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('deen1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('deen1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='deen1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Results: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">go to section</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">First 40 shown.</div>';
+    } else h+='<div class="mini">Nothing found. Search covers the foreign and English words in the vocabulary tables.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spanish A1: complete course</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="Home">&larr;</a>
+  <button id="menuBtn" aria-label="Contents">Contents</button>
+  <span class="brand">Spanish A1</span>
+  <input id="q" type="search" placeholder="Find a word" aria-label="Find a word">
+  <button id="uaBtn" title="Show or hide translations of examples and dialogues">Translation</button>
+  <button id="thBtn" title="Light or dark theme">Theme</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Contents"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Spanish A1</h1>
+  <p>A self-study Spanish course for English speakers: pronunciation, grammar, topic vocabulary, dialogues, texts and exercises. Tap a word or phrase to hear it.</p>
+  <p class="crumbs"><a href="index.html">&larr; Home</a><a href="es-en-a2.html">Level A2</a><a href="es-en-vpravy.html">Exercises</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Start" data-short="How to use this course">
+<h2><span class="no">Section 0</span>How to use this course</h2>
+<p class="lead">Spanish is one of the friendliest languages for an English speaker: the spelling is almost perfectly phonetic, the vocabulary overlaps heavily with English, and the grammar is regular. This course takes you to A1: introductions, family, food, directions, shopping, time and everyday matters.</p>
+<h3>What is on your side</h3>
+<ul>
+<li><b>Spelling matches sound.</b> Five clean vowels, no silent surprises except the letter <span class="fr">h</span>.</li>
+<li><b>Thousands of cognates:</b> <span class="fr">hotel, hospital, familia, importante, restaurante, teléfono, animal, chocolate</span>.</li>
+<li><b>Stress is predictable</b> and an accent mark shows every exception.</li>
+<li><b>Regular verbs</b> fall into three groups (-ar, -er, -ir) with predictable endings.</li>
+</ul>
+<div class="warn"><b>What will be new.</b> Nouns have gender (<span class="fr">el libro, la mesa</span>), adjectives agree with them, and verb endings show the person, so subject pronouns are usually dropped. Spanish also has two verbs "to be": <span class="fr">ser</span> and <span class="fr">estar</span>.</div>
+<div class="tip"><b class="t">Main tip.</b> Learn phrases, not isolated words: not "<span class="fr">beber</span> = to drink", but "<span class="fr">bebo agua</span> = I drink water". Gender and endings then come by themselves.</div>
+<div class="warn"><b>False friends.</b> <span class="fr">embarazada</span> = pregnant (not embarrassed), <span class="fr">actualmente</span> = currently, <span class="fr">librería</span> = bookshop (not library: <span class="fr">biblioteca</span>), <span class="fr">éxito</span> = success (not exit: <span class="fr">salida</span>), <span class="fr">constipado</span> = having a cold, <span class="fr">sensible</span> = sensitive, <span class="fr">realizar</span> = to carry out, <span class="fr">asistir</span> = to attend, <span class="fr">pretender</span> = to try to, <span class="fr">suceso</span> = event.</div>
+<h3>How to work</h3>
+<ol>
+<li>Read the explanations and tap words to hear them.</li>
+<li>Do the exercises here and on the Exercises page.</li>
+<li>20–30 minutes a day. The plan is in section 12.</li>
+</ol>
+<div class="tip"><b class="t">About the pronunciation column.</b> It is a simple English-style respelling. It is approximate, so rely on the audio. "kh" is the Scottish <i>loch</i> (Spanish <span class="fr">j</span>), "th" is as in <i>think</i> (Spain; in Latin America it is "s"), "ny" is the sound in <i>canyon</i>. Stressed syllables are in capitals only where it helps.</div>
+</section>
+
+<section class="unit" id="u1" data-short="Sounds and alphabet">
+<h2><span class="no">Section 1</span>Sounds and alphabet</h2>
+<p class="lead">The alphabet is the English one plus <span class="fr">ñ</span>. Each vowel has one steady sound, and Spanish vowels are pure and short, with no "glide" like English <i>go</i> or <i>day</i>.</p>
+<h3>1.1. Vowels</h3>
+<div class="tw"><table>
+<tr><th>Letter</th><th>Sound</th><th>Example</th></tr>
+<tr><td><span class="fr">a</span></td><td>"a" in <i>father</i></td><td><span class="fr">casa</span></td></tr>
+<tr><td><span class="fr">e</span></td><td>"e" in <i>bed</i> (no glide)</td><td><span class="fr">mesa</span></td></tr>
+<tr><td><span class="fr">i</span></td><td>"ee" in <i>see</i>, short</td><td><span class="fr">sí, vino</span></td></tr>
+<tr><td><span class="fr">o</span></td><td>"o" in <i>port</i>, short, no glide</td><td><span class="fr">como</span></td></tr>
+<tr><td><span class="fr">u</span></td><td>"oo" in <i>moon</i>, short; silent after q and in gue, gui</td><td><span class="fr">luna, que</span></td></tr>
+</table></div>
+<h3>1.2. Consonants that differ from English</h3>
+<div class="tw"><table>
+<tr><th>Letter</th><th>Sound</th><th>Example</th></tr>
+<tr><td><span class="fr">h</span></td><td>always silent</td><td><span class="fr">hola, hotel</span></td></tr>
+<tr><td><span class="fr">j; g before e, i</span></td><td>"kh" as in <i>loch</i> (a strong h)</td><td><span class="fr">jamón, gente</span></td></tr>
+<tr><td><span class="fr">g before a, o, u</span></td><td>hard "g" as in <i>go</i></td><td><span class="fr">gato, amigo</span></td></tr>
+<tr><td><span class="fr">gu before e, i</span></td><td>hard "g" (u silent)</td><td><span class="fr">guitarra</span></td></tr>
+<tr><td><span class="fr">c before a, o, u; qu</span></td><td>"k"</td><td><span class="fr">casa, queso</span></td></tr>
+<tr><td><span class="fr">c before e, i; z</span></td><td>"th" (Spain) or "s" (Latin America)</td><td><span class="fr">cena, zapato</span></td></tr>
+<tr><td><span class="fr">ll</span></td><td>like "y" in <i>yes</i> (varies by region)</td><td><span class="fr">llamo, calle</span></td></tr>
+<tr><td><span class="fr">ñ</span></td><td>"ny" as in <i>canyon</i></td><td><span class="fr">español, año</span></td></tr>
+<tr><td><span class="fr">v</span></td><td>the same as "b" (soft between vowels)</td><td><span class="fr">vino, vaca</span></td></tr>
+<tr><td><span class="fr">r, rr</span></td><td>r: a single tap like the "tt" in <i>butter</i>; rr (and initial r): rolled</td><td><span class="fr">pero, perro, rojo</span></td></tr>
+<tr><td><span class="fr">d</span></td><td>soft, like "th" in <i>this</i>, between vowels</td><td><span class="fr">todo</span></td></tr>
+<tr><td><span class="fr">y</span></td><td>"y" in <i>yes</i>; alone, "ee"</td><td><span class="fr">yo, y</span></td></tr>
+<tr><td><span class="fr">x</span></td><td>"ks"; "kh" in Mexico, México</td><td><span class="fr">taxi</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Stress rules (only two!)</b><p>1. Words ending in a <b>vowel, -n or -s</b> are stressed on the <b>second-to-last</b> syllable: <span class="fr">ha-BLAR, ca-SA, ha-BLAN</span>. 2. Other words are stressed on the <b>last</b> syllable: <span class="fr">es-pa-ÑOL, ciu-DAD</span>. 3. Any exception carries an <b>accent mark</b> where the stress falls: <span class="fr">teléfono, está, canción</span>.</p></div>
+<div class="tip"><b class="t">Questions and exclamations.</b> Spanish opens them with an inverted mark: <span class="fr">¿Cómo estás?</span> <span class="fr">¡Hola!</span> The accent also marks question words: <span class="fr">qué, cómo, dónde, cuándo</span>.</div>
+<div class="exs">
+Hola, ¿cómo estás? | ohlah kohmoh ehstahs | Hi, how are you?
+Buenos días, gracias. | bwehnohs deeahs grahthyahs | Good morning, thank you.
+Muy bien, ¿y tú? | mooee byehn ee too | Very well, and you?
+Hablo un poco de español. | ahbloh oon pohkoh deh ehspahnyohl | I speak a little Spanish.
+El perro rojo corre rápido. | ehl pehrroh rohkhoh kohrreh rahpeedoh | The red dog runs fast.
+</div>
+<div class="qz" data-title="Exercise 1. Read and write">
+[OH-la] — hello | hola
+[AH-mee-go] — a friend | amigo
+[es-pan-YOL] — a language | español
+[KEH-so] — made from milk | queso
+[GRAH-thyas] — thanks | gracias
+[KAH-yeh] — a street | calle
+[PEH-ro] — but | pero
+[AH-nyo] — twelve months | año
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Greetings and introductions">
+<h2><span class="no">Section 2</span>Greetings and introductions</h2>
+<p class="lead">Spanish has an informal <span class="fr">tú</span> and a polite <span class="fr">usted</span> (with the third-person verb). In Latin America and parts of Spain, <span class="fr">ustedes</span> is also used for the plural "you".</p>
+<div class="vocab">
+# Greetings
+Hola | ohlah | hello, hi
+Buenos días | bwehnohs deeahs | good morning
+Buenas tardes | bwehnahs tahrdehs | good afternoon
+Buenas noches | bwehnahs nohchehs | good evening, good night
+Adiós | ahdyohs | goodbye
+Hasta luego | ahstah lwehgoh | see you later
+Hasta mañana | ahstah mahnyahnah | see you tomorrow
+# Politeness
+Gracias | grahthyahs | thank you
+Por favor | pohr fahbohr | please
+De nada | deh nahdah | you're welcome
+Perdón | pehrdohn | sorry, excuse me
+Sí | see | yes
+No | noh | no
+Quizás | keethahs | maybe
+</div>
+<h3>2.1. Introducing yourself</h3>
+<div class="exs">
+Me llamo Michael. | meh yahmoh meechahehl | My name is Michael.
+¿Cómo te llamas? | kohmoh teh yahmahs | What's your name?
+Mucho gusto. | moochoh goostoh | Nice to meet you.
+¿De dónde eres? | deh dohndeh ehrehs | Where are you from?
+Soy de Inglaterra. | soy deh eenglahtehrrah | I am from England.
+Tengo treinta años. | tehngoh trayntah ahnyohs | I am thirty years old.
+Vivo en Londres. | beeboh ehn lohndrehs | I live in London.
+Soy profesor. | soy prohfehsohr | I am a teacher.
+¿Hablas inglés? | ahblahs eenglehs | Do you speak English?
+No entiendo. | noh ehntyehndoh | I don't understand.
+¿Puede repetir, por favor? | pwehdeh rehpehteer pohr fahbohr | Can you repeat, please?
+</div>
+<h3>2.2. Pronouns</h3>
+<div class="tw"><table>
+<tr><th>Person</th><th>Spanish</th><th>English</th></tr>
+<tr><td>1st sing.</td><td><span class="fr">yo</span></td><td>I</td></tr>
+<tr><td>2nd sing.</td><td><span class="fr">tú</span></td><td>you (informal)</td></tr>
+<tr><td>3rd sing.</td><td><span class="fr">él / ella</span></td><td>he / she</td></tr>
+<tr><td>polite</td><td><span class="fr">usted</span></td><td>you (formal)</td></tr>
+<tr><td>1st pl.</td><td><span class="fr">nosotros / nosotras</span></td><td>we (m / f)</td></tr>
+<tr><td>2nd pl.</td><td><span class="fr">vosotros / vosotras</span></td><td>you (pl., Spain)</td></tr>
+<tr><td>3rd pl.</td><td><span class="fr">ellos / ellas, ustedes</span></td><td>they; you (pl., formal / Latin America)</td></tr>
+</table></div>
+<div class="tip"><b class="t">Pronouns are usually dropped.</b> The ending tells you the person: <span class="fr">Soy profesor</span> is enough. You add <span class="fr">yo</span> only for emphasis or contrast.</div>
+<div class="qz" data-title="Exercise 2. Greetings">
+Good morning! | Buenos días
+Thank you! | Gracias
+Please | Por favor
+You're welcome | De nada
+Goodbye! | Adiós
+My name is Anna. | Me llamo Anna
+Nice to meet you. | Mucho gusto
+I don't understand. | No entiendo
+Hello! | Hola
+See you tomorrow | Hasta mañana
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Nouns and gender">
+<h2><span class="no">Section 3</span>Nouns, gender and articles</h2>
+<p class="lead">Every noun is masculine <span class="fr m">m</span> (blue) or feminine <span class="fr f">f</span> (red). The article shows the gender: <span class="fr">el</span> / <span class="fr">un</span> for masculine, <span class="fr">la</span> / <span class="fr">una</span> for feminine.</p>
+<h3>3.1. Gender from the ending</h3>
+<div class="tw"><table>
+<tr><th>Gender</th><th>Typical ending</th><th>Examples</th></tr>
+<tr><td><span class="fr m">m</span></td><td>-o, -or, -aje</td><td><span class="fr">el libro, el amor, el viaje</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td>-a, -ción, -sión, -dad, -tad</td><td><span class="fr">la casa, la canción, la ciudad</span></td></tr>
+<tr><td>exceptions</td><td></td><td><span class="fr">el día, el mapa, el problema, la mano</span></td></tr>
+</table></div>
+<h3>3.2. Articles and plurals</h3>
+<div class="tw"><table>
+<tr><th></th><th>m sing.</th><th>f sing.</th><th>m pl.</th><th>f pl.</th></tr>
+<tr><td>the</td><td><span class="fr">el</span></td><td><span class="fr">la</span></td><td><span class="fr">los</span></td><td><span class="fr">las</span></td></tr>
+<tr><td>a, some</td><td><span class="fr">un</span></td><td><span class="fr">una</span></td><td><span class="fr">unos</span></td><td><span class="fr">unas</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Plural</b><p>Vowel + <span class="fr">-s</span>: <span class="fr">libro → libros</span>. Consonant + <span class="fr">-es</span>: <span class="fr">ciudad → ciudades</span>. Final <span class="fr">z → ces</span>: <span class="fr">lápiz → lápices</span>. The plural of a mixed group is masculine: <span class="fr">los hijos</span> = sons or children.</p></div>
+<div class="exs">
+Es un libro. | ehs oon leebroh | It is a book.
+La casa es grande. | lah kahsah ehs grahndeh | The house is big.
+Tengo un hermano y una hermana. | tehngoh oon ehrmahnoh ee oonah ehrmahnah | I have a brother and a sister.
+Los niños juegan. | lohs neenyohs khwehgahn | The children play.
+Veo las casas. | behoh lahs kahsahs | I see the houses.
+</div>
+<div class="vocab">
+# Family
+la familia | lah fahmeelyah | family | f
+la madre / mamá | lah mahdreh / mahmah | mother / mum | f
+el padre / papá | ehl pahdreh / pahpah | father / dad | m
+el hermano | ehl ehrmahnoh | brother | m
+la hermana | lah ehrmahnah | sister | f
+el hijo | ehl eekhoh | son | m
+la hija | lah eekhah | daughter | f
+la abuela | lah ahbwehlah | grandmother | f
+el abuelo | ehl ahbwehloh | grandfather | m
+el marido / esposo | ehl mahreedoh / ehspohsoh | husband | m
+la mujer / esposa | lah mookhehr / ehspohsah | wife | f
+el niño / la niña | ehl neenyoh / lah neenyah | child (boy / girl) | m
+# Things
+la casa | lah kahsah | house | f
+el piso | ehl peesoh | flat | m
+la habitación | lah ahbeetahthyohn | room | f
+la cocina | lah kohtheenah | kitchen | f
+la mesa | lah mehsah | table | f
+la silla | lah seeyah | chair | f
+la ventana | lah behntahnah | window | f
+la puerta | lah pwehrtah | door | f
+la cama | lah kahmah | bed | f
+el coche | ehl kohcheh | car | m
+el teléfono | ehl tehlehfohnoh | phone | m
+el libro | ehl leebroh | book | m
+</div>
+<div class="qz" data-title="Exercise 3. Gender and forms">
+family | la familia
+brother | el hermano
+sister | la hermana
+house | la casa
+table | la mesa
+book | el libro
+kitchen | la cocina
+car | el coche
+___ casa (the) | la
+___ libro (the) | el
+___ mesa (a) | una
+___ libro (a) | un
+libro → ___ (pl.) | libros
+ciudad → ___ (pl.) | ciudades
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Verbs" data-short="Ser, estar, tener">
+<h2><span class="no">Section 4</span>The verbs <span class="fr">ser</span>, <span class="fr">estar</span> and <span class="fr">tener</span></h2>
+<div class="cj" data-verb="ser" data-note="to be (what something is)" data-ipa="sehr">
+yo | soy | soy
+tú | eres | ehrehs
+él / ella / usted | es | ehs
+nosotros | somos | sohmohs
+vosotros | sois | soys
+ellos / ustedes | son | sohn
+</div>
+<div class="cj" data-verb="estar" data-note="to be (where / how)" data-ipa="es-TAR">
+yo | estoy | ehstoy
+tú | estás | ehstahs
+él / ella / usted | está | ehstah
+nosotros | estamos | ehstahmohs
+vosotros | estáis | ehsteyes
+ellos / ustedes | están | ehstahn
+</div>
+<div class="cj" data-verb="tener" data-note="to have" data-ipa="teh-NEHR">
+yo | tengo | tehngoh
+tú | tienes | tyehnehs
+él / ella / usted | tiene | tyehneh
+nosotros | tenemos | tehnehmohs
+vosotros | tenéis | tehnays
+ellos / ustedes | tienen | tyehnehn
+</div>
+<div class="rule"><b class="t">Ser or estar?</b><p><span class="fr">Ser</span> = identity and lasting qualities: <span class="fr">Soy profesor. Es alto. Es de Madrid.</span> <span class="fr">Estar</span> = location and temporary state: <span class="fr">Estoy en casa. Estoy cansado. ¿Cómo estás?</span></p></div>
+<div class="exs">
+Soy estudiante. | soy ehstoodyahnteh | I am a student.
+Estoy cansado. | ehstoy kahnsahdoh | I am tired.
+Estamos en casa. | ehstahmohs ehn kahsah | We are at home.
+Tengo un hermano. | tehngoh oon ehrmahnoh | I have a brother.
+¿Tienes tiempo? | tyehnehs tyehmpoh | Do you have time?
+No tengo tiempo. | noh tehngoh tyehmpoh | I have no time.
+</div>
+<div class="rule"><b class="t">Negation</b><p>Put <span class="fr">no</span> before the verb: <span class="fr">No soy. No tengo.</span> Double negatives are normal: <span class="fr">No tengo nada.</span> (I have nothing.) <span class="fr">No viene nadie.</span></p></div>
+<h3>4.1. Regular verbs</h3>
+<div class="tw"><table>
+<tr><th>Person</th><th>-ar (hablar)</th><th>-er (comer)</th><th>-ir (vivir)</th></tr>
+<tr><td>yo</td><td>hablo</td><td>como</td><td>vivo</td></tr>
+<tr><td>tú</td><td>hablas</td><td>comes</td><td>vives</td></tr>
+<tr><td>él / ella</td><td>habla</td><td>come</td><td>vive</td></tr>
+<tr><td>nosotros</td><td>hablamos</td><td>comemos</td><td>vivimos</td></tr>
+<tr><td>vosotros</td><td>habláis</td><td>coméis</td><td>vivís</td></tr>
+<tr><td>ellos</td><td>hablan</td><td>comen</td><td>viven</td></tr>
+</table></div>
+<div class="vocab">
+hablar | ahblahr | to speak | hablo
+vivir | beebeer | to live | vivo
+trabajar | trahbahkhahr | to work | trabajo
+estudiar | ehstoodyahr | to study | estudio
+comer | kohmehr | to eat | como
+beber | behbehr | to drink | bebo
+leer | lehehr | to read | leo
+escribir | ehskreebeer | to write | escribo
+comprar | kohmprahr | to buy | compro
+ver | behr | to see | veo
+querer | kehrehr | to want | quiero
+ir | eer | to go | voy
+hacer | ahthehr | to do, make | hago
+gustar | goostahr | to be pleasing | me gusta
+</div>
+<div class="cj" data-verb="querer" data-note="to want (e → ie)" data-ipa="keh-REHR">
+yo | quiero | kyehroh
+tú | quieres | kyehrehs
+él / ella / usted | quiere | kyehreh
+nosotros | queremos | kehrehmohs
+vosotros | queréis | kehrays
+ellos / ustedes | quieren | kyehrehn
+</div>
+<div class="cj" data-verb="ir" data-note="to go (irregular)" data-ipa="eer">
+yo | voy | boy
+tú | vas | bahs
+él / ella / usted | va | bah
+nosotros | vamos | bahmohs
+vosotros | vais | beyes
+ellos / ustedes | van | bahn
+</div>
+<div class="tip"><b class="t">One present tense.</b> <span class="fr">Trabajo</span> means "I work" and "I am working". To say "I like", Spanish says "it is pleasing to me": <span class="fr">Me gusta el café. Me gustan los libros.</span></div>
+<div class="qz" data-title="Exercise 4. Conjugation">
+Yo ___ estudiante. (ser) | soy
+Tú ___ de Inglaterra. (ser) | eres
+Nosotros ___ amigos. (ser) | somos
+Yo ___ cansado. (estar) | estoy
+Ella ___ en casa. (estar) | está
+Yo ___ un hermano. (tener) | tengo
+Tú ___ tiempo. (tener) | tienes
+Yo ___ en Londres. (vivir) | vivo
+Tú ___ español. (hablar) | hablas
+Él ___ en un banco. (trabajar) | trabaja
+Nosotros ___ a casa. (ir) | vamos
+Yo ___ un café. (querer) | quiero
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Language in action" data-short="Questions, adjectives">
+<h2><span class="no">Section 5</span>Questions, adjectives, prepositions</h2>
+<div class="vocab">
+quién | kyehn | who
+qué | keh | what
+dónde | dohndeh | where
+adónde | ahdohndeh | where to
+de dónde | deh dohndeh | where from
+cuándo | kwahndoh | when
+cómo | kohmoh | how
+por qué | pohr keh | why
+cuánto | kwahntoh | how much
+cuál | kwahl | which
+</div>
+<div class="exs">
+¿Quién es? | kyehn ehs | Who is it?
+¿Qué haces? | keh ahthehs | What are you doing?
+¿Dónde vives? | dohndeh beebehs | Where do you live?
+¿Adónde vas? | ahdohndeh bahs | Where are you going?
+¿Cuánto cuesta? | kwahntoh kwehstah | How much does it cost?
+¿Cómo te llamas? | kohmoh teh yahmahs | What's your name?
+</div>
+<div class="rule"><b class="t">Questions</b><p>A yes/no question is a statement with a rising intonation, often with the subject after the verb: <span class="fr">¿Tienes tiempo?</span> There is no "do". <span class="fr">¿Hablas español?</span> = Do you speak Spanish?</p></div>
+<h3>5.1. Adjectives</h3>
+<p>Adjectives agree with the noun in gender and number, and usually <b>follow</b> the noun: <span class="fr">una casa grande</span>.</p>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th><th>pl.</th></tr>
+<tr><td>new</td><td><span class="fr">un libro nuevo</span></td><td><span class="fr">una casa nueva</span></td><td><span class="fr">libros nuevos</span></td></tr>
+<tr><td>big</td><td><span class="fr">un coche grande</span></td><td><span class="fr">una casa grande</span></td><td><span class="fr">casas grandes</span></td></tr>
+<tr><td>good</td><td><span class="fr">un buen día</span></td><td><span class="fr">una buena idea</span></td><td><span class="fr">buenos días</span></td></tr>
+</table></div>
+<div class="vocab">
+nuevo | nwehboh | new
+viejo | byehkhoh | old
+grande | grahndeh | big
+pequeño | pehkehnyoh | small
+bueno | bwehnoh | good
+malo | mahloh | bad
+bonito | bohneetoh | pretty
+caro | kahroh | expensive
+barato | bahrahtoh | cheap
+simpático | seempahteekoh | nice
+cansado | kahnsahdoh | tired
+</div>
+<h3>5.2. Possessives</h3>
+<div class="tw"><table>
+<tr><th>Whose</th><th>sing.</th><th>pl.</th></tr>
+<tr><td>my</td><td><span class="fr">mi</span></td><td><span class="fr">mis</span></td></tr>
+<tr><td>your</td><td><span class="fr">tu</span></td><td><span class="fr">tus</span></td></tr>
+<tr><td>his, her, your (formal)</td><td><span class="fr">su</span></td><td><span class="fr">sus</span></td></tr>
+<tr><td>our</td><td><span class="fr">nuestro / nuestra</span></td><td><span class="fr">nuestros / nuestras</span></td></tr>
+</table></div>
+<h3>5.3. Prepositions</h3>
+<div class="tw"><table>
+<tr><th>Preposition</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><span class="fr">en</span></td><td>in, on, at</td><td><span class="fr">en Madrid, en la mesa</span></td></tr>
+<tr><td><span class="fr">a</span></td><td>to, at (time)</td><td><span class="fr">voy a casa, a las ocho</span></td></tr>
+<tr><td><span class="fr">de</span></td><td>of, from</td><td><span class="fr">soy de Inglaterra</span></td></tr>
+<tr><td><span class="fr">con</span></td><td>with</td><td><span class="fr">café con leche</span></td></tr>
+<tr><td><span class="fr">sin</span></td><td>without</td><td><span class="fr">café sin azúcar</span></td></tr>
+<tr><td><span class="fr">para</span></td><td>for, in order to</td><td><span class="fr">un regalo para mamá</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Contractions.</b> <span class="fr">a + el = al</span> (<span class="fr">voy al cine</span>), <span class="fr">de + el = del</span> (<span class="fr">el libro del profesor</span>).</div>
+<div class="exs">
+Voy al colegio. | boy ahl kohlehkhyoh | I'm going to school.
+Estoy en el colegio. | ehstoy ehn ehl kohlehkhyoh | I'm at school.
+Vivo en Madrid. | beeboh ehn mahdreed | I live in Madrid.
+El libro está en la mesa. | ehl leebroh ehstah ehn lah mehsah | The book is on the table.
+Café sin azúcar. | kahfeh seen ahthookahr | Coffee without sugar.
+Este es mi hermano. | ehsteh ehs mee ehrmahnoh | This is my brother.
+</div>
+<div class="qz" data-title="Exercise 5. Language in action">
+¿___ es? (who) | Quién
+¿___ haces? (what) | Qué
+¿___ vives? (where) | Dónde
+¿___ cuesta? (how much) | Cuánto
+Una casa ___ . (big, f.) | grande
+Un libro ___ . (new, m.) | nuevo
+Una casa ___ . (new, f.) | nueva
+Vivo ___ Madrid. (in) | en
+Soy ___ Inglaterra. (from) | de
+Café ___ azúcar. (without) | sin
+Café ___ leche. (with) | con
+Voy ___ cine. (to the) | al
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Numbers, time, dates">
+<h2><span class="no">Section 6</span>Numbers, time and dates</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">cero</span></td><td>1 <span class="fr">uno</span></td><td>2 <span class="fr">dos</span></td><td>3 <span class="fr">tres</span></td></tr>
+<tr><td>4 <span class="fr">cuatro</span></td><td>5 <span class="fr">cinco</span></td><td>6 <span class="fr">seis</span></td><td>7 <span class="fr">siete</span></td></tr>
+<tr><td>8 <span class="fr">ocho</span></td><td>9 <span class="fr">nueve</span></td><td>10 <span class="fr">diez</span></td><td>11 <span class="fr">once</span></td></tr>
+<tr><td>12 <span class="fr">doce</span></td><td>20 <span class="fr">veinte</span></td><td>30 <span class="fr">treinta</span></td><td>40 <span class="fr">cuarenta</span></td></tr>
+<tr><td>50 <span class="fr">cincuenta</span></td><td>100 <span class="fr">cien</span></td><td>200 <span class="fr">doscientos</span></td><td>1000 <span class="fr">mil</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Compound numbers</b><p>From 31 they are separate words with <span class="fr">y</span>: 31 = <span class="fr">treinta y uno</span>, 45 = <span class="fr">cuarenta y cinco</span>. 16–29 are one word: <span class="fr">dieciséis, veintiuno</span>. <span class="fr">Uno</span> becomes <span class="fr">un / una</span> before a noun: <span class="fr">un libro, una casa</span>.</p></div>
+<div class="vocab">
+# Days
+lunes | loonehs | Monday
+martes | mahrtehs | Tuesday
+miércoles | myehrkohlehs | Wednesday
+jueves | khwehbehs | Thursday
+viernes | byehrnehs | Friday
+sábado | sahbahdoh | Saturday
+domingo | dohmeengoh | Sunday
+# Months
+enero | ehnehroh | January
+febrero | fehbrehroh | February
+marzo | mahrthoh | March
+abril | ahbreel | April
+mayo | meyeoh | May
+junio | khoonyoh | June
+julio | khoolyoh | July
+agosto | ahgohstoh | August
+septiembre | sehptyehmbreh | September
+octubre | ohktoobreh | October
+noviembre | nohbyehmbreh | November
+diciembre | deethyehmbreh | December
+# Time
+hoy | oy | today
+mañana | mahnyahnah | tomorrow
+ayer | eyeehr | yesterday
+por la mañana | pohr lah mahnyahnah | in the morning
+por la tarde | pohr lah tahrdeh | in the afternoon
+por la noche | pohr lah nohcheh | at night
+ahora | ahohrah | now
+</div>
+<div class="exs">
+¿Qué hora es? | keh ohrah ehs | What time is it?
+Son las cinco. | sohn lahs theenkoh | It is five o'clock.
+Es la una. | ehs lah oonah | It is one o'clock.
+¿A qué hora? | ah keh ohrah | At what time?
+A las ocho. | ah lahs ohchoh | At eight o'clock.
+Hoy es lunes. | oy ehs loonehs | Today is Monday.
+Son las tres y media. | sohn lahs trehs ee mehdyah | It is half past three.
+</div>
+<div class="qz" data-title="Exercise 6. Numbers and days">
+2 | dos
+3 | tres
+5 | cinco
+10 | diez
+20 | veinte
+100 | cien
+Monday | lunes
+Friday | viernes
+Sunday | domingo
+October | octubre
+tomorrow | mañana
+yesterday | ayer
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Words and dialogues" data-short="Food, city, shopping">
+<h2><span class="no">Section 7</span>Food, the city and shopping</h2>
+<div class="vocab">
+# Food
+el pan | ehl pahn | bread | m
+la mantequilla | lah mahntehkeeyah | butter | f
+el queso | ehl kehsoh | cheese | m
+la carne | lah kahrneh | meat | f
+el pescado | ehl pehskahdoh | fish | m
+el huevo | ehl wehboh | egg | m
+la sopa | lah sohpah | soup | f
+el arroz | ehl ahrrohth | rice | m
+la patata | lah pahtahtah | potato | f
+la manzana | lah mahnthahnah | apple | f
+el azúcar | ehl ahthookahr | sugar | m
+la sal | lah sahl | salt | f
+# Drinks
+el agua | ehl ahgwah | water | f
+la leche | lah lehcheh | milk | f
+el café | ehl kahfeh | coffee | m
+el té | ehl teh | tea | m
+el zumo | ehl thoomoh | juice | m
+la cerveza | lah thehrbehthah | beer | f
+el vino | ehl beenoh | wine | m
+# City
+la estación | lah ehstahthyohn | station | f
+correos | kohrrehohs | post office | pl
+el banco | ehl bahnkoh | bank | m
+el hospital | ehl ohspeetahl | hospital | m
+la farmacia | lah fahrmahthyah | pharmacy | f
+la tienda | lah tyehndah | shop | f
+la calle | lah kahyeh | street | f
+el puente | ehl pwehnteh | bridge | m
+el parque | ehl pahrkeh | park | m
+</div>
+<div class="exs">
+Un café, por favor. | oon kahfeh pohr fahbohr | A coffee, please.
+La cuenta, por favor. | lah kwehntah pohr fahbohr | The bill, please.
+¡Buen provecho! | bwehn prohbehchoh | Enjoy your meal!
+¿Cuánto cuesta? | kwahntoh kwehstah | How much is that?
+Es caro. | ehs kahroh | That is expensive.
+¿Puedo pagar con tarjeta? | pwehdoh pahgahr kohn tahrkhehtah | Can I pay by card?
+¿Dónde está la estación? | dohndeh ehstah lah ehstahthyohn | Where is the station?
+Siga todo recto y luego a la izquierda. | seegah tohdoh rehktoh ee lwehgoh ah lah eethkyehrdah | Go straight, then left.
+Tengo hambre. | tehngoh ahmbreh | I am hungry.
+</div>
+<div class="qz" data-title="Exercise 7. Café and city">
+A coffee, please. | Un café, por favor
+The bill, please. | La cuenta, por favor
+Enjoy your meal! | Buen provecho
+How much is that? | Cuánto cuesta
+Where is the station? | Dónde está la estación
+That is expensive. | Es caro
+I am hungry. | Tengo hambre
+bread | el pan
+milk | la leche
+station | la estación
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Dialogues">
+<h2><span class="no">Section 8</span>Everyday dialogues</h2>
+<div class="dg">
+# 1. En la cafetería (in a café)
+Camarero: Buenos días. ¿Qué desea? | Good morning. What would you like?
+Cliente: Un café y un trozo de tarta, por favor. | A coffee and a piece of cake, please.
+Camarero: ¿Con leche? | With milk?
+Cliente: No, gracias. Sin leche. | No, thanks. Without milk.
+Camarero: Aquí tiene. Buen provecho. | Here you are. Enjoy.
+Cliente: Gracias. ¿Puedo pagar con tarjeta? | Thanks. Can I pay by card?
+# 2. En la estación (at the station)
+Viajero: Buenas tardes, un billete a Sevilla, por favor. | Good afternoon, a ticket to Seville, please.
+Taquillera: ¿Solo ida o ida y vuelta? | One way or return?
+Viajero: Solo ida. ¿A qué hora sale el tren? | One way. What time does the train leave?
+Taquillera: A las diez y cuarto. | At a quarter past ten.
+Viajero: ¿Cuánto cuesta el billete? | How much is the ticket?
+Taquillera: Cincuenta euros. | Fifty euros.
+# 3. Preguntamos el camino (asking the way)
+Turista: Perdone, ¿dónde está el museo? | Excuse me, where is the museum?
+Mujer: Siga todo recto y luego a la derecha. | Go straight and then right.
+Turista: ¿Está lejos? | Is it far?
+Mujer: No, a cinco minutos andando. | No, five minutes on foot.
+Turista: Muchas gracias. | Thank you very much.
+Mujer: De nada. | You're welcome.
+# 4. Nos conocemos (getting acquainted)
+Pedro: Hola, me llamo Pedro. ¿Y tú? | Hi, I'm Pedro. And you?
+Anna: Me llamo Anna. Mucho gusto. | I'm Anna. Nice to meet you.
+Pedro: ¿De dónde eres? | Where are you from?
+Anna: Soy de Inglaterra, de Londres. | I'm from England, from London.
+Pedro: ¡Hablas muy bien español! | You speak Spanish very well!
+Anna: Gracias, todavía estoy aprendiendo. | Thanks, I'm still learning.
+</div>
+<div class="qz" data-title="Exercise 8. Phrases from the dialogues">
+What would you like? | Qué desea
+A coffee, please. | Un café, por favor
+A ticket to Seville. | Un billete a Sevilla
+Where is the museum? | Dónde está el museo
+Five minutes on foot. | A cinco minutos andando
+You're welcome. | De nada
+My name is Anna. | Me llamo Anna
+I'm still learning. | Todavía estoy aprendiendo
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="A1 extension" data-short="More words">
+<h2><span class="no">Section 9</span>More words: work, body, clothes, weather, transport</h2>
+<div class="vocab">
+# Jobs
+el profesor | ehl prohfehsohr | teacher | m
+el médico | ehl mehdeekoh | doctor | m
+la enfermera | lah ehnfehrmehrah | nurse | f
+el ingeniero | ehl eenkhehnyehroh | engineer | m
+el conductor | ehl kohndooktohr | driver | m
+el dependiente | ehl dehpehndyehnteh | shop assistant | m
+el cocinero | ehl kohtheenehroh | cook, chef | m
+el estudiante | ehl ehstoodyahnteh | student | m
+el policía | ehl pohleetheeah | police officer | m
+el abogado | ehl ahbohgahdoh | lawyer | m
+# Body and health
+la cabeza | lah kahbehthah | head | f
+el ojo | ehl ohkhoh | eye | m
+la oreja | lah ohrehkhah | ear | f
+la nariz | lah nahreeth | nose | f
+la boca | lah bohkah | mouth | f
+la mano | lah mahnoh | hand | f
+el pie | ehl pyeh | foot | m
+la barriga | lah bahrreegah | stomach | f
+la espalda | lah ehspahldah | back | f
+el corazón | ehl kohrahthohn | heart | m
+Me duele la cabeza. | meh dwehleh lah kahbehthah | I have a headache. | 
+Estoy enfermo. | ehstoy ehnfehrmoh | I am ill. | 
+la fiebre | lah fyehbreh | fever | f
+la farmacia | lah fahrmahthyah | pharmacy | f
+la medicina | lah mehdeetheenah | medicine | f
+# Clothes
+la camisa | lah kahmeesah | shirt | f
+los pantalones | lohs pahntahlohnehs | trousers | pl
+el vestido | ehl behsteedoh | dress | m
+la chaqueta | lah chahkehtah | jacket | f
+los zapatos | lohs thahpahtohs | shoes | pl
+el jersey | ehl khehrsay | jumper | m
+la gorra | lah gohrrah | cap | f
+la talla | lah tahyah | size | f
+# Weather
+el tiempo | ehl tyehmpoh | weather | m
+el sol | ehl sohl | sun | m
+la lluvia | lah yoobyah | rain | f
+la nieve | lah nyehbeh | snow | f
+el viento | ehl byehntoh | wind | m
+hace frío | ahtheh freeoh | it is cold | adv
+hace calor | ahtheh kahlohr | it is hot | adv
+hace sol | ahtheh sohl | it is sunny | adv
+# Transport
+el autobús | ehl owtohboos | bus | m
+el tren | ehl trehn | train | m
+el metro | ehl mehtroh | underground | m
+el avión | ehl ahbyohn | plane | m
+la bicicleta | lah beetheeklehtah | bicycle | f
+el billete | ehl beeyehteh | ticket | m
+la parada | lah pahrahdah | stop | f
+el aeropuerto | ehl ahehrohpwehrtoh | airport | m
+# Home and hobbies
+el salón | ehl sahlohn | living room | m
+el baño | ehl bahnyoh | bathroom | m
+la nevera | lah nehbehrah | fridge | f
+el sofá | ehl sohfah | sofa | m
+la película | lah pehleekoolah | film | f
+la música | lah mooseekah | music | f
+el deporte | ehl dehpohrteh | sport | m
+cocinar | kohtheenahr | to cook | verb
+viajar | byahkhahr | to travel | verb
+</div>
+<div class="exs">
+Soy profesor. | soy prohfehsohr | I am a teacher.
+Trabajo como conductor. | trahbahkhoh kohmoh kohndooktohr | I work as a driver.
+Me duele la garganta. | meh dwehleh lah gahrgahntah | My throat hurts.
+¿Qué talla tienes? | keh tahyah tyehnehs | What size are you?
+Hoy hace frío. | oy ahtheh freeoh | It is cold today.
+Llueve. | ywehbeh | It is raining.
+¿Dónde está la parada? | dohndeh ehstah lah pahrahdah | Where is the stop?
+Me gusta cocinar. | meh goostah kohtheenahr | I like cooking.
+</div>
+<div class="qz" data-title="Exercise 9. New words">
+doctor | el médico
+teacher | el profesor
+head | la cabeza
+hand | la mano
+dress | el vestido
+rain | la lluvia
+snow | la nieve
+bus | el autobús
+train | el tren
+ticket | el billete
+airport | el aeropuerto
+It is raining. | Llueve
+I have a headache. | Me duele la cabeza
+It is cold today. | Hoy hace frío
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Modals, imperative">
+<h2><span class="no">Section 10</span>Modal verbs and the imperative</h2>
+<h3>10.1. Modal verbs</h3>
+<div class="tw"><table>
+<tr><th></th><th>poder (can)</th><th>deber (must, should)</th><th>querer (want)</th><th>saber (know how)</th></tr>
+<tr><td>yo</td><td>puedo</td><td>debo</td><td>quiero</td><td>sé</td></tr>
+<tr><td>tú</td><td>puedes</td><td>debes</td><td>quieres</td><td>sabes</td></tr>
+<tr><td>él / ella</td><td>puede</td><td>debe</td><td>quiere</td><td>sabe</td></tr>
+<tr><td>nosotros</td><td>podemos</td><td>debemos</td><td>queremos</td><td>sabemos</td></tr>
+<tr><td>vosotros</td><td>podéis</td><td>debéis</td><td>queréis</td><td>sabéis</td></tr>
+<tr><td>ellos</td><td>pueden</td><td>deben</td><td>quieren</td><td>saben</td></tr>
+</table></div>
+<div class="rule"><b class="t">Modal + infinitive</b><p>The main verb stays in the infinitive: <span class="fr">¿Puedo entrar? Quiero beber un café.</span> "Have to" is <span class="fr">tener que</span> + infinitive: <span class="fr">Tengo que trabajar.</span> A learned skill is <span class="fr">saber</span>: <span class="fr">Sé nadar.</span></p></div>
+<div class="exs">
+¿Puedo entrar? | pwehdoh ehntrahr | May I come in?
+Quiero beber un café. | kyehroh behbehr oon kahfeh | I want to drink a coffee.
+Hoy tengo que trabajar. | oy tehngoh keh trahbahkhahr | I have to work today.
+Ahora no puedo hablar. | ahohrah noh pwehdoh ahblahr | I can't talk now.
+¿Sabes cocinar? | sahbehs kohtheenahr | Can you cook?
+Aquí no se puede fumar. | ahkee noh seh pwehdeh foomahr | Smoking is not allowed here.
+Quisiera un té, por favor. | keesyehrah oon teh pohr fahbohr | I would like a tea, please.
+</div>
+<h3>10.2. The imperative</h3>
+<div class="tw"><table>
+<tr><th>Infinitive</th><th>tú</th><th>usted</th></tr>
+<tr><td>hablar</td><td>habla</td><td>hable</td></tr>
+<tr><td>comer</td><td>come</td><td>coma</td></tr>
+<tr><td>escribir</td><td>escribe</td><td>escriba</td></tr>
+<tr><td>venir</td><td>ven</td><td>venga</td></tr>
+<tr><td>ser</td><td>sé</td><td>sea</td></tr>
+<tr><td>esperar</td><td>espera</td><td>espere</td></tr>
+</table></div>
+<p>To forbid (tú): <span class="fr">no hables</span>, <span class="fr">no fumes</span> (the ending vowel switches: -a ↔ -e).</p>
+<div class="exs">
+¡Espera un momento! | ehspehrah oon mohmehntoh | Wait a moment!
+Venga aquí, por favor. | behngah ahkee pohr fahbohr | Please come here.
+Habla más despacio, por favor. | ahblah mahs dehspahthyoh pohr fahbohr | Speak more slowly, please.
+¡No fumes aquí! | noh foomehs ahkee | Don't smoke here!
+¡Ten cuidado! | tehn kweedahdoh | Be careful!
+</div>
+<div class="qz" data-title="Exercise 10. Modals and imperative">
+Yo ___ trabajar. (tener que) | tengo
+Tú ___ entrar. (poder) | puedes
+Él ___ un café. (querer) | quiere
+Nosotros ___ ir. (poder) | podemos
+___ nadar. (I can: saber) | Sé
+___ un té. (I would like) | Quisiera
+hablar → (tú!) ___ | habla
+comer → (tú!) ___ | come
+esperar → (tú!) ___ | espera
+ser → (tú!) ___ | sé
+___ fumes! (Don't) | No
+Aquí no se ___ fumar. (puede) | puede
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="More dialogues">
+<h2><span class="no">Section 11</span>Four more dialogues</h2>
+<div class="dg">
+# 1. En el médico (at the doctor's)
+Médico: Buenos días, ¿qué le pasa? | Good morning, what's the matter?
+Paciente: Me duele la cabeza y tengo fiebre. | I have a headache and a fever.
+Médico: ¿Desde cuándo? | Since when?
+Paciente: Desde hace dos días. | For two days.
+Médico: Tome estas pastillas y quédese en casa. | Take these tablets and stay at home.
+Paciente: Gracias, doctor. | Thank you, doctor.
+# 2. En una tienda de ropa (in a clothes shop)
+Dependienta: ¿En qué puedo ayudarle? | How can I help you?
+Cliente: Busco una chaqueta. | I'm looking for a jacket.
+Dependienta: ¿Qué talla usa? | What size are you?
+Cliente: La talla M. ¿Puedo probármela? | Size M. Can I try it on?
+Dependienta: Claro, los probadores están allí. | Of course, the fitting rooms are over there.
+Cliente: ¿Cuánto cuesta? | How much is it?
+Dependienta: Cuarenta euros. | Forty euros.
+# 3. En el hotel (at the hotel)
+Huésped: Buenas noches, tengo una reserva. | Good evening, I have a reservation.
+Recepcionista: ¿A nombre de quién? | In whose name?
+Huésped: Smith. Una habitación individual para tres noches. | Smith. A single room for three nights.
+Recepcionista: Aquí tiene la llave. El desayuno es de siete a diez. | Here is your key. Breakfast is from seven to ten.
+Huésped: ¿Hay wifi? | Is there Wi-Fi?
+Recepcionista: Sí, la contraseña está en la llave. | Yes, the password is on the key.
+# 4. Por teléfono (on the phone)
+Anna: ¿Diga? | Hello?
+Marcos: Hola Anna, soy Marcos. ¿Qué tal? | Hi Anna, it's Marcos. How are you?
+Anna: Bien, gracias. ¿Y tú? | Fine, thanks. And you?
+Marcos: También bien. ¿Tienes tiempo mañana por la noche? | Fine too. Are you free tomorrow evening?
+Anna: Sí, ¿por qué? | Yes, why?
+Marcos: ¿Vamos al cine? | Shall we go to the cinema?
+Anna: ¡Con mucho gusto! | Gladly!
+</div>
+<div class="qz" data-title="Exercise 11. Phrases from the dialogues">
+What's the matter? | Qué le pasa
+I have a headache. | Me duele la cabeza
+I'm looking for a jacket. | Busco una chaqueta
+What size are you? | Qué talla usa
+How much is it? | Cuánto cuesta
+I have a reservation. | Tengo una reserva
+Is there Wi-Fi? | Hay wifi
+Shall we go to the cinema? | Vamos al cine
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Cheat sheet, plan, test">
+<h2><span class="no">Section 12</span>Cheat sheet, plan and test</h2>
+<div class="tw"><table>
+<tr><th>Topic</th><th>Remember</th></tr>
+<tr><td>Ser</td><td>soy, eres, es, somos, sois, son</td></tr>
+<tr><td>Estar</td><td>estoy, estás, está, estamos, estáis, están</td></tr>
+<tr><td>Tener</td><td>tengo, tienes, tiene, tenemos, tenéis, tienen</td></tr>
+<tr><td>Stress</td><td>vowel / n / s: second-to-last; else last; accent = exception</td></tr>
+<tr><td>Articles</td><td>el, la, los, las; un, una</td></tr>
+<tr><td>Negation</td><td>no before the verb; double negatives</td></tr>
+<tr><td>Questions</td><td>¿…? with rising intonation; qué, dónde, cuándo</td></tr>
+<tr><td>Tú / usted</td><td>informal / polite</td></tr>
+</table></div>
+<h3>8-week plan</h3>
+<div class="tw"><table>
+<tr><th>Week</th><th>Sections</th><th>Goal</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Read anything: j, ll, ñ, h, z</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Introduce yourself, gender and articles</td></tr>
+<tr><td>3</td><td>4</td><td>Ser, estar, tener, 10 verbs</td></tr>
+<tr><td>4</td><td>5</td><td>Questions, adjectives, prepositions</td></tr>
+<tr><td>5</td><td>6</td><td>Numbers, time, days</td></tr>
+<tr><td>6</td><td>7</td><td>Food, city</td></tr>
+<tr><td>7</td><td>8</td><td>Dialogues out loud</td></tr>
+<tr><td>8</td><td>Review</td><td>Talk about yourself for 3–5 minutes</td></tr>
+</table></div>
+<h3>Final test</h3>
+<div class="qz" data-title="A1 test">
+Yo ___ estudiante. (ser) | soy
+Yo ___ cansado. (estar) | estoy
+Tú ___ tiempo. (tener) | tienes
+___ casa (the) | la
+Vivo ___ Madrid. (in) | en
+5 | cinco
+Friday | viernes
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Read any Spanish word</label></li>
+<li><label><input type="checkbox"> Greet people and introduce myself</label></li>
+<li><label><input type="checkbox"> Use ser, estar, tener and regular verbs</label></li>
+<li><label><input type="checkbox"> Recognise gender and use articles</label></li>
+<li><label><input type="checkbox"> Say numbers, days, months, time</label></li>
+<li><label><input type="checkbox"> Order a coffee and ask the way</label></li>
+</ul>
+</section>
+
+<footer>A self-study backbone for A1. Add real listening: podcasts, subtitled video, conversation with a native speaker.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Spanish</th><th>Pronunciation</th><th>English</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercise';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Answer: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Check</button><button type="button" data-act="show">Show answers</button><button type="button" data-act="reset">Reset</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' of '+tot+(ok===tot?'. All correct.':'. Check accents and articles.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^es[-_]ES/i.test(x.lang))||v.find(x=>/^es/i.test(x.lang))||('es'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='es-ES';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('esen1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('esen1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('esen1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('esen1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='esen1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Results: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">go to section</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">First 40 shown.</div>';
+    } else h+='<div class="mini">Nothing found. Search covers the foreign and English words in the vocabulary tables.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

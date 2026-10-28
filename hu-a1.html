@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Magyar A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Magyar A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Magyar A1</h1>
+  <p>Курс угорська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="hu-a2.html">Рівень A2</a><a href="hu-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Угорська (<span class="fr">magyar</span>) — мова Угорщини, а також угорських громад на Закарпатті, у Румунії, Словаччині, Сербії. Вона з уральської родини (близька до фінської й естонської), тому не схожа ні на слов'янські, ні на германські, ні на романські мови. Але для закарпатця це корисна мова: саме поруч, у Берегові, Ужгороді, Мукачеві її чути щодня. Цей курс веде до рівня A1.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Читається так, як пишеться.</b> Правила вимови стабільні, наголос завжди на першому складі.</li>
+<li><b>Немає роду.</b> Ні в іменників, ні в займенників: <span class="fr">ő</span> = він, вона, воно.</li>
+<li><b>Відмінки схожі за логікою на українські,</b> але замість закінчень-«злиттів» — прозорі суфікси: <span class="fr">ház</span> (дім), <span class="fr">házban</span> (у домі), <span class="fr">házba</span> (в дім).</li>
+<li><b>Слова-запозичення:</b> <span class="fr">telefon, taxi, bank, kávé, metró, szendvics</span>.</li>
+</ul>
+<div class="warn"><b>Пастки.</b> Дієслова <span class="fr">van</span> (є) у теперішньому часі в третій особі зазвичай опускають: <span class="fr">Ő tanár.</span> «Мати» виражають конструкцією «мені є»: <span class="fr">Van egy bátyám.</span> Артикль <span class="fr">a / az</span> не має роду, а прикметник перед іменником не змінюється.</div>
+<div class="tip"><b class="t">Вимова.</b> Озвучка використовує угорський голос пристрою. Якщо його нема, почуєш інший голос — вимова буде приблизною. Орієнтуйся на транскрипцію кирилицею: <span class="fr">ö, ő</span> передаємо як «ьо», <span class="fr">ü, ű</span> — як «ю» (німецькі ö та ü).</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення, натискай на слова — почуєш озвучку.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План — у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">44 літери: латиниця з наголосами та подвійними знаками. Наголос <b>завжди на першому складі</b>. Довгі голосні (<span class="fr">á, é, í, ó, ő, ú, ű</span>) вимовляються довше, і довжина змінює значення: <span class="fr">kerek</span> (круглий) і <span class="fr">kérek</span> (прошу).</p>
+<div class="tw"><table>
+<tr><th>Літери</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td><span class="fr">a</span></td><td>коротке «о»</td><td><span class="fr">alma</span> [олмо]</td></tr>
+<tr><td><span class="fr">á</span></td><td>довге «а»</td><td><span class="fr">ház</span> [хаз]</td></tr>
+<tr><td><span class="fr">e</span></td><td>«е»</td><td><span class="fr">ember</span> [ембер]</td></tr>
+<tr><td><span class="fr">é</span></td><td>довге «е»</td><td><span class="fr">tér</span> [тер]</td></tr>
+<tr><td><span class="fr">ö, ő</span></td><td>«ьо» (як у нім. ö)</td><td><span class="fr">sör</span> [шьор]</td></tr>
+<tr><td><span class="fr">ü, ű</span></td><td>«ю» (як у нім. ü)</td><td><span class="fr">tű</span> [тю]</td></tr>
+<tr><td><span class="fr">sz</span></td><td>«с»</td><td><span class="fr">szép</span> [сеп]</td></tr>
+<tr><td><span class="fr">s</span></td><td>«ш»</td><td><span class="fr">sör</span> [шьор]</td></tr>
+<tr><td><span class="fr">zs</span></td><td>«ж»</td><td><span class="fr">zsák</span> [жак]</td></tr>
+<tr><td><span class="fr">cs</span></td><td>«ч»</td><td><span class="fr">csésze</span> [чесе]</td></tr>
+<tr><td><span class="fr">c</span></td><td>«ц»</td><td><span class="fr">cica</span> [ціцо]</td></tr>
+<tr><td><span class="fr">gy</span></td><td>м'яке «дь»</td><td><span class="fr">gyerek</span> [дьерек]</td></tr>
+<tr><td><span class="fr">ty</span></td><td>м'яке «ть»</td><td><span class="fr">tyúk</span> [тюк]</td></tr>
+<tr><td><span class="fr">ny</span></td><td>«нь»</td><td><span class="fr">nyolc</span> [ньолц]</td></tr>
+<tr><td><span class="fr">ly</span></td><td>«й»</td><td><span class="fr">hely</span> [хей]</td></tr>
+</table></div>
+<div class="tip"><b class="t">Гармонія голосних.</b> Угорські суфікси мають дві-три форми, залежно від голосних слова. Глибокі голосні: <span class="fr">a, á, o, ó, u, ú</span>. Передні: <span class="fr">e, é, i, í, ö, ő, ü, ű</span>. Суфікс «підлаштовується»: <span class="fr">ház → házban</span>, але <span class="fr">kert → kertben</span>.</div>
+<div class="exs">
+Szia! | сіо | Привіт!
+Jó reggelt. | йо реґґелт | Доброго ранку.
+Köszönöm. | кьосьоньом | Дякую.
+Nem értem. | нем ертем | Я не розумію.
+Egy kicsit beszélek magyarul. | едь кічіт бесельек модьорул | Трохи говорю угорською.
+Kenyeret és tejet kérek. | кеньерет еш тейет керек | Прошу хліб і молоко.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[хаз] — дім | ház
+[віз] — вода | víz
+[шьор] — пиво | sör
+[сеп] — гарний | szép
+[дьерек] — дитина | gyerek
+[ньолц] — число | nyolc
+[кьоньв] — книжка | könyv
+[кьосьоньом] — подяка | köszönöm
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+Szia | сіо | привіт, бувай (неформально)
+Jó reggelt | йо реґґелт | доброго ранку
+Jó napot | йо напот | добрий день
+Jó estét | йо ештет | добрий вечір
+Jó éjszakát | йо ейсокат | на добраніч
+Viszlát | віслат | до побачення
+Helló | гелло | привіт
+# Ввічливість
+Köszönöm | кьосьоньом | дякую
+Kérem | керем | будь ласка (прохання)
+Szívesen | сівешен | нема за що
+Bocsánat | бочанат | вибачте
+Igen | іген | так
+Nem | нем | ні
+Talán | талан | можливо
+</div>
+<h3>2.1. Як представитися</h3>
+<div class="exs">
+A nevem Mihály. | о невем міхай | Мене звати Михайло.
+Hogy hívnak? | хоть хівнок | Як тебе звати?
+Örülök. | ьорюльок | Приємно познайомитися.
+Honnan jössz? | хоннон йьосс | Звідки ти?
+Ukrajnából jövök. | укройнабол йовьок | Я з України.
+Harminc éves vagyok. | хармінц евеш водьок | Мені тридцять років.
+Ungváron lakom. | унґварон локом | Живу в Ужгороді.
+Tanár vagyok. | танар водьок | Я вчитель.
+Beszélsz angolul? | бесельс анґолул | Ти говориш англійською?
+Meg tudod ismételni? | меґ тудод ішметелні | Можеш повторити?
+</div>
+<div class="rule"><b class="t">Te чи Ön?</b><p><span class="fr">Te</span> — до друзів, дітей, ровесників. <span class="fr">Ön</span> («Ви») — до старших і в офіційній ситуації; дієслово при цьому в 3 особі: <span class="fr">Hogy hívják?</span> «Ви» у множині — <span class="fr">Önök</span>. Дуже поширене і ввічливе: <span class="fr">Maga</span>, але воно менш офіційне.</p></div>
+<h3>2.2. Займенники</h3>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Угорською</th><th>Українською</th></tr>
+<tr><td>1 одн.</td><td><span class="fr">én</span></td><td>я</td></tr>
+<tr><td>2 одн.</td><td><span class="fr">te</span></td><td>ти</td></tr>
+<tr><td>3 одн.</td><td><span class="fr">ő</span></td><td>він, вона</td></tr>
+<tr><td>1 множ.</td><td><span class="fr">mi</span></td><td>ми</td></tr>
+<tr><td>2 множ.</td><td><span class="fr">ti</span></td><td>ви</td></tr>
+<tr><td>3 множ.</td><td><span class="fr">ők</span></td><td>вони</td></tr>
+<tr><td>ввічливо</td><td><span class="fr">Ön / Önök</span></td><td>Ви</td></tr>
+</table></div>
+<div class="tip"><b class="t">Підмет не обов'язковий.</b> Закінчення дієслова вказує особу: <span class="fr">beszélek</span> = «я говорю». Займенник ставлять для наголосу: <span class="fr">Én dolgozom, te alszol.</span></div>
+<div class="qz" data-title="Вправа 2. Привітання">
+Привіт! | Szia
+Дякую! | Köszönöm
+Будь ласка (прохання) | Kérem
+Вибачте! | Bocsánat
+До побачення! | Viszlát
+Добрий вечір! | Jó estét
+Мене звати Михайло. | A nevem Mihály
+Я не розумію. | Nem értem
+Звідки ти? | Honnan jössz
+Я з України. | Ukrajnából jövök
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники: артикль, множина, -t">
+<h2><span class="no">Розділ 3</span>Іменники: артикль, множина, відмінки</h2>
+<div class="tw"><table>
+<tr><th>Тип</th><th>Означений</th><th>Неозначений</th></tr>
+<tr><td>перед приголосною</td><td><span class="fr">a ház</span></td><td><span class="fr">egy ház</span></td></tr>
+<tr><td>перед голосною</td><td><span class="fr">az autó</span></td><td><span class="fr">egy autó</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Правила.</b><p>Роду нема. Множина: <span class="fr">-k</span> після голосної (<span class="fr">autó → autók</span>), <span class="fr">-ak / -ek</span> після приголосної (<span class="fr">ház → házak</span>, <span class="fr">könyv → könyvek</span>). Знахідний відмінок (об'єкт): <span class="fr">-t</span>, або <span class="fr">-at / -et</span>, залежно від гармонії: <span class="fr">házat, könyvet, autót</span>. Після числівника іменник стоїть в однині: <span class="fr">két ház</span> (два будинки).</p></div>
+<h3>3.1. Основні відмінки</h3>
+<div class="tw"><table>
+<tr><th>Суфікс</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td>-ban / -ben</td><td>в (де?)</td><td><span class="fr">a házban</span></td></tr>
+<tr><td>-ba / -be</td><td>у (куди?)</td><td><span class="fr">a házba</span></td></tr>
+<tr><td>-ból / -ből</td><td>з (звідки?)</td><td><span class="fr">a házból</span></td></tr>
+<tr><td>-on / -en / -ön</td><td>на (де?)</td><td><span class="fr">az asztalon</span></td></tr>
+<tr><td>-nál / -nél</td><td>біля, у (людини)</td><td><span class="fr">az orvosnál</span></td></tr>
+<tr><td>-hoz / -hez / -höz</td><td>до (людини)</td><td><span class="fr">az orvoshoz</span></td></tr>
+<tr><td>-val / -vel</td><td>з (разом), чим</td><td><span class="fr">a barátommal</span></td></tr>
+<tr><td>-nak / -nek</td><td>кому, для</td><td><span class="fr">neked</span></td></tr>
+</table></div>
+<div class="vocab">
+# Родина
+a család | о чалад | родина
+az anya | оз оньо | мати
+az apa | оз опо | батько
+a fiú testvér | о фіу тештвер | брат
+a nővér | о ньовер | старша сестра
+a fiú | о фіу | син, хлопець
+a lány | о лань | дочка, дівчина
+a nagypapa | о нодьпопо | дідусь
+a nagymama | о нодьмомо | бабуся
+a férj | о ферй | чоловік
+a feleség | о фелешег | дружина
+a gyerek | о дьерек | дитина
+# Речі
+a ház | о хаз | дім
+a lakás | о локаш | квартира
+a szoba | о собо | кімната
+a konyha | о коньхо | кухня
+az asztal | оз остол | стіл
+a szék | о сек | стілець
+az ablak | оз облок | вікно
+az ajtó | оз ойто | двері
+az ágy | оз адь | ліжко
+az autó | оз ауто | автомобіль
+a telefon | о телефон | телефон
+a könyv | о кьоньв | книжка
+</div>
+<div class="qz" data-title="Вправа 3. Артикль і відмінки">
+___ ház (означений) | a
+___ autó (означений) | az
+___ ház (неозначений) | egy
+ház → (множина) | házak
+könyv → (множина) | könyvek
+ház → (в домі: -ban) | házban
+ház → (знахідний: -at) | házat
+könyv → (знахідний: -et) | könyvet
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Van, vagyok, дієслова">
+<h2><span class="no">Розділ 4</span>Дієслово <span class="fr">lenni</span> (бути) і правильні дієслова</h2>
+<div class="cj" data-verb="lenni" data-note="бути" data-ipa="ленні">
+én | vagyok | водьок
+te | vagy | водь
+ő | van | вон
+mi | vagyunk | водьунк
+ti | vagytok | водьток
+ők | vannak | воннок
+</div>
+<div class="rule"><b class="t">Van чи нема.</b><p>У теперішньому часі в 3 особі присудок-іменник не потребує <span class="fr">van</span>: <span class="fr">Ő tanár.</span> (Він вчитель.) Але коли йдеться про місце — <span class="fr">van</span> потрібен: <span class="fr">Ő itt van.</span> Заперечення: <span class="fr">nem</span> перед присудком: <span class="fr">Nem vagyok fáradt.</span> Заперечення від <span class="fr">van</span> — <span class="fr">nincs</span> / <span class="fr">nincsenek</span>: <span class="fr">Nincs időm.</span></p></div>
+<div class="exs">
+Diák vagyok. | діак водьок | Я студент.
+Fáradt vagy. | фарат водь | Ти втомлений.
+Itthon vagyunk. | іттхон водьунк | Ми вдома.
+Van egy bátyám. | вон едь батьям | У мене є старший брат.
+Van időd? | вон ідьод | Маєш час?
+Nincs időm. | нінч ідьом | Не маю часу.
+</div>
+<h3>4.1. Правильні дієслова (неозначена дія)</h3>
+<div class="tw"><table>
+<tr><th></th><th>olvas (читати, глибок.)</th><th>ért (розуміти, перед.)</th></tr>
+<tr><td>én</td><td>olvasok</td><td>értek</td></tr>
+<tr><td>te</td><td>olvasol</td><td>értesz</td></tr>
+<tr><td>ő</td><td>olvas</td><td>ért</td></tr>
+<tr><td>mi</td><td>olvasunk</td><td>értünk</td></tr>
+<tr><td>ti</td><td>olvastok</td><td>értetek</td></tr>
+<tr><td>ők</td><td>olvasnak</td><td>értenek</td></tr>
+</table></div>
+<div class="tip"><b class="t">Означена дія.</b> Якщо об'єкт означений (із <span class="fr">a / az</span>, з присвійним або «цей»), дієслово має іншу форму: <span class="fr">Olvasok egy könyvet.</span> (читаю якусь книжку), але <span class="fr">Olvasom a könyvet.</span> (читаю цю книжку). Означена форма (я): <span class="fr">-om / -em / -öm</span>. У курсі A2 це розібрано докладно.</div>
+<div class="vocab">
+beszél | бесел | говорити | beszélek
+olvas | олвош | читати | olvasok
+ír | ір | писати | írok
+dolgozik | дольґозік | працювати | dolgozom
+lakik | локік | жити | lakom
+tanul | тонул | вчитися | tanulok
+eszik | есік | їсти | eszem
+iszik | ісік | пити | iszom
+alszik | олсік | спати | alszom
+vesz | вес | купувати | veszek
+ért | ерт | розуміти | értek
+tud | туд | знати, вміти | tudok
+lát | лат | бачити | látok
+akar | окор | хотіти | akarok
+</div>
+<div class="cj" data-verb="menni" data-note="йти" data-ipa="менні">
+én | megyek | медьек
+te | mész | мес
+ő | megy | медь
+mi | megyünk | медьюнк
+ti | mentek | ментек
+ők | mennek | меннек
+</div>
+<div class="qz" data-title="Вправа 4. Відмінювання">
+Én ___ diák. (lenni) | vagyok
+Te ___ fáradt. (lenni) | vagy
+Mi ___ itthon. (lenni) | vagyunk
+Ők ___ fáradtak. (lenni) | vannak
+Nekem ___ egy bátyám. (van) | van
+___ időm. (У мене нема) | Nincs
+Én ___ magyarul. (beszél) | beszélek
+Te ___ egy könyvet. (olvas) | olvasol
+Mi ___ iskolába. (menni) | megyünk
+Ők ___ magyarul. (beszél) | beszélnek
+Mi ___ sokat. (dolgozik, mi) | dolgozunk
+Én ___ vizet. (iszik, én) | iszom
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, порядок слів">
+<h2><span class="no">Розділ 5</span>Питання, заперечення, порядок слів</h2>
+<div class="vocab">
+ki | кі | хто
+mi | мі | що
+hol | хол | де
+hová | хова | куди
+honnan | хоннон | звідки
+mikor | мікор | коли
+hogyan | ходьон | як
+miért | мієрт | чому
+mennyi | меньньі | скільки
+melyik | мейік | який (з-поміж)
+kié | кіе | чий
+</div>
+<div class="exs">
+Ki az? | кі оз | Хто це?
+Mit csinálsz? | міт чіналс | Що ти робиш?
+Hol laksz? | хол локсс | Де ти живеш?
+Hová mész? | хова мес | Куди ти йдеш?
+Mennyibe kerül? | меньньібе керюль | Скільки це коштує?
+Hogy hívnak? | хоть хівнок | Як тебе звати?
+</div>
+<h3>5.1. Порядок слів</h3>
+<div class="rule"><b class="t">Вільний порядок, тема та фокус.</b><p>Базовий порядок: підмет — присудок — додаток, але угорці ставлять <b>на перше місце те, що вважають головним</b>: <span class="fr">Ma dolgozom.</span> (Сьогодні працюю.) / <span class="fr">Dolgozom ma.</span> Питання без питального слова — просто з інтонацією або з часткою: <span class="fr">Beszélsz magyarul?</span> Заперечення: <span class="fr">nem</span> + дієслово. Сильне заперечення — <span class="fr">sem, soha, senki, semmi</span>, і воно вимагає ще й <span class="fr">nem</span>: <span class="fr">Nem látok senkit.</span> (Нікого не бачу.)</p></div>
+<div class="exs">
+Olvasom a könyvet. | олвошом о кьоньвет | Читаю (цю) книжку.
+Ma sokat dolgozom. | мо шокот дольґозом | Сьогодні багато працюю.
+Látom a kutyát. | латом о кутьят | Бачу собаку.
+A könyv az asztalon van. | о кьоньв оз остолон вон | Книжка на столі.
+Az iskolában vagyok. | оз ішколабан водьок | Я в школі.
+Iskolába megyek. | ішколаба медьек | Іду до школи.
+Nem látok senkit. | нем латок шенкіт | Нікого не бачу.
+</div>
+<div class="tip"><b class="t">Де і куди.</b> Де? — <span class="fr">-ban / -ben</span> (<span class="fr">Budapesten</span> — у Будапешті з <span class="fr">-on / -en</span>); куди? — <span class="fr">-ba / -be</span>; звідки? — <span class="fr">-ból / -ből</span>; «з» (разом) — <span class="fr">-val / -vel</span>; «для» — <span class="fr">-nak / -nek</span>.</div>
+<h3>5.2. Прикметники й присвійні суфікси</h3>
+<div class="tw"><table>
+<tr><th>Прикметник</th><th>Приклад</th></tr>
+<tr><td>новий</td><td><span class="fr">új ház</span>, <span class="fr">új házak</span></td></tr>
+<tr><td>великий</td><td><span class="fr">nagy ház</span>, <span class="fr">nagy házak</span></td></tr>
+<tr><td>маленький</td><td><span class="fr">kis ház</span>, <span class="fr">kis házak</span></td></tr>
+</table></div>
+<p>Прикметник стоїть <b>перед</b> іменником і <b>не змінюється</b>: <span class="fr">egy új autó, két új autó</span>. Присвійність виражають суфікси на самому іменнику: <span class="fr">ház</span> → <span class="fr">házam</span> (мій дім), <span class="fr">házad</span> (твій), <span class="fr">háza</span> (його / її), <span class="fr">házunk</span> (наш), <span class="fr">házatok</span> (ваш), <span class="fr">házuk</span> (їхній).</p>
+<div class="qz" data-title="Вправа 5. Мова в дії">
+___ az? (хто) | Ki
+___ kerül? (скільки) | Mennyibe
+___ laksz? (де) | Hol
+Nem látok ___ . (нікого) | senkit
+___ megyek. (до школи) | Iskolába
+Ma ___ dolgozom. (багато) | sokat
+ház → (мій дім) | házam
+ház → (твій дім) | házad
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, час і дати</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">nulla</span></td><td>1 <span class="fr">egy</span></td><td>2 <span class="fr">kettő, két</span></td><td>3 <span class="fr">három</span></td></tr>
+<tr><td>4 <span class="fr">négy</span></td><td>5 <span class="fr">öt</span></td><td>6 <span class="fr">hat</span></td><td>7 <span class="fr">hét</span></td></tr>
+<tr><td>8 <span class="fr">nyolc</span></td><td>9 <span class="fr">kilenc</span></td><td>10 <span class="fr">tíz</span></td><td>11 <span class="fr">tizenegy</span></td></tr>
+<tr><td>12 <span class="fr">tizenkettő</span></td><td>20 <span class="fr">húsz</span></td><td>30 <span class="fr">harminc</span></td><td>40 <span class="fr">negyven</span></td></tr>
+<tr><td>50 <span class="fr">ötven</span></td><td>100 <span class="fr">száz</span></td><td>200 <span class="fr">kétszáz</span></td><td>1000 <span class="fr">ezer</span></td></tr>
+</table></div>
+<div class="vocab">
+# Дні тижня
+hétfő | хетфьо | понеділок
+kedd | кедд | вівторок
+szerda | сердо | середа
+csütörtök | чюторток | четвер
+péntek | пентек | п'ятниця
+szombat | сомбот | субота
+vasárnap | вошарнап | неділя
+# Місяці
+január | януар | січень
+február | фебруар | лютий
+március | марцюш | березень
+április | апріліш | квітень
+május | майуш | травень
+június | юнюш | червень
+július | юлюш | липень
+augusztus | ауґуштуш | серпень
+szeptember | септембер | вересень
+október | октобер | жовтень
+november | новембер | листопад
+december | децембер | грудень
+# Час
+ma | мо | сьогодні
+holnap | холноп | завтра
+tegnap | теґноп | вчора
+reggel | реґґел | вранці
+este | ешті | ввечері
+most | мошт | зараз
+</div>
+<div class="exs">
+Hány óra van? | хань ора вон | Котра година?
+Öt óra van. | ьот ора вон | П'ята година.
+Hánykor? | ханькор | О котрій?
+Nyolckor. | ньолцкор | О восьмій.
+Ma hétfő van. | мо хетфьо вон | Сьогодні понеділок.
+Pénteken szabad vagyok. | пентекен собод водьок | У п'ятницю я вільний.
+Fél három van. | фел харом вон | Пів на третю (2:30).
+</div>
+<div class="tip"><b class="t">Пів на третю.</b> <span class="fr">fél három</span> = 2:30 («пів до третьої»), як у німецькій. Чверті: <span class="fr">negyed három</span> = 2:15 («чверть до третьої»), <span class="fr">háromnegyed három</span> = 2:45.</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+2 | kettő
+3 | három
+5 | öt
+10 | tíz
+20 | húsz
+100 | száz
+понеділок | hétfő
+п'ятниця | péntek
+неділя | vasárnap
+жовтень | október
+завтра | holnap
+вчора | tegnap
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа й напої
+a kenyér | о кеньер | хліб
+a víz | о віз | вода
+a tej | о тей | молоко
+a kávé | о каве | кава
+a tea | о тео | чай
+a gyümölcslé | о дьюмьольчле | сік
+a bor | о бор | вино
+a sör | о шьор | пиво
+a sajt | о шойт | сир
+a hús | о хуш | м'ясо
+a hal | о хол | риба
+a gyümölcs | о дьюмьольч | фрукти
+az alma | оз олмо | яблуко
+a tojás | о тояш | яйця
+a leves | о левеш | суп
+a rizs | о ріж | рис
+a csokoládé | о чоколаде | шоколад
+a cukor | о цукор | цукор
+a só | о шо | сіль
+# Місто
+a város | о варош | місто
+az utca | оз уцо | вулиця
+a tér | о тер | площа
+az állomás | оз алломаш | вокзал, зупинка
+a múzeum | о музеум | музей
+a bank | о бонк | банк
+a gyógyszertár | о дьодьсертар | аптека
+az étterem | оз еттерем | ресторан
+a kórház | о корхаз | лікарня
+a metró | о метро | метро
+a busz | о бус | автобус
+# Покупки
+Mennyibe kerül? | меньньібе керюль | скільки коштує
+olcsó | олчо | дешевий
+drága | драго | дорогий
+a pénz | о пенз | гроші
+a kártya | о картьо | картка
+a számla | о самло | рахунок
+</div>
+<div class="exs">
+Egy kávét kérek tejjel. | едь каветь керек тейєль | Прошу каву з молоком.
+A számlát kérem. | о самлат керем | Рахунок, будь ласка.
+Mennyibe kerül a kenyér? | меньньібе керюль о кеньер | Скільки коштує хліб?
+Ez túl drága. | ез тул драго | Це занадто дорого.
+Hol van az állomás? | хол вон оз алломаш | Де вокзал?
+Fizethetek kártyával? | фізетхетек картьовал | Можна заплатити карткою?
+Szénsavmentes vizet kérek. | сеншовментеш візет керек | Прошу негазовану воду.
+</div>
+<div class="qz" data-title="Вправа 7. Слова">
+хліб | a kenyér
+вода | a víz
+молоко | a tej
+сир | a sajt
+вулиця | az utca
+вокзал | az állomás
+лікарня | a kórház
+аптека | a gyógyszertár
+гроші | a pénz
+дорогий | drága
+дешевий | olcsó
+Рахунок, будь ласка. | A számlát kérem
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. A kávézóban (у кав'ярні)
+Pincér: Jó napot. Mit parancsol? | Добрий день. Що бажаєте?
+Vendég: Egy kávét és egy szelet tortát kérek. | Прошу каву й шматок торта.
+Pincér: Tejjel? | З молоком?
+Vendég: Nem, köszönöm. Tej nélkül. | Ні, дякую. Без молока.
+Pincér: Tessék. Jó étvágyat! | Прошу. Смачного!
+Vendég: Köszönöm. Fizethetek kártyával? | Дякую. Можна заплатити карткою?
+# 2. Az állomáson (на вокзалі)
+Utas: Jó reggelt, egy jegyet kérek Budapestre. | Доброго ранку, прошу квиток до Будапешта.
+Jegyárus: Csak oda vagy oda-vissza? | Тільки туди чи туди й назад?
+Utas: Csak oda. Mikor indul a vonat? | Тільки туди. Коли відправляється потяг?
+Jegyárus: Negyed tizenegykor. | О чверть на одинадцяту (10:15).
+Utas: Mennyibe kerül a jegy? | Скільки коштує квиток?
+Jegyárus: Húsz euró. | Двадцять євро.
+# 3. Útbaigazítás (дорога)
+Turista: Bocsánat, hol van a múzeum? | Вибачте, де музей?
+Nő: Menjen egyenesen, aztán forduljon jobbra. | Ідіть прямо, потім поверніть праворуч.
+Turista: Messze van? | Це далеко?
+Nő: Nem, öt perc gyalog. | Ні, п'ять хвилин пішки.
+Turista: Nagyon köszönöm. | Дуже дякую.
+Nő: Szívesen. | Нема за що.
+# 4. Ismerkedés (знайомство)
+Péter: Szia, a nevem Péter. És a tiéd? | Привіт, мене звати Петер. А тебе?
+Anna: Anna vagyok. Örülök. | Я Анна. Приємно.
+Péter: Honnan jössz? | Звідки ти?
+Anna: Ukrajnából, Ungvárról. | З України, з Ужгорода.
+Péter: Nagyon jól beszélsz magyarul! | Ти дуже добре говориш угорською!
+Anna: Köszönöm, még tanulok. | Дякую, ще вчуся.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Що бажаєте? | Mit parancsol
+Прошу каву. | Egy kávét kérek
+Квиток до Будапешта. | Egy jegyet kérek Budapestre
+Де музей? | Hol van a múzeum
+П'ять хвилин пішки. | Öt perc gyalog
+Нема за що. | Szívesen
+Я Анна. | Anna vagyok
+Ще вчуся. | Még tanulok
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="vocab">
+# Професії
+a tanár | о танар | вчитель
+az orvos | оз орвош | лікар
+az ápoló | оз аполо | медсестра
+a mérnök | о мерньок | інженер
+a sofőr | о шофьор | водій
+az eladó | оз еладо | продавець
+a szakács | о сокач | кухар
+a diák | о діак | студент
+a rendőr | о рендьор | поліцейський
+az ügyvéd | оз юдьвед | адвокат
+# Тіло й здоров'я
+a fej | о фей | голова
+a szem | о сем | око
+a fül | о фюль | вухо
+az orr | оз орр | ніс
+a száj | о сай | рот
+a kéz | о кез | рука
+a láb | о лаб | нога
+a has | о хош | живіт
+a hát | о хат | спина
+a szív | о сів | серце
+Fáj a fejem. |  | У мене болить голова.
+Beteg vagyok. |  | Я хворий.
+a láz | о лаз | гарячка
+a gyógyszertár | о дьодьсертар | аптека
+a gyógyszer | о дьодьсер | ліки
+# Одяг
+az ing | оз інг | сорочка
+a nadrág | о нодраг | штани
+a ruha | о руго | сукня
+a kabát | о кобат | куртка
+a cipő | о ціпьо | взуття
+a pulóver | о пулувер | светр
+a sapka | о шопко | шапка
+a méret | о мерет | розмір
+# Погода
+az idő | оз ідьо | погода
+a nap | оноп | сонце
+az eső | оз ешьо | дощ
+a hó | о хо | сніг
+a szél | о сел | вітер
+Hideg van. |  | Холодно.
+Meleg van. |  | Жарко.
+Esik az eső. |  | Іде дощ.
+# Транспорт
+a busz | о бус | автобус
+a vonat | о вонот | потяг
+a taxi | о токсі | таксі
+a repülő | о репюльо | літак
+a bicikli | о біціклі | велосипед
+a jegy | о йедь | квиток
+az állomás | оз алломаш | вокзал
+a repülőtér | о репюльотер | аеропорт
+# Дім і дозвілля
+a nappali | о наппалі | вітальня
+a fürdőszoba | о фюрдьособа | ванна
+a hűtő | о хютьо | холодильник
+a kanapé | о конопе | диван
+a film | о фільм | фільм
+a zene | о зене | музика
+a sport | о шпорт | спорт
+főz | фьоз | готувати
+utazik | утозік | подорожувати
+</div>
+<div class="exs">
+Tanár vagyok. | танар водьок | Я вчитель.
+Sofőrként dolgozom. | шофьоркент дольґозом | Працюю водієм.
+Fáj a torkom. | фай о торком | У мене болить горло.
+Mekkora a méreted? | мекора о меретед | Який у тебе розмір?
+Ma hideg van. | мо хідег вон | Сьогодні холодно.
+Esik az eső. | ешік оз ешьо | Іде дощ.
+Hol van az állomás? | хол вон оз алломаш | Де вокзал?
+Szeretek főzni. | серетек фьозні | Люблю готувати.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | az orvos
+вчитель | a tanár
+голова | a fej
+рука | a kéz
+сукня | a ruha
+дощ | az eső
+сніг | a hó
+автобус | a busz
+потяг | a vonat
+квиток | a jegy
+аеропорт | a repülőtér
+Іде дощ. | Esik az eső
+У мене болить голова. | Fáj a fejem
+Сьогодні холодно. | Ma hideg van
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Бажання, можливість і наказовий спосіб</h2>
+<h3>10.1. Модальні дієслова + інфінітив</h3>
+<p>Модальні дієслова вживаються з інфінітивом, як і в українській: <span class="fr">Akarok inni vizet.</span> <span class="fr">Tudok főzni.</span> Для «мушу» вживають безособове <span class="fr">kell</span> з особовим інфінітивом: <span class="fr">Dolgoznom kell.</span> (Мені треба працювати.)</p>
+<div class="tw"><table>
+<tr><th></th><th>akar (хотіти)</th><th>tud (могти, вміти)</th><th>szeretne (хотів би)</th></tr>
+<tr><td>én</td><td>akarok</td><td>tudok</td><td>szeretnék</td></tr>
+<tr><td>te</td><td>akarsz</td><td>tudsz</td><td>szeretnél</td></tr>
+<tr><td>ő</td><td>akar</td><td>tud</td><td>szeretne</td></tr>
+<tr><td>mi</td><td>akarunk</td><td>tudunk</td><td>szeretnénk</td></tr>
+<tr><td>ti</td><td>akartok</td><td>tudtok</td><td>szeretnétek</td></tr>
+<tr><td>ők</td><td>akarnak</td><td>tudnak</td><td>szeretnének</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>Мушу (kell)</th><th>Приклад</th></tr>
+<tr><td>nekem</td><td>Dolgoznom kell.</td></tr>
+<tr><td>neked</td><td>Dolgoznod kell.</td></tr>
+<tr><td>neki</td><td>Dolgoznia kell.</td></tr>
+<tr><td>nekünk</td><td>Dolgoznunk kell.</td></tr>
+<tr><td>nektek</td><td>Dolgoznotok kell.</td></tr>
+<tr><td>nekik</td><td>Dolgozniuk kell.</td></tr>
+</table></div>
+<div class="rule"><b class="t">Ввічливе прохання.</b><p><span class="fr">Szeretnék…</span> (Я б хотів…): <span class="fr">Szeretnék egy teát.</span> «Можна?» — <span class="fr">Szabad…?</span> або <span class="fr">Lehet…?</span> «Не можна» — <span class="fr">Nem szabad.</span></p></div>
+<div class="exs">
+Szabad bejönni? | собод беййьонні | Можна ввійти?
+Inni akarok egy kávét. | інні окорок едь каветь | Хочу випити каву.
+Ma dolgoznom kell. | мо дольґозном кел | Сьогодні мушу працювати.
+Most nem tudok beszélni. | мошт нем тудок бесельні | Зараз не можу говорити.
+Tudsz főzni? | тудс фьозні | Вмієш готувати?
+Itt nem szabad dohányozni. | іт нем собод доханьозні | Тут не можна курити.
+Szeretnék egy teát, kérem. | серетнек едь теат керем | Я б хотів чаю, будь ласка.
+</div>
+<h3>10.2. Наказовий спосіб</h3>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>ти</th><th>ви</th></tr>
+<tr><td>vár (чекати)</td><td>várj!</td><td>várjatok!</td></tr>
+<tr><td>olvas (читати)</td><td>olvass!</td><td>olvassatok!</td></tr>
+<tr><td>ír (писати)</td><td>írj!</td><td>írjatok!</td></tr>
+<tr><td>jön (приходити)</td><td>gyere!</td><td>gyertek!</td></tr>
+<tr><td>van (бути)</td><td>légy!</td><td>legyetek!</td></tr>
+<tr><td>beszél (говорити)</td><td>beszélj!</td><td>beszéljetek!</td></tr>
+</table></div>
+<p>Заборона: <span class="fr">ne</span> + наказовий: <span class="fr">Ne dohányozz!</span> Ввічливо: <span class="fr">Kérem, jöjjön be.</span></p>
+<div class="exs">
+Várj egy percet! | варй едь перцет | Зачекай хвилинку!
+Gyere ide, kérlek. | дьере іде керлек | Підійди сюди, будь ласка.
+Beszélj lassabban, kérlek. | бесельй лошшоббан керлек | Говори повільніше, будь ласка.
+Ne dohányozz itt! | не доханьозз іт | Не кури тут!
+Légy óvatos! | легь оватош | Будь обережний!
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Én ___ inni egy kávét. (хочу) | akarok
+___ főzni. (Я вмію) | Tudok
+Mi ___ beszélni. (можемо) | tudunk
+Ő ___ kávét. (хоче) | akar
+___ főzni? (Ти вмієш) | Tudsz
+___ egy teát. (Я б хотів) | Szeretnék
+vár → (ти!) ___ | várj
+olvas → (ти!) ___ | olvass
+vár → (ви!) ___ | várjatok
+___ dohányozz! (Не) | Ne
+Nekem dolgoznom ___ . (kell) | kell
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. Az orvosnál (у лікаря)
+Orvos: Jó napot, mi a baj? | Добрий день, що сталося?
+Beteg: Fáj a fejem és lázas vagyok. | У мене болить голова й гарячка.
+Orvos: Mióta? | Відколи?
+Beteg: Két napja. | Два дні.
+Orvos: Szedje ezeket a tablettákat és maradjon otthon. | Приймайте ці таблетки й залишайтеся вдома.
+Beteg: Köszönöm, doktor úr. | Дякую, докторе.
+# 2. A ruhaüzletben (у магазині одягу)
+Eladó: Segíthetek? | Вам допомогти?
+Vevő: Egy kabátot keresek. | Шукаю куртку.
+Eladó: Milyen méret kell? | Який розмір потрібен?
+Vevő: M. Felpróbálhatom? | M. Можна приміряти?
+Eladó: Természetesen, a próbafülke ott van. | Звісно, примірочна там.
+Vevő: Mennyibe kerül? | Скільки коштує?
+Eladó: Százhúsz euró. | Сто двадцять євро.
+# 3. A szállodában (у готелі)
+Vendég: Jó estét, van egy foglalásom. | Добрий вечір, у мене бронь.
+Recepciós: Milyen névre? | На яке прізвище?
+Vendég: Smith. Egy egyágyas szoba három éjszakára. | Сміт. Одномісний номер на три ночі.
+Recepciós: Itt a kulcs. A reggeli héttől tízig van. | Ось ключ. Сніданок з сьомої до десятої.
+Vendég: Van wifi? | Є вайфай?
+Recepciós: Igen, a jelszó a kulcson van. | Так, пароль на ключі.
+# 4. Telefonon (по телефону)
+Anna: Halló? | Алло?
+Péter: Szia, Anna, itt Péter. Hogy vagy? | Привіт, Анно, це Петер. Як справи?
+Anna: Jól, köszönöm. És te? | Добре, дякую. А ти?
+Péter: Én is. Szabad vagy holnap este? | Теж добре. Ти вільна завтра ввечері?
+Anna: Igen, miért? | Так, а чому?
+Péter: Menjünk moziba? | Підемо в кіно?
+Anna: Szívesen! | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що сталося? | Mi a baj
+У мене болить голова. | Fáj a fejem
+Шукаю куртку. | Egy kabátot keresek
+Який розмір потрібен? | Milyen méret kell
+Скільки коштує? | Mennyibe kerül
+У мене бронь. | Van egy foglalásom
+Є вайфай? | Van wifi
+Підемо в кіно? | Menjünk moziba
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Lenni</td><td>vagyok, vagy, van, vagyunk, vagytok, vannak</td></tr>
+<tr><td>Теперішній</td><td>-ok / -ek, -sz / -ol, ∅, -unk / -ünk, -tok / -tek, -nak / -nek</td></tr>
+<tr><td>Артикль</td><td>a / az ; egy; без роду</td></tr>
+<tr><td>Множина</td><td>-k, -ak / -ek</td></tr>
+<tr><td>Відмінки</td><td>-t, -ban, -ba, -ból, -on, -val</td></tr>
+<tr><td>Присвійність</td><td>-m, -d, -ja / -e, -nk, -tok, -uk</td></tr>
+<tr><td>Заперечення</td><td>nem перед присудком; nincs</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Читаєш усе: sz, s, cs, gy, ö, ü</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомишся, артикль, відмінки</td></tr>
+<tr><td>3</td><td>4</td><td>Lenni, 10 дієслів</td></tr>
+<tr><td>4</td><td>5</td><td>Питання, порядок слів</td></tr>
+<tr><td>5</td><td>6</td><td>Числа, час, дні</td></tr>
+<tr><td>6</td><td>7</td><td>Їжа, місто</td></tr>
+<tr><td>7</td><td>8</td><td>Діалоги вголос</td></tr>
+<tr><td>8</td><td>Повторення</td><td>Говориш 3–5 хвилин про себе</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1">
+Én ___ diák. (lenni) | vagyok
+Te ___ fáradt. (lenni) | vagy
+Nekem ___ időm. (У мене нема) | nincs
+___ ház (означений) | a
+___ autó (означений) | az
+ház → (множина) | házak
+___ kerül? (скільки) | Mennyibe
+Én ___ magyarul. (beszél) | beszélek
+5 | öt
+п'ятниця | péntek
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати будь-яке угорське слово</label></li>
+<li><label><input type="checkbox"> Привітатися й представитися</label></li>
+<li><label><input type="checkbox"> Вживати lenni і правильні дієслова</label></li>
+<li><label><input type="checkbox"> Утворити множину та основні відмінки</label></li>
+<li><label><input type="checkbox"> Назвати числа, дні, місяці, час</label></li>
+<li><label><input type="checkbox"> Замовити каву й спитати дорогу</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Magyar</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^hu[-_]HU/i.test(x.lang))||v.find(x=>/^hu/i.test(x.lang))||('hu'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='hu-HU';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('hu1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('hu1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('hu1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('hu1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='hu1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

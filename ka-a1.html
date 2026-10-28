@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ქართული A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">ქართული A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>ქართული A1</h1>
+  <p>Курс грузинська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="ka-a2.html">Рівень A2</a><a href="ka-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Грузинська (ქართული) — основна мова Грузії та найбільша з картвельських мов. Ні з українською, ні з будь-якою відомою нам мовою вона не споріднена. У неї власна абетка з 33 літер, і вона <b>фонетична</b>: що написано, те й читається. Для українців у Грузії (а їх там чимало) вона відкриває двері до місцевого життя.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Абетка фонетична й без великих літер:</b> вивчиш 33 знаки, і читаєш будь-яке слово.</li>
+<li><b>Нема артиклів і нема роду.</b> Займенник <span class="fr">ის</span> означає «він, вона, воно».</li>
+<li><b>Нема наголосу, який важко вгадати:</b> наголос слабкий, зазвичай на першому або другому складі.</li>
+<li><b>Прийменників нема, є післяйменники:</b> <span class="fr">სახლში</span> («у домі») — закінчення <span class="fr">-ში</span> додається до слова.</li>
+</ul>
+<div class="warn"><b>Пастки.</b> У грузинській є «викидні» приголосні (<span class="fr">კ, პ, ტ, ქ, წ, ჭ, ყ</span>) — вони вимовляються з різким горловим вибухом. Для початківця різниця між <span class="fr">ტ</span> і <span class="fr">თ</span> не критична, її чути з практикою.</div>
+<div class="tip"><b class="t">Про озвучку.</b> На багатьох пристроях грузинського голосу нема, тоді озвучка мовчить або читає зі спотвореннями. Орієнтуйся на кириличну транскрипцію, вона наближена. Відповіді у вправах треба вводити грузинською абеткою, тому увімкни грузинську розкладку клавіатури.</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Спершу вивчи абетку в розділі 1.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">33 літери. Нема великих і малих: пишеться завжди однаково.</p>
+<div class="tw"><table>
+<tr><th>Літера</th><th>Звук</th><th>Літера</th><th>Звук</th><th>Літера</th><th>Звук</th></tr>
+<tr><td><span class="fr">ა</span></td><td>а</td><td><span class="fr">ბ</span></td><td>б</td><td><span class="fr">გ</span></td><td>ґ</td></tr>
+<tr><td><span class="fr">დ</span></td><td>д</td><td><span class="fr">ე</span></td><td>е</td><td><span class="fr">ვ</span></td><td>в</td></tr>
+<tr><td><span class="fr">ზ</span></td><td>з</td><td><span class="fr">თ</span></td><td>т (придих.)</td><td><span class="fr">ი</span></td><td>і</td></tr>
+<tr><td><span class="fr">კ</span></td><td>к (викидне)</td><td><span class="fr">ლ</span></td><td>л</td><td><span class="fr">მ</span></td><td>м</td></tr>
+<tr><td><span class="fr">ნ</span></td><td>н</td><td><span class="fr">ო</span></td><td>о</td><td><span class="fr">პ</span></td><td>п (викидне)</td></tr>
+<tr><td><span class="fr">ჟ</span></td><td>ж</td><td><span class="fr">რ</span></td><td>р</td><td><span class="fr">ს</span></td><td>с</td></tr>
+<tr><td><span class="fr">ტ</span></td><td>т (викидне)</td><td><span class="fr">უ</span></td><td>у</td><td><span class="fr">ფ</span></td><td>п (придих.)</td></tr>
+<tr><td><span class="fr">ქ</span></td><td>к (придих.)</td><td><span class="fr">ღ</span></td><td>г (фрикатив.)</td><td><span class="fr">ყ</span></td><td>к (глибоке)</td></tr>
+<tr><td><span class="fr">შ</span></td><td>ш</td><td><span class="fr">ჩ</span></td><td>ч</td><td><span class="fr">ც</span></td><td>ц</td></tr>
+<tr><td><span class="fr">ძ</span></td><td>дз</td><td><span class="fr">წ</span></td><td>ц (викидне)</td><td><span class="fr">ჭ</span></td><td>ч (викидне)</td></tr>
+<tr><td><span class="fr">ხ</span></td><td>х</td><td><span class="fr">ჯ</span></td><td>дж</td><td><span class="fr">ჰ</span></td><td>г (придих.)</td></tr>
+</table></div>
+<div class="tip"><b class="t">Правило.</b> Грузинська читається так, як пишеться. Склади читай по одному: <span class="fr">გა-მარ-ჯო-ბა</span> [ґа-мар-джо-ба]. Приголосні групи на кшталт <span class="fr">გვ, ცხ, მწ</span> вимовляються разом, без голосних.</div>
+<div class="exs">
+გამარჯობა! | ґамарджоба | Привіт!
+ნახვამდის. | нахвамдіс | До побачення.
+გმადლობთ. | ґмадлобт | Дякую.
+ვერ გავიგე. | вер ґавіґе | Я не зрозумів.
+ცოტა ვლაპარაკობ ქართულად. | цота влапаракоб картулад | Трохи говорю по-грузинськи.
+პური და წყალი, გთხოვთ. | пурі да цкалі ґтховт | Хліб і воду, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[ґамарджоба] — привітання | გამარჯობა
+[нахвамдіс] — прощання | ნახვამდის
+[ґмадлобт] — подяка | გმადლობთ
+[пурі] — їжа | პური
+[цкалі] — напій | წყალი
+[кі] — відповідь «так» | კი
+[ара] — відповідь «ні» | არა
+[ґтховт] — будь ласка | გთხოვთ
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+გამარჯობა | ґамарджоба | привіт
+დილა მშვიდობისა | діла мшвідобіса | доброго ранку
+საღამო მშვიდობისა | сагамо мшвідобіса | добрий вечір
+ღამე მშვიდობისა | гаме мшвідобіса | на добраніч
+ნახვამდის | нахвамдіс | до побачення
+# Ввічливість
+გმადლობთ | ґмадлобт | дякую
+გთხოვთ | ґтховт | будь ласка
+ბოდიში | бодіші | вибачте
+კი | кі | так
+არა | ара | ні
+# Розмова
+როგორ ხართ? | роґор харт | як справи?
+კარგად | карґад | добре
+მე მქვია… | ме мквіа | мене звати…
+რა გქვიათ? | ра ґквіат | як вас звати?
+საიდან ხართ? | саідан харт | звідки ви?
+მე უკრაინიდან ვარ | ме украйнідан вар | я з України
+ცოტა ვლაპარაკობ | цота влапаракоб | трохи говорю
+</div>
+<div class="tw"><table>
+<tr><th>Займенник</th><th>Грузинська</th></tr>
+<tr><td>я</td><td>მე</td></tr>
+<tr><td>ти</td><td>შენ</td></tr>
+<tr><td>він / вона</td><td>ის</td></tr>
+<tr><td>ми</td><td>ჩვენ</td></tr>
+<tr><td>ви</td><td>თქვენ</td></tr>
+<tr><td>вони</td><td>ისინი</td></tr>
+</table></div>
+<div class="cj" data-verb="ყოფნა" data-note="бути" data-ipa="копна">
+მე | ვარ | вар
+შენ | ხარ | хар
+ის | არის | арис
+ჩვენ | ვართ | варт
+თქვენ | ხართ | харт
+ისინი | არიან | аріан
+</div>
+<div class="rule"><b class="t">«Бути».</b><p>Форма <span class="fr">ვარ, ხარ, არის…</span> іде <b>в кінці</b> речення: <span class="fr">მე სტუდენტი ვარ.</span> (Я студент.) Питання — інтонацією або з <span class="fr">თუ</span>.</p></div>
+<div class="exs">
+გამარჯობა! როგორ ხართ? | ґамарджоба роґор харт | Привіт! Як справи?
+კარგად, გმადლობთ. | карґад ґмадлобт | Добре, дякую.
+რა გქვიათ? | ра ґквіат | Як вас звати?
+მე მქვია ოლენა. | ме мквіа олена | Мене звати Олена.
+საიდან ხართ? | саідан харт | Звідки ви?
+მე უკრაინიდან ვარ. | ме украйнідан вар | Я з України.
+მე სტუდენტი ვარ. | ме студенті вар | Я студент.
+ის მუშაკია. | іс мушакіа | Він працівник.
+</div>
+<div class="qz" data-title="Вправа 2. Знайомство">
+Мене звати Олена: მე ___ ოლენა | მქვია
+Як справи? ___ ხართ | როგორ
+Добре, дякую: კარგად, ___ | გმადლობთ
+Я з України: მე უკრაინიდან ___ | ვარ
+Ти (займенник): ___ | შენ
+Я (займенник): ___ | მე
+Привіт: ___ | გამარჯობა
+Ви (займенник): ___ | თქვენ
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники, множина">
+<h2><span class="no">Розділ 3</span>Іменники, відмінки, множина</h2>
+<p>Нема роду й артиклів. Більшість іменників закінчується на <span class="fr">-ი</span> (називний). Множина — <span class="fr">-ები</span>. Прикметник стоїть <b>перед</b> іменником і закінчується однаково: <span class="fr">დიდი სახლი</span> (великий дім).</p>
+<div class="vocab">
+კაცი | каці | чоловік
+ქალი | калі | жінка
+ბავშვი | бавшві | дитина
+სახლი | сахлі | дім
+წიგნი | ціґні | книжка
+მანქანა | манкана | автомобіль
+მეგობარი | меґобарі | друг
+ქალაქი | калакі | місто
+სკოლა | скола | школа
+მაგიდა | маґіда | стіл
+სკამი | скамі | стілець
+სამუშაო | самушао | робота
+საჭმელი | сачмелі | їжа
+</div>
+<div class="tw"><table>
+<tr><th>Однина</th><th>Множина</th><th>Значення</th></tr>
+<tr><td>წიგნი</td><td>წიგნები</td><td>книжка / книжки</td></tr>
+<tr><td>სახლი</td><td>სახლები</td><td>дім / доми</td></tr>
+<tr><td>ბავშვი</td><td>ბავშვები</td><td>дитина / діти</td></tr>
+<tr><td>მეგობარი</td><td>მეგობრები</td><td>друг / друзі</td></tr>
+<tr><td>ქალაქი</td><td>ქალაქები</td><td>місто / міста</td></tr>
+</table></div>
+<div class="rule"><b class="t">Післяйменники</b><p>додаються до слова: <span class="fr">-ში</span> (в), <span class="fr">-ზე</span> (на), <span class="fr">-თან</span> (біля, з), <span class="fr">-დან</span> (з), <span class="fr">-მდე</span> (до). Приклад: <span class="fr">სახლში</span> (в домі), <span class="fr">მაგიდაზე</span> (на столі).</p></div>
+<div class="exs">
+ეს წიგნია. | ес ціґніа | Це книжка.
+ეს სახლია. | ес сахліа | Це дім.
+მე მეგობარი მყავს. | ме меґобарі мкавс | У мене є друг.
+ბავშვები აქ არიან. | бавшвебі ак аріан | Діти тут.
+დიდი სახლი მაქვს. | діді сахлі макс | У мене великий дім.
+ყავა ცხელია. | кава цхеліа | Кава гаряча.
+</div>
+<div class="qz" data-title="Вправа 3. Іменники">
+(წიგნი) книжки: ___ | წიგნები
+(სახლი) доми: ___ | სახლები
+(ბავშვი) діти: ___ | ბავშვები
+(ქალაქი) міста: ___ | ქალაქები
+у домі: სახლ___ | ში
+на столі: მაგიდა___ | ზე
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Дієслова та «мати»">
+<h2><span class="no">Розділ 4</span>Дієслова й «мати»</h2>
+<p>Грузинське дієслово має префікс особи (<span class="fr">ვ-</span> для «я») і суфікси. Це одна з найскладніших систем світу, але ми почнемо з теперішнього часу.</p>
+<div class="cj" data-verb="ლაპარაკი" data-note="говорити (теперішній)" data-ipa="лапаракі">
+მე | ვლაპარაკობ | влапаракоб
+შენ | ლაპარაკობ | лапаракоб
+ის | ლაპარაკობს | лапаракобс
+ჩვენ | ვლაპარაკობთ | влапаракобт
+თქვენ | ლაპარაკობთ | лапаракобт
+ისინი | ლაპარაკობენ | лапаракобен
+</div>
+<div class="cj" data-verb="ჰქონდა" data-note="мати (в мене є)" data-ipa="макс">
+მე | მაქვს | макс
+შენ | გაქვს | ґакс
+ის | აქვს | акс
+ჩვენ | გვაქვს | ґвакс
+თქვენ | გაქვთ | ґакт
+ისინი | აქვთ | акт
+</div>
+<div class="rule"><b class="t">Заперечення:</b><p><span class="fr">არ</span> перед дієсловом: <span class="fr">არ მაქვს დრო.</span> (Не маю часу.) <span class="fr">არ ვლაპარაკობ</span> (не говорю).</p></div>
+<div class="exs">
+მე ვლაპარაკობ ქართულად. | ме влапаракоб картулад | Я говорю по-грузинськи.
+შენ ლაპარაკობ ინგლისურად. | шен лапаракоб інґлісурад | Ти говориш англійською.
+მე ძმა მყავს. | ме дзма мкавс | У мене є брат.
+დრო გაქვს? | дро ґакс | Маєш час?
+დრო არ მაქვს. | дро ар макс | Не маю часу.
+მას მანქანა აქვს. | мас манкана акс | У нього є машина.
+ჩვენ ვსწავლობთ ქართულს. | чвен всцавлобт картулс | Ми вчимо грузинську.
+ვკითხულობ წიგნს. | вкітхулоб ціґнс | Читаю книжку.
+</div>
+<div class="qz" data-title="Вправа 4. Дієслова">
+Я говорю: ___ | ვლაპარაკობ
+Ти говориш: ___ | ლაპარაკობ
+Він говорить: ___ | ლაპარაკობს
+Ми говоримо: ___ | ვლაპარაკობთ
+У мене є: ___ | მაქვს
+У тебе є: ___ | გაქვს
+У нього є: ___ | აქვს
+Не маю часу: დრო ___ მაქვს | არ
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, порядок слів">
+<h2><span class="no">Розділ 5</span>Питання й заперечення</h2>
+<div class="vocab">
+რა? | ра | що?
+ვინ? | він | хто?
+სად? | сад | де?
+როდის? | родіс | коли?
+როგორ? | роґор | як?
+რამდენი? | рамдені | скільки?
+რატომ? | ратом | чому?
+რომელი? | ромелі | котрий?
+</div>
+<div class="rule"><b class="t">Порядок слів.</b><p>Порядок вільний, але зазвичай <b>підмет – додаток – дієслово</b>: <span class="fr">მე წიგნს ვკითხულობ.</span> Дієслово часто в кінці. Питання «так/ні» — інтонацією; заперечення — <span class="fr">არ</span>.</p></div>
+<div class="exs">
+სად ხარ? | сад хар | Де ти?
+ეს რა არის? | ес ра арис | Що це?
+ეს ვინ არის? | ес він арис | Хто це?
+როდის მოხვალ? | родіс мохваль | Коли приїдеш?
+რამდენი ღირს? | рамдені гірс | Скільки це коштує?
+რატომ არ ხარ აქ? | ратом ар хар ак | Чому ти не тут?
+როგორ ხარ? | роґор хар | Як справи?
+არ ვიცი. | ар віці | Не знаю.
+</div>
+<div class="qz" data-title="Вправа 5. Питання">
+Де ти? ___ ხარ | სად
+Хто це? ეს ___ არის | ვინ
+Скільки коштує? ___ ღირს | რამდენი
+Що це? ეს ___ არის | რა
+Як? ___ | როგორ
+Коли? ___ | როდის
+Чому? ___ | რატომ
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, дні й місяці</h2>
+<div class="vocab">
+ერთი | ерті | один
+ორი | орі | два
+სამი | самі | три
+ოთხი | отхі | чотири
+ხუთი | хуті | п'ять
+ექვსი | ексві | шість
+შვიდი | швіді | сім
+რვა | рва | вісім
+ცხრა | цхра | дев'ять
+ათი | аті | десять
+ოცი | оці | двадцять
+ასი | асі | сто
+# Дні
+ორშაბათი | оршабаті | понеділок
+სამშაბათი | самшабаті | вівторок
+ოთხშაბათი | отхшабаті | середа
+ხუთშაბათი | хутшабаті | четвер
+პარასკევი | параскеві | п'ятниця
+შაბათი | шабаті | субота
+კვირა | квіра | неділя
+# Час
+დღეს | дгес | сьогодні
+ხვალ | хваль | завтра
+გუშინ | ґушін | вчора
+საათი | саати | година
+</div>
+<div class="exs">
+რომელი საათია? | ромелі саатіа | Котра година?
+სამი საათია. | самі саатіа | Три години.
+დღეს ხუთშაბათია. | дгес хутшабатіа | Сьогодні четвер.
+ხვალ პარასკევია. | хваль параскевіа | Завтра п'ятниця.
+ოცი წლის ვარ. | оці цліс вар | Мені двадцять років.
+ეს ათი ლარი ღირს. | ес аті ларі гірс | Це коштує десять ларі.
+</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+три: ___ | სამი
+п'ять: ___ | ხუთი
+десять: ___ | ათი
+двадцять: ___ | ოცი
+сьогодні: ___ | დღეს
+завтра: ___ | ხვალ
+неділя: ___ | კვირა
+понеділок: ___ | ორშაბათი
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа
+პური | пурі | хліб
+წყალი | цкалі | вода
+რძე | рдзе | молоко
+ყავა | кава | кава
+ჩაი | чаі | чай
+ღვინო | гвіно | вино
+ლუდი | луді | пиво
+ყველი | квелі | сир
+ხორცი | хорці | м'ясо
+თევზი | тевзі | риба
+ხილი | хілі | фрукти
+ბოსტნეული | бостнеулі | овочі
+ხაჭაპური | хачапурі | хачапурі
+# Місто
+ქალაქი | калакі | місто
+ქუჩა | куча | вулиця
+მაღაზია | магазія | магазин
+რესტორანი | ресторані | ресторан
+ბანკი | банкі | банк
+სადგური | садґурі | вокзал
+აეროპორტი | аеропорті | аеропорт
+აფთიაქი | афтіакі | аптека
+# Покупки
+რამდენი ღირს? | рамдені гірс | скільки коштує?
+ძვირია | дзвіріа | дорого
+იაფია | іапіа | дешево
+ლარი | ларі | ларі
+ბარათი | барати | картка
+</div>
+<div class="exs">
+პური და ყველი, გთხოვთ. | пурі да квелі ґтховт | Хліб і сир, будь ласка.
+ყავა, გთხოვთ. | кава ґтховт | Каву, будь ласка.
+სად არის ბანკი? | сад арис банкі | Де банк?
+რამდენი ღირს ეს? | рамдені гірс ес | Скільки це коштує?
+ეს ძალიან ძვირია. | ес дзаліан дзвіріа | Це дуже дорого.
+მინდა ერთი ჭიქა ღვინო. | мінда ерті чіка гвіно | Хочу келих вина.
+სად არის აფთიაქი? | сад арис афтіакі | Де аптека?
+ბარათით შემიძლია გადახდა? | баратіт шемідзліа ґадахда | Можна заплатити карткою?
+</div>
+<div class="qz" data-title="Вправа 7. Слова">
+хліб | პური
+вода | წყალი
+молоко | რძე
+сир | ყველი
+риба | თევზი
+магазин | მაღაზია
+банк | ბანკი
+аптека | აფთიაქი
+дорого | ძვირია
+дешево | იაფია
+Скільки коштує? | რამდენი ღირს
+Каву, будь ласка. | ყავა გთხოვთ
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. Знайомство
+ანა: გამარჯობა! მე მქვია ანა. | Привіт! Мене звати Анна.
+გიორგი: გამარჯობა, ანა. მე გიორგი ვარ. საიდან ხარ? | Привіт, Анно. Я Георгій. Звідки ти?
+ანა: მე უკრაინიდან ვარ. ცოტა ვლაპარაკობ ქართულად. | Я з України. Трохи говорю по-грузинськи.
+გიორგი: ძალიან კარგია! | Дуже добре!
+# 2. У кафе
+მიმტანი: გამარჯობა. რას ინებებთ? | Добрий день. Що бажаєте?
+ანა: ყავა და პური, გთხოვთ. | Каву й хліб, будь ласка.
+მიმტანი: კიდევ რამე? | Ще щось?
+ანა: არა, გმადლობთ. რამდენი ღირს? | Ні, дякую. Скільки коштує?
+მიმტანი: სამი ლარი. | Три ларі.
+# 3. Дорога
+ანა: ბოდიში, სად არის სადგური? | Вибачте, де вокзал?
+გიორგი: პირდაპირ წადით და მერე მარცხნივ. | Ідіть прямо, а потім ліворуч.
+ანა: დიდი მადლობა. | Щиро дякую.
+გიორგი: არაფრის. | Нема за що.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Звідки ти? | საიდან ხარ
+Трохи говорю по-грузинськи. | ცოტა ვლაპარაკობ ქართულად
+Каву й хліб, будь ласка. | ყავა და პური გთხოვთ
+Скільки коштує? | რამდენი ღირს
+Де вокзал? | სად არის სადგური
+Щиро дякую. | დიდი მადლობა
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="vocab">
+# Професії
+მასწავლებელი | масцавлебелі | вчитель
+ექიმი | екімі | лікар
+მედდა | медда | медсестра
+ინჟინერი | інжінері | інженер
+მძღოლი | мдзголі | водій
+გამყიდველი | ґамкідвелі | продавець
+მზარეული | мзареулі | кухар
+სტუდენტი | студенті | студент
+პოლიციელი | поліціелі | поліцейський
+ადვოკატი | адвокаті | адвокат
+# Тіло й здоров'я
+თავი | таві | голова
+თვალი | твалі | око
+ყური | кури | вухо
+ცხვირი | цхвірі | ніс
+პირი | пірі | рот
+ხელი | хелі | рука
+ფეხი | пехі | нога
+მუცელი | муцелі | живіт
+ზურგი | зурґі | спина
+გული | ґулі | серце
+თავი მტკივა | | У мене болить голова. |
+ავად ვარ | | Я хворий. |
+ცხელება | цхелеба | гарячка
+აფთიაქი | афтіакі | аптека
+წამალი | цамалі | ліки
+# Одяг
+პერანგი | перанґі | сорочка
+შარვალი | шарвалі | штани
+კაბა | каба | сукня
+ქურთუკი | куртукі | куртка
+ფეხსაცმელი | пехсацмелі | взуття
+სვიტერი | світері | светр
+ქუდი | куді | капелюх
+ზომა | зома | розмір
+# Погода
+ამინდი | амінді | погода
+მზე | мзе | сонце
+წვიმა | цвіма | дощ
+თოვლი | товлі | сніг
+ქარი | карі | вітер
+ცივა | | Холодно. |
+ცხელა | | Жарко. |
+წვიმს | | Іде дощ. |
+# Транспорт
+ავტობუსი | автобусі | автобус
+მატარებელი | матаребелі | потяг
+ტრამვაი | трамваі | трамвай
+თვითმფრინავი | твітмпрінаві | літак
+ველოსიპედი | велосіпеді | велосипед
+ბილეთი | білеті | квиток
+გაჩერება | ґачереба | зупинка
+აეროპორტი | аеропорті | аеропорт
+# Дім і дозвілля
+ოთახი | отахі | кімната
+სამზარეულო | самзареуло | кухня
+აბაზანა | абазана | ванна
+მაცივარი | мацівари | холодильник
+დივანი | дівані | диван
+ფილმი | пілмі | фільм
+მუსიკა | мусіка | музика
+სპორტი | спорті | спорт
+საჭმლის მომზადება | сачмеліс момзадеба | готування
+მოგზაურობა | моґзауроба | подорожі
+</div>
+<div class="exs">
+მე მასწავლებელი ვარ. | ме масцавлебелі вар | Я вчитель.
+მძღოლად ვმუშაობ. | мдзголад вмушаоб | Працюю водієм.
+ყელი მტკივა. | келі мтківа | У мене болить горло.
+რა ზომა ხარ? | ра зома хар | Який у тебе розмір?
+დღეს ცივა. | дгес ціва | Сьогодні холодно.
+წვიმს. | цвімс | Іде дощ.
+სად არის გაჩერება? | сад арис ґачереба | Де зупинка?
+მიყვარს საჭმლის მომზადება. | мікварс сачмеліс момзадеба | Люблю готувати.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | ექიმი
+вчитель | მასწავლებელი
+голова | თავი
+рука | ხელი
+сукня | კაბა
+дощ | წვიმა
+сніг | თოვლი
+автобус | ავტობუსი
+потяг | მატარებელი
+квиток | ბილეთი
+аеропорт | აეროპორტი
+Сьогодні холодно. | დღეს ცივა
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Бажання, можливість і наказовий спосіб</h2>
+<h3>10.1. Модальні конструкції</h3>
+<p>«Хотіти», «могти», «мусити» передаються особливими конструкціями, в яких особа стоїть у давальному відмінку: <span class="fr">მინდა</span> («я хочу»), <span class="fr">შემიძლია</span> («я можу»), <span class="fr">უნდა</span> («треба»).</p>
+<div class="tw"><table>
+<tr><th></th><th>მინდა (хотіти)</th><th>შემიძლია (могти)</th></tr>
+<tr><td>я</td><td>მინდა</td><td>შემიძლია</td></tr>
+<tr><td>ти</td><td>გინდა</td><td>შეგიძლია</td></tr>
+<tr><td>він</td><td>უნდა</td><td>შეუძლია</td></tr>
+<tr><td>ми</td><td>გვინდა</td><td>შეგვიძლია</td></tr>
+<tr><td>ви</td><td>გინდათ</td><td>შეგიძლიათ</td></tr>
+<tr><td>вони</td><td>უნდათ</td><td>შეუძლიათ</td></tr>
+</table></div>
+<div class="rule"><b class="t">Ввічливо і заборона.</b><p>«Можна?» — <span class="fr">შეიძლება?</span> «Не можна» — <span class="fr">არ შეიძლება</span>: <span class="fr">აქ მოწევა არ შეიძლება.</span> «Я б хотів» — <span class="fr">მინდოდა</span>.</p></div>
+<div class="exs">
+შეიძლება შემოვიდე? | шейдзлеба шемовіде | Можна ввійти?
+მინდა ყავა დავლიო. | мінда кава давліо | Хочу пити каву.
+დღეს უნდა ვიმუშაო. | дгес унда вімушао | Сьогодні мені треба працювати.
+ახლა ვერ ვლაპარაკობ. | ахла вер влапаракоб | Зараз не можу говорити.
+შეგიძლია საჭმლის მომზადება? | шеґідзліа сачмеліс момзадеба | Ти вмієш готувати?
+აქ მოწევა არ შეიძლება. | ак моцева ар шейдзлеба | Тут не можна курити.
+ჩაი მინდოდა, გთხოვთ. | чаі міндода ґтховт | Я б хотів чаю, будь ласка.
+</div>
+<h3>10.2. Наказовий спосіб</h3>
+<div class="tw"><table>
+<tr><th>Дієслово</th><th>до однієї особи</th><th>до кількох / ввічливо</th></tr>
+<tr><td>წერა (писати)</td><td>წერე!</td><td>წერეთ!</td></tr>
+<tr><td>მოსვლა (прийти)</td><td>მოდი!</td><td>მოდით!</td></tr>
+<tr><td>ლოდინი (чекати)</td><td>დაელოდე!</td><td>დაელოდეთ!</td></tr>
+<tr><td>ლაპარაკი (говорити)</td><td>ილაპარაკე!</td><td>ილაპარაკეთ!</td></tr>
+</table></div>
+<p>Заборона: <span class="fr">ნუ</span> + форма: <span class="fr">ნუ ეწევი!</span> Ввічливо: <span class="fr">გთხოვთ, მოდით აქ.</span></p>
+<div class="exs">
+დაელოდე ცოტა ხანს! | даелоде цота ханс | Зачекай трохи!
+მოდი აქ, გთხოვ. | моді ак ґтхов | Підійди сюди, будь ласка.
+ილაპარაკე ნელა, გთხოვ. | ілапараке нела ґтхов | Говори повільніше, будь ласка.
+ნუ ეწევი აქ! | ну ецеві ак | Не кури тут!
+ფრთხილად იყავი! | пртхілад ікаві | Будь обережний!
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Я хочу: ___ | მინდა
+Я можу: ___ | შემიძლია
+Ти хочеш: ___ | გინდა
+Можна ввійти? ___ შემოვიდე | შეიძლება
+Не кури! ___ ეწევი | ნუ
+Прийди! ___ | მოდი
+Пиши! ___ | წერე
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. У лікаря
+ექიმი: გამარჯობა, რა გაწუხებთ? | Добрий день, що вас турбує?
+პაციენტი: თავი მტკივა და ცხელება მაქვს. | Болить голова, і в мене температура.
+ექიმი: რამდენი ხანია? | Як довго?
+პაციენტი: ორი დღეა. | Уже два дні.
+ექიმი: მიიღეთ ეს წამალი და სახლში დარჩით. | Приймайте ці ліки й залишайтеся вдома.
+პაციენტი: გმადლობთ, ექიმო. | Дякую, лікарю.
+# 2. У магазині одягу
+გამყიდველი: რით შემიძლია დაგეხმაროთ? | Чим можу допомогти?
+კლიენტი: ქურთუკს ვეძებ. | Шукаю куртку.
+გამყიდველი: რა ზომა გჭირდებათ? | Який розмір потрібен?
+კლიენტი: M ზომა. შეიძლება მოვიზომო? | Розмір M. Можна приміряти?
+გამყიდველი: რა თქმა უნდა, გასახდელი იქაა. | Звісно, примірочна там.
+კლიენტი: რამდენი ღირს? | Скільки коштує?
+გამყიდველი: ას ოცი ლარი. | Сто двадцять ларі.
+# 3. У готелі
+სტუმარი: საღამო მშვიდობისა, ოთახი მაქვს დაჯავშნილი. | Добрий вечір, у мене бронь.
+ადმინისტრატორი: რა გვარზე? | На яке прізвище?
+სტუმარი: სმიტი. ერთადგილიანი ოთახი სამი ღამით. | Сміт. Одномісний номер на три ночі.
+ადმინისტრატორი: აი, გასაღები. საუზმე შვიდიდან ათამდეა. | Ось ключ. Сніданок з сьомої до десятої.
+სტუმარი: არის ვაიფაი? | Є вайфай?
+ადმინისტრატორი: დიახ, პაროლი გასაღებზეა. | Так, пароль на ключі.
+# 4. По телефону
+ანა: ალო? | Алло?
+გიორგი: გამარჯობა ანა, გიორგი ვარ. როგორ ხარ? | Привіт, Анно, це Георгій. Як справи?
+ანა: კარგად, გმადლობ. შენ? | Добре, дякую. А ти?
+გიორგი: მეც კარგად. ხვალ საღამოს თავისუფალი ხარ? | Теж добре. Ти вільна завтра ввечері?
+ანა: დიახ, რატომ? | Так, а чому?
+გიორგი: კინოში წავიდეთ? | Підемо в кіно?
+ანა: სიამოვნებით! | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що вас турбує? | რა გაწუხებთ
+Шукаю куртку. | ქურთუკს ვეძებ
+Скільки коштує? | რამდენი ღირს
+У мене бронь. | ოთახი მაქვს დაჯავშნილი
+Є вайфай? | არის ვაიფაი
+Підемо в кіно? | კინოში წავიდეთ
+З радістю! | სიამოვნებით
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Абетка</td><td>33 літери, нема великих</td></tr>
+<tr><td>Рід, артикль</td><td>немає</td></tr>
+<tr><td>Бути</td><td>ვარ, ხარ, არის, ვართ, ხართ, არიან</td></tr>
+<tr><td>Мати</td><td>მაქვს, გაქვს, აქვს…</td></tr>
+<tr><td>Заперечення</td><td>არ + дієслово</td></tr>
+<tr><td>Множина</td><td>-ები</td></tr>
+<tr><td>Післяйменники</td><td>-ში, -ზე, -თან, -დან</td></tr>
+</table></div>
+<h3>План на 4 тижні</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>1</td><td>Абетка</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомство, іменники</td></tr>
+<tr><td>3</td><td>4, 5, 6</td><td>Дієслова, питання, числа</td></tr>
+<tr><td>4</td><td>7, 8</td><td>Слова, діалоги</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест">
+Привіт: ___ | გამარჯობა
+Дякую: ___ | გმადლობთ
+Мене звати: მე ___ | მქვია
+Я є: მე ___ | ვარ
+У мене є: ___ | მაქვს
+Хліб: ___ | პური
+Де банк? ___ არის ბანკი | სად
+Скільки коштує? ___ ღირს | რამდენი
+Три: ___ | სამი
+Завтра: ___ | ხვალ
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Читаю грузинські слова</label></li>
+<li><label><input type="checkbox"> Знайомлюся й прощаюся</label></li>
+<li><label><input type="checkbox"> Називаю числа, дні, їжу</label></li>
+<li><label><input type="checkbox"> Питаю дорогу й ціну</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>ქართული</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const sem=s=>s.replace(/[\u0591-\u05c7\u064b-\u065f\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').normalize('NFC');
+const norm=s=>sem(gk(s.toLowerCase())).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^ka[-_]GE/i.test(x.lang))||v.find(x=>/^ka/i.test(x.lang))||('ka'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='ka-GE';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('ka1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('ka1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('ka1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('ka1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='ka1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>
