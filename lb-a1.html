@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lëtzebuergesch A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Lëtzebuergesch A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Lëtzebuergesch A1</h1>
+  <p>Курс люксембурзька для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="lb-a2.html">Рівень A2</a><a href="lb-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Люксембурзька — західногерманська мова, близька до німецької (мозельсько-франкська). Це національна мова Люксембургу поряд із французькою й німецькою. Її чують на вулицях, на роботі, у родині. Для українців у Люксембурзі це ключ до роботи, громадянства й людських стосунків.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Якщо знаєш німецьку чи англійську</b> — половину слів впізнаєш: <span class="fr">Haus, Buch, Hand, Mamm, Papp, Kand</span>.</li>
+<li><b>Вимова відносно регулярна</b> — одна літера, один звук, а правил небагато.</li>
+<li><b>Багато французьких слів</b> у побуті: <span class="fr">Merci, Pardon, Restaurant, Gare</span>.</li>
+<li><b>Три роди</b> (як у німецькій), але відмінків майже немає: називний, знахідний, давальний.</li>
+</ul>
+<div class="warn"><b>Пастки.</b> <span class="fr">Äddi</span> = до побачення, <span class="fr">Moien</span> = привіт (цілий день), <span class="fr">Merci</span> = дякую, <span class="fr">wann ech gelift</span> = будь ласка, <span class="fr">Bréif</span> = лист, <span class="fr">Gare</span> = вокзал, <span class="fr">Strooss</span> = вулиця.</div>
+<div class="tip"><b class="t">Про озвучку.</b> Люксембурзької озвучки на більшості пристроїв нема, тому читається з німецьким акцентом. Орієнтуйся на кириличну транскрипцію, вона наближена.</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення й слухай слова.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">Латиниця плюс <span class="fr">ä, ë, é</span>.</p>
+<div class="tw"><table>
+<tr><th>Літери</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td><span class="fr">ä</span></td><td>«е» або «я»</td><td><span class="fr">Äddi</span> [еді]</td></tr>
+<tr><td><span class="fr">ë</span></td><td>неясна «е» (шва)</td><td><span class="fr">gëtt</span> [ґет]</td></tr>
+<tr><td><span class="fr">é</span></td><td>закрите «е»</td><td><span class="fr">Méindeg</span> [мейндех]</td></tr>
+<tr><td><span class="fr">ei</span></td><td>«ай»</td><td><span class="fr">heeschen</span> [гейшен]</td></tr>
+<tr><td><span class="fr">ie</span></td><td>«іє»</td><td><span class="fr">Fliger</span> [фліґер]</td></tr>
+<tr><td><span class="fr">ou</span></td><td>«оу»</td><td><span class="fr">Mound</span> [моунт]</td></tr>
+<tr><td><span class="fr">sch</span></td><td>«ш»</td><td><span class="fr">Schoul</span> [шоул]</td></tr>
+<tr><td><span class="fr">ch</span></td><td>«х» або «хь»</td><td><span class="fr">ech</span> [ех]</td></tr>
+<tr><td><span class="fr">w</span></td><td>«в»</td><td><span class="fr">Wasser</span> [васер]</td></tr>
+<tr><td><span class="fr">z</span></td><td>«ц»</td><td><span class="fr">zwee</span> [цвей]</td></tr>
+<tr><td><span class="fr">ng</span></td><td>«нґ»</td><td><span class="fr">Zong</span> [цонґ]</td></tr>
+</table></div>
+<div class="tip"><b class="t">Правило.</b> Голосна перед подвійним приголосним — коротка; перед одним — довга. <span class="fr">Mamm</span> [мам] — коротка, <span class="fr">Mond</span> — довша. Іменники пишуться з великої літери, як у німецькій.</div>
+<div class="exs">
+Moien! | мойєн | Привіт!
+Äddi. | еді | До побачення.
+Merci. | мерсі | Дякую.
+Ech verstinn net. | ех ферштін нет | Я не розумію.
+Ech schwätzen e bëssen Lëtzebuergesch. | ех швецен е бесен летцебуерієш | Трохи говорю по-люксембурзьки.
+Waasser a Brout, wann ech gelift. | васер а броут ван ех ґелівт | Воду й хліб, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[мойєн] — привітання | Moien
+[еді] — прощання | Äddi
+[мерсі] — подяка | Merci
+[броут] — випічка | Brout
+[васер] — прозора рідина | Waasser
+[шоул] — де вчаться | Schoul
+[йо] — відповідь «так» | Jo
+[нее] — відповідь «ні» | Nee
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+Moien | мойєн | привіт
+Gudde Moien | ґуде мойєн | доброго ранку
+Gudde Mëtteg | ґуде метех | добрий день
+Gudden Owend | ґуден овент | добрий вечір
+Gutt Nuecht | ґут нуехт | на добраніч
+Äddi | еді | до побачення
+Bis herno | біс гернау | до зустрічі
+# Ввічливість
+Merci | мерсі | дякую
+Villmools Merci | філмоолс мерсі | щиро дякую
+Wann ech gelift | ван ех ґелівт | будь ласка
+Pardon | пардон | вибачте
+Jo | йо | так
+Nee | нее | ні
+# Розмова
+Wéi geet et? | вей ґеет ет | як справи?
+Et geet gutt | ет ґеет ґут | добре
+Ech heeschen… | ех гейшен | мене звати…
+Wéi heeschs du? | вей гейшс ду | як тебе звати?
+Vu wou kënns du? | фу воу кенс ду | звідки ти?
+Ech sinn aus der Ukrain | ех зін аус дер украйн | я з України
+Ech schwätzen e bëssen | ех швецен е бесен | говорю трохи
+</div>
+<div class="tw"><table>
+<tr><th>Займенник</th><th>Люксембурзька</th></tr>
+<tr><td>я</td><td>ech</td></tr>
+<tr><td>ти</td><td>du</td></tr>
+<tr><td>він</td><td>hien</td></tr>
+<tr><td>вона</td><td>si</td></tr>
+<tr><td>воно</td><td>et</td></tr>
+<tr><td>ми</td><td>mir</td></tr>
+<tr><td>ви</td><td>dir</td></tr>
+<tr><td>вони</td><td>si</td></tr>
+</table></div>
+<div class="rule"><b class="t">Порядок слів.</b><p>Дієслово стоїть на другому місці: <span class="fr">Haut sinn ech doheem.</span> (Сьогодні я вдома.) У питанні дієслово на першому: <span class="fr">Bass du midd?</span></p></div>
+<div class="exs">
+Moien! Wéi geet et? | мойєн вей ґеет ет | Привіт! Як справи?
+Et geet gutt, merci. | ет ґеет ґут мерсі | Добре, дякую.
+Wéi heeschs du? | вей гейшс ду | Як тебе звати?
+Ech heeschen Olena. | ех гейшен олена | Мене звати Олена.
+Vu wou kënns du? | фу воу кенс ду | Звідки ти?
+Ech kommen aus der Ukrain. | ех комен аус дер украйн | Я з України.
+Ech sinn Student. | ех зін штудент | Я студент.
+Hien ass Aarbechter. | гін ас арбехтер | Він працівник.
+</div>
+<div class="qz" data-title="Вправа 2. Знайомство">
+Мене звати Олена: Ech ___ Olena | heeschen
+Як тебе звати? Wéi ___ du | heeschs
+Звідки ти? Vu wou ___ du | kënns
+Добре, дякую: Et geet gutt, ___ | merci
+Доброго ранку: Gudde ___ | Moien
+Я студент: ___ sinn Student | Ech
+Ти (займенник): ___ | du
+Він: ___ | hien
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники, артикль, множина">
+<h2><span class="no">Розділ 3</span>Іменники, артикль, множина</h2>
+<p>Три роди: <b>m</b> (<span class="fr">den</span>), <b>f</b> (<span class="fr">d'</span>), <b>n</b> (<span class="fr">d'</span>). Невизначений: <span class="fr">en</span> (m, n), <span class="fr">eng</span> (f). Множина: <span class="fr">d'</span>.</p>
+<div class="vocab">
+Mann | ман | чоловік | m
+Fra | фра | жінка | f
+Kand | кант | дитина | n
+Haus | гаус | дім | n
+Buch | бух | книжка | n
+Auto | ауто | автомобіль | n
+Stad | штат | місто | f
+Frënd | френт | друг | m
+Frëndin | френдін | подруга | f
+Kaffi | каффі | кава | m
+Waasser | васер | вода | n
+Brout | броут | хліб | n
+Mëllech | мелех | молоко | f
+Stull | штул | стілець | m
+Dësch | деш | стіл | m
+Schoul | шоул | школа | f
+</div>
+<div class="tw"><table>
+<tr><th>Однина</th><th>Множина</th><th>Значення</th></tr>
+<tr><td>d'Haus</td><td>d'Haiser</td><td>дім / доми</td></tr>
+<tr><td>d'Buch</td><td>d'Bicher</td><td>книжка / книжки</td></tr>
+<tr><td>d'Kand</td><td>d'Kanner</td><td>дитина / діти</td></tr>
+<tr><td>d'Fra</td><td>d'Fraen</td><td>жінка / жінки</td></tr>
+<tr><td>den Mann</td><td>d'Männer</td><td>чоловік / чоловіки</td></tr>
+<tr><td>d'Stad</td><td>d'Stied</td><td>місто / міста</td></tr>
+</table></div>
+<div class="rule"><b class="t">Прикметник</b><p>стоїть <b>перед</b> іменником і закінчується за родом: <span class="fr">e gudde Mann</span>, <span class="fr">eng gutt Fra</span>, <span class="fr">e gutt Kand</span>. Після «бути» — без закінчення: <span class="fr">Den Hond ass grouss.</span></p></div>
+<div class="exs">
+Dat ass e Buch. | дат ас е бух | Це книжка.
+Dat ass d'Haus. | дат ас д'гаус | Це дім.
+Ech hunn e Frënd. | ех гун е френт | У мене є друг.
+D'Kanner sinn hei. | д'канер зін гей | Діти тут.
+Ech hunn eng nei Schoul. | ех гун енґ ней шоул | У мене нова школа.
+De Kaffi ass waarm. | де каффі ас варм | Кава гаряча.
+</div>
+<div class="qz" data-title="Вправа 3. Іменники">
+(Buch) книжки: d'___ | Bicher
+(Haus) доми: d'___ | Haiser
+(Kand) діти: d'___ | Kanner
+(Stad) міста: d'___ | Stied
+друг: ___ Frënd | e
+подруга: ___ Frëndin | eng
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Sinn і hunn">
+<h2><span class="no">Розділ 4</span>Дієслова <span class="fr">sinn</span> (бути) і <span class="fr">hunn</span> (мати)</h2>
+<div class="cj" data-verb="sinn" data-note="бути" data-ipa="зін">
+ech | sinn | зін
+du | bass | бас
+hien / si / et | ass | ас
+mir | sinn | зін
+dir | sidd | зіт
+si | sinn | зін
+</div>
+<div class="cj" data-verb="hunn" data-note="мати" data-ipa="гун">
+ech | hunn | гун
+du | hues | гуес
+hien / si / et | huet | гует
+mir | hunn | гун
+dir | hutt | гут
+si | hunn | гун
+</div>
+<div class="cj" data-verb="schwätzen" data-note="говорити" data-ipa="швецен">
+ech | schwätzen | швецен
+du | schwätz | швец
+hien | schwätzt | швецт
+mir | schwätzen | швецен
+dir | schwätzt | швецт
+si | schwätzen | швецен
+</div>
+<div class="rule"><b class="t">Заперечення:</b><p><span class="fr">net</span> після дієслова: <span class="fr">Ech sinn net midd.</span> (Я не втомлений.) <span class="fr">Ech hunn keng Zäit.</span> (У мене нема часу.) <span class="fr">keen / keng</span> замість «жоден».</p></div>
+<div class="exs">
+Ech sinn Student. | ех зін штудент | Я студент.
+Du bass midd. | ду бас міт | Ти втомлений.
+Mir sinn doheem. | мір зін догейм | Ми вдома.
+Ech hunn e Brudder. | ех гун е брудер | У мене є брат.
+Hues du Zäit? | гуес ду цейт | Маєш час?
+Ech hunn keng Zäit. | ех гун кенґ цейт | Не маю часу.
+Mir schwätzen Lëtzebuergesch. | мір швецен летцебуерієш | Ми говоримо по-люксембурзьки.
+Hien huet en Hond. | гін гует ен гонт | У нього є собака.
+</div>
+<div class="qz" data-title="Вправа 4. Дієслова">
+Я є: ech ___ | sinn
+Ти є: du ___ | bass
+Він є: hien ___ | ass
+Ви є: dir ___ | sidd
+Я маю: ech ___ | hunn
+Ти маєш: du ___ | hues
+Він має: hien ___ | huet
+Не маю часу: Ech hunn ___ Zäit | keng
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, порядок слів">
+<h2><span class="no">Розділ 5</span>Питання й заперечення</h2>
+<div class="vocab">
+Wat? | ват | що?
+Wien? | він | хто?
+Wou? | воу | де?
+Wéini? | вейні | коли?
+Wéi? | вей | як?
+Wéi vill? | вей філ | скільки?
+Firwat? | фірват | чому?
+Wéi eng? | вей енґ | який?
+</div>
+<div class="rule"><b class="t">Порядок слів.</b><p>Дієслово завжди на другому місці в розповіді: <span class="fr">Haut schaffen ech.</span> У питанні «так/ні» — дієслово перше: <span class="fr">Schwätz du Lëtzebuergesch?</span> Після питального слова дієслово також друге: <span class="fr">Wou wunns du?</span></p></div>
+<div class="exs">
+Wou bass du? | воу бас ду | Де ти?
+Wat ass dat? | ват ас дат | Що це?
+Wien ass dat? | він ас дат | Хто це?
+Wéini kënns du? | вейні кенс ду | Коли приїдеш?
+Wéi vill kascht dat? | вей філ кашт дат | Скільки це коштує?
+Firwat bass du net hei? | фірват бас ду нет гей | Чому ти не тут?
+Wéi geet et? | вей ґеет ет | Як справи?
+Ech weess et net. | ех вейс ет нет | Не знаю.
+</div>
+<div class="qz" data-title="Вправа 5. Питання">
+Де ти? ___ bass du | Wou
+Хто це? ___ ass dat | Wien
+Скільки коштує? ___ vill kascht dat | Wéi
+Що це? ___ ass dat | Wat
+Чому? ___ | Firwat
+Коли? ___ | Wéini
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, дні й місяці</h2>
+<div class="vocab">
+eent | еент | один
+zwee | цвей | два
+dräi | драй | три
+véier | вейер | чотири
+fënnef | фенеф | п'ять
+sechs | зекс | шість
+siwen | зівен | сім
+aacht | ахт | вісім
+néng | нейнґ | дев'ять
+zéng | цейнґ | десять
+zwanzeg | цванцех | двадцять
+honnert | гонерт | сто
+# Дні
+Méindeg | мейндех | понеділок
+Dënschdeg | денштех | вівторок
+Mëttwoch | метвох | середа
+Donneschdeg | донештех | четвер
+Freideg | фрайдех | п'ятниця
+Samschdeg | замштех | субота
+Sonndeg | зондех | неділя
+# Час
+haut | гаут | сьогодні
+muer | муер | завтра
+gëschter | ґештер | вчора
+Auer | ауер | година
+</div>
+<div class="exs">
+Wéi vill Auer ass et? | вей філ ауер ас ет | Котра година?
+Et ass dräi Auer. | ет ас драй ауер | Три години.
+Haut ass Donneschdeg. | гаут ас донештех | Сьогодні четвер.
+Muer ass Freideg. | муер ас фрайдех | Завтра п'ятниця.
+Ech sinn zwanzeg Joer al. | ех зін цванцех йоер аль | Мені двадцять років.
+Dat kascht zéng Euro. | дат кашт цейнґ еуро | Це коштує десять євро.
+</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+три: ___ | dräi
+п'ять: ___ | fënnef
+десять: ___ | zéng
+двадцять: ___ | zwanzeg
+сьогодні: ___ | haut
+завтра: ___ | muer
+неділя: ___ | Sonndeg
+понеділок: ___ | Méindeg
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа
+Brout | броут | хліб
+Waasser | васер | вода
+Mëllech | мелех | молоко
+Kaffi | каффі | кава
+Téi | тей | чай
+Wäin | вейн | вино
+Béier | бейер | пиво
+Kéis | кейз | сир
+Fleesch | флейш | м'ясо
+Fësch | феш | риба
+Uebst | уепст | фрукти
+Geméis | ґемейз | овочі
+Gromperekichelcher | ґромперекіхелхер | картопляні оладки
+# Місто
+Stad | штат | місто
+Strooss | штроус | вулиця
+Geschäft | ґешефт | магазин
+Restaurant | ресторан | ресторан
+Bank | банк | банк
+Gare | ґар | вокзал
+Fluchhafen | флухгафен | аеропорт
+Apdikt | апдікт | аптека
+# Покупки
+Wéi vill kascht dat? | вей філ кашт дат | скільки коштує?
+deier | дейер | дорого
+bëlleg | беллех | дешево
+Euro | еуро | євро
+Kaart | карт | картка
+</div>
+<div class="exs">
+Brout a Kéis, wann ech gelift. | броут а кейз ван ех ґелівт | Хліб і сир, будь ласка.
+E Kaffi, wann ech gelift. | е каффі ван ех ґелівт | Каву, будь ласка.
+Wou ass d'Bank? | воу ас д'банк | Де банк?
+Wéi vill kascht dat? | вей філ кашт дат | Скільки це коштує?
+Dat ass ze deier. | дат ас це дейер | Це задорого.
+Ech wéilt e Glas Wäin. | ех вейльт е ґлас вейн | Я б хотів келих вина.
+Wou ass d'Apdikt? | воу ас д'апдікт | Де аптека?
+Kann ech mat Kaart bezuelen? | кан ех мат карт бецуелен | Можна заплатити карткою?
+</div>
+<div class="qz" data-title="Вправа 7. Слова">
+хліб | Brout
+вода | Waasser
+молоко | Mëllech
+сир | Kéis
+риба | Fësch
+магазин | Geschäft
+банк | Bank
+аптека | Apdikt
+дорого | deier
+дешево | bëlleg
+Скільки коштує? | Wéi vill kascht dat
+Каву, будь ласка. | E Kaffi wann ech gelift
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. Знайомство
+Anna: Moien! Ech heeschen Anna. | Привіт! Мене звати Анна.
+Marc: Moien, Anna. Ech sinn de Marc. Vu wou kënns du? | Привіт, Анно. Я Марк. Звідки ти?
+Anna: Ech kommen aus der Ukrain. Ech schwätzen e bëssen Lëtzebuergesch. | Я з України. Трохи говорю по-люксембурзьки.
+Marc: Dat ass immens gutt! | Це дуже добре!
+# 2. У кафе
+Kellner: Gudde Mëtteg. Wat wëllt Dir? | Добрий день. Що бажаєте?
+Anna: E Kaffi a Brout, wann ech gelift. | Каву й хліб, будь ласка.
+Kellner: Soss nach eppes? | Ще щось?
+Anna: Nee, merci. Wéi vill kascht dat? | Ні, дякую. Скільки коштує?
+Kellner: Dräi Euro. | Три євро.
+# 3. Дорога
+Anna: Pardon, wou ass d'Gare? | Вибачте, де вокзал?
+Marc: Gitt riicht eraus an dann lénks. | Ідіть прямо, а потім ліворуч.
+Anna: Villmools Merci. | Щиро дякую.
+Marc: Gär geschitt. | Нема за що.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Звідки ти? | Vu wou kënns du
+Трохи говорю по-люксембурзьки. | Ech schwätzen e bëssen Lëtzebuergesch
+Каву й хліб, будь ласка. | E Kaffi a Brout wann ech gelift
+Скільки коштує? | Wéi vill kascht dat
+Де вокзал? | Wou ass d'Gare
+Щиро дякую. | Villmools Merci
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="vocab">
+# Професії
+Léierin | лейерін | вчителька | f
+Dokter | доктер | лікар | m
+Infirmière | інфірм’єр | медсестра | f
+Ingenieur | інженьйор | інженер | m
+Chauffer | шофер | водій | m
+Verkeefer | феркефер | продавець | m
+Kach | ках | кухар | m
+Student | штудент | студент | m
+Polizist | поліцист | поліцейський | m
+Affekot | афекот | адвокат | m
+# Тіло й здоров'я
+Kapp | кап | голова
+Aen | аен | око
+Ouer | оуер | вухо
+Nues | нуес | ніс
+Mond | монт | рот
+Hand | гант | рука
+Fouss | фоус | нога
+Bauch | баух | живіт
+Réck | рек | спина
+Häerz | герц | серце
+Ech hunn Kappwéi | | У мене болить голова. |
+Ech sinn krank | | Я хворий. |
+Féiwer | фейвер | гарячка
+Apdikt | апдікт | аптека
+Medikament | медикамент | ліки
+# Одяг
+Hiem | гіем | сорочка
+Box | бокс | штани
+Kleed | клеєт | сукня
+Jackett | жакет | куртка
+Schong | шонґ | взуття
+Pullover | пулловер | светр
+Mutz | муц | шапка
+Gréisst | ґрейст | розмір
+# Погода
+Wieder | віедер | погода
+Sonn | зон | сонце
+Reen | реен | дощ
+Schnéi | шней | сніг
+Wand | вант | вітер
+Et ass kal | | Холодно. |
+Et ass waarm | | Жарко. |
+Et reent | | Іде дощ. |
+# Транспорт
+Bus | бус | автобус
+Zuch | цух | потяг
+Tram | трам | трамвай
+Fliger | фліґер | літак
+Vëlo | вело | велосипед
+Ticket | тікет | квиток
+Arrêt | арре | зупинка
+Fluchhafen | флухгафен | аеропорт
+# Дім і дозвілля
+Stuff | штуф | кімната
+Kichen | кіхен | кухня
+Buedzëmmer | буедцемер | ванна
+Frigo | фріґо | холодильник
+Sofa | зофа | диван
+Film | фільм | фільм
+Musek | музек | музика
+Sport | спорт | спорт
+Kachen | кахен | готування
+Reesen | реезен | подорожі
+</div>
+<div class="exs">
+Ech sinn Léierin. | ех зін лейерін | Я вчителька.
+Ech schaffen als Chauffer. | ех шафен альс шофер | Працюю водієм.
+Ech hunn Hals wéi. | ех гун гальс вей | У мене болить горло.
+Wéi eng Gréisst hues du? | вей енґ ґрейст гуес ду | Який у тебе розмір?
+Haut ass et kal. | гаут ас ет каль | Сьогодні холодно.
+Et reent. | ет реент | Іде дощ.
+Wou ass den Arrêt? | воу ас ден арре | Де зупинка?
+Ech kache gär. | ех кахе ґер | Люблю готувати.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | Dokter
+вчителька | Léierin
+голова | Kapp
+рука | Hand
+сукня | Kleed
+дощ | Reen
+сніг | Schnéi
+автобус | Bus
+квиток | Ticket
+аеропорт | Fluchhafen
+Іде дощ. | Et reent
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Бажання, можливість і наказовий спосіб</h2>
+<h3>10.1. Модальні дієслова</h3>
+<p>Модальне дієслово стоїть на другому місці, а <b>інфінітив іде в кінець</b>: <span class="fr">Ech kann haut kommen</span> (можу прийти сьогодні), <span class="fr">Ech wëll e Kaffi drénken</span> (хочу пити каву).</p>
+<div class="tw"><table>
+<tr><th></th><th>kënnen (могти)</th><th>wëllen (хотіти)</th><th>missen (мусити)</th></tr>
+<tr><td>ech</td><td>kann</td><td>wëll</td><td>muss</td></tr>
+<tr><td>du</td><td>kanns</td><td>wëlls</td><td>muss</td></tr>
+<tr><td>hien</td><td>kann</td><td>wëll</td><td>muss</td></tr>
+<tr><td>mir</td><td>kënnen</td><td>wëllen</td><td>missen</td></tr>
+<tr><td>dir</td><td>kënnt</td><td>wëllt</td><td>musst</td></tr>
+<tr><td>si</td><td>kënnen</td><td>wëllen</td><td>missen</td></tr>
+</table></div>
+<div class="rule"><b class="t">Ввічливо і заборона.</b><p>«Я б хотів» — <span class="fr">ech wéilt</span>: <span class="fr">Ech wéilt e Téi.</span> «Можна?» — <span class="fr">Däerf ech…?</span> «Не можна» — <span class="fr">Et ass verbueden.</span></p></div>
+<div class="exs">
+Däerf ech erakommen? | дерф ех еракомен | Можна ввійти?
+Ech wëll e Kaffi drénken. | ех вель е каффі дренкен | Хочу пити каву.
+Ech muss haut schaffen. | ех мус гаут шафен | Сьогодні мені треба працювати.
+Ech kann elo net schwätzen. | ех кан ело нет швецен | Зараз не можу говорити.
+Kanns du kachen? | канс ду кахен | Ти вмієш готувати?
+Hei ass et verbueden ze fëmmen. | гей ас ет фербуеден це фемен | Тут не можна курити.
+Ech wéilt e Téi, wann ech gelift. | ех вейльт е тей ван ех ґелівт | Я б хотів чаю, будь ласка.
+</div>
+<h3>10.2. Наказовий спосіб</h3>
+<div class="tw"><table>
+<tr><th>Дієслово</th><th>до однієї особи</th><th>до кількох</th></tr>
+<tr><td>schwätzen</td><td>schwätz!</td><td>schwätzt!</td></tr>
+<tr><td>kommen</td><td>komm!</td><td>kommt!</td></tr>
+<tr><td>waarden</td><td>waart!</td><td>waart!</td></tr>
+<tr><td>schreiwen</td><td>schreif!</td><td>schreift!</td></tr>
+</table></div>
+<p>Заборона: <span class="fr">Net</span> + наказовий: <span class="fr">Fëmm net hei!</span> Ввічливо (до «Ви»): <span class="fr">Kommt w.e.g.</span></p>
+<div class="exs">
+Waart e Moment! | варт е момент | Зачекай хвилинку!
+Komm hei, wann ech gelift. | ком гей ван ех ґелівт | Підійди сюди, будь ласка.
+Schwätz méi lues, wann ech gelift. | швец мей люс ван ех ґелівт | Говори повільніше, будь ласка.
+Fëmm net hei! | фем нет гей | Не кури тут!
+Pass op! | пас оп | Будь обережний!
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Я можу прийти: Ech ___ kommen | kann
+Я хочу пити каву: Ech ___ e Kaffi drénken | wëll
+Мені треба працювати: Ech ___ schaffen | muss
+Я б хотів: Ech ___ | wéilt
+Можна ввійти? ___ ech erakommen | Däerf
+Зачекай! ___ | Waart
+Підійди! ___ | Komm
+Не кури! ___ net | Fëmm
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. У лікаря
+Dokter: Gudde Mëtteg, wat feelt Iech? | Добрий день, що вас турбує?
+Patient: Ech hunn Kappwéi an e bëssen Féiwer. | Болить голова, і в мене температура.
+Dokter: Zënter wéini? | Відколи?
+Patient: Zënter zwee Deeg. | Уже два дні.
+Dokter: Huelt dëse Medikament a bleift doheem. | Приймайте ці ліки й залишайтеся вдома.
+Patient: Merci, Här Dokter. | Дякую, докторе.
+# 2. У магазині одягу
+Verkeeferin: Kann ech Iech hëllefen? | Вам допомогти?
+Client: Ech sichen eng Jackett. | Шукаю куртку.
+Verkeeferin: Wéi eng Gréisst? | Який розмір?
+Client: Gréisst M. Kann ech se probéieren? | Розмір M. Можна приміряти?
+Verkeeferin: Jo, d'Kabinn ass do. | Так, примірочна там.
+Client: Wéi vill kascht dat? | Скільки коштує?
+Verkeeferin: Honnert Euro. | Сто євро.
+# 3. У готелі
+Gast: Gudden Owend, ech hunn eng Reservatioun. | Добрий вечір, у мене бронь.
+Empfang: Op wéi engem Numm? | На яке ім'я?
+Gast: Smith. E Zëmmer fir dräi Nuechten. | Сміт. Номер на три ночі.
+Empfang: Hei ass de Schlëssel. De Frühstück ass vu siwen Auer un. | Ось ключ. Сніданок з сьомої.
+Gast: Gëtt et WLAN? | Є вайфай?
+Empfang: Jo, d'Passwuert ass um Schlëssel. | Так, пароль на ключі.
+# 4. По телефону
+Anna: Allo? | Алло?
+Marc: Moien Anna, hei ass de Marc. Wéi geet et? | Привіт, Анно, це Марк. Як справи?
+Anna: Gutt, merci. An dir? | Добре, дякую. А тобі?
+Marc: Mir geet et och gutt. Hues du muer Owend Zäit? | Теж добре. Маєш завтра ввечері час?
+Anna: Jo, firwat? | Так, а чому?
+Marc: Ginn mir an de Kino? | Підемо в кіно?
+Anna: Gär! | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що вас турбує? | wat feelt Iech
+Шукаю куртку. | Ech sichen eng Jackett
+Який розмір? | Wéi eng Gréisst
+Скільки коштує? | Wéi vill kascht dat
+У мене бронь. | Ech hunn eng Reservatioun
+Є вайфай? | Gëtt et WLAN
+Підемо в кіно? | Ginn mir an de Kino
+З радістю! | Gär
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Рід</td><td>den (m), d' (f, n), d' (мн.)</td></tr>
+<tr><td>Бути</td><td>sinn, bass, ass, sinn, sidd, sinn</td></tr>
+<tr><td>Мати</td><td>hunn, hues, huet, hunn, hutt, hunn</td></tr>
+<tr><td>Заперечення</td><td>net; keen / keng</td></tr>
+<tr><td>Порядок слів</td><td>дієслово на 2-му місці</td></tr>
+<tr><td>Множина</td><td>-er, -en, умлаут</td></tr>
+</table></div>
+<h3>План на 4 тижні</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>1, 2</td><td>Вимова, привітання</td></tr>
+<tr><td>2</td><td>3, 4</td><td>Іменники, дієслова</td></tr>
+<tr><td>3</td><td>5, 6</td><td>Питання, числа</td></tr>
+<tr><td>4</td><td>7, 8</td><td>Слова, діалоги</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест">
+Привіт: ___ | Moien
+Дякую: ___ | Merci
+Звідки ти? ___ wou kënns du | Vu
+Я маю: ech ___ | hunn
+Ти є: du ___ | bass
+Хліб: ___ | Brout
+Де банк? ___ ass d'Bank | Wou
+Скільки коштує? Wéi ___ kascht dat | vill
+Три: ___ | dräi
+Завтра: ___ | muer
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Читаю слова за правилами</label></li>
+<li><label><input type="checkbox"> Знайомлюся й прощаюся</label></li>
+<li><label><input type="checkbox"> Називаю числа, дні, їжу</label></li>
+<li><label><input type="checkbox"> Питаю дорогу й ціну</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Lëtzebuergesch</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const sem=s=>s.replace(/[\u0591-\u05c7\u064b-\u065f\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').normalize('NFC');
+const norm=s=>sem(gk(s.toLowerCase())).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^lb[-_]LU/i.test(x.lang))||v.find(x=>/^lb/i.test(x.lang))||('lb'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='lb-LU';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('lb1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('lb1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('lb1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('lb1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='lb1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

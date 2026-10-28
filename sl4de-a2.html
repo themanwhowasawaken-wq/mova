@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slowenisch A2: kompletter Kurs</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="start-de.html" title="Startseite">&larr;</a>
+  <button id="menuBtn" aria-label="Inhalt">Inhalt</button>
+  <span class="brand">Slovenščina A2</span>
+  <input id="q" type="search" placeholder="Wort suchen" aria-label="Wort suchen">
+  <button id="uaBtn" title="Übersetzungen der Beispiele und Dialoge ein- oder ausblenden">Übersetzung</button>
+  <button id="thBtn" title="Heller oder dunkler Modus">Modus</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Inhalt"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Slowenisch A2</h1>
+  <p>Der nächste Schritt in Slowenisch: Vergangenheit und Zukunft, Konditional, Verbaspekt, Fälle, Steigerung, zusammengesetzte Sätze, Lesen und Briefe. Tippen Sie auf ein Wort oder einen Satz, um ihn zu hören.</p>
+  <p class="crumbs"><a href="start-de.html">&larr; Startseite</a><a href="sl4de-a1.html">Niveau A1</a><a href="sl4de-vpravy.html">Übungen</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Einstieg" data-short="So nutzt du den Kurs">
+<h2><span class="no">Abschnitt 0</span>So nutzt du den Kurs</h2>
+<p class="lead">Niveau A2: Du kannst dich schon vorstellen und über dich sprechen, jetzt lernst du, <b>von der Vergangenheit zu erzählen, Pläne zu machen, höflich zu bitten, zu vergleichen und Gründe zu nennen</b>. Aussprache, <span class="fr">biti</span>, <span class="fr">imeti</span>, Akkusativ und Lokativ, Zahlen und Uhrzeit stehen im Kurs A1.</p>
+<h3>Das kannst du am Ende</h3>
+<ul>
+<li>von gestern und vom Urlaub erzählen (Vergangenheit);</li>
+<li>über Pläne sprechen (<span class="fr">bom</span> + Partizip);</li>
+<li>höflich bitten und Wünsche äußern (<span class="fr">rad bi, lahko bi</span>);</li>
+<li>Genitiv, Dativ und Instrumental benutzen;</li>
+<li>den Verbaspekt unterscheiden;</li>
+<li>vergleichen, zusammengesetzte Sätze bilden, einen Brief schreiben.</li>
+</ul>
+<div class="tip"><b class="t">Dein Vorteil.</b> Die Fälle kennst du aus dem Deutschen, auch Genus und Zahl. Du musst nur die slowenischen Endungen lernen und den Verbaspekt, den es im Deutschen nicht gibt.</div>
+<div class="warn"><b>Falsche Freunde.</b> <span class="fr">stol</span> = Stuhl, <span class="fr">miza</span> = Tisch, <span class="fr">hiša</span> = Haus, <span class="fr">veliko</span> = viel, <span class="fr">ura</span> = Stunde, <span class="fr">čas</span> = Zeit, <span class="fr">kruh</span> = Brot, <span class="fr">urad</span> = Büro, <span class="fr">vlak</span> = Zug, <span class="fr">kdo</span> = wer.</div>
+<h3>Schneller Check A1</h3>
+<div class="qz" data-title="Übung 0. Wiederholung A1">
+Jaz ___ študent. (biti) | sem
+Ti ___ brata. (imeti) | imaš
+Jaz ___ slovensko. (govoriti) | govorim
+Jaz ___ kavo. (hoteti) | hočem
+Sem v ___ . (šola) | šoli
+Imam ___ . (sestra) | sestro
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Zeiten und Modi" data-short="Vergangenheit">
+<h2><span class="no">Abschnitt 1</span>Vergangenheit</h2>
+<p>Bildung: <span class="fr">sem / si / je / smo / ste / so</span> + Partizip auf <b>-l</b>. Das Partizip richtet sich nach dem Genus: m <b>-l</b>, f <b>-la</b>, n <b>-lo</b>; Plural m <b>-li</b>, f <b>-le</b>.</p>
+<div class="tw"><table>
+<tr><th>Infinitiv</th><th>m</th><th>f</th><th>Pl. (m)</th></tr>
+<tr><td>delati</td><td><span class="fr m">delal</span></td><td><span class="fr f">delala</span></td><td><span class="fr">delali</span></td></tr>
+<tr><td>govoriti</td><td><span class="fr m">govoril</span></td><td><span class="fr f">govorila</span></td><td><span class="fr">govorili</span></td></tr>
+<tr><td>brati</td><td><span class="fr m">bral</span></td><td><span class="fr f">brala</span></td><td><span class="fr">brali</span></td></tr>
+<tr><td>imeti</td><td><span class="fr m">imel</span></td><td><span class="fr f">imela</span></td><td><span class="fr">imeli</span></td></tr>
+<tr><td>biti</td><td><span class="fr m">bil</span></td><td><span class="fr f">bila</span></td><td><span class="fr">bili</span></td></tr>
+<tr><td>iti</td><td><span class="fr m">šel</span></td><td><span class="fr f">šla</span></td><td><span class="fr">šli</span></td></tr>
+<tr><td>priti</td><td><span class="fr m">prišel</span></td><td><span class="fr f">prišla</span></td><td><span class="fr">prišli</span></td></tr>
+<tr><td>videti</td><td><span class="fr m">videl</span></td><td><span class="fr f">videla</span></td><td><span class="fr">videli</span></td></tr>
+<tr><td>jesti</td><td><span class="fr m">jedel</span></td><td><span class="fr f">jedla</span></td><td><span class="fr">jedli</span></td></tr>
+<tr><td>moči</td><td><span class="fr m">mogel</span></td><td><span class="fr f">mogla</span></td><td><span class="fr">mogli</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Wortstellung.</b><p>Das Hilfsverb steht meist <b>an zweiter Stelle</b>: <span class="fr">Včeraj sem bil doma.</span> Steht kein anderes Wort davor: <span class="fr">Delal sem.</span> Verneinung: <span class="fr">nisem delal</span>.</p></div>
+<div class="exs">
+Včeraj sem bil doma. |  | Gestern war ich zu Hause.
+Prejšnji teden sva bili v Ljubljani. |  | Letzte Woche waren wir (zwei Frauen) in Ljubljana.
+Brala sem knjigo. |  | Ich (f) habe ein Buch gelesen.
+Kaj si delal? |  | Was hast du gemacht?
+Nisem imel časa. |  | Ich hatte keine Zeit.
+Šli smo na izlet. |  | Wir sind auf einen Ausflug gefahren.
+Videla sem ga na postaji. |  | Ich (f) habe ihn am Bahnhof gesehen.
+Ste že jedli? |  | Habt ihr schon gegessen?
+</div>
+<div class="qz" data-title="Übung 1. Vergangenheit">
+Včeraj ___ doma. (ja m, biti) | sem bil
+Ona ___ knjigo. (brati) | je brala
+Mi ___ v kino. (iti) | smo šli
+Ti ___ časa. (ne, imeti, m) | nisi imel
+Oni ___ v Ljubljani. (biti) | so bili
+Ona ___ v službo. (priti) | je prišla
+Jaz ___ film. (videti, f) | sem videla
+On ___ pico. (jesti) | je jedel
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Zukunft">
+<h2><span class="no">Abschnitt 2</span>Zukunft</h2>
+<div class="tw"><table>
+<tr><th>Person</th><th>biti (Futur)</th><th>Beispiel</th></tr>
+<tr><td>jaz</td><td>bom</td><td>bom delal</td></tr>
+<tr><td>ti</td><td>boš</td><td>boš delal</td></tr>
+<tr><td>on / ona</td><td>bo</td><td>bo delal / bo delala</td></tr>
+<tr><td>mi</td><td>bomo</td><td>bomo delali</td></tr>
+<tr><td>vi</td><td>boste</td><td>boste delali</td></tr>
+<tr><td>oni</td><td>bodo</td><td>bodo delali</td></tr>
+</table></div>
+<div class="rule"><b class="t">Zwei Möglichkeiten.</b><p>1) <span class="fr">bom</span> + Partizip auf -l (<span class="fr">bom delal</span>). 2) Das Präsens eines perfektiven Verbs hat Zukunftsbedeutung: <span class="fr">Jutri napišem pismo.</span> Das ist wie im Deutschen („Morgen schreibe ich den Brief“).</p></div>
+<div class="exs">
+Jutri bom delal. |  | Morgen arbeite ich.
+Kaj boš delal v soboto? |  | Was machst du am Samstag?
+Naslednji teden gremo na morje. |  | Nächste Woche fahren wir ans Meer.
+Poklical te bom zvečer. |  | Ich rufe dich am Abend an.
+Kupil bom nov telefon. |  | Ich kaufe ein neues Handy.
+Ne bomo jedli doma. |  | Wir essen nicht zu Hause.
+</div>
+<div class="qz" data-title="Übung 2. Zukunft">
+Jutri ___ delal. (ja) | bom
+Ti ___ jedel. (boš) | boš
+Mi ___ šli. (bomo) | bomo
+Oni ___ prišli. | bodo
+Vi ___ delali. | boste
+Ona ___ doma. (bo biti) | bo
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Konditional">
+<h2><span class="no">Abschnitt 3</span>Konditional und höfliche Bitten</h2>
+<p>Konditional: <span class="fr">bi</span> (für alle Personen) + Partizip auf -l. <span class="fr">bi</span> ändert sich nicht: <span class="fr">jaz bi, ti bi, mi bi</span>.</p>
+<div class="exs">
+Rad bi kavo. |  | Ich hätte gern Kaffee.
+Rada bi šla na morje. |  | Ich (f) würde gern ans Meer fahren.
+Lahko bi mi pomagal? |  | Könntest du mir helfen?
+Ali bi lahko zaprli okno? |  | Könnten Sie bitte das Fenster schließen?
+Če bi imel čas, bi šel. |  | Wenn ich Zeit hätte, würde ich gehen.
+Rad bi rezerviral mizo. |  | Ich würde gern einen Tisch reservieren.
+</div>
+<div class="tip"><b class="t">Höflich.</b> <span class="fr">Lahko bi</span> + Partizip ist die einfachste höfliche Form. <span class="fr">Prosim</span> macht die Bitte noch weicher. Männer sagen <span class="fr">rad bi</span>, Frauen <span class="fr">rada bi</span>.</div>
+<div class="qz" data-title="Übung 3. Konditional">
+___ kavo. (Ich hätte gern, m) | Rad bi
+___ čaj. (Ich hätte gern, f) | Rada bi
+Ali ___ lahko pomagali? (bi) | bi
+Če ___ imel čas, bi šel. (bi) | bi
+Lahko ___ mi pomagal? (bi) | bi
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Verbaspekt">
+<h2><span class="no">Abschnitt 4</span>Der Verbaspekt</h2>
+<p>Das ist neu für Deutschsprachige: <b>imperfektiv</b> — Vorgang oder Wiederholung, <b>perfektiv</b> — Ergebnis. Paare werden oft mit einem Präfix gebildet (<span class="fr">pisati → napisati</span>), manchmal mit einem Suffix (<span class="fr">kupovati → kupiti</span>).</p>
+<div class="tw"><table>
+<tr><th>Imperfektiv</th><th>Perfektiv</th><th>Bedeutung</th></tr>
+<tr><td>pisati</td><td>napisati</td><td>schreiben</td></tr>
+<tr><td>brati</td><td>prebrati</td><td>lesen</td></tr>
+<tr><td>delati</td><td>narediti</td><td>machen</td></tr>
+<tr><td>kupovati</td><td>kupiti</td><td>kaufen</td></tr>
+<tr><td>dajati</td><td>dati</td><td>geben</td></tr>
+<tr><td>učiti se</td><td>naučiti se</td><td>lernen</td></tr>
+<tr><td>jesti</td><td>pojesti</td><td>essen</td></tr>
+<tr><td>gledati</td><td>pogledati</td><td>schauen</td></tr>
+</table></div>
+<div class="exs">
+Vsak dan berem časopis. |  | Jeden Tag lese ich die Zeitung.
+Včeraj sem prebral knjigo. |  | Gestern habe ich das Buch (aus)gelesen.
+Pišem pismo. |  | Ich schreibe einen Brief.
+Že sem napisal pismo. |  | Ich habe den Brief schon geschrieben.
+Kupujem kruh vsak dan. |  | Ich kaufe jeden Tag Brot.
+Kupil sem kruh. |  | Ich habe Brot gekauft.
+</div>
+<div class="qz" data-title="Übung 4. Verbaspekt">
+schreiben → perfektiv | napisati
+lesen → perfektiv | prebrati
+kaufen → perfektiv | kupiti
+geben → perfektiv | dati
+Vsak dan ___ . (brati) | berem
+Včeraj sem ___ knjigo. (prebrati, m) | prebral
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Fälle" data-short="Genitiv">
+<h2><span class="no">Abschnitt 5</span>Genitiv (<span class="fr">rodilnik</span>)</h2>
+<div class="tw"><table>
+<tr><th>Genus</th><th>Endung</th><th>Beispiele</th></tr>
+<tr><td><span class="fr m">m</span></td><td><b>-a</b></td><td><span class="fr">brat → brata, stol → stola, avto → avta</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td><b>-e</b></td><td><span class="fr">miza → mize, šola → šole, žena → žene</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td><b>-a</b></td><td><span class="fr">mesto → mesta, jabolko → jabolka</span></td></tr>
+</table></div>
+<h3>Wann man ihn verwendet</h3>
+<ul>
+<li><b>Nach Präpositionen</b> <span class="fr">brez, do, iz, od, s/z (von einer Oberfläche), blizu, zaradi</span>: <span class="fr">brez sladkorja, do postaje, iz Ukrajine, od jutra do večera</span>.</li>
+<li><b>Mengen:</b> <span class="fr">kozarec vode, kos kruha, veliko ljudi, malo časa, nekaj denarja</span>.</li>
+<li><b>Verneinung:</b> <span class="fr">Nimam brata. Nimam časa.</span></li>
+</ul>
+<div class="exs">
+Brez sladkorja, prosim. |  | Ohne Zucker, bitte.
+Grem do postaje. |  | Ich gehe bis zum Bahnhof.
+Kozarec vode, prosim. |  | Ein Glas Wasser, bitte.
+Nimam sestre. |  | Ich habe keine Schwester.
+Iz Ukrajine sem. |  | Ich komme aus der Ukraine.
+Veliko dela imam. |  | Ich habe viel Arbeit.
+</div>
+<div class="qz" data-title="Übung 5. Genitiv">
+brat → (gen.) | brata
+miza → (gen.) | mize
+mesto → (gen.) | mesta
+Grem do ___ . (postaja) | postaje
+Brez ___ . (sladkor) | sladkorja
+Nimam ___ . (brat) | brata
+kozarec ___ (voda) | vode
+Iz ___ sem. (Ukrajina) | Ukrajine
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Dativ, Instrumental">
+<h2><span class="no">Abschnitt 6</span>Dativ und Instrumental</h2>
+<div class="tw"><table>
+<tr><th>Genus</th><th>Dativ (wem?)</th><th>Instrumental (mit wem?)</th></tr>
+<tr><td><span class="fr m">m</span></td><td><b>-u</b>: <span class="fr">bratu</span></td><td><b>-om / -em</b>: <span class="fr">z bratom, s prijateljem</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td><b>-i</b>: <span class="fr">sestri, mami</span></td><td><b>-o</b>: <span class="fr">s sestro, z mamo</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td><b>-u</b>: <span class="fr">mestu</span></td><td><b>-om / -em</b>: <span class="fr">z avtom</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Präpositionen.</b><p><span class="fr">k / h + Dativ</span>: <span class="fr">k zdravniku, h Petru</span>. <span class="fr">z / s + Instrumental</span> = „mit“: <span class="fr">s prijateljem, z mamo</span>. Verkehrsmittel: <span class="fr">grem z avtobusom, z vlakom</span>. Vor <span class="fr">s, š, f, h, k, p, t, c, č</span> schreibt man <span class="fr">s</span>, sonst <span class="fr">z</span>.</p></div>
+<div class="exs">
+Pišem bratu. |  | Ich schreibe meinem Bruder.
+Dam sestri darilo. |  | Ich gebe meiner Schwester ein Geschenk.
+Grem k zdravniku. |  | Ich gehe zum Arzt.
+Živim z mamo. |  | Ich wohne mit meiner Mama.
+Govorim s prijateljem. |  | Ich spreche mit einem Freund.
+Grem z vlakom. |  | Ich fahre mit dem Zug.
+</div>
+<div class="qz" data-title="Übung 6. Dativ und Instrumental">
+brat → (dat.) | bratu
+sestra → (dat.) | sestri
+Pišem ___ . (brat, dat.) | bratu
+Grem k ___ . (zdravnik, dat.) | zdravniku
+Živim z ___ . (mama, instr.) | mamo
+Govorim s ___ . (prijatelj, instr.) | prijateljem
+Grem z ___ . (vlak, instr.) | vlakom
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Pronomen in den Fällen">
+<h2><span class="no">Abschnitt 7</span>Personalpronomen in den Fällen</h2>
+<div class="tw"><table>
+<tr><th>Nom.</th><th>Akk. (kurz)</th><th>Dat. (kurz)</th><th>Instrumental</th></tr>
+<tr><td>jaz</td><td>me</td><td>mi</td><td>z mano</td></tr>
+<tr><td>ti</td><td>te</td><td>ti</td><td>s tabo</td></tr>
+<tr><td>on</td><td>ga</td><td>mu</td><td>z njim</td></tr>
+<tr><td>ona</td><td>jo</td><td>ji</td><td>z njo</td></tr>
+<tr><td>mi</td><td>nas</td><td>nam</td><td>z nami</td></tr>
+<tr><td>vi</td><td>vas</td><td>vam</td><td>z vami</td></tr>
+<tr><td>oni</td><td>jih</td><td>jim</td><td>z njimi</td></tr>
+</table></div>
+<div class="exs">
+Vidim te. |  | Ich sehe dich.
+Ljubim te. |  | Ich liebe dich.
+Povej mi. |  | Sag mir.
+Dam ti knjigo. |  | Ich gebe dir ein Buch.
+Grem s tabo. |  | Ich gehe mit dir.
+Pokličem ga jutri. |  | Ich rufe ihn morgen an.
+Pomagam jim. |  | Ich helfe ihnen.
+</div>
+<div class="qz" data-title="Übung 7. Pronomen">
+Vidim ___ . (dich, kurz) | te
+Povej ___ . (mir) | mi
+Dam ___ knjigo. (dir) | ti
+Grem s ___ . (mit dir) | tabo
+Pomagam ___ . (ihnen) | jim
+Pokličem ___ . (ihn) | ga
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Grammatik" data-short="Steigerung">
+<h2><span class="no">Abschnitt 8</span>Steigerung</h2>
+<div class="tw"><table>
+<tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th></tr>
+<tr><td>nov</td><td>novejši</td><td>najnovejši</td></tr>
+<tr><td>lep</td><td>lepši</td><td>najlepši</td></tr>
+<tr><td>star</td><td>starejši</td><td>najstarejši</td></tr>
+<tr><td>velik</td><td>večji</td><td>največji</td></tr>
+<tr><td>majhen</td><td>manjši</td><td>najmanjši</td></tr>
+<tr><td>dober</td><td>boljši</td><td>najboljši</td></tr>
+<tr><td>slab</td><td>slabši</td><td>najslabši</td></tr>
+</table></div>
+<div class="tip"><b class="t">Einfach.</b> Bei den meisten Adjektiven: <span class="fr">bolj</span> + Adjektiv (<span class="fr">bolj zanimiv</span>), Superlativ: <span class="fr">najbolj</span> + Adjektiv.</div>
+<div class="exs">
+Ljubljana je manjša od Zagreba. |  | Ljubljana ist kleiner als Zagreb.
+Moj brat je starejši kot jaz. |  | Mein Bruder ist älter als ich.
+To je najboljša kava. |  | Das ist der beste Kaffee.
+Danes je bolj toplo kot včeraj. |  | Heute ist es wärmer als gestern.
+</div>
+<div class="qz" data-title="Übung 8. Steigerung">
+velik → ___ | večji
+dober → ___ | boljši
+nov → ___ | novejši
+lep → Superlativ: ___ | najlepši
+dober → Superlativ: ___ | najboljši
+Ljubljana je ___ od Zagreba. (manjša) | manjša
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Zusammengesetzte Sätze">
+<h2><span class="no">Abschnitt 9</span>Zusammengesetzte Sätze</h2>
+<div class="tw"><table>
+<tr><th>Konjunktion</th><th>Bedeutung</th><th>Beispiel</th></tr>
+<tr><td>in</td><td>und</td><td><span class="fr">Delam in študiram.</span></td></tr>
+<tr><td>ampak / vendar</td><td>aber</td><td><span class="fr">Rad bi šel, ampak nimam časa.</span></td></tr>
+<tr><td>ker</td><td>weil</td><td><span class="fr">Ostanem doma, ker sem bolan.</span></td></tr>
+<tr><td>zato</td><td>deshalb</td><td><span class="fr">Bolan sem, zato ostanem doma.</span></td></tr>
+<tr><td>da</td><td>was</td><td><span class="fr">Vem, da imaš čas.</span></td></tr>
+<tr><td>ko</td><td>wann</td><td><span class="fr">Ko pridem, te pokličem.</span></td></tr>
+<tr><td>če</td><td>wenn</td><td><span class="fr">Če dežuje, ostanem doma.</span></td></tr>
+<tr><td>čeprav</td><td>obwohl</td><td><span class="fr">Grem, čeprav dežuje.</span></td></tr>
+<tr><td>ki</td><td>der/die/das (Relativsatz)</td><td><span class="fr">Človek, ki dela tukaj, je moj brat.</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Ki.</b> Das Wort <span class="fr">ki</span> ändert sich weder nach Fall noch nach Genus: <span class="fr">Knjiga, ki jo berem, je zanimiva.</span> (Das Buch, das ich lese, ist interessant.) Den Fall zeigt ein kurzes Pronomen im Satz.</div>
+<div class="exs">
+Ostanem doma, ker sem bolan. |  | Ich bleibe zu Hause, weil ich krank bin.
+Vem, da imaš čas. |  | Ich weiß, dass du Zeit hast.
+Ko pridem domov, te pokličem. |  | Wenn ich nach Hause komme, rufe ich an.
+Če dežuje, ostanem doma. |  | Wenn es regnet, bleibe ich zu Hause.
+</div>
+<div class="qz" data-title="Übung 9. Zusammengesetzte Sätze">
+Ostanem doma, ___ sem bolan. (weil) | ker
+Vem, ___ imaš čas. (dass) | da
+___ pridem, te pokličem. (Wenn, zeitlich) | Ko
+___ dežuje, ostanem doma. (Wenn, Bedingung) | Če
+Rad bi šel, ___ nimam časa. (aber) | ampak
+Grem, ___ dežuje. (obwohl) | čeprav
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Zeit und Bewegungsverben">
+<h2><span class="no">Abschnitt 10</span>Zeitangaben und Bewegungsverben</h2>
+<div class="tw"><table>
+<tr><th>Ausdruck</th><th>Bedeutung</th><th>Beispiel</th></tr>
+<tr><td>ob + Lok.</td><td>um (Uhrzeit)</td><td><span class="fr">ob osmih</span></td></tr>
+<tr><td>v + Akk.</td><td>am (Wochentag)</td><td><span class="fr">v petek</span></td></tr>
+<tr><td>od … do</td><td>von … bis</td><td><span class="fr">od devetih do petih</span></td></tr>
+<tr><td>pred + Instr.</td><td>deshalb</td><td><span class="fr">pred tremi dnevi</span></td></tr>
+<tr><td>čez + Akk.</td><td>in (zeitlich, „in zwei Tagen“)</td><td><span class="fr">čez dva dni</span></td></tr>
+<tr><td>vsak dan</td><td>jeden Tag</td><td><span class="fr">vsak dan delam</span></td></tr>
+</table></div>
+<p>Häufigkeit: <span class="fr">vedno</span> (immer), <span class="fr">pogosto</span> (oft), <span class="fr">včasih</span> (manchmal), <span class="fr">redko</span> (selten), <span class="fr">nikoli</span> (nie).</p>
+<div class="vocab">
+iti |  | gehen (zu Fuß, in eine Richtung) | grem
+hoditi |  | gehen (hin und her) | hodim
+priti |  | kommen | pridem
+oditi |  | weggehen | odidem
+vrniti se |  | zurückkehren | vrnem se
+voziti |  | fahren (selbst, mit dem Auto) | vozim
+leteti |  | fliegen | letim
+iskati |  | suchen | iščem
+najti |  | finden | najdem
+</div>
+<div class="exs">
+Vsak dan hodim v službo peš. |  | Jeden Tag gehe ich zu Fuß zur Arbeit.
+Pred tremi dnevi sem prišel. |  | Ich bin vor drei Tagen angekommen.
+Čez dva dni se vrnem. |  | In zwei Tagen komme ich zurück.
+Včasih grem v kino. |  | Manchmal gehe ich ins Kino.
+Nikoli ne pijem kave zvečer. |  | Abends trinke ich nie Kaffee.
+</div>
+<div class="qz" data-title="Übung 10. Zeit">
+jeden Tag | vsak dan
+nie | nikoli
+manchmal | včasih
+immer | vedno
+vor drei Tagen | pred tremi dnevi
+in zwei Tagen | čez dva dni
+Ob ___ . (um acht) | osmih
+V ___ . (am Freitag) | petek
+</div>
+</section>
+
+<section class="unit" id="u11" data-grp="Wortschatz und Praxis" data-short="Wortschatz nach Themen">
+<h2><span class="no">Abschnitt 11</span>Wortschatz nach Themen</h2>
+<div class="vocab">
+#Reisen
+potovanje |  | Reise | n
+potni list |  | Reisepass | m
+prtljaga |  | Gepäck | f
+rezervacija |  | Reservierung | f
+karta |  | Fahrkarte | f
+počitnice |  | Urlaub | pl
+hotel |  | Hotel | m
+plaža |  | Strand | f
+#Arbeit und Ausbildung
+služba |  | Arbeit | f
+šola |  | Schule | f
+univerza |  | Universität | f
+šef |  | Chef | m
+sestanek |  | Besprechung | m
+plača |  | Gehalt | f
+izpit |  | Prüfung | m
+#Gefühle
+vesel |  | froh | adj
+žalosten |  | traurig | adj
+utrujen |  | müde | adj
+jezen |  | wütend | adj
+srečen |  | glücklich | adj
+#Haushalt
+stanovanje |  | Wohnung | n
+ključ |  | Schlüssel | m
+pralni stroj |  | Waschmaschine | m
+najemnina |  | Miete | f
+sosed |  | Nachbar | m
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Dialoge">
+<h2><span class="no">Abschnitt 12</span>Dialoge</h2>
+<div class="dg">
+#1. Načrti za vikend (Pläne fürs Wochenende)
+Anna: Kaj boš delal ta vikend? | Was machst du am Wochenende?
+Peter: V soboto gremo na izlet, v nedeljo pa ostanem doma. | Am Samstag machen wir einen Ausflug, und am Sonntag bleibe ich zu Hause.
+Anna: Kam gresta? | Wohin fahrt ihr?
+Peter: Na Bled. Ali bi hotela iti z nami? | Zum Bleder See. Möchtest du mitkommen?
+Anna: Rada bi, ampak moram delati. | Gern, aber ich muss arbeiten.
+#2. Pri zdravniku (beim Arzt, noch einmal)
+Zdravnik: Kako dolgo vas boli? | Wie lange tut es schon weh?
+Pacient: Že tri dni. | Schon drei Tage.
+Zdravnik: Ste jemali kakšno zdravilo? | Haben Sie irgendwelche Medikamente genommen?
+Pacient: Ne, nisem. | Nein.
+Zdravnik: Predpišem vam tablete. | Ich verschreibe Ihnen Tabletten.
+#3. Najem stanovanja (Wohnung mieten)
+Najemnik: Dober dan, iščem stanovanje. | Guten Tag, ich suche eine Wohnung.
+Agent: Koliko sob potrebujete? | Wie viele Zimmer brauchen Sie?
+Najemnik: Dve sobi, blizu centra. | Zwei Zimmer, näher am Zentrum.
+Agent: Ta stane petsto evrov na mesec. | Diese kostet fünfhundert Euro im Monat.
+Najemnik: Ali lahko pogledam? | Kann ich sie ansehen?
+</div>
+<div class="qz" data-title="Übung 12. Sätze aus den Dialogen">
+Was machst du am Wochenende? | Kaj boš delal ta vikend
+Gern, aber ich muss arbeiten. | Rada bi, ampak moram delati
+Schon drei Tage. | Že tri dni
+Ich suche eine Wohnung. | Iščem stanovanje
+Kann ich sie ansehen? | Ali lahko pogledam
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Lesen">
+<h2><span class="no">Abschnitt 13</span>Lesen: drei Texte</h2>
+<div class="dg">
+#1. Moj dan (mein Tag)
+Zjutraj vstanem ob sedmih. | Morgens stehe ich um sieben auf.
+Popijem kavo in grem v službo. | Ich trinke Kaffee und gehe zur Arbeit.
+Ob petih pridem domov. | Um fünf komme ich nach Hause.
+Zvečer berem ali gledam film. | Abends lese ich oder sehe einen Film.
+#2. Moja družina (meine Familie)
+Imam mamo, očeta in brata. | Ich habe eine Mutter, einen Vater und einen Bruder.
+Mama dela kot učiteljica. | Meine Mutter arbeitet als Lehrerin.
+Brat študira v Ljubljani. | Mein Bruder studiert in Ljubljana.
+Ob nedeljah vsi jemo skupaj. | Sonntags essen wir alle zusammen.
+#3. Počitnice (Urlaub)
+Lani smo bili na morju. | Letztes Jahr waren wir am Meer.
+Vreme je bilo lepo. | Das Wetter war schön.
+Plavali smo in jedli ribe. | Wir sind geschwommen und haben Fisch gegessen.
+Naslednje leto gremo v gore. | Nächstes Jahr fahren wir in die Berge.
+</div>
+<div class="qz" data-title="Übung 13. Fragen zu den Texten">
+Wann stehe ich auf? (Moj dan) | ob sedmih
+Wo studiert der Bruder? | v Ljubljani
+Wo waren sie letztes Jahr? | na morju
+Was haben sie im Urlaub gegessen? | ribe
+Wohin fahren sie nächstes Jahr? | v gore
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Briefe schreiben">
+<h2><span class="no">Abschnitt 14</span>Briefe schreiben</h2>
+<div class="tw"><table>
+<tr><th></th><th>Informell</th><th>Formell</th></tr>
+<tr><td>Einstieg</td><td><span class="fr">Dragi Peter, / Draga Anna,</span></td><td><span class="fr">Spoštovani, / Spoštovani gospod Novak,</span></td></tr>
+<tr><td>Dank</td><td><span class="fr">Hvala za pismo.</span></td><td><span class="fr">Zahvaljujem se vam za odgovor.</span></td></tr>
+<tr><td>Bitte</td><td><span class="fr">Lahko mi pošlješ…?</span></td><td><span class="fr">Prosim, če mi pošljete…</span></td></tr>
+<tr><td>Schluss</td><td><span class="fr">Lep pozdrav, Anna</span></td><td><span class="fr">S spoštovanjem, Anna Kovalenko</span></td></tr>
+</table></div>
+<div class="dg">
+#Primer (Beispielbrief an einen Freund)
+Dragi Peter, | Lieber Peter,
+hvala za tvoje pismo. Kako si? | danke für deinen Brief. Wie geht’s dir?
+Jaz sem v redu. Prihodnji teden pridem v Ljubljano. | Mir geht es gut. Nächste Woche komme ich nach Ljubljana.
+Ali imaš čas v petek? | Hast du am Freitag Zeit?
+Lep pozdrav, | Viele Grüße
+Anna | Anna
+</div>
+<div class="qz" data-title="Übung 14. Briefe">
+Lieber (m) | Dragi
+Mit freundlichen Grüßen | S spoštovanjem
+Danke für den Brief. | Hvala za pismo
+Viele Grüße | Lep pozdrav
+</div>
+</section>
+
+<section class="unit" id="u15" data-short="Spickzettel, Plan, Test">
+<h2><span class="no">Abschnitt 15</span>Spickzettel, Plan und Test</h2>
+<div class="tw"><table>
+<tr><th>Thema</th><th>Merken</th></tr>
+<tr><td>Vergangenheit</td><td>sem/si/je… + -l, -la, -li (<span class="fr">delal sem</span>)</td></tr>
+<tr><td>Zukunft</td><td>bom, boš, bo… + -l (<span class="fr">bom delal</span>)</td></tr>
+<tr><td>Konditional</td><td>bi + -l (<span class="fr">rad bi</span>, <span class="fr">lahko bi</span>)</td></tr>
+<tr><td>Genitiv</td><td>m, n -a; f -e (<span class="fr">brata, mize</span>)</td></tr>
+<tr><td>Dativ</td><td>m, n -u; f -i (<span class="fr">bratu, sestri</span>)</td></tr>
+<tr><td>Instrumental</td><td>m, n -om/-em; f -o (<span class="fr">z bratom, s sestro</span>)</td></tr>
+<tr><td>Steigerung</td><td>-ši/-ejši; <span class="fr">bolj</span>; <span class="fr">najbolj</span></td></tr>
+</table></div>
+<h3>Plan für 8 Wochen</h3>
+<div class="tw"><table>
+<tr><th>Woche</th><th>Abschnitte</th><th>Ziel</th></tr>
+<tr><td>1</td><td>1</td><td>Vergangenheit</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Zukunft, Konditional</td></tr>
+<tr><td>3</td><td>4</td><td>Verbaspekt</td></tr>
+<tr><td>4</td><td>5, 6</td><td>Genitiv, Dativ, Instrumental</td></tr>
+<tr><td>5</td><td>7, 8</td><td>Pronomen, Steigerung</td></tr>
+<tr><td>6</td><td>9, 10</td><td>Zusammengesetzte Sätze, Zeit</td></tr>
+<tr><td>7</td><td>11–13</td><td>Wörter, Dialoge, Lesen</td></tr>
+<tr><td>8</td><td>14, 15</td><td>Brief + Wiederholung</td></tr>
+</table></div>
+<h3>Abschlusstest</h3>
+<div class="qz" data-title="Test A2">
+Včeraj ___ v kinu. (ja m, biti) | sem bil
+Jutri ___ delal. (ja) | bom
+___ kavo. (Ich hätte gern, m) | Rad bi
+Grem do ___ . (postaja) | postaje
+Grem s ___ . (sestra, Instr.) | sestro
+velik → ___ | večji
+Vidim ___ . (dich, kurz) | te
+pred tremi ___ (Tage) | dnevi
+Vem, ___ imaš čas. | da
+___ pridem, te pokličem. (Wenn, zeitlich) | Ko
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Von der Vergangenheit erzählen</label></li>
+<li><label><input type="checkbox"> Über Pläne sprechen</label></li>
+<li><label><input type="checkbox"> Höflich bitten</label></li>
+<li><label><input type="checkbox"> Genitiv, Dativ, Instrumental benutzen</label></li>
+<li><label><input type="checkbox"> Vergleichen und zusammengesetzte Sätze bilden</label></li>
+<li><label><input type="checkbox"> Einen kurzen Brief schreiben</label></li>
+</ul>
+</section>
+
+<footer>Ein Selbstlerngerüst für A2. Ergänzen Sie es mit echtem Hören: Podcasts, Videos mit Untertiteln, Gespräche mit Muttersprachlern.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Slovenščina</th><th>Aussprache</th><th>Deutsch</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Übung';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Antwort: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Prüfen</button><button type="button" data-act="show">Lösungen zeigen</button><button type="button" data-act="reset">Zurücksetzen</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' von '+tot+(ok===tot?'. Alles richtig.':'. Prüfe die Schreibweise (Sonderzeichen!).');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^sl[-_]SI/i.test(x.lang))||v.find(x=>/^sl/i.test(x.lang))||('sl'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='sl-SI';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('sl4de2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('sl4de2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('sl4de2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('sl4de2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='sl4de2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Ergebnisse: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">zum Abschnitt</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Die ersten 40 werden angezeigt.</div>';
+    } else h+='<div class="mini">Nichts gefunden. Die Suche durchsucht die Wörter der Zielsprache und die deutschen Wörter in den Vokabeltabellen.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

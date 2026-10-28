@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lietuvių A1: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Lietuvių A1</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Lietuvių A1</h1>
+  <p>Курс литовська для україномовних: вимова, граматика, словник за темами, діалоги, тексти й вправи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="lt-a2.html">Рівень A2</a><a href="lt-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Литовська — балтійська мова, не слов'янська, але з багатьма знайомими рисами: сім відмінків, рід, дієслова з особовими закінченнями. Вона дуже архаїчна й близька до давньої індоєвропейської. Пишеться латиницею. Цей курс веде до рівня A1.</p>
+<h3>Що тобі допоможе</h3>
+<ul>
+<li><b>Відмінки.</b> У тебе вже є звичка до них, тільки закінчення інші.</li>
+<li><b>Два роди</b> (чоловічий і жіночий), середнього нема.</li>
+<li><b>Спільні давні корені:</b> <span class="fr">duona</span> (хліб, інше слово), але <span class="fr">vanduo</span> ≈ вода, <span class="fr">naktis</span> ≈ ніч, <span class="fr">dantis</span> ≈ зуб, <span class="fr">mama</span>, <span class="fr">brolis</span> ≈ брат.</li>
+<li><b>Читання.</b> Пишемо майже як чуємо, але є довгі голосні (<span class="fr">ą, ę, į, ų, ū, y</span>).</li>
+</ul>
+<div class="warn"><b>Хибні друзі.</b> <span class="fr">vaikas</span> = дитина, <span class="fr">šuo</span> = собака, <span class="fr">kėdė</span> = стілець, <span class="fr">stalas</span> = стіл, <span class="fr">laikas</span> = час, <span class="fr">valanda</span> = година, <span class="fr">metai</span> = рік, <span class="fr">diena</span> = день, <span class="fr">vakaras</span> = вечір, <span class="fr">vakar</span> = вчора, <span class="fr">mokykla</span> = школа, <span class="fr">pieva</span> = луг, <span class="fr">gatvė</span> = вулиця.</div>
+<div class="tip"><b class="t">Наголос.</b> Наголос вільний і рухомий, на письмі не позначається. Слухай слово й запам'ятовуй. Оскільки голос пристрою може бути не литовським, сприймай озвучку як орієнтир.</div>
+<h3>Як працювати</h3>
+<ol>
+<li>Читай пояснення, натискай на слова, щоб почути їх.</li>
+<li>Роби вправи тут і на сторінці «Вправи».</li>
+<li>20–30 хвилин щодня. План у розділі 9.</li>
+</ol>
+</section>
+
+<section class="unit" id="u1" data-short="Вимова й абетка">
+<h2><span class="no">Розділ 1</span>Вимова й абетка</h2>
+<p class="lead">32 літери. Усе читається за правилами.</p>
+<div class="tw"><table>
+<tr><th>Літера</th><th>Звук</th><th>Приклад</th></tr>
+<tr><td><span class="fr">č</span></td><td>ч</td><td><span class="fr">čia</span> [чя]</td></tr>
+<tr><td><span class="fr">š</span></td><td>ш</td><td><span class="fr">šuo</span> [шуо]</td></tr>
+<tr><td><span class="fr">ž</span></td><td>ж</td><td><span class="fr">žemė</span> [жем'є]</td></tr>
+<tr><td><span class="fr">c</span></td><td>ц</td><td><span class="fr">cukrus</span> [цукрус]</td></tr>
+<tr><td><span class="fr">dž</span></td><td>дж</td><td><span class="fr">džiaugsmas</span> [джяуґсмас]</td></tr>
+<tr><td><span class="fr">j</span></td><td>й</td><td><span class="fr">jis</span> [йіс]</td></tr>
+<tr><td><span class="fr">ė</span></td><td>закрите «е» (як «є» без «й»)</td><td><span class="fr">kėdė</span> [кед'є]</td></tr>
+<tr><td><span class="fr">y, į</span></td><td>довге «і»</td><td><span class="fr">ryte</span> [ріте], <span class="fr">įėjimas</span></td></tr>
+<tr><td><span class="fr">ū, ų</span></td><td>довге «у»</td><td><span class="fr">mūsų</span> [мусу]</td></tr>
+<tr><td><span class="fr">ą, ę</span></td><td>довгі «а», «е»</td><td><span class="fr">ją</span> [я:], <span class="fr">tą</span> [та:]</td></tr>
+<tr><td><span class="fr">ie, uo</span></td><td>іє, уо</td><td><span class="fr">pienas</span> [пієнас], <span class="fr">duona</span> [дуона]</td></tr>
+</table></div>
+<div class="tip"><b class="t">М'якість.</b> Приголосні перед <span class="fr">i, e, ė, ia, io, iu, ie</span> м'які. Саме тому пишуть <span class="fr">brolis</span> [бролісь], <span class="fr">tiltas</span> [тільтас]. Перед твердими голосними приголосні тверді.</div>
+<div class="exs">
+Labas, kaip sekasi? | лабас кайп секасі | Привіт, як справи?
+Laba diena. | лаба дієна | Добрий день.
+Labai ačiū. | лабай ачіу | Дуже дякую.
+Aš nesuprantu. | аш несупрану | Я не розумію.
+Aš šiek tiek kalbu lietuviškai. | аш шієк тік калбу літувішкай | Трохи говорю по-литовськи.
+Pieno ir duonos, prašau. | пієно ір дуоно прашау | Молока й хліба, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 1. Прочитай і впиши">
+[пієнас] — білий напій | pienas
+[дуона] — випічка | duona
+[шуо] — домашня тварина | šuo
+[жем'є] — планета | žemė
+[цукрус] — солодке | cukrus
+[ачіу] — подяка | ačiū
+[чя] — тут | čia
+[кед'є] — меблі | kėdė
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Привітання й знайомство">
+<h2><span class="no">Розділ 2</span>Привітання й знайомство</h2>
+<div class="vocab">
+# Вітання
+Labas | лабас | привіт
+Labas rytas | лабас рітас | доброго ранку
+Laba diena | лаба дієна | добрий день
+Labas vakaras | лабас вакарас | добрий вечір
+Labanakt | лаба накт | на добраніч
+Viso gero | вісо ґеро | до побачення
+# Ввічливість
+Ačiū | ачіу | дякую
+Prašau | прашау | будь ласка
+Atsiprašau | атсіпрашау | вибачте
+Nėra už ką | нер'а уж кя | нема за що
+Taip | тайп | так
+Ne | не | ні
+Gal | ґал | можливо
+</div>
+<h3>2.1. Як представитися</h3>
+<div class="exs">
+Mano vardas Michailas. | мано вардас міхайлас | Мене звати Михайло.
+Kaip tave vadina? | кайп таве вадіна | Як тебе звати?
+Malonu susipažinti. | малону сусіпажінті | Приємно познайомитися.
+Iš kur tu? | іш кур ту | Звідки ти?
+Aš iš Ukrainos. | аш іш украйнос | Я з України.
+Man trisdešimt metų. | ман трісдешімт метю | Мені тридцять років.
+Gyvenu Užhorode. | гівену ужгороде | Живу в Ужгороді.
+Aš esu mokytojas. | аш есу мокітойас | Я вчитель.
+Ar kalbi angliškai? | ар калбі анґлішкай | Ти говориш англійською?
+Aš nesuprantu. | аш несупрану | Я не розумію.
+Gali pakartoti? | ґалі пакартоті | Можеш повторити?
+</div>
+<div class="rule"><b class="t">Tu чи jūs?</b><p><span class="fr">tu</span> — друг, ровесник, дитина. <span class="fr">jūs</span> — ввічливо до однієї людини й до кількох: <span class="fr">Ar kalbate angliškai?</span></p></div>
+<h3>2.2. Займенники</h3>
+<div class="tw"><table>
+<tr><th>Особа</th><th>Литовською</th><th>Українською</th></tr>
+<tr><td>1 одн.</td><td><span class="fr">aš</span></td><td>я</td></tr>
+<tr><td>2 одн.</td><td><span class="fr">tu</span></td><td>ти</td></tr>
+<tr><td>3 одн.</td><td><span class="fr">jis / ji</span></td><td>він / вона</td></tr>
+<tr><td>1 множ.</td><td><span class="fr">mes</span></td><td>ми</td></tr>
+<tr><td>2 множ.</td><td><span class="fr">jūs</span></td><td>ви</td></tr>
+<tr><td>3 множ.</td><td><span class="fr">jie / jos</span></td><td>вони (ч / ж)</td></tr>
+</table></div>
+<div class="qz" data-title="Вправа 2. Привітання">
+Добрий день! | Laba diena
+Дякую! | Ačiū
+Будь ласка | Prašau
+Вибачте! | Atsiprašau
+До побачення! | Viso gero
+Мене звати Анна. | Mano vardas Anna
+Приємно познайомитися. | Malonu susipažinti
+Я не розумію. | Aš nesuprantu
+Звідки ти? | Iš kur tu
+Я з України. | Aš iš Ukrainos
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Іменники: рід і множина">
+<h2><span class="no">Розділ 3</span>Іменники: рід і множина</h2>
+<div class="tw"><table>
+<tr><th>Рід</th><th>Закінчення</th><th>Приклади</th></tr>
+<tr><td><span class="fr m">чол.</span></td><td>-as, -is, -ys, -us</td><td><span class="fr m">stalas, brolis, sūnus, mokytojas</span></td></tr>
+<tr><td><span class="fr f">жін.</span></td><td>-a, -ė, -is</td><td><span class="fr f">knyga, mokykla, žemė, naktis</span></td></tr>
+</table></div>
+<p>Середнього роду нема: слова на кшталт «вікно» чи «село» стали чоловічими чи жіночими: <span class="fr">langas</span> (m), <span class="fr">kaimas</span> (m).</p>
+<h3>3.1. Множина</h3>
+<div class="tw"><table>
+<tr><th>Рід</th><th>Закінчення</th><th>Приклади</th></tr>
+<tr><td><span class="fr m">m -as</span></td><td><b>-ai</b></td><td><span class="fr">stalas → stalai, langas → langai</span></td></tr>
+<tr><td><span class="fr m">m -is</span></td><td><b>-iai</b></td><td><span class="fr">brolis → broliai</span></td></tr>
+<tr><td><span class="fr m">m -us</span></td><td><b>-ūs</b></td><td><span class="fr">sūnus → sūnūs</span></td></tr>
+<tr><td><span class="fr f">f -a</span></td><td><b>-os</b></td><td><span class="fr">knyga → knygos, mokykla → mokyklos</span></td></tr>
+<tr><td><span class="fr f">f -ė</span></td><td><b>-ės</b></td><td><span class="fr">žemė → žemės</span></td></tr>
+<tr><td><span class="fr f">f -is</span></td><td><b>-ys</b></td><td><span class="fr">naktis → naktys, moteris → moterys</span></td></tr>
+</table></div>
+<div class="vocab">
+# Родина
+šeima | шейма | родина | f
+mama | мама | мати | f
+tėtis | тет'їс | батько | m
+brolis | бролісь | брат | m
+sesuo | сесуо | сестра | f
+sūnus | сунус | син | m
+duktė | дукт'є | дочка | f
+močiutė | мочіут'є | бабуся | f
+senelis | сенелісь | дідусь | m
+vyras | віряс | чоловік | m
+žmona | жмона | дружина | f
+vaikas | вайкас | дитина | m
+# Речі
+namas | намас | дім | m
+butas | бутас | квартира | m
+kambarys | камбарис | кімната | m
+virtuvė | віртув'є | кухня | f
+stalas | сталас | стіл | m
+kėdė | кед'є | стілець | f
+langas | лянґас | вікно | m
+durys | дурис | двері | pl
+lova | лова | ліжко | f
+automobilis | аутомобілісь | автомобіль | m
+telefonas | телефонас | телефон | m
+knyga | кніґа | книга | f
+</div>
+<div class="qz" data-title="Вправа 3. Множина">
+stalas → ___ | stalai
+brolis → ___ | broliai
+knyga → ___ | knygos
+mokykla → ___ | mokyklos
+langas → ___ | langai
+žemė → ___ | žemės
+naktis → ___ | naktys
+sūnus → ___ | sūnūs
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Дієслова" data-short="Būti і turėti">
+<h2><span class="no">Розділ 4</span>Дієслова <span class="fr">būti</span> (бути) і <span class="fr">turėti</span> (мати)</h2>
+<div class="cj" data-verb="būti" data-note="бути" data-ipa="буті">
+aš | esu | есу
+tu | esi | есі
+jis / ji | yra | іра
+mes | esame | есаме
+jūs | esate | есате
+jie / jos | yra | іра
+</div>
+<div class="cj" data-verb="turėti" data-note="мати" data-ipa="турет'і">
+aš | turiu | турію
+tu | turi | турі
+jis / ji | turi | турі
+mes | turime | туріме
+jūs | turite | туріте
+jie / jos | turi | турі
+</div>
+<div class="exs">
+Aš esu studentas. | аш есу студентас | Я студент.
+Tu esi pavargęs. | ту есі павар'ґес | Ти втомлений.
+Mes esame namie. | мес есаме намієс | Ми вдома.
+Turiu brolį. | турію бролі | У мене є брат.
+Ar turi laiko? | ар турі лайко | Маєш час?
+Neturiu laiko. | нетурію лайко | Не маю часу.
+</div>
+<div class="rule"><b class="t">Заперечення.</b> Частка <span class="fr">ne-</span> зливається з дієсловом: <span class="fr">nesu, nesi, nėra, nesame, nesate</span>; <span class="fr">neturiu</span>; <span class="fr">nekalbu</span>. «Нема»: <span class="fr">nėra</span> + родовий: <span class="fr">Nėra laiko.</span> Подвійне заперечення, як в українській: <span class="fr">Niekas nieko nežino.</span></div>
+<h3>4.1. Правильні дієслова</h3>
+<div class="tw"><table>
+<tr><th>Група</th><th>Приклад</th><th>aš · tu · jis · mes · jūs · jie</th></tr>
+<tr><td>-ti (-u, -i, -a)</td><td><span class="fr">dirbti</span></td><td>dirbu, dirbi, dirba, dirbame, dirbate, dirba</td></tr>
+<tr><td>-yti (-au, -ai, -o)</td><td><span class="fr">skaityti</span></td><td>skaitau, skaitai, skaito, skaitome, skaitote, skaito</td></tr>
+<tr><td>-ėti (-u, -i, -a)</td><td><span class="fr">kalbėti</span></td><td>kalbu, kalbi, kalba, kalbame, kalbate, kalba</td></tr>
+</table></div>
+<div class="vocab">
+kalbėti | калбеті | говорити | kalbu
+skaityti | скайтіті | читати | skaitau
+rašyti | рашіті | писати | rašau
+dirbti | дірбті | працювати | dirbu
+gyventi | гівенті | жити | gyvenu
+mokytis | мокітіс | вчитися | mokausi
+valgyti | валґіті | їсти | valgau
+gerti | ґерті | пити | geriu
+miegoti | міеґоті | спати | miegu
+pirkti | піркті | купувати | perku
+suprasti | супрасті | розуміти | suprantu
+žinoti | жіноті | знати | žinau
+matyti | матіті | бачити | matau
+mylėti | мілеті | любити | myliu
+</div>
+<div class="cj" data-verb="norėti" data-note="хотіти" data-ipa="норет'і">
+aš | noriu | норію
+tu | nori | норі
+jis / ji | nori | норі
+mes | norime | норіме
+jūs | norite | норіте
+jie / jos | nori | норі
+</div>
+<div class="cj" data-verb="eiti" data-note="йти" data-ipa="ейті">
+aš | einu | ейну
+tu | eini | ейні
+jis / ji | eina | ейна
+mes | einame | ейнаме
+jūs | einate | ейнате
+jie / jos | eina | ейна
+</div>
+<div class="qz" data-title="Вправа 4. Відмінювання">
+Aš ___ studentas. (būti) | esu
+Tu ___ namie. (būti) | esi
+Mes ___ iš Ukrainos. (būti) | esame
+Jie ___ darbe. (būti) | yra
+Aš ___ brolį. (turėti) | turiu
+Tu ___ laiko. (turėti) | turi
+Ji ___ knygą. (skaityti) | skaito
+Aš ___ lietuviškai. (kalbėti) | kalbu
+Aš ___ kavą. (gerti) | geriu
+Mes ___ į mokyklą. (eiti) | einame
+Aš ___ arbatos. (norėti) | noriu
+Jie ___ Užhorode. (gyventi) | gyvena
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Мова в дії" data-short="Питання, відмінки">
+<h2><span class="no">Розділ 5</span>Питання, заперечення, відмінки</h2>
+<p>Загальне питання: <span class="fr">ar</span> на початку: <span class="fr">Ar kalbi angliškai?</span> Або інтонація.</p>
+<div class="vocab">
+kas | кас | хто, що
+kur | кур | де, куди
+iš kur | іш кур | звідки
+kada | када | коли
+kaip | кайп | як
+kodėl | код'єль | чому
+kiek | кієк | скільки
+koks / kokia | кокс / кокія | котрий
+kieno | кієно | чий
+</div>
+<div class="exs">
+Kas tai? | кас тай | Хто це? Що це?
+Ką darai? | кя дарай | Що ти робиш?
+Kur gyveni? | кур гівені | Де ти живеш?
+Kur eini? | кур ейні | Куди ти йдеш?
+Kiek kainuoja? | кієк кайнуоя | Скільки коштує?
+Kaip tave vadina? | кайп таве вадіна | Як тебе звати?
+</div>
+<h3>5.1. Знахідний і місцевий</h3>
+<div class="tw"><table>
+<tr><th>Рід</th><th>Знахідний (кого? що?)</th><th>Місцевий (де?)</th></tr>
+<tr><td><span class="fr f">f на -a</span></td><td>-a → <b>-ą</b>: <span class="fr">knygą, mokyklą</span></td><td>-a → <b>-oje</b>: <span class="fr">mokykloje, knygoje</span></td></tr>
+<tr><td><span class="fr f">f на -ė</span></td><td>-ė → <b>-ę</b>: <span class="fr">žemę</span></td><td>-ė → <b>-ėje</b>: <span class="fr">virtuvėje</span></td></tr>
+<tr><td><span class="fr m">m на -as</span></td><td>-as → <b>-ą</b>: <span class="fr">stalą, namą</span></td><td>-as → <b>-e</b>: <span class="fr">stale, name</span></td></tr>
+<tr><td><span class="fr m">m на -is</span></td><td>-is → <b>-į</b>: <span class="fr">brolį</span></td><td>-is → <b>-yje</b>: <span class="fr">brolyje</span></td></tr>
+</table></div>
+<div class="exs">
+Turiu seserį. | турію серері | У мене є сестра.
+Skaitau knygą. | скайтау кніґа | Читаю книжку.
+Matau šunį. | матау шуні | Бачу собаку.
+Gyvenu Užhorode. | гівену ужгороде | Живу в Ужгороді.
+Knyga ant stalo. | кніґа ант стало | Книжка на столі.
+Esu mokykloje. | есу мокікльоє | Я в школі.
+Einu į mokyklą. | ейну і мокіклу | Іду до школи.
+</div>
+<div class="tip"><b class="t">Де і куди.</b> Місцевий: <span class="fr">mokykloje, mieste, name</span>. Для напрямку — прийменник <span class="fr">į</span> + знахідний: <span class="fr">į mokyklą, į miestą</span>. «Біля, на» — <span class="fr">ant</span>/<span class="fr">prie</span> + родовий.</div>
+<h3>5.2. Прикметники й присвійні</h3>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th></tr>
+<tr><td>новий</td><td><span class="fr m">naujas</span></td><td><span class="fr f">nauja</span></td></tr>
+<tr><td>великий</td><td><span class="fr m">didelis</span></td><td><span class="fr f">didelė</span></td></tr>
+<tr><td>добрий</td><td><span class="fr m">geras</span></td><td><span class="fr f">gera</span></td></tr>
+<tr><td>маленький</td><td><span class="fr m">mažas</span></td><td><span class="fr f">maža</span></td></tr>
+</table></div>
+<p>Присвійні <b>не змінюються</b>: <span class="fr">mano</span> (мій), <span class="fr">tavo</span> (твій), <span class="fr">jo</span> (його), <span class="fr">jos</span> (її), <span class="fr">mūsų</span> (наш), <span class="fr">jūsų</span> (ваш), <span class="fr">jų</span> (їхній): <span class="fr">mano brolis, mano sesuo</span>.</p>
+<div class="qz" data-title="Вправа 5. Мова в дії">
+___ tai? (хто) | Kas
+___ kainuoja? (скільки) | Kiek
+___ gyveni? (де) | Kur
+Aš ___ laiko. (не маю) | neturiu
+Skaitau ___ . (knyga, знах.) | knygą
+Matau ___ . (brolis, знах.) | brolį
+Esu ___ . (mokykla, місц.) | mokykloje
+Einu ___ mokyklą. (до) | į
+nauja knyga, ___ stalas | naujas
+___ brolis (мій) | mano
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Числа, час, дати">
+<h2><span class="no">Розділ 6</span>Числа, час і дати</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">nulis</span></td><td>1 <span class="fr">vienas</span></td><td>2 <span class="fr">du</span></td><td>3 <span class="fr">trys</span></td></tr>
+<tr><td>4 <span class="fr">keturi</span></td><td>5 <span class="fr">penki</span></td><td>6 <span class="fr">šeši</span></td><td>7 <span class="fr">septyni</span></td></tr>
+<tr><td>8 <span class="fr">aštuoni</span></td><td>9 <span class="fr">devyni</span></td><td>10 <span class="fr">dešimt</span></td><td>11 <span class="fr">vienuolika</span></td></tr>
+<tr><td>12 <span class="fr">dvylika</span></td><td>20 <span class="fr">dvidešimt</span></td><td>30 <span class="fr">trisdešimt</span></td><td>40 <span class="fr">keturiasdešimt</span></td></tr>
+<tr><td>50 <span class="fr">penkiasdešimt</span></td><td>100 <span class="fr">šimtas</span></td><td>200 <span class="fr">du šimtai</span></td><td>1000 <span class="fr">tūkstantis</span></td></tr>
+</table></div>
+<div class="vocab">
+# Дні тижня
+pirmadienis | пірмадієніс | понеділок
+antradienis | антрадієніс | вівторок
+trečiadienis | треч'ядієніс | середа
+ketvirtadienis | кетвірта дієніс | четвер
+penktadienis | пенктадієніс | п'ятниця
+šeštadienis | шештадієніс | субота
+sekmadienis | секмадієніс | неділя
+# Місяці
+sausis | саусіс | січень
+vasaris | васаріс | лютий
+kovas | ковас | березень
+balandis | баландіс | квітень
+gegužė | ґеґуж'є | травень
+birželis | біржелісь | червень
+liepa | лієпа | липень
+rugpjūtis | ругп'ютіс | серпень
+rugsėjis | ругсейіс | вересень
+spalis | спалісь | жовтень
+lapkritis | лапкрітіс | листопад
+gruodis | ґруодіс | грудень
+# Час
+šiandien | шяндієн | сьогодні
+rytoj | рітой | завтра
+vakar | вакар | вчора
+ryte | ріте | вранці
+vakare | вакаре | ввечері
+dabar | дабар | зараз
+</div>
+<div class="exs">
+Kelinta valanda? | келінта валанда | Котра година?
+Dabar penkta valanda. | дабар пенкта валанда | Зараз п'ята година.
+Kelintą valandą? | келінтя валандя | О котрій годині?
+Aštuntą valandą. | аштунтя валандя | О восьмій.
+Šiandien pirmadienis. | шяндієн пірмадієніс | Сьогодні понеділок.
+Penktadienį esu laisvas. | пенктадієні есу лайсвас | У п'ятницю я вільний.
+</div>
+<div class="qz" data-title="Вправа 6. Числа й дні">
+2 | du
+3 | trys
+5 | penki
+10 | dešimt
+20 | dvidešimt
+100 | šimtas
+понеділок | pirmadienis
+п'ятниця | penktadienis
+неділя | sekmadienis
+жовтень | spalis
+завтра | rytoj
+вчора | vakar
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Слова й діалоги" data-short="Їжа, місто, покупки">
+<h2><span class="no">Розділ 7</span>Їжа, місто й покупки</h2>
+<div class="vocab">
+# Їжа
+duona | дуона | хліб | f
+sviestas | свієстас | масло | m
+sūris | сурісь | сир | m
+mėsa | мес'а | м'ясо | f
+žuvis | жувіс | риба | f
+kiaušinis | кяушінісь | яйце | m
+sriuba | срюба | суп | f
+ryžiai | ріжєй | рис | pl
+bulvė | бульв'є | картопля | f
+obuolys | обуоліс | яблуко | m
+cukrus | цукрус | цукор | m
+druska | друска | сіль | f
+# Напої
+vanduo | вандуо | вода | m
+pienas | пієнас | молоко | m
+kava | кава | кава | f
+arbata | арбата | чай | f
+sultys | султіс | сік | pl
+alus | алус | пиво | m
+vynas | вінас | вино | m
+# Місто
+geležinkelio stotis | ґележінкелієсь стотіс | вокзал | f
+paštas | паштас | пошта | m
+bankas | банкас | банк | m
+ligoninė | лігонін'є | лікарня | f
+vaistinė | вайстін'є | аптека | f
+parduotuvė | парду отув'є | магазин | f
+gatvė | ґатв'є | вулиця | f
+tiltas | тільтас | міст | m
+parkas | паркас | парк | m
+</div>
+<div class="exs">
+Vieną kavą, prašau. | вієну кава прашау | Одну каву, будь ласка.
+Sąskaitą, prašau. | саскайта прашау | Рахунок, будь ласка.
+Skanaus! | сканаус | Смачного!
+Kiek kainuoja? | кієк кайнуоя | Скільки коштує?
+Brangu. | бранґу | Дорого.
+Ar galiu mokėti kortele? | ар ґаліу мокеті кортеле | Можна карткою?
+Kur geležinkelio stotis? | кур ґележінкелієсь стотіс | Де вокзал?
+Eikite tiesiai, paskui kairėn. | ейкіте тієсяй паскуй кайрен | Ідіть прямо, потім ліворуч.
+Esu alkanas. | есу алканас | Я голодний.
+</div>
+<div class="qz" data-title="Вправа 7. Кафе й місто">
+Одну каву, будь ласка. | Vieną kavą, prašau
+Рахунок, будь ласка. | Sąskaitą, prašau
+Смачного! | Skanaus
+Скільки коштує? | Kiek kainuoja
+Де вокзал? | Kur geležinkelio stotis
+Дорого. | Brangu
+Я голодний. | Esu alkanas
+хліб | duona
+молоко | pienas
+вокзал | geležinkelio stotis
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Діалоги">
+<h2><span class="no">Розділ 8</span>Діалоги на щодень</h2>
+<div class="dg">
+# 1. Kavinėje (у кав'ярні)
+Padavėjas: Laba diena. Ko pageidaujate? | Добрий день. Що бажаєте?
+Svečias: Kavos ir pyrago gabalėlį, prašau. | Кави й шматочок пирога, будь ласка.
+Padavėjas: Su pienu? | З молоком?
+Svečias: Ne, ačiū. Be pieno. | Ні, дякую. Без молока.
+Padavėjas: Prašom. Skanaus. | Прошу. Смачного.
+Svečias: Ačiū. Ar galiu mokėti kortele? | Дякую. Можна карткою?
+# 2. Stotyje (на вокзалі)
+Keleivis: Laba diena, vieną bilietą į Vilnių, prašau. | Добрий день, квиток до Вільнюса.
+Kasininkas: Tik į vieną pusę? | Лише в один бік?
+Keleivis: Taip. Kada išvyksta traukinys? | Так. Коли відправляється потяг?
+Kasininkas: Dešimt valandų penkiolika minučių. | О десятій п'ятнадцять.
+Keleivis: Kiek kainuoja bilietas? | Скільки коштує квиток?
+Kasininkas: Dvidešimt eurų. | Двадцять євро.
+# 3. Kelio klausimas (дорога)
+Turistas: Atsiprašau, kur yra muziejus? | Вибачте, де музей?
+Moteris: Eikite tiesiai, paskui dešinėn. | Ідіть прямо, потім праворуч.
+Turistas: Ar tai toli? | Це далеко?
+Moteris: Ne, penkios minutės pėsčiomis. | Ні, п'ять хвилин пішки.
+Turistas: Labai ačiū. | Дуже дякую.
+Moteris: Nėra už ką. | Нема за що.
+# 4. Susipažinimas (знайомство)
+Petras: Labas, mano vardas Petras. O tavo? | Привіт, мене звати Петрас. А тебе?
+Anna: Mano vardas Anna. Malonu. | Мене звати Анна. Приємно.
+Petras: Iš kur tu? | Звідки ти?
+Anna: Aš iš Ukrainos, iš Užhorodo. | Я з України, з Ужгорода.
+Petras: Gerai kalbi lietuviškai! | Ти добре говориш по-литовськи!
+Anna: Ačiū, dar mokausi. | Дякую, ще вчуся.
+</div>
+<div class="qz" data-title="Вправа 8. Фрази з діалогів">
+Що бажаєте? | Ko pageidaujate
+Одну каву, будь ласка. | Vieną kavą, prašau
+Квиток до Вільнюса. | Bilietą į Vilnių
+Де музей? | Kur yra muziejus
+П'ять хвилин пішки. | Penkios minutės pėsčiomis
+Нема за що. | Nėra už ką
+Мене звати Анна. | Mano vardas Anna
+Ще вчуся. | Dar mokausi
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="Розширення A1" data-short="Більше слів">
+<h2><span class="no">Розділ 9</span>Більше слів: робота, тіло, одяг, погода, транспорт</h2>
+<div class="vocab">
+# Професії
+mokytojas |  | вчитель | m
+gydytojas |  | лікар | m
+slaugytoja |  | медсестра | f
+inžinierius |  | інженер | m
+vairuotojas |  | водій | m
+pardavėjas |  | продавець | m
+virėjas |  | кухар | m
+studentas |  | студент | m
+policininkas |  | поліцейський | m
+advokatas |  | адвокат | m
+# Тіло й здоров'я
+galva |  | голова | f
+akis |  | око | f
+ausis |  | вухо | f
+nosis |  | ніс | f
+burna |  | рот | f
+ranka |  | рука | f
+koja |  | нога | f
+pilvas |  | живіт | m
+nugara |  | спина | f
+širdis |  | серце | f
+Man skauda galvą. |  | У мене болить голова. |
+Aš sergu. |  | Я хворий. |
+karščiavimas |  | гарячка | m
+vaistinė |  | аптека | f
+vaistai |  | ліки | pl
+# Одяг
+marškiniai |  | сорочка | pl
+kelnės |  | штани | pl
+suknelė |  | сукня | f
+striukė |  | куртка | f
+batai |  | взуття | pl
+megztinis |  | светр | m
+kepurė |  | шапка | f
+dydis |  | розмір | m
+# Погода
+oras |  | погода | m
+saulė |  | сонце | f
+lietus |  | дощ | m
+sniegas |  | сніг | m
+vėjas |  | вітер | m
+Šalta. |  | Холодно. | adv
+Karšta. |  | Жарко. | adv
+Šviečia saulė. |  | Світить сонце. | adv
+# Транспорт
+autobusas |  | автобус | m
+traukinys |  | потяг | m
+taksi |  | таксі | n
+lėktuvas |  | літак | m
+dviratis |  | велосипед | m
+bilietas |  | квиток | m
+stotelė |  | зупинка | f
+oro uostas |  | аеропорт | m
+# Дім і дозвілля
+svetainė |  | вітальня | f
+vonia |  | ванна | f
+šaldytuvas |  | холодильник | m
+sofa |  | диван | f
+filmas |  | фільм | m
+muzika |  | музика | f
+sportas |  | спорт | m
+virti |  | готувати | verb
+keliauti |  | подорожувати | keliauju
+</div>
+<div class="exs">
+Aš esu mokytojas. |  | Я вчитель.
+Dirbu vairuotoju. |  | Працюю водієм.
+Man skauda gerklę. |  | У мене болить горло.
+Koks tavo dydis? |  | Який у тебе розмір?
+Šiandien šalta. |  | Сьогодні холодно.
+Lyja. |  | Іде дощ.
+Kur yra stotelė? |  | Де зупинка?
+Man patinka virti. |  | Люблю готувати.
+</div>
+<div class="qz" data-title="Вправа 9. Нові слова">
+лікар | gydytojas
+вчитель | mokytojas
+голова | galva
+рука | ranka
+сукня | suknelė
+дощ | lietus
+сніг | sniegas
+автобус | autobusas
+потяг | traukinys
+квиток | bilietas
+аеропорт | oro uostas
+Іде дощ. | Lyja
+У мене болить голова. | Man skauda galvą
+Сьогодні холодно. | Šiandien šalta
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Модальні, наказовий">
+<h2><span class="no">Розділ 10</span>Модальні дієслова й наказовий спосіб</h2>
+<h3>10.1. Модальні дієслова</h3>
+<div class="tw"><table>
+<tr><th></th><th>galėti (могти)</th><th>turėti (мусити)</th><th>norėti (хотіти)</th><th>mokėti (вміти)</th></tr>
+<tr><td>aš</td><td>galiu</td><td>turiu</td><td>noriu</td><td>moku</td></tr>
+<tr><td>tu</td><td>gali</td><td>turi</td><td>nori</td><td>moki</td></tr>
+<tr><td>jis / ji</td><td>gali</td><td>turi</td><td>nori</td><td>moka</td></tr>
+<tr><td>mes</td><td>galime</td><td>turime</td><td>norime</td><td>mokame</td></tr>
+<tr><td>jūs</td><td>galite</td><td>turite</td><td>norite</td><td>mokate</td></tr>
+<tr><td>jie / jos</td><td>gali</td><td>turi</td><td>nori</td><td>moka</td></tr>
+</table></div>
+<div class="rule"><b class="t">Модальне + інфінітив.</b><p>Основне дієслово стоїть в інфінітиві: <span class="fr">Galiu ateiti. Noriu gerti kavos. Turiu dirbti.</span> Ввічливе бажання: <span class="fr">Norėčiau</span> + родовий: <span class="fr">Norėčiau kavos.</span> «Можна»: <span class="fr">galima</span>; «не можна»: <span class="fr">negalima</span>.</p></div>
+<div class="exs">
+Ar galima įeiti? |  | Можна ввійти?
+Noriu gerti kavos. |  | Хочу пити каву.
+Šiandien turiu dirbti. |  | Сьогодні мушу працювати.
+Dabar negaliu kalbėti. |  | Зараз не можу говорити.
+Ar moki virti? |  | Вмієш готувати?
+Čia negalima rūkyti. |  | Тут не можна курити.
+Norėčiau arbatos, prašau. |  | Я б хотів чаю, будь ласка.
+</div>
+<h3>10.2. Наказовий спосіб</h3>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>tu</th><th>jūs</th></tr>
+<tr><td>kalbėti</td><td>kalbėk!</td><td>kalbėkite!</td></tr>
+<tr><td>skaityti</td><td>skaityk!</td><td>skaitykite!</td></tr>
+<tr><td>laukti</td><td>palauk!</td><td>palaukite!</td></tr>
+<tr><td>ateiti</td><td>ateik!</td><td>ateikite!</td></tr>
+<tr><td>būti</td><td>būk!</td><td>būkite!</td></tr>
+<tr><td>rašyti</td><td>rašyk!</td><td>rašykite!</td></tr>
+</table></div>
+<p>Заборона: <span class="fr">nerūkyk!</span> Ввічливо: <span class="fr">Prašom sėstis.</span></p>
+<div class="exs">
+Palauk minutėlę! |  | Зачекай хвилинку!
+Ateikite čia, prašau. |  | Підійдіть сюди, будь ласка.
+Kalbėk lėčiau, prašau. |  | Говори повільніше, будь ласка.
+Nerūkyk čia! |  | Не кури тут!
+Būk atsargus! |  | Будь обережний!
+</div>
+<div class="qz" data-title="Вправа 10. Модальні й наказовий">
+Aš ___ dirbti. (turėti) | turiu
+Tu ___ eiti. (turėti) | turi
+Jis ___ kavos. (norėti) | nori
+Mes ___ eiti. (turėti) | turime
+___ virti. (Я вмію) | Moku
+___ arbatos. (Я б хотів) | Norėčiau
+kalbėti → (tu!) ___ | kalbėk
+skaityti → (tu!) ___ | skaityk
+kalbėti → (jūs!) ___ | kalbėkite
+būti → (tu!) ___ | būk
+___ rūkyk! (Не) | Ne
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Більше діалогів">
+<h2><span class="no">Розділ 11</span>Ще чотири діалоги</h2>
+<div class="dg">
+# 1. Pas gydytoją (у лікаря)
+Gydytojas: Laba diena, kas jums skauda? | Добрий день, що у вас болить?
+Pacientas: Man skauda galvą ir turiu karščiavimą. | У мене болить голова й гарячка.
+Gydytojas: Kiek laiko? | Скільки часу?
+Pacientas: Dvi dienas. | Два дні.
+Gydytojas: Gerkite šias tabletes ir pasilikite namie. | Приймайте ці таблетки й залишайтеся вдома.
+Pacientas: Ačiū, daktare. | Дякую, докторе.
+# 2. Drabužių parduotuvėje (у магазині одягу)
+Pardavėja: Ar galiu padėti? | Вам допомогти?
+Pirkėjas: Ieškau striukės. | Шукаю куртку.
+Pardavėja: Kokio dydžio jūs? | Який у вас розмір?
+Pirkėjas: M dydžio. Ar galiu pasimatuoti? | Розмір M. Можна приміряти?
+Pardavėja: Žinoma, matavimosi kabina ten. | Звісно, примірочна там.
+Pirkėjas: Kiek kainuoja? | Скільки коштує?
+Pardavėja: Šimtas dvidešimt eurų. | Сто двадцять євро.
+# 3. Viešbutyje (у готелі)
+Svečias: Labas vakaras, turiu rezervaciją. | Добрий вечір, у мене бронь.
+Registratorius: Kokia jūsų pavardė? | Яке ваше прізвище?
+Svečias: Smith. Vienvietis kambarys trims naktims. | Сміт. Одномісний номер на три ночі.
+Registratorius: Štai raktas. Pusryčiai nuo septynių iki dešimties. | Ось ключ. Сніданок з сьомої до десятої.
+Svečias: Ar yra wifi? | Є вайфай?
+Registratorius: Taip, slaptažodis ant rakto. | Так, пароль на ключі.
+# 4. Telefonu (по телефону)
+Anna: Alio? | Алло?
+Petras: Labas, Anna, čia Petras. Kaip sekasi? | Привіт, Анно, це Петрас. Як справи?
+Anna: Gerai, ačiū. O tau? | Добре, дякую. А тобі?
+Petras: Irgi gerai. Ar rytoj vakare esi laisva? | Теж добре. Ти вільна завтра ввечері?
+Anna: Taip, o kodėl? | Так, а чому?
+Petras: Eime į kiną? | Підемо в кіно?
+Anna: Mielai! | З радістю!
+</div>
+<div class="qz" data-title="Вправа 11. Фрази з діалогів">
+Що у вас болить? | Kas jums skauda
+У мене болить голова. | Man skauda galvą
+Шукаю куртку. | Ieškau striukės
+Який у вас розмір? | Kokio dydžio jūs
+Скільки коштує? | Kiek kainuoja
+У мене бронь. | Turiu rezervaciją
+Є вайфай? | Ar yra wifi
+Підемо в кіно? | Eime į kiną
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 12</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Būti</td><td>esu, esi, yra, esame, esate, yra; nesu…</td></tr>
+<tr><td>Turėti</td><td>turiu, turi, turi, turime, turite, turi; neturiu</td></tr>
+<tr><td>Питання</td><td><span class="fr">ar</span> на початку</td></tr>
+<tr><td>Знахідний</td><td>-a → <b>-ą</b>; -as → <b>-ą</b>; -is → <b>-į</b></td></tr>
+<tr><td>Місцевий</td><td>-oje (f), -e (m): <span class="fr">mokykloje, name</span></td></tr>
+<tr><td>Множина</td><td>m -ai/-iai; f -os/-ės</td></tr>
+<tr><td>Присвійні</td><td>не змінюються: mano, tavo, jo, jos</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Читаєш усе: č š ž ė ų ū</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Знайомишся, множина</td></tr>
+<tr><td>3</td><td>4</td><td>Būti, turėti, 10 дієслів</td></tr>
+<tr><td>4</td><td>5</td><td>Питання, відмінки</td></tr>
+<tr><td>5</td><td>6</td><td>Числа, час, дні</td></tr>
+<tr><td>6</td><td>7</td><td>Їжа, місто</td></tr>
+<tr><td>7</td><td>8</td><td>Діалоги вголос</td></tr>
+<tr><td>8</td><td>Повторення</td><td>Говориш 3–5 хвилин про себе</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A1">
+Aš ___ studentas. (būti) | esu
+Tu ___ laiko. (turėti) | turi
+Aš ___ laiko. (не маю) | neturiu
+Skaitau ___ . (knyga, знах.) | knygą
+Esu ___ . (mokykla, місц.) | mokykloje
+stalas → ___ (мн.) | stalai
+knyga → ___ (мн.) | knygos
+___ kainuoja? (скільки) | Kiek
+5 | penki
+п'ятниця | penktadienis
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Прочитати будь-яке литовське слово</label></li>
+<li><label><input type="checkbox"> Привітатися й представитися</label></li>
+<li><label><input type="checkbox"> Відмінювати būti, turėti і правильні дієслова</label></li>
+<li><label><input type="checkbox"> Утворити множину й заперечення</label></li>
+<li><label><input type="checkbox"> Назвати числа, дні, місяці, час</label></li>
+<li><label><input type="checkbox"> Замовити каву й спитати дорогу</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A1. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Lietuvių</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^lt[-_]LT/i.test(x.lang))||v.find(x=>/^lt/i.test(x.lang))||('lt'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='lt-LT';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('lt1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('lt1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('lt1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('lt1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='lt1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

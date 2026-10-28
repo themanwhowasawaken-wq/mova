@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ucraineană: exerciții</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="start-ro.html" title="Acasă">&larr;</a>
+  <button id="menuBtn" aria-label="Cuprins">Cuprins</button>
+  <span class="brand">Ucraineană: exerciții</span>
+  <input id="q" type="search" placeholder="Caută un cuvânt" aria-label="Caută un cuvânt">
+  <button id="uaBtn" title="Arată sau ascunde traducerile exemplelor și dialogurilor">Traducere</button>
+  <button id="thBtn" title="Temă luminoasă sau întunecată">Temă</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Cuprins"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Exerciții: ucraineană</h1>
+  <p>Teste simple pe teme pentru A1 și A2. Scrie răspunsul în câmp și apasă „Verifică”. Semnele diacritice contează. După ce ai încercat singur, folosește „Arată răspunsurile”.</p>
+  <p class="crumbs"><a href="start-ro.html">&larr; Pagina principală</a><a href="uk4ro-a1.html">Curs A1</a><a href="uk4ro-a2.html">Curs A2</a></p>
+</div>
+<section class="unit" id="e1" data-grp="Exerciții A1" data-short="1 Saluturi">
+<h2><span class="no">A1 · 1</span>Saluturi și prezentări</h2>
+<div class="qz" data-title="1.1. Spune în ucraineană">
+Salut! | Привіт
+Bună dimineața! | Добрий ранок
+Bună ziua! | Добрий день
+Bună seara! | Добрий вечір
+Noapte bună! | На добраніч
+La revedere! | До побачення
+Mulțumesc! | Дякую
+Vă rog | Будь ласка
+Scuzați-mă! | Вибачте
+Da | Так
+Nu | Ні
+</div>
+<div class="qz" data-title="1.2. Completează expresia">
+Мене ___ Анна. (mă cheamă: звати) | звати
+Як тебе ___ ? (cheamă: звати) | звати
+Приємно ___ . (a cunoaște: познайомитися) | познайомитися
+Звідки ___ ? (ești: ти) | ти
+Я ___ Англії. (din: з) | з
+Я не ___ . (înțeleg: розумію) | розумію
+Ти ___ англійською? (vorbești: говориш) | говориш
+___ ласка. (Te rog: Будь) | Будь
+</div>
+</section>
+<section class="unit" id="e2" data-short="2 Бути, мати">
+<h2><span class="no">A1 · 2</span>„A fi” și мати</h2>
+<div class="qz" data-title="2.1. Prezentul verbului „a fi” (omis) și є">
+Sunt student. | Я студент
+Ea este profesoară. | Вона вчителька
+Suntem acasă. | Ми вдома
+El este medic. | Він лікар
+Ei sunt prieteni. | Вони друзі
+Am timp (lit. la mine există timp). | У мене є час
+</div>
+<div class="qz" data-title="2.2. Мати">
+Я ___ брата. | маю
+Ти ___ сестру. | маєш
+Він ___ машину. | має
+Ми ___ дім. | маємо
+Ви ___ час. | маєте
+Вони ___ пса. | мають
+Я не ___ часу. | маю
+Ти ___ час? | маєш
+</div>
+</section>
+<section class="unit" id="e3" data-short="3 Gen, plural">
+<h2><span class="no">A1 · 3</span>Gen și plural</h2>
+<div class="qz" data-title="3.1. Genul (masculin, feminin sau neutru)">
+стіл (masă) | m
+жінка (femeie) | f
+дитина (copil) | f
+місто (oraș) | n
+дім (casă) | m
+школа (școală) | f
+вікно (fereastră) | n
+книжка (carte) | f
+</div>
+<div class="qz" data-title="3.2. Pluralul">
+книжка → ___ | книжки
+стіл → ___ | столи
+місто → ___ | міста
+школа → ___ | школи
+вікно → ___ | вікна
+кімната → ___ | кімнати
+</div>
+</section>
+<section class="unit" id="e4" data-short="4 Prezent">
+<h2><span class="no">A1 · 4</span>Verbe la prezent</h2>
+<div class="qz" data-title="4.1. Conjugă">
+Я ___ українською. (говорити) | говорю
+Ти ___ українською. (говорити) | говориш
+Він ___ каву. (пити) | п'є
+Ми ___ в Україні. (жити) | живемо
+Ви ___ книжки. (читати) | читаєте
+Вони ___ в офісі. (працювати) | працюють
+Я ___ українську. (знати) | знаю
+Вона ___ обід. (готувати) | готує
+</div>
+<div class="qz" data-title="4.2. Negația">
+Nu înțeleg. | Я не розумію
+Nu vorbesc ucraineană. | Я не говорю українською
+Ea nu lucrează. | Вона не працює
+Nu avem timp. | У нас немає часу
+</div>
+</section>
+<section class="unit" id="e5" data-short="5 Întrebări, adjective">
+<h2><span class="no">A1 · 5</span>Întrebări, adjective, prepoziții</h2>
+<div class="qz" data-title="5.1. Cuvinte interogative">
+Cine? | Хто
+Ce? | Що
+Unde? | Де
+Când? | Коли
+De ce? | Чому
+Cum? | Як
+Cât? | Скільки
+Care? | Який
+</div>
+<div class="qz" data-title="5.2. Adjective">
+новий дім → ___ книжка | нова
+великий дім → ___ школа | велика
+малий дім → ___ вікно | мале
+добрий день → ___ книжка | добра
+Ця кава ___ . (bună, f.) | добра
+Це ___ дім. (mare) | великий
+</div>
+<div class="qz" data-title="5.3. Prepoziții">
+Я живу ___ Києві. (în) | в
+Я йду ___ школи. (la) | до
+Книжка ___ столі. (pe) | на
+Я ___ Англії. (din) | з
+Кава ___ цукру. (fără) | без
+Я йду ___ братом. (cu) | з
+</div>
+</section>
+<section class="unit" id="e6" data-short="6 Numere, timp">
+<h2><span class="no">A1 · 6</span>Numere, timp și date</h2>
+<div class="qz" data-title="6.1. Numere">
+1 | один
+2 | два
+3 | три
+4 | чотири
+5 | п'ять
+6 | шість
+7 | сім
+8 | вісім
+9 | дев'ять
+10 | десять
+20 | двадцять
+100 | сто
+</div>
+<div class="qz" data-title="6.2. Zile">
+luni | понеділок
+marți | вівторок
+miercuri | середа
+joi | четвер
+vineri | п'ятниця
+sâmbătă | субота
+duminică | неділя
+Cât este ceasul? | Котра година
+</div>
+</section>
+<section class="unit" id="e7" data-short="7 Mâncare, oraș, cumpărături">
+<h2><span class="no">A1 · 7</span>Mâncare, oraș și cumpărături</h2>
+<div class="qz" data-title="7.1. Mâncare">
+pâine | хліб
+apă | вода
+lapte | молоко
+cafea | кава
+ceai | чай
+brânză | сир
+carne | м'ясо
+măr | яблуко
+</div>
+<div class="qz" data-title="7.2. Oraș și cumpărături">
+Unde este gara? | Де вокзал
+Cât costă? | Скільки це коштує
+O cafea, vă rog. | Каву, будь ласка
+Nota de plată, vă rog. | Рахунок, будь ласка
+Drept înainte | Прямо
+La stânga | Ліворуч
+La dreapta | Праворуч
+Este departe? | Це далеко
+</div>
+</section>
+<section class="unit" id="e8" data-short="8 Expresii uzuale">
+<h2><span class="no">A1 · 8</span>Expresii uzuale</h2>
+<div class="qz" data-title="8.1. Expresii utile">
+Ce mai faci? | Як справи
+Bine, mulțumesc. | Добре, дякую
+Nu știu. | Я не знаю
+Vă rog să vorbiți mai rar. | Говоріть повільніше, будь ласка
+Poți repeta? | Можете повторити
+Nicio problemă. | Нічого страшного
+Pe mâine. | До завтра
+Îmi pare rău. | Вибачте
+</div>
+</section>
+
+<section class="unit" id="e9" data-grp="Exerciții A1 (suplimentare)" data-short="A1 · 9 Cuvinte">
+<h2><span class="no">A1 · 9</span>Meserii, corp, haine, vreme</h2>
+<div class="qz" data-title="9.1. Meserii și corp">
+medic | лікар
+profesor | вчитель
+șofer | водій
+vânzător | продавець
+cap | голова
+mână | рука
+picior | нога
+stomac | живіт
+inimă | серце
+spate | спина
+</div>
+<div class="qz" data-title="9.2. Haine, vreme, transport">
+cămașă | сорочка
+pantaloni | штани
+rochie | сукня
+jachetă | куртка
+ploaie | дощ
+zăpadă | сніг
+vânt | вітер
+autobuz | автобус
+tren | потяг
+bilet | квиток
+</div>
+</section>
+<section class="unit" id="e10" data-short="A1 · 10 Modale">
+<h2><span class="no">A1 · 10</span>Verbe modale și imperativ</h2>
+<div class="qz" data-title="10.1. Verbe modale">
+Trebuie să lucrez. | Я мушу працювати
+Pot ajuta. | Я можу допомогти
+Vreau să beau o cafea. | Я хочу пити каву
+Nu pot vorbi. | Я не можу говорити
+Știi să gătești? | Ти вмієш готувати
+Trebuie să plec. | Я мушу йти
+</div>
+<div class="qz" data-title="10.2. Imperativul">
+___ ! (Vino: приходити, tu) | Приходь
+___ ! (Așteaptă: чекати, tu) | Чекай
+___ ! (Ascultă: слухати, tu) | Слухай
+___ ! (Fii: бути, tu) | Будь
+___ повільно! (Vorbește: говорити, tu) | Говори
+</div>
+</section>
+<section class="unit" id="x1" data-grp="Exerciții A2" data-short="A2 · 1 Trecut">
+<h2><span class="no">A2 · 1</span>Trecutul</h2>
+<div class="qz" data-title="1.1. Formele de trecut">
+Вчора я ___ вдома. (бути, m.) | був
+Вчора я ___ вдома. (бути, f.) | була
+Що ти ___ ? (робити, m.) | робив
+Вони ___ каву. (пити) | пили
+Ми ___ українською. (говорити) | говорили
+Він ___ час. (мати) | мав
+Вона ___ до школи. (ходити) | ходила
+У мене не ___ часу. | було
+</div>
+</section>
+<section class="unit" id="x2" data-short="A2 · 2 Viitor">
+<h2><span class="no">A2 · 2</span>Viitorul și aspectul</h2>
+<div class="qz" data-title="2.1. Viitorul">
+Завтра я ___ працювати. | буду
+Ти ___ мати час. | будеш
+Ми ___ подорожувати. | будемо
+Завтра я ___ листа. (написати, I) | напишу
+Завтра я ___ це. (зробити, I) | зроблю
+читати → (perf.) ___ | прочитати
+купувати → (perf.) ___ | купити
+готувати → (perf.) ___ | приготувати
+</div>
+</section>
+<section class="unit" id="x3" data-short="A2 · 3 Condițional">
+<h2><span class="no">A2 · 3</span>Condiționalul</h2>
+<div class="qz" data-title="3.1. Cereri politicoase">
+Aș vrea o cafea. (bărbat) | Я хотів би каву
+Aș vrea (f.) să rezerv o masă. | Я хотіла б замовити стіл
+Ați putea să mă ajutați? | Чи могли б ви мені допомогти
+Ar trebui să te odihnești. | Тобі слід відпочити
+Dacă aș avea timp | Якби я мав час
+</div>
+</section>
+<section class="unit" id="x4" data-short="A2 · 4 Genitiv">
+<h2><span class="no">A2 · 4</span>Genitivul</h2>
+<div class="qz" data-title="4.1. Genitivul">
+Я іду до ___ . (школа) | школи
+Я іду до ___ . (місто) | міста
+Кава без ___ . (цукор) | цукру
+Я з ___ . (Англія) | Англії
+Лист від ___ . (сестра) | сестри
+Я живу біля ___ . (вокзал) | вокзалу
+</div>
+</section>
+<section class="unit" id="x5" data-short="A2 · 5 Dativ">
+<h2><span class="no">A2 · 5</span>Dativul și pronumele</h2>
+<div class="qz" data-title="5.1. Pronume">
+Я бачу ___ . (îl) | його
+Я знаю ___ . (o) | її
+Я люблю ___ . (te) | тебе
+Я дам ___ книжку. (ție) | тобі
+Я пишу ___ листа. (lui) | йому
+Я пишу ___ листа. (ei) | їй
+Ти можеш ___ допомогти? (mă) | мені
+Я дам це ___ . (nouă) | нам
+</div>
+</section>
+<section class="unit" id="x6" data-short="A2 · 6 Locativ, instr.">
+<h2><span class="no">A2 · 6</span>Locativ și instrumental</h2>
+<div class="qz" data-title="6.1. Locativ și instrumental">
+Я живу в ___ . (Київ) | Києві
+Я працюю в ___ . (Лондон) | Лондоні
+Я у ___ . (школа) | школі
+Книжка на ___ . (стіл) | столі
+Я йду з ___ . (брат) | братом
+Я йду з ___ . (подруга) | подругою
+Кава з ___ . (молоко) | молоком
+Я їду ___ . (автобус) | автобусом
+</div>
+</section>
+<section class="unit" id="x7" data-short="A2 · 7 Comparația">
+<h2><span class="no">A2 · 7</span>Comparația</h2>
+<div class="qz" data-title="7.1. Comparația">
+великий → ___ | більший
+малий → ___ | менший
+добрий → ___ | кращий
+поганий → ___ | гірший
+дешевий → ___ | дешевший
+найкращий înseamnă | the best
+Київ більший ___ Львів. (decât) | за
+Я люблю чай більше, ___ каву. (decât) | ніж
+</div>
+</section>
+<section class="unit" id="x8" data-short="A2 · 8 Reflexive">
+<h2><span class="no">A2 · 8</span>Verbe reflexive</h2>
+<div class="qz" data-title="8.1. Verbe reflexive">
+Я ___ української. (вчитися) | вчуся
+Ти ___ української. (вчитися) | вчишся
+Він ___ . (вчитися) | вчиться
+Ми ___ завтра. (зустрітися) | зустрінемося
+Вчора я ___ . (вчитися, m.) | вчився
+Я ___ о сьомій. (прокидатися) | прокидаюся
+</div>
+</section>
+<section class="unit" id="x9" data-short="A2 · 9 Conjuncții">
+<h2><span class="no">A2 · 9</span>Propoziții complexe</h2>
+<div class="qz" data-title="9.1. Conjuncții">
+Я знаю, ___ ти маєш рацію. (că) | що
+Я не прийшов, ___ що був хворий. (тому) | тому
+Я вчу, ___ працювати. (ca să) | щоб
+___ піде дощ, я залишуся. (Dacă) | Якщо
+___ я повернуся, я зателефоную. (Când) | Коли
+Я не знаю, ___ він прийде. (dacă) | чи
+Це дім, ___ новий. (care: який) | який
+</div>
+</section>
+<section class="unit" id="x10" data-short="A2 · 10 Timp, mișcare">
+<h2><span class="no">A2 · 10</span>Timp, mișcare și vocabular</h2>
+<div class="qz" data-title="10.1. Timp și mișcare">
+ieri | вчора
+mâine | завтра
+mereu | завжди
+niciodată | ніколи
+acum o săptămână | тиждень тому
+peste o oră | через годину
+Зараз я ___ на роботу. (іти) | іду
+Я ___ потягом. (merg cu un vehicul) | їду
+Завтра я ___ до Берліна. (zbor) | лечу
+</div>
+<div class="qz" data-title="10.2. Vocabular">
+valiză | валіза
+pașaport | паспорт
+plajă | пляж
+vacanță | відпустка
+șef | начальник
+salariu | зарплата
+examen | іспит
+vecin | сусід
+apartament | квартира
+</div>
+</section>
+
+<footer>Exerciții pentru cursuri. Explicațiile și tabelele sunt în cursurile A1 și A2.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Ucraineană</th><th>Pronunție</th><th>În română</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercițiu';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Răspuns: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Verifică</button><button type="button" data-act="show">Arată răspunsurile</button><button type="button" data-act="reset">De la început</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' din '+tot+(ok===tot?'. Totul corect.':'. Verifică ortografia.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^uk[-_]UA/i.test(x.lang))||v.find(x=>/^uk/i.test(x.lang))||('uk'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='uk-UA';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('uk4rox_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('uk4rox_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('uk4rox_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('uk4rox_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='uk4rox_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Rezultate: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">la capitol</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Se afișează primele 40.</div>';
+    } else h+='<div class="mini">Nimic găsit. Căutarea cuprinde cuvintele englezești și românești din tabelele de vocabular.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

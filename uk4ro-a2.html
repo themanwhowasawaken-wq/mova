@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ucraineană A2: curs complet</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="start-ro.html" title="Acasă">&larr;</a>
+  <button id="menuBtn" aria-label="Cuprins">Cuprins</button>
+  <span class="brand">Ucraineană A2</span>
+  <input id="q" type="search" placeholder="Caută un cuvânt" aria-label="Caută un cuvânt">
+  <button id="uaBtn" title="Arată sau ascunde traducerile exemplelor și dialogurilor">Traducere</button>
+  <button id="thBtn" title="Temă luminoasă sau întunecată">Temă</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Cuprins"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>ucraineană A2</h1>
+  <p>Următorul pas în limba ucraineană: trecut și viitor, condițional, aspect verbal, cazuri, comparație, propoziții complexe, lectură și scrisori. Atinge un cuvânt sau o frază ca să o auzi.</p>
+  <p class="crumbs"><a href="start-ro.html">&larr; Pagina principală</a><a href="uk4ro-a1.html">Nivelul A1</a><a href="uk4ro-vpravy.html">Exerciții</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Start" data-short="Cum să folosești acest curs">
+<h2><span class="no">Capitolul 0</span>Cum să folosești acest curs</h2>
+<p class="lead">Nivelul A2: înveți să <b>vorbești despre trecut, să faci planuri, să ceri politicos și să folosești cazurile</b> pe care A1 doar le-a lăsat să se întrevadă. Alfabetul, sunetele, <span class="fr">мати</span>, genul și numerele sunt în cursul A1.</p>
+<h3>La final vei putea</h3>
+<ul>
+<li>să vorbești despre trecut (<span class="fr">я працював, я була</span>) și despre viitor (<span class="fr">буду працювати, напишу</span>);</li>
+<li>să înțelegi ideea aspectului verbal (imperfectiv și perfectiv);</li>
+<li>să ceri politicos și să exprimi dorințe (<span class="fr">я хотів би, чи могли б ви</span>);</li>
+<li>să folosești genitivul, dativul, instrumentalul și locativul în expresii de zi cu zi;</li>
+<li>să compari, să construiești propoziții complexe și să scrii o scrisoare.</li>
+</ul>
+<div class="tip"><b class="t">Nu memora întâi tabelele.</b> Învață fiecare caz prin întrebarea la care răspunde și prin expresiile tipice: <span class="fr">до школи</span> (la școală), <span class="fr">без цукру</span> (fără zahăr), <span class="fr">з братом</span> (cu fratele meu), <span class="fr">у Києві</span> (la Kiev).</div>
+<div class="warn"><b>Prieteni falși.</b> <span class="fr">кабінет</span> = birou, cameră de lucru, <span class="fr">магазин</span> = magazin, <span class="fr">шлюб</span> = căsătorie, <span class="fr">вокзал</span> = gară, <span class="fr">інтелігентний</span> = cult, educat, <span class="fr">акція</span> = ofertă specială și acțiune, <span class="fr">шафа</span> = dulap, <span class="fr">лайка</span> = înjurături, <span class="fr">дача</span> = casă de vacanță, <span class="fr">пляшка</span> = sticlă.</div>
+<h3>Verificare rapidă A1</h3>
+<div class="qz" data-title="Exercițiul 0. Recapitulare A1">
+Ти ___ час. (мати) | маєш
+Я ___ українською. (говорити) | говорю
+Я маю ___ . (o carte, acuz.) | книжку
+Я живу ___ Києві. (în) | в
+Кава ___ цукру. (fără) | без
+Я ___ працювати. (мусити) | мушу
+___ це коштує? (cât) | Скільки
+Мене ___ Анна. (звати) | звати
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Timpuri" data-short="Trecutul">
+<h2><span class="no">Capitolul 1</span>Trecutul</h2>
+<p class="lead">Trecutul se formează din tema infinitivului + <b>-в</b> (m), <b>-ла</b> (f), <b>-ло</b> (n), <b>-ли</b> (pl): <span class="fr">робив, робила</span>. Nu există terminații de persoană, deci pronumele este necesar, iar forma arată doar genul și numărul.</p>
+<div class="tw"><table>
+<tr><th>Subiect</th><th>Masculin</th><th>Feminin</th></tr>
+<tr><td>я</td><td>робив</td><td>робила</td></tr>
+<tr><td>ти</td><td>робив</td><td>робила</td></tr>
+<tr><td>він / вона / воно</td><td>робив</td><td>робила (воно: робило)</td></tr>
+<tr><td>ми / ви / вони</td><td colspan="2">робили</td></tr>
+</table></div>
+<div class="rule"><b class="t">Cum se formează</b><p>Elimină <span class="fr">-ти</span> și adaugă <span class="fr">-в / -ла / -ло / -ли</span>: <span class="fr">робити → робив, говорити → говорив, бути → був, була, було, були, мати → мав, мала</span>. Neregulate: <span class="fr">іти → ішов, ішла, ішли; їсти → їв, їла; могти → міг, могла; нести → ніс, несла</span>.</p></div>
+<div class="exs">
+Вчо́ра я працюва́в весь день. | vcióra ia prațiuváv ves' den'. | Ieri am lucrat toată ziua. (un bărbat)
+Я була́ вдо́ма. | ia bulá vdóma. | Am fost acasă. (o femeie)
+Де ти був? | de tî buv? | Unde ai fost?
+Ми обі́дали в рестора́ні. | mî obídalî v restoráni. | Am luat prânzul la restaurant.
+У мене́ не було́ ча́су. | u mené ne buló ciásu. | Nu am avut timp.
+Що ти ро́била в суботу? | șcio tî róbîla v subotu? | Ce ai făcut sâmbătă? (către o femeie)
+Я ходи́в до шко́ли. | ia hodî́v do șkólî. | Am mers la școală.
+Він сказа́в, що прийде́. | vin skazáv, șcio prîidé. | A spus că va veni.
+</div>
+<div class="qz" data-title="Exercițiul 1. Trecutul">
+Вчора я ___ вдома. (бути, m.) | був
+Вчора я ___ вдома. (бути, f.) | була
+Що ти ___ ? (робити, m.) | робив
+Вони ___ каву. (пити) | пили
+Ми ___ українською. (говорити) | говорили
+Він ___ час. (мати) | мав
+Вона ___ до школи. (ходити) | ходила
+У мене не ___ часу. (було) | було
+говорити → ___ (el) | говорив
+читати → ___ (ea) | читала
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Viitorul și aspectul">
+<h2><span class="no">Capitolul 2</span>Viitorul și aspectul verbal</h2>
+<p class="lead">Aproape fiecare verb ucrainean are două aspecte: <b>imperfectiv</b> (un proces sau un obicei) și <b>perfectiv</b> (un rezultat, o acțiune încheiată). Adesea par cuvinte diferite: <span class="fr">писати / написати</span>.</p>
+<h3>2.1. Viitorul verbelor imperfective: буду + infinitiv</h3>
+<div class="cj" data-verb="бути" data-note="auxiliar pentru viitor" data-ipa="butî">
+я | бу́ду | búdu
+ти | бу́деш | búdeș
+він / вона / воно | бу́де | búde
+ми | бу́демо | búdemo
+ви | бу́дете | búdete
+вони | бу́дуть | búdut'
+</div>
+<div class="exs">
+За́втра я бу́ду працюва́ти. | závtra ia búdu prațiuvátî. | Mâine voi lucra.
+Я бу́ду писа́ти листа́. | ia búdu pîsátî lîstá. | Voi scrie o scrisoare.
+Чи бу́деш ти ма́ти час? | cî búdeș tî mátî cias? | Vei avea timp?
+Наступного ро́ку ми бу́демо подорожува́ти. | nastupnoho róku mî búdemo podorojuvátî. | Anul viitor vom călători.
+</div>
+<h3>2.2. Verbele perfective: forma de prezent înseamnă viitor</h3>
+<div class="tw"><table>
+<tr><th>Imperfectiv (proces)</th><th>Perfectiv (rezultat)</th><th>Sens</th></tr>
+<tr><td>писати</td><td>написати</td><td>a scrie</td></tr>
+<tr><td>робити</td><td>зробити</td><td>a face</td></tr>
+<tr><td>читати</td><td>прочитати</td><td>a citi</td></tr>
+<tr><td>купувати</td><td>купити</td><td>a cumpăra</td></tr>
+<tr><td>готувати</td><td>приготувати</td><td>a găti</td></tr>
+<tr><td>їсти</td><td>з'їсти</td><td>a mânca</td></tr>
+<tr><td>дивитися</td><td>подивитися</td><td>a se uita</td></tr>
+</table></div>
+<div class="rule"><b class="t">Regula-cheie</b><p>Un verb perfectiv <b>nu are prezent propriu-zis</b>: formele sale „de prezent” se referă la viitor. <span class="fr">Я напишу тобі завтра.</span> = Îți voi scrie mâine (și voi termina). <span class="fr">Я буду тобі писати.</span> = Îți voi scrie (proces).</p></div>
+<div class="exs">
+Я напишу́ тобі́ за́втра. | ia napîșú tobí závtra. | Îți voi scrie mâine.
+Я куплю́ хліб. | ia kupliú hlib. | Voi cumpăra pâine.
+Я зроблю́ це за́втра. | ia zrobliú țe závtra. | O voi face mâine.
+Вчо́ра я написа́в листа́. | vcióra ia napîsáv lîstá. | Ieri am scris o scrisoare (terminată).
+Вчо́ра я писа́в листа́. | vcióra ia pîsáv lîstá. | Ieri scriam o scrisoare (proces).
+</div>
+<div class="qz" data-title="Exercițiul 2. Viitorul și aspectul">
+Завтра я ___ працювати. (буду) | буду
+Ти ___ мати час. (будеш) | будеш
+Наступного року ми ___ подорожувати. | будемо
+Завтра я тобі ___ . (написати, îți voi scrie) | напишу
+Завтра я ___ хліб. (купити, voi cumpăra) | куплю
+Вчора я ___ листа. (написати, terminat, m.) | написав
+писати → (perfectiv) ___ | написати
+робити → (perfectiv) ___ | зробити
+читати → (perfectiv) ___ | прочитати
+купувати → (perfectiv) ___ | купити
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Condiționalul">
+<h2><span class="no">Capitolul 3</span>Condiționalul și cererile politicoase</h2>
+<p class="lead">Condiționalul este forma de trecut + <b>би</b> (sau <b>б</b> după vocală): <span class="fr">я хотів би</span> = aș vrea (bărbat), <span class="fr">я хотіла б</span> (femeie).</p>
+<div class="tw"><table>
+<tr><th>Subiect</th><th>m</th><th>f</th></tr>
+<tr><td>я</td><td>хотів би</td><td>хотіла б</td></tr>
+<tr><td>ти</td><td>хотів би</td><td>хотіла б</td></tr>
+<tr><td>він / вона</td><td>хотів би</td><td>хотіла б</td></tr>
+<tr><td>ми / ви / вони</td><td colspan="2">хотіли б</td></tr>
+</table></div>
+<div class="exs">
+Я хоті́в би ка́ву. | ia hotív bî kávu. | Aș vrea o cafea. (bărbat)
+Я хоті́ла б замо́вити сті́л. | ia hotíla b zamóvîtî stíl. | Aș vrea să rezerv o masă. (femeie)
+Чи могли́ б ви мені́ допомогти́? | cî mohlî́ b vî mení dopomohtî́? | Ați putea să mă ajutați?
+Чи міг би ти переда́ти мені́ сіль? | cî mih bî tî peredátî mení sil'? | Ați putea să-mi dați sarea?
+Якби́ я мав час, я б бі́льше подорожува́в. | iakbî́ ia mav cias, ia b bíl'șe podorojuváv. | Dacă aș avea timp, aș călători mai mult.
+Тобі́ слід відпочи́ти. | tobí slid vidpocî́tî. | Ar trebui să te odihnești.
+</div>
+<div class="tw"><table>
+<tr><th>Nevoie</th><th>Expresie</th></tr>
+<tr><td>Cerere</td><td><span class="fr">Чи могли б ви…? Чи не могли б ви…? Будьте добрі…</span></td></tr>
+<tr><td>Sfat</td><td><span class="fr">Тобі слід… На твоєму місці я б…</span></td></tr>
+<tr><td>Dorință</td><td><span class="fr">Я хотів би мати будинок.</span></td></tr>
+<tr><td>Condiție</td><td><span class="fr">Якби я знав, я б тобі сказав.</span></td></tr>
+</table></div>
+<div class="qz" data-title="Exercițiul 3. Condiționalul">
+Aș vrea o cafea. (bărbat) | Я хотів би каву
+Aș vrea (f.) să rezerv o masă. | Я хотіла б замовити стіл
+Ați putea să mă ajutați? | Чи могли б ви мені допомогти
+Ar trebui să te odihnești. | Тобі слід відпочити
+Dacă aș avea timp | Якби я мав час
+Я хотіла ___ каву. (б) | б
+Чи могли ___ ви допомогти? (б) | б
+Я хотів ___ каву. (би) | би
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Cazuri" data-short="Genitivul">
+<h2><span class="no">Capitolul 4</span>Genitivul: al, fără, de la, la</h2>
+<p class="lead">Cele șapte cazuri răspund la șapte întrebări. <b>Genitivul</b> răspunde la „al cui? al căruia?” și apare după <span class="fr">до, з, без, від, біля, для</span> și după multe expresii de cantitate.</p>
+<div class="tw"><table>
+<tr><th>Gen</th><th>Nominativ → genitiv</th><th>Exemplu</th></tr>
+<tr><td><span class="fr m">m</span> animat</td><td>-а / -я</td><td><span class="fr">брат → брата, лікар → лікаря</span></td></tr>
+<tr><td><span class="fr m">m</span> neanimat</td><td>-а / -у</td><td><span class="fr">цукор → цукру, дім → дому, вокзал → вокзалу</span></td></tr>
+<tr><td><span class="fr f">f</span> -а</td><td>-а → -и</td><td><span class="fr">школа → школи, жінка → жінки, книжка → книжки</span></td></tr>
+<tr><td><span class="fr f">f</span> -я</td><td>-я → -і</td><td><span class="fr">Англія → Англії, сім'я → сім'ї</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td>-о → -а; -е → -я</td><td><span class="fr">місто → міста, молоко → молока</span></td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>Prepoziție</th><th>Sens</th><th>Exemplu</th></tr>
+<tr><td><span class="fr">до</span></td><td>spre, la</td><td><span class="fr">до школи, до України</span></td></tr>
+<tr><td><span class="fr">з</span></td><td>din, dintre</td><td><span class="fr">з Англії, з роботи</span></td></tr>
+<tr><td><span class="fr">без</span></td><td>fără</td><td><span class="fr">без цукру, без молока</span></td></tr>
+<tr><td><span class="fr">від</span></td><td>de la (o persoană)</td><td><span class="fr">від брата</span></td></tr>
+<tr><td><span class="fr">біля</span></td><td>lângă</td><td><span class="fr">біля пошти</span></td></tr>
+<tr><td><span class="fr">багато, мало</span></td><td>mult, puțin</td><td><span class="fr">багато часу, мало грошей</span></td></tr>
+</table></div>
+<div class="exs">
+Я іду́ до шко́ли. | ia idú do șkólî. | Merg la școală.
+Я з А́нглії. | ia z ánhliii. | Sunt din Anglia.
+Ка́ва без цу́кру. | káva bez țúkru. | O cafea fără zahăr.
+Я оде́ржав ли́ста від бра́та. | ia odérjav lî́sta vid bráta. | Am primit o scrisoare de la fratele meu.
+Я живу́ біля по́шти. | ia jîvú bilia póștî. | Locuiesc lângă poștă.
+У мене́ нема́є бага́то ча́су. | u mené nemáie baháto ciásu. | Nu am mult timp.
+Скі́льки до вокза́лу? | skíl'kî do vokzálu? | Cât este până la gară?
+</div>
+<div class="qz" data-title="Exercițiul 4. Genitivul">
+Я іду до ___ . (школа) | школи
+Я іду до ___ . (Україна) | України
+Кава без ___ . (цукор) | цукру
+Кава без ___ . (молоко) | молока
+Я з ___ . (Англія) | Англії
+Лист від ___ . (брат) | брата
+Я живу біля ___ . (пошта) | пошти
+У мене немає ___ . (час) | часу
+</div>
+</section>
+
+<section class="unit" id="u5" data-short="Dativul">
+<h2><span class="no">Capitolul 5</span>Dativul: cui?</h2>
+<p class="lead"><b>Dativul</b> răspunde la „cui? pentru cine?”. Apare după <span class="fr">дякуючи, всупереч, по</span> și după verbele a da, a spune, a ajuta, a scrie.</p>
+<div class="tw"><table>
+<tr><th>Gen</th><th>Nominativ → dativ</th><th>Exemplu</th></tr>
+<tr><td><span class="fr m">m</span> animat</td><td>-ові / -у</td><td><span class="fr">брат → братові / брату, лікар → лікарю</span></td></tr>
+<tr><td><span class="fr f">f</span> -а</td><td>-а → -і (cu alternanță de consoană: к → ц)</td><td><span class="fr">сестра → сестрі, жінка → жінці, школа → школі</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td>-о → -у</td><td><span class="fr">місто → місту</span></td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th>Pronume</th><th>Acuzativ (pe cine?)</th><th>Dativ (cui?)</th></tr>
+<tr><td>I</td><td>мене</td><td>мені</td></tr>
+<tr><td>tu</td><td>тебе</td><td>тобі</td></tr>
+<tr><td>el</td><td>його</td><td>йому</td></tr>
+<tr><td>ea</td><td>її</td><td>їй</td></tr>
+<tr><td>noi</td><td>нас</td><td>нам</td></tr>
+<tr><td>voi</td><td>вас</td><td>вам</td></tr>
+<tr><td>ei / ele</td><td>їх</td><td>їм</td></tr>
+</table></div>
+<div class="rule"><b class="t">După o prepoziție</b><p>Pronumele <span class="fr">його, її, їх</span> primesc <span class="fr">н-</span> după o prepoziție: <span class="fr">до нього, до неї, до них</span>. <span class="fr">Я йду до нього.</span> (Merg la el.)</p></div>
+<div class="exs">
+Я люблю́ тебе́. | ia liubliú tebé. | Te iubesc.
+Я ба́чу його́. | ia báciu iohó. | Îl văd.
+Я зна́ю її́. | ia znáiu iiií. | O cunosc.
+Я дам тобі́ кни́жку. | ia dam tobí knî́jku. | Îți dau cartea.
+Я пишу́ йому́ ли́ста. | ia pîșú iomú lî́sta. | Îi scriu o scrisoare.
+Ти мо́жеш мені́ допомогти́? | tî mójeș mení dopomohtî́? | Mă poți ajuta?
+Я іду́ до ліка́ря. | ia idú do likária. | Merg la medic.
+Пода́рунок для бра́та і для сестри́. | podárunok dlia bráta i dlia sestrî́. | Un cadou pentru fratele și sora mea.
+</div>
+<div class="qz" data-title="Exercițiul 5. Dativul și pronumele">
+Я бачу ___ . (îl) | його
+Я знаю ___ . (o) | її
+Я люблю ___ . (te) | тебе
+Я дам ___ книжку. (ție, dativ) | тобі
+Я пишу ___ листа. (lui, dativ) | йому
+Я пишу ___ листа. (ei, dativ) | їй
+Ти можеш ___ допомогти? (mă) | мені
+Я дам це ___ . (сестра, dativ) | сестрі
+Я дам це ___ . (брат, dativ) | брату
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Locativ, instrumental">
+<h2><span class="no">Capitolul 6</span>Locativ și instrumental</h2>
+<h3>6.1. Locativul: unde?</h3>
+<p>Se folosește doar după <span class="fr">в / у, на, по, при</span>. Terminații tipice: <span class="fr">-і</span> (f și multe m: <span class="fr">у Києві, у школі, на столі</span>), <span class="fr">-у / -ю</span> (m: <span class="fr">у місті, у саду, на вокзалі</span> sau <span class="fr">на вокзалу</span> la unele cuvinte). Consoana dinaintea lui <span class="fr">-і</span> se poate schimba: <span class="fr">г → з, к → ц, х → с</span> (<span class="fr">книжка → у книжці</span>).</p>
+<div class="tw"><table>
+<tr><th>Nominativ</th><th>Locativ</th><th>Exemplu</th></tr>
+<tr><td>Київ</td><td>у Києві</td><td>Я живу в Києві.</td></tr>
+<tr><td>Лондон</td><td>у Лондоні</td><td>Я працюю в Лондоні.</td></tr>
+<tr><td>школа</td><td>у школі</td><td>Я у школі.</td></tr>
+<tr><td>місто</td><td>у місті</td><td>Вона живе в місті.</td></tr>
+<tr><td>кухня</td><td>на кухні</td><td>Я на кухні.</td></tr>
+<tr><td>стіл</td><td>на столі</td><td>Книжка на столі.</td></tr>
+</table></div>
+<div class="tip"><b class="t">„Despre” nu cere locativul.</b> „Despre o carte” este <span class="fr">про книжку</span> (cu acuzativul): <span class="fr">Ми говоримо про книжку.</span></div>
+<h3>6.2. Instrumentalul: cu cine? cu ce?</h3>
+<p>După <span class="fr">з / із</span> (cu) și pentru mijloace de transport: <span class="fr">-ом / -ем</span> (m, n), <span class="fr">-ою / -ею</span> (f), plural <span class="fr">-ами / -ями</span>.</p>
+<div class="tw"><table>
+<tr><th>Nominativ</th><th>Instrumental</th><th>Exemplu</th></tr>
+<tr><td>брат</td><td>з братом</td><td>Я йду з братом.</td></tr>
+<tr><td>подруга</td><td>з подругою</td><td>Я йду з подругою.</td></tr>
+<tr><td>цукор</td><td>з цукром</td><td>Кава з цукром.</td></tr>
+<tr><td>потяг</td><td>потягом</td><td>Я їду потягом.</td></tr>
+<tr><td>автобус</td><td>автобусом</td><td>Я їду автобусом.</td></tr>
+</table></div>
+<div class="exs">
+Я живу́ в Ки́єві. | ia jîvú v kî́ievi. | Locuiesc la Kiev.
+Вона́ працює́ в шко́лі. | voná prațiuié v șkóli. | Ea lucrează la o școală.
+Ми говори́мо про кни́жку. | mî hovorî́mo pro knî́jku. | Vorbim despre carte.
+Я іду́ в кіно́ з поду́гою. | ia idú v kinó z podúhoiu. | Merg la cinema cu o prietenă.
+Я ї́ду до Льво́ва по́тягом. | ia iídu do l'vóva pótiahom. | Merg la Liov cu trenul.
+Ка́ву з молоко́м, будь ла́ска. | kávu z molokóm, bud' láska. | O cafea cu lapte, vă rog.
+Я працюю́ ви́чителем. | ia prațiuiú vî́cîtelem. | Lucrez ca profesor.
+</div>
+<div class="qz" data-title="Exercițiul 6. Locativ și instrumental">
+Я живу в ___ . (Київ) | Києві
+Я працюю в ___ . (Лондон) | Лондоні
+Я у ___ . (школа) | школі
+Вона живе в ___ . (місто) | місті
+Книжка на ___ . (стіл) | столі
+Я йду з ___ . (брат) | братом
+Я йду з ___ . (подруга) | подругою
+Кава з ___ . (цукор) | цукром
+Я їду ___ . (потяг) | потягом
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Comparația">
+<h2><span class="no">Capitolul 7</span>Comparația</h2>
+<div class="rule"><b class="t">Regula</b><p>Comparativul: adjectiv + <span class="fr">-ший / -іший</span> (sau <span class="fr">більш</span> + adjectiv); „decât” se spune <span class="fr">ніж</span> sau <span class="fr">за</span> + acuzativ; superlativul: <span class="fr">най-</span> + comparativ; egalitatea: <span class="fr">такий самий … як</span>.</p></div>
+<div class="tw"><table>
+<tr><th>Forma de bază</th><th>Comparativ</th><th>Superlativ</th></tr>
+<tr><td>новий</td><td>новіший</td><td>найновіший</td></tr>
+<tr><td>дорогий</td><td>дорожчий</td><td>найдорожчий</td></tr>
+<tr><td>дешевий</td><td>дешевший</td><td>найдешевший</td></tr>
+<tr><td>великий</td><td>більший</td><td>найбільший</td></tr>
+<tr><td>малий</td><td>менший</td><td>найменший</td></tr>
+<tr><td>добрий</td><td>кращий</td><td>найкращий</td></tr>
+<tr><td>поганий</td><td>гірший</td><td>найгірший</td></tr>
+<tr><td>старий</td><td>старший</td><td>найстарший</td></tr>
+<tr><td>молодий</td><td>молодший</td><td>наймолодший</td></tr>
+</table></div>
+<p>Adverbe: <span class="fr">добре → краще</span>, <span class="fr">погано → гірше</span>, <span class="fr">багато → більше</span>, <span class="fr">мало → менше</span>.</p>
+<div class="exs">
+Київ бі́льший за Льві́в. | kîiiv bíl'șîi za l'vív. | Kievul este mai mare decât Lviv.
+Мій брат ста́рший за мене́. | mii brat stárșîi za mené. | Fratele meu este mai în vârstă decât mine.
+Це найкра́щий фільм. | țe naikráșcîi fil'm. | Este cel mai bun film.
+Говорі́ть пові́льніше, будь ла́ска. | hovorít' povíl'nișe, bud' láska. | Vorbește mai rar, te rog.
+Це такий са́мий дорогий, як той. | țe takîi sámîi dorohîi, iak toi. | Este la fel de scump ca acela.
+Я люблю́ чай бі́льше, ніж ка́ву. | ia liubliú ciai bíl'șe, nij kávu. | Îmi place ceaiul mai mult decât cafeaua.
+</div>
+<div class="qz" data-title="Exercițiul 7. Comparația">
+великий → ___ | більший
+малий → ___ | менший
+добрий → ___ | кращий
+поганий → ___ | гірший
+дорогий → ___ | дорожчий
+старий → ___ | старший
+Київ більший ___ Львів. (decât) | за
+Я люблю чай більше, ___ каву. (decât) | ніж
+добрий → ___ (cel mai bun) | найкращий
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Verbe reflexive">
+<h2><span class="no">Capitolul 8</span>Verbe reflexive</h2>
+<p class="lead">Verbele reflexive se termină în <span class="fr">-ся</span> (sau <span class="fr">-сь</span> după vocală), atașat la sfârșitul verbului: <span class="fr">вчуся, вчишся, вчиться</span>.</p>
+<div class="cj" data-verb="вчитися" data-note="a învăța, a studia" data-ipa="vcîtîsia">
+я | вчу́ся | vciúsia
+ти | вчи́шся | vcî́șsia
+він / вона | вчи́ться | vcî́t'sia
+ми | вчи́мося | vcî́mosia
+ви | вчи́теся | vcî́tesia
+вони | вчаться | vciat'sia
+</div>
+<div class="vocab">
+вчи́тися | vcî́tîsia | a învăța | verb
+прокида́тися | prokîdátîsia | a se trezi | verb
+умива́тися | umîvátîsia | a se spăla | verb
+одяга́тися | odiahátîsia | a se îmbrăca | verb
+сіда́ти | sidátî | a se așeza | verb
+лягати́ спа́ти | liahatî́ spátî | a se culca | verb
+зустріча́тися | zustriciátîsia | a se întâlni | verb
+раді́ти | radítî | a se bucura | verb
+</div>
+<div class="exs">
+Я вчу́ся украї́нської. | ia vciúsia ukraiíns'koii. | Învăț ucraineană.
+Як ти ма́єшся? | iak tî máieșsia? | Cum te simți?
+Я раді́ю за ви́хідні. | ia radíiu za vî́hidni. | Mă bucur de weekend.
+Ми зустрінемося за́втра. | mî zustrinemosia závtra. | Ne întâlnim mâine.
+Вчо́ра я вчи́вся весь день. | vcióra ia vcî́vsia ves' den'. | Ieri am învățat toată ziua.
+Я прокида́юся о сьомі́й. | ia prokîdáiusia o siomíi. | Mă trezesc la șapte.
+Я ду́маю, що ти ма́єш ра́цію. | ia dúmaiu, șcio tî máieș ráțiiu. | Cred că ai dreptate.
+</div>
+<div class="qz" data-title="Exercițiul 8. Verbe reflexive">
+Я ___ української. (вчитися) | вчуся
+Ти ___ української. (вчитися) | вчишся
+Він ___ . (вчитися) | вчиться
+Ми ___ . (зустрічатися, viitor) | зустрінемося
+Вчора я ___ весь день. (вчитися, m.) | вчився
+Я ___ о сьомій. (прокидатися) | прокидаюся
+</div>
+</section>
+
+<section class="unit" id="u9" data-grp="Propoziții" data-short="Propoziții complexe">
+<h2><span class="no">Capitolul 9</span>Propoziții complexe</h2>
+<div class="vocab">
+і / й | i / i | și
+але́ | alé | dar
+або́ | abó | sau
+що | șcio | că
+тому́ що | tomú șcio | pentru că
+тому́ | tomú | de aceea
+коли́ | kolî́ | când
+я́кщо | iákșcio | dacă
+щоб | șciob | ca să
+хоч / хоча́ | hoci / hociá | deși
+поки́ | pokî́ | în timp ce
+я́кий | iákîi | care, cine
+де | de | unde
+</div>
+<div class="exs">
+Я зна́ю, що ти ма́єш ра́цію. | ia znáiu, șcio tî máieș ráțiiu. | Știu că ai dreptate.
+Я не прийшо́в, тому́ що був хво́рий. | ia ne prîișóv, tomú șcio buv hvórîi. | Nu am venit pentru că am fost bolnav.
+Я вчу́ украї́нську, щоб працюва́ти в Украї́ні. | ia vciú ukraiíns'ku, șciob prațiuvátî v ukraiíni. | Învăț ucraineană ca să pot lucra în Ucraina.
+Коли́ я повернуся́, я зателефо́ную тобі́. | kolî́ ia povernusiá, ia zatelefónuiu tobí. | Când mă întorc, te sun.
+Я́кщо піде́ дощ, ми залиши́мося вдо́ма. | iákșcio pidé doșc, mî zalîșî́mosia vdóma. | Dacă plouă, rămânem acasă.
+Хоча́ я втомлений, я іду́ на робо́ту. | hociá ia vtomlenîi, ia idú na robótu. | Deși sunt obosit, merg la muncă.
+Я не зна́ю, чи він прийде́. | ia ne znáiu, cî vin prîidé. | Nu știu dacă vine.
+Це чолові́к, який живе́ по́руч. | țe ciolovík, iakîi jîvé póruci. | Acesta este bărbatul care locuiește alături.
+</div>
+<div class="rule"><b class="t">Що și щоб</b><p><span class="fr">що</span> = că (un fapt): <span class="fr">Я знаю, що він прийде.</span> <span class="fr">щоб</span> = ca să (un scop sau o dorință), urmat de forma de trecut: <span class="fr">Я хочу, щоб ти прийшов.</span></p></div>
+<div class="qz" data-title="Exercițiul 9. Conjuncții">
+Я знаю, ___ ти маєш рацію. (că) | що
+Я не прийшов, ___ що був хворий. (pentru că) | тому
+Я вчу українську, ___ працювати. (ca să) | щоб
+___ піде дощ, ми залишимося вдома. (Dacă) | Якщо
+Я втомлений, ___ іду. (dar) | але
+___ я втомлений, я іду. (Deși) | Хоча
+Я не знаю, ___ він прийде. (dacă) | чи
+Це чоловік, ___ живе поруч. (care) | який
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Timp și mișcare">
+<h2><span class="no">Capitolul 10</span>Expresii de timp și verbe de mișcare</h2>
+<div class="vocab">
+вчо́ра | vcióra | ieri
+сього́дні | siohódni | azi
+за́втра | závtra | mâine
+післяза́втра | pisliazávtra | poimâine
+вра́нці | vránți | dimineața
+ввечері́ | vvecerí | seara
+у понеді́лок | u ponedílok | luni
+мину́лого ро́ку | mînúloho róku | anul trecut
+наступного ти́жня | nastupnoho tî́jnia | săptămâna viitoare
+ти́ждень тому́ | tî́jden' tomú | acum o săptămână
+че́рез годи́ну | cérez hodî́nu | peste o oră
+щоти́жня | șciotî́jnia | în fiecare săptămână
+вже | vje | deja
+ще | șce | încă
+ча́сто | ciásto | adesea
+рі́дко | rídko | rar
+за́вжди | závjdî | mereu
+ні́коли | níkolî | niciodată
+</div>
+<div class="rule"><b class="t">Тому / через</b><p><span class="fr">годину тому</span> = acum o oră. <span class="fr">через годину</span> = peste o oră.</p></div>
+<h3>Verbe de mișcare</h3>
+<div class="tw"><table>
+<tr><th>Verb</th><th>Sens</th><th>Exemplu</th></tr>
+<tr><td>іти / ходити</td><td>a merge pe jos (într-o direcție / regulat)</td><td>Я іду на роботу. Я ходжу на роботу.</td></tr>
+<tr><td>їхати / їздити</td><td>a merge cu un vehicul (într-o direcție / regulat)</td><td>Я їду потягом. Я їжджу автобусом.</td></tr>
+<tr><td>летіти</td><td>a zbura</td><td>Завтра я лечу до Берліна.</td></tr>
+<tr><td>прийти / приїхати</td><td>a ajunge (pe jos / cu vehicul)</td><td>Я приїду о шостій.</td></tr>
+<tr><td>вийти / виїхати</td><td>a pleca (pe jos / cu vehicul)</td><td>Потяг відходить о восьмій.</td></tr>
+<tr><td>повернутися</td><td>a se întoarce</td><td>Я скоро повернуся.</td></tr>
+</table></div>
+<div class="exs">
+Зараз я іду́ на робо́ту. | zaraz ia idú na robótu. | Acum merg la muncă.
+Щодня я хо́джу на робо́ту пі́шки. | șciodnia ia hódju na robótu píșkî. | În fiecare zi merg pe jos la muncă.
+Я ї́ду до Льво́ва по́тягом. | ia iídu do l'vóva pótiahom. | Merg la Liov cu trenul.
+За́втра я лечу́ до Берлі́на. | závtra ia leciú do berlína. | Mâine zbor la Berlin.
+</div>
+<div class="qz" data-title="Exercițiul 10. Timp și mișcare">
+ieri | вчора
+mâine | завтра
+mereu | завжди
+niciodată | ніколи
+acum o săptămână | тиждень тому
+peste o oră | через годину
+Зараз я ___ на роботу. (іти: merg) | іду
+Я ___ потягом. (merg cu un vehicul: їхати) | їду
+Завтра я ___ до Берліна. (zbor) | лечу
+Я скоро ___ . (mă întorc) | повернуся
+</div>
+</section>
+
+<section class="unit" id="u11" data-grp="Vocabular și exerciții" data-short="Vocabular pe teme">
+<h2><span class="no">Capitolul 11</span>Vocabular pe teme</h2>
+<div class="vocab">
+# Călătorii
+подорожі́ | podorojí | călătorie | pl
+вали́за | valî́za | valiză | f
+па́спорт | pásport | pașaport | m
+бронюва́ння | broniuvánnia | rezervare | n
+готе́ль | hotél' | hotel | m
+ка́рта | kárta | hartă | f
+відпу́стка | vidpústka | vacanță | f
+пляж | pliaj | plajă | m
+гора́ | horá | munte | f
+мо́ре | móre | mare | n
+# Muncă și studiu
+робо́та | robóta | muncă | f
+о́фіс | ófis | birou | m
+нача́льник | naciál'nîk | șef | m
+коле́га | koléha | coleg | m
+за́робітна пла́та | zárobitna pláta | salariu | f
+до́говір | dóhovir | contract | m
+шко́ла | șkóla | școală | f
+іспи́т | ispî́t | examen | m
+уро́к | urók | lecție | m
+вчи́тися | vcî́tîsia | a învăța | verb
+# Sănătate și casă
+здоро́в'я | zdoróvia | sănătate | n
+реце́пт | rețépt | rețetă | m
+біль | bil' | durere | m
+засту́да | zastúda | răceală | f
+поку́пки | pokúpkî | cumpărături | pl
+сусі́д | susíd | vecin | m
+кварти́ра | kvartî́ra | apartament | f
+винаймати | vînaimatî | a închiria | verb
+</div>
+<div class="qz" data-title="Exercițiul 11. Vocabular">
+valiză | валіза
+pașaport | паспорт
+rezervare | бронювання
+plajă | пляж
+vacanță | відпустка
+muncă | робота
+șef | начальник
+salariu | зарплата
+examen | іспит
+vecin | сусід
+apartament | квартира
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Dialoguri">
+<h2><span class="no">Capitolul 12</span>Dialoguri</h2>
+<div class="dg">
+# 1. Плани на вихідні (planuri pentru weekend)
+Марія: Що ти будеш робити на вихідних? | Ce vei face în weekend?
+Петро: У суботу я поїду до Львова, а в неділю буду відпочивати. | Sâmbătă merg la Liov, iar duminică mă odihnesc.
+Марія: Я хотіла б поїхати з тобою. | Aș vrea să merg cu tine.
+Петро: Чудово! Поїдемо потягом. | Grozav! Vom merge cu trenul.
+Марія: О котрій годині? | La ce oră?
+Петро: Потяг відходить через дві години. | Trenul pleacă peste două ore.
+# 2. Після відпустки (după vacanță)
+Катя: Як минула відпустка? | Cum a fost vacanța?
+Тарас: Дуже добре. Я був на морі. | Foarte bine. Am fost la mare.
+Катя: Що ти там робив? | Ce ai făcut acolo?
+Тарас: Плавав, читав і відпочивав. | Am înotat, am citit și m-am odihnit.
+Катя: Заздрю тобі! | Te invidiez!
+# 3. Співбесіда (interviu de angajare)
+Начальник: Розкажіть трохи про себе. | Spune-mi câte ceva despre tine.
+Кандидат: Я вчитель англійської. Я працюю в школі вже п'ять років. | Sunt profesor de engleză. Lucrez într-o școală de cinci ani.
+Начальник: Чому ви хочете змінити роботу? | De ce vrei să-ți schimbi locul de muncă?
+Кандидат: Я хотів би заробляти більше й розвиватися. | Aș vrea să câștig mai mult și să mă dezvolt.
+Начальник: Дякую, ми з вами зв'яжемося. | Vă mulțumim, vă vom contacta.
+# 4. В аптеці (la farmacie)
+Клієнт: Добрий день, мені потрібні ліки від застуди. | Bună ziua, am nevoie de un medicament pentru răceală.
+Фармацевт: У вас є температура? | Aveți febră?
+Клієнт: Так, невелика. | Da, puțină.
+Фармацевт: Приймайте ці таблетки двічі на день. | Luați aceste tablete de două ori pe zi.
+</div>
+<div class="qz" data-title="Exercițiul 12. Fraze din dialoguri">
+Ce vei face în weekend? | Що ти будеш робити на вихідних
+Vom merge cu trenul. | Поїдемо потягом
+Cum a fost vacanța? | Як минула відпустка
+Am fost la mare. | Я був на морі
+Spune-mi câte ceva despre tine. | Розкажіть трохи про себе
+Aș vrea să câștig mai mult. | Я хотів би заробляти більше
+Am nevoie de un medicament pentru răceală. | Мені потрібні ліки від застуди
+De două ori pe zi. | Двічі на день
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Lectură">
+<h2><span class="no">Capitolul 13</span>Lectură: trei texte</h2>
+<h3>Text 1. Моя родина</h3>
+<p class="fr">Мене звати Анна, і я живу в Києві. У мене є чоловік і двоє дітей. Мій чоловік лікар, а я вчителька. Нашому синові десять років, а доньці сім. На вихідних ми часто їздимо в гори. Влітку ми хочемо поїхати на море.</p>
+<p><i>Mă numesc Anna și locuiesc la Kiev. Am un soț și doi copii. Soțul meu este medic, iar eu sunt profesoară. Fiul nostru are zece ani, iar fiica șapte. În weekenduri mergem adesea la munte. Vara vrem să mergem la mare.</i></p>
+<h3>Text 2. Вчора</h3>
+<p class="fr">Вчора я прокинувся о сьомій, поснідав і поїхав на роботу автобусом. В офісі я був до п'ятої. Потім купив хліб і молоко. Ввечері приготував вечерю і подивився фільм. О одинадцятій ліг спати.</p>
+<p><i>Ieri m-am trezit la șapte, am luat micul dejun și am mers la muncă cu autobuzul. Am stat la birou până la cinci. Apoi am cumpărat pâine și lapte. Seara am gătit cina și m-am uitat la un film. La unsprezece m-am culcat.</i></p>
+<h3>Text 3. Плани на літо</h3>
+<p class="fr">Цього літа я поїду з друзями на море. Ми винаймемо будиночок біля пляжу. Ми будемо плавати, грати у волейбол, а ввечері сидіти біля вогнища. Якщо буде гарна погода, ми залишимося на два тижні.</p>
+<p><i>Vara aceasta merg la mare cu prietenii. Vom închiria o casă lângă plajă. Vom înota, vom juca volei și seara vom sta lângă foc. Dacă vremea este frumoasă, vom rămâne două săptămâni.</i></p>
+<div class="qz" data-title="Exercițiul 13. Întrebări despre texte">
+Ce meserie are soțul Annei? (лікар) | лікар
+Câți ani are fiul? (10) | десять років
+Când s-a trezit? (7) | о сьомій
+Cum a ajuns la muncă? (автобусом) | автобусом
+Ce a cumpărat? (хліб і молоко) | хліб і молоко
+Unde vor merge vara? (на море) | на море
+Cu cine? (з друзями) | з друзями
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Scrierea scrisorilor">
+<h2><span class="no">Capitolul 14</span>Cum scrii scrisori</h2>
+<div class="tw"><table>
+<tr><th>Situația</th><th>Expresie</th></tr>
+<tr><td>Începutul (prieten)</td><td><span class="fr">Привіт, Анно! / Дорогий Петре,</span></td></tr>
+<tr><td>Începutul (formal)</td><td><span class="fr">Шановний пане Коваленку, / Шановна пані Іваненко,</span></td></tr>
+<tr><td>Mulțumesc pentru scrisoare</td><td><span class="fr">Дякую за твого листа.</span></td></tr>
+<tr><td>Vă scriu pentru că…</td><td><span class="fr">Пишу, тому що мене цікавить…</span></td></tr>
+<tr><td>Cerere</td><td><span class="fr">Чи не могли б ви надіслати мені…?</span></td></tr>
+<tr><td>Încheierea (prieten)</td><td><span class="fr">Обіймаю, / До зустрічі,</span></td></tr>
+<tr><td>Încheierea (formal)</td><td><span class="fr">З повагою,</span></td></tr>
+</table></div>
+<div class="warn"><b>Cazul vocativ.</b> Când te adresezi cuiva pe nume, ucraineana folosește vocativul (ca și româna): <span class="fr">Анна → Анно, Петро → Петре, пан Коваленко → пане Коваленку</span>. În scrisorile formale <span class="fr">Ви</span> și <span class="fr">Ваш</span> se scriu cu literă mare când te adresezi direct cititorului.</div>
+<h3>Exemplu. O scrisoare către un prieten</h3>
+<p class="fr">Привіт, Петре!<br>Дякую за твого листа. У мене все гаразд. Минулого тижня я був у Карпатах. Погода була чудова. Я хотів би повернутися туди. А як ти? Напиши мені скоро.<br>Обіймаю,<br>Майкл</p>
+<h3>Exemplu. O scrisoare formală</h3>
+<p class="fr">Шановна пані Іваненко!<br>Пишу, тому що мене цікавить курс української мови для початківців. Я хотів би знати, скільки він коштує і коли починається. Заздалегідь дякую за Вашу відповідь.<br>З повагою,<br>Майкл Сміт</p>
+<div class="qz" data-title="Exercițiul 14. Scrisori">
+Salut, Anna! | Привіт, Анно
+Stimată doamnă Ivanenko | Шановна пані Іваненко
+Mulțumesc pentru scrisoare. | Дякую за твого листа
+Cu stimă | З повагою
+Te îmbrățișez (încheiere) | Обіймаю
+Vă mulțumesc anticipat. | Заздалегідь дякую
+Scrie-mi curând. | Напиши скоро
+Scriu pentru că… | Пишу, тому що
+</div>
+</section>
+
+<section class="unit" id="u15" data-short="Fișă recapitulativă, plan, test">
+<h2><span class="no">Capitolul 15</span>Fișă recapitulativă, plan și test</h2>
+<div class="tw"><table>
+<tr><th>Tema</th><th>Ține minte</th></tr>
+<tr><td>Trecut</td><td>temă + -в / -ла / -ло / -ли: робив, робила</td></tr>
+<tr><td>Viitor</td><td>буду + infinitiv; prezentul perfectiv = viitor</td></tr>
+<tr><td>Condiționalul</td><td>trecut + би / б</td></tr>
+<tr><td>Genitivul</td><td>до, з, без, від, біля</td></tr>
+<tr><td>Dativul</td><td>мені, тобі, йому, їй, нам, вам, їм</td></tr>
+<tr><td>Locativ</td><td>в, на: у Києві, у школі</td></tr>
+<tr><td>Instrumental</td><td>з + -ом / -ою; потягом</td></tr>
+<tr><td>Comparația</td><td>-ший, ніж / за, най-</td></tr>
+</table></div>
+<h3>Plan de 8 săptămâni</h3>
+<div class="tw"><table>
+<tr><th>Săptămâna</th><th>Capitolele</th><th>Obiectiv</th></tr>
+<tr><td>1</td><td>1</td><td>Vorbește despre ieri</td></tr>
+<tr><td>2</td><td>2</td><td>Viitorul și aspectul</td></tr>
+<tr><td>3</td><td>3, 4</td><td>Cereri politicoase, genitiv</td></tr>
+<tr><td>4</td><td>5, 6</td><td>Dativ, locativ, instrumental</td></tr>
+<tr><td>5</td><td>7, 8, 9</td><td>Comparația, verbe reflexive, propoziții complexe</td></tr>
+<tr><td>6</td><td>10, 11</td><td>Timp, mișcare, cuvinte</td></tr>
+<tr><td>7</td><td>12, 13</td><td>Dialoguri și lectură</td></tr>
+<tr><td>8</td><td>14, 15</td><td>O scrisoare și recapitulare</td></tr>
+</table></div>
+<h3>Test final</h3>
+<div class="qz" data-title="Test A2">
+Вчора я ___ вдома. (бути, m.) | був
+Завтра я ___ працювати. (буду) | буду
+Я хотів ___ каву. (би) | би
+Я іду до ___ . (школа) | школи
+Кава з ___ . (цукор) | цукром
+Я живу в ___ . (Київ) | Києві
+Я дам ___ книжку. (ție, dativ) | тобі
+великий → ___ | більший
+Київ більший ___ Львів. (decât) | за
+Я ___ української. (вчитися) | вчуся
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Vorbesc despre trecut</label></li>
+<li><label><input type="checkbox"> Vorbesc despre planuri</label></li>
+<li><label><input type="checkbox"> Cer politicos</label></li>
+<li><label><input type="checkbox"> Folosesc genitivul, dativul, locativul și instrumentalul în expresii fixe</label></li>
+<li><label><input type="checkbox"> Compar și construiesc propoziții complexe</label></li>
+<li><label><input type="checkbox"> Scriu o scrisoare scurtă</label></li>
+</ul>
+</section>
+
+<footer>Un schelet de autoinstruire pentru A2. Completează-l cu ascultare reală: podcasturi, filme cu subtitrări, conversații cu un vorbitor nativ.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Ucraineană</th><th>Pronunție</th><th>În română</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercițiu';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Răspuns: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Verifică</button><button type="button" data-act="show">Arată răspunsurile</button><button type="button" data-act="reset">De la început</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' din '+tot+(ok===tot?'. Totul corect.':'. Verifică ortografia.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^uk[-_]UA/i.test(x.lang))||v.find(x=>/^uk/i.test(x.lang))||('uk'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='uk-UA';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('uk4ro2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('uk4ro2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('uk4ro2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('uk4ro2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='uk4ro2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Rezultate: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">la capitol</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Se afișează primele 40.</div>';
+    } else h+='<div class="mini">Nimic găsit. Căutarea cuprinde cuvintele englezești și românești din tabelele de vocabular.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

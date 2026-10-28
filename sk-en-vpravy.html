@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slovak: exercises</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="Home">&larr;</a>
+  <button id="menuBtn" aria-label="Contents">Contents</button>
+  <span class="brand">Slovak: exercises</span>
+  <input id="q" type="search" placeholder="Find a word" aria-label="Find a word">
+  <button id="uaBtn" title="Show or hide translations of examples and dialogues">Translation</button>
+  <button id="thBtn" title="Light or dark theme">Theme</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Contents"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Exercises: Slovak</h1>
+  <p>Simple topic tests for A1 and A2. Type your answer in the box and press "Check". Accents matter. Use "Show answers" after you have tried.</p>
+  <p class="crumbs"><a href="index.html">&larr; Home</a><a href="sk-en-a1.html">A1 course</a><a href="sk-en-a2.html">A2 course</a></p>
+</div>
+<section class="unit" id="e1" data-grp="A1 exercises" data-short="1 Greetings">
+<h2><span class="no">A1 · 1</span>Greetings and introductions</h2>
+<div class="qz" data-title="1.1. Say it in Slovak">
+Hi! | Ahoj
+Good morning! | Dobré ráno
+Good day! | Dobrý deň
+Good evening! | Dobrý večer
+Good night! | Dobrú noc
+Goodbye! | Dovidenia
+Thank you! | Ďakujem
+Please | Prosím
+Excuse me! | Prepáčte
+Yes | Áno
+No | Nie
+</div>
+<div class="qz" data-title="1.2. Complete the phrase">
+___ sa Anna. (I am called) | Volám
+Ako sa ___ ? (you are called) | voláš
+Teší ___ . (Nice to meet you) | ma
+Odkiaľ ___ ? (you are) | si
+Som ___ Anglicka. (from) | z
+___ . (I don't understand) | Nerozumiem
+___ po anglicky? (Do you speak) | Hovoríte
+___ . (Here you are) | Prosím
+</div>
+</section>
+<section class="unit" id="e2" data-short="2 Byť, mať">
+<h2><span class="no">A1 · 2</span>Byť and mať</h2>
+<div class="qz" data-title="2.1. Byť">
+Ja ___ študent. | som
+Ty ___ z Anglicka. | si
+On ___ lekár. | je
+My ___ priatelia. | sme
+Vy ___ doma. | ste
+Oni ___ učitelia. | sú
+Ja ___ unavený. (m.) | som
+Ona ___ učiteľka. | je
+</div>
+<div class="qz" data-title="2.2. Mať">
+Ja ___ brata. | mám
+Ty ___ sestru. | máš
+On ___ auto. | má
+My ___ dom. | máme
+Vy ___ čas. | máte
+Oni ___ psa. | majú
+Ja ___ čas. (I don't) | nemám
+___ čas? (Do you have) | Máš
+</div>
+</section>
+<section class="unit" id="e3" data-short="3 Gender, plurals">
+<h2><span class="no">A1 · 3</span>Gender and plurals</h2>
+<div class="qz" data-title="3.1. Gender (m, f or n)">
+muž (man) | m
+žena (woman) | f
+dieťa (child) | n
+mesto (town) | n
+stôl (table) | m
+škola (school) | f
+okno (window) | n
+kniha (book) | f
+</div>
+<div class="qz" data-title="3.2. Plurals">
+kniha → ___ | knihy
+stôl → ___ | stoly
+žena → ___ | ženy
+mesto → ___ | mestá
+okno → ___ | okná
+muž → ___ | muži
+škola → ___ | školy
+dom → ___ | domy
+</div>
+</section>
+<section class="unit" id="e4" data-short="4 Verbs">
+<h2><span class="no">A1 · 4</span>Verbs in the present</h2>
+<div class="qz" data-title="4.1. Conjugate">
+Ja ___ v Bratislave. (bývať) | bývam
+Ty ___ v Bratislave. (bývať) | bývaš
+On ___ v Bratislave. (bývať) | býva
+My ___ po slovensky. (hovoriť) | hovoríme
+Ja ___ v banke. (pracovať) | pracujem
+Ty ___ kávu. (piť) | piješ
+Vy ___ chlieb. (kupovať) | kupujete
+Oni ___ futbal. (hrať) | hrajú
+</div>
+<div class="qz" data-title="4.2. Irregular verbs">
+Ja ___ do školy. (ísť) | idem
+My ___ do školy. (ísť) | ideme
+Ja ___ kávu. (chcieť) | chcem
+Ty ___ kávu. (chcieť) | chceš
+Ja ___ plávať. (vedieť) | viem
+Ty ___ plávať. (vedieť) | vieš
+Ja ___ jesť. (I eat: jesť) | jem
+Ty ___ mäso. (jesť) | ješ
+</div>
+</section>
+<section class="unit" id="e5" data-short="5 Questions, adjectives">
+<h2><span class="no">A1 · 5</span>Questions, adjectives, prepositions</h2>
+<div class="qz" data-title="5.1. Question words">
+___ je to? (who) | Kto
+___ robíš? (what) | Čo
+___ bývaš? (where) | Kde
+___ ideš? (where to) | Kam
+___ si? (where from) | Odkiaľ
+___ ? (why) | Prečo
+___ ? (when) | Kedy
+___ to stojí? (how much) | Koľko
+</div>
+<div class="qz" data-title="5.2. Adjectives and prepositions">
+Dom je ___ . (new) | nový
+Auto je ___ . (old) | starý
+Mesto je ___ . (big) | veľké
+Izba je ___ . (small) | malá
+Bývam ___ Bratislave. (in) | v
+Idem ___ školy. (to) | do
+Káva ___ cukru. (without) | bez
+Idem ___ bratom. (with) | s
+</div>
+</section>
+<section class="unit" id="e6" data-short="6 Numbers, time">
+<h2><span class="no">A1 · 6</span>Numbers, time and dates</h2>
+<div class="qz" data-title="6.1. Numbers">
+1 | jeden
+2 | dva
+3 | tri
+4 | štyri
+5 | päť
+6 | šesť
+7 | sedem
+8 | osem
+9 | deväť
+10 | desať
+20 | dvadsať
+100 | sto
+</div>
+<div class="qz" data-title="6.2. Days and months">
+Monday | pondelok
+Tuesday | utorok
+Wednesday | streda
+Thursday | štvrtok
+Friday | piatok
+Saturday | sobota
+Sunday | nedeľa
+January | január
+May | máj
+December | december
+</div>
+</section>
+<section class="unit" id="e7" data-short="7 Food, city">
+<h2><span class="no">A1 · 7</span>Food, the city and shopping</h2>
+<div class="qz" data-title="7.1. Food and drink">
+bread | chlieb
+milk | mlieko
+water | voda
+coffee | káva
+tea | čaj
+beer | pivo
+apple | jablko
+meat | mäso
+cheese | syr
+egg | vajce
+</div>
+<div class="qz" data-title="7.2. In town">
+station | stanica
+post office | pošta
+bank | banka
+shop | obchod
+street | ulica
+Koľko to ___ ? (costs) | stojí
+Chcel by som ___ . (the bill) | účet
+Kde je ___ ? (the toilet) | toaleta
+Prosím ___ . (a coffee, acc.) | kávu
+</div>
+</section>
+<section class="unit" id="e8" data-short="8 Phrases">
+<h2><span class="no">A1 · 8</span>Everyday phrases</h2>
+<div class="qz" data-title="8.1. Say it in Slovak">
+How are you? | Ako sa máš
+Fine, thanks. | Dobre, ďakujem
+I don't understand. | Nerozumiem
+Can you repeat that? | Môžete to zopakovať
+Speak slowly, please. | Hovorte pomaly, prosím
+Where is the station? | Kde je stanica
+How much does it cost? | Koľko to stojí
+I would like a coffee. | Chcel by som kávu
+The bill, please. | Účet, prosím
+I don't know. | Neviem
+</div>
+</section>
+
+<section class="unit" id="e9" data-grp="A1 exercises (more)" data-short="A1 · 9 Words">
+<h2><span class="no">A1 · 9</span>Jobs, body, clothes, weather</h2>
+<div class="qz" data-title="9.1. Jobs and body">
+doctor | lekár
+teacher | učiteľ
+driver | vodič
+shop assistant | predavač
+head | hlava
+hand | ruka
+leg | noha
+stomach | brucho
+heart | srdce
+back | chrbát
+</div>
+<div class="qz" data-title="9.2. Clothes, weather, transport">
+shirt | košeľa
+trousers | nohavice
+dress | šaty
+jacket | bunda
+rain | dážď
+snow | sneh
+wind | vietor
+bus | autobus
+train | vlak
+ticket | lístok
+</div>
+</section>
+<section class="unit" id="e10" data-short="A1 · 10 Modals">
+<h2><span class="no">A1 · 10</span>Modal verbs and the imperative</h2>
+<div class="qz" data-title="10.1. Modals">
+I have to work. | Musím pracovať
+I can help. | Môžem pomôcť
+I want to drink a coffee. | Chcem piť kávu
+I can't talk. | Nemôžem hovoriť
+Can you cook? | Vieš variť
+I must go. | Musím ísť
+</div>
+<div class="qz" data-title="10.2. Imperative">
+___ ! (Come: prísť, you) | Príď
+___ ! (Wait: čakať, you) | Čakaj
+___ ! (Listen: počúvať, you) | Počúvaj
+___ pomaly! (Speak, pl.: hovoriť) | Hovorte
+___ si! (Sit down, pl.) | Sadnite
+___ ! (Don't smoke) | Nefajči
+</div>
+</section>
+<section class="unit" id="a1" data-grp="A2 exercises" data-short="A2 · 1 Past">
+<h2><span class="no">A2 · 1</span>The past tense</h2>
+<div class="qz" data-title="1.1. Masculine and feminine">
+Včera som ___ doma. (byť, m.) | bol
+Včera som ___ doma. (byť, f.) | bola
+Čo si ___ ? (robiť, m.) | robil
+Čo si ___ ? (robiť, f.) | robila
+Ja som ___ po slovensky. (hovoriť, m.) | hovoril
+Ja som ___ kávu. (piť, f.) | pila
+Ja som ___ chlieb. (kúpiť, m.) | kúpil
+Nemal ___ čas. (I) | som
+</div>
+<div class="qz" data-title="1.2. Plural and irregular">
+My sme ___ doma. (byť) | boli
+Vy ste ___ v kine. (byť) | boli
+Oni ___ po slovensky. (hovoriť) | hovorili
+On ___ do školy. (ísť) | išiel
+Ona ___ do školy. (ísť) | išla
+Jedli ___ v reštaurácii. (we) | sme
+mať → ___ | mal
+jesť → ___ | jedol
+čítať → ___ | čítal
+povedať → ___ | povedal
+</div>
+</section>
+<section class="unit" id="a2" data-short="A2 · 2 Future">
+<h2><span class="no">A2 · 2</span>Future and aspect</h2>
+<div class="qz" data-title="2.1. Budem + infinitive">
+Zajtra ___ pracovať. (I will) | budem
+Ty ___ mať čas? (will) | budeš
+On ___ písať. (will) | bude
+My ___ cestovať. (will) | budeme
+Vy ___ čakať? (will) | budete
+Oni ___ spať. (will) | budú
+</div>
+<div class="qz" data-title="2.2. Aspect pairs">
+písať → (perfective) ___ | napísať
+robiť → (perfective) ___ | urobiť
+čítať → (perfective) ___ | prečítať
+kupovať → (perfective) ___ | kúpiť
+variť → (perfective) ___ | uvariť
+jesť → (perfective) ___ | zjesť
+Zajtra ti ___ . (napísať, I'll write) | napíšem
+Zajtra to ___ . (urobiť, I'll do) | urobím
+</div>
+</section>
+<section class="unit" id="a3" data-short="A2 · 3 Conditional">
+<h2><span class="no">A2 · 3</span>Conditional</h2>
+<div class="qz" data-title="3.1. By som, by si, by">
+Chcel ___ som kávu. (would) | by
+Mohli ___ ste mi pomôcť? (would) | by
+Chcela by ___ čaj. (I) | som
+Mal by ___ odpočívať. (you, informal) | si
+Chceli by ___ ísť. (we) | sme
+</div>
+<div class="qz" data-title="3.2. Translate">
+I would like a coffee. | Chcel by som kávu
+Could you help me? | Mohli by ste mi pomôcť
+If I had time | Keby som mal čas
+You should rest. | Mal by si odpočívať
+We would like to go. | Chceli by sme ísť
+</div>
+</section>
+<section class="unit" id="a4" data-short="A2 · 4 Genitive">
+<h2><span class="no">A2 · 4</span>Genitive</h2>
+<div class="qz" data-title="4.1. Nouns after prepositions">
+Idem do ___ . (škola) | školy
+Idem do ___ . (Bratislava) | Bratislavy
+Káva bez ___ . (cukor) | cukru
+Káva bez ___ . (mlieko) | mlieka
+List od ___ . (brat) | brata
+Bývam vedľa ___ . (pošta) | pošty
+Idem z ___ . (práca) | práce
+Bývam pri ___ . (stanica, locative) | stanici
+</div>
+<div class="qz" data-title="4.2. Translate">
+Coffee without sugar. | Káva bez cukru
+I'm going to school. | Idem do školy
+I am from England. | Som z Anglicka
+I live next to the post office. | Bývam vedľa pošty
+I don't have much time. | Nemám veľa času
+</div>
+</section>
+<section class="unit" id="a5" data-short="A2 · 5 Dative">
+<h2><span class="no">A2 · 5</span>Dative and pronouns</h2>
+<div class="qz" data-title="5.1. Pronouns">
+Vidím ___ . (him) | ho
+Poznám ___ . (her) | ju
+Milujem ___ . (you) | ťa
+Dám ___ knihu. (you, dative) | ti
+Píšem ___ list. (him, dative) | mu
+Píšem ___ list. (her, dative) | jej
+Môžeš ___ pomôcť? (me) | mi
+Volám ___ . (them, dative) | im
+</div>
+<div class="qz" data-title="5.2. Nouns">
+Idem k ___ . (lekár) | lekárovi
+Dám to ___ . (brat) | bratovi
+Dám to ___ . (žena) | žene
+Idem ku ___ . (kamarát) | kamarátovi
+Darček pre ___ . (sestra) | sestru
+</div>
+</section>
+<section class="unit" id="a6" data-short="A2 · 6 Loc., instr.">
+<h2><span class="no">A2 · 6</span>Locative and instrumental</h2>
+<div class="qz" data-title="6.1. Locative">
+Bývam v ___ . (Bratislava) | Bratislave
+Pracujem v ___ . (Londýn) | Londýne
+Som v ___ . (škola) | škole
+Býva v ___ . (mesto) | meste
+Hovoríme o ___ . (kniha) | knihe
+Som v ___ . (kuchyňa) | kuchyni
+</div>
+<div class="qz" data-title="6.2. Instrumental">
+Idem s ___ . (brat) | bratom
+Idem s ___ . (kamarátka) | kamarátkou
+Káva s ___ . (cukor) | cukrom
+Káva s ___ . (mlieko) | mliekom
+Idem ___ . (vlak) | vlakom
+Idem ___ . (autobus) | autobusom
+</div>
+</section>
+<section class="unit" id="a7" data-short="A2 · 7 Comparison">
+<h2><span class="no">A2 · 7</span>Comparison</h2>
+<div class="qz" data-title="7.1. Comparative and superlative">
+veľký → ___ | väčší
+malý → ___ | menší
+dobrý → ___ | lepší
+zlý → ___ | horší
+drahý → ___ | drahší
+lacný → ___ | lacnejší
+dobrý → ___ (best) | najlepší
+starý → ___ (oldest) | najstarší
+</div>
+<div class="qz" data-title="7.2. Sentences">
+Bratislava je väčšia ___ Košice. (than) | ako
+Je to ___ drahé ako tamto. (equally) | rovnako
+Mám rád čaj ___ ako kávu. (more) | viac
+Hovorte ___ , prosím. (more slowly) | pomalšie
+Je to ___ film. (the best) | najlepší
+</div>
+</section>
+<section class="unit" id="a8" data-short="A2 · 8 Reflexive">
+<h2><span class="no">A2 · 8</span>Reflexive verbs</h2>
+<div class="qz" data-title="8.1. Sa or si">
+Ja ___ učím po slovensky. | sa
+Teším ___ na víkend. | sa
+Ako ___ máš? | sa
+Dám ___ kávu. | si
+Myslím ___ , že máš pravdu. | si
+Včera som ___ učil. | sa
+Kedy ___ stretneme? | sa
+Sadnem ___ . | si
+</div>
+</section>
+<section class="unit" id="a9" data-short="A2 · 9 Sentences">
+<h2><span class="no">A2 · 9</span>Complex sentences</h2>
+<div class="qz" data-title="9.1. Conjunctions">
+Viem, ___ máš pravdu. (that) | že
+Neprišiel som, ___ som bol chorý. (because) | pretože
+___ prší, ostanem doma. (If) | Ak
+Som unavený, ___ idem. (but) | ale
+___ som unavený, idem. (Although) | Hoci
+Neviem, ___ príde. (whether) | či
+To je muž, ___ býva vedľa. (who) | ktorý
+Učím sa po slovensky, ___ som mohol pracovať. (so that) | aby
+</div>
+</section>
+<section class="unit" id="a10" data-short="A2 · 10 Time, motion">
+<h2><span class="no">A2 · 10</span>Time, motion and vocabulary</h2>
+<div class="qz" data-title="10.1. Time and motion">
+yesterday | včera
+tomorrow | zajtra
+always | vždy
+never | nikdy
+a week ago | pred týždňom
+in an hour | o hodinu
+Teraz ___ do práce. (ísť) | idem
+Zajtra ___ do Berlína. (I'm flying) | letím
+</div>
+<div class="qz" data-title="10.2. Vocabulary">
+journey | cesta
+suitcase | kufor
+passport | pas
+beach | pláž
+boss | šéf
+salary | plat
+exam | skúška
+neighbour | sused
+</div>
+</section>
+
+<footer>Exercises for the courses. See the A1 and A2 courses for explanations and tables.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Slovak</th><th>Pronunciation</th><th>English</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercise';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Answer: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Check</button><button type="button" data-act="show">Show answers</button><button type="button" data-act="reset">Reset</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' of '+tot+(ok===tot?'. All correct.':'. Check accents and articles.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^sk[-_]SK/i.test(x.lang))||v.find(x=>/^sk/i.test(x.lang))||('sk'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='sk-SK';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('skenx_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('skenx_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('skenx_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('skenx_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='skenx_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Results: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">go to section</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">First 40 shown.</div>';
+    } else h+='<div class="mini">Nothing found. Search covers the foreign and English words in the vocabulary tables.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

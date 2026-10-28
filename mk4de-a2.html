@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mazedonisch A2: kompletter Kurs</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="start-de.html" title="Startseite">&larr;</a>
+  <button id="menuBtn" aria-label="Inhalt">Inhalt</button>
+  <span class="brand">Македонски A2</span>
+  <input id="q" type="search" placeholder="Wort suchen" aria-label="Wort suchen">
+  <button id="uaBtn" title="Übersetzungen der Beispiele und Dialoge ein- oder ausblenden">Übersetzung</button>
+  <button id="thBtn" title="Heller oder dunkler Modus">Modus</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Inhalt"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Mazedonisch A2</h1>
+  <p>Der nächste Schritt in Mazedonisch: Vergangenheit und Zukunft, Konditional, Verbaspekt, Fälle, Steigerung, zusammengesetzte Sätze, Lesen und Briefe. Tippen Sie auf ein Wort oder einen Satz, um ihn zu hören.</p>
+  <p class="crumbs"><a href="start-de.html">&larr; Startseite</a><a href="mk4de-a1.html">Niveau A1</a><a href="mk4de-vpravy.html">Übungen</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Einstieg" data-short="So nutzt du den Kurs">
+<h2><span class="no">Abschnitt 0</span>So nutzt du den Kurs</h2>
+<p class="lead">Niveau A2: Du kannst dich schon vorstellen und über dich sprechen, jetzt lernst du, <b>von der Vergangenheit zu erzählen, Pläne zu machen, höflich zu bitten, zu vergleichen und Gründe zu nennen</b>. Aussprache, <span class="fr">сум</span>, <span class="fr">имам</span>, Artikel, Zahlen und Uhrzeit stehen im Kurs A1.</p>
+<h3>Das kannst du am Ende</h3>
+<ul>
+<li>von gestern und vom Urlaub erzählen (Vergangenheit);</li>
+<li>über Pläne sprechen (<span class="fr">ќе</span> + Präsens);</li>
+<li>höflich bitten und Wünsche äußern (<span class="fr">би сакал</span>);</li>
+<li>die kurzen Pronomenformen benutzen;</li>
+<li>den Verbaspekt unterscheiden;</li>
+<li>vergleichen, zusammengesetzte Sätze bilden, einen Brief schreiben.</li>
+</ul>
+<div class="tip"><b class="t">Dein Vorteil.</b> Fälle gibt es im Mazedonischen nicht, die Grammatik ist also leichter als im Deutschen. Neu sind: der nachgestellte Artikel, die да-Konstruktion und die besonderen Vergangenheitsformen.</div>
+<div class="warn"><b>Falsche Freunde.</b> <span class="fr">маса</span> = Tisch, <span class="fr">стол</span> = Stuhl, <span class="fr">куќа</span> = Haus, <span class="fr">час</span> = Stunde, <span class="fr">година</span> = Jahr, <span class="fr">вечера</span> = Abendessen, <span class="fr">леб</span> = Brot, <span class="fr">воз</span> = Zug.</div>
+<h3>Schneller Check A1</h3>
+<div class="qz" data-title="Übung 0. Wiederholung A1">
+Јас ___ студент. (сум) | сум
+Ти ___ брат. (имам) | имаш
+Јас ___ македонски. (зборувам) | зборувам
+Јас ___ кафе. (сакам) | сакам
+стол → (mit Artikel) | столот
+жена → (Pl.) | жени
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Zeiten und Modi" data-short="Vergangenheit">
+<h2><span class="no">Abschnitt 1</span>Vergangenheit</h2>
+<p>Im Mazedonischen gibt es mehrere Vergangenheitsformen. Für A2 reichen drei.</p>
+<h3>1.1. Imperfekt</h3>
+<p>Eine andauernde oder wiederholte Handlung in der Vergangenheit. Endungen: <b>-в, -ше, -ше, -вме, -вте, -а</b>.</p>
+<div class="tw"><table>
+<tr><th></th><th>бев (war)</th><th>имав (hatte)</th><th>работев (arbeitete)</th></tr>
+<tr><td>јас</td><td>бев</td><td>имав</td><td>работев</td></tr>
+<tr><td>du</td><td>беше</td><td>имаше</td><td>работеше</td></tr>
+<tr><td>тој / таа</td><td>беше</td><td>имаше</td><td>работеше</td></tr>
+<tr><td>ние</td><td>бевме</td><td>имавме</td><td>работевме</td></tr>
+<tr><td>вие</td><td>бевте</td><td>имавте</td><td>работевте</td></tr>
+<tr><td>тие</td><td>беа</td><td>имаа</td><td>работеа</td></tr>
+</table></div>
+<h3>1.2. Aorist</h3>
+<p>Eine einmalige, abgeschlossene Handlung. Endungen: <b>-в, —, —, -вме, -вте, -а</b>.</p>
+<div class="tw"><table>
+<tr><th></th><th>напишам (schreiben)</th><th>видам (sehen)</th><th>прочитам (lesen, durchlesen)</th></tr>
+<tr><td>јас</td><td>напишав</td><td>видов</td><td>прочитав</td></tr>
+<tr><td>du</td><td>напиша</td><td>виде</td><td>прочита</td></tr>
+<tr><td>тој / таа</td><td>напиша</td><td>виде</td><td>прочита</td></tr>
+<tr><td>ние</td><td>напишавме</td><td>видовме</td><td>прочитавме</td></tr>
+<tr><td>вие</td><td>напишавте</td><td>видовте</td><td>прочитавте</td></tr>
+<tr><td>тие</td><td>напишаа</td><td>видоа</td><td>прочитаа</td></tr>
+</table></div>
+<h3>1.3. Perfekt</h3>
+<p>Die Form <span class="fr">сум</span> + Partizip auf <b>-л</b> (<span class="fr">работел / работела / работело / работеле</span>) benutzt man, wenn der Sprecher das Ereignis nicht selbst erlebt hat oder von einer Erfahrung erzählt: <span class="fr">Била сум во Охрид.</span> (Ich war in Ohrid.)</p>
+<div class="exs">
+Вчера бев дома. |  | Gestern war ich zu Hause.
+Вчера работев цел ден. |  | Gestern habe ich den ganzen Tag gearbeitet.
+Вчера напишав писмо. |  | Gestern habe ich einen Brief geschrieben.
+Видов еден филм. |  | Ich habe einen Film gesehen.
+Колку време имаше? |  | Wie viel Zeit hattest du?
+Бил сум во Скопје. |  | Ich war in Skopje.
+Тие работеа цела ноќ. |  | Sie haben die ganze Nacht gearbeitet.
+Не бев дома. |  | Ich war nicht zu Hause.
+</div>
+<div class="qz" data-title="Übung 1. Vergangenheit">
+Вчера ___ дома. (јас, бев) | бев
+Тој ___ дома. (беше) | беше
+Ние ___ во Скопје. (бевме) | бевме
+Тие ___ дома. (беа) | беа
+Јас ___ писмо. (напишам, Aorist) | напишав
+Јас ___ филм. (видам, Aorist) | видов
+Тој ___ книга. (прочитам, Aorist) | прочита
+Таа ___ цел ден. (работам, Imperfekt) | работеше
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Zukunft">
+<h2><span class="no">Abschnitt 2</span>Zukunft</h2>
+<div class="rule"><b class="t">Ќе + Präsens.</b><p><span class="fr">ќе</span> ändert sich nicht: <span class="fr">ќе работам, ќе работиш, ќе работи…</span> Verneinung: <span class="fr">нема да</span> + Präsens: <span class="fr">нема да работам</span>.</p></div>
+<div class="tw"><table>
+<tr><th>Person</th><th>Bejahung</th><th>Verneinung</th></tr>
+<tr><td>јас</td><td>ќе работам</td><td>нема да работам</td></tr>
+<tr><td>du</td><td>ќе работиш</td><td>нема да работиш</td></tr>
+<tr><td>тој / таа</td><td>ќе работи</td><td>нема да работи</td></tr>
+<tr><td>ние</td><td>ќе работиме</td><td>нема да работиме</td></tr>
+<tr><td>вие</td><td>ќе работите</td><td>нема да работите</td></tr>
+<tr><td>тие</td><td>ќе работат</td><td>нема да работат</td></tr>
+</table></div>
+<div class="exs">
+Утре ќе работам. |  | Morgen arbeite ich.
+Што ќе правиш во сабота? |  | Was machst du am Samstag?
+Следната недела ќе одиме на море. |  | Nächste Woche fahren wir ans Meer.
+Ќе те повикам навечер. |  | Ich rufe dich am Abend an.
+Ќе купам нов телефон. |  | Ich kaufe ein neues Handy.
+Нема да јадеме дома. |  | Wir essen nicht zu Hause.
+</div>
+<div class="qz" data-title="Übung 2. Zukunft">
+Утре ___ работам. (ќе) | ќе
+Таа ___ да дојде. (wird nicht, нема) | нема
+Ние ___ одиме. (ќе) | ќе
+Тие ___ да јадат. (werden nicht) | нема
+Ќе ___ повикам. (dich, kurz) | те
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Konditional">
+<h2><span class="no">Abschnitt 3</span>Konditional und höfliche Bitten</h2>
+<p>Konditional: <span class="fr">би</span> (unveränderlich) + Partizip auf -л. <span class="fr">би сакал</span> (m), <span class="fr">би сакала</span> (f).</p>
+<div class="exs">
+Би сакал кафе. |  | Ich hätte gern Kaffee.
+Би сакала да одам на море. |  | Ich (f) würde gern ans Meer fahren.
+Би можел ли да ми помогнеш? |  | Könntest du mir nicht helfen?
+Ако имам време, ќе дојдам. |  | Wenn ich Zeit habe, komme ich.
+Да имав време, би дошол. |  | Wenn ich Zeit hätte, würde ich kommen.
+Би сакал да резервирам маса. |  | Ich würde gern einen Tisch reservieren.
+</div>
+<div class="tip"><b class="t">Höflich.</b> <span class="fr">Би сакал</span> und <span class="fr">Може ли…?</span> sind die einfachsten höflichen Formen. <span class="fr">Молам</span> macht die Bitte noch weicher.</div>
+<div class="qz" data-title="Übung 3. Konditional">
+___ кафе. (Ich hätte gern, m) | Би сакал
+___ чај. (Ich hätte gern, f) | Би сакала
+___ ли да ми помогнеш? (Kannst du) | Може
+Ако имам време, ___ дојдам. (ќе) | ќе
+___ да резервирам маса. (Ich möchte) | Би сакал
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Verbaspekt">
+<h2><span class="no">Abschnitt 4</span>Der Verbaspekt</h2>
+<p>Wie im Deutschen gibt es zwei Aspekte: <b>imperfektiv</b> — Vorgang oder Wiederholung, <b>perfektiv</b> — Ergebnis.</p>
+<div class="tw"><table>
+<tr><th>Imperfektiv</th><th>Perfektiv</th><th>Bedeutung</th></tr>
+<tr><td>пишувам</td><td>напишам</td><td>schreiben</td></tr>
+<tr><td>читам</td><td>прочитам</td><td>lesen</td></tr>
+<tr><td>правам</td><td>направам</td><td>machen</td></tr>
+<tr><td>учам</td><td>научам</td><td>lernen / auslernen, beherrschen</td></tr>
+<tr><td>јадам</td><td>изедам</td><td>essen</td></tr>
+<tr><td>гледам</td><td>погледнам</td><td>schauen</td></tr>
+<tr><td>градам</td><td>изградам</td><td>bauen / aufbauen</td></tr>
+</table></div>
+<div class="exs">
+Секој ден читам весник. |  | Jeden Tag lese ich die Zeitung.
+Вчера прочитав една книга. |  | Gestern habe ich das Buch durchgelesen.
+Пишувам писмо. |  | Ich schreibe einen Brief.
+Веќе напишав писмо. |  | Ich habe den Brief schon geschrieben.
+Секој ден правам кафе. |  | Jeden Tag koche ich Kaffee.
+Направив кафе. |  | Ich habe Kaffee gekocht.
+</div>
+<div class="qz" data-title="Übung 4. Verbaspekt">
+schreiben → perfektiv | напишам
+lesen → perfektiv | прочитам
+machen → perfektiv | направам
+schauen → perfektiv | погледнам
+Секој ден ___ . (читам) | читам
+Вчера ___ книга. (прочитам, Aorist) | прочитав
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Pronomen und Demonstrativa" data-short="Kurze Pronomen">
+<h2><span class="no">Abschnitt 5</span>Kurze Pronomen: Akkusativ und Dativ</h2>
+<p>Im Mazedonischen gibt es keine Fälle, aber die Pronomen haben besondere Formen. Die kurzen Formen stehen <b>vor dem Verb</b>.</p>
+<div class="tw"><table>
+<tr><th>Pronomen</th><th>Akkusativ (wen?)</th><th>Dativ (wem?)</th></tr>
+<tr><td>јас</td><td>ме</td><td>wir</td></tr>
+<tr><td>du</td><td>те</td><td>du</td></tr>
+<tr><td>тој</td><td>го</td><td>му</td></tr>
+<tr><td>таа</td><td>ја</td><td>ѝ</td></tr>
+<tr><td>ние</td><td>нè</td><td>ни</td></tr>
+<tr><td>вие</td><td>ве</td><td>ihr / Sie</td></tr>
+<tr><td>тие</td><td>ги</td><td>им</td></tr>
+</table></div>
+<div class="tip"><b class="t">Verdopplung.</b> Mazedonier wiederholen das Objekt oft: <span class="fr">Го видов Петар.</span> (Ich habe Petar gesehen.) <span class="fr">Ѝ ја дадов книгата.</span> (Ich habe ihr das Buch gegeben.) Das ist normal.</div>
+<div class="exs">
+Те гледам. |  | Ich sehe dich.
+Те сакам. |  | Ich liebe dich.
+Кажи ми. |  | Sag mir.
+Ти давам книга. |  | Ich gebe dir ein Buch.
+Одам со тебе. |  | Ich gehe mit dir.
+Ќе го повикам утре. |  | Ich rufe ihn morgen an.
+Им помагам. |  | Ich helfe ihnen.
+</div>
+<div class="qz" data-title="Übung 5. Pronomen">
+Гледам ___ . (dich, kurz) | те
+Кажи ___ . (mir) | ми
+Давам ___ книга. (dir) | ти
+Ќе ___ повикам. (ihn) | го
+___ помагам. (ihnen) | Им
+Одам со ___ . (mit dir) | тебе
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Demonstrativpronomen">
+<h2><span class="no">Abschnitt 6</span>Demonstrativa: ов, он, тој</h2>
+<div class="tw"><table>
+<tr><th></th><th>nah</th><th>weiter weg</th><th>neutral</th></tr>
+<tr><td>m</td><td>овој</td><td>оној</td><td>тој</td></tr>
+<tr><td>f</td><td>оваа</td><td>онаа</td><td>таа</td></tr>
+<tr><td>n</td><td>ова</td><td>она</td><td>тоа</td></tr>
+<tr><td>Pl.</td><td>овие</td><td>оние</td><td>тие</td></tr>
+</table></div>
+<div class="exs">
+Оваа книга е нова. |  | Dieses Buch ist neu.
+Овој човек е мој брат. |  | Dieser Mann ist mein Bruder.
+Што е ова? |  | Was ist das?
+Овие луѓе се од Украина. |  | Diese Leute sind aus der Ukraine.
+Колку чини она? |  | Was kostet das da?
+</div>
+<div class="qz" data-title="Übung 6. Demonstrativa">
+___ книга е нова. (diese, f) | Оваа
+___ човек е мој брат. (dieser, m) | Овој
+Што е ___ ? (das, n) | ова
+___ луѓе се од Украина. (diese) | Овие
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Possessiva">
+<h2><span class="no">Abschnitt 7</span>Possessiva und Besitz</h2>
+<p>Possessivpronomen stehen nach dem Nomen mit Artikel: <span class="fr">книгата моја</span> oder vor dem Nomen: <span class="fr">мојата книга</span>.</p>
+<div class="exs">
+Тоа е мојата книга. |  | Das ist mein Buch.
+Тоа е мој брат. |  | Das ist mein Bruder.
+Каде е твојот телефон? |  | Wo ist dein Telefon?
+Нејзиниот брат е лекар. |  | Ihr Bruder ist Arzt.
+Нашата куќа е голема. |  | Unser Haus ist groß.
+Тоа е на Петар. |  | Das gehört Petar.
+</div>
+<div class="tip"><b class="t">Besitz.</b> Statt des Genitivs benutzt Mazedonisch <span class="fr">на</span>: <span class="fr">книгата на Петар</span> (Petars Buch), <span class="fr">куќата на моите родители</span> (das Haus meiner Eltern).</div>
+<div class="qz" data-title="Übung 7. Possessiva">
+Тоа е ___ книга. (mein, mit Artikel) | мојата
+Каде е ___ телефон? (dein, mit Artikel) | твојот
+Книгата ___ Петар. (von Petar) | на
+Тоа е ___ куќа. (unser, mit Artikel) | нашата
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Grammatik" data-short="Steigerung">
+<h2><span class="no">Abschnitt 8</span>Steigerung</h2>
+<p>Komparativ: <b>по-</b> + Adjektiv. Superlativ: <b>нај-</b> + Adjektiv. „Als“ = <span class="fr">од</span> oder <span class="fr">отколку</span>.</p>
+<div class="tw"><table>
+<tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th></tr>
+<tr><td>нов</td><td>понов</td><td>најнов</td></tr>
+<tr><td>убав</td><td>поубав</td><td>најубав</td></tr>
+<tr><td>стар</td><td>постар</td><td>најстар</td></tr>
+<tr><td>голем</td><td>поголем</td><td>најголем</td></tr>
+<tr><td>добар</td><td>подобар</td><td>најдобар</td></tr>
+<tr><td>лош</td><td>полош</td><td>најлош</td></tr>
+</table></div>
+<div class="exs">
+Скопје е поголемо од Охрид. |  | Skopje ist größer als Ohrid.
+Мојот брат е постар од мене. |  | Mein Bruder ist älter als ich.
+Ова е најдоброто кафе. |  | Das ist der beste Kaffee.
+Денес е потопло отколку вчера. |  | Heute ist es wärmer als gestern.
+</div>
+<div class="qz" data-title="Übung 8. Steigerung">
+голем → Komparativ: ___ | поголем
+добар → Komparativ: ___ | подобар
+нов → Komparativ: ___ | понов
+убав → Superlativ: ___ | најубав
+добар → Superlativ: ___ | најдобар
+Скопје е поголемо ___ Охрид. (als) | од
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Zusammengesetzte Sätze">
+<h2><span class="no">Abschnitt 9</span>Zusammengesetzte Sätze</h2>
+<div class="tw"><table>
+<tr><th>Konjunktion</th><th>Bedeutung</th><th>Beispiel</th></tr>
+<tr><td>und</td><td>und</td><td><span class="fr">Работам и учам.</span></td></tr>
+<tr><td>aber</td><td>aber</td><td><span class="fr">Би сакал да одам, но немам време.</span></td></tr>
+<tr><td>weil</td><td>weil</td><td><span class="fr">Останувам дома, затоа што сум болен.</span></td></tr>
+<tr><td>deshalb</td><td>deshalb</td><td><span class="fr">Болен сум, затоа останувам дома.</span></td></tr>
+<tr><td>dass</td><td>was</td><td><span class="fr">Знам дека имаш време.</span></td></tr>
+<tr><td>wenn, wenn (zeitlich)</td><td>wann</td><td><span class="fr">Кога ќе дојдам, ќе те повикам.</span></td></tr>
+<tr><td>wenn (Bedingung)</td><td>wenn</td><td><span class="fr">Ако врне, ќе останам дома.</span></td></tr>
+<tr><td>obwohl</td><td>obwohl</td><td><span class="fr">Одам, иако врне.</span></td></tr>
+<tr><td>der/die/das (Relativsatz)</td><td>der/die/das (Relativsatz)</td><td><span class="fr">Човекот што работи тука е мој брат.</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Што.</b> Als Relativpronomen ändert sich <span class="fr">што</span> nicht: <span class="fr">Книгата што ја читам е интересна.</span> Das Objekt wird dabei durch ein kurzes Pronomen verstärkt (<span class="fr">ја</span>).</div>
+<div class="exs">
+Останувам дома, затоа што сум болен. |  | Ich bleibe zu Hause, weil ich krank bin.
+Знам дека имаш време. |  | Ich weiß, dass du Zeit hast.
+Кога ќе дојдам дома, ќе те повикам. |  | Wenn ich nach Hause komme, rufe ich an.
+Ако врне, ќе останам дома. |  | Wenn es regnet, bleibe ich zu Hause.
+</div>
+<div class="qz" data-title="Übung 9. Zusammengesetzte Sätze">
+Останувам дома, ___ сум болен. (weil) | затоа што
+Знам ___ имаш време. (dass) | дека
+___ ќе дојдам, ќе те повикам. (Wenn, zeitlich) | Кога
+___ врне, ќе останам дома. (Wenn, Bedingung) | Ако
+Би сакал да одам, ___ немам време. (aber) | но
+Одам, ___ врне. (obwohl) | иако
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Zeit und Bewegungsverben">
+<h2><span class="no">Abschnitt 10</span>Zeitangaben und Bewegungsverben</h2>
+<div class="tw"><table>
+<tr><th>Ausdruck</th><th>Bedeutung</th><th>Beispiel</th></tr>
+<tr><td>во + Uhrzeit</td><td>um (Uhrzeit)</td><td><span class="fr">во осум часот</span></td></tr>
+<tr><td>во + Wochentag</td><td>am (Wochentag)</td><td><span class="fr">во петок</span></td></tr>
+<tr><td>од … до (von … bis)</td><td>von … bis</td><td><span class="fr">од девет до пет</span></td></tr>
+<tr><td>пред (vor)</td><td>deshalb</td><td><span class="fr">пред три дена</span></td></tr>
+<tr><td>за (in, zeitlich)</td><td>in (zeitlich, „in zwei Tagen“)</td><td><span class="fr">за два дена</span></td></tr>
+<tr><td>jeden Tag</td><td>jeden Tag</td><td><span class="fr">секој ден работам</span></td></tr>
+</table></div>
+<p>Häufigkeit: <span class="fr">секогаш</span> (immer), <span class="fr">често</span> (oft), <span class="fr">понекогаш</span> (manchmal), <span class="fr">ретко</span> (selten), <span class="fr">никогаш</span> (nie).</p>
+<div class="vocab">
+одам |  | gehen | одиш
+доаѓам |  | kommen | доаѓаш
+заминувам |  | weggehen | заминуваш
+се враќам |  | zurückkehren | се враќаш
+возам |  | fahren | возиш
+летам |  | fliegen | леташ
+барам |  | suchen | бараш
+наоѓам |  | finden | наоѓаш
+</div>
+<div class="exs">
+Секој ден одам на работа пеш. |  | Jeden Tag gehe ich zu Fuß zur Arbeit.
+Пред три дена дојдов. |  | Ich bin vor drei Tagen angekommen.
+За два дена ќе се вратам. |  | In zwei Tagen komme ich zurück.
+Понекогаш одам на кино. |  | Manchmal gehe ich ins Kino.
+Никогаш не пијам кафе навечер. |  | Abends trinke ich nie Kaffee.
+</div>
+<div class="qz" data-title="Übung 10. Zeit">
+jeden Tag | секој ден
+nie | никогаш
+manchmal | понекогаш
+immer | секогаш
+vor drei Tagen | пред три дена
+in zwei Tagen | за два дена
+Um acht. | Во осум часот
+Am Freitag. | Во петок
+</div>
+</section>
+
+<section class="unit" id="u11" data-grp="Wortschatz und Praxis" data-short="Wortschatz nach Themen">
+<h2><span class="no">Abschnitt 11</span>Wortschatz nach Themen</h2>
+<div class="vocab">
+#Reisen
+патување |  | Reise | n
+пасош |  | Reisepass | m
+багаж |  | Gepäck | m
+резервација |  | Reservierung | f
+билет |  | Fahrkarte | m
+одмор |  | Urlaub | m
+хотел |  | Hotel | m
+плажа |  | Strand | f
+#Arbeit und Ausbildung
+работа |  | Arbeit | f
+училиште |  | Schule | n
+универзитет |  | Universität | m
+шеф |  | Chef | m
+состанок |  | Besprechung | m
+плата |  | Gehalt | f
+испит |  | Prüfung | m
+#Gefühle
+весел |  | froh | adj
+тажен |  | traurig | adj
+уморен |  | müde | adj
+лут |  | wütend | adj
+среќен |  | glücklich | adj
+#Haushalt
+стан |  | Wohnung | m
+клуч |  | Schlüssel | m
+машина за перење |  | Waschmaschine | f
+кирија |  | Miete | f
+сосед |  | Nachbar | m
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Dialoge">
+<h2><span class="no">Abschnitt 12</span>Dialoge</h2>
+<div class="dg">
+#1. Планови за викенд (Pläne fürs Wochenende)
+Анна: Што ќе правиш овој викенд? | Was machst du an diesem Wochenende?
+Петар: Во сабота одиме на излет, а во недела ќе останам дома. | Am Samstag machen wir einen Ausflug, und am Sonntag bleibe ich zu Hause.
+Анна: Каде одите? | Wohin fahrt ihr?
+Петар: На Охрид. Дали би сакала да дојдеш со нас? | Nach Ohrid. Möchtest du mitkommen?
+Анна: Би сакала, но морам да работам. | Gern, aber ich muss arbeiten.
+#2. Кај лекар (beim Arzt, noch einmal)
+Лекар: Колку време ве боли? | Wie lange tut es schon weh?
+Пациент: Веќе три дена. | Schon drei Tage.
+Лекар: Земавте ли некој лек? | Haben Sie irgendwelche Medikamente genommen?
+Пациент: Не, не сум. | Nein.
+Лекар: Ќе ви препишам таблети. | Ich verschreibe Ihnen Tabletten.
+#3. Изнајмување стан (Wohnung mieten)
+Закупец: Добар ден, барам стан. | Guten Tag, ich suche eine Wohnung.
+Агент: Колку соби ви требаат? | Wie viele Zimmer brauchen Sie?
+Закупец: Две соби, блиску до центарот. | Zwei Zimmer, näher am Zentrum.
+Агент: Овој чини петстотини евра месечно. | Diese kostet fünfhundert Euro im Monat.
+Закупец: Може ли да го видам? | Kann ich sie ansehen?
+</div>
+<div class="qz" data-title="Übung 12. Sätze aus den Dialogen">
+Was machst du am Wochenende? | Што ќе правиш овој викенд
+Gern, aber ich muss arbeiten. | Би сакала, но морам да работам
+Schon drei Tage. | Веќе три дена
+Ich suche eine Wohnung. | Барам стан
+Kann ich sie ansehen? | Може ли да го видам
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Lesen">
+<h2><span class="no">Abschnitt 13</span>Lesen: drei Texte</h2>
+<div class="dg">
+#1. Мојот ден (mein Tag)
+Наутро станувам во седум часот. | Morgens stehe ich um sieben auf.
+Пијам кафе и одам на работа. | Ich trinke Kaffee und gehe zur Arbeit.
+Во пет часот се враќам дома. | Um fünf komme ich nach Hause.
+Навечер читам или гледам филм. | Abends lese ich oder sehe einen Film.
+#2. Моето семејство (meine Familie)
+Имам мајка, татко и брат. | Ich habe eine Mutter, einen Vater und einen Bruder.
+Мајка ми работи како учителка. | Meine Mutter arbeitet als Lehrerin.
+Брат ми учи во Скопје. | Mein Bruder studiert in Skopje.
+Во недела сите јадеме заедно. | Sonntags essen wir alle zusammen.
+#3. Одмор (Urlaub)
+Лани бевме на море. | Letztes Jahr waren wir am Meer.
+Времето беше убаво. | Das Wetter war schön.
+Пливавме и јадевме риба. | Wir sind geschwommen und haben Fisch gegessen.
+Следната година одиме во планина. | Nächstes Jahr fahren wir in die Berge.
+</div>
+<div class="qz" data-title="Übung 13. Fragen zu den Texten">
+Wann stehe ich auf? (Мојот ден) | во седум часот
+Wo studiert der Bruder? | во Скопје
+Wo waren sie letztes Jahr? | на море
+Was haben sie im Urlaub gegessen? | риба
+Wohin fahren sie nächstes Jahr? | во планина
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Briefe schreiben">
+<h2><span class="no">Abschnitt 14</span>Briefe schreiben</h2>
+<div class="tw"><table>
+<tr><th></th><th>Informell</th><th>Formell</th></tr>
+<tr><td>Einstieg</td><td><span class="fr">Драг Петар, / Драга Анна,</span></td><td><span class="fr">Почитуван господине Новак,</span></td></tr>
+<tr><td>Dank</td><td><span class="fr">Благодарам за писмото.</span></td><td><span class="fr">Ви благодарам за одговорот.</span></td></tr>
+<tr><td>Bitte</td><td><span class="fr">Можеш ли да ми испратиш…?</span></td><td><span class="fr">Ве молам да ми испратите…</span></td></tr>
+<tr><td>Schluss</td><td><span class="fr">Поздрав, Анна</span></td><td><span class="fr">Со почит, Анна Коваленко</span></td></tr>
+</table></div>
+<div class="dg">
+#Пример (Beispielbrief an einen Freund)
+Драг Петар, | Lieber Petar,
+благодарам за твоето писмо. Како си? | danke für deinen Brief. Wie geht’s dir?
+Јас сум добро. Следната недела ќе дојдам во Скопје. | Mir geht es gut. Nächste Woche komme ich nach Skopje.
+Имаш ли време во петок? | Hast du am Freitag Zeit?
+Поздрав, | Viele Grüße
+Анна | Anna
+</div>
+<div class="qz" data-title="Übung 14. Briefe">
+Lieber (m) | Драг
+Mit freundlichen Grüßen | Со почит
+Danke für den Brief. | Благодарам за писмото
+Viele Grüße | Поздрав
+</div>
+</section>
+
+<section class="unit" id="u15" data-short="Spickzettel, Plan, Test">
+<h2><span class="no">Abschnitt 15</span>Spickzettel, Plan und Test</h2>
+<div class="tw"><table>
+<tr><th>Thema</th><th>Merken</th></tr>
+<tr><td>Imperfekt</td><td>-в, -ше, -ше, -вме, -вте, -а (<span class="fr">работев</span>)</td></tr>
+<tr><td>Aorist</td><td>-в, —, —, -вме, -вте, -а (<span class="fr">напишав</span>)</td></tr>
+<tr><td>Zukunft</td><td>ќе / нема да + Präsens</td></tr>
+<tr><td>Konditional</td><td>би + -л (<span class="fr">би сакал</span>)</td></tr>
+<tr><td>Pronomen</td><td>ме, те, го, ја, нè, ве, ги; ми, ти, му, ѝ, ни, ви, им</td></tr>
+<tr><td>Steigerung</td><td>по-, нај-</td></tr>
+</table></div>
+<h3>Plan für 8 Wochen</h3>
+<div class="tw"><table>
+<tr><th>Woche</th><th>Abschnitte</th><th>Ziel</th></tr>
+<tr><td>1</td><td>1</td><td>Vergangenheit</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Zukunft, Konditional</td></tr>
+<tr><td>3</td><td>4</td><td>Verbaspekt</td></tr>
+<tr><td>4</td><td>5, 6</td><td>Pronomen</td></tr>
+<tr><td>5</td><td>7, 8</td><td>Possessiva, Steigerung</td></tr>
+<tr><td>6</td><td>9, 10</td><td>Zusammengesetzte Sätze, Zeit</td></tr>
+<tr><td>7</td><td>11–13</td><td>Wörter, Dialoge, Lesen</td></tr>
+<tr><td>8</td><td>14, 15</td><td>Brief + Wiederholung</td></tr>
+</table></div>
+<h3>Abschlusstest</h3>
+<div class="qz" data-title="Test A2">
+Вчера ___ дома. (јас, бев) | бев
+Утре ___ работам. (ќе) | ќе
+___ кафе. (Ich hätte gern, m) | Би сакал
+Гледам ___ . (dich, kurz) | те
+голем → Komparativ: ___ | поголем
+Вчера ___ писмо. (напишам, Aorist) | напишав
+пред три ___ (Tage) | дена
+Знам ___ имаш време. | дека
+___ ќе дојдам, ќе те повикам. (Wenn, zeitlich) | Кога
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Von der Vergangenheit erzählen</label></li>
+<li><label><input type="checkbox"> Über Pläne sprechen</label></li>
+<li><label><input type="checkbox"> Höflich bitten</label></li>
+<li><label><input type="checkbox"> Die kurzen Pronomen benutzen</label></li>
+<li><label><input type="checkbox"> Vergleichen und zusammengesetzte Sätze bilden</label></li>
+<li><label><input type="checkbox"> Einen kurzen Brief schreiben</label></li>
+</ul>
+</section>
+
+<footer>Ein Selbstlerngerüst für A2. Ergänzen Sie es mit echtem Hören: Podcasts, Videos mit Untertiteln, Gespräche mit Muttersprachlern.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Македонски</th><th>Aussprache</th><th>Deutsch</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Übung';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Antwort: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Prüfen</button><button type="button" data-act="show">Lösungen zeigen</button><button type="button" data-act="reset">Zurücksetzen</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' von '+tot+(ok===tot?'. Alles richtig.':'. Prüfe die Schreibweise (Sonderzeichen!).');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^mk[-_]MK/i.test(x.lang))||v.find(x=>/^mk/i.test(x.lang))||('mk'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='mk-MK';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('mk4de2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('mk4de2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('mk4de2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('mk4de2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='mk4de2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Ergebnisse: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">zum Abschnitt</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Die ersten 40 werden angezeigt.</div>';
+    } else h+='<div class="mini">Nichts gefunden. Die Suche durchsucht die Wörter der Zielsprache und die deutschen Wörter in den Vokabeltabellen.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

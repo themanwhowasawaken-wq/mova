@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nederlands A2: повний курс</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Nederlands A2</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Nederlands A2</h1>
+  <p>Продовження курсу нідерландська: минулий і майбутній час, відмінки та форми, порівняння, складні речення, читання, листи. Натисни на слово чи фразу, щоб почути їх.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="nl-a1.html">Рівень A1</a><a href="nl-vpravy.html">Вправи</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Початок" data-short="Як користуватися курсом">
+<h2><span class="no">Розділ 0</span>Як користуватися курсом</h2>
+<p class="lead">Рівень A2: ти вже вмієш знайомитися й говорити про себе, тепер вчишся <b>розповідати про минуле, будувати плани, ввічливо просити, порівнювати й пояснювати причини</b>. Вимова, <span class="fr">zijn</span>, <span class="fr">hebben</span>, de/het, числа й час розібрані в курсі A1.</p>
+<h3>Що вмітимеш наприкінці</h3>
+<ul>
+<li>розповісти про вчорашній день і відпустку (минулі часи);</li>
+<li>говорити про плани (<span class="fr">gaan</span>, <span class="fr">zullen</span>);</li>
+<li>ввічливо просити й мріяти (<span class="fr">zou graag</span>);</li>
+<li>користуватися відокремлюваними дієсловами;</li>
+<li>вживати об'єктні займенники й присвійну конструкцію;</li>
+<li>порівнювати, будувати складні речення, написати лист.</li>
+</ul>
+<div class="tip"><b class="t">Перевага українця.</b> Багато слів уже знайомі з англійської, інфінітив легко впізнати. Лишається звикнути до порядку слів у підрядних реченнях (дієслово в кінець) і до відокремлюваних дієслів.</div>
+<div class="warn"><b>Хибні друзі.</b> <span class="fr">tijd</span> = час, <span class="fr">week</span> = тиждень, <span class="fr">jaar</span> = рік, <span class="fr">dag</span> = день, <span class="fr">avond</span> = вечір, <span class="fr">straat</span> = вулиця, <span class="fr">stad</span> = місто, <span class="fr">werk</span> = робота.</div>
+<h3>Швидка перевірка A1</h3>
+<div class="qz" data-title="Вправа 0. Повторення A1">
+Ik ___ student. (zijn) | ben
+Jij ___ een broer. (hebben) | hebt
+Wij ___ Nederlands. (spreken) | spreken
+Ik ___ het boek. (lezen) | lees
+Ik ben ___ school. (на) | op
+___ huis (артикль) | het
+het boek → (мн.) | de boeken
+___ broer (мій) | mijn
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Часи й способи" data-short="Минулий час">
+<h2><span class="no">Розділ 1</span>Минулий час</h2>
+<h3>1.1. Перфект (voltooid tegenwoordige tijd)</h3>
+<p>У розмові про минуле найчастіше вживають перфект: <b>hebben / zijn</b> + дієприкметник (<span class="fr">ge-…-d/-t</span>). Дієприкметник стоїть у кінці.</p>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>Дієприкметник</th><th>Допоміжне</th></tr>
+<tr><td>werken</td><td>gewerkt</td><td>hebben</td></tr>
+<tr><td>wonen</td><td>gewoond</td><td>hebben</td></tr>
+<tr><td>lezen</td><td>gelezen</td><td>hebben</td></tr>
+<tr><td>eten</td><td>gegeten</td><td>hebben</td></tr>
+<tr><td>zien</td><td>gezien</td><td>hebben</td></tr>
+<tr><td>kopen</td><td>gekocht</td><td>hebben</td></tr>
+<tr><td>gaan</td><td>gegaan</td><td>zijn</td></tr>
+<tr><td>komen</td><td>gekomen</td><td>zijn</td></tr>
+<tr><td>zijn</td><td>geweest</td><td>zijn</td></tr>
+</table></div>
+<div class="rule"><b class="t">Hebben чи zijn?</b><p>Із <span class="fr">zijn</span> — дієслова руху й зміни стану (<span class="fr">gaan, komen, vertrekken</span>) та <span class="fr">zijn, blijven</span>. З <span class="fr">hebben</span> — решта. <span class="fr">Ik heb gewerkt.</span> <span class="fr">Ik ben naar huis gegaan.</span></p></div>
+<h3>1.2. Імперфект (onvoltooid verleden tijd)</h3>
+<div class="tw"><table>
+<tr><th></th><th>zijn</th><th>hebben</th><th>werken</th><th>gaan</th></tr>
+<tr><td>ik</td><td>was</td><td>had</td><td>werkte</td><td>ging</td></tr>
+<tr><td>jij</td><td>was</td><td>had</td><td>werkte</td><td>ging</td></tr>
+<tr><td>hij / zij</td><td>was</td><td>had</td><td>werkte</td><td>ging</td></tr>
+<tr><td>wij</td><td>waren</td><td>hadden</td><td>werkten</td><td>gingen</td></tr>
+<tr><td>jullie</td><td>waren</td><td>hadden</td><td>werkten</td><td>gingen</td></tr>
+<tr><td>zij</td><td>waren</td><td>hadden</td><td>werkten</td><td>gingen</td></tr>
+</table></div>
+<div class="tip"><b class="t">Що вибрати?</b> У мові розмовній — перфект. Для <span class="fr">zijn, hebben</span>, модальних та в розповідях — імперфект: <span class="fr">Ik was thuis.</span> <span class="fr">Ik had geen tijd.</span> <span class="fr">Gisteren heb ik gewerkt.</span></div>
+<div class="exs">
+Gisteren was ik thuis. | хістерен вас ік тойс | Вчора я був (була) вдома.
+Vorige week waren we in Amsterdam. | форіхе век варен ве ін амстердам | Минулого тижня ми були в Амстердамі.
+Ik heb een boek gelezen. | ік хеп ен бук хелезен | Я прочитав книжку.
+Wat heb je gedaan? | ват хеп йе хедан | Що ти зробив?
+Ik had geen tijd. | ік хат хен тейт | Я не мав часу.
+We zijn naar de bioscoop gegaan. | ве зейн нар де біоскоп хехан | Ми ходили в кіно.
+Ik heb hem op het station gezien. | ік хеп хем оп хет стасьон хезін | Я бачив його на вокзалі.
+Heb je al gegeten? | хеп йе ал хехетен | Ти вже їв?
+</div>
+<div class="qz" data-title="Вправа 1. Минулий час">
+Gisteren ___ ik thuis. (zijn, імперф.) | was
+Zij heeft een boek ___ . (lezen) | gelezen
+Wij zijn naar de film ___ . (gaan) | gegaan
+Zij ___ in Amsterdam. (zijn, імперф. мн.) | waren
+Ik ___ een film gezien. (hebben) | heb
+Jij ___ geen tijd. (hebben, імперф.) | had
+Ik heb gisteren ___ . (werken) | gewerkt
+Wij hebben Nederlands ___ . (spreken) | gesproken
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Майбутній час">
+<h2><span class="no">Розділ 2</span>Майбутній час</h2>
+<p>Майбутнє виражається трьома способами: <b>теперішній + слово часу</b> (<span class="fr">Morgen werk ik.</span>), <b>gaan + інфінітив</b> (найчастіше в розмові), <b>zullen + інфінітив</b> (книжніше, обіцянки).</p>
+<div class="tw"><table>
+<tr><th></th><th>gaan + inf.</th><th>zullen + inf.</th></tr>
+<tr><td>ik</td><td>ga werken</td><td>zal werken</td></tr>
+<tr><td>jij</td><td>gaat werken</td><td>zult / zal werken</td></tr>
+<tr><td>hij / zij</td><td>gaat werken</td><td>zal werken</td></tr>
+<tr><td>wij</td><td>gaan werken</td><td>zullen werken</td></tr>
+<tr><td>jullie</td><td>gaan werken</td><td>zullen werken</td></tr>
+<tr><td>zij</td><td>gaan werken</td><td>zullen werken</td></tr>
+</table></div>
+<div class="exs">
+Morgen ga ik werken. | морхен ха ік верке | Завтра я працюватиму.
+Wat ga je zaterdag doen? | ват ха йе затердах дун | Що робитимеш у суботу?
+Volgende week gaan we naar zee. | фолхенде век хан ве нар зе | Наступного тижня поїдемо до моря.
+Ik zal je vanavond bellen. | ік зал йе фанафонт белен | Зателефоную тобі ввечері.
+Ik ga een nieuwe telefoon kopen. | ік ха ен нівве телефон копен | Куплю новий телефон.
+We gaan niet thuis eten. | ве хан ніт тойс ете | Ми не будемо їсти вдома.
+</div>
+<div class="qz" data-title="Вправа 2. Майбутнє">
+Morgen ___ ik werken. (gaan) | ga
+Jij ___ werken. (gaan) | gaat
+Wij ___ naar de film. (gaan + inf.) | gaan
+Ik ___ je bellen. (zullen) | zal
+Wij ___ morgen komen. (zullen) | zullen
+Zij ___ morgen werken. (gaan) | gaan
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Умовний спосіб">
+<h2><span class="no">Розділ 3</span>Умовний спосіб і ввічливі прохання</h2>
+<div class="tw"><table>
+<tr><th></th><th>zullen → zou</th><th>kunnen → kon</th><th>willen → wilde</th></tr>
+<tr><td>ik</td><td>zou</td><td>kon</td><td>wilde</td></tr>
+<tr><td>jij</td><td>zou</td><td>kon</td><td>wilde</td></tr>
+<tr><td>hij / zij</td><td>zou</td><td>kon</td><td>wilde</td></tr>
+<tr><td>wij</td><td>zouden</td><td>konden</td><td>wilden</td></tr>
+<tr><td>jullie</td><td>zouden</td><td>konden</td><td>wilden</td></tr>
+<tr><td>zij</td><td>zouden</td><td>konden</td><td>wilden</td></tr>
+</table></div>
+<div class="exs">
+Ik zou graag een koffie willen. | ік зау храх ен коффі віллен | Я б хотів кави.
+Ik zou graag naar zee willen gaan. | ік зау храх нар зе віллен хан | Я б хотів поїхати до моря.
+Zou u mij kunnen helpen? | зау ю мей кюнен хелпен | Чи не могли б ви мені допомогти?
+Als ik tijd had, zou ik komen. | алс ік тейт хат зау ік коме | Якби я мав час, прийшов би.
+Ik zou graag een tafel willen reserveren. | ік зау храх ен тафел віллен резерверен | Я хотів би забронювати столик.
+</div>
+<div class="tip"><b class="t">Ввічливо.</b> <span class="fr">Zou u … kunnen?</span> — найм'якше прохання. <span class="fr">graag</span> додає теплоти. «Якби»: <span class="fr">als</span> + імперфект + <span class="fr">zou</span> + інфінітив. Форми однакові для чоловіка й жінки.</div>
+<div class="qz" data-title="Вправа 3. Умовний спосіб">
+Ik ___ graag een koffie willen. (zullen → zou) | zou
+___ u mij kunnen helpen? (Чи могли б) | Zou
+Als ik tijd ___ , zou ik komen. (hebben, імперф.) | had
+Ik ___ graag een tafel reserveren. (Я б хотів: zou ... willen) | zou
+Wij ___ graag komen. (zullen → zouden) | zouden
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Відокремлювані дієслова">
+<h2><span class="no">Розділ 4</span>Відокремлювані дієслова</h2>
+<p>Частина дієслів має відокремлювану приставку: у теперішньому часі вона йде <b>в кінець речення</b>. Аналог в українській — «прийшов / приходить», тільки тут приставка відходить убік.</p>
+<div class="tw"><table>
+<tr><th>Інфінітив</th><th>Теперішній</th><th>Значення</th></tr>
+<tr><td>opstaan</td><td>ik sta op</td><td>вставати</td></tr>
+<tr><td>aankomen</td><td>ik kom aan</td><td>прибувати</td></tr>
+<tr><td>terugkomen</td><td>ik kom terug</td><td>повертатися</td></tr>
+<tr><td>meenemen</td><td>ik neem mee</td><td>брати з собою</td></tr>
+<tr><td>opbellen</td><td>ik bel op</td><td>телефонувати</td></tr>
+<tr><td>uitgaan</td><td>ik ga uit</td><td>виходити (гуляти)</td></tr>
+<tr><td>inkopen doen</td><td>ik doe inkopen</td><td>робити покупки</td></tr>
+</table></div>
+<div class="rule"><b class="t">Правило.</b><p>У головному реченні: <span class="fr">Ik sta om zeven uur op.</span> З модальним — разом: <span class="fr">Ik moet om zeven uur opstaan.</span> У перфекті: <span class="fr">ik ben opgestaan</span>, <span class="fr">ik heb opgebeld</span> (<span class="fr">ge</span> між приставкою й коренем). Невідокремлювані (<span class="fr">vertrekken, begrijpen, bezoeken</span>) нічого не відокремлюють: <span class="fr">De trein vertrekt om negen uur.</span></p></div>
+<div class="exs">
+Ik sta elke dag om zeven uur op. | ік ста елке дах ом зевен юр оп | Щодня встаю о сьомій.
+De trein komt om tien uur aan. | де трейн комт ом тін юр ан | Потяг прибуває о десятій.
+Ik bel je morgen op. | ік бел йе морхен оп | Зателефоную тобі завтра.
+Neem je paraplu mee. | нем йе параплю ме | Візьми парасольку.
+Hij komt over een uur terug. | хей комт овер ен юр терюх | Він повернеться за годину.
+We gaan vanavond uit. | ве хан фанафонт ойт | Ми підемо сьогодні ввечері гуляти.
+</div>
+<div class="qz" data-title="Вправа 4. Відокремлювані дієслова">
+Ik ___ om zeven uur op. (opstaan) | sta
+De trein komt om tien uur ___ . (aankomen) | aan
+Ik bel je morgen ___ . (opbellen) | op
+Hij komt over een uur ___ . (terugkomen) | terug
+Ik ___ je paraplu mee. (meenemen) | neem
+We ___ vanavond uit. (uitgaan) | gaan
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Відмінки" data-short="Присвійність, van">
+<h2><span class="no">Розділ 5</span>Присвійність: van, -s</h2>
+<p>Родового відмінка в нідерландській нема. «Книжка брата» передається так:</p>
+<div class="tw"><table>
+<tr><th>Спосіб</th><th>Приклад</th></tr>
+<tr><td><span class="fr">het … van …</span></td><td><span class="fr">het boek van mijn broer</span> (книжка мого брата)</td></tr>
+<tr><td><span class="fr">de … van …</span></td><td><span class="fr">de tas van mijn moeder</span> (сумка моєї мами)</td></tr>
+<tr><td>ім'я + <span class="fr">-s</span></td><td><span class="fr">Annas huis</span> (дім Анни), <span class="fr">Jans fiets</span> (велосипед Яна)</td></tr>
+<tr><td><span class="fr">van wie</span></td><td><span class="fr">Van wie is dit boek?</span> (Чия це книжка?)</td></tr>
+<tr><td><span class="fr">mijn / jouw / zijn / haar</span></td><td><span class="fr">mijn huis</span>, <span class="fr">jouw tas</span>, <span class="fr">zijn auto</span>, <span class="fr">haar boek</span></td></tr>
+<tr><td><span class="fr">ons / onze</span></td><td><span class="fr">ons huis</span> (het), <span class="fr">onze auto</span> (de)</td></tr>
+</table></div>
+<div class="exs">
+Dit is het boek van mijn broer. | дит іс хет бук фан мейн бруер | Це книжка мого брата.
+Dat is de tas van mijn moeder. | дат іс де тас фан мейн мудер | Це сумка моєї мами.
+Annas huis is groot. | аннас хойс іс хрот | Дім Анни великий.
+De naam van de leraar is Jan. | де нам фан де лерар іс ян | Ім'я вчителя — Ян.
+Het centrum van de stad is dichtbij. | хет сентрюм фан де стат іс дихтбей | Центр міста близько.
+Van wie zijn deze boeken? | фан ві зейн деза букен | Чиї це книжки?
+</div>
+<div class="qz" data-title="Вправа 5. Присвійність">
+het boek ___ mijn broer (of) | van
+de tas van mijn ___ (moeder: мама) | moeder
+___ huis (Anna + s) | Annas
+___ wie is dit boek? (Чия) | Van
+___ huis (наш, het) | ons
+___ auto (наша, de) | onze
+het centrum ___ de stad (of) | van
+de naam van de ___ (leraar) | leraar
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Прийменники">
+<h2><span class="no">Розділ 6</span>Прийменники</h2>
+<div class="tw"><table>
+<tr><th>Прийменник</th><th>Значення</th><th>Приклад</th></tr>
+<tr><td>in</td><td>в</td><td><span class="fr">in de stad</span></td></tr>
+<tr><td>op</td><td>на, у (день)</td><td><span class="fr">op de tafel, op maandag</span></td></tr>
+<tr><td>naar</td><td>до, у (напрямок)</td><td><span class="fr">naar school</span></td></tr>
+<tr><td>uit</td><td>з (країна, місто)</td><td><span class="fr">uit Oekraïne</span></td></tr>
+<tr><td>van</td><td>від, з; належність</td><td><span class="fr">van mijn vader</span></td></tr>
+<tr><td>met</td><td>з (разом)</td><td><span class="fr">met mijn vriend</span></td></tr>
+<tr><td>voor</td><td>для; перед</td><td><span class="fr">voor jou</span></td></tr>
+<tr><td>zonder</td><td>без</td><td><span class="fr">zonder suiker</span></td></tr>
+<tr><td>na</td><td>після</td><td><span class="fr">na de les</span></td></tr>
+<tr><td>bij</td><td>біля, в (в гостях)</td><td><span class="fr">bij de bakker</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Zonder suiker?</b> Нідерландські прийменники не змінюють форму іменника — достатньо поставити слово після прийменника. Спеціальних відмінків немає.</div>
+<div class="exs">
+Ik ga naar de dokter. | ік ха нар де доктер | Іду до лікаря.
+Ik ben bij de dokter. | ік бен бей де доктер | Я в лікаря.
+Koffie zonder suiker. | коффі зондер сойкер | Кава без цукру.
+Na het eten ga ik slapen. | на хет ете ха ік слапен | Після їжі піду спати.
+Ik kom uit Oekraïne. | ік ком ойт украйне | Я з України.
+Ik ga met mijn vriend. | ік ха мет мейн врінт | Іду з другом.
+</div>
+<div class="qz" data-title="Вправа 6. Прийменники">
+Ik ga ___ school. (до) | naar
+Ik ben ___ de dokter. (в лікаря) | bij
+Ik ga ___ mijn vriend. (з) | met
+Koffie ___ suiker. (без) | zonder
+___ het eten ga ik slapen. (Після) | Na
+Ik kom ___ Oekraïne. (з) | uit
+Het boek ligt ___ de tafel. (на) | op
+Dit is ___ jou. (для) | voor
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Об'єктні займенники">
+<h2><span class="no">Розділ 7</span>Об'єктні займенники</h2>
+<div class="tw"><table>
+<tr><th>Суб'єкт</th><th>Об'єкт (після дієслова чи прийменника)</th></tr>
+<tr><td>ik</td><td>mij / me</td></tr>
+<tr><td>jij</td><td>jou / je</td></tr>
+<tr><td>hij</td><td>hem</td></tr>
+<tr><td>zij</td><td>haar</td></tr>
+<tr><td>wij</td><td>ons</td></tr>
+<tr><td>jullie</td><td>jullie</td></tr>
+<tr><td>zij (мн.)</td><td>hen / hun / ze</td></tr>
+</table></div>
+<div class="exs">
+Ik zie je. | ік зі йе | Бачу тебе.
+Ken je mij? | кен йе мей | Ти мене знаєш?
+Ik begrijp het niet. | ік бехрейп хет ніт | Я цього не розумію.
+Help je ons? | хельп йе онс | Ти нам допомагаєш?
+Ik kom met je mee. | ік ком мет йе ме | Іду з тобою.
+Dit is voor jou. | дит іс фор йау | Це для тебе.
+Ik heb het gezien. | ік хеп хет хезін | Я це бачив.
+Geef me water, alstublieft. | хеф ме ватер алстюбліфт | Дай мені води, будь ласка.
+</div>
+<div class="qz" data-title="Вправа 7. Займенники">
+(Бачу тебе) Ik zie ___ | je
+(Ти мене знаєш) Ken je ___ ? | mij
+(Не розумію цього) Ik begrijp ___ niet. | het
+(Ти нам допомагаєш) Help je ___ ? | ons
+Dit is voor ___ (для тебе) | jou
+Ik zie ___ (його) | hem
+Ik zie ___ (її) | haar
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Граматика" data-short="Порівняння">
+<h2><span class="no">Розділ 8</span>Порівняння</h2>
+<div class="tw"><table>
+<tr><th>Звичайний</th><th>Вищий (+ -er)</th><th>Найвищий (-st)</th></tr>
+<tr><td>groot</td><td>groter</td><td>het grootst / de grootste</td></tr>
+<tr><td>klein</td><td>kleiner</td><td>het kleinst / de kleinste</td></tr>
+<tr><td>goed</td><td>beter</td><td>het best / de beste</td></tr>
+<tr><td>veel</td><td>meer</td><td>het meest</td></tr>
+<tr><td>weinig</td><td>minder</td><td>het minst</td></tr>
+<tr><td>mooi</td><td>mooier</td><td>de mooiste</td></tr>
+<tr><td>duur</td><td>duurder</td><td>de duurste</td></tr>
+</table></div>
+<div class="rule"><b class="t">Правило.</b><p><span class="fr">-er</span> — вищий ступінь. «Ніж» — <span class="fr">dan</span>. «Так само… як» — <span class="fr">even … als</span> (або <span class="fr">net zo … als</span>). Найвищий — <span class="fr">de + -ste</span>: <span class="fr">de grootste stad</span>.</p></div>
+<div class="exs">
+Amsterdam is groter dan Utrecht. | амстердам іс хротер дан ютрехт | Амстердам більший за Утрехт.
+Hij is langer dan ik. | хей іс ланхер дан ік | Він вищий за мене.
+Dit is beter. | дит іс бетер | Це краще.
+Dit is de grootste stad. | дит іс де хротсте стат | Це найбільше місто.
+Spreek langzamer, alstublieft. | спрек ланзамер алстюбліфт | Говори повільніше, будь ласка.
+Even mooi als Parijs. | еван мої алс парейс | Так само гарно, як Париж.
+</div>
+<div class="qz" data-title="Вправа 8. Порівняння">
+groot → більший: ___ | groter
+goed → кращий: ___ | beter
+Amsterdam is groter ___ Utrecht. (ніж) | dan
+Dit is de ___ stad. (найбільша) | grootste
+Hij is ___ dan ik. (більш високий) | langer
+Even mooi ___ Parijs. (як) | als
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Складні речення">
+<h2><span class="no">Розділ 9</span>Складні речення</h2>
+<div class="vocab">
+dat | дат | що
+omdat | омдат | тому що
+want | вант | бо
+maar | мар | але
+en | ен | і
+of | оф | або
+als | алс | якщо
+wanneer | ванер | коли
+terwijl | тервейл | тоді як
+hoewel | хувел | хоча
+daarom | даром | тому
+zodat | зодат | щоб
+</div>
+<div class="rule"><b class="t">Дієслово в кінець.</b><p>У підрядному реченні (після <span class="fr">dat, omdat, als, terwijl, hoewel, zodat</span>) змінене дієслово йде <b>в кінець</b>: <span class="fr">Ik blijf thuis omdat het regent.</span> Після <span class="fr">want, maar, en, of</span> порядок прямий.</p></div>
+<div class="exs">
+Ik denk dat hij thuis is. | ік денк дат хей тойс іс | Думаю, що він удома.
+Ik weet dat je Nederlands spreekt. | ік вет дат йе недерландс спреект | Знаю, що ти говориш нідерландською.
+Ik ga niet omdat het regent. | ік ха ніт омдат хет рехент | Не йду, бо йде дощ.
+Het regent, daarom blijf ik thuis. | хет рехент даром блейф ік тойс | Іде дощ, тому лишаюся вдома.
+Als je tijd hebt, kom dan. | алс йе тейт хебт ком дан | Якщо маєш час, приходь.
+Wanneer ik kom, bel ik je. | ванер ік ком бел ік йе | Коли прийду, зателефоную.
+Hoewel ik moe ben, werk ik. | хувел ік му бен веркт ік | Хоч я втомлений, працюю.
+Ik wil dat je komt. | ік віл дат йе комт | Хочу, щоб ти прийшов.
+</div>
+<div class="tip"><b class="t">Після підрядного</b> головне речення починається з дієслова: <span class="fr">Als je tijd hebt, kom dan.</span> / <span class="fr">Hoewel ik moe ben, werk ik.</span> (інверсія!)</div>
+<div class="qz" data-title="Вправа 9. Складні речення">
+Ik ga niet ___ het regent. (тому що) | omdat
+___ je tijd hebt, kom dan. (Якщо) | Als
+Het regent, ___ blijf ik thuis. (тому) | daarom
+___ ik moe ben, werk ik. (Хоч) | Hoewel
+Ik denk ___ hij thuis is. (що) | dat
+Ik blijf thuis omdat het ___ . (regenen) | regent
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Час і дієслова руху">
+<h2><span class="no">Розділ 10</span>Час і дієслова руху</h2>
+<div class="tw"><table>
+<tr><th>Час</th><th>Нідерландською</th></tr>
+<tr><td>3:00</td><td>drie uur</td></tr>
+<tr><td>3:05</td><td>vijf over drie</td></tr>
+<tr><td>3:10</td><td>tien over drie</td></tr>
+<tr><td>3:15</td><td>kwart over drie</td></tr>
+<tr><td>3:30</td><td>half vier</td></tr>
+<tr><td>3:45</td><td>kwart voor vier</td></tr>
+<tr><td>3:55</td><td>vijf voor vier</td></tr>
+</table></div>
+<div class="vocab">
+komen | коме | приходити
+gaan | хан | йти, їхати
+vertrekken | фертрекен | відправлятися
+aankomen | анкоме | прибувати
+binnenkomen | біненкоме | входити
+weggaan | вехан | йти геть
+terugkomen | терюхкоме | повертатися
+reizen | рейзен | подорожувати
+rijden | рейден | їхати
+vliegen | фліхен | літати
+lopen | лопен | ходити пішки
+</div>
+<div class="exs">
+De trein vertrekt om negen uur. | де трейн фертрект ом нехен юр | Потяг відправляється о дев'ятій.
+Ik kom om half elf aan. | ік ком ом халф елф ан | Прибуваю о пів на одинадцяту.
+Ik ga om acht uur weg. | ік ха ом ахт юр вех | Виходжу з дому о восьмій.
+Ik kom om vijf uur terug. | ік ком ом вейф юр терюх | Повертаюсь о п'ятій.
+Ik kom de winkel binnen. | ік ком де вінкел біне | Заходжу в магазин.
+Hoe kom ik bij het station? | ху ком ік бей хет стасьон | Як дійти до вокзалу?
+Ik rijd met de auto. | ік рейт мет де ауто | Їду на авто.
+</div>
+<div class="qz" data-title="Вправа 10. Час і рух">
+3:15 → ___ over drie | kwart
+3:30 → ___ vier | half
+3:45 → kwart ___ vier | voor
+3:55 → vijf ___ vier | voor
+De trein ___ om negen uur. (відправляється) | vertrekt
+Ik ___ om acht uur weg. (gaan) | ga
+Ik ___ om vijf uur terug. (komen) | kom
+Ik ___ met de auto. (rijden) | rijd
+</div>
+</section>
+
+<section class="unit" id="u11" data-grp="Словник і практика" data-short="Словник за темами">
+<h2><span class="no">Розділ 11</span>Словник за темами</h2>
+<div class="vocab">
+# Мандрівки
+de reis | де рейс | подорож | de
+het paspoort | хет паспорт | паспорт | het
+de koffer | де коффер | валіза | de
+de reservering | де резервірінг | бронь | de
+het kaartje | хет картйе | квиток | het
+de vakantie | де вакансі | відпустка | de
+het hotel | хет хотел | готель | het
+het strand | хет страннт | пляж | het
+# Робота й навчання
+het werk | хет верк | робота | het
+de school | де схол | школа | de
+de universiteit | де юніверсітейт | університет | de
+de baas | де бас | начальник | de
+de vergadering | де ферхадерінг | зустріч | de
+het salaris | хет салярис | зарплата | het
+het examen | хет екзамен | іспит | het
+# Почуття
+blij | блей | радісний | adj
+verdrietig | фердрітех | сумний | adj
+moe | му | втомлений | adj
+boos | бос | сердитий | adj
+gelukkig | хелюккех | щасливий | adj
+# Побут
+het appartement | хет апартемент | квартира | het
+de sleutel | де сльотел | ключ | de
+de wasmachine | де васмашіне | пральна машина | de
+de huur | де хюр | оренда | de
+de buurman | де бюрман | сусід | de
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Діалоги">
+<h2><span class="no">Розділ 12</span>Діалоги</h2>
+<div class="dg">
+# 1. Plannen voor het weekend (плани на вихідні)
+Anna: Wat ga je dit weekend doen? | Що ти робитимеш цими вихідними?
+Jan: Zaterdag gaan we op excursie en zondag blijf ik thuis. | У суботу їдемо на екскурсію, а в неділю залишуся вдома.
+Anna: Waar gaan jullie heen? | Куди ви їдете?
+Jan: Naar Brugge. Wil je met ons mee? | До Брюгге. Хочеш поїхати з нами?
+Anna: Ik zou graag willen, maar ik moet werken. | Хотіла б, але мушу працювати.
+# 2. Bij de dokter (ще раз)
+Dokter: Hoe lang heeft u al pijn? | Як довго вас болить?
+Patiënt: Al drie dagen. | Вже три дні.
+Dokter: Heeft u medicijnen genomen? | Ви приймали якісь ліки?
+Patiënt: Nee, ik heb niets genomen. | Ні.
+Dokter: Ik schrijf u een paar tabletten voor. | Випишу вам таблетки.
+# 3. Een appartement huren (оренда квартири)
+Huurder: Goedemorgen, ik zoek een appartement. | Добрий день, шукаю квартиру.
+Makelaar: Hoeveel kamers heeft u nodig? | Скільки кімнат вам потрібно?
+Huurder: Twee, dicht bij het centrum. | Двох, ближче до центру.
+Makelaar: Dit kost vijfhonderd euro per maand. | Цей коштує п'ятсот євро на місяць.
+Huurder: Mag ik het zien? | Можна подивитися?
+</div>
+<div class="qz" data-title="Вправа 12. Фрази з діалогів">
+Що ти робитимеш цими вихідними? | Wat ga je dit weekend doen
+Хотіла б, але мушу працювати. | Ik zou graag willen, maar ik moet werken
+Вже три дні. | Al drie dagen
+Шукаю квартиру. | Ik zoek een appartement
+Можна подивитися? | Mag ik het zien
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Читання">
+<h2><span class="no">Розділ 13</span>Читання: три тексти</h2>
+<div class="dg">
+# 1. Mijn dag (мій день)
+'s Morgens sta ik om zeven uur op. | Вранці встаю о сьомій.
+Ik drink koffie en ga naar mijn werk. | П'ю каву й іду на роботу.
+Om vijf uur kom ik thuis. | О п'ятій повертаюсь додому.
+'s Avonds lees ik of kijk ik een film. | Ввечері читаю або дивлюся фільм.
+# 2. Mijn familie (моя родина)
+Ik heb een moeder, een vader en een broer. | У мене є мама, тато й брат.
+Mijn moeder werkt als lerares. | Мама працює вчителькою.
+Mijn broer studeert in Amsterdam. | Брат вчиться в Амстердамі.
+Op zondag eten we allemaal samen. | У неділю всі їмо разом.
+# 3. De vakantie (відпустка)
+Vorig jaar waren we aan zee. | Торік ми були на морі.
+Het weer was mooi. | Погода була гарна.
+We hebben gezwommen en vis gegeten. | Ми плавали й їли рибу.
+Volgend jaar gaan we naar de bergen. | Наступного року їдемо в гори.
+</div>
+<div class="qz" data-title="Вправа 13. Запитання до текстів">
+Коли встаю? | om zeven uur / zeven uur
+Де вчиться брат? | in Amsterdam / Amsterdam
+Де були торік? | aan zee / zee
+Що їли у відпустці? | vis
+Куди наступного року? | naar de bergen / de bergen
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Як писати листи">
+<h2><span class="no">Розділ 14</span>Як писати листи</h2>
+<div class="tw"><table>
+<tr><th></th><th>Неформально</th><th>Формально</th></tr>
+<tr><td>Початок</td><td><span class="fr">Beste Jan, / Lieve Anna,</span></td><td><span class="fr">Geachte heer Novak,</span></td></tr>
+<tr><td>Подяка</td><td><span class="fr">Bedankt voor je brief.</span></td><td><span class="fr">Hartelijk dank voor uw antwoord.</span></td></tr>
+<tr><td>Прохання</td><td><span class="fr">Kun je me … sturen?</span></td><td><span class="fr">Kunt u mij … sturen?</span></td></tr>
+<tr><td>Кінець</td><td><span class="fr">Groeten, Anna</span></td><td><span class="fr">Met vriendelijke groet, Anna Kovalenko</span></td></tr>
+</table></div>
+<div class="dg">
+# Voorbeeld (приклад листа другу)
+Beste Jan, | Дорогий Яне,
+bedankt voor je brief. Hoe gaat het? | дякую за твого листа. Як справи?
+Met mij gaat het goed. Volgende week kom ik naar Amsterdam. | У мене все добре. Наступного тижня приїду до Амстердама.
+Ben je vrijdag vrij? | Чи будеш вільний у п'ятницю?
+Groeten, | З привітом,
+Anna | Анна
+</div>
+<div class="qz" data-title="Вправа 14. Листи">
+Дорогий (m) | Beste
+З повагою | Met vriendelijke groet
+Дякую за листа. | Bedankt voor je brief
+З привітом | Groeten
+</div>
+</section>
+
+<section class="unit" id="u15" data-short="Шпаргалка, план, тест">
+<h2><span class="no">Розділ 15</span>Шпаргалка, план і тест</h2>
+<div class="tw"><table>
+<tr><th>Тема</th><th>Запам'ятай</th></tr>
+<tr><td>Перфект</td><td>hebben / zijn + ge-…-d/-t (<span class="fr">ik heb gewerkt</span>)</td></tr>
+<tr><td>Імперфект</td><td>-te / -de, -ten / -den (<span class="fr">ik werkte</span>)</td></tr>
+<tr><td>Майбутній</td><td>gaan / zullen + інфінітив</td></tr>
+<tr><td>Умовний</td><td>zou + інфінітив (<span class="fr">ik zou graag…</span>)</td></tr>
+<tr><td>Відокремлювані</td><td>ik sta op, ik kom aan</td></tr>
+<tr><td>Присвійність</td><td>van, -s (<span class="fr">het boek van mijn broer</span>)</td></tr>
+<tr><td>Порівняння</td><td>-er … dan; de -ste</td></tr>
+<tr><td>Підрядні</td><td>дієслово в кінець</td></tr>
+</table></div>
+<h3>План на 8 тижнів</h3>
+<div class="tw"><table>
+<tr><th>Тиждень</th><th>Розділи</th><th>Мета</th></tr>
+<tr><td>1</td><td>1</td><td>Минулий час</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Майбутній, умовний</td></tr>
+<tr><td>3</td><td>4</td><td>Відокремлювані дієслова</td></tr>
+<tr><td>4</td><td>5, 6</td><td>Присвійність, прийменники</td></tr>
+<tr><td>5</td><td>7, 8</td><td>Займенники, порівняння</td></tr>
+<tr><td>6</td><td>9, 10</td><td>Складні речення, час</td></tr>
+<tr><td>7</td><td>11–13</td><td>Слова, діалоги, читання</td></tr>
+<tr><td>8</td><td>14, 15</td><td>Лист + повторення</td></tr>
+</table></div>
+<h3>Підсумковий тест</h3>
+<div class="qz" data-title="Тест A2">
+Gisteren ___ ik thuis. (zijn, імперф.) | was
+Morgen ___ ik werken. (gaan) | ga
+Ik ___ graag een koffie willen. (zou) | zou
+het boek ___ mijn broer (of) | van
+Ik ___ om zeven uur op. (opstaan) | sta
+Dit is voor ___ (для тебе) | jou
+Amsterdam is groter ___ Utrecht. (ніж) | dan
+Ik ga niet ___ het regent. (тому що) | omdat
+3:15 → ___ over drie | kwart
+Wij zijn naar de film ___ . (gaan) | gegaan
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Розповісти про минуле (перфект, імперфект)</label></li>
+<li><label><input type="checkbox"> Розповісти про плани (gaan, zullen)</label></li>
+<li><label><input type="checkbox"> Ввічливо попросити (zou graag)</label></li>
+<li><label><input type="checkbox"> Користуватися відокремлюваними дієсловами</label></li>
+<li><label><input type="checkbox"> Порівнювати й будувати складні речення</label></li>
+<li><label><input type="checkbox"> Написати короткий лист</label></li>
+</ul>
+</section>
+
+<footer>Курс як опора для самостійного навчання на рівні A2. Для слухання додавай живе мовлення: подкасти, відео з субтитрами, розмови з носієм.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Nederlands</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^nl[-_]NL/i.test(x.lang))||v.find(x=>/^nl/i.test(x.lang))||('nl'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='nl-NL';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('nl2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('nl2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('nl2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('nl2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='nl2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

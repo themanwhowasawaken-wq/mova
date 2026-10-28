@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polish A1: complete course</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="Home">&larr;</a>
+  <button id="menuBtn" aria-label="Contents">Contents</button>
+  <span class="brand">Polish A1</span>
+  <input id="q" type="search" placeholder="Find a word" aria-label="Find a word">
+  <button id="uaBtn" title="Show or hide translations of examples and dialogues">Translation</button>
+  <button id="thBtn" title="Light or dark theme">Theme</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Contents"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Polish A1</h1>
+  <p>A self-study Polish course for English speakers: pronunciation, grammar, topic vocabulary, dialogues, texts and exercises. Tap a word or phrase to hear it.</p>
+  <p class="crumbs"><a href="index.html">&larr; Home</a><a href="pl-en-a2.html">Level A2</a><a href="pl-en-vpravy.html">Exercises</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Start" data-short="How to use this course">
+<h2><span class="no">Section 0</span>How to use this course</h2>
+<p class="lead">Polish looks intimidating, with its consonant clusters and seven cases, but it is regular, it has no articles, the stress is nearly always on the second-to-last syllable, and the spelling is a reliable guide to the sound. This course takes you to A1: introductions, family, food, directions, shopping, time and everyday matters.</p>
+<h3>What is on your side</h3>
+<ul>
+<li><b>Spelling matches sound.</b> Once you know the letter combinations (<span class="fr">sz, cz, rz, ch</span>), you can read anything aloud.</li>
+<li><b>No articles.</b> <span class="fr">książka</span> = book, the book, a book.</li>
+<li><b>Words you know:</b> <span class="fr">bank, hotel, taksówka, pizza, telefon, student, metro, kawa, herbata</span>.</li>
+<li><b>Stress is predictable.</b> Almost always on the <b>second-to-last</b> syllable: <span class="fr">POL-ska, dzię-KU-ję</span>.</li>
+</ul>
+<div class="warn"><b>What will be new.</b> Nouns, adjectives and pronouns change their endings (seven cases), and verbs agree with the subject. At A1 you only need the nominative, accusative and a few set patterns. Learn words inside short phrases, not alone.</div>
+<div class="tip"><b class="t">Main tip.</b> Learn phrases: not "<span class="fr">pić</span> = to drink", but "<span class="fr">piję kawę</span> = I drink coffee". The endings then come by themselves.</div>
+<div class="warn"><b>False friends.</b> <span class="fr">dres</span> = tracksuit (not dress), <span class="fr">gruby</span> = fat, thick (not grubby), <span class="fr">list</span> = letter, <span class="fr">szef</span> = boss, <span class="fr">sympatyczny</span> = nice, <span class="fr">aktualny</span> = current (not actual), <span class="fr">ewentualnie</span> = possibly (not eventually), <span class="fr">magazyn</span> = warehouse (and magazine), <span class="fr">pensja</span> = salary, <span class="fr">kiosk</span> = newsstand.</div>
+<h3>How to work</h3>
+<ol>
+<li>Read the explanations and tap words to hear them.</li>
+<li>Do the exercises here and on the Exercises page.</li>
+<li>20–30 minutes a day. The plan is in section 12.</li>
+</ol>
+<div class="tip"><b class="t">About the pronunciation column.</b> It is a simple English-style respelling. It is approximate, so rely on the audio. "kh" is the Scottish <i>loch</i>, "zh" is the <i>s</i> in <i>measure</i>, "on / en" mark the Polish nasal vowels ą and ę. Stress is almost always on the second-to-last syllable, so it is not marked.</div>
+</section>
+
+<section class="unit" id="u1" data-short="Sounds and alphabet">
+<h2><span class="no">Section 1</span>Sounds and alphabet</h2>
+<p class="lead">Polish has 32 letters, 9 of them with diacritics: <span class="fr">ą ć ę ł ń ó ś ź ż</span>. Many sounds are spelled with two letters (<span class="fr">sz, cz, rz, dz, ch</span>).</p>
+<h3>1.1. Vowels</h3>
+<div class="tw"><table>
+<tr><th>Letter</th><th>Sound</th><th>Example</th></tr>
+<tr><td><span class="fr">a</span></td><td>"a" in <i>father</i>, short</td><td><span class="fr">mama</span></td></tr>
+<tr><td><span class="fr">e</span></td><td>"e" in <i>bed</i></td><td><span class="fr">pies</span> [pyes]</td></tr>
+<tr><td><span class="fr">i</span></td><td>"ee" in <i>see</i>, short; it also softens the consonant before it</td><td><span class="fr">nic</span> [neets]</td></tr>
+<tr><td><span class="fr">o</span></td><td>"o" in <i>pot</i></td><td><span class="fr">kot</span></td></tr>
+<tr><td><span class="fr">u, ó</span></td><td>"oo" in <i>moon</i>. <b>u and ó sound the same!</b></td><td><span class="fr">ruka, stół</span> [stoow]</td></tr>
+<tr><td><span class="fr">y</span></td><td>between "i" in <i>bit</i> and "u": pull the tongue back</td><td><span class="fr">ty, my</span></td></tr>
+<tr><td><span class="fr">ą</span></td><td>nasal "on" (like French <i>bon</i>); before b, p it is "om"</td><td><span class="fr">są</span> [sohn], <span class="fr">dąb</span></td></tr>
+<tr><td><span class="fr">ę</span></td><td>nasal "en"; at the end of a word it is a plain "e"</td><td><span class="fr">tęcza, proszę</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Ó or U?</b><p>They are pronounced identically, so you have to learn the spelling: <span class="fr">ó</span> often alternates with <span class="fr">o</span> in related words (<span class="fr">stół – stoły</span>, <span class="fr">bóg – boga</span>).</p></div>
+<h3>1.2. Consonants</h3>
+<div class="tw"><table>
+<tr><th>Letter</th><th>Sound</th><th>Example</th></tr>
+<tr><td><span class="fr">c</span></td><td>"ts" in <i>cats</i></td><td><span class="fr">cena</span> [TSE-na]</td></tr>
+<tr><td><span class="fr">cz</span></td><td>"ch" in <i>chip</i> (hard)</td><td><span class="fr">czas</span> [chas]</td></tr>
+<tr><td><span class="fr">ć, ci</span></td><td>soft "ch": tongue flat against the palate</td><td><span class="fr">ciocia, ćma</span></td></tr>
+<tr><td><span class="fr">sz</span></td><td>"sh" (hard)</td><td><span class="fr">szkoła</span> [SHKO-wa]</td></tr>
+<tr><td><span class="fr">ś, si</span></td><td>soft "sh"</td><td><span class="fr">siostra, ślub</span></td></tr>
+<tr><td><span class="fr">ż, rz</span></td><td>"s" in <i>measure</i>. <b>ż and rz sound the same!</b> After p, t, k, ch the rz becomes "sh"</td><td><span class="fr">żona, rzeka, trzy</span></td></tr>
+<tr><td><span class="fr">ź, zi</span></td><td>soft "zh"</td><td><span class="fr">źle, zima</span></td></tr>
+<tr><td><span class="fr">dz</span></td><td>"dz" in <i>adze</i></td><td><span class="fr">dzwon</span></td></tr>
+<tr><td><span class="fr">dż, dź</span></td><td>"j" in <i>jam</i> (hard / soft)</td><td><span class="fr">dżem, dźwięk</span></td></tr>
+<tr><td><span class="fr">ch, h</span></td><td>"kh" as in <i>loch</i>. <b>ch and h sound the same!</b></td><td><span class="fr">chleb, herbata</span></td></tr>
+<tr><td><span class="fr">ł</span></td><td>"w" as in <i>water</i></td><td><span class="fr">łóżko, mały</span></td></tr>
+<tr><td><span class="fr">w</span></td><td>"v"</td><td><span class="fr">woda</span></td></tr>
+<tr><td><span class="fr">j</span></td><td>"y" in <i>yes</i></td><td><span class="fr">jak, moja</span></td></tr>
+<tr><td><span class="fr">ń, ni</span></td><td>soft "ny" as in <i>canyon</i></td><td><span class="fr">koń, nie</span></td></tr>
+<tr><td><span class="fr">r</span></td><td>rolled with the tip of the tongue</td><td><span class="fr">ręka, rok</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Soft consonants with "i"</b><p>When <span class="fr">i</span> comes after c, s, z, n and before another vowel, it only softens the consonant and is not pronounced separately: <span class="fr">nie</span> [nye], <span class="fr">siostra</span> [SHOS-tra], <span class="fr">ciasto</span> [CHAS-to]. Before a consonant or at the end it is a normal "ee": <span class="fr">ci, si, zi, ni</span>.</p></div>
+<div class="tip"><b class="t">Don't panic about the consonant clusters.</b> <span class="fr">szcz</span> = "shch" as in <i>fresh cheese</i>: <span class="fr">szczęście</span> (happiness). Read clusters slowly letter by letter, then speed up. Practise: <span class="fr">dziękuję</span>, <span class="fr">trzy</span>, <span class="fr">chrząszcz</span>.</div>
+<h3>1.3. Stress and syllables</h3>
+<ul>
+<li>Stress is almost always on the <b>second-to-last syllable</b>: <span class="fr">POL-ski, uni-wer-SY-tet</span> (a few foreign words are exceptions).</li>
+<li>Every vowel is a syllable, and the final consonant of a word is devoiced like in German: <span class="fr">chleb</span> is "khlep".</li>
+<li>Short prepositions join the next word: <span class="fr">w Polsce</span> sounds like one word.</li>
+</ul>
+<div class="exs">
+Cześć, jak się masz? | cheshch yak sheh mash | Hi, how are you?
+Dzień dobry, dziękuję. | jeny dobri jenkooyeh | Good day, thank you.
+Dobrze, dziękuję. A ty? | dobzhe jenkooyeh a ti | Fine, thank you. And you?
+Mówię trochę po polsku. | moovyę trokheh po polskoo | I speak a little Polish.
+Trzysta trzydzieści trzy. | tshista tshijeshchee tshi | Three hundred and thirty-three.
+</div>
+<div class="qz" data-title="Exercise 1. Read and write">
+[chleb] — it is baked — bread | chleb
+[ZHE-na] — a woman | żona
+[DOB-zhe] — well | dobrze
+[SHKO-wa] — where children study | szkoła
+[dzhyen-KOO-yeh] — thanks | dziękuję
+[MYA-sto] — a city | miasto
+[ZHE-ka] — a river | rzeka
+[PYES] — a dog | pies
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Greetings and introductions">
+<h2><span class="no">Section 2</span>Greetings and introductions</h2>
+<p class="lead">Polish has an informal <span class="fr">ty</span> and a polite way of addressing people: <span class="fr">pan</span> (to a man) and <span class="fr">pani</span> (to a woman) with the third-person verb: <span class="fr">Czy pan mówi po angielsku?</span></p>
+<div class="vocab">
+# Greetings
+Cześć | cheshch | hi, bye (informal)
+Hej | khey | hi (friendly)
+Dzień dobry | jeny dobri | good morning, good day
+Dobry wieczór | dobri vyechoor | good evening
+Dobranoc | dobranots | good night
+Do widzenia | do veedzenya | goodbye
+Na razie | na razhe | see you, bye
+# Politeness
+Dziękuję | jenkooyeh | thank you
+Proszę | prosheh | please, you're welcome, here you are
+Przepraszam | psheprasham | excuse me, sorry
+Tak | tak | yes
+Nie | nye | no
+Może | mozhe | maybe
+</div>
+<h3>2.1. Introducing yourself</h3>
+<div class="exs">
+Mam na imię Michael. | mam na eemyę meekhael | My name is Michael.
+Jak masz na imię? | yak mash na eemyę | What's your name?
+Miło mi. | meewo mee | Nice to meet you.
+Skąd jesteś? | skond yestesh | Where are you from?
+Jestem z Anglii. | yestem z anglyi | I am from England.
+Mam trzydzieści lat. | mam tshijeshchee lat | I am thirty years old.
+Mieszkam w Londynie. | myeshkam v londinye | I live in London.
+Jestem nauczycielem. | yestem naoochichelem | I am a teacher.
+Czy mówisz po angielsku? | chi mooveesh po angyelskoo | Do you speak English?
+Nie rozumiem. | nye rozoomyem | I don't understand.
+Czy możesz to powtórzyć? | chi mozhesh to povtoozhich | Can you repeat that?
+</div>
+<h3>2.2. Pronouns</h3>
+<div class="tw"><table>
+<tr><th>Person</th><th>Polish</th><th>English</th></tr>
+<tr><td>1st sing.</td><td><span class="fr">ja</span></td><td>I</td></tr>
+<tr><td>2nd sing.</td><td><span class="fr">ty</span></td><td>you (informal)</td></tr>
+<tr><td>3rd sing.</td><td><span class="fr">on / ona / ono</span></td><td>he / she / it</td></tr>
+<tr><td>1st pl.</td><td><span class="fr">my</span></td><td>we</td></tr>
+<tr><td>2nd pl.</td><td><span class="fr">wy</span></td><td>you (pl.)</td></tr>
+<tr><td>3rd pl.</td><td><span class="fr">oni / one</span></td><td>they (men or mixed / others)</td></tr>
+<tr><td>polite</td><td><span class="fr">pan / pani</span></td><td>you (sir / madam)</td></tr>
+</table></div>
+<div class="tip"><b class="t">Pronouns are often dropped.</b> The verb ending shows the person, so <span class="fr">Jestem nauczycielem</span> is enough. You add <span class="fr">ja</span> only for emphasis.</div>
+<div class="qz" data-title="Exercise 2. Greetings">
+Good day! | Dzień dobry
+Thank you! | Dziękuję
+Please | Proszę
+Excuse me! | Przepraszam
+Goodbye! | Do widzenia
+My name is Anna. | Mam na imię Anna
+Nice to meet you. | Miło mi
+I don't understand. | Nie rozumiem
+Hi! | Cześć
+Good night! | Dobranoc
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Nouns and gender">
+<h2><span class="no">Section 3</span>Nouns, gender and plurals</h2>
+<p class="lead">Polish has three genders: masculine <span class="fr m">m</span> (blue), feminine <span class="fr f">f</span> (red) and neuter <span class="fr n">n</span> (green). There are no articles. Gender is usually seen from the ending.</p>
+<h3>3.1. Gender from the ending</h3>
+<div class="tw"><table>
+<tr><th>Gender</th><th>Typical ending</th><th>Examples</th></tr>
+<tr><td><span class="fr m">m</span></td><td>a consonant</td><td><span class="fr">pan, stół, dom, nauczyciel</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td>-a, -i, or a consonant</td><td><span class="fr">kobieta, książka, szkoła, pani, noc</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td>-o, -e, -ę</td><td><span class="fr">miasto, okno, morze, imię</span></td></tr>
+</table></div>
+<h3>3.2. Plurals</h3>
+<div class="tw"><table>
+<tr><th>Gender</th><th>Singular → plural</th><th>Example</th></tr>
+<tr><td><span class="fr m">m</span> (men)</td><td>-i / -y / -owie</td><td><span class="fr">student → studenci, pan → panowie, brat → bracia</span></td></tr>
+<tr><td><span class="fr m">m</span> (things)</td><td>-y / -e</td><td><span class="fr">stół → stoły, dom → domy</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td>-a → -y / -i</td><td><span class="fr">kobieta → kobiety, szkoła → szkoły, książka → książki</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td>-o → -a; -e → -a</td><td><span class="fr">miasto → miasta, okno → okna, dziecko → dzieci</span></td></tr>
+</table></div>
+<h3>3.3. Nominative and accusative</h3>
+<div class="rule"><b class="t">Accusative (the direct object)</b><p>Feminine -a becomes <b>-ę</b>: <span class="fr">Mam książkę. Widzę kobietę.</span> Masculine <i>animate</i> nouns take the <b>-a</b> ending: <span class="fr">Widzę brata. Mam psa.</span> Masculine inanimate and neuter stay the same: <span class="fr">Mam stół. Widzę miasto.</span></p></div>
+<div class="exs">
+To jest książka. | to yest kshonzhka | This is a book.
+Mam książkę. | mam kshonzhkeh | I have a book.
+To jest mój brat. | to yest mooy brat | This is my brother.
+Mam brata. | mam brata | I have a brother.
+Widzę miasto. | veedzeh myasto | I see a city.
+Czytam książkę. | chitam kshonzhkeh | I am reading a book.
+</div>
+<div class="vocab">
+# Family
+rodzina | rodzeena | family | f
+matka / mama | matka / mama | mother / mum | f
+ojciec / tata | oychets / tata | father / dad | m
+brat | brat | brother | m
+siostra | shostra | sister | f
+syn | sin | son | m
+córka | tsoorka | daughter | f
+babcia | babcha | grandmother | f
+dziadek | jadek | grandfather | m
+mąż | monzh | husband | m
+żona | zhona | wife | f
+dziecko | jetsko | child | n
+# Things
+dom | dom | house | m
+mieszkanie | myeshkanye | flat | n
+pokój | pokooy | room | m
+kuchnia | kookhnya | kitchen | f
+stół | stoow | table | m
+krzesło | ksheswo | chair | n
+okno | okno | window | n
+drzwi | dzhvee | door | pl
+łóżko | woozhko | bed | n
+samochód | samokhood | car | m
+telefon | telefon | phone | m
+książka | kshonzhka | book | f
+</div>
+<div class="qz" data-title="Exercise 3. Gender and forms">
+family | rodzina
+brother | brat
+sister | siostra
+child | dziecko
+house | dom
+table | stół
+book | książka
+kitchen | kuchnia
+Mam ___ . (a book, accusative) | książkę
+Widzę ___ . (a woman, accusative) | kobietę
+Mam ___ . (a brother, accusative) | brata
+kobieta → ___ (pl.) | kobiety
+miasto → ___ (pl.) | miasta
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Verbs" data-short="Być, mieć">
+<h2><span class="no">Section 4</span>The verbs <span class="fr">być</span> (to be) and <span class="fr">mieć</span> (to have)</h2>
+<div class="cj" data-verb="być" data-note="to be" data-ipa="bietch">
+ja | jestem | yestem
+ty | jesteś | yestesh
+on / ona / ono | jest | yest
+my | jesteśmy | yesteshmi
+wy | jesteście | yesteshche
+oni | są | son
+</div>
+<div class="cj" data-verb="mieć" data-note="to have" data-ipa="myech">
+ja | mam | mam
+ty | masz | mash
+on / ona / ono | ma | ma
+my | mamy | mami
+wy | macie | mache
+oni | mają | mayon
+</div>
+<div class="exs">
+Jestem studentem. | yestem stoodentem | I am a student.
+Czy jesteś zmęczony? | chi yestesh zmenchoni | Are you tired?
+Jesteśmy w domu. | yesteshmi v domoo | We are at home.
+Mam brata. | mam brata | I have a brother.
+Czy masz czas? | chi mash chas | Do you have time?
+Nie mam czasu. | nye mam chasoo | I have no time.
+</div>
+<div class="rule"><b class="t">Negation</b><p>Put <span class="fr">nie</span> before the verb: <span class="fr">Nie jestem. Nie mam.</span> Polish uses double negatives: <span class="fr">Nic nie mam.</span> (I have nothing), <span class="fr">Nikt tu nie jest.</span> After a negated verb the object goes into the genitive: <span class="fr">Mam czas → Nie mam czasu.</span></p></div>
+<h3>4.1. Regular verbs</h3>
+<p>The commonest present-tense patterns:</p>
+<div class="tw"><table>
+<tr><th>Person</th><th>-ać (czytać)</th><th>-ić (mówić)</th><th>-eć (rozumieć)</th></tr>
+<tr><td>ja</td><td>czytam</td><td>mówię</td><td>rozumiem</td></tr>
+<tr><td>ty</td><td>czytasz</td><td>mówisz</td><td>rozumiesz</td></tr>
+<tr><td>on/ona</td><td>czyta</td><td>mówi</td><td>rozumie</td></tr>
+<tr><td>my</td><td>czytamy</td><td>mówimy</td><td>rozumiemy</td></tr>
+<tr><td>wy</td><td>czytacie</td><td>mówicie</td><td>rozumiecie</td></tr>
+<tr><td>oni</td><td>czytają</td><td>mówią</td><td>rozumieją</td></tr>
+</table></div>
+<div class="vocab">
+czytać | chitach | to read | czytam
+mieszkać | myeshkach | to live | mieszkam
+pracować | pratsovach | to work | pracuję
+uczyć się | oochich sheh | to learn | uczę się
+robić | robeech | to do, make | robię
+mówić | mooveech | to speak | mówię
+pić | peech | to drink | piję
+jeść | yeshch | to eat | jem
+widzieć | veejech | to see | widzę
+kupować | koopovach | to buy | kupuję
+chcieć | khchech | to want | chcę
+iść | eeshch | to go (on foot) | idę
+grać | grach | to play | gram
+lubić | loobeech | to like | lubię
+</div>
+<div class="cj" data-verb="chcieć" data-note="to want" data-ipa="khchyech">
+ja | chcę | khtseh
+ty | chcesz | khtsesh
+on / ona / ono | chce | khtse
+my | chcemy | khtsemi
+wy | chcecie | khtseche
+oni | chcą | khtson
+</div>
+<div class="cj" data-verb="iść" data-note="to go (on foot)" data-ipa="eeshch">
+ja | idę | eedeh
+ty | idziesz | eejesh
+on / ona / ono | idzie | eeje
+my | idziemy | eejemi
+wy | idziecie | eejeche
+oni | idą | eedon
+</div>
+<div class="tip"><b class="t">One present tense.</b> <span class="fr">Pracuję</span> means both "I work" and "I am working". "I like" is <span class="fr">lubię</span> + accusative: <span class="fr">Lubię kawę.</span></div>
+<div class="qz" data-title="Exercise 4. Conjugation">
+Ja ___ studentem. (być) | jestem
+Ty ___ z Anglii. (być) | jesteś
+My ___ przyjaciółmi. (być) | jesteśmy
+Ja ___ brata. (mieć) | mam
+Ty ___ czas. (mieć) | masz
+Ja ___ w Londynie. (mieszkać) | mieszkam
+Ty ___ po polsku. (mówić) | mówisz
+On ___ w banku. (pracować) | pracuje
+My ___ do domu. (iść) | idziemy
+Ja ___ kawę. (chcieć) | chcę
+Ty ___ książkę. (czytać) | czytasz
+Oni ___ kawę. (lubić) | lubią
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Language in action" data-short="Questions, adjectives">
+<h2><span class="no">Section 5</span>Questions, adjectives, prepositions</h2>
+<div class="vocab">
+kto | kto | who
+co | tso | what
+gdzie | gje | where
+dokąd | dokond | where to
+skąd | skond | where from
+kiedy | kyedi | when
+jak | yak | how
+dlaczego | dlachego | why
+ile | eele | how much, how many
+który | ktoori | which
+</div>
+<div class="exs">
+Kto to jest? | kto to yest | Who is that?
+Co robisz? | tso robeesh | What are you doing?
+Gdzie mieszkasz? | gje myeshkash | Where do you live?
+Dokąd idziesz? | dokond eejesh | Where are you going?
+Ile to kosztuje? | eele to koshtooye | How much does it cost?
+Jak masz na imię? | yak mash na eemyę | What's your name?
+</div>
+<div class="rule"><b class="t">Questions</b><p>A yes/no question starts with <span class="fr">czy</span> or just uses intonation: <span class="fr">Czy masz czas? / Masz czas?</span> There is no "do". <span class="fr">Mówisz po polsku?</span> = Do you speak Polish?</p></div>
+<h3>5.1. Adjectives</h3>
+<p>Adjectives agree with the noun in gender, number and case. The basic nominative forms:</p>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th><th>n</th></tr>
+<tr><td>new</td><td><span class="fr">nowy dom</span></td><td><span class="fr">nowa książka</span></td><td><span class="fr">nowe auto</span></td></tr>
+<tr><td>good</td><td><span class="fr">dobry dzień</span></td><td><span class="fr">dobra praca</span></td><td><span class="fr">dobre piwo</span></td></tr>
+<tr><td>big</td><td><span class="fr">duży dom</span></td><td><span class="fr">duża szkoła</span></td><td><span class="fr">duże miasto</span></td></tr>
+</table></div>
+<div class="vocab">
+nowy | novi | new
+stary | stari | old
+duży | doozhi | big
+mały | mawi | small
+dobry | dobri | good
+zły | zwi | bad
+piękny | pyękni | beautiful
+drogi | drogee | expensive
+tani | tanee | cheap
+miły | meewi | nice
+zmęczony | zmenchoni | tired
+</div>
+<h3>5.2. Possessives</h3>
+<div class="tw"><table>
+<tr><th>Whose</th><th>m</th><th>f</th><th>n</th></tr>
+<tr><td>my</td><td><span class="fr">mój</span></td><td><span class="fr">moja</span></td><td><span class="fr">moje</span></td></tr>
+<tr><td>your</td><td><span class="fr">twój</span></td><td><span class="fr">twoja</span></td><td><span class="fr">twoje</span></td></tr>
+<tr><td>his</td><td colspan="3"><span class="fr">jego</span> (never changes)</td></tr>
+<tr><td>her</td><td colspan="3"><span class="fr">jej</span> (never changes)</td></tr>
+<tr><td>our</td><td><span class="fr">nasz</span></td><td><span class="fr">nasza</span></td><td><span class="fr">nasze</span></td></tr>
+</table></div>
+<h3>5.3. Prepositions and the locative</h3>
+<p>After <span class="fr">w</span> (in), <span class="fr">na</span> (on, at), <span class="fr">o</span> (about) a noun takes the <b>locative</b> case: typically <span class="fr">-e</span> (with a softening of the consonant before it) or <span class="fr">-u</span>: <span class="fr">w Polsce, w Warszawie, w szkole, na stole, w domu, w mieście</span>.</p>
+<div class="tw"><table>
+<tr><th>Preposition</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><span class="fr">w</span></td><td>in</td><td><span class="fr">w Warszawie, w szkole</span></td></tr>
+<tr><td><span class="fr">na</span></td><td>on, at</td><td><span class="fr">na stole, na dworcu</span></td></tr>
+<tr><td><span class="fr">z</span></td><td>from (+ genitive); with (+ instrumental)</td><td><span class="fr">z Anglii; z bratem</span></td></tr>
+<tr><td><span class="fr">do</span></td><td>to, into (+ genitive)</td><td><span class="fr">do szkoły, do Polski</span></td></tr>
+<tr><td><span class="fr">bez</span></td><td>without (+ genitive)</td><td><span class="fr">kawa bez cukru</span></td></tr>
+<tr><td><span class="fr">dla</span></td><td>for (+ genitive)</td><td><span class="fr">dla mamy</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Do not panic.</b> At A1 you learn these as set phrases. The full case system comes at A2.</div>
+<div class="exs">
+Idę do szkoły. | eedeh do shkowi | I'm going to school.
+Jestem w szkole. | yestem v shkole | I'm at school.
+Mieszkam w Warszawie. | myeshkam v varshavye | I live in Warsaw.
+Książka jest na stole. | kshonzhka yest na stole | The book is on the table.
+Kawa bez cukru. | kava bez tsookroo | Coffee without sugar.
+To jest mój brat. | to yest mooy brat | This is my brother.
+</div>
+<div class="qz" data-title="Exercise 5. Language in action">
+___ to jest? (who) | Kto
+___ robisz? (what) | Co
+___ mieszkasz? (where) | Gdzie
+___ to kosztuje? (how much) | Ile
+Dom jest ___ . (new) | nowy
+___ brat (my) | mój
+___ siostra (my) | moja
+Mieszkam ___ Warszawie. (in) | w
+Jestem ___ Anglii. (from) | z
+Kawa ___ cukru. (without) | bez
+Prezent ___ mamy. (for) | dla
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Numbers, time, dates">
+<h2><span class="no">Section 6</span>Numbers, time and dates</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">zero</span></td><td>1 <span class="fr">jeden</span></td><td>2 <span class="fr">dwa</span></td><td>3 <span class="fr">trzy</span></td></tr>
+<tr><td>4 <span class="fr">cztery</span></td><td>5 <span class="fr">pięć</span></td><td>6 <span class="fr">sześć</span></td><td>7 <span class="fr">siedem</span></td></tr>
+<tr><td>8 <span class="fr">osiem</span></td><td>9 <span class="fr">dziewięć</span></td><td>10 <span class="fr">dziesięć</span></td><td>11 <span class="fr">jedenaście</span></td></tr>
+<tr><td>12 <span class="fr">dwanaście</span></td><td>20 <span class="fr">dwadzieścia</span></td><td>30 <span class="fr">trzydzieści</span></td><td>40 <span class="fr">czterdzieści</span></td></tr>
+<tr><td>50 <span class="fr">pięćdziesiąt</span></td><td>100 <span class="fr">sto</span></td><td>200 <span class="fr">dwieście</span></td><td>1000 <span class="fr">tysiąc</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Compound numbers</b><p>Polish builds them like English: 21 = <span class="fr">dwadzieścia jeden</span>, 45 = <span class="fr">czterdzieści pięć</span>, written as separate words. One, two have genders: <span class="fr">jeden pan, jedna pani, jedno dziecko; dwa domy, dwie kobiety</span>.</p></div>
+<div class="vocab">
+# Days
+poniedziałek | ponyejawek | Monday
+wtorek | vtorek | Tuesday
+środa | shroda | Wednesday
+czwartek | chvartek | Thursday
+piątek | pyątek | Friday
+sobota | sobota | Saturday
+niedziela | nyejela | Sunday
+# Months
+styczeń | sticheny | January
+luty | looti | February
+marzec | mazhets | March
+kwiecień | kvyecheny | April
+maj | may | May
+czerwiec | chervyets | June
+lipiec | leepyets | July
+sierpień | sherpyeny | August
+wrzesień | vzhesheny | September
+październik | pazhjerneek | October
+listopad | leestopad | November
+grudzień | groojeny | December
+# Time
+dzisiaj | dzeeshay | today
+jutro | yootro | tomorrow
+wczoraj | vchoray | yesterday
+rano | rano | in the morning
+wieczorem | vyechorem | in the evening
+teraz | teraz | now
+</div>
+<div class="exs">
+Która jest godzina? | ktoora yest godzeena | What time is it?
+Jest piąta. | yest pyąta | It is five o'clock.
+Jest pierwsza. | yest pyervsha | It is one o'clock.
+O której godzinie? | o ktoorey godzeenye | At what time?
+O ósmej. | o oosmey | At eight o'clock.
+Dzisiaj jest poniedziałek. | dzeeshay yest ponyejawek | Today is Monday.
+</div>
+<div class="qz" data-title="Exercise 6. Numbers and days">
+2 | dwa
+3 | trzy
+5 | pięć
+10 | dziesięć
+20 | dwadzieścia
+100 | sto
+Monday | poniedziałek
+Friday | piątek
+Sunday | niedziela
+October | październik
+tomorrow | jutro
+yesterday | wczoraj
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Words and dialogues" data-short="Food, city, shopping">
+<h2><span class="no">Section 7</span>Food, the city and shopping</h2>
+<div class="vocab">
+# Food
+chleb | khleb | bread | m
+masło | maswo | butter | n
+ser | ser | cheese | m
+mięso | myęso | meat | n
+ryba | riba | fish | f
+jajko | yayko | egg | n
+zupa | zoopa | soup | f
+ryż | rizh | rice | m
+ziemniak | zhemnyak | potato | m
+jabłko | yabwko | apple | n
+cukier | tsookyer | sugar | m
+sól | sool | salt | f
+# Drinks
+woda | voda | water | f
+mleko | mleko | milk | n
+kawa | kava | coffee | f
+herbata | kherbata | tea | f
+sok | sok | juice | m
+piwo | peevo | beer | n
+wino | veeno | wine | n
+# City
+dworzec | dvozhets | station | m
+poczta | pochta | post office | f
+bank | bank | bank | m
+szpital | shpeetal | hospital | m
+apteka | apteka | pharmacy | f
+sklep | sklep | shop | m
+ulica | ooleetsa | street | f
+most | most | bridge | m
+park | park | park | m
+</div>
+<div class="exs">
+Poproszę kawę. | poprosheh kaveh | A coffee, please.
+Rachunek, poproszę. | rakhoonek poprosheh | The bill, please.
+Smacznego! | smachnego | Enjoy your meal!
+Ile to kosztuje? | eele to koshtooye | How much is that?
+To jest drogie. | to yest drogye | That is expensive.
+Czy mogę zapłacić kartą? | chi mogeh zapwacheech karton | Can I pay by card?
+Gdzie jest dworzec? | gje yest dvozhets | Where is the station?
+Proszę iść prosto, potem w lewo. | prosheh eeshch prosto potem v levo | Go straight, then left.
+Jestem głodny. | yestem gwodni | I am hungry.
+</div>
+<div class="qz" data-title="Exercise 7. Café and city">
+A coffee, please. | Poproszę kawę
+The bill, please. | Rachunek, poproszę
+Enjoy your meal! | Smacznego
+How much is that? | Ile to kosztuje
+Where is the station? | Gdzie jest dworzec
+That is expensive. | To jest drogie
+I am hungry. | Jestem głodny
+bread | chleb
+milk | mleko
+station | dworzec
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Dialogues">
+<h2><span class="no">Section 8</span>Everyday dialogues</h2>
+<div class="dg">
+# 1. W kawiarni (in a café)
+Kelner: Dzień dobry. Co podać? | Good day. What can I get you?
+Gość: Poproszę kawę i kawałek ciasta. | A coffee and a piece of cake, please.
+Kelner: Z mlekiem? | With milk?
+Gość: Nie, dziękuję. Bez mleka. | No, thanks. Without milk.
+Kelner: Proszę. Smacznego. | Here you are. Enjoy.
+Gość: Dziękuję. Czy mogę zapłacić kartą? | Thanks. Can I pay by card?
+# 2. Na dworcu (at the station)
+Podróżny: Dzień dobry, poproszę bilet do Krakowa. | Hello, a ticket to Kraków, please.
+Kasjerka: W jedną stronę czy w obie? | One way or return?
+Podróżny: W jedną stronę. Kiedy odjeżdża pociąg? | One way. When does the train leave?
+Kasjerka: O dziesiątej piętnaście. | At ten fifteen.
+Podróżny: Ile kosztuje bilet? | How much is the ticket?
+Kasjerka: Pięćdziesiąt złotych. | Fifty złoty.
+# 3. Pytamy o drogę (asking the way)
+Turysta: Przepraszam, gdzie jest muzeum? | Excuse me, where is the museum?
+Kobieta: Proszę iść prosto, a potem w prawo. | Go straight and then right.
+Turysta: Czy to daleko? | Is it far?
+Kobieta: Nie, pięć minut pieszo. | No, five minutes on foot.
+Turysta: Bardzo dziękuję. | Thank you very much.
+Kobieta: Proszę bardzo. | You're welcome.
+# 4. Poznajemy się (getting acquainted)
+Piotr: Cześć, mam na imię Piotr. A ty? | Hi, I'm Piotr. And you?
+Anna: Mam na imię Anna. Miło mi. | I'm Anna. Nice to meet you.
+Piotr: Skąd jesteś? | Where are you from?
+Anna: Jestem z Anglii, z Londynu. | I'm from England, from London.
+Piotr: Bardzo dobrze mówisz po polsku! | You speak Polish very well!
+Anna: Dziękuję, jeszcze się uczę. | Thanks, I'm still learning.
+</div>
+<div class="qz" data-title="Exercise 8. Phrases from the dialogues">
+What can I get you? | Co podać
+A coffee, please. | Poproszę kawę
+A ticket to Kraków. | Bilet do Krakowa
+Where is the museum? | Gdzie jest muzeum
+Five minutes on foot. | Pięć minut pieszo
+You're welcome. | Proszę bardzo
+My name is Anna. | Mam na imię Anna
+I'm still learning. | Jeszcze się uczę
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="A1 extension" data-short="More words">
+<h2><span class="no">Section 9</span>More words: work, body, clothes, weather, transport</h2>
+<div class="vocab">
+# Jobs
+nauczyciel | naoochichel | teacher | m
+lekarz | lekazh | doctor | m
+pielęgniarka | pyelengnyarka | nurse | f
+inżynier | eenzhinyer | engineer | m
+kierowca | kyerovtsa | driver | m
+sprzedawca | spshedavtsa | shop assistant | m
+kucharz | kookhazh | cook, chef | m
+student | stoodent | student | m
+policjant | poleetsyant | police officer | m
+prawnik | pravneek | lawyer | m
+# Body and health
+głowa | gwova | head | f
+oko | oko | eye | n
+ucho | ookho | ear | n
+nos | nos | nose | m
+usta | oosta | mouth | pl
+ręka | renka | hand, arm | f
+noga | noga | leg, foot | f
+brzuch | bzhookh | stomach | m
+plecy | pletsi | back | pl
+serce | sertse | heart | n
+Boli mnie głowa. | bolee mnye gwova | I have a headache. | 
+Jestem chory. | yestem khori | I am ill. | 
+gorączka | goronchka | fever | f
+apteka | apteka | pharmacy | f
+lekarstwo | lekarstvo | medicine | n
+# Clothes
+koszula | koshoola | shirt | f
+spodnie | spodnye | trousers | pl
+sukienka | sookyenka | dress | f
+kurtka | koortka | jacket | f
+buty | booti | shoes | pl
+sweter | sveter | jumper | m
+czapka | chapka | hat, cap | f
+rozmiar | rozmyar | size | m
+# Weather
+pogoda | pogoda | weather | f
+słońce | swonytse | sun | n
+deszcz | deshch | rain | m
+śnieg | shnyeg | snow | m
+wiatr | vyatr | wind | m
+jest zimno | yest zheemno | it is cold | adv
+jest gorąco | yest gorontso | it is hot | adv
+świeci słońce | shvyechee swonytse | the sun is shining | adv
+# Transport
+autobus | aootoboos | bus | m
+pociąg | pochong | train | m
+tramwaj | tramvay | tram | m
+samolot | samolot | plane | m
+rower | rover | bicycle | m
+bilet | beelet | ticket | m
+przystanek | pshistanek | stop | m
+lotnisko | lotneesko | airport | n
+# Home and hobbies
+salon | salon | living room | m
+łazienka | wazhenka | bathroom | f
+lodówka | lodoovka | fridge | f
+kanapa | kanapa | sofa | f
+film | feelm | film | m
+muzyka | moozika | music | f
+sport | sport | sport | m
+gotować | gotovach | to cook | verb
+podróżować | podroozhovach | to travel | verb
+</div>
+<div class="exs">
+Jestem nauczycielem. | yestem naoochichelem | I am a teacher.
+Pracuję jako kierowca. | pratsooyeh yako kyerovtsa | I work as a driver.
+Boli mnie gardło. | bolee mnye gardwo | My throat hurts.
+Jaki masz rozmiar? | yakee mash rozmyar | What size are you?
+Dzisiaj jest zimno. | dzeeshay yest zheemno | It is cold today.
+Pada deszcz. | pada deshch | It is raining.
+Gdzie jest przystanek? | gje yest pshistanek | Where is the stop?
+Lubię gotować. | loobyę gotovach | I like cooking.
+</div>
+<div class="qz" data-title="Exercise 9. New words">
+doctor | lekarz
+teacher | nauczyciel
+head | głowa
+hand | ręka
+dress | sukienka
+rain | deszcz
+snow | śnieg
+bus | autobus
+train | pociąg
+ticket | bilet
+airport | lotnisko
+It is raining. | Pada deszcz
+I have a headache. | Boli mnie głowa
+It is cold today. | Dzisiaj jest zimno
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Modals, imperative">
+<h2><span class="no">Section 10</span>Modal verbs and the imperative</h2>
+<h3>10.1. Modal verbs</h3>
+<div class="tw"><table>
+<tr><th></th><th>móc (can)</th><th>musieć (must)</th><th>chcieć (want)</th><th>umieć (know how)</th></tr>
+<tr><td>ja</td><td>mogę</td><td>muszę</td><td>chcę</td><td>umiem</td></tr>
+<tr><td>ty</td><td>możesz</td><td>musisz</td><td>chcesz</td><td>umiesz</td></tr>
+<tr><td>on / ona</td><td>może</td><td>musi</td><td>chce</td><td>umie</td></tr>
+<tr><td>my</td><td>możemy</td><td>musimy</td><td>chcemy</td><td>umiemy</td></tr>
+<tr><td>wy</td><td>możecie</td><td>musicie</td><td>chcecie</td><td>umiecie</td></tr>
+<tr><td>oni</td><td>mogą</td><td>muszą</td><td>chcą</td><td>umieją</td></tr>
+</table></div>
+<div class="rule"><b class="t">Modal + infinitive</b><p>The main verb stays in the infinitive: <span class="fr">Mogę wejść? Chcę pić kawę. Muszę pracować.</span> "Can" in the sense of a learned skill is <span class="fr">umieć</span>: <span class="fr">Umiem pływać.</span></p></div>
+<div class="exs">
+Czy mogę wejść? | chi mogeh veyshch | May I come in?
+Chcę pić kawę. | khtseh peech kaveh | I want to drink coffee.
+Dzisiaj muszę pracować. | dzeeshay moosheh pratsovach | I have to work today.
+Teraz nie mogę rozmawiać. | teraz nye mogeh rozmavyach | I can't talk now.
+Umiesz gotować? | oomyesh gotovach | Can you cook?
+Tutaj nie wolno palić. | tootay nye volno paleech | Smoking is not allowed here.
+Chciałbym herbatę, proszę. | khchawbim kherbateh prosheh | I would like a tea, please.
+</div>
+<h3>10.2. The imperative</h3>
+<div class="tw"><table>
+<tr><th>Infinitive</th><th>ty</th><th>wy / polite</th></tr>
+<tr><td>mówić</td><td>mów!</td><td>mówcie!</td></tr>
+<tr><td>czytać</td><td>czytaj!</td><td>czytajcie!</td></tr>
+<tr><td>czekać</td><td>czekaj!</td><td>czekajcie!</td></tr>
+<tr><td>przyjść</td><td>przyjdź!</td><td>przyjdźcie!</td></tr>
+<tr><td>być</td><td>bądź!</td><td>bądźcie!</td></tr>
+<tr><td>pisać</td><td>pisz!</td><td>piszcie!</td></tr>
+</table></div>
+<p>To forbid: <span class="fr">nie pal!</span> <span class="fr">nie mów!</span> Politely: <span class="fr">Proszę</span> + infinitive: <span class="fr">Proszę usiąść.</span></p>
+<div class="exs">
+Poczekaj chwilę! | pochekay khveeleh | Wait a moment!
+Proszę tu przyjść. | prosheh too pshiyshch | Please come here.
+Mów wolniej, proszę. | moov volnyey prosheh | Speak more slowly, please.
+Nie pal tutaj! | nye pal tootay | Don't smoke here!
+Bądź ostrożny! | bonj ostrozhni | Be careful!
+</div>
+<div class="qz" data-title="Exercise 10. Modals and imperative">
+Ja ___ pracować. (musieć) | muszę
+Ty ___ przyjść. (móc) | możesz
+On ___ kawę. (chcieć) | chce
+My ___ iść. (móc) | możemy
+___ pływać. (I can: umieć) | Umiem
+___ herbatę. (I would like) | Chciałbym
+mówić → (ty!) ___ | mów
+czytać → (ty!) ___ | czytaj
+mówić → (wy!) ___ | mówcie
+być → (ty!) ___ | bądź
+___ palić! (Don't smoke) | Nie
+Tutaj nie ___ palić. (allowed) | wolno
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="More dialogues">
+<h2><span class="no">Section 11</span>Four more dialogues</h2>
+<div class="dg">
+# 1. U lekarza (at the doctor's)
+Lekarz: Dzień dobry, co panu dolega? | Good day, what's troubling you?
+Pacjent: Boli mnie głowa i mam gorączkę. | I have a headache and a fever.
+Lekarz: Jak długo? | For how long?
+Pacjent: Dwa dni. | Two days.
+Lekarz: Proszę brać te tabletki i zostać w domu. | Take these tablets and stay at home.
+Pacjent: Dziękuję, panie doktorze. | Thank you, doctor.
+# 2. W sklepie z odzieżą (in a clothes shop)
+Sprzedawczyni: Czy mogę w czymś pomóc? | Can I help you?
+Klient: Szukam kurtki. | I'm looking for a jacket.
+Sprzedawczyni: Jaki pan ma rozmiar? | What size are you?
+Klient: Rozmiar M. Czy mogę przymierzyć? | Size M. Can I try it on?
+Sprzedawczyni: Oczywiście, przymierzalnia jest tam. | Of course, the fitting room is over there.
+Klient: Ile to kosztuje? | How much is it?
+Sprzedawczyni: Dwieście złotych. | Two hundred złoty.
+# 3. W hotelu (at the hotel)
+Gość: Dobry wieczór, mam rezerwację. | Good evening, I have a reservation.
+Recepcjonista: Jak się pan nazywa? | What is your name?
+Gość: Smith. Pokój jednoosobowy na trzy noce. | Smith. A single room for three nights.
+Recepcjonista: Oto klucz. Śniadanie jest od siódmej do dziesiątej. | Here is your key. Breakfast is from seven to ten.
+Gość: Czy jest wi-fi? | Is there Wi-Fi?
+Recepcjonista: Tak, hasło jest na kluczu. | Yes, the password is on the key.
+# 4. Przez telefon (on the phone)
+Anna: Halo? | Hello?
+Marek: Cześć Anno, tu Marek. Jak się masz? | Hi Anna, it's Marek. How are you?
+Anna: Dobrze, dziękuję. A ty? | Fine, thanks. And you?
+Marek: Też dobrze. Czy masz jutro wieczorem czas? | Fine too. Are you free tomorrow evening?
+Anna: Tak, a dlaczego? | Yes, why?
+Marek: Pójdziemy do kina? | Shall we go to the cinema?
+Anna: Chętnie! | Gladly!
+</div>
+<div class="qz" data-title="Exercise 11. Phrases from the dialogues">
+What's troubling you? | Co panu dolega
+I have a headache. | Boli mnie głowa
+I'm looking for a jacket. | Szukam kurtki
+What size are you? | Jaki pan ma rozmiar
+How much is it? | Ile to kosztuje
+I have a reservation. | Mam rezerwację
+Is there Wi-Fi? | Czy jest wi-fi
+Shall we go to the cinema? | Pójdziemy do kina
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Cheat sheet, plan, test">
+<h2><span class="no">Section 12</span>Cheat sheet, plan and test</h2>
+<div class="tw"><table>
+<tr><th>Topic</th><th>Remember</th></tr>
+<tr><td>Być</td><td>jestem, jesteś, jest, jesteśmy, jesteście, są</td></tr>
+<tr><td>Mieć</td><td>mam, masz, ma, mamy, macie, mają</td></tr>
+<tr><td>Stress</td><td>second-to-last syllable</td></tr>
+<tr><td>Articles</td><td>none</td></tr>
+<tr><td>Accusative</td><td>-a → -ę (f); animate m → -a</td></tr>
+<tr><td>Negation</td><td>nie before the verb; double negatives</td></tr>
+<tr><td>Questions</td><td>czy or intonation; kto, co, gdzie, kiedy</td></tr>
+<tr><td>Ty / pan, pani</td><td>informal / polite</td></tr>
+</table></div>
+<h3>8-week plan</h3>
+<div class="tw"><table>
+<tr><th>Week</th><th>Sections</th><th>Goal</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Read anything: sz cz rz ś ć ł ą ę</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Introduce yourself, words with gender</td></tr>
+<tr><td>3</td><td>4</td><td>Być, mieć, 10 verbs</td></tr>
+<tr><td>4</td><td>5</td><td>Questions, adjectives, prepositions</td></tr>
+<tr><td>5</td><td>6</td><td>Numbers, time, days</td></tr>
+<tr><td>6</td><td>7</td><td>Food, city</td></tr>
+<tr><td>7</td><td>8</td><td>Dialogues out loud</td></tr>
+<tr><td>8</td><td>Review</td><td>Talk about yourself for 3–5 minutes</td></tr>
+</table></div>
+<h3>Final test</h3>
+<div class="qz" data-title="A1 test">
+Ja ___ studentem. (być) | jestem
+Ty ___ czas. (mieć) | masz
+Mam ___ . (a book, acc.) | książkę
+___ to kosztuje? (how much) | Ile
+Mieszkam ___ Warszawie. (in) | w
+5 | pięć
+Friday | piątek
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Read any Polish word</label></li>
+<li><label><input type="checkbox"> Greet people and introduce myself</label></li>
+<li><label><input type="checkbox"> Use być, mieć and regular verbs</label></li>
+<li><label><input type="checkbox"> Recognise gender from the ending</label></li>
+<li><label><input type="checkbox"> Say numbers, days, months, time</label></li>
+<li><label><input type="checkbox"> Order a coffee and ask the way</label></li>
+</ul>
+</section>
+
+<footer>A self-study backbone for A1. Add real listening: podcasts, subtitled video, conversation with a native speaker.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Polish</th><th>Pronunciation</th><th>English</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercise';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Answer: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Check</button><button type="button" data-act="show">Show answers</button><button type="button" data-act="reset">Reset</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' of '+tot+(ok===tot?'. All correct.':'. Check accents and articles.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^pl[-_]PL/i.test(x.lang))||v.find(x=>/^pl/i.test(x.lang))||('pl'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='pl-PL';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('plen1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('plen1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('plen1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('plen1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='plen1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Results: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">go to section</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">First 40 shown.</div>';
+    } else h+='<div class="mini">Nothing found. Search covers the foreign and English words in the vocabulary tables.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

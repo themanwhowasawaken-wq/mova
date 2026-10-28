@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Litewski A2: pełny kurs</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="start-pl.html" title="Strona główna">&larr;</a>
+  <button id="menuBtn" aria-label="Spis treści">Spis treści</button>
+  <span class="brand">Lietuvių A2</span>
+  <input id="q" type="search" placeholder="Znajdź słowo" aria-label="Znajdź słowo">
+  <button id="uaBtn" title="Pokaż lub ukryj tłumaczenia przykładów i dialogów">Tłumaczenie</button>
+  <button id="thBtn" title="Jasny lub ciemny motyw">Motyw</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Spis treści"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Litewski A2</h1>
+  <p>Kolejny krok w nauce: Litewski. Czas przeszły i przyszły, tryb warunkowy, aspekt, przypadki, stopniowanie, zdania złożone, czytanie i listy. Stuknij słowo lub zdanie, żeby go posłuchać.</p>
+  <p class="crumbs"><a href="start-pl.html">&larr; Strona główna</a><a href="lt4pl-a1.html">Poziom A1</a><a href="lt4pl-vpravy.html">Ćwiczenia</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Start" data-short="Jak korzystać z kursu">
+<h2><span class="no">Rozdział 0</span>Jak korzystać z kursu</h2>
+<p class="lead">Poziom A2: umiesz już się przedstawić i mówić o sobie, teraz uczysz się <b>opowiadać o przeszłości, planować, grzecznie prosić, porównywać i podawać przyczyny</b>. Wymowa, <span class="fr">būti</span>, <span class="fr">turėti</span>, biernik i miejscownik, liczby i godziny są w kursie A1.</p>
+<h3>Co będziesz umieć na końcu</h3>
+<ul>
+<li>opowiedzieć o wczorajszym dniu i urlopie (czas przeszły);</li>
+<li>mówić o planach (czas przyszły);</li>
+<li>grzecznie prosić i marzyć (<span class="fr">norėčiau</span>);</li>
+<li>używać dopełniacza, celownika i narzędnika;</li>
+<li>rozróżniać aspekt czasownika;</li>
+<li>porównywać, budować zdania złożone, napisać list.</li>
+</ul>
+<div class="tip"><b class="t">Twój atut.</b> Przypadki, aspekt czasownika, przedrostki, rodzaj — to wszystko znasz z polskiego. Trzeba tylko przyzwyczaić się do litewskich końcówek i nowych słów.</div>
+<div class="warn"><b>Fałszywi przyjaciele.</b> <span class="fr">vaikas</span> = dziecko, <span class="fr">šuo</span> = pies, <span class="fr">laikas</span> = czas, <span class="fr">valanda</span> = godzina, <span class="fr">metai</span> = rok, <span class="fr">vakaras</span> = wieczór, <span class="fr">vakar</span> = wczoraj, <span class="fr">gatvė</span> = ulica.</div>
+<h3>Szybki sprawdzian A1</h3>
+<div class="qz" data-title="Ćwiczenie 0. Powtórka A1">
+Aš ___ studentas. (būti) | esu
+Tu ___ brolį. (turėti) | turi
+Aš ___ lietuviškai. (kalbėti) | kalbu
+Aš ___ kavos. (norėti) | noriu
+Esu ___ . (mokykla, miejsc.) | mokykloje
+Turiu ___ . (sesuo → acc.) | seserį
+</div>
+</section>
+
+<section class="unit" id="u1" data-grp="Czasy i tryby" data-short="Czas przeszły">
+<h2><span class="no">Rozdział 1</span>Czas przeszły</h2>
+<div class="tw"><table>
+<tr><th></th><th>būti (być)</th><th>dirbti (pracować)</th><th>kalbėti (mówić)</th><th>eiti (iść)</th></tr>
+<tr><td>aš</td><td>buvau</td><td>dirbau</td><td>kalbėjau</td><td>ėjau</td></tr>
+<tr><td>tu</td><td>buvai</td><td>dirbai</td><td>kalbėjai</td><td>ėjai</td></tr>
+<tr><td>jis / ji</td><td>buvo</td><td>dirbo</td><td>kalbėjo</td><td>ėjo</td></tr>
+<tr><td>mes</td><td>buvome</td><td>dirbome</td><td>kalbėjome</td><td>ėjome</td></tr>
+<tr><td>jūs</td><td>buvote</td><td>dirbote</td><td>kalbėjote</td><td>ėjote</td></tr>
+<tr><td>jie / jos</td><td>buvo</td><td>dirbo</td><td>kalbėjo</td><td>ėjo</td></tr>
+</table></div>
+<div class="tw"><table>
+<tr><th></th><th>skaityti (czytać)</th><th>matyti (widzieć)</th><th>turėti (mieć)</th></tr>
+<tr><td>aš</td><td>skaičiau</td><td>mačiau</td><td>turėjau</td></tr>
+<tr><td>tu</td><td>skaitei</td><td>matei</td><td>turėjai</td></tr>
+<tr><td>jis / ji</td><td>skaitė</td><td>matė</td><td>turėjo</td></tr>
+<tr><td>mes</td><td>skaitėme</td><td>matėme</td><td>turėjome</td></tr>
+<tr><td>jūs</td><td>skaitėte</td><td>matėte</td><td>turėjote</td></tr>
+<tr><td>jie / jos</td><td>skaitė</td><td>matė</td><td>turėjo</td></tr>
+</table></div>
+<div class="rule"><b class="t">Jedna forma dla wszystkich rodzajów.</b><p>W litewskim czas przeszły zmienia się według <b>osoby</b>, a nie rodzaju: <span class="fr">Aš dirbau</span> (i mężczyzna, i kobieta). Przeczenie: <span class="fr">nedirbau</span>.</p></div>
+<div class="exs">
+Vakar buvau namie. |  | Wczoraj byłem (byłam) w domu.
+Praėjusią savaitę buvome Vilniuje. |  | W zeszłym tygodniu byliśmy w Wilnie.
+Aš skaičiau knygą. |  | Czytałem (czytałam) książkę.
+Ką tu darei? |  | Co robiłeś?
+Neturėjau laiko. |  | Nie miałem czasu.
+Mes ėjome į kiną. |  | Chodziliśmy do kina.
+Mačiau jį stotyje. |  | Widziałem go na dworcu.
+Ar jau valgėte? |  | Czy już jedliście?
+</div>
+<div class="qz" data-title="Ćwiczenie 1. Czas przeszły">
+Vakar ___ namie. (aš, būti) | buvau
+Ji ___ knygą. (skaityti) | skaitė
+Mes ___ į kiną. (eiti) | ėjome
+Jie ___ Vilniuje. (būti) | buvo
+Aš ___ filmą. (matyti) | mačiau
+Tu ___ laiko. (ne, turėti) | neturėjai
+Aš ___ vakar. (dirbti) | dirbau
+Mes ___ lietuviškai. (kalbėti) | kalbėjome
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Czas przyszły">
+<h2><span class="no">Rozdział 2</span>Czas przyszły</h2>
+<p>Czas przyszły tworzy się jednym słowem (końcówki <b>-siu, -si, -s, -sime, -site, -s</b>).</p>
+<div class="tw"><table>
+<tr><th></th><th>būti</th><th>dirbti</th><th>eiti</th><th>kalbėti</th></tr>
+<tr><td>aš</td><td>būsiu</td><td>dirbsiu</td><td>eisiu</td><td>kalbėsiu</td></tr>
+<tr><td>tu</td><td>būsi</td><td>dirbsi</td><td>eisi</td><td>kalbėsi</td></tr>
+<tr><td>jis / ji</td><td>bus</td><td>dirbs</td><td>eis</td><td>kalbės</td></tr>
+<tr><td>mes</td><td>būsime</td><td>dirbsime</td><td>eisime</td><td>kalbėsime</td></tr>
+<tr><td>jūs</td><td>būsite</td><td>dirbsite</td><td>eisite</td><td>kalbėsite</td></tr>
+<tr><td>jie / jos</td><td>bus</td><td>dirbs</td><td>eis</td><td>kalbės</td></tr>
+</table></div>
+<div class="exs">
+Rytoj dirbsiu. |  | Jutro będę pracować.
+Ką darysi šeštadienį? |  | Co będziesz robić w sobotę?
+Kitą savaitę važiuosime prie jūros. |  | W przyszłym tygodniu jedziemy nad morze.
+Paskambinsiu tau vakare. |  | Zadzwonię do ciebie wieczorem.
+Nupirksiu naują telefoną. |  | Kupię nowy telefon.
+Nevalgysime namie. |  | Nie będziemy jeść w domu.
+</div>
+<div class="qz" data-title="Ćwiczenie 2. Czas przyszły">
+Rytoj ___ namie. (aš, būti) | būsiu
+Tu ___ . (dirbti) | dirbsi
+Mes ___ į kiną. (eiti) | eisime
+Jie ___ . (kalbėti) | kalbės
+Jūs ___ namie. (būti) | būsite
+Ji ___ rytoj. (dirbti) | dirbs
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Tryb przypuszczający">
+<h2><span class="no">Rozdział 3</span>Tryb przypuszczający i uprzejme prośby</h2>
+<div class="tw"><table>
+<tr><th></th><th>norėti</th><th>galėti</th><th>turėti</th></tr>
+<tr><td>aš</td><td>norėčiau</td><td>galėčiau</td><td>turėčiau</td></tr>
+<tr><td>tu</td><td>norėtum</td><td>galėtum</td><td>turėtum</td></tr>
+<tr><td>jis / ji</td><td>norėtų</td><td>galėtų</td><td>turėtų</td></tr>
+<tr><td>mes</td><td>norėtume</td><td>galėtume</td><td>turėtume</td></tr>
+<tr><td>jūs</td><td>norėtumėte</td><td>galėtumėte</td><td>turėtumėte</td></tr>
+<tr><td>jie / jos</td><td>norėtų</td><td>galėtų</td><td>turėtų</td></tr>
+</table></div>
+<div class="exs">
+Norėčiau kavos. |  | Poprosiłbym kawę.
+Norėčiau važiuoti prie jūros. |  | Chciałbym pojechać nad morze.
+Ar galėtumėte man padėti? |  | Czy mógłby pan mi pomóc?
+Jei turėčiau laiko, ateičiau. |  | Gdybym miał czas, przyszedłbym.
+Norėčiau rezervuoti staliuką. |  | Chciałbym zarezerwować stolik.
+</div>
+<div class="tip"><b class="t">Grzecznie.</b> <span class="fr">Ar galėtumėte…?</span> — najdelikatniejsza prośba. <span class="fr">Prašau</span> dodaje uprzejmości. Wszystkie formy są takie same dla mężczyzny i kobiety.</div>
+<div class="qz" data-title="Ćwiczenie 3. Tryb przypuszczający">
+___ kavos. (Poprosiłbym) | Norėčiau
+Ar ___ man padėti? (galėtumėte) | galėtumėte
+Jei ___ laiko, ateičiau. (turėčiau) | turėčiau
+___ rezervuoti staliuką. (Chciałbym) | Norėčiau
+Tu ___ ateiti? (galėtum) | galėtum
+</div>
+</section>
+
+<section class="unit" id="u4" data-short="Aspekt czasownika">
+<h2><span class="no">Rozdział 4</span>Aspekt czasownika</h2>
+<p>Jak w polskim: <b>niedokonany</b> — proces lub powtarzanie, <b>dokonany</b> — rezultat. Pary często tworzy się przedrostkiem.</p>
+<div class="tw"><table>
+<tr><th>Niedokonany</th><th>Dokonany</th><th>Znaczenie</th></tr>
+<tr><td>rašyti</td><td>parašyti</td><td>pisać / napisać</td></tr>
+<tr><td>skaityti</td><td>perskaityti</td><td>czytać / przeczytać</td></tr>
+<tr><td>daryti</td><td>padaryti</td><td>robić / zrobić</td></tr>
+<tr><td>pirkti</td><td>nupirkti</td><td>kupować / kupić</td></tr>
+<tr><td>valgyti</td><td>suvalgyti</td><td>jeść / zjeść</td></tr>
+<tr><td>žiūrėti</td><td>pažiūrėti</td><td>oglądać / obejrzeć</td></tr>
+<tr><td>mokytis</td><td>išmokti</td><td>uczyć się / nauczyć się</td></tr>
+</table></div>
+<div class="exs">
+Kiekvieną dieną skaitau laikraštį. |  | Codziennie czytam gazetę.
+Vakar perskaičiau knygą. |  | Wczoraj przeczytałem książkę.
+Rašau laišką. |  | Piszę list.
+Jau parašiau laišką. |  | Już napisałem list.
+Kasdien perku duoną. |  | Codziennie kupuję chleb.
+Nupirkau duoną. |  | Kupiłem chleb.
+</div>
+<div class="qz" data-title="Ćwiczenie 4. Aspekt czasownika">
+pisać → dokonany | parašyti
+czytać → dokonany | perskaityti
+kupować → dokonany | nupirkti
+robić → dokonany | padaryti
+Kiekvieną dieną ___ . (skaityti, aš) | skaitau
+Vakar ___ knygą. (perskaityti, aš) | perskaičiau
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Przypadki" data-short="Dopełniacz">
+<h2><span class="no">Rozdział 5</span>Dopełniacz (<span class="fr">kilmininkas</span>)</h2>
+<div class="tw"><table>
+<tr><th>Rodzaj</th><th>Końcówka</th><th>Przykłady</th></tr>
+<tr><td><span class="fr m">m -as / -is</span></td><td><b>-o / -io</b></td><td><span class="fr">stalas → stalo, brolis → brolio</span></td></tr>
+<tr><td><span class="fr f">f -a</span></td><td><b>-os</b></td><td><span class="fr">knyga → knygos, mokykla → mokyklos</span></td></tr>
+<tr><td><span class="fr f">f -ė</span></td><td><b>-ės</b></td><td><span class="fr">žemė → žemės</span></td></tr>
+<tr><td><span class="fr f">f -is</span></td><td><b>-ies</b></td><td><span class="fr">naktis → nakties, stotis → stoties</span></td></tr>
+</table></div>
+<h3>Kiedy się go używa</h3>
+<ul>
+<li><b>Po przyimkach</b> <span class="fr">be, iš, nuo, iki, šalia</span>: <span class="fr">be cukraus, iki stoties, iš Ukrainos, nuo ryto iki vakaro</span>.</li>
+<li><b>Ilość:</b> <span class="fr">stiklinė vandens, gabalas duonos, daug žmonių, mažai laiko</span>.</li>
+<li><b>Przeczenie i część całości:</b> <span class="fr">Neturiu brolio. Nėra laiko. Noriu kavos.</span></li>
+</ul>
+<div class="exs">
+Be cukraus, prašau. |  | Bez cukru, proszę.
+Einu iki stoties. |  | Idę na stację.
+Stiklinę vandens, prašau. |  | Szklankę wody, proszę.
+Neturiu sesers. |  | Nie mam siostry.
+Aš iš Ukrainos. |  | Jestem z Ukrainy.
+Turiu daug darbo. |  | Mam dużo pracy.
+</div>
+<div class="qz" data-title="Ćwiczenie 5. Dopełniacz">
+brolis → (kilm.) | brolio
+knyga → (kilm.) | knygos
+stotis → (kilm.) | stoties
+Einu iki ___ . (stotis) | stoties
+Be ___ . (cukrus) | cukraus
+Neturiu ___ . (brolis) | brolio
+daug ___ (žmonės) | žmonių
+Aš iš ___ . (Ukraina) | Ukrainos
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Celownik, narzędnik">
+<h2><span class="no">Rozdział 6</span>Celownik i narzędnik</h2>
+<div class="tw"><table>
+<tr><th>Rodzaj</th><th>Celownik (komu?)</th><th>Narzędnik (z kim?)</th></tr>
+<tr><td><span class="fr m">m -as / -is</span></td><td><b>-ui / -iui</b>: <span class="fr">broliui, draugui</span></td><td><b>-u / -iu</b>: <span class="fr">su broliu, su draugu</span></td></tr>
+<tr><td><span class="fr f">f -a</span></td><td><b>-ai</b>: <span class="fr">mamai, knygai</span></td><td><b>-a</b>: <span class="fr">su mama, su knyga</span></td></tr>
+<tr><td><span class="fr f">sesuo</span></td><td><span class="fr">seseriai</span></td><td><span class="fr">su seserimi</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Przyimki.</b><p><span class="fr">su + narzędnik</span> = „z”: <span class="fr">su draugu, su mama</span>. Transport — narzędnik <b>bez</b> przyimka: <span class="fr">važiuoju traukiniu, autobusu</span>. „Do osoby”: <span class="fr">pas + biernik</span>: <span class="fr">pas gydytoją</span>.</p></div>
+<div class="exs">
+Rašau broliui. |  | Piszę do brata.
+Duodu seseriai dovaną. |  | Daję siostrze prezent.
+Einu pas gydytoją. |  | Idę do lekarza.
+Gyvenu su mama. |  | Mieszkam z mamą.
+Kalbu su draugu. |  | Rozmawiam z przyjacielem.
+Važiuoju traukiniu. |  | Jadę pociągiem.
+</div>
+<div class="qz" data-title="Ćwiczenie 6. Celownik i narzędnik">
+brolis → (dat.) | broliui
+mama → (dat.) | mamai
+Rašau ___ . (brolis, dat.) | broliui
+Einu pas ___ . (gydytojas, acc.) | gydytoją
+Gyvenu su ___ . (mama, instr.) | mama
+Kalbu su ___ . (draugas, instr.) | draugu
+Važiuoju ___ . (traukinys, instr.) | traukiniu
+</div>
+</section>
+
+<section class="unit" id="u7" data-short="Zaimki w przypadkach">
+<h2><span class="no">Rozdział 7</span>Zaimki osobowe w przypadkach</h2>
+<div class="tw"><table>
+<tr><th>Mian.</th><th>Biernik</th><th>Celownik</th><th>Narzędnik</th></tr>
+<tr><td>aš</td><td>mane</td><td>man</td><td>su manimi</td></tr>
+<tr><td>tu</td><td>tave</td><td>tau</td><td>su tavimi</td></tr>
+<tr><td>jis</td><td>jį</td><td>jam</td><td>su juo</td></tr>
+<tr><td>ji</td><td>ją</td><td>jai</td><td>su ja</td></tr>
+<tr><td>mes</td><td>mus</td><td>mums</td><td>su mumis</td></tr>
+<tr><td>jūs</td><td>jus</td><td>jums</td><td>su jumis</td></tr>
+<tr><td>jie</td><td>juos</td><td>jiems</td><td>su jais</td></tr>
+</table></div>
+<div class="exs">
+Matau tave. |  | Widzę cię.
+Myliu tave. |  | Kocham cię.
+Pasakyk man. |  | Powiedz mi.
+Duodu tau knygą. |  | Daję ci książkę.
+Einu su tavimi. |  | Idę z tobą.
+Paskambinsiu jam rytoj. |  | Zadzwonię do niego jutro.
+Padedu jiems. |  | Pomagam im.
+</div>
+<div class="qz" data-title="Ćwiczenie 7. Zaimki">
+Matau ___ . (ciebie) | tave
+Pasakyk ___ . (mi) | man
+Duodu ___ knygą. (ci) | tau
+Einu su ___ . (z tobą) | tavimi
+Padedu ___ . (im) | jiems
+Paskambinsiu ___ . (jemu) | jam
+</div>
+</section>
+
+<section class="unit" id="u8" data-grp="Gramatyka" data-short="Stopniowanie">
+<h2><span class="no">Rozdział 8</span>Stopniowanie</h2>
+<div class="tw"><table>
+<tr><th>Stopień równy</th><th>Stopień wyższy</th><th>Stopień najwyższy</th></tr>
+<tr><td>naujas</td><td>naujesnis</td><td>naujausias</td></tr>
+<tr><td>senas</td><td>senesnis</td><td>seniausias</td></tr>
+<tr><td>didelis</td><td>didesnis</td><td>didžiausias</td></tr>
+<tr><td>mažas</td><td>mažesnis</td><td>mažiausias</td></tr>
+<tr><td>geras</td><td>geresnis</td><td>geriausias</td></tr>
+<tr><td>blogas</td><td>blogesnis</td><td>blogiausias</td></tr>
+</table></div>
+<div class="tip"><b class="t">Niż.</b> „Niż” = <span class="fr">nei</span> lub <span class="fr">už</span> + biernik: <span class="fr">didesnis nei Užhorodas</span>, <span class="fr">vyresnis už mane</span>.</div>
+<div class="exs">
+Vilnius didesnis nei Užhorodas. |  | Wilno jest większe niż Użhorod.
+Mano brolis vyresnis už mane. |  | Mój brat jest starszy ode mnie.
+Tai geriausia kava. |  | To najlepsza kawa.
+Šiandien šilčiau nei vakar. |  | Dziś jest cieplej niż wczoraj.
+</div>
+<div class="qz" data-title="Ćwiczenie 8. Stopniowanie">
+didelis → stopień wyższy: ___ | didesnis
+geras → stopień wyższy: ___ | geresnis
+mažas → stopień wyższy: ___ | mažesnis
+geras → stopień najwyższy: ___ | geriausias
+naujas → stopień najwyższy: ___ | naujausias
+Vilnius didesnis ___ Užhorodas. (niż) | nei
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Zdania złożone">
+<h2><span class="no">Rozdział 9</span>Zdania złożone</h2>
+<div class="tw"><table>
+<tr><th>Spójnik</th><th>Znaczenie</th><th>Przykład</th></tr>
+<tr><td>ir</td><td>i</td><td><span class="fr">Dirbu ir mokausi.</span></td></tr>
+<tr><td>bet</td><td>ale</td><td><span class="fr">Norėčiau eiti, bet neturiu laiko.</span></td></tr>
+<tr><td>nes</td><td>ponieważ</td><td><span class="fr">Lieku namie, nes sergu.</span></td></tr>
+<tr><td>todėl</td><td>dlatego</td><td><span class="fr">Sergu, todėl lieku namie.</span></td></tr>
+<tr><td>kad</td><td>że</td><td><span class="fr">Žinau, kad turi laiko.</span></td></tr>
+<tr><td>kai</td><td>kiedy</td><td><span class="fr">Kai ateisiu namo, paskambinsiu.</span></td></tr>
+<tr><td>jei</td><td>jeśli</td><td><span class="fr">Jei lyja, lieku namie.</span></td></tr>
+<tr><td>nors</td><td>chociaż</td><td><span class="fr">Einu, nors lyja.</span></td></tr>
+<tr><td>kuris / kuri</td><td>który (zdanie względne)</td><td><span class="fr">Vyras, kuris čia dirba, yra mano brolis.</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Kuris.</b> Słowo <span class="fr">kuris</span> zmienia się według rodzaju i przypadku, jak przymiotnik: <span class="fr">moteris, kuri dirba</span>; <span class="fr">knyga, kurią skaitau</span> (biernik).</div>
+<div class="exs">
+Lieku namie, nes sergu. |  | Zostaję w domu, bo jestem chory.
+Žinau, kad turi laiko. |  | Wiem, że masz czas.
+Kai ateisiu namo, paskambinsiu. |  | Kiedy wrócę do domu, zadzwonię.
+Jei lyja, lieku namie. |  | Jeśli pada deszcz, zostanę w domu.
+</div>
+<div class="qz" data-title="Ćwiczenie 9. Zdania złożone">
+Lieku namie, ___ sergu. (ponieważ) | nes
+Žinau, ___ turi laiko. (że) | kad
+___ ateisiu, paskambinsiu. (Kiedy) | Kai
+___ lyja, lieku namie. (Jeśli) | Jei
+Norėčiau eiti, ___ neturiu laiko. (ale) | bet
+Einu, ___ lyja. (chociaż) | nors
+</div>
+</section>
+
+<section class="unit" id="u10" data-short="Czas i czasowniki ruchu">
+<h2><span class="no">Rozdział 10</span>Określenia czasu i czasowniki ruchu</h2>
+<div class="tw"><table>
+<tr><th>Wyrażenie</th><th>Znaczenie</th><th>Przykład</th></tr>
+<tr><td>... valandą</td><td>o (godzinie)</td><td><span class="fr">aštuntą valandą</span></td></tr>
+<tr><td>dzień w bierniku</td><td>w (dzień tygodnia)</td><td><span class="fr">penktadienį</span></td></tr>
+<tr><td>nuo … iki</td><td>od … do</td><td><span class="fr">nuo devynių iki penkių</span></td></tr>
+<tr><td>prieš + bierń.</td><td>dlatego</td><td><span class="fr">prieš tris dienas</span></td></tr>
+<tr><td>po + dop.</td><td>za (np. za dwa dni)</td><td><span class="fr">po dviejų dienų</span></td></tr>
+<tr><td>kasdien</td><td>codziennie</td><td><span class="fr">kasdien dirbu</span></td></tr>
+</table></div>
+<p>Częstotliwość: <span class="fr">visada</span> (zawsze), <span class="fr">dažnai</span> (często), <span class="fr">kartais</span> (czasem), <span class="fr">retai</span> (rzadko), <span class="fr">niekada</span> (nigdy).</p>
+<div class="vocab">
+eiti |  | iść (pieszo) | einu
+vaikščioti |  | chodzić | vaikštau
+važiuoti |  | jechać | važiuoju
+atvykti |  | przyjechać | atvykstu
+grįžti |  | wracać | grįžtu
+ieškoti |  | szukać | ieškau
+rasti |  | znaleźć | randu
+</div>
+<div class="exs">
+Kasdien einu į darbą pėsčiomis. |  | Codziennie chodzę do pracy pieszo.
+Prieš tris dienas atvykau. |  | Przyjechałem trzy dni temu.
+Po dviejų dienų grįšiu. |  | Za dwa dni wrócę.
+Kartais einu į kiną. |  | Czasem chodzę do kina.
+Niekada negeriu kavos vakare. |  | Nigdy nie piję kawy wieczorem.
+</div>
+<div class="qz" data-title="Ćwiczenie 10. Czas">
+codziennie | kasdien
+nigdy | niekada
+czasem | kartais
+zawsze | visada
+trzy dni temu | prieš tris dienas
+za dwa dni | po dviejų dienų
+Od dziewiątej do piątej. | nuo devynių iki penkių
+W piątek. | penktadienį
+</div>
+</section>
+
+<section class="unit" id="u11" data-grp="Słownictwo i praktyka" data-short="Słownictwo tematyczne">
+<h2><span class="no">Rozdział 11</span>Słownictwo tematyczne</h2>
+<div class="vocab">
+#Podróże
+kelionė |  | podróż | f
+pasas |  | paszport | m
+bagažas |  | bagaż | m
+rezervacija |  | rezerwacja | f
+bilietas |  | bilet | m
+atostogos |  | urlop | pl
+viešbutis |  | hotel | m
+paplūdimys |  | plaża | m
+#Praca i nauka
+darbas |  | praca | m
+mokykla |  | szkoła | f
+universitetas |  | uniwersytet | m
+viršininkas |  | szef | m
+susitikimas |  | spotkanie | m
+atlyginimas |  | pensja | m
+egzaminas |  | egzamin | m
+#Uczucia
+linksmas |  | radosny | adj
+liūdnas |  | smutny | adj
+pavargęs |  | zmęczony | adj
+piktas |  | zły | adj
+laimingas |  | szczęśliwy | adj
+#Dom
+butas |  | mieszkanie | m
+raktas |  | klucz | m
+skalbimo mašina |  | pralka | f
+nuoma |  | wynajem | f
+kaimynas |  | sąsiad | m
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Dialogi">
+<h2><span class="no">Rozdział 12</span>Dialogi</h2>
+<div class="dg">
+#1. Savaitgalio planai (plany na weekend)
+Anna: Ką darysi šį savaitgalį? | Co robisz w ten weekend?
+Petras: Šeštadienį važiuojame į ekskursiją, o sekmadienį liksiu namie. | W sobotę jedziemy na wycieczkę, a w niedzielę zostaję w domu.
+Anna: Kur važiuojate? | Dokąd jedziecie?
+Petras: Į Trakus. Ar nori važiuoti su mumis? | Do Troków. Chcesz jechać z nami?
+Anna: Norėčiau, bet turiu dirbti. | Chciałabym, ale muszę pracować.
+#2. Pas gydytoją (jeszcze raz)
+Gydytojas: Kiek laiko jums skauda? | Jak długo pana/panią boli?
+Pacientas: Jau tris dienas. | Już trzy dni.
+Gydytojas: Ar vartojote kokių nors vaistų? | Czy brał pan/brała pani jakieś leki?
+Pacientas: Ne, nevartojau. | Nie.
+Gydytojas: Išrašysiu jums tablečių. | Wypiszę panu/pani tabletki.
+#3. Buto nuoma (wynajem mieszkania)
+Nuomininkas: Laba diena, ieškau buto. | Dzień dobry, szukam mieszkania.
+Agentas: Kiek kambarių jums reikia? | Ile pokoi pan/pani potrzebuje?
+Nuomininkas: Dviejų, arti centro. | Dwóch, bliżej centrum.
+Agentas: Šis kainuoja penkis šimtus eurų per mėnesį. | To kosztuje pięćset euro miesięcznie.
+Nuomininkas: Ar galiu pažiūrėti? | Czy mogę obejrzeć?
+</div>
+<div class="qz" data-title="Ćwiczenie 12. Zdania z dialogów">
+Co robisz w ten weekend? | Ką darysi šį savaitgalį
+Chciałabym, ale muszę pracować. | Norėčiau, bet turiu dirbti
+Już trzy dni. | Jau tris dienas
+Szukam mieszkania. | Ieškau buto
+Czy mogę obejrzeć? | Ar galiu pažiūrėti
+</div>
+</section>
+
+<section class="unit" id="u13" data-short="Czytanie">
+<h2><span class="no">Rozdział 13</span>Czytanie: trzy teksty</h2>
+<div class="dg">
+#1. Mano diena (mój dzień)
+Ryte keliuosi septintą valandą. | Rano wstaję o siódmej.
+Geriu kavą ir einu į darbą. | Piję kawę i idę do pracy.
+Penktą valandą grįžtu namo. | O piątej wracam do domu.
+Vakare skaitau arba žiūriu filmą. | Wieczorem czytam albo oglądam film.
+#2. Mano šeima (moja rodzina)
+Turiu mamą, tėtį ir brolį. | Mam mamę, tatę i brata.
+Mama dirba mokytoja. | Mama pracuje jako nauczycielka.
+Brolis mokosi Vilniuje. | Brat studiuje w Wilnie.
+Sekmadieniais visi valgome kartu. | W niedzielę wszyscy jemy razem.
+#3. Atostogos (urlop)
+Pernai buvome prie jūros. | W zeszłym roku byliśmy nad morzem.
+Oras buvo gražus. | Pogoda była ładna.
+Plaukiojome ir valgėme žuvį. | Pływaliśmy i jedliśmy ryby.
+Kitais metais važiuosime į kalnus. | W przyszłym roku jedziemy w góry.
+</div>
+<div class="qz" data-title="Ćwiczenie 13. Pytania do tekstów">
+Kiedy wstaję? (Mano diena) | septintą valandą
+Gdzie studiuje brat? | Vilniuje
+Gdzie byli w zeszłym roku? | prie jūros
+Co jedli na urlopie? | žuvį
+Dokąd jadą w przyszłym roku? | į kalnus
+</div>
+</section>
+
+<section class="unit" id="u14" data-short="Jak pisać listy">
+<h2><span class="no">Rozdział 14</span>Jak pisać listy</h2>
+<div class="tw"><table>
+<tr><th></th><th>Nieformalnie</th><th>Formalnie</th></tr>
+<tr><td>Start</td><td><span class="fr">Mielas Petrai, / Miela Anna,</span></td><td><span class="fr">Gerbiamas pone Novakai,</span></td></tr>
+<tr><td>Podziękowanie</td><td><span class="fr">Ačiū už laišką.</span></td><td><span class="fr">Dėkoju už atsakymą.</span></td></tr>
+<tr><td>Prośba</td><td><span class="fr">Ar gali atsiųsti man…?</span></td><td><span class="fr">Prašau atsiųsti man…</span></td></tr>
+<tr><td>Zakończenie</td><td><span class="fr">Linkėjimai, Anna</span></td><td><span class="fr">Pagarbiai, Anna Kovalenko</span></td></tr>
+</table></div>
+<div class="dg">
+#Pavyzdys (przykład listu do przyjaciela)
+Mielas Petrai, | Drogi Petrze,
+ačiū už tavo laišką. Kaip sekasi? | dziękuję za twój list. Co słychać?
+Man viskas gerai. Kitą savaitę atvyksiu į Vilnių. | U mnie wszystko dobrze. W przyszłym tygodniu przyjadę do Wilna.
+Ar būsi laisvas penktadienį? | Czy będziesz wolny w piątek?
+Linkėjimai, | Pozdrawiam,
+Anna | Anna
+</div>
+<div class="qz" data-title="Ćwiczenie 14. Listy">
+Drogi (m) | Mielas
+Z poważaniem | Pagarbiai
+Dziękuję za list. | Ačiū už laišką
+Pozdrawiam | Linkėjimai
+</div>
+</section>
+
+<section class="unit" id="u15" data-short="Ściąga, plan, test">
+<h2><span class="no">Rozdział 15</span>Ściąga, plan i test</h2>
+<div class="tw"><table>
+<tr><th>Temat</th><th>Zapamiętaj</th></tr>
+<tr><td>Przeszły</td><td>-au, -ai, -o, -ome, -ote, -o (<span class="fr">dirbau</span>)</td></tr>
+<tr><td>Przyszły</td><td>-siu, -si, -s, -sime, -site, -s (<span class="fr">dirbsiu</span>)</td></tr>
+<tr><td>Przypuszczający</td><td>norėčiau, norėtum, norėtų…</td></tr>
+<tr><td>Dopełniacz</td><td>m -o; f -os, -ės, -ies</td></tr>
+<tr><td>Celownik</td><td>m -ui; f -ai</td></tr>
+<tr><td>Narzędnik</td><td>su + m -u; f -a</td></tr>
+<tr><td>Stopniowanie</td><td>-esnis, -iausias; nei, už</td></tr>
+</table></div>
+<h3>Plan na 8 tygodni</h3>
+<div class="tw"><table>
+<tr><th>Tydzień</th><th>Rozdziały</th><th>Cel</th></tr>
+<tr><td>1</td><td>1</td><td>Czas przeszły</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Czas przyszły, tryb przypuszczający</td></tr>
+<tr><td>3</td><td>4</td><td>Aspekt czasownika</td></tr>
+<tr><td>4</td><td>5, 6</td><td>Dopełniacz, celownik, narzędnik</td></tr>
+<tr><td>5</td><td>7, 8</td><td>Zaimki, stopniowanie</td></tr>
+<tr><td>6</td><td>9, 10</td><td>Zdania złożone, czas</td></tr>
+<tr><td>7</td><td>11–13</td><td>Słowa, dialogi, czytanie</td></tr>
+<tr><td>8</td><td>14, 15</td><td>List + powtórka</td></tr>
+</table></div>
+<h3>Test końcowy</h3>
+<div class="qz" data-title="Test A2">
+Vakar ___ namie. (aš, būti) | buvau
+Rytoj ___ . (aš, dirbti) | dirbsiu
+___ kavos. (Poprosiłbym) | Norėčiau
+Einu iki ___ . (stotis) | stoties
+Einu su ___ . (tu, instr.) | tavimi
+didelis → stopień wyższy: ___ | didesnis
+Matau ___ . (ciebie) | tave
+prieš tris ___ (dni) | dienas
+Žinau, ___ turi laiko. | kad
+___ ateisiu, paskambinsiu. (Kiedy) | Kai
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Opowiedzieć o przeszłości</label></li>
+<li><label><input type="checkbox"> Opowiedzieć o planach</label></li>
+<li><label><input type="checkbox"> Grzecznie poprosić</label></li>
+<li><label><input type="checkbox"> Używać dopełniacza, celownika, narzędnika</label></li>
+<li><label><input type="checkbox"> Porównywać i budować zdania złożone</label></li>
+<li><label><input type="checkbox"> Napisać krótki list</label></li>
+</ul>
+</section>
+
+<footer>Samodzielny szkielet kursu A2. Uzupełnij go prawdziwym słuchaniem: podcasty, filmy z napisami, rozmowy z native speakerem.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Lietuvių</th><th>Wymowa</th><th>Po polsku</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Ćwiczenie';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Odpowiedź: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Sprawdź</button><button type="button" data-act="show">Pokaż odpowiedzi</button><button type="button" data-act="reset">Od nowa</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' z '+tot+(ok===tot?'. Wszystko dobrze.':'. Sprawdź pisownię (znaki diakrytyczne!).');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^lt[-_]LT/i.test(x.lang))||v.find(x=>/^lt/i.test(x.lang))||('lt'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='lt-LT';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('lt4pl2_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('lt4pl2_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('lt4pl2_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('lt4pl2_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='lt4pl2_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Wyniki: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">do rozdziału</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Pokazano pierwsze 40.</div>';
+    } else h+='<div class="mini">Nic nie znaleziono. Wyszukiwanie obejmuje słowa języka docelowego i polskie słowa w tabelach słownictwa.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

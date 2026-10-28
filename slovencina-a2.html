@@ -1362,7 +1362,8 @@ $$('.dg').forEach(el=>{
 });
 
 /* ---------- вправи ---------- */
-const norm=s=>s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
 $$('.qz').forEach((el,qi)=>{
   const title=el.dataset.title||'Вправа';
   let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
@@ -1404,11 +1405,11 @@ document.addEventListener('keydown',e=>{
 
 /* ---------- озвучка ---------- */
 let frVoice=null;
-function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^sk[-_]SK/i.test(x.lang))||v.find(x=>/^sk/i.test(x.lang))||null;}catch(e){}}
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^sk[-_]SK/i.test(x.lang))||v.find(x=>/^sk/i.test(x.lang))||('sk'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
 if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
 function say(t){
   if(!('speechSynthesis' in window))return;
-  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='sk-SK';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='sk-SK';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
 }
 document.addEventListener('click',e=>{
   const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;

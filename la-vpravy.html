@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latina: вправи</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="На головну">&larr;</a>
+  <button id="menuBtn" aria-label="Зміст">Зміст</button>
+  <span class="brand">Latina: вправи</span>
+  <input id="q" type="search" placeholder="Знайти слово" aria-label="Знайти слово">
+  <button id="uaBtn" title="Показати чи сховати переклади прикладів і діалогів">Переклад</button>
+  <button id="thBtn" title="Світла або темна тема">Тема</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Зміст"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Вправи: латинська</h1>
+  <p>Прості тести за темами A1 і A2. Пиши відповідь у порожнє поле й натискай «Перевірити». Діакритика важлива. «Показати відповіді» — після спроби.</p>
+  <p class="crumbs"><a href="index.html">&larr; Головна</a><a href="la-a1.html">Курс A1</a><a href="la-a2.html">Курс A2</a></p>
+</div>
+<section class="unit" id="e1" data-grp="Вправи A1" data-short="A1 · 1 Вимова й абетка">
+<h2><span class="no">A1 · 1</span>Вимова й абетка</h2>
+<div class="qz" data-title="A1 · 1.1. Прочитай і впиши">
+[сальве] — привітання | salve
+[вале] — прощання | vale
+[ґратіас] — подяка | gratias
+[квайсо] — прохання | quaeso
+[аква] — вода | aqua
+[віта] — життя | vita
+[рекс] — цар | rex
+[роса] — квітка | rosa
+</div>
+<div class="qz" data-title="A1 · 1.2. Переклад фраз">
+Вітаю! | Salve!
+Бувай! | Vale!
+Дякую тобі. | Gratias tibi ago.
+Не розумію. | Non intellego.
+Трохи знаю латину. | Parum Latine scio.
+Хліб і воду, будь ласка. | Panem et aquam, quaeso.
+</div>
+</section>
+<section class="unit" id="e2" data-short="A1 · 2 Привітання й знайомство">
+<h2><span class="no">A1 · 2</span>Привітання й знайомство</h2>
+<div class="qz" data-title="A1 · 2.1. Привітання">
+Привіт! | Salve
+Дякую! | Gratias
+Будь ласка | Quaeso
+Вибач! | Ignosce
+Бувай! | Vale
+Мене звати Михайло. | Mihi nomen est Mykhailo
+Я не розумію. | Non intellego
+Звідки ти? | Unde es
+Я з України. | Ex Ucraina sum
+Доброго ранку! | Bonum mane
+</div>
+<div class="qz" data-title="A1 · 2.2. Слова">
+привіт (одному) | Salve
+привіт (багатьом) | Salvete
+вітаю | Ave
+бувай (одному) | Vale
+бувайте | Valete
+доброго ранку | Bonum mane
+добрий вечір | Bonum vesperum
+на добраніч | Bonam noctem
+дякую | Gratias
+будь ласка | Quaeso
+</div>
+<div class="qz" data-title="A1 · 2.3. Слова">
+нема за що | Nihil est
+вибач | Ignosce
+так | Ita
+ні | Non
+можливо | Fortasse
+</div>
+<div class="qz" data-title="A1 · 2.4. Переклад фраз">
+Як тебе звати? | Quod nomen tibi est?
+Радий з тобою познайомитися. | Gaudeo te cognoscere.
+Мені тридцять років. | Triginta annos habeo.
+Живу в Ужгороді. | Uzhhorodi habito.
+Я вчитель. | Magister sum.
+Ти говориш англійською? | Loquerisne Anglice?
+Повтори, будь ласка. | Iterum dic, quaeso.
+</div>
+</section>
+<section class="unit" id="e3" data-short="A1 · 3 Іменники: відмінки, рід, множина">
+<h2><span class="no">A1 · 3</span>Іменники: відмінки, рід, множина</h2>
+<div class="qz" data-title="A1 · 3.1. Відмінки">
+puella → (родовий одн.) | puellae
+puella → (знахідний одн.) | puellam
+dominus → (родовий одн.) | domini
+dominus → (знахідний одн.) | dominum
+dominus → (кличний одн.) | domine
+puella → (називний множ.) | puellae
+bellum → (родовий одн.) | belli
+bellum → (називний множ.) | bella
+</div>
+<div class="qz" data-title="A1 · 3.2. Слова">
+родина | familia
+мати | mater
+батько | pater
+брат | frater
+сестра | soror
+син | filius
+дочка | filia
+дідусь | avus
+бабуся | avia
+чоловік | maritus
+</div>
+<div class="qz" data-title="A1 · 3.3. Слова">
+дружина | uxor
+дитина | infans
+дім | domus
+кімната | cubiculum
+кухня | culina
+стіл | mensa
+стілець | sella
+вікно | fenestra
+двері | ianua
+ліжко | lectus
+</div>
+</section>
+<section class="unit" id="e4" data-short="A1 · 4 Sum, habeo, amo">
+<h2><span class="no">A1 · 4</span>Дієслова sum (бути), habeo (мати), amo (любити)</h2>
+<div class="qz" data-title="A1 · 4.1. Відмінювання">
+Ego ___ discipulus. (sum) | sum
+Tu ___ fessus. (sum) | es
+Nos ___ domi. (sum) | sumus
+Ei ___ in foro. (sum) | sunt
+Ego ___ fratrem. (habeo) | habeo
+Tu ___ tempus. (habeo) | habes
+Ille ___ librum. (lego) | legit
+Ego ___ Latine. (знаю) | scio
+Nos ___ ad scholam. (eo) | imus
+Ego ___ aquam. (bibo) | bibo
+Ei ___ Romae. (vivo) | vivunt
+Vos ___ multum. (laboro) | laboratis
+</div>
+<div class="qz" data-title="A1 · 4.2. Слова">
+працювати | laborare
+жити | habitare
+читати | legere
+писати | scribere
+вчити | discere
+їсти | edere
+пити | bibere
+спати | dormire
+купувати | emere
+розуміти | intellegere
+</div>
+<div class="qz" data-title="A1 · 4.3. Переклад фраз">
+Я учень. | Discipulus sum.
+Ти втомлений. | Fessus es.
+Ми вдома. | Domi sumus.
+У мене є брат. | Fratrem habeo.
+Маєш час? | Habesne tempus?
+Не маю часу. | Tempus non habeo.
+</div>
+</section>
+<section class="unit" id="e5" data-short="A1 · 5 Питання, порядок слів">
+<h2><span class="no">A1 · 5</span>Питання, заперечення, порядок слів</h2>
+<div class="qz" data-title="A1 · 5.1. Мова в дії">
+___ est? (хто) | Quis
+___ facis? (що) | Quid
+___ habitas? (де) | Ubi
+Ego ___ habeo tempus. (Заперечення) | non
+___ scholam eo. (до) | Ad
+Puella ___ legit. (книжку) | librum
+puella ___ (добра: bonus) | bona
+liber ___ (мій) | meus
+</div>
+<div class="qz" data-title="A1 · 5.2. Слова">
+хто | quis
+що | quid
+де | ubi
+куди | quo
+звідки | unde
+коли | quando
+як | quomodo
+чому | cur
+скільки (рахунок) | quot
+скільки (кількість) | quantum
+</div>
+<div class="qz" data-title="A1 · 5.3. Переклад фраз">
+Хто це? | Quis est?
+Що ти робиш? | Quid facis?
+Де ти живеш? | Ubi habitas?
+Куди ти йдеш? | Quo is?
+Скільки це коштує? | Quanti constat?
+Як тебе звати? | Quod nomen tibi est?
+Дівчина читає книжку. | Puella librum legit.
+Сьогодні багато працюю. | Hodie multum laboro.
+</div>
+<div class="qz" data-title="A1 · 5.4. Переклад фраз">
+Бачу собаку. | Canem video.
+Книжка на столі. | Liber in mensa est.
+Я в школі. | In schola sum.
+Іду до школи. | Ad scholam eo.
+Нікого не бачу. | Neminem video.
+</div>
+</section>
+<section class="unit" id="e6" data-short="A1 · 6 Числа, час, дати">
+<h2><span class="no">A1 · 6</span>Числа, час і дати</h2>
+<div class="qz" data-title="A1 · 6.1. Числа й дні">
+2 | duo
+3 | tres
+5 | quinque
+10 | decem
+20 | viginti
+100 | centum
+понеділок | dies Lunae
+п'ятниця | dies Veneris
+неділя | dies Solis
+жовтень | October
+завтра | cras
+вчора | heri
+</div>
+<div class="qz" data-title="A1 · 6.2. Слова">
+вівторок | dies Martis
+середа | dies Mercurii
+четвер | dies Iovis
+субота | dies Saturni
+січень | Ianuarius
+лютий | Februarius
+березень | Martius
+квітень | Aprilis
+травень | Maius
+червень | Iunius
+</div>
+<div class="qz" data-title="A1 · 6.3. Слова">
+липень | Iulius
+серпень | Augustus
+вересень | September
+листопад | November
+грудень | December
+сьогодні | hodie
+вранці | mane
+ввечері | vespere
+зараз | nunc
+</div>
+<div class="qz" data-title="A1 · 6.4. Переклад фраз">
+Котра година? | Quota hora est?
+П'ята година. | Hora quinta est.
+О котрій? | Qua hora?
+О восьмій. | Hora octava.
+Сьогодні понеділок. | Hodie dies Lunae est.
+У п'ятницю я вільний. | Die Veneris liber sum.
+</div>
+</section>
+<section class="unit" id="e7" data-short="A1 · 7 Їжа, місто, покупки">
+<h2><span class="no">A1 · 7</span>Їжа, місто й покупки</h2>
+<div class="qz" data-title="A1 · 7.1. Слова">
+хліб | panis
+вода | aqua
+сир | caseus
+вино | vinum
+місто | urbs
+дорога | via
+храм | templum
+гроші | pecunia
+дорогий | carus
+дешевий | vilis
+Скільки коштує? | Quanti constat
+Хочу воду. | Aquam volo
+</div>
+<div class="qz" data-title="A1 · 7.2. Слова">
+молоко | lac
+пиво | cervisia
+м'ясо | caro
+риба | piscis
+фрукти | fructus
+яблуко | malum
+яйця | ova
+сіль | sal
+мед | mel
+олія | oleum
+</div>
+<div class="qz" data-title="A1 · 7.3. Слова">
+площа | forum
+зупинка | statio
+музей | museum
+крамниця | taberna
+аптека | pharmacopolium
+лікарня | nosocomium
+скільки коштує | | quanti constat?
+монета | nummus
+</div>
+<div class="qz" data-title="A1 · 7.4. Переклад фраз">
+Хліб і вино, будь ласка. | Panem et vinum, quaeso.
+Хочу заплатити. | Pecuniam solvere volo.
+Скільки коштує хліб? | Quanti panis constat?
+Це занадто дорого. | Nimis carum est.
+Де зупинка? | Ubi est statio?
+Хочу негазовану воду. | Aquam sine bullis volo.
+</div>
+</section>
+<section class="unit" id="e8" data-short="A1 · 8 Діалоги">
+<h2><span class="no">A1 · 8</span>Діалоги на щодень</h2>
+<div class="qz" data-title="A1 · 8.1. Фрази з діалогів">
+Що бажаєш? | Quid vis
+Хліб і вино, будь ласка. | Panem et vinum, quaeso
+Де форум? | Ubi est forum
+П'ять хвилин пішки. | Quinque minuta pedibus
+Нема за що. | Nihil est
+Мене звати Анна. | Mihi nomen est Anna
+Ще вчуся. | Adhuc disco
+Скільки коштує? | Quanti constat
+</div>
+</section>
+<section class="unit" id="e9" data-short="A1 · 9 Шпаргалка, план, тест">
+<h2><span class="no">A1 · 9</span>Шпаргалка, план і тест</h2>
+<div class="qz" data-title="A1 · 9.1. A1">
+Ego ___ discipulus. (sum) | sum
+Tu ___ tempus. (habeo) | habes
+Ego ___ habeo tempus. (Заперечення) | non
+puella → (знахідний одн.) | puellam
+dominus → (родовий одн.) | domini
+___ est? (хто) | Quis
+___ constat? (скільки) | Quanti
+Nos ___ domi. (sum) | sumus
+5 | quinque
+п'ятниця | dies Veneris
+</div>
+</section>
+
+<section class="unit" id="e10" data-grp="Вправи A1 (ще)" data-short="A1 · 10 Більше слів">
+<h2><span class="no">A1 · 10</span>Більше слів: професії, тіло, одяг, природа, подорож</h2>
+<div class="qz" data-title="A1 · 10.1. Нові слова">
+лікар | medicus
+вчитель | magister
+голова | caput
+рука | manus
+нога | pes
+дощ | pluvia
+сніг | nix
+корабель | navis
+кінь | equus
+дорога | via
+порт | portus
+Іде дощ. | Pluit
+У мене болить голова. | Caput mihi dolet
+Холодно. | Frigus est
+</div>
+<div class="qz" data-title="A1 · 10.2. Слова">
+землероб | agricola
+моряк | nauta
+воїн | miles
+писар | scriba
+кухар | coquus
+учень | discipulus
+адвокат | advocatus
+купець | mercator
+око | oculus
+вухо | auris
+</div>
+<div class="qz" data-title="A1 · 10.3. Слова">
+ніс | nasus
+рот | os
+живіт | venter
+спина | tergum
+серце | cor
+гарячка | febris
+ліки | medicamentum
+туніка, сорочка | tunica
+тога | toga
+взуття | calceus
+</div>
+<div class="qz" data-title="A1 · 10.4. Слова">
+плащ | pallium
+сукня (жін.) | stola
+шапка | pileus
+погода | tempestas
+сонце | sol
+вітер | ventus
+колісниця, віз | currus
+подорож, шлях | iter
+міст | pons
+брама | porta
+</div>
+<div class="qz" data-title="A1 · 10.5. Слова">
+атріум, зала | atrium
+лазня | balneum
+кухня | culina
+сад | hortus
+розповідь, п'єса | fabula
+музика | musica
+гра, школа | ludus
+готувати | coquere
+подорожувати морем | navigare
+</div>
+<div class="qz" data-title="A1 · 10.6. Переклад фраз">
+Я вчитель. | Magister sum.
+Лікар працює в місті. | Medicus in urbe laborat.
+Де порт? | Ubi est portus?
+Люблю готувати. | Coquere amo.
+Бачу коня в саду. | Equum in horto video.
+</div>
+</section>
+<section class="unit" id="e11" data-short="A1 · 11 Модальні, наказовий">
+<h2><span class="no">A1 · 11</span>Бажання, можливість і наказовий спосіб</h2>
+<div class="qz" data-title="A1 · 11.1. Модальні й наказовий">
+Ego ___ laborare. (мушу) | debeo
+___ bibere vinum. (Я хочу) | Volo
+Nos ___ intrare. (можемо) | possumus
+Is ___ vinum. (хоче) | vult
+___ coquere? (Ти вмієш) | Scisne
+___ aquam. (Я б хотів) | Velim
+legere → (ти!) ___ | lege
+audire → (ти!) ___ | audi
+legere → (ви!) ___ | legite
+___ fumare! (Не) | Noli
+Ego ___ intrare. (можу) | possum
+</div>
+<div class="qz" data-title="A1 · 11.2. Переклад фраз">
+Можна ввійти? | Possum intrare?
+Хочу пити вино. | Volo bibere vinum.
+Сьогодні мушу працювати. | Hodie laborare debeo.
+Зараз не можу говорити. | Nunc loqui non possum.
+Вмієш готувати? | Scisne coquere?
+Тут не можна курити. | Hic fumare non licet.
+Я б хотів води, будь ласка. | Velim aquam, quaeso.
+Зачекай хвилинку! | Mane paulum!
+</div>
+<div class="qz" data-title="A1 · 11.3. Переклад фраз">
+Підійди сюди, будь ласка. | Veni huc, quaeso.
+Говори повільніше, будь ласка. | Loquere lentius, quaeso.
+Не кури тут! | Noli hic fumare!
+Будь обережний! | Esto cautus!
+</div>
+</section>
+<section class="unit" id="e12" data-short="A1 · 12 Більше діалогів">
+<h2><span class="no">A1 · 12</span>Ще чотири діалоги</h2>
+<div class="qz" data-title="A1 · 12.1. Фрази з діалогів">
+Що з тобою? | Quid tibi accidit
+У мене болить голова. | Caput mihi dolet
+Шукаю плащ. | Pallium quaero
+Скільки коштує? | Quanti constat
+Я забронював кімнату. | Cubiculum reservavi
+Є гаряча вода? | Estne aqua calida
+Підемо в театр? | Eamus ad theatrum
+З радістю! | Libenter
+</div>
+</section>
+<section class="unit" id="a1" data-grp="Вправи A2" data-short="A2 · 1 Як користуватися курсом">
+<h2><span class="no">A2 · 1</span>Як користуватися курсом</h2>
+<div class="qz" data-title="A2 · 1.1. Повторення A1">
+Ego ___ discipulus. (sum) | sum
+Tu ___ fratrem. (habeo) | habes
+Nos ___ Latine. (disco) | discimus
+Ego ___ librum. (lego) | lego
+puella → (знахідний) | puellam
+dominus → (родовий) | domini
+___ est? (хто) | Quis
+Ego ___ habeo tempus. (Заперечення) | non
+</div>
+</section>
+<section class="unit" id="a2" data-short="A2 · 2 Минулий час">
+<h2><span class="no">A2 · 2</span>Минулий час</h2>
+<div class="qz" data-title="A2 · 2.1. Минулий час">
+Heri domi ___ . (sum, ego) | fui
+Ille librum ___ . (scribo, перфект) | scripsit
+Nos ad theatrum ___ . (eo) | ivimus
+Ei Romae ___ . (sum) | fuerunt
+Ego ___ . (video) | vidi
+Tu tempus non ___ . (habeo) | habuisti
+Ego ___ . (laboro) | laboravi
+Nos eum ___ . (amo, перфект) | amavimus
+</div>
+<div class="qz" data-title="A2 · 2.2. Переклад фраз">
+Вчора я був (була) вдома. | Heri domi fui.
+Минулого тижня ми були в Римі. | Proxima hebdomade Romae fuimus.
+Я прочитав книжку. | Librum legi.
+Що ти зробив? | Quid fecisti?
+Я не мав часу. | Tempus non habui.
+Ми ходили до театру. | Ad theatrum ivimus.
+Я бачив його на форумі. | Eum in foro vidi.
+Прийшов, побачив, переміг. | Veni, vidi, vici.
+</div>
+</section>
+<section class="unit" id="a3" data-short="A2 · 3 Майбутній час">
+<h2><span class="no">A2 · 3</span>Майбутній час</h2>
+<div class="qz" data-title="A2 · 3.1. Майбутнє">
+Cras ___ . (laboro, ego) | laborabo
+Tu ___ . (laboro) | laborabis
+Nos ad mare ___ . (eo) | ibimus
+Ego domi ___ . (sum) | ero
+Quid ___ ? (facio, tu) | facies
+Ei domi ___ . (habeo) | habebunt
+</div>
+<div class="qz" data-title="A2 · 3.2. Переклад фраз">
+Завтра працюватиму. | Cras laborabo.
+Що робитимеш у суботу? | Quid dies Saturni facies?
+Наступного тижня поїдемо до моря. | Proxima hebdomade ad mare ibimus.
+Зателефоную тобі сьогодні ввечері. | Te hac nocte vocabo.
+Куплю нову книжку. | Novum librum emam.
+Ми не їстимемо вдома. | Domi non edemus.
+</div>
+</section>
+<section class="unit" id="a4" data-short="A2 · 4 Бажальний спосіб">
+<h2><span class="no">A2 · 4</span>Бажальний спосіб і ввічливі прохання</h2>
+<div class="qz" data-title="A2 · 4.1. Бажальний спосіб">
+___ aquam. (Я б хотів) | Velim
+___ me adiuvare? (Чи можеш) | Potesne
+Si tempus ___ , venirem. (habeo) | haberem
+___ adesses! (Якби) | Utinam
+Nos ___ viatores. (essemus) | essemus
+</div>
+<div class="qz" data-title="A2 · 4.2. Переклад фраз">
+Я б хотів води. | Velim aquam.
+Я б хотів відвідати Рим. | Vellem Romam visitare.
+Чи не міг би ти мені допомогти? | Potesne me adiuvare?
+Якби я мав час, прийшов би. | Si tempus haberem, venirem.
+Я хотів би забронювати стіл. | Mensam reservare velim.
+Якби ти був тут! | Utinam adesses!
+</div>
+</section>
+<section class="unit" id="a5" data-short="A2 · 5 Третя, четверта, п'ята відміни">
+<h2><span class="no">A2 · 5</span>Інші відміни іменників</h2>
+<div class="qz" data-title="A2 · 5.1. Відміни">
+rex → (родовий) | regis
+rex → (знахідний) | regem
+rex → (множина, називний) | reges
+nomen → (родовий) | nominis
+nomen → (множина, називний) | nomina
+manus → (знахідний) | manum
+dies → (родовий) | diei
+urbs → (родовий) | urbis
+</div>
+<div class="qz" data-title="A2 · 5.2. Слова">
+цар | rex, regis
+громадянин | civis, civis
+воїн | miles, militis
+людина | homo, hominis
+батько | pater, patris
+місто | urbs, urbis
+ім'я | nomen, nominis
+час | tempus, temporis
+рука | manus, manus
+день | dies, diei
+</div>
+<div class="qz" data-title="A2 · 5.3. Переклад фраз">
+Цар бачить місто. | Rex urbem videt.
+Ім'я царя — Марк. | Nomen regis est Marcus.
+День довгий. | Dies longus est.
+Мию свої руки. | Manus meas lavo.
+Часи змінюються. | Tempora mutantur.
+Громадяни на форумі. | Cives in foro sunt.
+</div>
+</section>
+<section class="unit" id="a6" data-short="A2 · 6 Присвійність, родовий">
+<h2><span class="no">A2 · 6</span>Присвійність: родовий відмінок</h2>
+<div class="qz" data-title="A2 · 6.1. Присвійність">
+liber ___ mei (frater → родовий) | fratris
+domus ___ (Anna → родовий) | Annae
+___ liber est? (Чий) | Cuius
+nomen ___ (magister → родовий) | magistri
+centrum ___ (urbs → родовий) | urbis
+casa ___ (наш) | nostra
+currus ___ (наш) | noster
+___ est frater. (У мене) | Mihi
+</div>
+<div class="qz" data-title="A2 · 6.2. Переклад фраз">
+Це книжка мого брата. | Hic est liber fratris mei.
+Це стілець мами. | Haec est sella matris.
+Дім Анни великий. | Domus Annae magna est.
+Ім'я вчителя — Марк. | Nomen magistri Marcus est.
+Центр міста близько. | Centrum urbis prope est.
+Чиї це книжки? | Cuius libri sunt?
+У мене є брат. | Mihi est frater.
+</div>
+</section>
+<section class="unit" id="a7" data-short="A2 · 7 Прийменники">
+<h2><span class="no">A2 · 7</span>Прийменники</h2>
+<div class="qz" data-title="A2 · 7.1. Прийменники">
+___ medicum eo. (до) | Ad
+___ amico eo. (з) | Cum
+Vinum ___ aqua. (без) | sine
+___ prandium dormio. (Після) | Post
+___ Ucraina sum. (З) | Ex
+In ___ sum. (urbs, де?) | urbe
+Ad ___ eo. (urbs, куди?) | urbem
+___ amicos. (Між) | Inter
+</div>
+<div class="qz" data-title="A2 · 7.2. Переклад фраз">
+Іду до лікаря. | Ad medicum eo.
+Я в лікаря. | Apud medicum sum.
+Вино без води. | Vinum sine aqua.
+Після обіду сплю. | Post prandium dormio.
+Я з України. | Ex Ucraina sum.
+Іду з другом. | Cum amico eo.
+</div>
+</section>
+<section class="unit" id="a8" data-short="A2 · 8 Особові займенники">
+<h2><span class="no">A2 · 8</span>Особові займенники</h2>
+<div class="qz" data-title="A2 · 8.1. Займенники">
+(Бачу тебе) ___ video. | Te
+(Ти мене знаєш) Cognoscisne ___ ? | me
+(Не розумію цього) ___ non intellego. | Id
+(Дай мені) Da ___ . | mihi
+(З тобою) ___ eo. | Tecum
+(Його) Video ___ . | eum
+(Її) Video ___ . | eam
+(Тобі) Hoc ___ est. | tibi
+</div>
+<div class="qz" data-title="A2 · 8.2. Переклад фраз">
+Бачу тебе. | Te video.
+Ти мене знаєш? | Cognoscisne me?
+Я цього не розумію. | Id non intellego.
+Ти нам допомагаєш? | Adiuvasne nos?
+Іду з тобою. | Tecum eo.
+Це для тебе. | Hoc tibi est.
+Я це бачив. | Id vidi.
+Дай мені води, будь ласка. | Da mihi aquam, quaeso.
+</div>
+</section>
+<section class="unit" id="a9" data-short="A2 · 9 Порівняння">
+<h2><span class="no">A2 · 9</span>Порівняння</h2>
+<div class="qz" data-title="A2 · 9.1. Порівняння">
+bonus → кращий: ___ | melior
+malus → гірший: ___ | peior
+magnus → більший: ___ | maior
+Roma maior est ___ Capua. (ніж) | quam
+Roma est urbs ___ . (найбільша: maximus) | maxima
+altus → вищий: ___ | altior
+</div>
+<div class="qz" data-title="A2 · 9.2. Переклад фраз">
+Рим більший за Капую. | Roma maior est quam Capua.
+Він вищий за мене. | Is altior me est.
+Це краще. | Hoc melius est.
+Рим — найбільше місто. | Roma est urbs maxima.
+Говори повільніше, будь ласка. | Lentius loquere, quaeso.
+Так само гарно, як Афіни. | Tam pulchra quam Athenae.
+</div>
+</section>
+<section class="unit" id="a10" data-short="A2 · 10 Складні речення">
+<h2><span class="no">A2 · 10</span>Складні речення</h2>
+<div class="qz" data-title="A2 · 10.1. Складні речення">
+Non eo, ___ pluit. (тому що) | quia
+___ tempus habes, veni! (Якщо) | Si
+Pluit, ___ domi maneo. (тому) | itaque
+___ fessus sum, laboro. (Хоч) | Quamquam
+Credo eum domi ___ . (бути) | esse
+___ veniam, te vocabo. (Коли) | Cum
+</div>
+<div class="qz" data-title="A2 · 10.2. Слова">
+що; тому що | quod
+тому що | quia
+але | sed
+і | et
+або | aut
+якщо | si
+коли | cum
+поки | dum
+хоча | quamquam
+отже | itaque
+</div>
+<div class="qz" data-title="A2 · 10.3. Переклад фраз">
+Вірю, що він удома. | Credo eum domi esse.
+Знаю, що ти говориш латиною. | Scio te Latine loqui.
+Не йду, бо йде дощ. | Non eo, quia pluit.
+Іде дощ, тому лишаюся вдома. | Pluit, itaque domi maneo.
+Якщо маєш час, приходь! | Si tempus habes, veni!
+Коли прийду, зателефоную. | Cum veniam, te vocabo.
+Хоч я втомлений, працюю. | Quamquam fessus sum, laboro.
+Хочу, щоб ти прийшов. | Volo te venire.
+</div>
+</section>
+<section class="unit" id="a11" data-short="A2 · 11 Час і дієслова руху">
+<h2><span class="no">A2 · 11</span>Час і дієслова руху</h2>
+<div class="qz" data-title="A2 · 11.1. Час і рух">
+3-тя година → hora ___ | tertia
+5-та година → hora ___ | quinta
+6-та година → hora ___ | sexta
+Navis hora octava ___ . (solvit) | solvit
+Ego domum ___ . (redeo) | redeo
+Ego ___ habito. (у Римі) | Romae
+Ego ___ eo. (до Рима) | Romam
+___ exeo. (З дому) | Domo
+</div>
+<div class="qz" data-title="A2 · 11.2. Слова">
+приходити | venire
+йти | ire
+гуляти пішки | ambulare
+пливти | navigare
+бігти | currere
+прибувати | pervenire
+входити | intrare
+виходити | exire
+повертатися | redire
+летіти | volare
+</div>
+<div class="qz" data-title="A2 · 11.3. Переклад фраз">
+Корабель відпливає о восьмій. | Navis hora octava solvit.
+Прибуду до Рима о десятій. | Romam hora decima perveniam.
+Виходжу з дому о восьмій. | Domo hora octava exeo.
+Повертаюсь додому о п'ятій. | Domum hora quinta redeo.
+Заходжу в крамницю. | In tabernam intro.
+Як дістатися до форуму? | Quomodo ad forum perveniam?
+Живу в Римі. | Romae habito.
+</div>
+</section>
+<section class="unit" id="a12" data-short="A2 · 12 Словник за темами">
+<h2><span class="no">A2 · 12</span>Словник за темами</h2>
+<div class="qz" data-title="A2 · 12.1. Слова">
+подорож | iter
+квиток | tessera
+вантаж, багаж | sarcina
+корабель | navis
+заїзд | deversorium
+берег | litus
+море | mare
+школа | schola
+вчитель | magister
+книга | liber
+</div>
+<div class="qz" data-title="A2 · 12.2. Слова">
+робота | opus
+справа | negotium
+гроші | pecunia
+іспит | examen
+радісний | laetus
+сумний | tristis
+втомлений | fessus
+сердитий | iratus
+щасливий | felix
+дім | domus
+</div>
+</section>
+<section class="unit" id="a13" data-short="A2 · 13 Діалоги">
+<h2><span class="no">A2 · 13</span>Діалоги</h2>
+<div class="qz" data-title="A2 · 13.1. Фрази з діалогів">
+Що ти робитимеш у суботу? | Quid dies Saturni facies
+Охоче, але мушу працювати. | Libenter, sed laborare debeo
+Три дні. | Tres dies
+Шукаю дім. | Domum quaero
+Можна подивитися? | Possumne eam videre
+</div>
+</section>
+<section class="unit" id="a14" data-short="A2 · 14 Читання">
+<h2><span class="no">A2 · 14</span>Читання: три тексти</h2>
+<div class="qz" data-title="A2 · 14.1. Запитання до текстів">
+Коли встаю? | hora septima / septima
+Де вчиться брат? | Romae / Roma
+Куди їздили торік? | ad mare / mare
+Що їли у відпустці? | pisces
+Куди наступного року? | ad montes / montes
+</div>
+</section>
+<section class="unit" id="a15" data-short="A2 · 15 Як писати листи">
+<h2><span class="no">A2 · 15</span>Як писати листи</h2>
+<div class="qz" data-title="A2 · 15.1. Листи">
+Привітання в листі: dicit ___ | salutem
+Будь здоровий (прощання) | Vale
+Якщо ти здоровий, це добре | Si vales bene est
+Дякую за листа. | Gratias pro epistula tua
+</div>
+</section>
+<section class="unit" id="a16" data-short="A2 · 16 Шпаргалка, план, тест">
+<h2><span class="no">A2 · 16</span>Шпаргалка, план і тест</h2>
+<div class="qz" data-title="A2 · 16.1. A2">
+Heri domi ___ . (sum, ego) | fui
+Cras ___ . (laboro, ego) | laborabo
+___ aquam. (Я б хотів) | Velim
+domus ___ (Anna → родовий) | Annae
+rex → (родовий) | regis
+Te ___ . (Бачу) | video
+Roma maior est ___ Capua. (ніж) | quam
+Non eo, ___ pluit. (тому що) | quia
+3-тя година → hora ___ | tertia
+Ego ___ . (video, перфект) | vidi
+</div>
+</section>
+
+<footer>Вправи до курсів. Пояснення й таблиці дивись у курсах A1 і A2.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Latina</th><th>Вимова</th><th>Українською</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Вправа';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Відповідь: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Перевірити</button><button type="button" data-act="show">Показати відповіді</button><button type="button" data-act="reset">Спочатку</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' з '+tot+(ok===tot?'. Усе вірно.':'. Перевір діакритику та артиклі.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^it[-_]IT/i.test(x.lang))||v.find(x=>/^it/i.test(x.lang))||('it'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='it-IT';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('lax_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('lax_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('lax_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('lax_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='lax_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Результати: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">до розділу</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Показано перші 40.</div>';
+    } else h+='<div class="mini">Нічого не знайдено. Пошук іде за французьким і українським словом у словникових таблицях.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

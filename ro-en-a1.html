@@ -1,0 +1,1149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Romanian A1: complete course</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="index.html" title="Home">&larr;</a>
+  <button id="menuBtn" aria-label="Contents">Contents</button>
+  <span class="brand">Romanian A1</span>
+  <input id="q" type="search" placeholder="Find a word" aria-label="Find a word">
+  <button id="uaBtn" title="Show or hide translations of examples and dialogues">Translation</button>
+  <button id="thBtn" title="Light or dark theme">Theme</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Contents"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Romanian A1</h1>
+  <p>A self-study Romanian course for English speakers: pronunciation, grammar, topic vocabulary, dialogues, texts and exercises. Tap a word or phrase to hear it.</p>
+  <p class="crumbs"><a href="index.html">&larr; Home</a><a href="ro-en-a2.html">Level A2</a><a href="ro-en-vpravy.html">Exercises</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Start" data-short="How to use this course">
+<h2><span class="no">Section 0</span>How to use this course</h2>
+<p class="lead">Romanian is a Romance language surrounded by Slavic neighbours, so it feels like a mix of familiar and surprising. Many words are recognisable from Spanish, French or Italian, the spelling is close to the sound, and the grammar is friendlier than it looks. This course takes you to A1: introductions, family, food, directions, shopping, time and everyday matters.</p>
+<h3>What is on your side</h3>
+<ul>
+<li><b>Spelling matches sound.</b> Once you know <span class="fr">ă, â/î, ș, ț</span> and the c / g rules, you can read anything aloud.</li>
+<li><b>Latin vocabulary:</b> <span class="fr">familie, hotel, important, restaurant, telefon, student, carte, lună, pâine</span>.</li>
+<li><b>Friendly verbs.</b> Regular verbs follow a few patterns, and "I am / I have" are easy: <span class="fr">sunt, am</span>.</li>
+<li><b>No complicated case system at A1.</b> Romanian has only a few cases, and most of the work is done by prepositions.</li>
+</ul>
+<div class="warn"><b>What will be new.</b> The definite article is <b>stuck on the end of the noun</b> (<span class="fr">casă → casa</span> = the house), nouns have three genders, and the verb endings show the person, so subject pronouns are usually dropped.</div>
+<div class="tip"><b class="t">Main tip.</b> Learn phrases, not isolated words: not "<span class="fr">a bea</span> = to drink", but "<span class="fr">beau apă</span> = I drink water". Endings then come by themselves.</div>
+<div class="warn"><b>False friends.</b> <span class="fr">a pretinde</span> = to claim (not pretend), <span class="fr">librărie</span> = bookshop (not library: <span class="fr">bibliotecă</span>), <span class="fr">actual</span> = current, <span class="fr">eventual</span> = possibly, <span class="fr">primar</span> = mayor, <span class="fr">magazin</span> = shop (and warehouse), <span class="fr">sensibil</span> = noticeable, <span class="fr">a poseda</span> = to own, <span class="fr">pensie</span> = pension and guest house, <span class="fr">elev</span> = school pupil.</div>
+<h3>How to work</h3>
+<ol>
+<li>Read the explanations and tap words to hear them.</li>
+<li>Do the exercises here and on the Exercises page.</li>
+<li>20–30 minutes a day. The plan is in section 12.</li>
+</ol>
+<div class="tip"><b class="t">About the pronunciation column.</b> It is a simple English-style respelling. It is approximate, so rely on the audio. "uh" is a short vowel like the one in <i>about</i>; "ih" is the Romanian <span class="fr">â / î</span> (a deeper, more closed sound, a bit like the "i" in <i>roses</i>). Stress varies from word to word and is not marked.</div>
+</section>
+
+<section class="unit" id="u1" data-short="Sounds and alphabet">
+<h2><span class="no">Section 1</span>Sounds and alphabet</h2>
+<p class="lead">The Romanian alphabet has 31 letters. The extra ones are <span class="fr">ă, â, î, ș, ț</span>. Each letter has a stable sound.</p>
+<h3>1.1. Vowels</h3>
+<div class="tw"><table>
+<tr><th>Letter</th><th>Sound</th><th>Example</th></tr>
+<tr><td><span class="fr">a</span></td><td>"a" in <i>father</i></td><td><span class="fr">mama</span></td></tr>
+<tr><td><span class="fr">ă</span></td><td>"uh" as in <i>about</i> (a weak, neutral vowel)</td><td><span class="fr">casă, măr</span></td></tr>
+<tr><td><span class="fr">â, î</span></td><td>a deep, closed vowel (like Russian "ы" or "i" in <i>roses</i>). <b>â and î sound the same!</b> î at the start / end of a word, â in the middle</td><td><span class="fr">pâine, înțeleg, coborî</span></td></tr>
+<tr><td><span class="fr">e</span></td><td>"e" in <i>bed</i> (at the start of some words, "ye")</td><td><span class="fr">este, ea</span></td></tr>
+<tr><td><span class="fr">i</span></td><td>"ee" in <i>see</i>; short and whispered at the end of a word (it only softens the consonant)</td><td><span class="fr">bine, băieți</span></td></tr>
+<tr><td><span class="fr">o</span></td><td>"o" in <i>port</i></td><td><span class="fr">om</span></td></tr>
+<tr><td><span class="fr">u</span></td><td>"oo" in <i>moon</i></td><td><span class="fr">unu, un</span></td></tr>
+</table></div>
+<h3>1.2. Consonants that differ from English</h3>
+<div class="tw"><table>
+<tr><th>Letter</th><th>Sound</th><th>Example</th></tr>
+<tr><td><span class="fr">c before e, i</span></td><td>"ch" as in <i>chip</i></td><td><span class="fr">cinci, ce</span></td></tr>
+<tr><td><span class="fr">c otherwise; ch before e, i</span></td><td>"k"</td><td><span class="fr">casă, chei</span></td></tr>
+<tr><td><span class="fr">g before e, i</span></td><td>"j" as in <i>jam</i></td><td><span class="fr">geam, girafă</span></td></tr>
+<tr><td><span class="fr">g otherwise; gh before e, i</span></td><td>"g" as in <i>go</i></td><td><span class="fr">gară, ghid</span></td></tr>
+<tr><td><span class="fr">ș</span></td><td>"sh"</td><td><span class="fr">școală</span></td></tr>
+<tr><td><span class="fr">ț</span></td><td>"ts" as in <i>cats</i></td><td><span class="fr">țară, mulțumesc</span></td></tr>
+<tr><td><span class="fr">j</span></td><td>"zh", the "s" in <i>measure</i></td><td><span class="fr">joi, jocuri</span></td></tr>
+<tr><td><span class="fr">h</span></td><td>soft "h" as in <i>hello</i></td><td><span class="fr">hotel</span></td></tr>
+<tr><td><span class="fr">r</span></td><td>tapped or rolled with the tongue tip</td><td><span class="fr">rău, mare</span></td></tr>
+<tr><td><span class="fr">x</span></td><td>"ks" (or "gz")</td><td><span class="fr">taxi, examen</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Diphthongs</b><p>Romanian has many: <span class="fr">ea</span> ("ya"), <span class="fr">oa</span> ("wa"), <span class="fr">ia</span> ("ya"), <span class="fr">ie</span> ("ye"), <span class="fr">ai</span>, <span class="fr">ei</span>, <span class="fr">ou</span>. For example <span class="fr">seară</span> [SYA-ruh], <span class="fr">școală</span> [shkwah-luh], <span class="fr">fiecare</span>.</p></div>
+<div class="tip"><b class="t">Stress.</b> There is no single rule: it is usually on the second-to-last or last syllable, and you learn it with the word. The endings often help: <span class="fr">-ește, -ire</span> stress the end. The audio will show you.</div>
+<div class="exs">
+Bună ziua, ce mai faci? | boonuh zeewa cheh meye fahchee | Good day, how are you?
+Mulțumesc, bine. Și tu? | mooltsoomehsk beeneh shee too | Thanks, fine. And you?
+Vorbesc puțin română. | vohrbehsk pootseen rohmihnuh | I speak a little Romanian.
+Pâinea este bună. | pihnya yehsteh boonuh | The bread is good.
+Seara merg la școală. | syarah mehrg lah shkwaluh | In the evening I go to school.
+</div>
+<div class="qz" data-title="Exercise 1. Read and write">
+[PUH-ee-neh] — baked daily — bread | pâine
+[shko-AH-luh] — where children study | școală
+[mool-tsoo-MESK] — thanks | mulțumesc
+[CHEEN-chee] — the number 5 | cinci
+[ZHOY] — Thursday | joi
+[KAH-suh] — a house | casă
+[TSAH-ruh] — a country | țară
+[GAH-ruh] — a station | gară
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Greetings and introductions">
+<h2><span class="no">Section 2</span>Greetings and introductions</h2>
+<p class="lead">Romanian has an informal <span class="fr">tu</span> and a polite <span class="fr">dumneavoastră</span> (with the plural verb). Polite requests use <span class="fr">vă rog</span>.</p>
+<div class="vocab">
+# Greetings
+Salut | sahloot | hi, bye (informal)
+Bună dimineața | boonuh deemeenyatsah | good morning
+Bună ziua | boonuh zeewa | good day
+Bună seara | boonuh syarah | good evening
+Noapte bună | nwapteh boonuh | good night
+La revedere | lah rehvehdehreh | goodbye
+Pe curând | peh koorihnd | see you soon
+# Politeness
+Mulțumesc | mooltsoomehsk | thank you
+Vă rog | vuh rohg | please (formal)
+Te rog | teh rohg | please (informal)
+Cu plăcere | koo pluhchehreh | you're welcome
+Scuze | skoozeh | sorry, excuse me
+Da | dah | yes
+Nu | noo | no
+Poate | pwateh | maybe
+</div>
+<h3>2.1. Introducing yourself</h3>
+<div class="exs">
+Mă numesc Michael. | muh noomehsk meekhahehl | My name is Michael.
+Cum te cheamă? | koom teh kyamuh | What's your name?
+Îmi pare bine. | ihmee pahreh beeneh | Nice to meet you.
+De unde ești? | deh oondeh yehshtee | Where are you from?
+Sunt din Anglia. | soont deen ahnglya | I am from England.
+Am treizeci de ani. | ahm trayzehchee deh ahnee | I am thirty years old.
+Locuiesc în Londra. | lohkooyesk ihn lohndrah | I live in London.
+Sunt profesor. | soont prohfehsohr | I am a teacher.
+Vorbești engleză? | vohrbehshtee yehnglehzuh | Do you speak English?
+Nu înțeleg. | noo ihntsehlehg | I don't understand.
+Puteți repeta, vă rog? | pootehtsee rehpehtah vuh rohg | Can you repeat, please?
+</div>
+<h3>2.2. Pronouns</h3>
+<div class="tw"><table>
+<tr><th>Person</th><th>Romanian</th><th>English</th></tr>
+<tr><td>1st sing.</td><td><span class="fr">eu</span></td><td>I</td></tr>
+<tr><td>2nd sing.</td><td><span class="fr">tu</span></td><td>you (informal)</td></tr>
+<tr><td>3rd sing.</td><td><span class="fr">el / ea</span></td><td>he / she</td></tr>
+<tr><td>1st pl.</td><td><span class="fr">noi</span></td><td>we</td></tr>
+<tr><td>2nd pl.</td><td><span class="fr">voi</span></td><td>you (pl.)</td></tr>
+<tr><td>3rd pl.</td><td><span class="fr">ei / ele</span></td><td>they (m / f)</td></tr>
+<tr><td>polite</td><td><span class="fr">dumneavoastră</span></td><td>you (formal)</td></tr>
+</table></div>
+<div class="tip"><b class="t">Pronouns are usually dropped.</b> The ending shows the person: <span class="fr">Sunt profesor</span> is enough. You add <span class="fr">eu</span> only for emphasis.</div>
+<div class="qz" data-title="Exercise 2. Greetings">
+Good day! | Bună ziua
+Thank you! | Mulțumesc
+Please | Vă rog
+You're welcome | Cu plăcere
+Goodbye! | La revedere
+My name is Anna. | Mă numesc Anna
+Nice to meet you. | Îmi pare bine
+I don't understand. | Nu înțeleg
+Hi! | Salut
+Good night! | Noapte bună
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Nouns and gender">
+<h2><span class="no">Section 3</span>Nouns, gender and articles</h2>
+<p class="lead">Romanian has three genders: masculine <span class="fr m">m</span> (blue), feminine <span class="fr f">f</span> (red) and neuter <span class="fr n">n</span> (green). The neuter is masculine in the singular and feminine in the plural.</p>
+<h3>3.1. Gender from the ending</h3>
+<div class="tw"><table>
+<tr><th>Gender</th><th>Typical ending</th><th>Examples</th></tr>
+<tr><td><span class="fr m">m</span></td><td>a consonant; -u, -e</td><td><span class="fr">frate, om, copil, băiat</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td>-ă, -e, -ie</td><td><span class="fr">casă, masă, carte, familie</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td>a consonant (sing.)</td><td><span class="fr">scaun, telefon, loc, nume</span></td></tr>
+</table></div>
+<h3>3.2. Articles: stuck on the end</h3>
+<div class="tw"><table>
+<tr><th></th><th>m / n</th><th>f</th></tr>
+<tr><td>a (indefinite)</td><td><span class="fr">un frate, un scaun</span></td><td><span class="fr">o casă, o carte</span></td></tr>
+<tr><td>the (definite)</td><td><span class="fr">fratele, scaunul, copilul</span></td><td><span class="fr">casa, cartea, masa</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Definite article</b><p>It is added to the end: feminine <span class="fr">-ă → -a</span> (<span class="fr">casă → casa</span>), <span class="fr">-e → -ea</span> (<span class="fr">carte → cartea</span>); masculine <span class="fr">+ -ul</span> (<span class="fr">copil → copilul</span>) or <span class="fr">+ -le</span> after -e (<span class="fr">frate → fratele</span>).</p></div>
+<h3>3.3. Plurals</h3>
+<div class="tw"><table>
+<tr><th>Gender</th><th>Singular → plural</th><th>Example</th></tr>
+<tr><td><span class="fr m">m</span></td><td>-i</td><td><span class="fr">copil → copii, băiat → băieți, frate → frați</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td>-ă → -e; -e → -i</td><td><span class="fr">casă → case, masă → mese, carte → cărți</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td>-e, -uri</td><td><span class="fr">scaun → scaune, loc → locuri</span></td></tr>
+</table></div>
+<div class="exs">
+Este o carte. | yehsteh oh kahrteh | It is a book.
+Casa este mare. | kahsah yehsteh mahreh | The house is big.
+Am un frate și o soră. | ahm oon frahteh shee oh sohruh | I have a brother and a sister.
+Copiii se joacă. | kohpeeeeee seh zhwakuh | The children are playing.
+Văd casele. | vuhd kahsehleh | I see the houses.
+</div>
+<div class="vocab">
+# Family
+familia | fahmeelya | family | f
+mama | mahmah | mother | f
+tata | tahtah | father | m
+fratele | frahtehleh | brother | m
+sora | sohrah | sister | f
+fiul | fyul | son | m
+fiica | feeeekah | daughter | f
+bunica | booneekah | grandmother | f
+bunicul | booneekool | grandfather | m
+soțul | sohtsool | husband | m
+soția | sohtsya | wife | f
+copilul | kohpeelool | child | m
+# Things
+casa | kahsah | house | f
+apartamentul | ahpahrtahmehntool | flat | n
+camera | kahmehrah | room | f
+bucătăria | bookuhtuhrya | kitchen | f
+masa | mahsah | table | f
+scaunul | skownool | chair | n
+fereastra | fehryastrah | window | f
+ușa | ooshah | door | f
+patul | pahtool | bed | n
+mașina | mahsheenah | car | f
+telefonul | tehlehfohnool | phone | n
+cartea | kahrtya | book | f
+</div>
+<div class="qz" data-title="Exercise 3. Gender and forms">
+family | familia
+brother | fratele
+sister | sora
+house | casa
+table | masa
+book | cartea
+kitchen | bucătăria
+car | mașina
+___ casă (a) | o
+___ frate (a) | un
+casă → ___ (the) | casa
+carte → ___ (the) | cartea
+casă → ___ (pl.) | case
+carte → ___ (pl.) | cărți
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Verbs" data-short="A fi, a avea">
+<h2><span class="no">Section 4</span>The verbs <span class="fr">a fi</span> (to be) and <span class="fr">a avea</span> (to have)</h2>
+<div class="cj" data-verb="a fi" data-note="to be" data-ipa="ah fee">
+eu | sunt | soont
+tu | ești | yehshtee
+el / ea | este (e) | yehsteh (eh)
+noi | suntem | soontehm
+voi | sunteți | soontehtsee
+ei / ele | sunt | soont
+</div>
+<div class="cj" data-verb="a avea" data-note="to have" data-ipa="ah ah-VYAH">
+eu | am | ahm
+tu | ai | eye
+el / ea | are | ahreh
+noi | avem | ahvehm
+voi | aveți | ahvehtsee
+ei / ele | au | ow
+</div>
+<div class="exs">
+Sunt student. | soont stoodehnt | I am a student.
+Ești obosit? | yehshtee ohbohseet | Are you tired?
+Suntem acasă. | soontehm ahkahsuh | We are at home.
+Am un frate. | ahm oon frahteh | I have a brother.
+Ai timp? | eye teemp | Do you have time?
+Nu am timp. | noo ahm teemp | I have no time.
+</div>
+<div class="rule"><b class="t">Negation</b><p>Put <span class="fr">nu</span> before the verb: <span class="fr">Nu sunt. Nu am.</span> Double negatives are normal: <span class="fr">Nu am nimic.</span> (I have nothing.) <span class="fr">Nu vine nimeni.</span></p></div>
+<h3>4.1. Regular verbs</h3>
+<p>Romanian verbs are listed with the infinitive marker <span class="fr">a</span>. Three common present-tense patterns:</p>
+<div class="tw"><table>
+<tr><th>Person</th><th>a lucra</th><th>a vorbi</th><th>a merge</th></tr>
+<tr><td>eu</td><td>lucrez</td><td>vorbesc</td><td>merg</td></tr>
+<tr><td>tu</td><td>lucrezi</td><td>vorbești</td><td>mergi</td></tr>
+<tr><td>el / ea</td><td>lucrează</td><td>vorbește</td><td>merge</td></tr>
+<tr><td>noi</td><td>lucrăm</td><td>vorbim</td><td>mergem</td></tr>
+<tr><td>voi</td><td>lucrați</td><td>vorbiți</td><td>mergeți</td></tr>
+<tr><td>ei / ele</td><td>lucrează</td><td>vorbesc</td><td>merg</td></tr>
+</table></div>
+<div class="vocab">
+a lucra | ah lookrah | to work | lucrez
+a vorbi | ah vohrbee | to speak | vorbesc
+a locui | ah lohkooee | to live | locuiesc
+a citi | ah cheetee | to read | citesc
+a scrie | ah skrye | to write | scriu
+a mânca | ah mihnkah | to eat | mănânc
+a bea | ah bya | to drink | beau
+a cumpăra | ah koompuhrah | to buy | cumpăr
+a vedea | ah vehdya | to see | văd
+a vrea | ah vrya | to want | vreau
+a merge | ah mehrjeh | to go | merg
+a face | ah fahcheh | to do, make | fac
+a învăța | ah ihnvuhtsah | to learn | învăț
+a-i plăcea | ah-ee pluhchah | to like | îmi place
+</div>
+<div class="cj" data-verb="a vrea" data-note="to want (irregular)" data-ipa="ah vreh-AH">
+eu | vreau | vryaoo
+tu | vrei | vray
+el / ea | vrea | vrya
+noi | vrem | vrehm
+voi | vreți | vrehtsee
+ei / ele | vor | vohr
+</div>
+<div class="cj" data-verb="a merge" data-note="to go" data-ipa="ah MER-jeh">
+eu | merg | mehrg
+tu | mergi | mehrjee
+el / ea | merge | mehrjeh
+noi | mergem | mehrjehm
+voi | mergeți | mehrjehtsee
+ei / ele | merg | mehrg
+</div>
+<div class="tip"><b class="t">One present tense.</b> <span class="fr">Lucrez</span> means "I work" and "I am working". To say "I like" Romanian says "it is pleasing to me": <span class="fr">Îmi place cafeaua. Îmi plac cărțile.</span></div>
+<div class="qz" data-title="Exercise 4. Conjugation">
+Eu ___ student. (a fi) | sunt
+Tu ___ din Anglia. (a fi) | ești
+Noi ___ prieteni. (a fi) | suntem
+Eu ___ un frate. (a avea) | am
+Tu ___ timp. (a avea) | ai
+Eu ___ în Londra. (a locui) | locuiesc
+Tu ___ română. (a vorbi) | vorbești
+El ___ la bancă. (a lucra) | lucrează
+Noi ___ acasă. (a merge) | mergem
+Eu ___ o cafea. (a vrea) | vreau
+Ei ___ cafea. (a bea) | beau
+Voi ___ acasă. (a fi) | sunteți
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Language in action" data-short="Questions, adjectives">
+<h2><span class="no">Section 5</span>Questions, adjectives, prepositions</h2>
+<div class="vocab">
+cine | cheeneh | who
+ce | cheh | what
+unde | oondeh | where
+încotro | ihnkohtroh | where to
+de unde | deh oondeh | where from
+când | kihnd | when
+cum | koom | how
+de ce | deh cheh | why
+cât / câtă | kiht / kihtuh | how much
+care | kahreh | which
+</div>
+<div class="exs">
+Cine este? | cheeneh yehsteh | Who is it?
+Ce faci? | cheh fahchee | What are you doing?
+Unde locuiești? | oondeh lohkooyeshtee | Where do you live?
+Încotro mergi? | ihnkohtroh mehrjee | Where are you going?
+Cât costă? | kiht kohstuh | How much does it cost?
+Cum te cheamă? | koom teh kyamuh | What's your name?
+</div>
+<div class="rule"><b class="t">Questions</b><p>A yes/no question is a statement with rising intonation: <span class="fr">Ai timp?</span> There is no "do". <span class="fr">Vorbești română?</span> = Do you speak Romanian?</p></div>
+<h3>5.1. Adjectives</h3>
+<p>Adjectives agree with the noun in gender and number, and usually <b>follow</b> it: <span class="fr">o casă mare</span>.</p>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th><th>pl.</th></tr>
+<tr><td>new</td><td><span class="fr">un tren nou</span></td><td><span class="fr">o casă nouă</span></td><td><span class="fr">case noi</span></td></tr>
+<tr><td>big</td><td><span class="fr">un oraș mare</span></td><td><span class="fr">o casă mare</span></td><td><span class="fr">case mari</span></td></tr>
+<tr><td>good</td><td><span class="fr">un om bun</span></td><td><span class="fr">o carte bună</span></td><td><span class="fr">cărți bune</span></td></tr>
+</table></div>
+<div class="vocab">
+nou | nohoo | new
+vechi | vehkee | old
+mare | mahreh | big
+mic | meek | small
+bun | boon | good
+rău | ruhoo | bad
+frumos | froomohs | beautiful
+scump | skoomp | expensive
+ieftin | yefteen | cheap
+drăguț | druhgoots | nice
+obosit | ohbohseet | tired
+</div>
+<h3>5.2. Possessives</h3>
+<p>They follow the noun, with the article on the noun: <span class="fr">fratele meu</span> (my brother), <span class="fr">sora mea</span> (my sister).</p>
+<div class="tw"><table>
+<tr><th>Whose</th><th>m</th><th>f</th></tr>
+<tr><td>my</td><td><span class="fr">meu</span></td><td><span class="fr">mea</span></td></tr>
+<tr><td>your</td><td><span class="fr">tău</span></td><td><span class="fr">ta</span></td></tr>
+<tr><td>his, her</td><td><span class="fr">lui, ei</span></td><td>(never change)</td></tr>
+<tr><td>our</td><td><span class="fr">nostru</span></td><td><span class="fr">noastră</span></td></tr>
+</table></div>
+<h3>5.3. Prepositions</h3>
+<div class="tw"><table>
+<tr><th>Preposition</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><span class="fr">în</span></td><td>in</td><td><span class="fr">în București, în casă</span></td></tr>
+<tr><td><span class="fr">la</span></td><td>to, at</td><td><span class="fr">merg la școală, la ora opt</span></td></tr>
+<tr><td><span class="fr">pe</span></td><td>on</td><td><span class="fr">pe masă</span></td></tr>
+<tr><td><span class="fr">din</span></td><td>from (a place)</td><td><span class="fr">sunt din Anglia</span></td></tr>
+<tr><td><span class="fr">cu</span></td><td>with</td><td><span class="fr">cafea cu lapte</span></td></tr>
+<tr><td><span class="fr">fără</span></td><td>without</td><td><span class="fr">cafea fără zahăr</span></td></tr>
+<tr><td><span class="fr">pentru</span></td><td>for</td><td><span class="fr">un cadou pentru mama</span></td></tr>
+</table></div>
+<div class="exs">
+Merg la școală. | mehrg lah shkwaluh | I'm going to school.
+Sunt la școală. | soont lah shkwaluh | I'm at school.
+Locuiesc în București. | lohkooyesk ihn bookoorehshtee | I live in Bucharest.
+Cartea este pe masă. | kahrtya yehsteh peh mahsuh | The book is on the table.
+Cafea fără zahăr. | kahfya fuhruh zahhuhr | Coffee without sugar.
+Acesta este fratele meu. | ahchehstah yehsteh frahtehleh meh-oo | This is my brother.
+</div>
+<div class="qz" data-title="Exercise 5. Language in action">
+___ este? (who) | Cine
+___ faci? (what) | Ce
+___ locuiești? (where) | Unde
+___ costă? (how much) | Cât
+O casă ___ . (big) | mare
+Un tren ___ . (new, m.) | nou
+O casă ___ . (new, f.) | nouă
+Locuiesc ___ București. (in) | în
+Sunt ___ Anglia. (from) | din
+Cafea ___ zahăr. (without) | fără
+Cafea ___ lapte. (with) | cu
+Merg ___ școală. (to) | la
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Numbers, time, dates">
+<h2><span class="no">Section 6</span>Numbers, time and dates</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">zero</span></td><td>1 <span class="fr">unu</span></td><td>2 <span class="fr">doi</span></td><td>3 <span class="fr">trei</span></td></tr>
+<tr><td>4 <span class="fr">patru</span></td><td>5 <span class="fr">cinci</span></td><td>6 <span class="fr">șase</span></td><td>7 <span class="fr">șapte</span></td></tr>
+<tr><td>8 <span class="fr">opt</span></td><td>9 <span class="fr">nouă</span></td><td>10 <span class="fr">zece</span></td><td>11 <span class="fr">unsprezece</span></td></tr>
+<tr><td>12 <span class="fr">doisprezece</span></td><td>20 <span class="fr">douăzeci</span></td><td>30 <span class="fr">treizeci</span></td><td>40 <span class="fr">patruzeci</span></td></tr>
+<tr><td>50 <span class="fr">cincizeci</span></td><td>100 <span class="fr">o sută</span></td><td>200 <span class="fr">două sute</span></td><td>1000 <span class="fr">o mie</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Compound numbers</b><p>From 21: <span class="fr">douăzeci și unu</span>, <span class="fr">patruzeci și cinci</span>. From 20 upwards the counted noun takes <span class="fr">de</span>: <span class="fr">douăzeci de ani, o sută de lei</span>. One and two have genders: <span class="fr">un frate, o soră; doi frați, două surori</span>.</p></div>
+<div class="vocab">
+# Days
+luni | loonee | Monday
+marți | mahrtsee | Tuesday
+miercuri | myerkooree | Wednesday
+joi | zhoy | Thursday
+vineri | veenehree | Friday
+sâmbătă | sihmbuhtuh | Saturday
+duminică | doomeeneekuh | Sunday
+# Months
+ianuarie | yanwarye | January
+februarie | fehbrwarye | February
+martie | mahrtye | March
+aprilie | ahpreelye | April
+mai | meye | May
+iunie | yunye | June
+iulie | yulye | July
+august | owgoost | August
+septembrie | sehptehmbrye | September
+octombrie | ohktohmbrye | October
+noiembrie | noyehmbrye | November
+decembrie | dehchehmbrye | December
+# Time
+azi | ahzee | today
+mâine | mihneh | tomorrow
+ieri | yeree | yesterday
+dimineața | deemeenyatsah | in the morning
+seara | syarah | in the evening
+noaptea | nwaptya | at night
+acum | ahkoom | now
+</div>
+<div class="exs">
+Cât este ceasul? | kiht yehsteh chahsool | What time is it?
+Este ora cinci. | yehsteh ohrah cheenchee | It is five o'clock.
+Este ora unu. | yehsteh ohrah oonoo | It is one o'clock.
+La ce oră? | lah cheh ohruh | At what time?
+La ora opt. | lah ohrah ohpt | At eight o'clock.
+Azi este luni. | ahzee yehsteh loonee | Today is Monday.
+Este trei și jumătate. | yehsteh tray shee zhoomuhtahteh | It is half past three.
+</div>
+<div class="qz" data-title="Exercise 6. Numbers and days">
+2 | doi
+3 | trei
+5 | cinci
+10 | zece
+20 | douăzeci
+100 | o sută
+Monday | luni
+Friday | vineri
+Sunday | duminică
+October | octombrie
+tomorrow | mâine
+yesterday | ieri
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Words and dialogues" data-short="Food, city, shopping">
+<h2><span class="no">Section 7</span>Food, the city and shopping</h2>
+<div class="vocab">
+# Food
+pâinea | pihnya | bread | f
+untul | oontool | butter | n
+brânza | brihnzah | cheese | f
+carnea | kahrnya | meat | f
+peștele | pehshtehleh | fish | m
+oul | ohool | egg | n
+supa | soopah | soup | f
+orezul | ohrehzool | rice | n
+cartoful | kahrtohfool | potato | m
+mărul | muhrool | apple | n
+zahărul | zahhuhrool | sugar | n
+sarea | sahrya | salt | f
+# Drinks
+apa | ahpah | water | f
+laptele | lahptehleh | milk | n
+cafeaua | kahfyawa | coffee | f
+ceaiul | cheyeool | tea | n
+sucul | sookool | juice | n
+berea | behrya | beer | f
+vinul | veenool | wine | n
+# City
+gara | gahrah | station | f
+poșta | pohshtah | post office | f
+banca | bahnkah | bank | f
+spitalul | speetahlool | hospital | n
+farmacia | fahrmahchah | pharmacy | f
+magazinul | mahgahzeenool | shop | n
+strada | strahdah | street | f
+podul | pohdool | bridge | n
+parcul | pahrkool | park | n
+</div>
+<div class="exs">
+O cafea, vă rog. | oh kahfya vuh rohg | A coffee, please.
+Nota, vă rog. | nohtah vuh rohg | The bill, please.
+Poftă bună! | pohftuh boonuh | Enjoy your meal!
+Cât costă? | kiht kohstuh | How much is that?
+Este scump. | yehsteh skoomp | That is expensive.
+Pot plăti cu cardul? | poht pluhtee koo kahrdool | Can I pay by card?
+Unde este gara? | oondeh yehsteh gahrah | Where is the station?
+Mergeți drept și apoi la stânga. | mehrjehtsee drehpt shee ahpoy lah stihngah | Go straight, then left.
+Mi-e foame. | mee-eh fwameh | I am hungry.
+</div>
+<div class="qz" data-title="Exercise 7. Café and city">
+A coffee, please. | O cafea, vă rog
+The bill, please. | Nota, vă rog
+Enjoy your meal! | Poftă bună
+How much is that? | Cât costă
+Where is the station? | Unde este gara
+That is expensive. | Este scump
+I am hungry. | Mi-e foame
+bread | pâinea
+milk | laptele
+station | gara
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Dialogues">
+<h2><span class="no">Section 8</span>Everyday dialogues</h2>
+<div class="dg">
+# 1. La cafenea (in a café)
+Ospătar: Bună ziua. Ce doriți? | Good day. What would you like?
+Client: O cafea și o felie de tort, vă rog. | A coffee and a slice of cake, please.
+Ospătar: Cu lapte? | With milk?
+Client: Nu, mulțumesc. Fără lapte. | No, thanks. Without milk.
+Ospătar: Poftiți. Poftă bună. | Here you are. Enjoy.
+Client: Mulțumesc. Pot plăti cu cardul? | Thanks. Can I pay by card?
+# 2. La gară (at the station)
+Călător: Bună ziua, un bilet la Brașov, vă rog. | Hello, a ticket to Brașov, please.
+Casieră: Dus sau dus-întors? | One way or return?
+Călător: Dus. La ce oră pleacă trenul? | One way. What time does the train leave?
+Casieră: La zece și un sfert. | At a quarter past ten.
+Călător: Cât costă biletul? | How much is the ticket?
+Casieră: Cincizeci de lei. | Fifty lei.
+# 3. Întrebăm drumul (asking the way)
+Turist: Scuzați-mă, unde este muzeul? | Excuse me, where is the museum?
+Femeie: Mergeți drept și apoi la dreapta. | Go straight and then right.
+Turist: Este departe? | Is it far?
+Femeie: Nu, cinci minute pe jos. | No, five minutes on foot.
+Turist: Mulțumesc mult. | Thank you very much.
+Femeie: Cu plăcere. | You're welcome.
+# 4. Ne cunoaștem (getting acquainted)
+Petru: Salut, mă numesc Petru. Și tu? | Hi, I'm Petru. And you?
+Anna: Mă numesc Anna. Îmi pare bine. | I'm Anna. Nice to meet you.
+Petru: De unde ești? | Where are you from?
+Anna: Sunt din Anglia, din Londra. | I'm from England, from London.
+Petru: Vorbești foarte bine românește! | You speak Romanian very well!
+Anna: Mulțumesc, încă învăț. | Thanks, I'm still learning.
+</div>
+<div class="qz" data-title="Exercise 8. Phrases from the dialogues">
+What would you like? | Ce doriți
+A coffee, please. | O cafea, vă rog
+A ticket to Brașov. | Un bilet la Brașov
+Where is the museum? | Unde este muzeul
+Five minutes on foot. | Cinci minute pe jos
+You're welcome. | Cu plăcere
+My name is Anna. | Mă numesc Anna
+I'm still learning. | Încă învăț
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="A1 extension" data-short="More words">
+<h2><span class="no">Section 9</span>More words: work, body, clothes, weather, transport</h2>
+<div class="vocab">
+# Jobs
+profesorul | prohfehsohrool | teacher | m
+doctorul | dohktohrool | doctor | m
+asistenta | ahseestehntah | nurse | f
+inginerul | eenjeenehrool | engineer | m
+șoferul | shohfehrool | driver | m
+vânzătorul | vihnzuhtohrool | shop assistant | m
+bucătarul | bookuhtahrool | cook, chef | m
+studentul | stoodehntool | student | m
+polițistul | pohleetseestool | police officer | m
+avocatul | ahvohkahtool | lawyer | m
+# Body and health
+capul | kahpool | head | n
+ochiul | ohkyul | eye | m
+urechea | oorehkya | ear | f
+nasul | nahsool | nose | m
+gura | goorah | mouth | f
+mâna | mihnah | hand | f
+piciorul | peechohrool | leg, foot | n
+stomacul | stohmahkool | stomach | m
+spatele | spahtehleh | back | m
+inima | eeneemah | heart | f
+Mă doare capul. | muh dwareh kahpool | I have a headache. | 
+Sunt bolnav. | soont bohlnahv | I am ill. | 
+febra | fehbrah | fever | f
+farmacia | fahrmahchah | pharmacy | f
+medicamentul | mehdeekahmehntool | medicine | n
+# Clothes
+cămașa | kuhmahshah | shirt | f
+pantalonii | pahntahlohneeee | trousers | pl
+rochia | rohkya | dress | f
+jacheta | zhahkehtah | jacket | f
+pantofii | pahntohfeeee | shoes | pl
+puloverul | poolohvehrool | jumper | n
+șapca | shahpkah | cap | f
+mărimea | muhreemya | size | f
+# Weather
+vremea | vrehmya | weather | f
+soarele | swarehleh | sun | m
+ploaia | plwaya | rain | f
+zăpada | zuhpahdah | snow | f
+vântul | vihntool | wind | n
+este frig | yehsteh freeg | it is cold | adv
+este cald | yehsteh kahld | it is warm | adv
+este soare | yehsteh swareh | it is sunny | adv
+# Transport
+autobuzul | owtohboozool | bus | n
+trenul | trehnool | train | n
+metroul | mehtrohool | underground | n
+avionul | ahvyonool | plane | n
+bicicleta | beecheeklehtah | bicycle | f
+biletul | beelehtool | ticket | n
+stația | stahtsya | stop | f
+aeroportul | ahehrohpohrtool | airport | n
+# Home and hobbies
+sufrageria | soofrahjehrya | living room | f
+baia | beyeah | bathroom | f
+frigiderul | freejeedehrool | fridge | n
+canapeaua | kahnahpyawa | sofa | f
+filmul | feelmool | film | n
+muzica | moozeekah | music | f
+sportul | spohrtool | sport | n
+a găti | ah guhtee | to cook | verb
+a călători | ah kuhluhtohree | to travel | verb
+</div>
+<div class="exs">
+Sunt profesor. | soont prohfehsohr | I am a teacher.
+Lucrez ca șofer. | lookrehz kah shohfehr | I work as a driver.
+Mă doare gâtul. | muh dwareh gihtool | My throat hurts.
+Ce mărime ai? | cheh muhreemeh eye | What size are you?
+Azi este frig. | ahzee yehsteh freeg | It is cold today.
+Plouă. | plohoouh | It is raining.
+Unde este stația? | oondeh yehsteh stahtsya | Where is the stop?
+Îmi place să gătesc. | ihmee plahcheh suh guhtehsk | I like cooking.
+</div>
+<div class="qz" data-title="Exercise 9. New words">
+doctor | doctorul
+teacher | profesorul
+head | capul
+hand | mâna
+dress | rochia
+rain | ploaia
+snow | zăpada
+bus | autobuzul
+train | trenul
+ticket | biletul
+airport | aeroportul
+It is raining. | Plouă
+I have a headache. | Mă doare capul
+It is cold today. | Azi este frig
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Modals, imperative">
+<h2><span class="no">Section 10</span>Modal verbs and the imperative</h2>
+<h3>10.1. Modal verbs</h3>
+<div class="tw"><table>
+<tr><th></th><th>a putea (can)</th><th>a trebui (must)</th><th>a vrea (want)</th><th>a ști (know how)</th></tr>
+<tr><td>eu</td><td>pot</td><td>trebuie</td><td>vreau</td><td>știu</td></tr>
+<tr><td>tu</td><td>poți</td><td>trebuie</td><td>vrei</td><td>știi</td></tr>
+<tr><td>el / ea</td><td>poate</td><td>trebuie</td><td>vrea</td><td>știe</td></tr>
+<tr><td>noi</td><td>putem</td><td>trebuie</td><td>vrem</td><td>știm</td></tr>
+<tr><td>voi</td><td>puteți</td><td>trebuie</td><td>vreți</td><td>știți</td></tr>
+<tr><td>ei / ele</td><td>pot</td><td>trebuie</td><td>vor</td><td>știu</td></tr>
+</table></div>
+<div class="rule"><b class="t">Modal + să + verb</b><p>Romanian has little use for the infinitive after modals. It uses <span class="fr">să</span> + a conjugated verb: <span class="fr">Pot să intru? Vreau să beau o cafea. Trebuie să lucrez.</span> <span class="fr">A trebui</span> is impersonal; the person goes in the <span class="fr">să</span> verb. For a learned skill use <span class="fr">a ști</span>: <span class="fr">Știu să înot.</span></p></div>
+<div class="exs">
+Pot să intru? | poht suh eentroo | May I come in?
+Vreau să beau o cafea. | vryaoo suh byaoo oh kahfya | I want to drink a coffee.
+Azi trebuie să lucrez. | ahzee trehbooye suh lookrehz | I have to work today.
+Acum nu pot să vorbesc. | ahkoom noo poht suh vohrbehsk | I can't talk now.
+Știi să gătești? | shteeee suh guhtehshtee | Can you cook?
+Aici nu se fumează. | eyechee noo seh foomyazuh | Smoking is not allowed here.
+Aș dori un ceai, vă rog. | ahsh dohree oon cheye vuh rohg | I would like a tea, please.
+</div>
+<h3>10.2. The imperative</h3>
+<div class="tw"><table>
+<tr><th>Infinitive</th><th>tu</th><th>voi / polite</th></tr>
+<tr><td>a vorbi</td><td>vorbește!</td><td>vorbiți!</td></tr>
+<tr><td>a citi</td><td>citește!</td><td>citiți!</td></tr>
+<tr><td>a aștepta</td><td>așteaptă!</td><td>așteptați!</td></tr>
+<tr><td>a veni</td><td>vino!</td><td>veniți!</td></tr>
+<tr><td>a fi</td><td>fii!</td><td>fiți!</td></tr>
+<tr><td>a scrie</td><td>scrie!</td><td>scrieți!</td></tr>
+</table></div>
+<p>To forbid (tu): <span class="fr">nu vorbi!</span> <span class="fr">nu fuma!</span> (the infinitive without <span class="fr">a</span>). Politely add <span class="fr">vă rog</span>.</p>
+<div class="exs">
+Așteaptă un moment! | ahshtyaptuh oon mohmehnt | Wait a moment!
+Veniți aici, vă rog. | vehneetsee eyechee vuh rohg | Please come here.
+Vorbește mai încet, te rog. | vohrbehshteh meye ihncheht teh rohg | Speak more slowly, please.
+Nu fuma aici! | noo foomah eyechee | Don't smoke here!
+Fii atent! | feeee ahtehnt | Be careful!
+</div>
+<div class="qz" data-title="Exercise 10. Modals and imperative">
+Eu ___ să lucrez. (trebuie) | trebuie
+Tu ___ să intri. (a putea) | poți
+El ___ o cafea. (a vrea) | vrea
+Noi ___ să mergem. (a putea) | putem
+___ să înot. (I can: a ști) | Știu
+___ un ceai. (I would like) | Aș dori
+a aștepta → (tu!) ___ | așteaptă
+a citi → (tu!) ___ | citește
+a veni → (tu!) ___ | vino
+a fi → (tu!) ___ | fii
+___ fuma! (Don't) | Nu
+Pot ___ intru? (să) | să
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="More dialogues">
+<h2><span class="no">Section 11</span>Four more dialogues</h2>
+<div class="dg">
+# 1. La medic (at the doctor's)
+Medic: Bună ziua, ce probleme aveți? | Good day, what's troubling you?
+Pacient: Mă doare capul și am febră. | I have a headache and a fever.
+Medic: De când? | Since when?
+Pacient: De două zile. | For two days.
+Medic: Luați aceste pastile și rămâneți acasă. | Take these tablets and stay at home.
+Pacient: Mulțumesc, domnule doctor. | Thank you, doctor.
+# 2. La magazinul de haine (in a clothes shop)
+Vânzătoare: Vă pot ajuta? | Can I help you?
+Client: Caut o jachetă. | I'm looking for a jacket.
+Vânzătoare: Ce mărime purtați? | What size do you wear?
+Client: Mărimea M. Pot s-o probez? | Size M. Can I try it on?
+Vânzătoare: Desigur, cabinele sunt acolo. | Of course, the fitting rooms are over there.
+Client: Cât costă? | How much is it?
+Vânzătoare: Două sute de lei. | Two hundred lei.
+# 3. La hotel (at the hotel)
+Oaspete: Bună seara, am o rezervare. | Good evening, I have a reservation.
+Recepționer: Pe ce nume? | In what name?
+Oaspete: Smith. O cameră single pentru trei nopți. | Smith. A single room for three nights.
+Recepționer: Poftiți cheia. Micul dejun este de la șapte la zece. | Here is your key. Breakfast is from seven to ten.
+Oaspete: Există wi-fi? | Is there Wi-Fi?
+Recepționer: Da, parola este pe cheie. | Yes, the password is on the key.
+# 4. La telefon (on the phone)
+Anna: Alo? | Hello?
+Marcu: Salut Anna, sunt Marcu. Ce mai faci? | Hi Anna, it's Marcu. How are you?
+Anna: Bine, mulțumesc. Dar tu? | Fine, thanks. And you?
+Marcu: Bine și eu. Ai timp mâine seară? | Fine too. Are you free tomorrow evening?
+Anna: Da, de ce? | Yes, why?
+Marcu: Mergem la cinema? | Shall we go to the cinema?
+Anna: Cu plăcere! | Gladly!
+</div>
+<div class="qz" data-title="Exercise 11. Phrases from the dialogues">
+What's troubling you? | Ce probleme aveți
+I have a headache. | Mă doare capul
+I'm looking for a jacket. | Caut o jachetă
+What size do you wear? | Ce mărime purtați
+How much is it? | Cât costă
+I have a reservation. | Am o rezervare
+Is there Wi-Fi? | Există wi-fi
+Shall we go to the cinema? | Mergem la cinema
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Cheat sheet, plan, test">
+<h2><span class="no">Section 12</span>Cheat sheet, plan and test</h2>
+<div class="tw"><table>
+<tr><th>Topic</th><th>Remember</th></tr>
+<tr><td>A fi</td><td>sunt, ești, este, suntem, sunteți, sunt</td></tr>
+<tr><td>A avea</td><td>am, ai, are, avem, aveți, au</td></tr>
+<tr><td>Articles</td><td>un / o; the article sits on the end: casa, fratele</td></tr>
+<tr><td>Plural</td><td>-i (m), -e / -i (f), -e / -uri (n)</td></tr>
+<tr><td>Negation</td><td>nu before the verb; double negatives</td></tr>
+<tr><td>Questions</td><td>rising intonation; ce, unde, când</td></tr>
+<tr><td>Tu / dumneavoastră</td><td>informal / polite</td></tr>
+<tr><td>Letters</td><td>ă â î ș ț; c / g before e, i</td></tr>
+</table></div>
+<h3>8-week plan</h3>
+<div class="tw"><table>
+<tr><th>Week</th><th>Sections</th><th>Goal</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Read anything: ă â î ș ț, c / g</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Introduce yourself, gender and articles</td></tr>
+<tr><td>3</td><td>4</td><td>A fi, a avea, 10 verbs</td></tr>
+<tr><td>4</td><td>5</td><td>Questions, adjectives, prepositions</td></tr>
+<tr><td>5</td><td>6</td><td>Numbers, time, days</td></tr>
+<tr><td>6</td><td>7</td><td>Food, city</td></tr>
+<tr><td>7</td><td>8</td><td>Dialogues out loud</td></tr>
+<tr><td>8</td><td>Review</td><td>Talk about yourself for 3–5 minutes</td></tr>
+</table></div>
+<h3>Final test</h3>
+<div class="qz" data-title="A1 test">
+Eu ___ student. (a fi) | sunt
+Tu ___ timp. (a avea) | ai
+casă → ___ (the) | casa
+Locuiesc ___ București. (in) | în
+Cafea ___ zahăr. (without) | fără
+5 | cinci
+Friday | vineri
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Read any Romanian word</label></li>
+<li><label><input type="checkbox"> Greet people and introduce myself</label></li>
+<li><label><input type="checkbox"> Use a fi, a avea and regular verbs</label></li>
+<li><label><input type="checkbox"> Recognise gender and use the article</label></li>
+<li><label><input type="checkbox"> Say numbers, days, months, time</label></li>
+<li><label><input type="checkbox"> Order a coffee and ask the way</label></li>
+</ul>
+</section>
+
+<footer>A self-study backbone for A1. Add real listening: podcasts, subtitled video, conversation with a native speaker.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Romanian</th><th>Pronunciation</th><th>English</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Exercise';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Answer: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Check</button><button type="button" data-act="show">Show answers</button><button type="button" data-act="reset">Reset</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' of '+tot+(ok===tot?'. All correct.':'. Check accents and articles.');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^ro[-_]RO/i.test(x.lang))||v.find(x=>/^ro/i.test(x.lang))||('ro'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='ro-RO';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('roen1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('roen1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('roen1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('roen1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='roen1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Results: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">go to section</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">First 40 shown.</div>';
+    } else h+='<div class="mini">Nothing found. Search covers the foreign and English words in the vocabulary tables.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>

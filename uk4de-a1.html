@@ -1,0 +1,1145 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ukrainisch A1: kompletter Kurs</title>
+<style>
+:root{
+  --bg:#f3eee3; --paper:#fbf8f1; --ink:#1c1915; --muted:#6a6358; --line:#d8cfbd; --soft:#efe8d8;
+  --n:#2f6b3f; --m:#24578a; --f:#a5403c; --accent:#1f3a5f; --mark:#f0e2b0; --ok:#2f6b3f; --bad:#a5403c;
+  --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+    --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141311; --paper:#1b1a17; --ink:#ece6d9; --muted:#a39b8c; --line:#36332d; --soft:#24221e;
+  --n:#7cc08d; --m:#7fb2e4; --f:#e39690; --accent:#a9c2e3; --mark:#4a4222; --ok:#7cc08d; --bad:#e39690;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+.topbar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 16px}
+.topbar .brand{font:700 18px var(--serif);letter-spacing:.2px;margin-right:auto;white-space:nowrap}
+.topbar button,.topbar input{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.topbar button{cursor:pointer}
+.topbar button:hover{border-color:var(--accent)}
+.topbar input{width:190px}
+#menuBtn{display:none}
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1200px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 40px 16px;font-size:14px;border-right:1px solid var(--line)}
+nav#toc a{display:block;text-decoration:none;color:var(--muted);padding:4px 8px;border-radius:5px;line-height:1.35}
+nav#toc a:hover{background:var(--soft);color:var(--ink)}
+nav#toc a.on{color:var(--ink);background:var(--soft);font-weight:600}
+nav#toc .grp{font:600 11px var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:16px 8px 4px}
+main{padding:28px 32px 90px;min-width:0}
+.hero{padding:10px 0 26px;border-bottom:2px solid var(--ink);margin-bottom:28px}
+.hero h1{font:700 clamp(34px,6vw,54px)/1.05 var(--serif);margin:0 0 8px;letter-spacing:-.5px}
+.hero p{margin:0;max-width:60ch;color:var(--muted);font-size:17px}
+section.unit{padding-top:12px;margin-bottom:56px}
+section.unit>h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--serif);margin:0 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+section.unit>h2 .no{font:600 13px var(--sans);color:var(--muted);letter-spacing:.08em;display:block;margin-bottom:4px;text-transform:uppercase}
+section.unit>.lead{color:var(--muted);margin:0 0 18px;font-size:17px;max-width:62ch}
+h3{font:700 20px/1.25 var(--serif);margin:30px 0 8px}
+h4{font:700 15px var(--sans);margin:20px 0 6px;letter-spacing:.01em}
+p{margin:0 0 12px;max-width:68ch}
+ul,ol{margin:0 0 14px;padding-left:22px;max-width:68ch}
+li{margin-bottom:4px}
+.fr,.frt{font-family:var(--serif);font-size:1.06em}
+.fr{cursor:pointer;border-bottom:1px dotted var(--muted)}
+.fr:hover{background:var(--mark)}
+.m{color:var(--m)} .f{color:var(--f)} .n{color:var(--n)}
+.ipa{font-family:"Segoe UI","Noto Sans","DejaVu Sans",sans-serif;font-size:.88em;color:var(--muted)}
+.rule{background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:12px 16px;margin:16px 0;max-width:68ch}
+.rule b.t{display:block;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px}
+.rule p:last-child,.rule ul:last-child{margin-bottom:0}
+.tip{background:var(--soft);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+.tip b.t{font-weight:700}
+.warn{border:1.5px dashed var(--f);border-radius:4px;padding:10px 14px;margin:14px 0;max-width:68ch;font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 18px}
+.tw{overflow-x:auto;margin:10px 0 18px}
+.tw table{margin:0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;font-size:13px;letter-spacing:.02em}
+td.fr,td .fr{white-space:normal}
+table.vtable td:first-child{font-family:var(--serif);font-size:1.06em;white-space:nowrap}
+table.vtable td:nth-child(2){width:1%;white-space:nowrap}
+table.vtable tr.hit td{background:var(--mark)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 28px}
+ul.ex{list-style:none;padding:0;margin:8px 0 18px;max-width:none}
+ul.ex li{padding:7px 0;border-bottom:1px solid var(--line);margin:0}
+ul.ex .f1{font:1.08em var(--serif);cursor:pointer}
+ul.ex .f1:hover{background:var(--mark)}
+ul.ex .i1{display:block}
+ul.ex .u1{display:block;color:var(--muted);font-size:14.5px}
+body.hide-ua ul.ex .u1,body.hide-ua .dlg .u{display:none}
+.conj{margin:12px 0 20px;max-width:430px;border:1px solid var(--line);background:var(--paper);border-radius:4px}
+.conj .ch{padding:8px 12px;border-bottom:1px solid var(--line);font:700 17px var(--serif)}
+.conj .ch small{font:400 13px var(--sans);color:var(--muted);margin-left:8px}
+.conj .cr{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 12px;border-bottom:1px solid var(--line)}
+.conj .cr:last-child{border:0}
+.conj .cr .fr{border:0}
+.conj .cr .pn{color:var(--muted)}
+.conjs{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:12px 0 20px}
+.conjs .conj{margin:0;max-width:none}
+.dlg{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 16px;margin:14px 0 20px;max-width:68ch}
+.dlg h5{font:700 12px var(--sans);text-transform:uppercase;letter-spacing:.09em;margin:10px 0 2px;color:var(--muted)}
+.dlg .ln{padding:6px 0;border-bottom:1px solid var(--line)}
+.dlg .ln:last-child{border:0}
+.dlg .who{display:inline-block;min-width:3.4em;font:700 13px var(--sans);color:var(--muted)}
+.dlg .fx{font:1.06em var(--serif);cursor:pointer}
+.dlg .fx:hover{background:var(--mark)}
+.dlg .u{display:block;margin-left:3.4em;color:var(--muted);font-size:14.5px}
+.quiz{background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:14px 18px;margin:22px 0;max-width:68ch}
+.quiz h4{margin-top:0;font:700 12px var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.quiz ol{padding-left:22px;margin:0 0 10px}
+.quiz li{margin-bottom:9px}
+.quiz input{font:1.02em var(--serif);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-bottom:2px solid var(--ink);border-radius:3px;padding:2px 6px;min-width:6em;max-width:100%}
+.quiz input.ok{border-color:var(--ok);background:transparent;color:var(--ok)}
+.quiz input.no{border-color:var(--bad);color:var(--bad)}
+.quiz .qp{display:block;margin-bottom:3px}
+.quiz .ans{display:none;color:var(--ok);font-size:14px;margin-top:2px}
+.quiz.show .ans{display:block}
+.quiz .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.quiz button{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--ink);border-radius:5px;padding:6px 12px;cursor:pointer}
+.quiz button:hover{background:var(--soft)}
+.quiz .score{font-size:14px;color:var(--muted)}
+.check{list-style:none;padding:0}
+.check li{padding:6px 0 6px 0;border-bottom:1px solid var(--line)}
+.check label{cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px}
+#sr{display:none;background:var(--paper);border:1px solid var(--ink);border-radius:4px;padding:12px 16px;margin:0 0 24px}
+#sr.on{display:block}
+#sr table{margin:6px 0 0}
+.mini{font-size:13.5px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:12px;color:var(--muted);margin-left:4px}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav#toc{position:fixed;left:0;top:53px;width:min(300px,86vw);height:calc(100vh - 53px);background:var(--paper);transform:translateX(-102%);transition:transform .2s;z-index:25;border-right:1px solid var(--line)}
+  nav#toc.open{transform:none;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}
+  #menuBtn{display:inline-block}
+  main{padding:20px 16px 80px}
+  .topbar{padding:8px 12px;gap:8px}
+  .topbar input{width:100px}
+  .topbar .brand{font-size:16px}
+  #uaBtn{display:none}
+}
+@media print{
+  .topbar,nav#toc,.quiz button,#sr{display:none!important}
+  .layout{display:block}
+  body{background:#fff;color:#000;font-size:11pt}
+  main{padding:0}
+  section.unit{break-inside:auto}
+  .rule,.conj,.dlg,.quiz{break-inside:avoid}
+}
+.topbar a.back{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 11px;text-decoration:none;line-height:1.2}
+.topbar a.back:hover{border-color:var(--accent)}
+.topbar .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.topbar input{width:76px!important}.topbar a.back{padding:5px 9px}}
+.crumbs{margin-top:10px!important;font-size:14px!important}
+.crumbs a{margin-right:14px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="start-de.html" title="Startseite">&larr;</a>
+  <button id="menuBtn" aria-label="Inhalt">Inhalt</button>
+  <span class="brand">Ukrainisch A1</span>
+  <input id="q" type="search" placeholder="Wort suchen" aria-label="Wort suchen">
+  <button id="uaBtn" title="Übersetzungen der Beispiele und Dialoge ein- oder ausblenden">Übersetzung</button>
+  <button id="thBtn" title="Heller oder dunkler Modus">Modus</button>
+</div>
+<div class="layout">
+<nav id="toc" aria-label="Inhalt"></nav>
+<main>
+<div id="sr"></div>
+<div class="hero">
+  <h1>Ukrainisch A1</h1>
+  <p>Ein Selbstlernkurs Ukrainisch für Deutschsprachige: Aussprache, Grammatik, Wortschatz nach Themen, Dialoge, Texte und Übungen. Tippen Sie auf ein Wort oder einen Satz, um ihn zu hören.</p>
+  <p class="crumbs"><a href="start-de.html">&larr; Startseite</a><a href="uk4de-a2.html">Niveau A2</a><a href="uk4de-vpravy.html">Übungen</a></p>
+</div>
+<section class="unit" id="u0" data-grp="Start" data-short="So arbeiten Sie mit diesem Kurs">
+<h2><span class="no">Abschnitt 0</span>So arbeiten Sie mit diesem Kurs</h2>
+<p class="lead">Ukrainisch ist eine melodische slawische Sprache mit kyrillischer Schrift, die man an ein paar Abenden lernen kann. Die Rechtschreibung ist sehr lautgetreu, es gibt keine Artikel, und die Gegenwart ist einfach. Der Kurs führt Sie bis A1: Vorstellen, Familie, Essen, Wegbeschreibung, Einkaufen, Zeit und Alltag.</p>
+<h3>Was für Sie spricht</h3>
+<ul>
+<li><b>Die Schreibung entspricht dem Klang.</b> Wer die 33 Buchstaben kennt, kann alles laut lesen.</li>
+<li><b>Keine Artikel.</b> <span class="fr">книжка</span> = Buch, das Buch, ein Buch.</li>
+<li><b>Wörter, die Sie schon kennen:</b> <span class="fr">банк, готель, піца, кава, метро, студент, телефон, футбол, парк</span>.</li>
+<li><b>Einfache Gegenwart.</b> Eine Form deckt „ich arbeite“ und „ich bin am Arbeiten“ ab, und ein „sein“ als Verbindung gibt es im Präsens nicht.</li>
+</ul>
+<div class="warn"><b>Was neu sein wird.</b> Nomen, Adjektive und Pronomen verändern ihre Endungen (sieben Fälle), die Verben richten sich nach dem Subjekt, und die Betonung kann überall im Wort liegen. In A1 brauchen Sie nur Nominativ, Akkusativ, Lokativ und einige feste Muster. Lernen Sie Wörter in kurzen Wendungen, nicht einzeln.</div>
+<div class="tip"><b class="t">Haupttipp.</b> Lernen Sie Wendungen: nicht „<span class="fr">пити</span> = trinken“, sondern „<span class="fr">я п'ю каву</span> = ich trinke Kaffee“. Die Endungen kommen dann von allein.</div>
+<div class="tip"><b class="t">Antworten eintippen.</b> Die Übungen verlangen kyrillische Schrift. Fügen Sie auf Handy oder Computer eine ukrainische Tastatur hinzu (Einstellungen → Tastaturen). Sie brauchen sie ohnehin.</div>
+<div class="warn"><b>Falsche Freunde.</b> <span class="fr">магазин</span> = Geschäft (nicht „Magazin“), <span class="fr">кабінет</span> = Büro, Arbeitszimmer, <span class="fr">фабрика</span> = Fabrik, <span class="fr">студентка</span> = Studentin, <span class="fr">шляхи</span> = Wege, <span class="fr">історія</span> = Geschichte (Historie und Erzählung), <span class="fr">кіт</span> = Kater, <span class="fr">рука</span> = Hand, Arm, <span class="fr">хліб</span> = Brot, <span class="fr">лікар</span> = Arzt, <span class="fr">чай</span> = Tee.</div>
+<h3>So lernen Sie</h3>
+<ol>
+<li>Lesen Sie die Erklärungen und tippen Sie auf Wörter, um sie zu hören.</li>
+<li>Machen Sie die Übungen hier und auf der Seite „Übungen“.</li>
+<li>20–30 Minuten am Tag. Der Plan steht in Abschnitt 12.</li>
+</ol>
+<div class="tip"><b class="t">Zur Aussprache-Spalte.</b> Sie ist eine einfache Umschrift in deutscher Rechtschreibung und nur ungefähr, verlassen Sie sich also auf das Gehör. Ein Akzentzeichen über einem Buchstaben der ukrainischen Wörter markiert die betonte Silbe. „ch“ klingt wie in <i>Bach</i>, „zh“ wie das „g“ in <i>Genie</i>, „w“ wie in <i>Wasser</i>, „j“ wie in <i>Jahr</i>, und ein „'“ nach einem Buchstaben bedeutet, dass er erweicht wird.</div>
+</section>
+
+<section class="unit" id="u1" data-short="Laute und Alphabet">
+<h2><span class="no">Abschnitt 1</span>Laute und Alphabet</h2>
+<p class="lead">Das Alphabet hat 33 Buchstaben. Viele sehen aus wie lateinische Buchstaben und klingen gleich, einige sehen vertraut aus, klingen aber anders, und einige sind neu. Das Ukrainische hat die Buchstaben ы, э, ъ, ё nicht (sie sind russisch).</p>
+<h3>1.1. Buchstaben, die Sie schon kennen</h3>
+<div class="tw"><table>
+<tr><th>Buchstaben</th><th>Laut</th></tr>
+<tr><td><span class="fr">А а, К к, М м, О о, Т т</span></td><td>a, k, m, o, t (wie im Deutschen; Vokale rein und kurz)</td></tr>
+<tr><td><span class="fr">Б б, Д д, З з, Л л, П п, Ф ф</span></td><td>b, d, z, l, p, f (kyrillische Formen, vertraute Laute)</td></tr>
+<tr><td><span class="fr">Е е</span></td><td>„e“ wie in <i>Bett</i></td></tr>
+<tr><td><span class="fr">І і</span></td><td>„i“ wie in <i>Biene</i></td></tr>
+</table></div>
+<h3>1.2. Buchstaben, die vertraut aussehen, aber anders klingen</h3>
+<div class="tw"><table>
+<tr><th>Buchstabe</th><th>Laut</th><th>Beispiel</th></tr>
+<tr><td><span class="fr">В в</span></td><td>„w“ (am Silbenende ein weiches, „u“-artiges „w“)</td><td><span class="fr">вода</span></td></tr>
+<tr><td><span class="fr">Н н</span></td><td>"n"</td><td><span class="fr">ніч</span></td></tr>
+<tr><td><span class="fr">Р р</span></td><td>gerolltes „r“</td><td><span class="fr">рука</span></td></tr>
+<tr><td><span class="fr">С с</span></td><td>"s"</td><td><span class="fr">сік</span></td></tr>
+<tr><td><span class="fr">У у</span></td><td>„u“ wie in <i>Mut</i></td><td><span class="fr">ти</span> im Gegensatz zu <span class="fr">у</span></td></tr>
+<tr><td><span class="fr">Х х</span></td><td>„ch“ wie in <i>Bach</i></td><td><span class="fr">хліб</span></td></tr>
+<tr><td><span class="fr">Г г</span></td><td>weiches „h“ (gehaucht, wie in <i>Haus</i>)</td><td><span class="fr">гарно</span></td></tr>
+<tr><td><span class="fr">И и</span></td><td>zwischen „i“ in <i>bitte</i> und „e“: ein kurzes, tiefes „i“</td><td><span class="fr">син, мило</span></td></tr>
+<tr><td><span class="fr">Й й</span></td><td>kurzes „j“ wie in <i>Jahr</i>, nach einem Vokal</td><td><span class="fr">мій</span></td></tr>
+</table></div>
+<h3>1.3. Neue Buchstaben</h3>
+<div class="tw"><table>
+<tr><th>Buchstabe</th><th>Laut</th><th>Beispiel</th></tr>
+<tr><td><span class="fr">Ж ж</span></td><td>„zh“ wie das „g“ in <i>Genie</i></td><td><span class="fr">жінка</span></td></tr>
+<tr><td><span class="fr">Ч ч</span></td><td>„tsch“ wie in <i>Tschüss</i></td><td><span class="fr">чай</span></td></tr>
+<tr><td><span class="fr">Ш ш</span></td><td>„sch“ wie in <i>Schule</i></td><td><span class="fr">школа</span></td></tr>
+<tr><td><span class="fr">Щ щ</span></td><td>„schtsch“ (sch + tsch)</td><td><span class="fr">щастя</span></td></tr>
+<tr><td><span class="fr">Ц ц</span></td><td>„z“ wie in <i>Zeit</i></td><td><span class="fr">цукор</span></td></tr>
+<tr><td><span class="fr">Ґ ґ</span></td><td>„g“ wie in <i>gut</i> (selten)</td><td><span class="fr">ґанок</span></td></tr>
+<tr><td><span class="fr">Є є</span></td><td>„je“ wie in <i>jetzt</i></td><td><span class="fr">є, Європа</span></td></tr>
+<tr><td><span class="fr">Ї ї</span></td><td>„ji“</td><td><span class="fr">їжа, Київ</span></td></tr>
+<tr><td><span class="fr">Ю ю</span></td><td>„ju“ wie in <i>Jubel</i></td><td><span class="fr">люблю</span></td></tr>
+<tr><td><span class="fr">Я я</span></td><td>„ja“ wie in <i>ja</i></td><td><span class="fr">я, моя</span></td></tr>
+<tr><td><span class="fr">Ь ь</span></td><td>Weichheitszeichen: kein Laut; es erweicht den Konsonanten davor</td><td><span class="fr">день, мати</span></td></tr>
+<tr><td><span class="fr">'</span></td><td>Apostroph: auf den Konsonanten folgt ein deutliches „j“</td><td><span class="fr">п'ять, сім'я</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Weiche Konsonanten</b><p>Die Buchstaben <span class="fr">я, ю, є, ї, і, ь</span> erweichen den vorangehenden Konsonanten: <span class="fr">дя</span> klingt wie <i>dja</i>, <span class="fr">ть</span> wie ein weiches <i>t'</i>. Nach den meisten Konsonanten gilt <span class="fr">я = ja</span>, <span class="fr">ю = ju</span> und so weiter.</p></div>
+<div class="tip"><b class="t">Betonung.</b> Sie kann auf jeder Silbe liegen und wechselt oft zwischen den Formen (<span class="fr">рука́, ру́ки</span>). Es gibt keine Regel, also lernen Sie die Betonung mit dem Wort. In diesem Kurs ist sie im ukrainischen Wortschatz und in den Beispielen durch einen Akzent über dem Vokal markiert. Unbetontes <span class="fr">е</span> und <span class="fr">и</span> nähern sich einander an, und <span class="fr">о</span> vor einem betonten „у“ klingt fast wie „u“.</div>
+<div class="exs">
+Приві́т, як спра́ви? | prywít, jak sspráwy? | Hallo, wie geht’s?
+Дя́кую, до́бре. | djákuju, dóbre. | Danke, gut.
+Я ро́зумію трохи україн́ську. | ja rósumiju trochy ukrajinss'ku. | Ich verstehe ein bisschen Ukrainisch.
+Це чудо́во! | ze tschudówo! | Wunderbar!
+Щасли́вого Різдва́! | schtschasslýwoho risdwá! | Frohe Weihnachten!
+</div>
+<div class="qz" data-title="Übung 1. Lesen und schreiben">
+[CHLIB] — Brot | хліб
+[DJAKUJU] — danke | дякую
+[SCHKOLA] — wo Kinder lernen | школа
+[TSCHAJ] — ein heißes Getränk | чай
+[ZHINKA] — eine Frau | жінка
+[SSIMJA] — eine Familie | сім'я
+[JIZHA] — Essen | їжа
+[ZUKOR] — Zucker | цукор
+</div>
+</section>
+
+<section class="unit" id="u2" data-short="Begrüßung und Vorstellung">
+<h2><span class="no">Abschnitt 2</span>Begrüßung und Vorstellung</h2>
+<p class="lead">Das Ukrainische hat ein informelles <span class="fr">ти</span> und ein höfliches <span class="fr">ви</span> (zugleich der Plural). Verwenden Sie <span class="fr">ви</span> bei Fremden und älteren Menschen.</p>
+<div class="vocab">
+# Begrüßungen
+Приві́т | prywít | hallo (informell)
+До́брий ра́нок | dóbryj ránok | guten Morgen
+До́брий день | dóbryj den' | guten Tag
+До́брий ве́чір | dóbryj wétschir | guten Abend
+На добра́ніч | na dobránitsch | gute Nacht
+До поба́чення | do pobátschennja | auf Wiedersehen
+Па́ки | páky | tschüss (informell)
+# Höflichkeit
+Дя́кую | djákuju | danke
+Будь ла́ска | bud' lásska | bitte, gern geschehen
+Вибачте | wybatschte | Entschuldigung, es tut mir leid
+Так | tak | ja
+Ні | ni | nein
+Мо́жливо | mózhlywo | vielleicht
+</div>
+<h3>2.1. Sich vorstellen</h3>
+<div class="exs">
+Мене́ зва́ти Майкл. | mené swáty majkl. | Ich heiße Michael.
+Як тебе́ зва́ти? | jak tebé swáty? | Wie heißt du?
+Прие́мно познайо́митися. | pryémno posnajómytyssja. | Freut mich.
+Зві́дки ти? | swídky ty? | Woher kommst du?
+Я з А́нглії. | ja s ánhliji. | Ich komme aus England.
+Мені́ три́дцять ро́ків. | mení trýdzjat' rókiw. | Ich bin dreißig Jahre alt.
+Я живу́ в Ло́ндоні. | ja zhywú w lóndoni. | Ich wohne in London.
+Я ви́кладач. | ja wýkladatsch. | Ich bin Lehrer.
+Ти говори́ш англі́йською? | ty howorýsch anhlíjss'koju? | Sprichst du Englisch?
+Я не розумі́ю. | ja ne rosumíju. | Ich verstehe nicht.
+Повтори́ть, будь ла́ска. | powtorýt', bud' lásska. | Bitte wiederholen Sie.
+</div>
+<h3>2.2. Pronomen</h3>
+<div class="tw"><table>
+<tr><th>Person</th><th>Ukrainisch</th><th>Deutsch</th></tr>
+<tr><td>1. Pers. Sg.</td><td><span class="fr">я</span></td><td>I</td></tr>
+<tr><td>2. Pers. Sg.</td><td><span class="fr">ти</span></td><td>du (informell)</td></tr>
+<tr><td>3. Pers. Sg.</td><td><span class="fr">він / вона / воно</span></td><td>er / sie / es</td></tr>
+<tr><td>1. Pers. Pl.</td><td><span class="fr">ми</span></td><td>wir</td></tr>
+<tr><td>2. Pers. Pl.</td><td><span class="fr">ви</span></td><td>ihr (Pl.) / Sie (höflich)</td></tr>
+<tr><td>3. Pers. Pl.</td><td><span class="fr">вони</span></td><td>sie</td></tr>
+</table></div>
+<div class="tip"><b class="t">Pronomen.</b> In einfachen Sätzen behalten Sie das Pronomen (<span class="fr">я працюю</span>). Sie können es weglassen, wenn die Verbendung die Person klar macht.</div>
+<div class="qz" data-title="Übung 2. Begrüßung">
+Guten Tag! | Добрий день
+Danke! | Дякую
+Bitte | Будь ласка
+Entschuldigung! | Вибачте
+Auf Wiedersehen! | До побачення
+Ich heiße Anna. | Мене звати Анна
+Ich verstehe nicht. | Я не розумію
+Hallo! | Привіт
+Gute Nacht! | На добраніч
+Guten Morgen! | Добрий ранок
+</div>
+</section>
+
+<section class="unit" id="u3" data-short="Nomen und Genus">
+<h2><span class="no">Abschnitt 3</span>Nomen, Genus und Plural</h2>
+<p class="lead">Das Ukrainische hat drei Genera: Maskulinum <span class="fr m">m</span> (blau), Femininum <span class="fr f">f</span> (rot) und Neutrum <span class="fr n">n</span> (grün). Es gibt keine Artikel. Das Genus erkennt man meist an der Endung.</p>
+<h3>3.1. Das Genus an der Endung</h3>
+<div class="tw"><table>
+<tr><th>Genus</th><th>Typische Endung</th><th>Beispiele</th></tr>
+<tr><td><span class="fr m">m</span></td><td>ein Konsonant, -ь, -й</td><td><span class="fr">брат, стіл, день, герой</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td>-а, -я oder -ь</td><td><span class="fr">книжка, сім'я, ніч</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td>-о, -е, -я (-ння)</td><td><span class="fr">місто, море, життя</span></td></tr>
+</table></div>
+<h3>3.2. Plural</h3>
+<div class="tw"><table>
+<tr><th>Genus</th><th>Singular → Plural</th><th>Beispiel</th></tr>
+<tr><td><span class="fr m">m</span></td><td>+ -и / -і</td><td><span class="fr">стіл → столи, брат → брати, день → дні</span></td></tr>
+<tr><td><span class="fr f">f</span></td><td>-а → -и; -я → -і</td><td><span class="fr">книжка → книжки, кімната → кімнати, сім'я → сім'ї</span></td></tr>
+<tr><td><span class="fr n">n</span></td><td>-о → -а; -е → -я</td><td><span class="fr">місто → міста, вікно → вікна, море → моря</span></td></tr>
+</table></div>
+<h3>3.3. Nominativ und Akkusativ</h3>
+<div class="rule"><b class="t">Akkusativ (direktes Objekt)</b><p>Feminin <b>-а → -у</b>, <b>-я → -ю</b>: <span class="fr">Я маю книжку. Я бачу жінку.</span> Maskuline belebte Nomen bekommen <b>-а / -я</b>: <span class="fr">Я бачу брата. Я маю пса.</span> Maskuline unbelebte und neutrale Nomen bleiben gleich: <span class="fr">Я маю стіл. Я бачу місто.</span></p></div>
+<div class="exs">
+Це кни́жка. | ze knýzhka. | Das ist ein Buch.
+Я маю́ кни́жку. | ja majú knýzhku. | Ich habe ein Buch.
+Це мій брат. | ze mij brat. | Das ist mein Bruder.
+Я маю́ бра́та. | ja majú bráta. | Ich habe einen Bruder.
+Я бачу мі́сто. | ja batschu míssto. | Ich sehe eine Stadt.
+Я чита́ю кни́жку. | ja tschytáju knýzhku. | Ich lese ein Buch.
+</div>
+<div class="vocab">
+# Familie
+сім'я́ | ssimjá | Familie | f
+ма́ти / ма́ма | máty / máma | Mutter / Mama | f
+ба́тько / та́то | bát'ko / táto | Vater / Papa | m
+брат | brat | Bruder | m
+сестра́ | ssesstrá | Schwester | f
+син | ssyn | Sohn | m
+дочка́ | dotschká | Tochter | f
+ба́ба / ба́буся | bába / bábussja | Großmutter | f
+дід / діду́сь | did / didúss' | Großvater | m
+чолові́к | tscholowík | Ehemann | m
+дружи́на | druzhýna | Ehefrau | f
+дити́на | dytýna | Kind | f
+# Dinge
+буди́нок | budýnok | Haus | m
+кварти́ра | kwartýra | Wohnung | f
+кімна́та | kimnáta | Zimmer | f
+ку́хня | kúchnja | Küche | f
+стіл | sstil | Tisch | m
+стіле́ць | sstiléz' | Stuhl | m
+вікно́ | wiknó | Fenster | n
+две́рі | dwéri | Tür | pl
+лі́жко | lízhko | Bett | n
+маши́на | maschýna | Auto | f
+телефо́н | telefón | Telefon | m
+кни́жка | knýzhka | Buch | f
+</div>
+<div class="qz" data-title="Übung 3. Genus und Formen">
+Familie | сім'я
+Bruder | брат
+Schwester | сестра
+Kind | дитина
+Haus | будинок
+Tisch | стіл
+Buch | книжка
+Küche | кухня
+Я маю ___ . (ein Buch, Akkusativ) | книжку
+Я бачу ___ . (eine Frau: жінка, Akkusativ) | жінку
+Я маю ___ . (einen Bruder, Akkusativ) | брата
+книжка → ___ (Pl.) | книжки
+місто → ___ (Pl.) | міста
+</div>
+</section>
+
+<section class="unit" id="u4" data-grp="Verben" data-short="Бути, мати">
+<h2><span class="no">Abschnitt 4</span>Die Verben <span class="fr">бути</span> (sein) und <span class="fr">мати</span> (haben)</h2>
+<div class="rule"><b class="t">Kein „sein“ im Präsens</b><p>Im Präsens lässt das Ukrainische „sein“ einfach weg: <span class="fr">Я студент.</span> = Ich bin Student. <span class="fr">Вона вчителька.</span> = Sie ist Lehrerin. Für „es gibt“ steht <span class="fr">є</span>: <span class="fr">У мене є час.</span> = Ich habe Zeit (wörtlich „bei mir ist Zeit“). Vergangenheit und Futur verwenden <span class="fr">був, була, було, були</span> und <span class="fr">буду, будеш…</span> (A2).</p></div>
+<div class="cj" data-verb="мати" data-note="haben" data-ipa="maty">
+я | ма́ю | máju
+ти | ма́єш | májesch
+він / вона / воно | ма́є | máje
+ми | ма́ємо | májemo
+ви | ма́єте | májete
+вони | ма́ють | májut'
+</div>
+<div class="exs">
+Я студе́нт. | ja sstudént. | Ich bin Student.
+Ти втомлений? | ty wtomlenyj? | Bist du müde?
+Ми вдо́ма. | my wdóma. | Wir sind zu Hause.
+Я маю́ бра́та. | ja majú bráta. | Ich habe einen Bruder.
+Ти ма́єш час? | ty májesch tschass? | Hast du Zeit?
+У мене́ нема́є ча́су. | u mené nemáje tschássu. | Ich habe keine Zeit.
+</div>
+<div class="rule"><b class="t">Verneinung</b><p>Setzen Sie <span class="fr">не</span> vor das Verb: <span class="fr">Я не працюю.</span> Doppelte Verneinung ist normal: <span class="fr">Я нічого не маю.</span> (Ich habe nichts.) Nach einem verneinten Verb steht das Objekt im Genitiv: <span class="fr">Я маю час → Я не маю часу.</span> „Es gibt nicht“ heißt <span class="fr">нема</span> oder <span class="fr">немає</span> + Genitiv.</p></div>
+<h3>4.1. Regelmäßige Verben</h3>
+<p>Die zwei Gruppen im Präsens:</p>
+<div class="tw"><table>
+<tr><th>Person</th><th>1. Gruppe (читати, працювати)</th><th>2. Gruppe (говорити)</th></tr>
+<tr><td>я</td><td>читаю, працюю</td><td>говорю</td></tr>
+<tr><td>ти</td><td>читаєш, працюєш</td><td>говориш</td></tr>
+<tr><td>він / вона</td><td>читає, працює</td><td>говорить</td></tr>
+<tr><td>ми</td><td>читаємо, працюємо</td><td>говоримо</td></tr>
+<tr><td>ви</td><td>читаєте, працюєте</td><td>говорите</td></tr>
+<tr><td>вони</td><td>читають, працюють</td><td>говорять</td></tr>
+</table></div>
+<div class="vocab">
+чита́ти | tschytáty | lesen | читаю
+жи́ти | zhýty | leben, wohnen | живу
+працюва́ти | prazjuwáty | arbeiten | працюю
+вчи́ти | wtschýty | lernen, studieren | вчу
+роби́ти | robýty | tun, machen | роблю
+говори́ти | howorýty | sprechen | говорю
+пи́ти | pýty | trinken | п'ю
+ї́сти | jíssty | essen | їм
+ба́чити | bátschyty | sehen | бачу
+купува́ти | kupuwáty | kaufen | купую
+хоті́ти | chotíty | wollen | хочу
+іти́ | itý | gehen (zu Fuß) | іду
+гра́ти | hráty | spielen | граю
+люби́ти | ljubýty | mögen, lieben | люблю
+</div>
+<div class="cj" data-verb="хотіти" data-note="wollen" data-ipa="chotity">
+я | хо́чу | chótschu
+ти | хо́чеш | chótschesch
+він / вона / воно | хо́че | chótsche
+ми | хо́чемо | chótschemo
+ви | хо́чете | chótschete
+вони | хо́чуть | chótschut'
+</div>
+<div class="cj" data-verb="іти" data-note="gehen (zu Fuß)" data-ipa="ity">
+я | іду́ | idú
+ти | іде́ш | idésch
+він / вона / воно | іде́ | idé
+ми | іде́мо | idémo
+ви | іде́те | idéte
+вони | іду́ть | idút'
+</div>
+<div class="tip"><b class="t">Eine Gegenwart.</b> <span class="fr">Працюю</span> bedeutet „ich arbeite“ und „ich bin am Arbeiten“. Verben des Mögens: <span class="fr">Я люблю каву.</span> (Ich mag Kaffee.)</div>
+<div class="qz" data-title="Übung 4. Konjugation">
+Я ___ брата. (мати) | маю
+Ти ___ час. (мати) | маєш
+Ми ___ дім. (мати) | маємо
+Я ___ в Лондоні. (жити) | живу
+Ти ___ англійською. (говорити) | говориш
+Він ___ в банку. (працювати) | працює
+Ми ___ додому. (іти) | ідемо
+Я ___ каву. (хотіти) | хочу
+Ти ___ книжку. (читати) | читаєш
+Вони ___ каву. (любити) | люблять
+Я ___ каву. (пити) | п'ю
+Ми ___ каву. (пити) | п'ємо
+</div>
+</section>
+
+<section class="unit" id="u5" data-grp="Sprache in Aktion" data-short="Fragen, Adjektive">
+<h2><span class="no">Abschnitt 5</span>Fragen, Adjektive, Präpositionen</h2>
+<div class="vocab">
+хто | chto | wer
+що | schtscho | was
+де | de | wo
+куди́ | kudý | wohin
+зві́дки | swídky | woher
+коли́ | kolý | wann
+як | jak | wie
+чому́ | tschomú | warum
+скі́льки | sskíl'ky | wie viel, wie viele
+я́кий | jákyj | welcher, was für ein
+</div>
+<div class="exs">
+Хто це? | chto ze? | Wer ist das?
+Що ти ро́биш? | schtscho ty róbysch? | Was machst du?
+Де ти живе́ш? | de ty zhywésch? | Wo wohnst du?
+Куди́ ти іде́ш? | kudý ty idésch? | Wohin gehst du?
+Скі́льки це ко́штує? | sskíl'ky ze kóschtuje? | Wie viel kostet das?
+Як тебе́ зва́ти? | jak tebé swáty? | Wie heißt du?
+</div>
+<div class="rule"><b class="t">Fragen</b><p>Eine Ja/Nein-Frage entsteht durch Intonation oder beginnt mit <span class="fr">чи</span>: <span class="fr">Ти маєш час? / Чи ти маєш час?</span> Ein „do“ gibt es nicht. <span class="fr">Ти говориш українською?</span> = Sprichst du Ukrainisch?</p></div>
+<h3>5.1. Adjektive</h3>
+<p>Adjektive richten sich nach dem Nomen in Genus, Numerus und Kasus. Die Grundformen im Nominativ:</p>
+<div class="tw"><table>
+<tr><th></th><th>m</th><th>f</th><th>n</th></tr>
+<tr><td>neu</td><td><span class="fr">новий дім</span></td><td><span class="fr">нова книжка</span></td><td><span class="fr">нове місто</span></td></tr>
+<tr><td>gut</td><td><span class="fr">добрий день</span></td><td><span class="fr">добра робота</span></td><td><span class="fr">добре пиво</span></td></tr>
+<tr><td>groß</td><td><span class="fr">великий дім</span></td><td><span class="fr">велика школа</span></td><td><span class="fr">велике місто</span></td></tr>
+</table></div>
+<div class="vocab">
+но́вий | nówyj | neu
+ста́рий | sstáryj | alt
+вели́кий | welýkyj | groß
+ма́лий | mályj | klein
+до́брий | dóbryj | gut
+пога́ний | pohányj | schlecht
+га́рний | hárnyj | schön
+доро́гий | doróhyj | teuer
+деше́вий | deschéwyj | billig
+ми́лий | mýlyj | nett
+втомлений | wtomlenyj | müde
+</div>
+<h3>5.2. Possessivpronomen</h3>
+<div class="tw"><table>
+<tr><th>Wessen</th><th>m</th><th>f</th><th>n</th></tr>
+<tr><td>mein</td><td><span class="fr">мій</span></td><td><span class="fr">моя</span></td><td><span class="fr">моє</span></td></tr>
+<tr><td>dein</td><td><span class="fr">твій</span></td><td><span class="fr">твоя</span></td><td><span class="fr">твоє</span></td></tr>
+<tr><td>sein</td><td colspan="3"><span class="fr">його</span> (ändert sich nie)</td></tr>
+<tr><td>ihr</td><td colspan="3"><span class="fr">її</span> (ändert sich nie)</td></tr>
+<tr><td>unser</td><td><span class="fr">наш</span></td><td><span class="fr">наша</span></td><td><span class="fr">наше</span></td></tr>
+</table></div>
+<h3>5.3. Präpositionen und der Lokativ</h3>
+<p>Nach <span class="fr">в / у</span> (in), <span class="fr">на</span> (auf, an), <span class="fr">по</span> und <span class="fr">при</span> steht das Nomen im <b>Lokativ</b>: meist <span class="fr">-і</span> oder <span class="fr">-у</span>: <span class="fr">в Києві, у школі, на столі, у місті, в домі / вдома</span>.</p>
+<div class="tw"><table>
+<tr><th>Präposition</th><th>Bedeutung</th><th>Beispiel</th></tr>
+<tr><td><span class="fr">в / у</span></td><td>in</td><td><span class="fr">у Києві, у школі</span></td></tr>
+<tr><td><span class="fr">на</span></td><td>auf, an</td><td><span class="fr">на столі, на вокзалі</span></td></tr>
+<tr><td><span class="fr">з</span></td><td>von, aus (+ Genitiv); mit (+ Instrumental)</td><td><span class="fr">з Англії; з братом</span></td></tr>
+<tr><td><span class="fr">до</span></td><td>zu, nach (+ Genitiv)</td><td><span class="fr">до школи, до України</span></td></tr>
+<tr><td><span class="fr">без</span></td><td>ohne (+ Genitiv)</td><td><span class="fr">кава без цукру</span></td></tr>
+<tr><td><span class="fr">для</span></td><td>für (+ Genitiv)</td><td><span class="fr">для мами</span></td></tr>
+</table></div>
+<div class="tip"><b class="t">Keine Panik.</b> In A1 lernen Sie diese als feste Wendungen. Das vollständige Kasussystem kommt in A2. Der Wechsel в / у dient dem Wohlklang: <span class="fr">у</span> nach Konsonant, <span class="fr">в</span> nach Vokal.</div>
+<div class="exs">
+Я іду́ до шко́ли. | ja idú do schkóly. | Ich gehe zur Schule.
+Я в шко́лі. | ja w schkóli. | Ich bin in der Schule.
+Я живу́ в Ки́єві. | ja zhywú w kýjewi. | Ich wohne in Kyjiw.
+Кни́жка на столі́. | knýzhka na sstolí. | Das Buch liegt auf dem Tisch.
+Ка́ва без цу́кру. | káwa bes zúkru. | Kaffee ohne Zucker.
+Це мій брат. | ze mij brat. | Das ist mein Bruder.
+</div>
+<div class="qz" data-title="Übung 5. Sprache in Aktion">
+___ це? (wer) | Хто
+___ ти робиш? (was) | Що
+___ ти живеш? (wo) | Де
+___ це коштує? (wie viel) | Скільки
+Дім ___ . (neu) | новий
+___ брат (mein) | мій
+___ сестра (meine) | моя
+Я живу ___ Києві. (in) | в
+Я ___ Англії. (aus) | з
+Кава ___ цукру. (ohne) | без
+Подарунок ___ мами. (für) | для
+</div>
+</section>
+
+<section class="unit" id="u6" data-short="Zahlen, Zeit, Daten">
+<h2><span class="no">Abschnitt 6</span>Zahlen, Zeit und Daten</h2>
+<div class="tw"><table>
+<tr><td>0 <span class="fr">нуль</span></td><td>1 <span class="fr">один</span></td><td>2 <span class="fr">два</span></td><td>3 <span class="fr">три</span></td></tr>
+<tr><td>4 <span class="fr">чотири</span></td><td>5 <span class="fr">п'ять</span></td><td>6 <span class="fr">шість</span></td><td>7 <span class="fr">сім</span></td></tr>
+<tr><td>8 <span class="fr">вісім</span></td><td>9 <span class="fr">дев'ять</span></td><td>10 <span class="fr">десять</span></td><td>11 <span class="fr">одинадцять</span></td></tr>
+<tr><td>12 <span class="fr">дванадцять</span></td><td>20 <span class="fr">двадцять</span></td><td>30 <span class="fr">тридцять</span></td><td>40 <span class="fr">сорок</span></td></tr>
+<tr><td>50 <span class="fr">п'ятдесят</span></td><td>100 <span class="fr">сто</span></td><td>200 <span class="fr">двісті</span></td><td>1000 <span class="fr">тисяча</span></td></tr>
+</table></div>
+<div class="rule"><b class="t">Zusammengesetzte Zahlen</b><p>Das Ukrainische bildet sie mit den Zehnern vor den Einern (anders als im Deutschen): 21 = <span class="fr">двадцять один</span>, 45 = <span class="fr">сорок п'ять</span>, als getrennte Wörter geschrieben. Eins und zwei haben ein Genus: <span class="fr">один брат, одна сестра, одне вікно; два брати, дві сестри</span>.</p></div>
+<div class="vocab">
+# Wochentage
+понеді́лок | ponedílok | Montag
+вівто́рок | wiwtórok | Dienstag
+середа́ | sseredá | Mittwoch
+четве́р | tschetwér | Donnerstag
+п'я́тниця | pjátnyzja | Freitag
+субо́та | ssubóta | Samstag
+неді́ля | nedílja | Sonntag
+# Monate
+сі́чень | ssítschen' | Januar
+лю́тий | ljútyj | Februar
+бере́зень | berésen' | März
+кві́тень | kwíten' | April
+тра́вень | tráwen' | Mai
+че́рвень | tschérwen' | Juni
+ли́пень | lýpen' | Juli
+се́рпень | ssérpen' | August
+вере́сень | weréssen' | September
+жо́втень | zhówten' | Oktober
+листопа́д | lysstopád | November
+гру́день | hrúden' | Dezember
+# Zeit
+сього́дні | ssjohódni | heute
+за́втра | sáwtra | morgen
+вчо́ра | wtschóra | gestern
+вра́нці | wránzi | am Morgen, morgens
+ввечері́ | wwetscherí | am Abend, abends
+за́раз | sáras | jetzt
+</div>
+<div class="exs">
+Котра́ годи́на? | kotrá hodýna? | Wie spät ist es?
+За́раз п'я́та годи́на. | sáras pjáta hodýna. | Es ist fünf Uhr.
+Пе́рша годи́на. | pérscha hodýna. | Es ist ein Uhr.
+О котрі́й годи́ні? | o kotríj hodýni? | Um wie viel Uhr?
+О восьмі́й. | o woss'míj. | Um acht Uhr.
+Сього́дні понеді́лок. | ssjohódni ponedílok. | Heute ist Montag.
+</div>
+<div class="qz" data-title="Übung 6. Zahlen und Tage">
+2 | два
+3 | три
+5 | п'ять
+10 | десять
+20 | двадцять
+100 | сто
+Montag | понеділок
+Freitag | п'ятниця
+Sonntag | неділя
+Oktober | жовтень
+morgen | завтра
+gestern | вчора
+</div>
+</section>
+
+<section class="unit" id="u7" data-grp="Wörter und Dialoge" data-short="Essen, Stadt, Einkaufen">
+<h2><span class="no">Abschnitt 7</span>Essen, Stadt und Einkaufen</h2>
+<div class="vocab">
+# Essen
+хліб | chlib | Brot | m
+ма́сло | másslo | Butter | n
+сир | ssyr | Käse | m
+м'я́со | mjásso | Fleisch | n
+ри́ба | rýba | Fisch | f
+яйце́ | jajzé | Ei | n
+суп | ssup | Suppe | m
+рис | ryss | Reis | m
+карто́пля | kartóplja | Kartoffel | f
+я́блуко | jábluko | Apfel | n
+цу́кор | zúkor | Zucker | m
+сіль | ssil' | Salz | f
+# Getränke
+вода́ | wodá | Wasser | f
+молоко́ | molokó | Milch | n
+ка́ва | káwa | Kaffee | f
+чай | tschaj | Tee | m
+сік | ssik | Saft | m
+пи́во | pýwo | Bier | n
+вино́ | wynó | Wein | n
+# Stadt
+вокза́л | woksál | Bahnhof | m
+по́шта | póschta | Post | f
+банк | bank | Bank | m
+лікарня | likarnja | Krankenhaus | f
+апте́ка | aptéka | Apotheke | f
+магази́н | mahasýn | Geschäft | m
+ву́лиця | wúlyzja | Straße | f
+міст | misst | Brücke | m
+парк | park | Park | m
+</div>
+<div class="exs">
+Ка́ву, будь ла́ска. | káwu, bud' lásska. | Einen Kaffee, bitte.
+Раху́нок, будь ла́ска. | rachúnok, bud' lásska. | Die Rechnung, bitte.
+Смачно́го! | ssmatschnóho! | Guten Appetit!
+Скі́льки це ко́штує? | sskíl'ky ze kóschtuje? | Wie viel kostet das?
+Це до́рого. | ze dóroho. | Das ist teuer.
+Мо́жна заплати́ти ка́рткою? | mózhna saplatýty kártkoju? | Kann ich mit Karte zahlen?
+Де вокза́л? | de woksál? | Wo ist der Bahnhof?
+Іді́ть про́сто, пото́м ліво́руч. | idít' próssto, potóm liwórutsch. | Gehen Sie geradeaus, dann links.
+Я голо́дний. | ja holódnyj. | Ich habe Hunger.
+</div>
+<div class="qz" data-title="Übung 7. Café und Stadt">
+Einen Kaffee, bitte. | Каву, будь ласка
+Die Rechnung, bitte. | Рахунок, будь ласка
+Guten Appetit! | Смачного
+Wie viel kostet das? | Скільки це коштує
+Wo ist der Bahnhof? | Де вокзал
+Das ist teuer. | Це дорого
+Ich habe Hunger. | Я голодний
+Brot | хліб
+Milch | молоко
+Bahnhof | вокзал
+</div>
+</section>
+
+<section class="unit" id="u8" data-short="Dialoge">
+<h2><span class="no">Abschnitt 8</span>Dialoge im Alltag</h2>
+<div class="dg">
+# 1. У кав'ярні (im Café)
+Офіціант: Добрий день. Що замовите? | Guten Tag. Was möchten Sie bestellen?
+Гість: Каву і шматок торта, будь ласка. | Einen Kaffee und ein Stück Kuchen, bitte.
+Офіціант: З молоком? | Mit Milch?
+Гість: Ні, дякую. Без молока. | Nein, danke. Ohne Milch.
+Офіціант: Прошу. Смачного. | Bitte schön. Guten Appetit.
+Гість: Дякую. Можна заплатити карткою? | Danke. Kann ich mit Karte zahlen?
+# 2. На вокзалі (am Bahnhof)
+Пасажир: Добрий день, один квиток до Львова, будь ласка. | Guten Tag, eine Fahrkarte nach Lwiw, bitte.
+Касирка: В один бік чи туди й назад? | Einfach oder hin und zurück?
+Пасажир: В один бік. Коли відходить поїзд? | Einfach. Wann fährt der Zug ab?
+Касирка: О десятій п'ятнадцять. | Um Viertel nach zehn.
+Пасажир: Скільки коштує квиток? | Wie viel kostet die Fahrkarte?
+Касирка: П'ятсот гривень. | Fünfhundert Hrywnja.
+# 3. Питаємо дорогу (nach dem Weg fragen)
+Турист: Вибачте, де музей? | Entschuldigung, wo ist das Museum?
+Жінка: Ідіть прямо, а потім праворуч. | Gehen Sie geradeaus und dann rechts.
+Турист: Це далеко? | Ist es weit?
+Жінка: Ні, п'ять хвилин пішки. | Nein, fünf Minuten zu Fuß.
+Турист: Дуже дякую. | Vielen Dank.
+Жінка: Будь ласка. | Gern geschehen.
+# 4. Знайомимося (sich kennenlernen)
+Петро: Привіт, мене звати Петро. А тебе? | Hallo, ich bin Petro. Und du?
+Анна: Мене звати Анна. Приємно познайомитися. | Ich bin Anna. Freut mich.
+Петро: Звідки ти? | Woher kommst du?
+Анна: Я з Англії, з Лондона. | Ich komme aus England, aus London.
+Петро: Ти дуже добре говориш українською! | Du sprichst sehr gut Ukrainisch!
+Анна: Дякую, я ще вчуся. | Danke, ich lerne noch.
+</div>
+<div class="qz" data-title="Übung 8. Wendungen aus den Dialogen">
+Was möchten Sie bestellen? | Що замовите
+Einen Kaffee, bitte. | Каву, будь ласка
+Eine Fahrkarte nach Lwiw. | Квиток до Львова
+Wo ist das Museum? | Де музей
+Fünf Minuten zu Fuß. | П'ять хвилин пішки
+Gern geschehen. | Будь ласка
+Ich heiße Anna. | Мене звати Анна
+Ich lerne noch. | Я ще вчуся
+</div>
+</section>
+
+<section class="unit" id="u10" data-grp="A1-Erweiterung" data-short="Mehr Wörter">
+<h2><span class="no">Abschnitt 9</span>Mehr Wörter: Arbeit, Körper, Kleidung, Wetter, Verkehr</h2>
+<div class="vocab">
+# Berufe
+ви́читель | wýtschytel' | Lehrer | m
+лі́кар | líkar | Arzt | m
+медсестра́ | medssesstrá | Krankenschwester | f
+інжене́р | inzhenér | Ingenieur | m
+води́й | wodýj | Fahrer | m
+продаве́ць | prodawéz' | Verkäufer | m
+ку́хар | kúchar | Koch | m
+студе́нт | sstudént | Student | m
+поліце́йський | polizéjss'kyj | Polizist | m
+адвока́т | adwokát | Anwalt | m
+# Körper und Gesundheit
+голова́ | holowá | Kopf | f
+о́ко | óko | Auge | n
+ву́хо | wúcho | Ohr | n
+ніс | niss | Nase | m
+рот | rot | Mund | m
+рука́ | ruká | Hand, Arm | f
+нога́ | nohá | Bein, Fuß | f
+живі́т | zhywít | Bauch | m
+спина́ | sspyná | Rücken | f
+се́рце | ssérze | Herz | n
+У мене́ болить голова́. | u mené bolyt' holowá. | Ich habe Kopfschmerzen. | 
+Я хво́рий. | ja chwóryj. | Ich bin krank. | 
+температу́ра | temperatúra | Fieber | f
+апте́ка | aptéka | Apotheke | f
+лі́ки | líky | Medikament | pl
+# Kleidung
+соро́чка | ssorótschka | Hemd | f
+штани́ | schtaný | Hose | pl
+су́кня | ssúknja | Kleid | f
+ку́ртка | kúrtka | Jacke | f
+взуття́ | wsuttjá | Schuhe | n
+светр | sswetr | Pullover | m
+ша́пка | schápka | Mütze | f
+ро́змір | rósmir | Größe | m
+# Wetter
+пого́да | pohóda | Wetter | f
+со́нце | ssónze | Sonne | n
+дощ | doschtsch | Regen | m
+сніг | ssnih | Schnee | m
+ві́тер | wíter | Wind | m
+хо́лодно | chólodno | es ist kalt | adv
+спе́котно | sspékotno | es ist heiß | adv
+со́нячно | ssónjatschno | es ist sonnig | adv
+# Verkehr
+авто́бус | awtóbuss | Bus | m
+по́тяг | pótjah | Zug | m
+трамва́й | tramwáj | Straßenbahn | m
+літа́к | liták | Flugzeug | m
+велосипе́д | welossypéd | Fahrrad | m
+квито́к | kwytók | Fahrkarte | m
+зупи́нка | supýnka | Haltestelle | f
+аеропо́рт | aeropórt | Flughafen | m
+# Zuhause und Hobbys
+ві́тальня | wítal'nja | Wohnzimmer | f
+ва́нна | wánna | Badezimmer | f
+холоди́льник | cholodýl'nyk | Kühlschrank | m
+дива́н | dywán | Sofa | m
+фільм | fil'm | Film | m
+му́зика | músyka | Musik | f
+спорт | ssport | Sport | m
+готува́ти | hotuwáty | kochen | verb
+подорожува́ти | podorozhuwáty | reisen | verb
+</div>
+<div class="exs">
+Я ви́читель. | ja wýtschytel'. | Ich bin Lehrer.
+Я працюю́ води́єм. | ja prazjujú wodýjem. | Ich arbeite als Fahrer.
+У мене́ болить го́рло. | u mené bolyt' hórlo. | Mir tut der Hals weh.
+Яки́й у вас ро́змір? | jakýj u wass rósmir? | Welche Größe haben Sie?
+Сього́дні хо́лодно. | ssjohódni chólodno. | Heute ist es kalt.
+Іде́ дощ. | idé doschtsch. | Es regnet.
+Де зупи́нка? | de supýnka? | Wo ist die Haltestelle?
+Я люблю́ готува́ти. | ja ljubljú hotuwáty. | Ich koche gern.
+</div>
+<div class="qz" data-title="Übung 9. Neue Wörter">
+Arzt | лікар
+Lehrer | вчитель
+Kopf | голова
+Hand | рука
+Kleid | сукня
+Regen | дощ
+Schnee | сніг
+Bus | автобус
+Zug | потяг
+Fahrkarte | квиток
+Flughafen | аеропорт
+Es regnet. | Іде дощ
+Ich habe Kopfschmerzen. | У мене болить голова
+Heute ist es kalt. | Сьогодні холодно
+</div>
+</section>
+
+<section class="unit" id="u11" data-short="Modalverben, Imperativ">
+<h2><span class="no">Abschnitt 10</span>Modalverben und Imperativ</h2>
+<h3>10.1. Modalverben</h3>
+<div class="tw"><table>
+<tr><th></th><th>могти (können)</th><th>мусити (müssen)</th><th>хотіти (wollen)</th><th>вміти (etwas können, beherrschen)</th></tr>
+<tr><td>я</td><td>можу</td><td>мушу</td><td>хочу</td><td>вмію</td></tr>
+<tr><td>ти</td><td>можеш</td><td>мусиш</td><td>хочеш</td><td>вмієш</td></tr>
+<tr><td>він / вона</td><td>може</td><td>мусить</td><td>хоче</td><td>вміє</td></tr>
+<tr><td>ми</td><td>можемо</td><td>мусимо</td><td>хочемо</td><td>вміємо</td></tr>
+<tr><td>ви</td><td>можете</td><td>мусите</td><td>хочете</td><td>вмієте</td></tr>
+<tr><td>вони</td><td>можуть</td><td>мусять</td><td>хочуть</td><td>вміють</td></tr>
+</table></div>
+<div class="rule"><b class="t">Modalverb + Infinitiv</b><p>Das Hauptverb bleibt im Infinitiv: <span class="fr">Я можу прийти. Я хочу пити каву. Я мушу працювати.</span> Eine erlernte Fähigkeit wird mit <span class="fr">вміти</span> ausgedrückt: <span class="fr">Я вмію плавати.</span> „Darf ich?“ heißt <span class="fr">Можна?</span>, und „nicht erlaubt“ heißt <span class="fr">не можна</span>.</p></div>
+<div class="exs">
+Мо́жна ввійти́? | mózhna wwijtý? | Darf ich hereinkommen?
+Я хочу́ пи́ти ка́ву. | ja chotschú pýty káwu. | Ich möchte Kaffee trinken.
+Сього́дні я му́шу працюва́ти. | ssjohódni ja múschu prazjuwáty. | Heute muss ich arbeiten.
+За́раз я не мо́жу розмовля́ти. | sáras ja ne mózhu rosmowljáty. | Ich kann jetzt nicht sprechen.
+Ти вмієш готува́ти? | ty wmijesch hotuwáty? | Kannst du kochen?
+Тут не мо́жна кури́ти. | tut ne mózhna kurýty. | Rauchen ist hier nicht erlaubt.
+Я хоті́в би чай, будь ла́ска. | ja chotíw by tschaj, bud' lásska. | Ich hätte gern einen Tee, bitte (ein Mann sagt).
+</div>
+<h3>10.2. Der Imperativ</h3>
+<div class="tw"><table>
+<tr><th>Infinitiv</th><th>ти</th><th>ви</th></tr>
+<tr><td>говорити</td><td>говори!</td><td>говоріть!</td></tr>
+<tr><td>читати</td><td>читай!</td><td>читайте!</td></tr>
+<tr><td>чекати</td><td>чекай!</td><td>чекайте!</td></tr>
+<tr><td>прийти</td><td>приходь!</td><td>приходьте!</td></tr>
+<tr><td>бути</td><td>будь!</td><td>будьте!</td></tr>
+<tr><td>писати</td><td>пиши!</td><td>пишіть!</td></tr>
+</table></div>
+<p>Für ein Verbot: <span class="fr">не кури!</span> <span class="fr">не говори!</span> Höflich fügen Sie <span class="fr">будь ласка</span> hinzu.</p>
+<div class="exs">
+Почека́й хвили́ну! | potschekáj chwylýnu! | Warte einen Moment!
+Приході́ть сюди́, будь ла́ска. | prychodít' ssjudý, bud' lásska. | Komm bitte hierher.
+Говорі́ть повільні́ше, будь ла́ска. | howorít' powil'nísche, bud' lásska. | Sprich bitte langsamer.
+Не кури́ тут! | ne kurý tut! | Rauch hier nicht!
+Будь обере́жний! | bud' oberézhnyj! | Sei vorsichtig!
+</div>
+<div class="qz" data-title="Übung 10. Modalverben und Imperativ">
+Я ___ працювати. (мусити) | мушу
+Ти ___ прийти. (могти) | можеш
+Він ___ каву. (хотіти) | хоче
+Ми ___ йти. (могти) | можемо
+Я ___ плавати. (вміти) | вмію
+Я ___ чай. (ich hätte gern: хотів би, m.) | хотів би
+говорити → (ти!) ___ | говори
+читати → (ти!) ___ | читай
+чекати → (ти!) ___ | чекай
+бути → (ти!) ___ | будь
+___ кури! (Nicht) | Не
+Тут не ___ курити. (erlaubt) | можна
+</div>
+</section>
+
+<section class="unit" id="u12" data-short="Weitere Dialoge">
+<h2><span class="no">Abschnitt 11</span>Vier weitere Dialoge</h2>
+<div class="dg">
+# 1. У лікаря (beim Arzt)
+Лікар: Добрий день, що вас турбує? | Guten Tag, was fehlt Ihnen?
+Пацієнт: У мене болить голова і є температура. | Ich habe Kopfschmerzen und Fieber.
+Лікар: Скільки це триває? | Seit wann?
+Пацієнт: Два дні. | Seit zwei Tagen.
+Лікар: Приймайте ці таблетки й залишайтеся вдома. | Nehmen Sie diese Tabletten und bleiben Sie zu Hause.
+Пацієнт: Дякую, докторе. | Danke, Herr Doktor.
+# 2. У магазині одягу (im Bekleidungsgeschäft)
+Продавчиня: Чим можу допомогти? | Kann ich Ihnen helfen?
+Клієнт: Я шукаю куртку. | Ich suche eine Jacke.
+Продавчиня: Який у вас розмір? | Welche Größe haben Sie?
+Клієнт: Розмір M. Можна приміряти? | Größe M. Kann ich sie anprobieren?
+Продавчиня: Звичайно, примірочна там. | Natürlich, die Umkleidekabine ist dort drüben.
+Клієнт: Скільки це коштує? | Wie viel kostet sie?
+Продавчиня: Дві тисячі гривень. | Zweitausend Hrywnja.
+# 3. У готелі (im Hotel)
+Гість: Добрий вечір, у мене є бронювання. | Guten Abend, ich habe eine Reservierung.
+Адміністратор: На яке прізвище? | Auf welchen Namen?
+Гість: Сміт. Одномісний номер на три ночі. | Smith. Ein Einzelzimmer für drei Nächte.
+Адміністратор: Ось ключ. Сніданок з сьомої до десятої. | Hier ist Ihr Schlüssel. Frühstück gibt es von sieben bis zehn.
+Гість: Чи є вай-фай? | Gibt es WLAN?
+Адміністратор: Так, пароль на ключі. | Ja, das Passwort steht auf dem Schlüssel.
+# 4. По телефону (am Telefon)
+Анна: Алло? | Hallo?
+Марко: Привіт, Анно, це Марко. Як справи? | Hallo Anna, hier ist Marko. Wie geht’s?
+Анна: Добре, дякую. А в тебе? | Gut, danke. Und dir?
+Марко: Теж добре. Ти вільна завтра ввечері? | Mir auch gut. Hast du morgen Abend Zeit?
+Анна: Так, а що? | Ja, warum?
+Марко: Підемо в кіно? | Gehen wir ins Kino?
+Анна: Залюбки! | Gern!
+</div>
+<div class="qz" data-title="Übung 11. Wendungen aus den Dialogen">
+Was fehlt Ihnen? | Що вас турбує
+Ich habe Kopfschmerzen. | У мене болить голова
+Ich suche eine Jacke. | Я шукаю куртку
+Welche Größe haben Sie? | Який у вас розмір
+Wie viel kostet sie? | Скільки це коштує
+Ich habe eine Reservierung. | У мене є бронювання
+Gibt es WLAN? | Чи є вай-фай
+Gehen wir ins Kino? | Підемо в кіно
+</div>
+</section>
+
+<section class="unit" id="u9" data-short="Merkblatt, Plan, Test">
+<h2><span class="no">Abschnitt 12</span>Merkblatt, Plan und Test</h2>
+<div class="tw"><table>
+<tr><th>Thema</th><th>Merken Sie sich</th></tr>
+<tr><td>Sein (Präsens)</td><td>wird weggelassen: Я студент</td></tr>
+<tr><td>Мати</td><td>маю, маєш, має, маємо, маєте, мають</td></tr>
+<tr><td>Artikel</td><td>keine</td></tr>
+<tr><td>Akkusativ</td><td>-а → -у, -я → -ю (f); belebtes m → -а</td></tr>
+<tr><td>Verneinung</td><td>не vor dem Verb; doppelte Verneinung</td></tr>
+<tr><td>Fragen</td><td>Intonation oder чи; хто, що, де, коли</td></tr>
+<tr><td>Ти / ви</td><td>informell / höflich</td></tr>
+<tr><td>Betonung</td><td>frei, mit dem Wort lernen</td></tr>
+</table></div>
+<h3>8-Wochen-Plan</h3>
+<div class="tw"><table>
+<tr><th>Woche</th><th>Abschnitte</th><th>Ziel</th></tr>
+<tr><td>1</td><td>0, 1</td><td>Das Alphabet und jedes Wort lesen</td></tr>
+<tr><td>2</td><td>2, 3</td><td>Sich vorstellen, Wörter mit Genus</td></tr>
+<tr><td>3</td><td>4</td><td>Мати und 10 Verben</td></tr>
+<tr><td>4</td><td>5</td><td>Fragen, Adjektive, Präpositionen</td></tr>
+<tr><td>5</td><td>6</td><td>Zahlen, Zeit, Tage</td></tr>
+<tr><td>6</td><td>7</td><td>Essen, Stadt</td></tr>
+<tr><td>7</td><td>8</td><td>Dialoge laut sprechen</td></tr>
+<tr><td>8</td><td>Wiederholung</td><td>Erzählen Sie 3–5 Minuten von sich</td></tr>
+</table></div>
+<h3>Abschlusstest</h3>
+<div class="qz" data-title="A1-Test">
+Ти ___ час. (мати) | маєш
+Я маю ___ . (ein Buch, Akk.) | книжку
+Я живу ___ Києві. (in) | в
+Кава ___ цукру. (ohne) | без
+___ це коштує? (wie viel) | Скільки
+5 | п'ять
+Freitag | п'ятниця
+</div>
+<ul class="check">
+<li><label><input type="checkbox"> Jedes ukrainische Wort lesen</label></li>
+<li><label><input type="checkbox"> Mich begrüßen und vorstellen</label></li>
+<li><label><input type="checkbox"> Мати und regelmäßige Verben verwenden</label></li>
+<li><label><input type="checkbox"> Das Genus an der Endung erkennen</label></li>
+<li><label><input type="checkbox"> Zahlen, Tage, Monate, Uhrzeit nennen</label></li>
+<li><label><input type="checkbox"> Einen Kaffee bestellen und nach dem Weg fragen</label></li>
+</ul>
+</section>
+
+<footer>Ein Selbstlerngerüst für A1. Ergänzen Sie es mit echtem Hören: Podcasts, Videos mit Untertiteln, Gespräche mit Muttersprachlern. Die Aussprache-Umschrift ist bewusst weggelassen; hören Sie auf die Tonbeispiele und fragen Sie Muttersprachler.</footer>
+</main>
+</div>
+<script>
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=el=>el.textContent.split('\n').map(s=>s.trim()).filter(Boolean);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- словникові таблиці ---------- */
+$$('.vocab').forEach(el=>{
+  let h='<table class="vtable"><thead><tr><th>Ukrainisch</th><th>Aussprache</th><th>Deutsch</th></tr></thead><tbody>';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<tr><th colspan="3">'+esc(l.slice(2))+'</th></tr>';return;}
+    const p=l.split(' | '); const fr=p[0], ipa=p[1]||'', ua=p[2]||'', g=p[3]||'';
+    h+='<tr class="w"><td><span class="fr '+esc(g)+'">'+esc(fr)+'</span></td><td class="ipa">'+(ipa?'['+esc(ipa)+']':'')+'</td><td>'+esc(ua)+'</td></tr>';
+  });
+  const w=document.createElement('div'); w.className='tw'; w.innerHTML=h+'</tbody></table>';
+  el.replaceWith(w);
+});
+
+/* ---------- приклади ---------- */
+$$('.exs').forEach(el=>{
+  let h='<ul class="ex">';
+  lines(el).forEach(l=>{
+    const p=l.split(' | ');
+    if(p.length===1){h+='<li><span class="f1">'+esc(p[0])+'</span></li>';return;}
+    const fr=p[0], ipa=p.length>2?p[1]:'', ua=p.length>2?p[2]:p[1];
+    h+='<li><span class="f1">'+esc(fr)+'</span>'+(ipa?'<span class="i1 ipa">['+esc(ipa)+']</span>':'')+'<span class="u1">'+esc(ua)+'</span></li>';
+  });
+  const u=document.createElement('div'); u.innerHTML=h+'</ul>'; el.replaceWith(u.firstChild);
+});
+
+/* ---------- відмінювання ---------- */
+$$('.cj').forEach(el=>{
+  const v=el.dataset.verb, note=el.dataset.note||'', ipa=el.dataset.ipa||'';
+  let h='<div class="conj"><div class="ch"><span class="fr">'+esc(v)+'</span>'+(ipa?' <span class="ipa">['+esc(ipa)+']</span>':'')+(note?'<small>'+esc(note)+'</small>':'')+'</div>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const pn=p[0], form=p[1], ip=p[2]||'';
+    const sp=pn.endsWith("'")?'':' ';
+    h+='<div class="cr"><span class="fr" data-say="'+esc(pn+sp+form)+'"><span class="pn">'+esc(pn)+'</span>'+sp+esc(form)+'</span><span class="ipa">['+esc(ip)+']</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+/* групи відмінювань: сусідні .conj у сітку */
+$$('.conj').forEach(c=>{
+  if(c.parentElement.classList.contains('conjs'))return;
+  const prev=c.previousElementSibling;
+  if(prev&&prev.classList.contains('conjs')){prev.appendChild(c);}
+  else if(prev&&prev.classList.contains('conj')){
+    const wrap=document.createElement('div');wrap.className='conjs';prev.before(wrap);wrap.appendChild(prev);wrap.appendChild(c);
+  }
+});
+
+/* ---------- діалоги ---------- */
+$$('.dg').forEach(el=>{
+  let h='<div class="dlg">';
+  lines(el).forEach(l=>{
+    if(l.startsWith('# ')){h+='<h5>'+esc(l.slice(2))+'</h5>';return;}
+    const m=l.match(/^([^:|]{1,18}):\s*(.*)$/); if(!m)return;
+    const p=m[2].split(' | ');
+    h+='<div class="ln"><span class="who">'+esc(m[1])+'</span><span class="fx">'+esc(p[0])+'</span><span class="u">'+esc(p[1]||'')+'</span></div>';
+  });
+  const d=document.createElement('div'); d.innerHTML=h+'</div>'; el.replaceWith(d.firstChild);
+});
+
+/* ---------- вправи ---------- */
+const gk=s=>/[\u0370-\u03ff]/.test(s)?s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ς/g,'σ'):s;
+const norm=s=>gk(s.toLowerCase()).replace(/[’‘`´]/g,"'").replace(/œ/g,'oe').replace(/\s+/g,' ').trim().replace(/^[¿¡]+/,'').replace(/[.!?…]+$/,'').replace(/\s+([?!:;])/g,'$1');
+$$('.qz').forEach((el,qi)=>{
+  const title=el.dataset.title||'Übung';
+  let h='<div class="quiz"><h4>'+esc(title)+'</h4><ol>';
+  lines(el).forEach(l=>{
+    const p=l.split(' | '); const prompt=p[0], ans=(p[1]||'');
+    const answers=ans.split(' ;; ');
+    let k=0, body;
+    if(prompt.indexOf('___')>-1){
+      body=esc(prompt).replace(/___/g,()=>{const a=answers[k++]||''; return '<input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(a)+'" size="'+Math.max(5,Math.min(18,a.split(' / ')[0].length+2))+'">';});
+    } else {
+      body='<span class="qp">'+esc(prompt)+'</span><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" data-a="'+esc(answers[0])+'" style="width:100%;max-width:30em">';
+    }
+    h+='<li>'+body+'<span class="ans">Antwort: <span class="frt">'+esc(answers.map(a=>a.split(' / ')[0]).join(' ; '))+'</span></span></li>';
+  });
+  h+='</ol><div class="row"><button type="button" data-act="check">Prüfen</button><button type="button" data-act="show">Lösungen zeigen</button><button type="button" data-act="reset">Zurücksetzen</button><span class="score"></span></div></div>';
+  const d=document.createElement('div'); d.innerHTML=h; el.replaceWith(d.firstChild);
+});
+function checkQuiz(q){
+  let ok=0,tot=0;
+  $$('input[data-a]',q).forEach(i=>{
+    tot++;
+    const alts=i.dataset.a.split(' / ').map(norm);
+    const good=alts.indexOf(norm(i.value))>-1;
+    i.classList.toggle('ok',good); i.classList.toggle('no',!good&&i.value.trim()!=='');
+    if(good)ok++;
+  });
+  $('.score',q).textContent=ok+' von '+tot+(ok===tot?'. Alles richtig.':'. Prüfe die Schreibweise (Sonderzeichen!).');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.quiz button'); if(!b)return;
+  const q=b.closest('.quiz'), a=b.dataset.act;
+  if(a==='check')checkQuiz(q);
+  if(a==='show')q.classList.toggle('show');
+  if(a==='reset'){$$('input',q).forEach(i=>{i.value='';i.classList.remove('ok','no')});q.classList.remove('show');$('.score',q).textContent='';}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.matches('.quiz input')){e.preventDefault();checkQuiz(e.target.closest('.quiz'));}
+});
+
+/* ---------- озвучка ---------- */
+let frVoice=null;
+function pick(){try{const v=speechSynthesis.getVoices();frVoice=v.find(x=>/^uk[-_]UA/i.test(x.lang))||v.find(x=>/^uk/i.test(x.lang))||('uk'==='be'?v.find(x=>/^uk/i.test(x.lang)):null)||null;}catch(e){}}
+if('speechSynthesis' in window){pick();speechSynthesis.onvoiceschanged=pick;}
+function say(t){
+  if(!('speechSynthesis' in window))return;
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/\u0301/g,""));u.lang='uk-UA';if(frVoice)u.voice=frVoice;u.rate=.85;speechSynthesis.speak(u);}catch(e){}
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.fr,.f1,.fx'); if(!t||e.target.closest('input'))return;
+  const s=(t.dataset.say||t.textContent).replace(/\[[^\]]*\]/g,'').replace(/\s*\/\s*/g,', ').replace(/\.\.\.|…/g,' ').replace(/\s+/g,' ').trim();
+  if(s)say(s);
+});
+
+/* ---------- зміст ---------- */
+const toc=$('#toc'); let grp='';
+$$('section.unit').forEach(sec=>{
+  const g=sec.dataset.grp||''; const h2=$('h2',sec);
+  if(g&&g!==grp){grp=g;const d=document.createElement('div');d.className='grp';d.textContent=g;toc.appendChild(d);}
+  const a=document.createElement('a'); a.href='#'+sec.id;
+  const no=$('.no',h2); a.textContent=(no?no.textContent.replace(/^\D*/,'').trim()+'. ':'')+(sec.dataset.short||h2.textContent.replace(no?no.textContent:'','').trim());
+  toc.appendChild(a);
+});
+const links=$$('#toc a');
+function onScroll(){
+  let cur=null; $$('section.unit').forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#menuBtn').addEventListener('click',()=>toc.classList.toggle('open'));
+toc.addEventListener('click',e=>{if(e.target.tagName==='A')toc.classList.remove('open');});
+
+/* ---------- перемикачі ---------- */
+if(store.get('uk4de1_ua')==='0')document.body.classList.add('hide-ua');
+$('#uaBtn').addEventListener('click',()=>{const h=document.body.classList.toggle('hide-ua');store.set('uk4de1_ua',h?'0':'1');});
+const root=document.documentElement; const th=store.get('uk4de1_theme'); if(th)root.dataset.theme=th;
+$('#thBtn').addEventListener('click',()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark'; store.set('uk4de1_theme',root.dataset.theme);
+});
+
+/* ---------- чек-лист ---------- */
+$$('.check input').forEach((c,i)=>{
+  const k='uk4de1_chk_'+i; c.checked=store.get(k)==='1';
+  c.addEventListener('change',()=>store.set(k,c.checked?'1':'0'));
+});
+
+/* ---------- пошук ---------- */
+const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const sr=$('#sr'); let tm=null;
+$('#q').addEventListener('input',e=>{
+  clearTimeout(tm); tm=setTimeout(()=>{
+    const v=strip(e.target.value.trim());
+    if(v.length<2){sr.classList.remove('on');sr.innerHTML='';return;}
+    const seen=new Set(), res=[];
+    $$('tr.w').forEach(r=>{
+      const t=strip(r.textContent);
+      if(t.indexOf(v)>-1){
+        const c=r.cells; const key=c[0].textContent+'|'+c[2].textContent;
+        if(seen.has(key))return; seen.add(key);
+        const sec=r.closest('section.unit'); res.push([c[0].innerHTML,c[1].textContent,c[2].textContent,sec?sec.id:'']);
+      }
+    });
+    let h='<b>Ergebnisse: '+res.length+'</b>';
+    if(res.length){
+      h+='<table class="vtable"><tbody>'+res.slice(0,40).map(r=>'<tr><td>'+r[0]+'</td><td class="ipa">'+esc(r[1])+'</td><td>'+esc(r[2])+(r[3]?' <a class="pill" href="#'+r[3]+'">zum Abschnitt</a>':'')+'</td></tr>').join('')+'</tbody></table>';
+      if(res.length>40)h+='<div class="mini">Die ersten 40 werden angezeigt.</div>';
+    } else h+='<div class="mini">Nichts gefunden. Die Suche durchsucht die Wörter der Zielsprache und die deutschen Wörter in den Vokabeltabellen.</div>';
+    sr.innerHTML=h; sr.classList.add('on'); scrollTo({top:0,behavior:'smooth'});
+  },180);
+});
+})();
+</script>
+</body>
+</html>
